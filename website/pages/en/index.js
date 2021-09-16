@@ -80,6 +80,23 @@ class HomeSplash extends React.Component {
   }
 }
 
+const SingleBlock = props => (
+  <Container padding={[]} id={props.id} background={props.background}>
+    <GridBlock align="center" contents={props.children} layout={props.layout} />
+  </Container>
+)
+
+const SpecsCard = () => (
+  <SingleBlock layout="threeColumn">
+    {[
+      {
+        content: 'List of all features and specifications',
+        title: '<a href="/docs/features">🔢 Features</a>'
+      }
+    ]}
+  </SingleBlock>
+)
+
 const Block = props => (
   <Container padding={['bottom', 'top']} id={props.id} background={props.background}>
     <GridBlock align="center" contents={props.children} layout={props.layout} />
@@ -116,7 +133,8 @@ class Index extends React.Component {
     return (
       <div>
         <HomeSplash language={language} />
-        <div className="mainContainer">
+        <div className="mainContainer" style={{padding: 0}}>
+          <SpecsCard />
           <GuideCards />
         </div>
       </div>
