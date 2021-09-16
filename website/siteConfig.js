@@ -13,7 +13,7 @@ const siteConfig = {
   tagline: 'Guides and references for all you need to know about Botpress',
   url: 'https://botpress.com/docs',
   baseUrl: '/',
-  repoUrl: 'https://github.com/botpress/botpress',
+  repoUrl: 'https://github.com/botpress/docs',
   projectName: 'botpress-docs',
   organizationName: 'botpress',
 
@@ -30,7 +30,7 @@ const siteConfig = {
     { doc: 'introduction', label: 'Docs' },
     { href: 'https://botpress.com/reference/', label: 'SDK' },
     { href: 'https://forum.botpress.com/', label: 'Community' },
-    { href: 'https://github.com/botpress/botpress', label: 'Github' },
+    { href: 'https://github.com/botpress/docs', label: 'Github' },
     { search: true }
   ],
 
@@ -61,7 +61,7 @@ const siteConfig = {
   ogImage: 'img/docusaurus.png',
   twitterImage: 'img/docusaurus.png',
 
-  editUrl: 'https://github.com/botpress/botpress/edit/master/docs/guide/docs/',
+  editUrl: 'https://github.com/botpress/docs/edit/master/docs/',
   gaTrackingId: 'UA-90034220-1',
   gaGtag: true
 }
