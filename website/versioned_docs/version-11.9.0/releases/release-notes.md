@@ -6,7 +6,7 @@ original_id: release-notes
 
 ## Features
 
-- Add option to white-label the admin panel on Pro edition.
+- Add option to white-label the admin panel in Enterprise edition.
 - **(beta)** Code Editor Module allows you to create / edit your actions and hooks directly from the UI. It make uses of Typescript typings and Monaco IntelliSense.
 - **(beta)** Testing Module allows you to create scenarios which are test cases for a conversation with your bot.
 - Added a new action to clear an extracted slot.

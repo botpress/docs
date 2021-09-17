@@ -10,7 +10,7 @@ sidebar.docs['Channels'].map((value) => links.push({ url: `/docs/${value}`}))
 sidebar.docs['Advanced Guides'].map((value) =>
   links.push({ url: `/docs/${value}`})
 )
-sidebar.docs['Pro Edition'].map((value) => links.push({ url: `/docs/${value}`}))
+sidebar.docs['Enterprise Edition'].map((value) => links.push({ url: `/docs/${value}`}))
 sidebar.docs['Improving Your Chatbot'].map((value) =>
   links.push({ url: `/docs/${value}`})
 )

@@ -1,6 +1,7 @@
 ---
-id: about-pro
+id: version-12.26.3-about-pro
 title: About
+original_id: about-pro
 ---
 
 ## Activation
