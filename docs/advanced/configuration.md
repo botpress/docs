@@ -19,7 +19,13 @@ By default, Botpress will start an HTTP server on localhost, listening to port 3
 
 ### Exposing your bot on the internet
 
-When you are ready to expose your bot externally, you will need to change some of the server settings. The server doesn't support HTTPS connections, so you will need to set up a reverse proxy in front of it (for example: NGINX).
+When you are ready to expose your bot externally, you will need to change some of the server settings. The server doesn't support HTTPS connections, so you will need to set up a reverse proxy in front of it (for example: NGINX). In the main [repo](https://github.com/botpress/botpress), Botpress have created an example with a HTTPS with [docker-compose](https://github.com/botpress/botpress/blob/master/examples/docker-compose/docker-compose-community-nginx-https.yaml). You can start this example in your server (where botpress will run).
+
+```
+$ docker-compose -f docker-compose-community-nginx-https.yaml up -d
+```
+
+[![asciicast](https://asciinema.org/a/gexyfstCsIGjLWX1sb8cZIWn3.svg)](https://asciinema.org/a/gexyfstCsIGjLWX1sb8cZIWn3)
 
 This means that your server will still listen for connections on port 3000, but your reverse proxy will answer for queries on port 80. It's also the reverse proxy that will handle secure connections if you want to access your bot using `https`
 
