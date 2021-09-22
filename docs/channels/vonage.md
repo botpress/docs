@@ -72,15 +72,19 @@ title: Vonage
 1. Go to the phone numbers section
 2. Click on your registered phone number
 3. Scroll down to the messaging webhook section
-4. Set it to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/vonage`
+4. Set it to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID>/vonage`
 
 #### Setup a Messages Sandbox
 
 When wanting to test the integration with Vonage and WhatsApp, you need to enable a Sandbox where you can send test messages.
 
 1. In the left end side menu of [Vonage Dashboard](https://dashboard.nexmo.com/) select _Messages and Dispatch (beta)_ -> _Sandbox_
-1. Click on the channel you want to setup and follow the instructions detailed on the page.
-1. Under `Webhooks`, type the same URLs as you find in your application configuration.
+2. Click on the channel you want to setup and follow the instructions detailed on the page.
+3. Under `Webhooks`, type the following URLs:
+    
+    *Inbound:* `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID>/vonage/inbound`
+    
+    *Status:* `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID>/vonage/status`
 
 ## File Reception
 
