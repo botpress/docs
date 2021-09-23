@@ -22,7 +22,7 @@ While in the directory where you want to host your instance of Botpress, run the
 - `yarn build`
 - `yarn start`
 
-If you bumped into some errors during the execution of `yarn build` command, you can try resetting your local repository:
+If you bumped into some errors during the execution of the `yarn build` command, you can try resetting your local repository:
 1. Go to the [Releases](https://github.com/botpress/botpress/releases) page.
 1. Click the commit associated with the latest release to open the commit page.
 1. Copy the full commit hash.
