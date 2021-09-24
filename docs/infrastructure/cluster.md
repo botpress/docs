@@ -50,6 +50,7 @@ docker run -d \
 -e DATABASE_URL=postgres://login:password@host:port/database \
 botpress/server:$TAG
 ```
+> ❌ Do not use the `BP_REDIS_SCOPE` parameter as it can possibly lead to performance and/or data issues, thus stable operation is not guaranteed. Our team will not support implementations with the use of `BP_REDIS_SCOPE`.
 
 Once the first node starts, use the same command to start Botpress on the other nodes.
 
