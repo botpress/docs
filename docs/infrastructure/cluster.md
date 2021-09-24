@@ -71,27 +71,6 @@ DATABASE_URL=postgres://login:password@host:port/database \
 ./bp
 ```
 
-## Specifying Different Scopes
-
->❗ NOT RECOMMENDED, BUT POSSIBLE <br>
->You can run two or more different Botpress environments on the same Redis cluster by specifying the `BP_REDIS_SCOPE` parameter. However, we do not recommend doing that as it can possibly lead to performance and/or data issues.
-
-Let's assume you want to run both staging and production Botpress instances on the same cluster. The only difference in their configurations would be the value of `BP_REDIS_SCOPE`, whereas the `REDIS_URL` value would be the same.
-
-Example: 
-
-```bash
-# staging config
-REDIS_URL=redis://host:port # the same value for both configs
-BP_REDIS_SCOPE=staging # a unique value for this config 
-```
-
-```bash
-# production config
-REDIS_URL=redis://host:port # the same value for both configs
-BP_REDIS_SCOPE=production # a unique value for this config 
-```
-
 ## Advanced Redis Options
 
 You can further configure your Redis Sentinel/Cluster using the `REDIS_OPTIONS` environment variable. Please consult the [ioredis documentation](https://github.com/luin/ioredis/blob/master/API.md) for the complete list of options.
