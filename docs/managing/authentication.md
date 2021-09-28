@@ -160,7 +160,7 @@ Here is a complete example
 ### Quick Start
 
 1. Open `botpress.config.json` and set `pro.auth.strategy = 'ldap'`
-2. Configure the available options: [check the full configuration for more details](https://github.com/botpress/botpress/blob/master/src/bp/core/config/botpress.config.ts)
+2. Configure the available options: [check the full configuration for more details](https://github.com/botpress/botpress/blob/master/packages/bp/src/core/config/botpress.config.ts)
 
 ### Field Mapping
 
