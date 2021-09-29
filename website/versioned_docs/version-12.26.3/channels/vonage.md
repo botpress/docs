@@ -68,12 +68,6 @@ original_id: vonage
 2. Restart Botpress
 3. You should see your webhook endpoint in the console on startup
 
-#### Configure webhook
-
-1. Go to the phone numbers section
-2. Click on your registered phone number
-3. Scroll down to the messaging webhook section
-4. Set it to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID>/vonage`
 
 #### Setup a Messages Sandbox
 
