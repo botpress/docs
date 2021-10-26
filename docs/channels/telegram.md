@@ -52,3 +52,4 @@ If your existing token is compromised or you lost it for some reason, use the /t
 ```
 
 2. Restart Botpress and talk to your Telegram bot. The webhook will be configured automatically to point to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/telegram`
+3. Go back to the Telegram's BotFather and whitelist the public domain name of your bot using the BotFather command `/setdomain`.
