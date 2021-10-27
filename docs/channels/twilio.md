@@ -55,4 +55,4 @@ title: Twilio
 1. Go to the phone numbers section -> manage -> active numbers
 2. Click on your registered phone number. If you don't have one, click on buy a new number
 3. Scroll down to the messaging webhook section
-4. Set callback URL to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/twilio`
+4. Set 'A Message Comes In' to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/twilio`
