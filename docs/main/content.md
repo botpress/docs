@@ -139,9 +139,9 @@ A card is a message with a title and an optional subtitle. It also contains an i
 ### Carousel
 A carousel is an array of cards. This collection of cards can either be presented as a horizontally scrolling slide or a vertical message stack, depending on the channel.
 ### File
-The file content type is currently only supported by channel-vonage. It allows you to upload a pdf file which the user can download from the chat. In addition, you can add an optional title which will appear as a message under the file.
+The file content type is currently only supported by channel-vonage. It allows you to upload a pdf file which the user can download from the chat. In addition, you can add an optional title which will appear as a message under the file. When loading a file from a variable url, you may need to use triple braces to unescape the url i.e., ```{{{temp.fileUrl}}}```.
 ### Image
-To show an image with an optional title in the chat window, you can use the _Image_ content element. Supported image formats are .tiff, .jpg, .png, .jpeg, .gif, .bmp, .tif
+To show an image with an optional title in the chat window, you can use the _Image_ content element. Supported image formats are .tiff, .jpg, .png, .jpeg, .gif, .bmp, .tif. When loading an image from a variable url, you may need to use triple braces to unescape the url i.e., ```{{{temp.imageUrl}}}```.
 ### Location
 The location content type is currently only supported by channel-vonage. It generates a message showing a location with an optional address and title. Required parameters to complete this content element are longitude and latitude.
 ### Single Choice
@@ -151,7 +151,7 @@ The text content type denotes a regular text message with optional typing indica
 
 You can write HTML in the text content on the web channel, and your chatbot will render it correctly. This opens up the possibility of including iFrames and constructing miniature web pages (commonly known as web views) in your content without creating custom components.
 ### Video
-At the moment, the video content type is currently only supported by channel-vonage. It presents a message showing a video file with an optional title. You can either upload the video or link to a video file that will be fetched when the content element is invoked.
+At the moment, the video content type is currently only supported by channel-vonage. It presents a message showing a video file with an optional title. You can either upload the video or link to a video file that will be fetched when the content element is invoked. When loading a video from a variable url, you may need to use triple braces to unescape the url i.e., ```{{{temp.videoUrl}}}```.
 ### Dropdown 
 The dropdown displays a list of options to the user. It includes a message to the user, and you can customize the dropdown placeholder text and the text displayed on the selection button.
 
