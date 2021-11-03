@@ -119,21 +119,6 @@ The following function lets you programmatically send a message to the user when
       })
 ```
 
-### Obtaining the User ID
-
-The most widely used object property under events is `userId`. It fetches the current Messaging User ID to either save it in your database or update some Botpress DB attributes.
-
-Since the webchat is running in an iframe, posting messages can achieve communication between frames. The chat will dispatch an event when a user id is set. You can listen for this event on your page.
-
-```js
-window.addEventListener('message', message => {
-  if (message.data.userId) {
-    console.log(`The User ID is ` + message.data.userId)
-    //Add code to use the user ID here
-  }
-})
-```
-
 ## Runtime configurations
 The method `window.botpressWebChat.configure` allows you to change the chat's configuration during a conversation without having to reload the page. 
 
