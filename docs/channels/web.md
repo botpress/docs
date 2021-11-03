@@ -119,9 +119,9 @@ The following function lets you programmatically send a message to the user when
       })
 ```
 
-### Obtaining visitor's User ID
+### Obtaining the User ID
 
-The most widely used object property under events is `userId`. It fetches the current visitor ID to either save it in your database or update some Botpress DB attributes.
+The most widely used object property under events is `userId`. It fetches the current Messaging User ID to either save it in your database or update some Botpress DB attributes.
 
 Since the webchat is running in an iframe, posting messages can achieve communication between frames. The chat will dispatch an event when a user id is set. You can listen for this event on your page.
 
@@ -144,6 +144,29 @@ The example below shows how you can change the chatbot's language to French when
         lastConfig.locale = 'fr'
         window.botpressWebChat.configure(lastConfig)
       })
+```
+
+### Configuring a Custom User ID
+Setting a value for `userId` in the webchat configuration allows you to store a custom id that can then be retrieved in actions and hooks.
+
+```js
+      lastConfig.userId = '7021eccd-6c4b-4f05-9cb5-f881c95b1781' // can be any string but make sure it is unique
+      window.botpressWebChat.configure(lastConfig)
+```
+
+To retrieve the value, you simply have to access the property `webchatCustomId` in the user's attributes.
+
+The example below shows how you can access the custom user id inside an action or hook.
+
+```js
+//...
+
+if (event.state.user.webchatCustomId) {
+  const customUserId = event.state.user.webchatCustomId
+
+  // make an API or database call using the id
+  //...
+}
 ```
 
 ### Sending Custom Payloads
