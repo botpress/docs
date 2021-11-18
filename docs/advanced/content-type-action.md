@@ -4,26 +4,28 @@ title: How to create content-type in an action
 ---
 # Content-type
 
-Content types are the primary way to display content in the chat. Probably you have already discovered the limitation of the content-type flow element. In this advanced guide, I will create a content-type component in action. This method of creating component is really helpful to create a dynamic response in your chatbot. For each content type, I will write an example and give some use cases.  
+Content types are the primary way to display content in the chat. Probably you have already discovered the limitation of the content-type flow element. In this advanced guide, I will create a content-type component in action. This method of creating component is really helpful to create a dynamic response in your chatbot. For each content type, I will write an example and give some use cases.
 
-## Action  
+## Action
 
-Actions are piece of code that botpress can use. Those actions are javascript code. 
+All the following example can be copy&paste in an action. You can find action in a chatbot and select the editor-tabs.
 
-Action can be found in your chatbot. 
-
+![Action image](../assets/advanced/action.jpg)
 ### Audio
 
-The audio component can stream audio that end with .mp3. It could be used to stream music from Spotify. This component could be used to stream audio file that you have indexed on your server. 
+The audio component can stream audio that end with `.mp3`. It could be used to stream music from Spotify or youtube. This component could also stream audio file that you have store on your server.
 
 ![Music image](../assets/advanced/music.jpg)
+
+
+**`Example`**
 
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create a video content-type in an action.
+   * Show how to create a video content-type in action.
    * ```
    * {
    *  type: 'audio',
@@ -59,23 +61,25 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 ### Card
 
-A card is a single element of a carousel. It can be view like one card in a deck of cards. The carousel is the whole deck.
+A card is a single element of a carousel. It can be view as one card in a deck of cards. The carousel is the whole deck of card.
 
 ![Card image](../assets/advanced/card.jpg)
+
+**`Example`**
 
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create an Card content-type in an action.
+   * Show how to create an Card content-type in action.
    *```
    *   {
-   *    type: 'card',
-   *     title: 'Ort Cloud',
-   *     subtitle: '',
-   *     image: '',
-   *     actions: [{ title: 'action', action: 'Open URL', url: 'https://botpresss.com' }]
+   *     type: 'card',
+   *     title: 'Botpress',
+   *     subtitle: 'Website',
+   *     image: 'https://avatars.githubusercontent.com/u/23510677?s=200&v=4',
+   *     actions: [{ title: 'Botpress website Documentation', action: 'Open URL', url: 'https://botpress.com/docs' }]
    *   }
    * ```
    * @title Display an Card in the action
@@ -89,8 +93,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
         type: 'card',
         title: 'Botpress',
         subtitle: 'Website',
-        image: 'https://botpress.com/LogoWhite.svg',
-        actions: [{ title: 'Botpress website', action: 'Open URL', url: 'https://botpress.com' }]
+        image: 'https://avatars.githubusercontent.com/u/23510677?s=200&v=4',
+        actions: [{ title: 'Botpress website Documentation', action: 'Open URL', url: 'https://botpress.com/docs' }]
       },
       event
     )
@@ -106,16 +110,17 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 ### Carousel
 
-A carousel is a series of cards. This component can be useful in webshot or display a menu of a restaurant. The image element can be and url or a [Data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)
+A carousel is a series of cards. This component can be useful in e-commerce chatbot or display a menu of a restaurant. The image element can be a url or a [Data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)
 
 ![Carousel Image](../assets/advanced/carousel.jpg)
 
+**`Example`**
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create a Carousel content-type in an action.
+   * Show how to create a Carousel content-type in action.
    * ```
    *   {
    *     type: 'carousel',
@@ -123,7 +128,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *       {
    *         title: 'Botpress',
    *         subtitle: 'Website',
-   *         image: 'https://botpress.com/LogoWhite.svg',
+   *         image: 'https://avatars.githubusercontent.com/u/23510677?s=200&v=4',
    *         actions: [{ title: 'Botpress website', action: 'Open URL', url: 'https://botpress.com' }]
    *       }
    *     ],
@@ -168,18 +173,21 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 }
 ```
 
-### Dropdown 
+### Dropdown
 
-A dropdown is single choice from multiple choice. It's a good element if you have specific choice to do.
+A dropdown is a single choice from multiple choice. It's a good element if you want one specific choice from a list.
 
 
 ![Dropdown image](../assets/advanced/dropdown.jpg)
+
+**`Example`**
+
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create an Card content-type in an action.
+   * Show how to create a dropdown content-type in action.
    *```
    *   {
    *     type: 'dropdown',
@@ -195,7 +203,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *     typing: true
    *  }
    * ```
-   * @title Display an Card in the action
+   * @title Display a dropdown in an action
    * @category Content-type
    * @author Botpress
    */
@@ -225,16 +233,18 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 ###  Image
 
-In botpress, you can display image. Those images can be use to describe element or to gave the possibility to have more cat in your chat.
+You can display image. You can pass URL image of using a [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)
 
 ![Image of the content-type image](../assets/advanced/image.jpg)
+
+**`Example`**
 
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create a text content-type in an action. It's really helpful to return image base on search
+   * Show how to create an image content-type in action.
    * ```
    * {
    *  type: 'image',
@@ -243,7 +253,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *  typing: true
    * }
    * ```
-   * @title Display image in an action
+   * @title Display image in action
    * @category Content-type
    * @author Botpress
    */
@@ -316,16 +326,17 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 ### File
 
-Botpress can display pdf file. Currently we are only supporting pdf. 
+Botpress can display pdf file. Currently, we are only supporting pdf.
 
 ![Image of file](../assets/advanced/file.jpg)
 
+**`Example`**
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create an File content-type in an action.
+   * Show how to create an File content-type in action.
    * ```
    *   {
    *     type: 'file',
@@ -335,7 +346,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *     typing: true
    *   }
    * ```
-   * @title Display an audio in the action
+   * @title Display a file in the action
    * @category Content-type
    * @author Botpress
    */
@@ -363,14 +374,18 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 ### Single choice
 
+This component carries a message, usually a question, and suggests choices to the user to fulfill the message. The user can only pick one option, and on selecting the preference, you can instruct your chatbot to get a custom value.
+
 ![single-choice image](../assets/advanced/single-choice.jpg)
+
+**`Example`**
 
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create a Single-choice content-type in an action.
+   * Show how to create a Single-choice content-type in action.
    * ```
    *   {
    *     type: 'single-choice',
@@ -417,15 +432,21 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 ### Text
 
+The text content type denotes a regular text message with optional typing indicators and alternates. You can use markdown in your text to add formatting and style, but please ensure that the target channel can render this text.
+
+You can write HTML in the text content on the web channel, and your chatbot will render it correctly. This opens up the possibility of including iFrames and constructing miniature web pages (commonly known as web views) in your content without creating custom components.
 
 ![image text](../assets/advanced/text.jpg)
+
+
+**`Example`**
 
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create a text content-type in an action. It's really helpful for fuzzing text in a sentence or picking random anwser from an API call
+   * Show how to create a text content-type in a action.
    * ```
    * {
    *  type: 'text',
@@ -455,16 +476,20 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 }
 ```
 
-### Video 
+### Video
+
+You can either upload a video or link to a video file that will be fetched when the content element is invoked.
 
 ![image text](../assets/advanced/video.jpg)
+
+**`Example`**
 
 ```
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
   /**
-   * Show how to create an video content-type in an action.
+   * Show how to create a video content-type in a action.
    * ```
    * {
    *  type: 'video',
