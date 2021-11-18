@@ -151,7 +151,7 @@ The text content type denotes a regular text message with optional typing indica
 
 You can write HTML in the text content on the web channel, and your chatbot will render it correctly. This opens up the possibility of including iFrames and constructing miniature web pages (commonly known as web views) in your content without creating custom components.
 ### Video
-At the moment, the video content type is currently only supported by channel-vonage. It presents a message showing a video file with an optional title. You can either upload the video or link to a video file that will be fetched when the content element is invoked. When loading a video from a variable url, you may need to use triple braces to unescape the url i.e., ```{{{temp.videoUrl}}}```.
+The video content type presents a message showing a video file with an optional title. You can either upload the video or link to a video file that will be fetched when the content element is invoked. When loading a video from a variable url, you may need to use triple braces to unescape the url i.e., ```{{{temp.videoUrl}}}```.
 ### Dropdown 
 The dropdown displays a list of options to the user. It includes a message to the user, and you can customize the dropdown placeholder text and the text displayed on the selection button.
 
