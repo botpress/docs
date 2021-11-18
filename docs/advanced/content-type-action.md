@@ -1,10 +1,10 @@
 ---
-id: content-type-action
-title: How to create content-type in an action
+id: content type-action
+title: How to create content type in an action
 ---
-# Content-type
+# Content type
 
-Content types are the primary way to display content in the chat. Probably you have already discovered the limitation of the content-type flow element. In this advanced guide, I will create a content-type component in action. This method of creating component is really helpful to create a dynamic response in your chatbot. For each content type, I will write an example and give some use cases.
+Content types are the primary way to display content in the chat. Probably you have already discovered the limitation of the content type flow element. In this advanced guide, I will create a content type component in action. This method of creating component is really helpful to create a dynamic response in your chatbot. For each content type, I will write an example and give some use cases.
 
 ## Action
 
@@ -25,7 +25,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create a video content-type in action.
+   * Show how to create a video content type in action.
    * ```
    * {
    *  type: 'audio',
@@ -35,7 +35,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    * }
    * ```
    * @title Display audio in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -72,7 +72,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create an Card content-type in action.
+   * Show how to create an Card content type in action.
    *```
    *   {
    *     type: 'card',
@@ -83,7 +83,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *   }
    * ```
    * @title Display an Card in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -120,7 +120,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create a Carousel content-type in action.
+   * Show how to create a Carousel content type in action.
    * ```
    *   {
    *     type: 'carousel',
@@ -136,7 +136,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *   },
    * ```
    * @title Display a carousel in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -187,11 +187,11 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create a dropdown content-type in action.
+   * Show how to create a dropdown content type in action.
    *```
    *   {
    *     type: 'dropdown',
-   *     message: 'Dropdown Content-type',
+   *     message: 'Dropdown Content type',
    *     buttonText: 'Click me',
    *     placeholderText: 'dropdown placeholder',
    *     options: [{ label: 'Food', value: 'apple' }],
@@ -204,7 +204,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *  }
    * ```
    * @title Display a dropdown in an action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -212,7 +212,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
       'dropdown',
       {
         type: 'dropdown',
-        message: 'Dropdown Content-type',
+        message: 'Dropdown Content type',
         buttonText: 'Click me',
         placeholderText: 'dropdown placeholder',
         options: [{ label: 'Food', value: 'apple' }],
@@ -235,7 +235,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
 You can display image. You can pass URL image of using a [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)
 
-![Image of the content-type image](../assets/advanced/image.jpg)
+![Image of the content type image](../assets/advanced/image.jpg)
 
 **`Example`**
 
@@ -244,7 +244,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create an image content-type in action.
+   * Show how to create an image content type in action.
    * ```
    * {
    *  type: 'image',
@@ -254,7 +254,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    * }
    * ```
    * @title Display image in action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -287,7 +287,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create an location content-type in an action.
+   * Show how to create an location content type in an action.
    * ```
    * {
         type: 'location',
@@ -299,7 +299,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    * }
    * ```
    * @title Display an location in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -336,7 +336,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create an File content-type in action.
+   * Show how to create an File content type in action.
    * ```
    *   {
    *     type: 'file',
@@ -347,7 +347,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *   }
    * ```
    * @title Display a file in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -385,7 +385,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create a Single-choice content-type in action.
+   * Show how to create a Single-choice content type in action.
    * ```
    *   {
    *     type: 'single-choice',
@@ -399,7 +399,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    *  },
    * ```
    * @title Display a single-choice in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -446,7 +446,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create a text content-type in a action.
+   * Show how to create a text content type in a action.
    * ```
    * {
    *  type: 'text',
@@ -457,7 +457,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    * }
    * ```
    * @title Hello World with a Built-in text
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
@@ -489,7 +489,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
   /** Your code starts below */
 
   /**
-   * Show how to create a video content-type in a action.
+   * Show how to create a video content type in a action.
    * ```
    * {
    *  type: 'video',
@@ -499,7 +499,7 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
    * }
    * ```
    * @title Display an video in the action
-   * @category Content-type
+   * @category Content type
    * @author Botpress
    */
   const myAction = async () => {
