@@ -29,7 +29,7 @@ When you have successfully installed the duckling binary, edit the file `data/gl
 
 ## Language Server
 
-The Language Server is used to provide the language models necessary to run the NLU.
+The Language Server is used to provide the language models necessary to run the NLU. It is quite resource-intensive to host a language server due to the model sizes. To make it easy to get started the default installation uses a Botpress-hosted Language Server, but you can swap it out for your own (see below). Note : the NLU server is not the same as the language server, and uses the models provided by the language server. 
 
 By default, Botpress configures the Language Server to get `100` dimensions for words. If you plan to use that Language Server in production, we highly recommend setting the dimensions to `300` for a better vocabulary.
 
