@@ -16,6 +16,7 @@ const siteConfig = {
   repoUrl: 'https://github.com/botpress/docs',
   projectName: 'botpress-docs',
   organizationName: 'botpress',
+  botpressServerUrl:"https://github.com/botpress/botpress",
 
   algolia: {
     apiKey: '570227d66d130d069630e7226c740158',
