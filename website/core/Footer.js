@@ -41,7 +41,7 @@ class Footer extends React.Component {
             <a href="https://github.com/botpress">GitHub</a>
             <a
               className="github-button"
-              href={this.props.config.repoUrl}
+              href={this.props.config.botpressServerUrl}
               data-icon="octicon-star"
               data-count-href="/botpress/botpress/stargazers"
               data-show-count="true"
