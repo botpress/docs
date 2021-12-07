@@ -2,7 +2,6 @@
 id: configuration
 title: Configuration
 ---
-
 There is currently an interface on Botpress to manage your server, bot's and module configuration. Most of the configuration is done using `JSON` files in the code editor.
 
 There are also some configurations that can be edited by using environment variables.
@@ -35,10 +34,10 @@ When you start Botpress from the binary (or using the Docker image), your chatbo
 
 There are 4 different levels of logs:
 
-- Debug: display very detailed information about the bot operations
-- Info: gives general information or "good to know" stuff
-- Warn: means that something didn't go as expected, but the bot was able to recover
-- Error: there was an error that should be addressed
+-   Debug: display very detailed information about the bot operations
+-   Info: gives general information or "good to know" stuff
+-   Warn: means that something didn't go as expected, but the bot was able to recover
+-   Error: there was an error that should be addressed
 
 By default, you will see `debug` with all other log levels in the console, and `errors` will be saved in the database (useful to keep track of them).
 When you start Botpress in `production` mode, `debug` logs will be disabled for better performances.
@@ -50,6 +49,7 @@ It is also possible to send log output to a file in a specific folder. Check bel
 Edit your `botpress.config.json` file and change your file to match the following:
 
 ```js
+
 {
   ...
   "logs": {
@@ -61,6 +61,7 @@ Edit your `botpress.config.json` file and change your file to match the followin
     }
   },
 }
+
 ```
 
 ## Enable or disable modules
@@ -70,6 +71,7 @@ When you start Botpress for the first time, the most popular modules included wi
 The string `MODULE_ROOT` is a special string that is replaced when your configuration file is read. It represents the location of the modules folder on your hard drive, you shouldn't have to change it most of the times.
 
 ```js
+
 {
   ..."modules": [
     {// When you new modules, you need to set their location, and if they are enabled or not.
@@ -81,6 +83,7 @@ The string `MODULE_ROOT` is a special string that is replaced when your configur
       "enabled": true
     }
 }
+
 ```
 
 # Individual Bot Configuration
@@ -101,23 +104,25 @@ All the `botpress.config.json` file can be set with a environment variable. Thes
 
 Here there are:
 
-| Environment Variable | Description                                                                                               | Default |
-| -------------------- | --------------------------------------------------------------------------------------------------------- | ------- |
-| DATABASE             | The database type to use. `postgres` or `sqlite`                                                          | sqlite  |
-| DATABASE_URL         | Full connection string to connect to the DB                                                               |         |
+| Environment Variable | Description                                                                                                      | Default |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- | ------- |
+| DATABASE             | The database type to use. `postgres` or `sqlite`                                                   | sqlite  |
+| DATABASE_URL         | Full connection string to connect to the DB                                                                      |         |
 | BP_PRODUCTION        | Sets Botpress in production mode (thus enabling Ghost). This has the same effect as starting it with `-p` | false   |
-| CLUSTER_ENABLED      | Enables multi-node support using Redis                                                                    | false   |
-| REDIS_URL            | The connection string to connect to your Redis instance                                                   |         |
+| CLUSTER_ENABLED      | Enables multi-node support using Redis                                                                           | false   |
+| REDIS_URL            | The connection string to connect to your Redis instance                                                          |         |
 
 ## Environment Variables for modules
 
 You can modify the value of `config/MODULE_NAME.json` by an environment variable. The value needs to be prefixed by `BP_MODULE_<MODULE_NAME>`. For example, the `nlu.json` has an NLUServer key. To modify this value by an environment variable you can set this value in the `.env`
 
 ```
+
 BP_MODULE_NLU_NLUSERVER = { autoStart: false, endpoint: "<URL>" }
+
 ```
 
 ## More Information
 
-- Check out the [database](../tutorials/database) page for details about `DATABASE` and `DATABASE_URL`
-- Check out the [cluster](../developers/cluster) page for details about `CLUSTER_ENABLED` and `REDIS_URL`
+-   Check out the [database](../tutorials/database) page for details about `DATABASE` and `DATABASE_URL`
+-   Check out the [cluster](../developers/cluster) page for details about `CLUSTER_ENABLED` and `REDIS_URL`

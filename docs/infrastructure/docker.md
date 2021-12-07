@@ -2,10 +2,9 @@
 id: docker
 title: Deploying with Docker
 ---
-
 Docker is a set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.
 
-> For an optimized Docker experience, download [Docker Desktop.](https://www.docker.com/products/docker-desktop)
+&gt; For an optimized Docker experience, download [Docker Desktop.](https://www.docker.com/products/docker-desktop)
 
 ## Latest tags
 
@@ -16,16 +15,19 @@ The latest tags are updated every time a new release is created. Each release ha
 This command will run Botpress within a single container and use the remote Duckling and Language Server hosted by us. You can get the latest `stable` or `nightly` versions on [DockerHub](https://hub.docker.com/r/botpress/server/tags).
 
 ```bash
+
 docker run -d \
 --name botpress \
 -p 3000:3000 \
 -v botpress_data:/botpress/data \
 botpress/server:$TAG
+
 ```
 
 For instance, you can run an installation as follows:
 
 ```bash
+
 User@DESKTOP-T1ORLFU MINGW64 /c/Botpress/DockerTests
 $ docker run -d \
 > --name myBotpress \
@@ -60,6 +62,7 @@ f85999a86bef: Pull complete
 Digest: sha256:798b0fe332c5bb1b707eb62b30c8ed0a4e0609b3c712ee7201c5a7da7be50b7f
 Status: Downloaded newer image for botpress/server:v12_18_2
 bf038c6f84aaeec11773b93a9748bc6732d573a1c115523f1a3d28d20dc06cbe
+
 ```
 
 You will be able to access your instance of Botpress on the specified mapped port `-p 3000:3000` by visiting http://localhost:3000/, and your container name will be myBotpress as set at `--name myBotpress`. Your Docker Desktop will reflect the new container as below:
@@ -72,11 +75,12 @@ Choose to either run one of two containers (running two containers is recommende
 
 ### Single Container With All Services
 
-> ⚠️ **Never** run multiple processes inside a single container in production.
+&gt; ⚠️ **Never** run multiple processes inside a single container in production.
 
 This method will run Duckling, the Language Server, and Botpress Server within the same container. It will set some environment variables so that services talk to each other.
 
 ```bash
+
 docker run -d \
 --name bp \
 -p 3000:3000 -p 3100:3100 \
@@ -85,26 +89,30 @@ docker run -d \
 -e BP_MODULE_NLU_LANGUAGESOURCES='[{ "endpoint": "http://localhost:3100" }]' \
 botpress/server:$TAG \
 bash -c "./duckling & ./bp lang --langDir /botpress/data/embeddings & ./bp"
+
 ```
 
 **Offline Server**: Follow the Offline Server [instructions](#offline-servers) if you're running a server without Internet access.
 
 ### Running Multiple Containers
 
-1. Run the Language Server.
+1.  Run the Language Server.
 
 ```bash
+
 docker run -d \
 --name lang \
 -p 3100:3100 \
 -v botpress_data:/botpress/data \
 botpress/server:$TAG \
 bash -c "./bp lang --langDir /botpress/data/embeddings"
+
 ```
 
-2. Run Botpress Server and Duckling within the same container. Duckling's usage is very light here, so we can justify using it in the same container as Botpress Server.
+2.  Run Botpress Server and Duckling within the same container. Duckling's usage is very light here, so we can justify using it in the same container as Botpress Server.
 
 ```bash
+
 docker run -d \
 --name bp \
 -p 3000:3000 \
@@ -112,6 +120,7 @@ docker run -d \
 -e BP_MODULE_NLU_LANGUAGESOURCES='[{ "endpoint": "http://localhost:3100" }]' \
 botpress/server:$TAG \
 bash -c "./duckling & ./bp"
+
 ```
 
 **Offline Server**: Follow the Offline Server [instructions](#offline-servers) if you're running a server without Internet access.
@@ -121,6 +130,7 @@ bash -c "./duckling & ./bp"
 Botpress can be used with other service. For example, a postgresql could be use instead of the default database.
 
 ```
+
 version: '3'
 
 services:
@@ -178,6 +188,7 @@ services:
 volumes:
   pgdata:
   redisdata:
+
 
 ```
 

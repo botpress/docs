@@ -5,11 +5,12 @@ title: Authentication Methods
 ![This feature is available to Botpress Enterprise license holders.](assets/botpress-enterprise-feature.png)
 There are three different types of authentication:
 
-1. **Collaborators**: Access the Admin Studio UI to manage and edit chatbots based on their roles.
-2. **Chat Users**:    Can speak to chatbots listed in the Admin UI.
-3. **External Users**: The developer handles user authentication by providing a JWT token to identify the user.
+1.  **Collaborators**: Access the Admin Studio UI to manage and edit chatbots based on their roles.
+2.  **Chat Users**:    Can speak to chatbots listed in the Admin UI.
+3.  **External Users**: The developer handles user authentication by providing a JWT token to identify the user.
 
 ## Authentication Overview
+
 Four authentication strategies are available, namely, Basic, SAML, OAuth2, and LDAP. You can implement these multiple times (for example, you could have two different OAuth2 configurations for different workspaces).
 ![Authentication Methods](assets/auth-methods.png)
 Regardless of which authentication strategy you use, they are all stored in the database. When you add a new strategy in the `botpress.config.json` and restart your application, Botpress will create a new table called `strategy_STRATEGYID`.
@@ -36,6 +37,7 @@ Super Admins can reset the password of any user from the Action menu in the coll
 In your `botpress.config.json` file:
 
 ```js
+
 {
  "pro": {
     "collaboratorsAuthStrategies": ["default"],
@@ -48,18 +50,21 @@ In your `botpress.config.json` file:
     }
   }
 }
+
 ```
 
 ### Additional Security
+
 You can configure additional options when using this authentication strategy. Please refer to the [configuration file for more information](https://github.com/botpress/botpress/blob/master/packages/bp/src/core/config/botpress.config.ts#L350) :
 
-- `maxLoginAttempt`: Maximum number of tries allowed before locking out the user.
-- `lockoutDuration`: Account will be disabled for this amount of time when a user reaches the `maxLoginAttempt`.
-- `passwordExpiryDelay`: Password will expire after this time lapses.
-- `passwordMinLength`: Minimum length for the user's password.
-- `requireComplexPassword`: Requires at least one character of 3 categories of characters.
+-   `maxLoginAttempt`: Maximum number of tries allowed before locking out the user.
+-   `lockoutDuration`: Account will be disabled for this amount of time when a user reaches the `maxLoginAttempt`.
+-   `passwordExpiryDelay`: Password will expire after this time lapses.
+-   `passwordMinLength`: Minimum length for the user's password.
+-   `requireComplexPassword`: Requires at least one character of 3 categories of characters.
 
 ### Forgot your password?
+
 Only the first user is allowed to register a new account. If you forgot your password and can't access your account, you will need to clear the list of users, and then you will be able to re-create your account. However, if you have already created other users with an administrator role, they can reset your password for you.
 
 You can clear the list of users by emptying (or deleting) the table `strategy_default` (if you are using the default strategy)
@@ -69,6 +74,7 @@ You can clear the list of users by emptying (or deleting) the table `strategy_de
 Some OAuth2 implementations return a JWT token containing all the user's information, while some other returns a unique token, which Botpress must then use to query the user's information.
 
 ```js
+
 {
  "pro": {
     "collaboratorsAuthStrategies": ["default"],
@@ -104,7 +110,9 @@ Some OAuth2 implementations return a JWT token containing all the user's informa
     }
   }
 }
+
 ```
+
 ## SAML
 
 You can link your SAML Identity Provider seamlessly with Botpress. When it is enabled, Admins will be greeted with a `Sign in with SSO` button on the Admin UI. The first user to ever log in to Botpress using the SSO provider will automatically have an account created and a Super Admin.
@@ -113,25 +121,27 @@ When a user successfully logs on to the Admin UI, Botpress will create an intern
 
 There are two possible behaviors. You can either:
 
-- Allow any user that successfully logs on using your SAML IdP to create an account. Set `allowSelfSignup` to `true`
-- Manage users manually (you need to add their emails to the Collaborators page). Set `allowSelfSignup` to `false`
+-   Allow any user that successfully logs on using your SAML IdP to create an account. Set `allowSelfSignup` to `true`
+-   Manage users manually (you need to add their emails to the Collaborators page). Set `allowSelfSignup` to `false`
 
 ### Prerequisite
 
-- Botpress Enterprise enabled with a valid license key
-- A SAML IdP (Identity Provider)
+-   Botpress Enterprise enabled with a valid license key
+-   A SAML IdP (Identity Provider)
 
 ### Quick Start
-Let's use SAML to authenticate a user. We will use [jumpcloud](), a popular authentication provider. Head over to the User Authentication menu and select SSO. Select a SAML Identification provider from the ones available on the list or create a new one. For this tutorial, we used Google. Enter the required information, supplying your domain name at all positions marked **YOURDOMAIN**
+
+Let's use SAML to authenticate a user. We will use [jumpcloud](&lt;&gt;), a popular authentication provider. Head over to the User Authentication menu and select SSO. Select a SAML Identification provider from the ones available on the list or create a new one. For this tutorial, we used Google. Enter the required information, supplying your domain name at all positions marked **YOURDOMAIN**
 
 After creating your application, you will get the option to download your certificate. Your entry point url will appear next to your application labeled as IdP URL.
 
-1. Open `botpress.config.json` and set `pro.auth.strategy = 'saml'`
-2. Configure the available options. The complete list of SAML options is [available here](https://github.com/bergie/passport-saml).
+1.  Open `botpress.config.json` and set `pro.auth.strategy = 'saml'`
+2.  Configure the available options. The complete list of SAML options is [available here](https://github.com/bergie/passport-saml).
 
 Here is a complete example
 
 ```js
+
 "auth": {
   "strategy": "saml",
   "options": {
@@ -148,19 +158,20 @@ Here is a complete example
   },
   "allowSelfSignup": false
 }
+
 ```
 
 ## LDAP
 
 ### Prerequisite
 
-- Botpress Pro enabled with a valid license key
-- Information to access the LDAP server
+-   Botpress Pro enabled with a valid license key
+-   Information to access the LDAP server
 
 ### Quick Start
 
-1. Open `botpress.config.json` and set `pro.auth.strategy = 'ldap'`
-2. Configure the available options: [check the full configuration for more details](https://github.com/botpress/botpress/blob/master/packages/bp/src/core/config/botpress.config.ts)
+1.  Open `botpress.config.json` and set `pro.auth.strategy = 'ldap'`
+2.  Configure the available options: [check the full configuration for more details](https://github.com/botpress/botpress/blob/master/packages/bp/src/core/config/botpress.config.ts)
 
 ### Field Mapping
 
@@ -169,6 +180,7 @@ The `fieldMapping` configuration allows you to match the existing properties of 
 Whenever a user successfully logs on using SAML or LDAP, Botpress will update his details in his Botpress profile.
 
 ```js
+
 {
   "fieldMapping": {
     "email": "emailAddressOnIdp",
@@ -178,6 +190,7 @@ Whenever a user successfully logs on using SAML or LDAP, Botpress will update hi
     "location": "officeLocation"
   }
 }
+
 ```
 
 ## User Authentication
@@ -186,27 +199,28 @@ Using External Authentication, it is possible to authenticate a user on your sys
 
 Here's a summary of the process:
 
-1. User authenticate on your platform
-2. Your platform returns a JWT token to the user and configure the webchat
-3. The token is sent to Botpress every time a message is sent
-4. Botpress validates the token, decrypt the content, and makes it available through `event.credentials`
+1.  User authenticate on your platform
+2.  Your platform returns a JWT token to the user and configure the webchat
+3.  The token is sent to Botpress every time a message is sent
+4.  Botpress validates the token, decrypt the content, and makes it available through `event.credentials`
 
 ### Prerequisite
 
-- A backend that will authenticate the user and generate the JWT token
-- The public key used by the backend
+-   A backend that will authenticate the user and generate the JWT token
+-   The public key used by the backend
 
 ### Quick Start
 
-1. Edit `data/global/botpress.config.json` and set `pro.externalAuth.enabled` to `true`
-2. Configure the other variables for the JWT token (issuer, audience, algorithm, publicKey)
-3. Restart Botpress
-4. Edit the code of the embedded web chat to send the generated JWT token
-5. Enjoy!
+1.  Edit `data/global/botpress.config.json` and set `pro.externalAuth.enabled` to `true`
+2.  Configure the other variables for the JWT token (issuer, audience, algorithm, publicKey)
+3.  Restart Botpress
+4.  Edit the code of the embedded web chat to send the generated JWT token
+5.  Enjoy!
 
 Here is an example configuration, [check the complete configuration for more details](https://github.com/botpress/botpress/blob/master/packages/bp/src/core/config/botpress.config.ts)
 
 ```js
+
 "externalAuth": {
   "enabled": true,
   "audience": "users",
@@ -215,6 +229,7 @@ Here is an example configuration, [check the complete configuration for more det
   "publicKey": "MIIDETCCAfmgAwIBAgIJIHQ75dJxjRuEMA0GCSqGSIb3DQEBCwUAMCYxJDAiBgNVBAMTG2JvdHByZXNzLXNhbWwtaWRwLmF1dGgwLmNvbTAeFw0xOTAxMTUxNTAzMDFaFw0zMjA5MjMxNTAzMDFaMCYxJDAiBgNVBAMTG2JvdHByZXNzLXNhbWwtaWRwLmF1dGgwLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMUHXzCG3c4iSyU1N1Nzu8LsEIQ8tj5SHG+VtHrhWyfdckq5nP2wy/u6Tt20pdOx+4zu1718x2xVPMwFN9M2uUSJaY6vIXfHofKyn1htuYYzOklLZmnrLX4Pm7YHE2SubAsuwg6e7/sgIZ06T",
   }
 }
+
 ```
 
 ### How to configure the Public Key
@@ -226,34 +241,40 @@ Botpress can add the public key directly in the `botpress.config.json` file (on 
 The certificate must be in the PEM format. You can use the below commands to generate one.
 
 ```bash
+
 ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
 openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
 cat jwtRS256.key // Your private key
 cat jwtRS256.key.pub // Your public key
+
 ```
 
 ### Authenticate the user
 
 Once you have generated the JWT token, Botpress must pass it down to the webchat. It will then be sent to Botpress with every message and event. Check out the [Connecting your bot with your existing backend](../tutorials/existing-backend) for more details. There are two different situations:
 
-1. The user is authenticated before the webchat is loaded.
+1.  The user is authenticated before the webchat is loaded.
 
 Simply add the external token as an option to the `init` method:
 
 ```js
+
 window.botpressWebChat.init({
   host: 'http://localhost:3000',
   botId: botId,
   externalAuthToken: 'my.jwt.token'
 })
+
 ```
 
-2. The user is already discussing with the bot, then he is authenticated
+2.  The user is already discussing with the bot, then he is authenticated
 
 Use the `configure` method to change the option:
 
 ```js
+
 window.botpressWebChat.configure({ externalAuthToken: 'my.jwt.token' })
+
 ```
 
 ### How to use the authenticated payload

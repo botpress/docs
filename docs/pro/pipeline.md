@@ -2,7 +2,6 @@
 id: pipelines
 title: Bot Pipelines
 ---
-
 ## Overview
 
 **Bot Pipelines** (not to be confused with Development Pipelines) are built on top of the multi-bot capability of Botpress. They allow teams to work on bots with multiple **stages** the same way others would work on software products. Different versions of a bot can run and co-exist on different stages. In software development, each team has its own way of working with pipelines and reacting to events along the pipeline, Botpress pipelines let you do the same.
@@ -20,11 +19,13 @@ Pipelines is a Botpress pro feature, so make you're running pro with a valid lic
 As stated above, a Pipeline is simply a list of stages a bot needs to (or can) go through. A stage is defined as a simple json :
 
 ```json
+
 {
   "id": "dev",
   "label": "Development",
   "action": "promote_copy"
 }
+
 ```
 
 Properties are self explanatory except action which is defined. In a pipeline definition, the order of stages is defined by the order it appears in the array `(1st stage === idx 0)`
@@ -38,6 +39,7 @@ A stage action defines how the pipeline system behaves when a bot is set for pro
 Each bot now defines a `pipeline_status` object in its `bot.config.json` file. The object structure goes as follows :
 
 ```js
+
 {
   /*
     ... other bot config fields
@@ -55,19 +57,21 @@ Each bot now defines a `pipeline_status` object in its `bot.config.json` file. T
     }
   }
 }
+
 ```
 
 At the moment, only the current_stage will be interesting for you. We will learn more on `stage_request` in the [available hooks section](#available-hooks)
 
 ## Usage
 
-If you tried Botpress, you've already been using the Pipeline feature, you just don't know it. By default, every Botpress deployment defines a single stage pipeline, even running on the community edition. In the next sections we will show how to use different pipeline components and build a standard **Dev** ==> **Staging** ==> **Prod**.
+If you tried Botpress, you've already been using the Pipeline feature, you just don't know it. By default, every Botpress deployment defines a single stage pipeline, even running on the community edition. In the next sections we will show how to use different pipeline components and build a standard **Dev** ==&gt; **Staging** ==&gt; **Prod**.
 
 ### Configuration
 
 To define your pipeline, open the `workspaces.json` file and edit the pipeline property.
 
 ```js
+
 {
   /*
   ...other workspace property
@@ -90,11 +94,12 @@ To define your pipeline, open the `workspaces.json` file and edit the pipeline p
     }
   ]
 }
+
 ```
 
 This simple configuration will activate the pipeline feature.
 
-> **Note**: Botpress allows pipelines of maximum 4 stages, more than this will result in a suboptimal usage of Botpress.
+&gt; **Note**: Botpress allows pipelines of maximum 4 stages, more than this will result in a suboptimal usage of Botpress.
 
 ### Graphical Interface
 
@@ -114,7 +119,9 @@ Want to lock a bot in a particular stage or change it's name along the pipeline 
 Behind the scene, the UI simply makes an authenticated call to the admin api. If you want to promote a bot by api you can easily do so
 
 ```bash
+
 curl -X POST http://your.botpress.deployment/api/v1/admin/bots/{_YOUR_BOT_ID_}/stage -H="Authorization:Bearer {_YOUR_AUTH_TOKEN_}"
+
 ```
 
 ### Available Hooks
@@ -125,6 +132,7 @@ Until now, we didn't customize anything of the pipeline feature and we didn't us
 The hook will be called with the following arguments: **bp** (botpress sdk), **bot** (content of bot.config.json) , **users** (users in the workspace), **pipeline** (your pipeline definition), **hookResult** (object with a `actions` property).
 
 ```js
+
 //function (bp, bot, users, pipeline, hookResult) {
 const request_user = users.find(u => u.email == bot.pipeline_status.stage_request.requested_by)
 if (!request_user || request_user.role !== 'YOUR_TARGET_ROLE') {
@@ -143,11 +151,13 @@ bot.name = 'new bot name'
 bot.id = 'new-bot-id='
 bot.locked = true
 // }
+
 ```
 
 That's it. Now what if we want to call some 3rd party email service to notify all workspace users once a bot has changed stage? There's a hook for that: `after_stage_changed`.
 
 ```js
+
 //function (bp, previousBotConfig, bot, users, pipeline) {
 const from = previousBotConfig.pipeline_status.current_stage.label
 const to = bot.pipeline_status.current_stage.label
@@ -163,6 +173,7 @@ Promise.all(
   //done
 })
 //}
+
 ```
 
 For another example, see pre-built hooks in your global/hooks folder.

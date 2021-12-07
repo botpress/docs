@@ -2,7 +2,6 @@
 id: monitoring
 title: Monitoring & Alerting
 ---
-
 ## Server Monitoring
 
 Monitoring is an essential part of any software deployment. Botpress includes, out of the box, a simple but intuitive dashboard
@@ -14,15 +13,15 @@ This feature is only available to users of the Pro version.
 
 ### Prerequisite
 
-- Botpress Pro must be enabled with a valid license key
-- Redis Server must be running (minimum: version 2.8)
+-   Botpress Pro must be enabled with a valid license key
+-   Redis Server must be running (minimum: version 2.8)
 
 ### Quick Start
 
-1. Open your `botpress.config.json` file and set `pro.monitoring.enabled` to `true`
-2. Set an environment variable named `CLUSTER_ENABLED` to `true`
-3. Set another environment variable named `REDIS_URL` which should point to your server (example provided below)
-4. Start your Botpress Server
+1.  Open your `botpress.config.json` file and set `pro.monitoring.enabled` to `true`
+2.  Set an environment variable named `CLUSTER_ENABLED` to `true`
+3.  Set another environment variable named `REDIS_URL` which should point to your server (example provided below)
+4.  Start your Botpress Server
 
 ### Configuration
 
@@ -37,14 +36,14 @@ If you start it locally, this should do the trick: `REDIS_URL=redis://localhost:
 
 These metrics are collected for every node of your Botpress Cluster.
 
-- Average % of CPU usage
-- Average % of Memory usage
-- Number of HTTP requests processed
-- Number of incoming events (when users sends messages to the bot)
-- Number of outgoing events (anything the bot sends back to users)
-- Number of warnings
-- Number of errors
-- Latency of HTTP requests
+-   Average % of CPU usage
+-   Average % of Memory usage
+-   Number of HTTP requests processed
+-   Number of incoming events (when users sends messages to the bot)
+-   Number of outgoing events (anything the bot sends back to users)
+-   Number of warnings
+-   Number of errors
+-   Latency of HTTP requests
 
 ## Alerting Service
 
@@ -52,15 +51,15 @@ The alerting service will trigger an alarm when your configured threshold are ex
 
 ### Prerequisite
 
-- Botpress Pro must be enabled with a valid license key
-- Redis Server must be running (minimum: version 2.8)
-- Monitoring must be enabled
+-   Botpress Pro must be enabled with a valid license key
+-   Redis Server must be running (minimum: version 2.8)
+-   Monitoring must be enabled
 
 ### Quick Start
 
-1. Edit `botpress.config.json` and set `pro.alerting.enabled` to `true`
-2. Add at least one Incident Rule (more on that below) in `pro.alerting.rules`
-3. Restart Botpress
+1.  Edit `botpress.config.json` and set `pro.alerting.enabled` to `true`
+2.  Add at least one Incident Rule (more on that below) in `pro.alerting.rules`
+3.  Restart Botpress
 
 ### Incident Rules
 
@@ -69,6 +68,7 @@ This is where you will define your thresholds
 Let's see an example of a rule, then we will break it apart
 
 ```js
+
 {
   "name": " High CPU Usage ",
   "field": "cpu.usage",
@@ -78,12 +78,13 @@ Let's see an example of a rule, then we will break it apart
   "timeframe": "2m",
   "cooldown": "1m"
 }
+
 ```
 
 This rule can be read like this:
 
-> Raise an alarm if the `average` value of `cpu.usage` is `equal or more than` `60` for `2 minutes`.
-> When the incident is resolved, `wait at least one minute` before triggering another alert for the same reason
+&gt; Raise an alarm if the `average` value of `cpu.usage` is `equal or more than` `60` for `2 minutes`.
+&gt; When the incident is resolved, `wait at least one minute` before triggering another alert for the same reason
 
 We use a simple "rolling window" method to calculate results. If your timeframe is 2 minutes and you collect data each 10 seconds, then there will be 12 different "ticks" that will be evaluated each 10 seconds with your chosen aggregation. The value is then compared with your configured threshold.
 
@@ -104,17 +105,17 @@ We use a simple "rolling window" method to calculate results. If your timeframe 
 
 #### Aggregation
 
-- avg: Average
-- sum: Sum
-- min: Minimum
-- max: Maximum
-- last: The last value received from the monitoring service
-- count: The number of "ticks" in the timeframe
+-   avg: Average
+-   sum: Sum
+-   min: Minimum
+-   max: Maximum
+-   last: The last value received from the monitoring service
+-   count: The number of "ticks" in the timeframe
 
 #### Operands
 
-- equalOrLessThan: Equal or less than =<
-- equalOrMoreThan: Equal or more than =>
+-   equalOrLessThan: Equal or less than =&lt;
+-   equalOrMoreThan: Equal or more than =&gt;
 
 #### Cooldown
 
@@ -127,6 +128,7 @@ Now that you have some incident rules, how do you get alerted when something hap
 Here's an example of `data/global/hooks/on_incident_status_changed/alert.js`
 
 ```js
+
 async function alertChanged() {
   if (!incident.endTime) {
     console.log('HOOK: Incident Opened:', incident)
@@ -139,11 +141,13 @@ async function alertChanged() {
 }
 
 return alertChanged()
+
 ```
 
 The incident object has these properties:
 
 ```js
+
 {
   id: 'A unique ID randomly generated',
   ruleName: 'The name of your incident rule',
@@ -152,6 +156,7 @@ The incident object has these properties:
   endTime: 'When the incident was resolved',
   triggerValue: 'The value that triggered the incident'
 }
+
 ```
 
 #### Other Rules Examples
@@ -159,6 +164,7 @@ The incident object has these properties:
 Raise an incident when there is more than 10 errors in the last minute
 
 ```js
+
 {
   "name": "High number of errors",
   "field": "errors.count",
@@ -167,11 +173,13 @@ Raise an incident when there is more than 10 errors in the last minute
   "value": 10,
   "timeframe": "1m"
 }
+
 ```
 
 No incoming events for the past 10 minutes
 
 ```js
+
 {
   "name": "No more incoming events",
   "field": "eventsIn.count",
@@ -180,4 +188,5 @@ No incoming events for the past 10 minutes
   "value": 0,
   "timeframe": "10m"
 },
+
 ```

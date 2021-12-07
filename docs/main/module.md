@@ -2,13 +2,12 @@
 id: module
 title: Modules
 ---
-
 Modules are a powerful way to extend the default functionalities of Botpress. They are very useful to encapsulate functionalities so you can reuse them elsewhere. Botpress comes with its own Modules (NLU, Channel-Web, Channel-Messenger, QNA to name a few) but you can also create your custom modules for your own needs.
 
 ## Features
 
-- Add new **actions**, **content types**, **hooks** and **skills** that extends Botpress
-- Add a **Module View** specific to your new functionalities
+-   Add new **actions**, **content types**, **hooks** and **skills** that extends Botpress
+-   Add a **Module View** specific to your new functionalities
 
 Example of Module Views for Analytics, NLU and QNA:
 
@@ -23,6 +22,7 @@ Check out our [existing modules](https://github.com/botpress/botpress/tree/maste
 Modules are already bundled with the server binary for the moment. They are bundled in zip files in the folder `modules`. It is possible to enable or disable them by opening the file `data/global/botpress.config.json` in a text editor and setting the value to `true` or `false`
 
 ```js
+
 "modules": [
   ...
   {
@@ -30,6 +30,7 @@ Modules are already bundled with the server binary for the moment. They are bund
     "enabled": true
   }
 ]
+
 ```
 
 ## Custom Modules

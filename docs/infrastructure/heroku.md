@@ -6,24 +6,27 @@ Heroku is a platform as a service (PaaS) that enables developers to build, run, 
 
 ## Prerequisites
 
-- If you don't already have a Heroku account, you can create one for free [here](https://signup.heroku.com).
-- Install the Heroku CLI by following [these instructions](https://devcenter.heroku.com/articles/heroku-cli).
-- Install and run [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- Type `heroku login` in your terminal to log in to Heroku.
+-   If you don't already have a Heroku account, you can create one for free [here](https://signup.heroku.com).
+-   Install the Heroku CLI by following [these instructions](https://devcenter.heroku.com/articles/heroku-cli).
+-   Install and run [Docker Desktop](https://www.docker.com/products/docker-desktop)
+-   Type `heroku login` in your terminal to log in to Heroku.
 
 ## Preparing the Docker image
 
-To create a new chatbot from scratch, create a file named `Dockerfile` in any directory (Make sure your Dockerfile is really called Dockerfile, not “Dockerfile.txt”). Write this snippet in the file (and replace \$VERSION with the latest one in [hub.docker.com](https://hub.docker.com/r/botpress/server/tags/))
+To create a new chatbot from scratch, create a file named `Dockerfile` in any directory (Make sure your Dockerfile is really called Dockerfile, not “Dockerfile.txt”). Write this snippet in the file (and replace \\$VERSION with the latest one in [hub.docker.com](https://hub.docker.com/r/botpress/server/tags/))
 
 ```docker
+
 FROM botpress/server:$VERSION
 WORKDIR /botpress
 CMD ["/bin/bash", "-c", "./duckling & ./bp"]
+
 ```
 
 Make sure Docker is running on your computer. Then open a command prompt and type these commands:
 
 ```bash
+
 # This will create a new app with a random name. Copy the name because we'll need it later
 heroku create
 
@@ -38,6 +41,7 @@ heroku container:push web --app $APP_NAME
 
 # This is the last step, your bot will be available at https://$APP_NAME.herokuapp.com/
 heroku container:release web --app $APP_NAME
+
 ```
 
 ## Deploying with existing data
@@ -45,20 +49,24 @@ heroku container:release web --app $APP_NAME
 If you have already built a chatbot and want to host it on Heroku, add your `data` folder in the same folder as the `Dockerfile`. The structure should look like this:
 
 ```bash
+
 my-new-bot
 ├── Dockerfile
 └── data
     ├── bots
     └── global
+
 ```
 
 Edit the `Dockerfile` so it looks like this, then deploy it with the same instructions as before:
 
 ```docker
+
 FROM botpress/server:$VERSION
 ADD . /botpress
 WORKDIR /botpress
 CMD ["./bp"]
+
 ```
 
 ## Using Postgres as the database
@@ -66,20 +74,23 @@ CMD ["./bp"]
 By default, Botpress uses SQLite as a database for persistence, and that doesn't work well on Heroku because it has ephemeral storage, which means data will get lost frequently. The best is to switch the database to Postgres (please make sure you are using Postgres 9.5 or higher):
 
 ```bash
+
 # Get a free Postgres database
 heroku addons:create heroku-postgresql --app $APP_NAME
 
 # Tell Botpress to use Postgres
 heroku config:set DATABASE=postgres --app $APP_NAME
+
 ```
 
-You don't have to change anything else since Heroku will define the DATABASE_URL environment variable with the required parameters. It is also possible to find your Postgres credentials on the Heroku dashboard: Overview > Heroku Postgres > Settings > View Credentials.
+You don't have to change anything else since Heroku will define the DATABASE_URL environment variable with the required parameters. It is also possible to find your Postgres credentials on the Heroku dashboard: Overview &gt; Heroku Postgres &gt; Settings &gt; View Credentials.
 
 ## Sample Heroku Deployment
 
 Below is an example of a succesfull deployment of Botpress on Heroku:
 
 ```
+
 User@DESKTOP-T1ORLFU MINGW64 /c/Botpress/heroku
 $ heroku create
 Creating app... done, cryptic-river-32436
@@ -175,4 +186,5 @@ User@DESKTOP-T1ORLFU MINGW64 /c/Botpress/heroku
 $ heroku config:set DATABASE=postgres --app cryptic-river-32436
 Setting DATABASE and restarting cryptic-river-32436... done, v6
 DATABASE: postgres
+
 ```

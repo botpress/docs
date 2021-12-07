@@ -2,7 +2,6 @@
 id: pipelines
 title: Bot Pipelines
 ---
-
 ## Overview
 
 **Bot Pipelines** (not to be confused with Development Pipelines) are built on top of the multi-bot capability of Botpress. They allow teams to work on chatbots with multiple **stages** just like they work on software products. Different versions of a chatbot can run and co-exist on various stages. In software development, each team has its way of working with pipelines and reacting to events. Botpress pipelines let you do the same.
@@ -22,16 +21,19 @@ Pipelines are a Botpress Enterprise feature, so make sure you're running the ent
 As mentioned earlier, a Pipeline is simply a list of stages a chatbot needs to (or can) go through. A stage is defined using json :
 
 ```json
+
 {
   "id": "dev",
   "label": "Development",
   "action": "promote_copy"
 }
+
 ```
 
 Properties are self-explanatory except for action, which is defined. In a pipeline definition, the order of stages follows the order in the array `(1st stage === index 0).`
 
 ### Stage Actions
+
 A stage action defines how the pipeline system behaves when a chatbot is ready for promotion from one stage to another. Two actions are currently available `promote_move`, which moves the chatbot from current to next stage, and `promote_copy` creates an exact copy of the chatbot before being promoted to the next stage. The latter is useful when you want to keep the work in progress (i.e., Dev stage) version of your chatbot and send versions along the pipeline.
 
 ### Chatbot Pipeline Status
@@ -39,6 +41,7 @@ A stage action defines how the pipeline system behaves when a chatbot is ready f
 Each chatbot now defines a `pipeline_status` object in its `bot.config.json` file. The object structure goes as follows :
 
 ```js
+
 {
   /*
     ... other chatbot config fields
@@ -56,19 +59,21 @@ Each chatbot now defines a `pipeline_status` object in its `bot.config.json` fil
     }
   }
 }
+
 ```
 
 At the moment, only the current_stage will be interesting for you. We will learn more on `stage_request` in the [available hooks section](#available-hooks)
 
 ## Usage
 
-If you tried Botpress, you've already been using the Pipeline feature; you just don't know it. By default, every Botpress deployment defines a single-stage pipeline, even running on the community edition. In the next sections we will show how to use different pipeline components and build a standard **Dev** ==> **Staging** ==> **Prod**.
+If you tried Botpress, you've already been using the Pipeline feature; you just don't know it. By default, every Botpress deployment defines a single-stage pipeline, even running on the community edition. In the next sections we will show how to use different pipeline components and build a standard **Dev** ==&gt; **Staging** ==&gt; **Prod**.
 
 ### Configuration
 
 To define your pipeline, open the `workspaces.json` file and edit the pipeline property.
 
 ```js
+
 {
   /*
   ...other workspace property
@@ -91,11 +96,12 @@ To define your pipeline, open the `workspaces.json` file and edit the pipeline p
     }
   ]
 }
+
 ```
 
 This simple configuration will activate the pipeline feature.
 
-> **Note**: Botpress allows pipelines with a maximum of four stages. More than this will result in suboptimal performance of Botpress.
+&gt; **Note**: Botpress allows pipelines with a maximum of four stages. More than this will result in suboptimal performance of Botpress.
 
 ### Graphical Interface
 
@@ -111,10 +117,13 @@ This time, pick the same action on the Staging bot. You'll notice the chatbot wi
 Want to lock a chatbot in a particular stage or change its name along the pipeline? You can do so using [available hooks](#available-hooks)
 
 ### API
+
 Behind the scenes, the UI makes an authenticated call to the admin API. If you want to promote a chatbot by API, you can easily do so
 
 ```bash
+
 curl -X POST http://your.botpress.deployment/api/v1/admin/bots/{_YOUR_BOT_ID_}/stage -H="Authorization:Bearer {_YOUR_AUTH_TOKEN_}"
+
 ```
 
 ### Available Hooks
@@ -125,6 +134,7 @@ So far, we haven't customized anything on the pipeline feature, and we didn't us
 The hook will be called with the following arguments: **bp** (botpress sdk), **bot** (content of bot.config.json) , **users** (users in the workspace), **pipeline** (your pipeline definition), **hookResult** (object with a `actions` property).
 
 ```js
+
 //function (bp, bot, users, pipeline, hookResult) {
 const request_user = users.find(u => u.email == bot.pipeline_status.stage_request.requested_by)
 if (!request_user || request_user.role !== 'YOUR_TARGET_ROLE') {
@@ -143,11 +153,13 @@ bot.name = 'new chatbot name'
 bot.id = 'new-bot-id='
 bot.locked = true
 // }
+
 ```
 
 That's it. Now, what if we want to call some 3rd party email service to notify all workspace users once a chatbot has changed stage? There's a hook for that: `after_stage_changed`.
 
 ```js
+
 //function (bp, previousBotConfig, bot, users, pipeline) {
 const from = previousBotConfig.pipeline_status.current_stage.label
 const to = bot.pipeline_status.current_stage.label
@@ -163,6 +175,7 @@ Promise.all(
   //done
 })
 //}
+
 ```
 
 For another example, see pre-built hooks in your global/hooks folder.

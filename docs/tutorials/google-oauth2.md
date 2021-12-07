@@ -2,7 +2,6 @@
 id: google-oauth2
 title: Setting up SSO with Google OAuth2
 ---
-
 **Note**: This is a Botpress Pro feature
 
 ## Step 1: Create OAuth2 credentials
@@ -28,6 +27,7 @@ A popup with your client ID and client secret will show up, keep them for the ne
 In your Botpress instance navigate to the code editor by going into any of your bots and add a new entry within `authStrategies` in the _botpress.config.json_ file, you may name the strategy whatever you want (keep the name URL safe) and fill in the entry in the following way:
 
 ```json
+
 "<your strategy name>": {
   "type": "oauth2",
   "allowSelfSignup": false,
@@ -44,6 +44,7 @@ In your Botpress instance navigate to the code editor by going into any of your 
     "email": "email"
   }
 }
+
 ```
 
 ## Step 4: Enable the strategy in Botpress

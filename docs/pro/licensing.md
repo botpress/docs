@@ -2,7 +2,6 @@
 id: licensing
 title: Licensing
 ---
-
 ## Obtaining a License
 
 Please contact our sales team using the request demo form on our [website](https://botpress.com/request-demo).
@@ -14,12 +13,15 @@ When starting Botpress, use the `BP_LICENSE_KEY=<license_key>` environment varia
 **Binary**
 
 ```bash
+
 BP_LICENSE_KEY=<license_key> EXTERNAL_URL=<public_url> ./bp
+
 ```
 
 **Docker**
 
 ```bash
+
 docker run -d \
 --name botpress \
 -p 3000:3000 \
@@ -27,6 +29,7 @@ docker run -d \
 -e BP_LICENSE_KEY=<license_key> \
 -e EXTERNAL_URL=<public_url> \
 botpress/server:$TAG
+
 ```
 
 ## License Breach and Details

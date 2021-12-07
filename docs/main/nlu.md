@@ -2,12 +2,11 @@
 id: nlu
 title: NLU
 ---
-
 ## How it works
 
 The Botpress NLU module will process every incoming messages and will perform Intent Classification, Language Identification, Entity Extraction and Slot Tagging. The structured data that these tasks provide is added to the message metadata directly (under `event.nlu`), ready to be consumed by the other modules and components.
 
-> **QnA**: A simple use-case for bots is to understand a question and to provide an answer automatically. Doing that manually for all the questions and answers using the NLU module and the flow editor would be a tedious task, which is why we recommend using the QnA module for that instead.
+&gt; **QnA**: A simple use-case for bots is to understand a question and to provide an answer automatically. Doing that manually for all the questions and answers using the NLU module and the flow editor would be a tedious task, which is why we recommend using the QnA module for that instead.
 
 ## Intent Classification
 
@@ -17,9 +16,9 @@ Intent classification helps you detect the intent of the users. It is a better a
 
 |              User said              |       Intent       | Confidence |
 | :---------------------------------: | :----------------: | :--------: |
-| _"I want to fly to Dubai tomorrow"_ |   search_flight    |    0.98    |
+| _"I want to fly to Dubai tomorrow"_ |    search_flight   |    0.98    |
 |   _"My flight is delayed, help!"_   | faq_flight_delayed |    0.82    |
-|    _"Can I bring a pet aboard?"_    |      faq_pet       |    0.85    |
+|    _"Can I bring a pet aboard?"_    |       faq_pet      |    0.85    |
 
 ### Adding an intent
 
@@ -28,11 +27,13 @@ To create a new intent, navigate to the NLU module then click "**Create new inte
 ##### Flight Booking Example
 
 ```yaml
+
 - book flight
 - i want to book a flight
 - i want to fly to new york tomorrow
 - show me travel options from montreal to tokyo
 # provide as many as you can
+
 ```
 
 ### Responding to an intent
@@ -42,6 +43,7 @@ You may detect and reply to intents by looking up the `event.nlu.intent.name` va
 Here's an example of the structure of an incoming event processed by Botpress Native NLU.
 
 ```js
+
 {
   "type": "text",
   "channel": "web",
@@ -56,7 +58,7 @@ Here's an example of the structure of an incoming event processed by Botpress Na
   "id": 1.5420658919105e+17,
   "preview": "hey",
   "flags": {},
-  "nlu": { // <<<<------
+  "nlu": { // <!!!------
     "language": "en", // language identified
     "intent": { // most likely intent, assuming confidence is within config threshold
       "name": "hello",
@@ -78,6 +80,7 @@ Here's an example of the structure of an incoming event processed by Botpress Na
     "slots" : {} // extracted slots
   }
 }
+
 ```
 
 You can use that metadata in your flows to create transitions when a specific intent is understood inside a specific flow. You can learn more about flows and transitions [here](dialog).
@@ -90,13 +93,14 @@ You can use that metadata in your flows to create transitions when a specific in
 
 To enable debugging of the NLU module, make sure that `debugModeEnabled` is set to `true` in your `data/global/config/nlu.json` file.
 
-> **Tip**: In production, you can also use the `BP_NLU_DEBUGMODEENABLED` environment variable instead of modifying the configuration directly.
+&gt; **Tip**: In production, you can also use the `BP_NLU_DEBUGMODEENABLED` environment variable instead of modifying the configuration directly.
 
 ##### Example of debugging message
 
 NLU Extraction
 
 ```js
+
 { text: 'they there bud',
   intent: 'hello',
   confidence: 0.966797,
@@ -106,6 +110,7 @@ NLU Extraction
   language: 'en',
   entities: []
 }
+
 ```
 
 ## Entity Extraction
@@ -123,6 +128,7 @@ You may access and use data by looking up the `event.nlu.entities` variable in y
 User said : `Let's go for a five miles run`
 
 ```js
+
 {
   /* ... other event nlu properties ... */
   entities: [
@@ -157,6 +163,7 @@ User said : `Let's go for a five miles run`
     }
   ]
 }
+
 ```
 
 **Note**: In some cases you will find additional structured information in the extras object
@@ -173,11 +180,12 @@ For instructions on how to host your own Duckling server, please check the [Depl
 
 ##### Example
 
-|             User said             |    Type    | Value |  Unit   |
+|             User said             |    Type    | Value |   Unit  |
 | :-------------------------------: | :--------: | :---: | :-----: |
 | _"Add 5 lbs of sugar to my cart"_ | "quantity" |   5   | "pound" |
 
 ```js
+
 {
   type: 'quantity',
   meta: {
@@ -193,6 +201,7 @@ For instructions on how to host your own Duckling server, please check the [Depl
     extras: {}
   }
 }
+
 ```
 
 **Note**: Confidence will always be 1 due to the rule based implementation of Duckling
@@ -227,11 +236,12 @@ Given a Pattern Entity definition with `[A-Z]{3}-[0-9]{4}-[A-Z]{3}` as pattern:
 
 Extraction will go like:
 
-|           User said           | Type  |     Value      |
+|           User said           |  Type |      Value     |
 | :---------------------------: | :---: | :------------: |
 | _"Find product BHZ-1234-UYT"_ | "SKU" | "BHZ-1234-UYT" |
 
 ```js
+
 { name: 'SKU',
   type: 'pattern',
   meta:
@@ -247,6 +257,7 @@ Extraction will go like:
     unit: 'string'
     }
 }
+
 ```
 
 #### List extraction
@@ -259,11 +270,12 @@ Let's take **Airport Codes** as an example:
 
 Extraction will go like:
 
-|              User said               |      Type       |     Value      |
+|               User said              |       Type      |      Value     |
 | :----------------------------------: | :-------------: | :------------: |
 | _"Find a flight from SFO to Mumbai"_ | "Airport Codes" | ["SFO", "BOM"] |
 
 ```js
+
 ;[
   {
     name: 'Airport Codes',
@@ -300,6 +312,7 @@ Extraction will go like:
     }
   }
 ]
+
 ```
 
 ## Slots
@@ -325,6 +338,7 @@ User said : `I would like to go to SFO from Mumbai`
 `event.nlu.slots` will look like
 
 ```js
+
 slots : {
   airport_to: {
     name: 'airport_to',
@@ -337,6 +351,7 @@ slots : {
     entity: [Object] //detailed extracted entity
   }
 }
+
 ```
 
 ### Slot Filling
@@ -353,14 +368,14 @@ Botpress NLU ships with a native NLU engine (Botpress Native NLU). The advantage
 
 If for some reason you want to use an external provider, you can do so by using [Hooks](code#hooks) and calling the external NLU provider via API. There's a detailed example [here](../tutorials/3rd-party-NLU)
 
-> **Note**: We have dropped support [(see why)](https://github.com/botpress/botpress/pull/1170) for two-way synchronization as there were too many issues in doing (and maintaining) that. You'll have to maintain this yourself if you go this way. We're open to contributions for both implementation and maintenance of 3rd party NLU integrations.
+&gt; **Note**: We have dropped support [(see why)](https://github.com/botpress/botpress/pull/1170) for two-way synchronization as there were too many issues in doing (and maintaining) that. You'll have to maintain this yourself if you go this way. We're open to contributions for both implementation and maintenance of 3rd party NLU integrations.
 
 ##### Features by Providers
 
 |  Provider  | Intent | Entity | Slot tagging | Lang | Context | Sentiment |
 | :--------: | :----: | :----: | :----------: | :--: | :-----: | :-------: |
-|   Native   |   X    |   X    |      X       |  X   |    X    |           |
-| DialogFlow |   X    |   X    |      X       |      |    X    |           |
-|    Luis    |   X    |   X    |              |      |         |     X     |
-|   Recast   |   X    |   X    |              |  X   |         |     X     |
-|    Rasa    |   X    |   X    |              |      |         |           |
+|   Native   |    X   |    X   |       X      |   X  |    X    |           |
+| DialogFlow |    X   |    X   |       X      |      |    X    |           |
+|    Luis    |    X   |    X   |              |      |         |     X     |
+|   Recast   |    X   |    X   |              |   X  |         |     X     |
+|    Rasa    |    X   |    X   |              |      |         |           |

@@ -2,19 +2,19 @@
 id: cluster
 title: Clustering
 ---
-
 ## Cluster Overview
 
 ![High-Level Diagram](assets/bp-cluster.png)
 
 ## Requirements
 
-- Redis Server v5+
-- PostgreSQL 10+
-- Load Balancer with a public address
-- Botpress license registered with a public address
+-   Redis Server v5+
+-   PostgreSQL 10+
+-   Load Balancer with a public address
+-   Botpress license registered with a public address
 
 ## Interfaces Overview
+
 ![HTTP Interfaces](assets/http-interfaces.png)
 
 ## Enable Redis
@@ -24,6 +24,7 @@ Start Botpress on a single node with these environment variables:
 **Binary:**
 
 ```bash
+
 BP_CONFIG_PRO_ENABLED=true
 CLUSTER_ENABLED=true \
 BPFS_STORAGE=database \
@@ -32,11 +33,13 @@ EXTERNAL_URL=<public_url> \
 REDIS_URL=redis://host:port \
 DATABASE_URL=postgres://login:password@host:port/database \
 ./bp
+
 ```
 
 **Docker:**
 
 ```bash
+
 docker run -d \
 --name bp \
 -p 3000:3000 \
@@ -49,8 +52,10 @@ docker run -d \
 -e REDIS_URL=redis://host:port \
 -e DATABASE_URL=postgres://login:password@host:port/database \
 botpress/server:$TAG
+
 ```
-> ❌ Do not use the `BP_REDIS_SCOPE` parameter as it can possibly lead to performance and/or data issues, thus stable operation is not guaranteed. Our team will not support implementations with the use of `BP_REDIS_SCOPE`.
+
+&gt; ❌ Do not use the `BP_REDIS_SCOPE` parameter as it can possibly lead to performance and/or data issues, thus stable operation is not guaranteed. Our team will not support implementations with the use of `BP_REDIS_SCOPE`.
 
 Once the first node starts, use the same command to start Botpress on the other nodes.
 
@@ -61,6 +66,7 @@ Botpress can connect to multiple Redis servers for better redundancy if one of t
 Provide the list as a JSON object; see the example below for the correct format. 
 
 ```bash
+
 PRO_ENABLED=true
 CLUSTER_ENABLED=true \
 BPFS_STORAGE=database \
@@ -69,6 +75,7 @@ EXTERNAL_URL=<public_url> \
 REDIS_URL=[{"host":"localhost","port":7004},{"host":"localhost","port":7001},{"host":"localhost","port":7002}]
 DATABASE_URL=postgres://login:password@host:port/database \
 ./bp
+
 ```
 
 ## Advanced Redis Options
@@ -78,5 +85,7 @@ You can further configure your Redis Sentinel/Cluster using the `REDIS_OPTIONS` 
 Example:
 
 ```bash
+
 REDIS_OPTIONS={"password":"admin123", "connectTimeout": 20000}
+
 ```

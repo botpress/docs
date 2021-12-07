@@ -2,7 +2,6 @@
 id: installation
 title: Installation
 ---
-
 Getting started with Botpress is easy. We build and distribute binaries of the latest stable version and nightly builds of the Github master branch.
 
 ## Download
@@ -13,10 +12,10 @@ The latest stable binaries are available for download [**here**](https://botpres
 
 To install Botpress, unzip the file you download somewhere on your computer. Make sure that your computer has at least:
 
-- Memory (RAM): Recommended 4 GB or above.
-- Hard Drive: Recommended 64 GB of free space or above.
-- A 64 bits architecture
-- The right to read/write to the Botpress directory and subdirectories.
+-   Memory (RAM): Recommended 4 GB or above.
+-   Hard Drive: Recommended 64 GB of free space or above.
+-   A 64 bits architecture
+-   The right to read/write to the Botpress directory and subdirectories.
 
 ## Starting Botpress
 
@@ -27,13 +26,17 @@ To start Botpress, all you have to do is double click on the `bp` file in the di
 Alternatively, you can also start it from the terminal using the command:
 
 ```bash
+
 ./bp
+
 ```
+
 The first time you run Botpress, the built-in modules take some time to install. Thereafter, subsequent runs will be much faster.
 
 Once the modules are installed and loaded, you should end up with something similar to the console log below:
 
 ```bash
+
 User@DESKTOP-T1ORLFU MINGW64 /c/BotpressBinary/botpress-v12_22_0-win-x64
 $ ./bp
 06/02/2021 07:24:26.522 Launcher ========================================
@@ -93,6 +96,7 @@ $ ./bp
 06/02/2021 07:24:29.764 launcher models stored at "C:\BotpressBinary\botpress-v12_22_0-win-x64"
 06/02/2021 07:24:29.764 launcher batch size: allowing up to 1 predictions in one call to POST /predict
 06/02/2021 07:24:29.912 launcher NLU Server is ready at http://localhost:3200/
+
 ```
 
 ### Commands
@@ -105,6 +109,6 @@ You may also start Botpress Server using the Command Line Interface (CLI). To se
 
 Here is a video tutorial to help you set up Botpress on your computer. You can slow it down a bit to follow along.
 
-- [Setting up on Windows](https://youtu.be/xf246NQyMj4)
-- [Setting up on Mac](https://youtu.be/SBv0QOXyHL4)
-- [Setting up on Linux](https://youtu.be/89RJx0kQyKM)
+-   [Setting up on Windows](https://youtu.be/xf246NQyMj4)
+-   [Setting up on Mac](https://youtu.be/SBv0QOXyHL4)
+-   [Setting up on Linux](https://youtu.be/89RJx0kQyKM)

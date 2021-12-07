@@ -2,7 +2,6 @@
 id: rbac
 title: Role-Based Access Control
 ---
-
 ![This feature is available with Botpress Enterprise license.](../assets/botpress-enterprise-feature.png)
 
 **RBAC** (Role-Based Access Control) allows you to control what collaborators can access.
@@ -31,23 +30,25 @@ In the `<data>/global/workspaces.json` file, you'll find the `roles` property, w
 
 The rules which govern the users' rights are executed sequentially from first to last. For example, you can assign the following rules:
 
-1. `+r-w` on `*`
-2. `+w` on `bot.content`
-3. `-r` on `bot.flows`
+1.  `+r-w` on `*`
+2.  `+w` on `bot.content`
+3.  `-r` on `bot.flows`
 
 With the rules above, the user will _see_ everything but the flows and won't be able to _change_ anything but content.
 
 ### Operations (op)
+
 Below are the access levels which Botpress can configure for a user.
 
-| op  | description  |
-| --- | ------------ |
-| +r  | Grant read   |
-| -r  | Revoke read  |
-| +w  | Grant write  |
-| -w  | Revoke write |
+| op | description  |
+| -- | ------------ |
+| +r | Grant read   |
+| -r | Revoke read  |
+| +w | Grant write  |
+| -w | Revoke write |
 
 ### Available Resources (res)
+
 Below are the resources and interfaces to which you can give your chatbot studio users access.
 
 | res               | description                                  |
@@ -75,6 +76,7 @@ Modules only support a single top-level resource **and one operation (write)**. 
 ### Example
 
 ```json
+
 {
   "id": "hitl",
   "name": "Human in the Loop",
@@ -90,4 +92,5 @@ Modules only support a single top-level resource **and one operation (write)**. 
     }
   ]
 }
+
 ```

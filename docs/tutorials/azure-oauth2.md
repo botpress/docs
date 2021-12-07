@@ -2,7 +2,6 @@
 id: azure-oauth2
 title: Setting up SSO with Azure AD OAuth2
 ---
-
 **Note**: This is a Botpress Pro feature
 
 **Note**: Azure OAuth2 only works for version 12.17.2 and later
@@ -26,6 +25,7 @@ Create a new application and choose the appropriate configuration for your use c
 In your Botpress instance navigate to the code editor by going into any of your bots and add a new entry within `authStrategies` in the _botpress.config.json_ file, you may name the strategy whatever you want (keep the name URL safe) and fill in the entry in the following way:
 
 ```json
+
 "<your strategy name>": {
   "type": "oauth2",
   "allowSelfSignup": false,
@@ -42,6 +42,7 @@ In your Botpress instance navigate to the code editor by going into any of your 
     "email": "email"
   }
 }
+
 ```
 
 ## Step 4: Create a client secret

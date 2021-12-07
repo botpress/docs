@@ -2,28 +2,29 @@
 id: intent-matching
 title: Intent Classification
 ---
-
 Intent classification helps your chatbot recognize the meaning of a user's message. It is a better, more accurate way to understand what the user is trying to say than using keywords. This is possible because you can program your chatbot to extract this from a natural conversation.
 
 An intent is created with various utterances. These are the different ways of putting across a question or intention. For example, the following are different statements which someone can say to book a flight: 
- - Book flight
- - I want to search for a flight
- - I want to fly to New York tomorrow
- - Show me travel options from Montreal to Tokyo
+
+-   Book flight
+-   I want to search for a flight
+-   I want to fly to New York tomorrow
+-   Show me travel options from Montreal to Tokyo
 
 By adding these different ways of saying the same thing, the chatbot can train on the concept of that intent and not just specific words. The user input is compared with all the given intents and matched with the most appropriate, that is, the intent with the highest confidence level.
 
-|              User said              |    Intent Matched  | Confidence |
+|              User said              |   Intent Matched   | Confidence |
 | :---------------------------------: | :----------------: | :--------: |
-| _"I want to fly to Dubai tomorrow"_ |   search_flight    |    0.98    |
+| _"I want to fly to Dubai tomorrow"_ |    search_flight   |    0.98    |
 |   _"My flight is delayed, help!"_   | faq_flight_delayed |    0.82    |
-|    _"Can I bring a pet aboard?"_    |      faq_pet       |    0.85    |
+|    _"Can I bring a pet aboard?"_    |       faq_pet      |    0.85    |
 
 ## Usage
+
 Intents should be used in instances when information needs to be extracted from the user input. They are also handy when a workflow needs to start.
 
-
 ## Adding an intent
+
 To create a new intent, navigate to the NLU module, then click "**Create new intent**". Please give it a friendly name, then hit OK. You should now add "utterances" of that intent – that is, add as many ways of expressing that intent as possible. Intent detection works best when you add between ten and twenty utterances.
 ![Adding an intent](../assets/intent-creation.png)
 **Punctuation** is ignored in general for text classification, except for hyphens. Punctuation is taken into account for entities and slots only.
@@ -32,11 +33,10 @@ To create a new intent, navigate to the NLU module, then click "**Create new int
 
 **Case sensitivity**: all text is converted to lowercase for intent matching
 
-
-|  User said                              |   Will be converted to                  |
-|  :------------------------------------: | :------------------------------------:  |
-|  Hi! What can you do?                   |   hi what can you do                    |
-|  Do you have any Chicago-based offices? |   do you have any chicago-based offices |
+|                User said               |          Will be converted to         |
+| :------------------------------------: | :-----------------------------------: |
+|          Hi! What can you do?          |           hi what can you do          |
+| Do you have any Chicago-based offices? | do you have any chicago-based offices |
 
 ## Responding to an intent
 
@@ -45,6 +45,7 @@ You may detect and reply to intents by looking up the `event.nlu.intent.name` va
 Here's an example of the structure of an incoming event processed by Botpress Native NLU.
 
 ```js
+
 {
   "type": "text",
   "channel": "web",
@@ -59,7 +60,7 @@ Here's an example of the structure of an incoming event processed by Botpress Na
   "id": 1.5420658919105e+17,
   "preview": "hey",
   "flags": {},
-  "nlu": { // <<<<------
+  "nlu": { // <!!!------
     "language": "en", // language identified
     "intent": { // most likely intent, assuming confidence is within config threshold
       "name": "hello",
@@ -82,10 +83,10 @@ Here's an example of the structure of an incoming event processed by Botpress Na
     "slots" : {} // extracted slots
   }
 }
+
 ```
 
 You can use that metadata in your flows to create transitions when a specific intent is detected inside a particular flow. You can learn more about flows and transitions [here](../main/dialog). Y
-
 
 ![Flow NLU Transition](../assets/flow-nlu-transition.jpg)
 
@@ -93,13 +94,14 @@ You can use that metadata in your flows to create transitions when a specific in
 
 To enable debugging of the NLU module, ensure that `debugModeEnabled` is set to `true` in your `data/global/config/nlu.json` file.
 
-> **Tip**: In production, you can also use the `BP_NLU_DEBUGMODEENABLED` environment variable instead of modifying the configuration directly.
+&gt; **Tip**: In production, you can also use the `BP_NLU_DEBUGMODEENABLED` environment variable instead of modifying the configuration directly.
 
 ### Example of debugging message
 
 NLU Extraction
 
 ```js
+
 { text: 'hey there bud',
   intent: 'hello',
   confidence: 0.966797,
@@ -109,7 +111,9 @@ NLU Extraction
   language: 'en',
   entities: []
 }
+
 ```
+
 ## Acting On An Intent
 
 ### Method 1: Switch Case
@@ -160,7 +164,7 @@ Testing the chatbot using our new QnA demonstrates how this method works. When a
 
 ![](assets/intent-matching-qna-conversation.png)
 
-> This method is not considered best practice, but it does the job for quick demonstrations. However, we recommend using the first method if you have basic intents without any slots.
+&gt; This method is not considered best practice, but it does the job for quick demonstrations. However, we recommend using the first method if you have basic intents without any slots.
 
 ### Method 3: Combining Switch Case and Slot Skill
 
@@ -184,4 +188,4 @@ When we test the conversation, we can see that the bot will confirm the flight b
 
 ![](../assets/intent-matching-slot-conversation.png)
 
-> **Note**: The Slot Skill uses implicit intent matching in the background. So it's not required to have a transition to a Slot Skill. 
+&gt; **Note**: The Slot Skill uses implicit intent matching in the background. So it's not required to have a transition to a Slot Skill. 

@@ -11,16 +11,17 @@ Content types are the primary way to display content in the chat. Probably you h
 All the following example can be copy&paste in an action. You can find action in a chatbot and select the editor-tabs.
 
 ![Action image](../assets/advanced/action.jpg)
+
 ### Audio
 
 The audio component can stream audio that end with `.mp3`. It could be used to stream music from Spotify or youtube. This component could also stream audio file that you have store on your server.
 
 ![Music image](../assets/advanced/music.jpg)
 
-
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -57,7 +58,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Card
 
@@ -67,7 +69,8 @@ A card is a single element of a carousel. It can be view as one card in a deck o
 
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -106,7 +109,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Carousel
 
@@ -115,7 +119,9 @@ A carousel is a series of cards. This component can be useful in e-commerce chat
 ![Carousel Image](../assets/advanced/carousel.jpg)
 
 **`Example`**
-```
+
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -171,18 +177,19 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Dropdown
 
 A dropdown is a single choice from multiple choice. It's a good element if you want one specific choice from a list.
 
-
 ![Dropdown image](../assets/advanced/dropdown.jpg)
 
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -229,9 +236,10 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
 
-###  Image
+````
+
+### Image
 
 You can display image. You can pass URL image of using a [data URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)
 
@@ -239,7 +247,8 @@ You can display image. You can pass URL image of using a [data URL](https://deve
 
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -276,13 +285,15 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Location
 
 Location is only enable in the channel-vonage.
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -322,7 +333,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### File
 
@@ -331,7 +343,9 @@ Botpress can display pdf file. Currently, we are only supporting pdf.
 ![Image of file](../assets/advanced/file.jpg)
 
 **`Example`**
-```
+
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -370,7 +384,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Single choice
 
@@ -380,7 +395,8 @@ This component carries a message, usually a question, and suggests choices to th
 
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -428,7 +444,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Text
 
@@ -438,10 +455,10 @@ You can write HTML in the text content on the web channel, and your chatbot will
 
 ![image text](../assets/advanced/text.jpg)
 
-
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -474,7 +491,8 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````
 
 ### Video
 
@@ -484,7 +502,8 @@ You can either upload a video or link to a video file that will be fetched when 
 
 **`Example`**
 
-```
+````
+
 function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, temp, session } = event.state) {
   /** Your code starts below */
 
@@ -521,4 +540,5 @@ function action(bp: typeof sdk, event: sdk.IO.IncomingEvent, args: any, { user, 
 
   /** Your code ends here */
 }
-```
+
+````

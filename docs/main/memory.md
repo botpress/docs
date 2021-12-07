@@ -2,7 +2,6 @@
 id: memory
 title: Chatbot Memory- Using Data
 ---
-
 In a conversation, you may want to ask questions to the user and remember his answers to use later. You may also want to access the values of system parameters, such as the values of the slots that your chatbot just extracted.
 
 ## System Parameters
@@ -19,7 +18,7 @@ For example, the path shown in the debugger to the language parameter is nlu.lan
 
 In the Flow Editor, you can access system parameters by bracketing them with two sets of curly brackets. For example, in a message, you could say:
 
-> The user input language is {{event.nlu.language}}.
+&gt; The user input language is {"{"}{"{"}event.nlu.language{"}"}{"}"}.
 
 You can also set variables to be the value of a system parameter as follows:
 
@@ -29,27 +28,26 @@ For raw expressions or code (such as in Actions), you don't need the curly brack
 
 ![NLU Language Raw Expression](../assets/nlu-raw-expression.png)
 
-In the same way, as described above, it would be possible to access the values of extracted slots by copying the path from the emulator and prefixing it with "event." i.e. {{state.session.slots.food.value}} in the flow builder and state.session.slots.food.value in code. "food" is a slot that was set up intent by the chatbot builder.
+In the same way, as described above, it would be possible to access the values of extracted slots by copying the path from the emulator and prefixing it with "event." i.e. {"{"}{"{"}state.session.slots.food.value{"}"}{"}"} in the flow builder and state.session.slots.food.value in code. "food" is a slot that was set up intent by the chatbot builder.
 
 ![Slot Extraction Emulator](../assets/slot-extraction-emulator.png)
 
 As is possible in Javascript, it is also possible to access the parameters with the following syntax:
 
-{{state.session.slots["food"].value}}
+{"{"}{"{"}state.session.slots["food"].value{"}"}{"}"}
 
 System Parameters that do not appear in the emulator that may be useful to chatbot builders are:
 
 event.payload.text - this returns the text just input by the user
 
-
 ## Variables
 
 There are four different kinds of memories in Botpress; the difference between them is the duration and the scope.
 
-- `user` memory is kept forever for the user it is associated with.
-- `session` memory is kept for the duration of the configured session.
-- `temp` memory is only kept for the duration of the flow.
-- `bot` memory is the same value for all users of the same chatbot.
+-   `user` memory is kept forever for the user it is associated with.
+-   `session` memory is kept for the duration of the configured session.
+-   `temp` memory is only kept for the duration of the flow.
+-   `bot` memory is the same value for all users of the same chatbot.
 
 ## Common Use Case
 
@@ -67,7 +65,7 @@ In code, the variable temp.user_name will be created and set to "John".
 
 As with system parameters (see System Parameters section), variables can be accessed in the flow builder and the Set Variable dialog by bracketing the variables with double curly brackets as follows:
 
-{{temp.user_name}}
+{"{"}{"{"}temp.user_name{"}"}{"}"}
 
 [User Name Message]
 
@@ -104,6 +102,7 @@ Since privacy is an important matter, a built-in system makes it dead-easy to se
 Here's how it could be configured:
 
 ```js
+
 //data/global/botpress.config.json
 
 dataRetention: {
@@ -114,6 +113,7 @@ dataRetention: {
     someChoice: '5m' // Keeps the variable alive for 5 minutes
   }
 }
+
 ```
 
 ### Session Memory
@@ -133,6 +133,7 @@ For example, you want to list the name of your servers, which your chatbot shoul
 This would be your action, fetch_servers.js:
 
 ```js
+
 const listServers = async () => {
   try {
     const { data } = await axios.get(`https://mysite.com/servers`)
@@ -141,6 +142,7 @@ const listServers = async () => {
 }
 
 return listServers()
+
 ```
 
 That action would fetch the name of your servers; then you could send a content element similar to this:

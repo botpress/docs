@@ -2,14 +2,13 @@
 id: telegram
 title: Telegram
 ---
-
 ## Requirements
 
-- An HTTPS Endpoint to your chatbot
+-   An HTTPS Endpoint to your chatbot
 
-  - Set the `externalUrl` field in botpress.config.json
-  - Create an HTTPS tunnel to your machine using Ngrok. [**Tutorial**](https://api.slack.com/tutorials/tunneling-with-ngrok)
-  - Using Nginx and Let's Encrypt. [**Tutorial**](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
+    -   Set the `externalUrl` field in botpress.config.json
+    -   Create an HTTPS tunnel to your machine using Ngrok. [**Tutorial**](https://api.slack.com/tutorials/tunneling-with-ngrok)
+    -   Using Nginx and Let's Encrypt. [**Tutorial**](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
 
 ### Create a bot
 
@@ -29,14 +28,15 @@ If your existing token is compromised or you lost it for some reason, use the /t
 
 ## Configuration
 
-1. Edit `data/bots/<YOUR_BOT_ID>/bot.config.json`. In the `messaging.channels.telegram` section write this configuration :
+1.  Edit `data/bots/<YOUR_BOT_ID>/bot.config.json`. In the `messaging.channels.telegram` section write this configuration :
 
-- enabled: Set to `true`
-- botToken: Your bot token
+-   enabled: Set to `true`
+-   botToken: Your bot token
 
-  Your `bot.config.json` should look like this :
+    Your `bot.config.json` should look like this :
 
 ```json
+
 {
   // ... other data
   "messaging": {
@@ -49,6 +49,7 @@ If your existing token is compromised or you lost it for some reason, use the /t
     }
   }
 }
+
 ```
 
-2. Restart Botpress and talk to your Telegram bot. The webhook will be configured automatically to point to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/telegram`
+2.  Restart Botpress and talk to your Telegram bot. The webhook will be configured automatically to point to `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/telegram`

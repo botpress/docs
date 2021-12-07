@@ -2,7 +2,6 @@
 id: carousel-postback
 title: Using Carousel Postback
 ---
-
 In this tutorial, you will learn how to use the Postback feature of the Carousel [Content Type](../main/content#content-type).
 
 The Postback feature of the Carousel allows you to **send custom data** to the Botpress server when the user **clicks on button** in the Carousel.
@@ -27,6 +26,7 @@ From the Code Editor, create a new hook. This hook will be of **category** "Afte
 Paste the following snippet inside your hook file:
 
 ```javascript
+
 function hook(bp: typeof sdk, event: sdk.IO.IncomingEvent) {
   /** Your code starts below */
 
@@ -59,6 +59,7 @@ function hook(bp: typeof sdk, event: sdk.IO.IncomingEvent) {
 
   /** Your code ends here */
 }
+
 ```
 
 Save the hook and open the emulator.

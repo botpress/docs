@@ -2,7 +2,6 @@
 id: proactive
 title: Acting Proactively
 ---
-
 ## Overview
 
 You may wish to make your bot act proactively on your website in response to some action. E.g., make the bot speak first, suggest they buy the product they are viewing after a set time or ask them for feedback on services they were using.
@@ -13,9 +12,10 @@ You may wish to make your bot act proactively on your website in response to som
 
 First you need to open the webchat (either manually or programmatically) and then send an event from the webpage.
 
-> 📖 How do I open the webchat? Please refer to the [channel-web](../channels/web#embedding) section.
+&gt; 📖 How do I open the webchat? Please refer to the [channel-web](../channels/web#embedding) section.
 
 ```js
+
 window.botpressWebChat.sendEvent({
   type: 'proactive-trigger',
   channel: 'web',
@@ -23,6 +23,7 @@ window.botpressWebChat.sendEvent({
     text: 'fake message'
   }
 })
+
 ```
 
 The property `type: 'proactive-trigger'` is used to identify the event so we can catch it and act on it later on.
@@ -34,20 +35,22 @@ This event will be dispatched to the bot so you need to add a handler for it. If
 This snippet should be added to the [before_incoming_middleware hook](../main/code#before-incoming-middleware):
 
 ```js
+
 // Catch the event sent from the webpage
 if (event.type === 'proactive-trigger') {
   // You custom code
 }
+
 ```
 
-> **Tip**: Use `event.setFlag(bp.IO.WellKnownFlags.SKIP_DIALOG_ENGINE, true)` to tell the dialog engine to skip the event processing. This is useful when your event is not a user message.
+&gt; **Tip**: Use `event.setFlag(bp.IO.WellKnownFlags.SKIP_DIALOG_ENGINE, true)` to tell the dialog engine to skip the event processing. This is useful when your event is not a user message.
 
 ## Webchat events
 
 There's currently 4 events that can be caught in your page :
 
-| name            | Description                                                                   |
-| --------------- | ----------------------------------------------------------------------------- |
+| name                   | Description                                                                   |
+| ---------------------- | ----------------------------------------------------------------------------- |
 | `webchatLoaded` | Triggered when the webchat is loaded and ready to be opened                   |
 | `webchatOpened` | Triggered when the webchat button bubble is clicked                           |
 | `webchatClosed` | Triggered when the webchat close button is clicked                            |
@@ -64,6 +67,7 @@ This will send an event when the webchat is loaded and ready to be opened.
 Use this code in your `index.html`:
 
 ```html
+
 <html>
   <head>
     <title>Embedded Webchat</title>
@@ -93,6 +97,7 @@ Use this code in your `index.html`:
     })
   </script>
 </html>
+
 ```
 
 ### Send message when opening webchat
@@ -102,6 +107,7 @@ This will send an event when the webchat button bubble is clicked
 Use this code in your `index.html`:
 
 ```html
+
 <html>
   <head>
     <title>Embedded Webchat</title>
@@ -131,16 +137,18 @@ Use this code in your `index.html`:
     })
   </script>
 </html>
+
 ```
 
 ### Send custom content on proactive event
 
 You can intercept a proactive trigger to send custom content. This could be used to send reminders, display a welcome message or ask for feedback.
 
-- Make sure that you've sent an event from your webpage. See the examples above.
-- Use this in your `before_incoming_middleware` hook:
+-   Make sure that you've sent an event from your webpage. See the examples above.
+-   Use this in your `before_incoming_middleware` hook:
 
 ```js
+
 // Catch the event
 if (event.type === 'proactive-trigger') {
   const eventDestination = {
@@ -158,6 +166,7 @@ if (event.type === 'proactive-trigger') {
     bp.events.replyToEvent(event, payloads)
   })
 }
+
 ```
 
 Here we're using the [replyToEvent](https://botpress.com/reference/modules/_botpress_sdk_.events.html#replytoevent) function from the SDK to reply to the current event and [renderElement](https://botpress.com/reference/modules/_botpress_sdk_.cms.html#renderelement) to render our custom content.
@@ -166,10 +175,11 @@ Here we're using the [replyToEvent](https://botpress.com/reference/modules/_botp
 
 When you want to respond only to new users, you have to check if their session is new. We can do that by looking at the session's last messages.
 
-- Make sure that you've sent an event from your webpage. See the examples above.
-- Use this code in your `before_incoming_middleware` hook:
+-   Make sure that you've sent an event from your webpage. See the examples above.
+-   Use this code in your `before_incoming_middleware` hook:
 
 ```js
+
 if (event.type === 'proactive-trigger') {
   // We only want to trigger a proactive message when the session is new,
   // otherwise the conversation will progress every time the page is refreshed.
@@ -178,6 +188,7 @@ if (event.type === 'proactive-trigger') {
     event.setFlag(bp.IO.WellKnownFlags.SKIP_DIALOG_ENGINE, true)
   }
 }
+
 ```
 
 ## Live Examples

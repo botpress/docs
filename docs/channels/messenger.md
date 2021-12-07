@@ -2,7 +2,6 @@
 id: messenger
 title: Facebook Messenger
 ---
-
 ## Requirements
 
 Messenger requires you to have a Facebook App and a Facebook Page to connect your chatbot to their platform.
@@ -23,9 +22,9 @@ To link your chatbot to a pre-existing page, you must have an administrator or d
 
 Facebook only integrates its apps and services to secured endpoints. Below are tutorials to help you create an HTTPS endpoint if you do not have one:
 
-- Create an HTTPS tunnel to your machine using Ngrok. [**Tutorial**](https://api.slack.com/tutorials/tunneling-with-ngrok)
-- Using Nginx and Let's Encrypt. This tutorial bases on the Linux Ubuntu 16.04 Operating System. [**Tutorial**](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
-- Create an HTTPS tunnel to your machine using Serveo. [**Tutorial**](https://medium.com/automationmaster/how-to-forward-my-local-port-to-public-using-serveo-4979f352a3bf)
+-   Create an HTTPS tunnel to your machine using Ngrok. [**Tutorial**](https://api.slack.com/tutorials/tunneling-with-ngrok)
+-   Using Nginx and Let's Encrypt. This tutorial bases on the Linux Ubuntu 16.04 Operating System. [**Tutorial**](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
+-   Create an HTTPS tunnel to your machine using Serveo. [**Tutorial**](https://medium.com/automationmaster/how-to-forward-my-local-port-to-public-using-serveo-4979f352a3bf)
 
 ## Setup
 
@@ -33,9 +32,9 @@ Facebook only integrates its apps and services to secured endpoints. Below are t
 
 #### App Secret
 
-- Go to your Facebook App
-- In the left sidebar, expand the Settings menu and select Basic. Here you can find the App ID and App Secret.
-- Click on the "Show" button in the "App Secret" text box. You can copy the "App ID" and "App Secret" to use for your Facebook API calls.
+-   Go to your Facebook App
+-   In the left sidebar, expand the Settings menu and select Basic. Here you can find the App ID and App Secret.
+-   Click on the "Show" button in the "App Secret" text box. You can copy the "App ID" and "App Secret" to use for your Facebook API calls.
 
 #### Verify Token
 
@@ -49,15 +48,16 @@ While the first three are mandatory, the last three configurations (greeting tex
 
 ### Botpress HTTPS Endpoint
 
-- Set the following properties:
+-   Set the following properties:
 
-  - `appSecret`. You will find this value on your Facebook App page.
-  - `verifyToken`. Use a preferably long and cryptic random string and keep it secret. You'll need to copy/paste this token in the Facebook App portal when setting up your webhook.
+    -   `appSecret`. You will find this value on your Facebook App page.
+    -   `verifyToken`. Use a preferably long and cryptic random string and keep it secret. You'll need to copy/paste this token in the Facebook App portal when setting up your webhook.
 
-- Make sure you have an HTTPS URL pointing to your Botpress Server and set the `EXTERNAL_URL` environment variable as follows:
-  - Open `data/global/botpress.config.json` and set the value of the `httpServer.externalUrl` configuration variable to the complete hostname of your HTTPS endpoint, for example, `https://bot.botpress.com`. The resulting file should be as below:
+-   Make sure you have an HTTPS URL pointing to your Botpress Server and set the `EXTERNAL_URL` environment variable as follows:
+    -   Open `data/global/botpress.config.json` and set the value of the `httpServer.externalUrl` configuration variable to the complete hostname of your HTTPS endpoint, for example, `https://bot.botpress.com`. The resulting file should be as below:
 
 ```json
+
   {
   "$schema": "../botpress.config.schema.json",
   "httpServer": {
@@ -69,28 +69,30 @@ While the first three are mandatory, the last three configurations (greeting tex
       "enabled": true
     },
     "externalUrl": "https://bot.botpress.com",
+
 ```
 
-- Restart Botpress Server to reload the configuration
+-   Restart Botpress Server to reload the configuration
 
 ### Individual Chatbot Configuration
 
 Edit `data/bots/<YOUR_BOT_ID>/bot.config.json`. In the `messaging.channels.messenger` section write this configuration :
 
-- `accessToken` has to be set to your page access token. To obtain this token
-  - Go to products in your Facebook App Dashboard's left sidebar.
-  - Add Messenger; you should see it added to the left sidebar.
-  - Select settings under the sidebar menu item.
-  - Add a Facebook page you manage to your App.
-  - You should see a generate token button. Click and copy that token to the json file.
-- `enabled` has to be set to `true`
-- `appSecret`. You will find this value on your Facebook App page.
-  - Go to Settings then Basic. Click show and get your app secret.
-- `verifyToken`. A secret random string. See the [webhook](#Facebook Webhook) section for details on how to configure your Webhook.
+-   `accessToken` has to be set to your page access token. To obtain this token
+    -   Go to products in your Facebook App Dashboard's left sidebar.
+    -   Add Messenger; you should see it added to the left sidebar.
+    -   Select settings under the sidebar menu item.
+    -   Add a Facebook page you manage to your App.
+    -   You should see a generate token button. Click and copy that token to the json file.
+-   `enabled` has to be set to `true`
+-   `appSecret`. You will find this value on your Facebook App page.
+    -   Go to Settings then Basic. Click show and get your app secret.
+-   `verifyToken`. A secret random string. See the [webhook]\(#Facebook Webhook) section for details on how to configure your Webhook.
 
 Your `bot.config.json` should look like this :
 
 ```json
+
 {
   // ... other data
   "messaging": {
@@ -105,25 +107,28 @@ Your `bot.config.json` should look like this :
     }
   }
 }
+
 ```
 
-> **Important:** One bot is connected to **one** facebook page.
+&gt; **Important:** One bot is connected to **one** facebook page.
 
 ### Facebook Webhook
 
 Messenger will use a webhook that you'll need to register to communicate with your chatbot.
 
-1. In your Facebook app, go to Products > Messenger > Settings > Webhooks > Setup Webhooks
-2. Under Callback URL, enter `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/messenger`
-3. Paste your `verifyToken` (the random string you generated) in the Verify Token field.
-4. Make sure you enable `messages` and `messaging_postbacks` in Subscription Fields.
+1.  In your Facebook app, go to Products &gt; Messenger &gt; Settings &gt; Webhooks &gt; Setup Webhooks
+2.  Under Callback URL, enter `<EXTERNAL_URL>/api/v1/messaging/webhooks/<YOUR_BOT_ID/messenger`
+3.  Paste your `verifyToken` (the random string you generated) in the Verify Token field.
+4.  Make sure you enable `messages` and `messaging_postbacks` in Subscription Fields.
 
-> **⭐ Note**: When you set up your webhook, Messenger requires a **secured public** address. To test on localhost, we recommend using services like [pagekite](https://pagekite.net/), [ngrok](https://ngrok.com) or [tunnelme](https://localtunnel.github.io/www/) to expose your server.
+&gt; **⭐ Note**: When you set up your webhook, Messenger requires a **secured public** address. To test on localhost, we recommend using services like [pagekite](https://pagekite.net/), [ngrok](https://ngrok.com) or [tunnelme](https://localtunnel.github.io/www/) to expose your server.
 
 ### Greeting Text
 
 ```json
+
 "greeting": "Hello, I'm your chatbot!"
+
 ```
 
 Your chatbot's Messenger profile's greeting property allows you to specify the greeting message people will see on your chatbot's welcome screen. Your chatbot will display the welcome screen for people interacting with your chatbot for the first time.
@@ -133,7 +138,9 @@ Read more about [greeting](https://developers.facebook.com/docs/messenger-platfo
 ### Get Started
 
 ```json
+
 "getStarted": "<GET_STARTED_PAYLOAD>"
+
 ```
 
 The Get Started button will allow you to send a pro-active message to your chat with the user. The Page Messenger welcome screen displays this Get Started button. When clicked, this button the Messenger Platform will send a messaging_postbacks event to your webhook. You can also configure a greeting message after you add the "Get Started" button.
@@ -146,11 +153,12 @@ The persistent menu allows you to have an always-on user interface element insid
 
 Read more about persistent menu [here](https://developers.facebook.com/docs/messenger-platform/send-messages/persistent-menu).
 
-> The persistent menu is cached locally on the user's client, with updates fetched periodically. If you change the persistent menu, it can take some time for the menu to update. You can force a refresh by deleting the conversation and starting a new one.
+&gt; The persistent menu is cached locally on the user's client, with updates fetched periodically. If you change the persistent menu, it can take some time for the menu to update. You can force a refresh by deleting the conversation and starting a new one.
 
 **Persistent Menu object example**:
 
 ```json
+
  "persistentMenu": [
     {
       "locale": "default",
@@ -175,4 +183,5 @@ Read more about persistent menu [here](https://developers.facebook.com/docs/mess
       ]
     }
   ]
+
 ```

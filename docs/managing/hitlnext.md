@@ -2,20 +2,19 @@
 id: hitlnext
 title: HITL Next (beta)
 ---
-
 This revamped HITL works on **all existing and future channels**. It supports all features of its predecessor and a few more :
 
-- Multi-agents ( _enterprise edition only_ )
-- Human handoff from any workflow
-- Real-time agent interface
-- Agent notes
-- End-user profile
-- Configurable transfer and assignment messages
-- Message templates
-- Basic queuing and assignent system
-- Basic labeling
-- Documented HTTP API (_coming soon_)
-- Webhook integration (_coming soon_)
+-   Multi-agents ( _enterprise edition only_ )
+-   Human handoff from any workflow
+-   Real-time agent interface
+-   Agent notes
+-   End-user profile
+-   Configurable transfer and assignment messages
+-   Message templates
+-   Basic queuing and assignent system
+-   Basic labeling
+-   Documented HTTP API (_coming soon_)
+-   Webhook integration (_coming soon_)
 
 However, unlike its predecessor, this module only allows you to view conversations that have been paused by Botpress during a workflow using an action. As such, an agent cannot monitor conversations currently in progress between the chatbot and a user.
 
@@ -34,9 +33,9 @@ You can also enable the module directly in your `botpress.config.json` file as s
 
 The UI Studio interface has three main sections:
 
-- **Handoffs** : A list of all conversation handoffs created by users by triggering the handoff action.
-- **Conversation**: This shows conversations between the chatbot and user. The agent can chat with a user once the conversation is assigned.
-- **Contact Details**: Where an agent sees user profile, agent notes, and tags.
+-   **Handoffs** : A list of all conversation handoffs created by users by triggering the handoff action.
+-   **Conversation**: This shows conversations between the chatbot and user. The agent can chat with a user once the conversation is assigned.
+-   **Contact Details**: Where an agent sees user profile, agent notes, and tags.
 
 ![Agent Interface](assets/hitl/agent-interface.png)
 
@@ -64,7 +63,6 @@ The module ships with a `Handoff` [action](https://botpress.com/docs/main/code#a
 
 Every time that node is triggered, the Handoffs section will show a new pending handoff in the list. On selecting by clicking a user, you will be able to see a preview of the conversation. On the user side, your chatbot automatically sends a **transfer message**. This message is customizable, see [configuration](#advanced-features-and-customization) section.
 
-
 ![Tranfer Message](assets/hitl/transfer-message.png)
 
 ### Handoff assignation and resolution
@@ -77,7 +75,7 @@ Once online, an agent can click on any handoff item and click on the `assign to 
 
 ![Assign Message](assets/hitl/assign-message.png)
 
-> There is no limit on how many handoffs an agent can handle at once. A good practice would be to limit to 3.
+&gt; There is no limit on how many handoffs an agent can handle at once. A good practice would be to limit to 3.
 
 Once the discussion with the user is over, an agent can hand back the control to the Chatbot by simply clicking the `resolve` button.
 
@@ -106,6 +104,7 @@ To set any of those configurations, you'll first need to open up the `hitlnext.j
 Below is the raw configuration file available on path `...\data\global\config\hitlnext.json`
 
 ```json
+
 {
   "$schema": "../../assets/modules/hitlnext/config.schema.json",
   "agentSessionTimeout": "10m",
@@ -126,6 +125,7 @@ Below is the raw configuration file available on path `...\data\global\config\hi
     "fr": "Vous avez été assigné à notre agent(e) {{agentName}}."
   }
 }
+
 ```
 
 ### Transfer and assignation messages
@@ -133,10 +133,12 @@ Below is the raw configuration file available on path `...\data\global\config\hi
 To change **Transfer message** (default being `You are being transferred to an agent`) and add a German translation for your German-speaking users, change the `transferMessage` json object to the desired translations.
 
 ```json
+
 "transferMessage": {
   "en": "I'm tranfering you to our support team",
   "de": "Ich schicke dich zur Unterstützung"
 }
+
 ```
 
 These changes will be applied when you either disable your chatbot and re-enable it or restart your Botpress server.
@@ -152,6 +154,7 @@ If your team of agents often uses the same set of answers, the `autoComplete` co
 Before adding a message template, choose a `trigger` character that will open up the templates list. In this example, we will use "**:**". Then, for each of your messages, add a `name` (appears on the left of each template, used to filter down the list as the agent types) and a `value` (the actual message that Botpress will paste in the composer). To summarize, configuration for the example above would look as follows:
 
 ```json
+
 "autoComplete": {
   "trigger": ":",
   "shortcuts": [
@@ -169,6 +172,7 @@ Before adding a message template, choose a `trigger` character that will open up
     }
   ]
 }
+
 ```
 
 ### Handoff Labels
@@ -180,5 +184,7 @@ Handoff labels are useful for agents to categorize handoffs before resolution so
 The three labels here are set in a simply json array as follows:
 
 ```bash
+
 "tags": ["shipping", "warranty","complaints"]
+
 ```

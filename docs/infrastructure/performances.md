@@ -2,11 +2,10 @@
 id: performances
 title: Hardware & Performance
 ---
-
 ## Hardware Requirements
 
-- Hard Drive: Recommended 64 GB of free space or above.
-- Memory (RAM): Recommended 4 GB or above.
+-   Hard Drive: Recommended 64 GB of free space or above.
+-   Memory (RAM): Recommended 4 GB or above.
 
 ## Benchmark Tool
 
@@ -14,9 +13,11 @@ Run Botpress with the `bench` command from the command line. You can run this on
 ![Performances Benchmark Tool](assets/performances-benchmark.png)
 
 ### Example
+
 Below is an example of the output from a benchmark test run on a new install of Botpress on localhost.
 
 ```bash
+
 $ ./bp bench --url http://0.0.0.0:3000/ --botId test -u 1000
   Scenario: 1000 users sending 5 messages each
   Configured SLA: 100% of requests must be under 1500ms
@@ -39,16 +40,18 @@ $ ./bp bench --url http://0.0.0.0:3000/ --botId test -u 1000
     undefined: 429
     ECONNRESET: 411
     ECONNREFUSED: 1988
+
 ```
 
 From the results:
-- It took 70.82 seconds to send 5000 messages to the chatbot.
-- 4767 messages took longer than 1500 ms to send to the chatbot.
-- The minimum time it took for a request to be processed was 53 ms (average was 12085 ms, and the maximum was 62517 ms)
-- Of the messages sent, the benchmark test received the following error codes
-    - Timeout: 2172
-    - undefined: 429
-    - ECONNRESET: 411
-    - ECONNREFUSED: 1988
-    
+
+-   It took 70.82 seconds to send 5000 messages to the chatbot.
+-   4767 messages took longer than 1500 ms to send to the chatbot.
+-   The minimum time it took for a request to be processed was 53 ms (average was 12085 ms, and the maximum was 62517 ms)
+-   Of the messages sent, the benchmark test received the following error codes
+    -   Timeout: 2172
+    -   undefined: 429
+    -   ECONNRESET: 411
+    -   ECONNREFUSED: 1988
+
 You can also use [k6](https://k6.io/), a popular open-source load testing tool and SaaS for engineering teams.

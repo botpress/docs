@@ -2,7 +2,6 @@
 id: skill-call-api
 title: The Call API Skill
 ---
-
 ## Overview
 
 We developed the Call API skill to help you quickly call an API within your flow. You can then save and use the responses received from the external API in your chatbot's code and flows.
@@ -10,6 +9,7 @@ We developed the Call API skill to help you quickly call an API within your flow
 ![From Flow Editor](../assets/call-api-skill-flow.png)
 
 ## Request Options
+
 Calling an API involves making an HTTP request from Botpress to a named host on a server. The request aims to access a resource on the server. The following are the components of your request through which you will supply information to an API.
 
 ### Body
@@ -25,6 +25,7 @@ The request headers can be set here and should respect the JSON format.
 ![Headers](../assets/call-api-skill-headers.png)
 
 ## Response
+
 All APIs respond to every request with an HTTP status indicating whether the request was successful. The response typically comes along with a json response which may contain additional information. The Call API skill supports receipt and storage of this response in the following manner.
 
 ### Memory
@@ -36,10 +37,12 @@ We use [memory](../main/memory) to save the response given by the API we are cal
 The saved response object looks like this:
 
 ```json
+
 {
   "body": <Response Body>,
   "status": 200
 }
+
 ```
 
 ### Success / Failure

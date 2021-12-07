@@ -1,14 +1,15 @@
 ---
-id: slots
+id: skill-slot
 title: Slots
 ---
-
 Slots are a significant concept in Botpress NLU. You can think of them as necessary **parameters** to complete the action associated with an intent.
 
 ## Slot Tagging
+
 Botpress Native NLU will tag each _word_ (token) of user input. Words separated by a hyphen are treated as one token. If the token is correctly identified as a slot, it will be attached to the NLU extraction event. Each identified slot will be accessible in the `event.nlu.slots` object using its name as the key.
 
 ### Defining Slots
+
 To define a slot for a particular intent, open the **Intent section** of the Natural Language Understanding Module in your Botpress Studio sidebar. From there, select the intent you want to add slots to, then you'll be able to define your slots. Go ahead and click on **create a slot**
 
 ![create slot](../assets/nlu-create-slot.png)
@@ -24,6 +25,7 @@ The user said: `I would like to go to SFO from Mumbai.`
 `event.nlu.slots` will look like
 
 ```js
+
 slots : {
   airport_to: {
     name: 'airport_to',
@@ -36,6 +38,7 @@ slots : {
     entity: [Object] //detailed extracted entity
   }
 }
+
 ```
 
 ## Slot Filling
@@ -43,13 +46,14 @@ slots : {
 Slot filling is the process of gathering information required by an intent. This information is defined as _slots_ as we mentioned in the above section.  It handles input validation and the chatbot's reply when the input is invalid. Botpress has an in-built skill to handle the slot filling process.
 
 ### Creating a slot skill
+
 We will use the slots which we defined earlier in this tutorial.
 
-1. In the Flow Editor view, click on Insert skill > Slot.
-2. Choose an intent to use for the slot filling.
-3. Choose a slot to fill.
-4. Choose the content that your chatbot will ask. It should be a question about the information you seek, e.g., "From where are you departing?", "Where do you want to go?" etc.
-5. Choose the content for your chatbot reply when the input is invalid. It should guide the user towards a valid answer.
+1.  In the Flow Editor view, click on Insert skill &gt; Slot.
+2.  Choose an intent to use for the slot filling.
+3.  Choose a slot to fill.
+4.  Choose the content that your chatbot will ask. It should be a question about the information you seek, e.g., "From where are you departing?", "Where do you want to go?" etc.
+5.  Choose the content for your chatbot reply when the input is invalid. It should guide the user towards a valid answer.
 
 ![Skill Slot Overview](../assets/slot-skill-overview.png)
 
@@ -57,8 +61,8 @@ We will use the slots which we defined earlier in this tutorial.
 
 There are two types of validations:
 
-1. **Input validation**: The first validation is based on entity extraction. If the provided information doesn't match the entity of the slot, the chatbot will notify the user. This will not apply when the slot has the type `@system.any`. In this case, the chatbot will ultimately provide the complete user phrase when it fails to match a slot confidently.
-2. **Custom Input Validation**: you can use an action to add custom validation, e.g., regex, type validation (number, string). The action should set the variable `temp.valid` to either true or false based on the validation result.
+1.  **Input validation**: The first validation is based on entity extraction. If the provided information doesn't match the entity of the slot, the chatbot will notify the user. This will not apply when the slot has the type `@system.any`. In this case, the chatbot will ultimately provide the complete user phrase when it fails to match a slot confidently.
+2.  **Custom Input Validation**: you can use an action to add custom validation, e.g., regex, type validation (number, string). The action should set the variable `temp.valid` to either true or false based on the validation result.
 
 ### Max retry attempts
 
@@ -68,9 +72,9 @@ How many times the chatbot should try to get the correct answer. `On not found` 
 
 Three outcomes are possible:
 
-1. **`On extracted`** - The slot has been successfully extracted. It will be stored in `session.slots.<slot_name>`
-2. **`On not found`** - The slot has not been extracted. This will also happen when the maximum number of retries is reached or when custom validation fails.
-3. **`On already extracted`** - The slot has previously been extracted. One use-case for that would be to ask the user if the previous information is still relevant or if he would like to overwrite it.
+1.  **`On extracted`** - The slot has been successfully extracted. It will be stored in `session.slots.<slot_name>`
+2.  **`On not found`** - The slot has not been extracted. This will also happen when the maximum number of retries is reached or when custom validation fails.
+3.  **`On already extracted`** - The slot has previously been extracted. One use-case for that would be to ask the user if the previous information is still relevant or if he would like to overwrite it.
 
 ![Slot skill outcomes](../assets/slot-skill-outcomes.png)
 
@@ -85,27 +89,28 @@ This flow will result in a conversation like the one below. Notice that in the f
 ![Skill Slot Convo](../assets/slot-skill-convo.png)
 
 ## Guidelines When Adding Slots
-- Mix the positions of the slots in the utterances
-Example:
+
+-   Mix the positions of the slots in the utterances
+    Example:
 
 ![Mix Slots](../assets/slots-mix.png)
 
-- Avoid duplication when using slots
-Example - to avoid:
+-   Avoid duplication when using slots
+    Example - to avoid:
 
 ![Duplicated Slots](../assets/slot-mix.png)
 
-- Limit the number of slots used for a given Intent
-Suggestion: maximum of 3
+-   Limit the number of slots used for a given Intent
+    Suggestion: maximum of 3
 
-- Try mixing utterances with the slots to be: filled, partially filled, or empty
-Example:
+-   Try mixing utterances with the slots to be: filled, partially filled, or empty
+    Example:
 
 ![Filling Slots](../assets/slots-fill-mix.png)
 
-- Examples in utterances should match the defined entity
-Example: 
-  _Entity list:_ Google, Slack, Github, Email
-  _Intent:_ “Reset Trello password” (Slot value is not part of the list)
+-   Examples in utterances should match the defined entity
+    Example: 
+      _Entity list:_ Google, Slack, Github, Email
+      _Intent:_ “Reset Trello password” (Slot value is not part of the list)
 
-- When using slots, there have to be at least five utterances with an example of the slot; the more slots, the more utterances with examples
+-   When using slots, there have to be at least five utterances with an example of the slot; the more slots, the more utterances with examples

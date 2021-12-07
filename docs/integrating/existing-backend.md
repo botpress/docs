@@ -10,8 +10,8 @@ The content will be available under `event.credentials` when processing the even
 
 ## Enabling
 
-1. Configure `pro.externalAuth` in the file `botpress.config.json.`
-2. Create a file named `key.pub` in the folder `data/global` containing the public key
+1.  Configure `pro.externalAuth` in the file `botpress.config.json.`
+2.  Create a file named `key.pub` in the folder `data/global` containing the public key
 
 ## Usage
 
@@ -24,6 +24,7 @@ Once Botpress authenticates a user, you may want to extract some information fro
 Example of a hook listening for an event:
 
 ```js
+
 if (event.type === 'update_profile') {
   if (event.credentials) {
     event.state.user = {
@@ -40,6 +41,7 @@ if (event.type === 'update_profile') {
   // Since it's a custom event, we can safely skip the dialog engine
   event.setFlag(bp.IO.WellKnownFlags.SKIP_DIALOG_ENGINE, true)
 }
+
 ```
 
 Then send a custom event : `window.botpressWebChat.sendEvent({ type: 'update_profile' })`

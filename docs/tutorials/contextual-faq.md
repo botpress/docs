@@ -2,21 +2,22 @@
 id: contextual-faq
 title: Contextual FAQ
 ---
-
 ## Create a context
 
 To create context, you have two options:
 
-- Create context specific to a bot, create or edit this file `data/bots/<your_bot>/config/qna.json`.
-- Create context specific to all bots, create or edit this file `data/global/config/qna.json`.
+-   Create context specific to a bot, create or edit this file `data/bots/<your_bot>/config/qna.json`.
+-   Create context specific to all bots, create or edit this file `data/global/config/qna.json`.
 
 Then append the name of your new contexts to `qnaCategories` like so:
 
 ```json
+
 {
   "$schema": "../../../assets/modules/qna/config.schema.json",
   "qnaCategories": "global,monkeys,giraffes"
 }
+
 ```
 
 ### From version 12.8 onwards

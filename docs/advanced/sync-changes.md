@@ -2,7 +2,6 @@
 id: sync-changes
 title: Syncing Changes
 ---
-
 [TODO] Explain how BPFS works and how to download and sync changes with the source code
 
 # 🔧 Maintenance
