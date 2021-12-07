@@ -1,0 +1,12 @@
+---
+id: about-pro
+title: About
+original_id: about-pro
+---
+## Features
+
+[TODO] List pro features meanwhile see [list on pricing page](https://botpress.com/pricing/)
+
+## Activate pro
+
+To enable Botpress Pro features simply set `pro.enabled` to `true` in your botpress.config.json file
