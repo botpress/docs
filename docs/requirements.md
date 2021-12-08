@@ -1,49 +1,54 @@
 ---
-id: updating
-title: Updating to New Releases
+id: requirements
+title: Hardware and Software Requirements
 ---
 
-Download the latest Botpress version [here](https://botpress.com/download).
+You want to use Botpress to create the best chatbot ever? Then, take a look at the list below to know what the minimum (and sometimes maximum) hardware and software specification you need.
 
-## Version 12
+## Supported Browsers
 
-### SQLite
+You can use your favorite browser. Remember that if you encounter a problem, you can contact us!
 
-> ⚠️ Please backup your `/data` folder before making any changes
+## Mimimum Hardware Requirements
 
-1. Download and extract the new version of Botpress
-2. Copy the content of your previous `/data` folder
-3. Paste the content into the `/data` folder of the new version, then delete the assets folder.
-4. Start Botpress with `--auto-migrate` on the command line, or AUTO_MIGRATE=true environment variable.
+### Botpress
+- CPU: 1 of 2 GB RAM
+- Maximum: 60 messages/second
+- Optimal: 40 messages/second
 
-### PostgreSQL
+### PostgreSQL (database)
+- CPU: 2 of 4 GB RAM (Lowest in AWS)
+- Minimum: 60 messages/second 
+- Maximum: 600-800 messages/second
 
-> ⚠️ Please backup your database before making any changes
+## Messaging
 
-1. Download and extract the new version of Botpress
-2. Start Botpress with `--auto-migrate` on the command line, or AUTO_MIGRATE=true environment variable.
+The volume of messages contained in a single session is highly variable. It depends mainly on the targeted product, the domain, and the customers. See the following examples:
 
-To start the latest version of Botpress on a new database, you will need to pull `/data` to your filesystem.
+- Simple Q&A Bot:
+    - Example: Covid-19 information Bot
+    - #msg/session: 4-5 msgs/session
 
-Luckily, we have a tool for that:
+- Complex contextual Bot:
+    - Example: Customer service Bot:
+    - #msg/session: 10-20 msgs/session
 
-1. In Botpress running the old version, from the admin section, go to `Profile > Server > Version Control`.
-2. Copy the command from Version Control, or **Download archive**.
-3. From the old version's root, open a terminal and execute the command. `/data` is now synced to filesystem.
-4. Copy `/data` and paste in the new version's root. If you downloaded the archive, extract its contents to `/data`.
-5. Set the environment variable DATABASE_URL to the new database.
-6. Start Botpress. The filesystem will sync to the database automatically.
+- Special Cases (Persistent Sessions):
+    - Example: Classroom bot with persistent session
+    - #msg/session: 1000-5000 msgs/session
 
-#### Custom assets
+## Supported Operating Systems
 
-For both database systems, if you have any custom assets, do these extra steps:
+- Windows 10
+- Mac OS catalina or BigSur
+- Ubuntu 18.04 or 20.04
+- Debian 8.11
+- Red Hat 7.5
+- CentOS 7.5
 
-1. Start Botpress, wait for the server to be ready, then stop it. This creates the updated assets for all components.
-2. Restore your custom asset files. Check and make sure they are compatible with your latest version.
-3. Restart Botpress.
+## Infrastructure Best Practices
 
-## Version 11 and earlier
-
-Even though Botpress Server has become much more stable, breaking changes still might occur. When they do, resolving them is often as simple as editing config files in the `/data` folder.
-
-See if your version is listed in the [migration guide](releases/migrate).
+- Use at least 2 environments (development, staging, production…) to minimalize the impact on the end-user experience.
+- Create backups and continue maintenance of all components (especially the databases and storage components to mitigate and prevent data loss). 
+- Gradually execute maintenance and upgrades to ensure the system safety and its accuracy before exposing it to users (A/B, Canary deployments). For simpler implementations, predefine time ranges with low or null usage for the components maintenance. Don't forget to warn your users!
+- Allocate the least privileges and accesses possible. This ensures the environment security, prevents breaches, and preserves the data integrity.
