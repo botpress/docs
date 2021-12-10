@@ -57,66 +57,6 @@ In Botpress Studio Interface, you can add content to your chatbot. Navigate to t
 ![Adding Content Via Interface](../assets/adding-content.png)
 The content interface is useful for the separation of concerns. You may want a non-technical collaborator to look through the content, editing it for grammar, and creating the desired tone for your chatbot.
 
-## Channel Specific Rendering
-
-All Content Types define a `renderElement` function that tells how a Content Element gets rendered on different channels.
-
-> **Note:** This is critical because every channel is different and has a different set of functionalities. You want to customize and leverage the features of the other platforms to offer the best user experience possible.
-
-### Example
-
-Here's the web rendering function of the Text Content Type:
-
-```javascript
-function renderForWeb(data) {
-  const events = []
-
-  if (data.typing) {
-    events.push({
-      type: 'typing',
-      value: data.typing
-    })
-  }
-
-  return [
-    ...events,
-    {
-      type: 'text',
-      markdown: true,
-      text: data.text
-    }
-  ]
-}
-```
-
-Now, if we'd like to render for the messenger channel, we would add a specific rendering function for messenger and call it when `channel === 'messenger'`
-
-```javascript
-function renderForMessenger(data) {
-  const events = []
-
-  return [
-    ...events,
-    {
-      type: 'message',
-      user: data.profile,
-      text: data.text,
-      raw: data
-    }
-  ]
-}
-
-function renderElement(data, channel) {
-  if (channel === 'web') {
-    return renderForWeb(data)
-  } else if (channel === 'messenger') {
-    return renderForMessenger(data) // We add our rendering function
-  }
-
-  return []
-}
-```
-
 ## Translation
 
 Your chatbots can support multiple languages. If a specific translation is not available for the current language, the chatbot will use the default language. When a user chats with your chatbot, we extract the browser's language and save it as a user attribute (available on the event as `user.language`).
