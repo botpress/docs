@@ -1,5 +1,5 @@
 ---
-id: content type-action
+id: content-type-action
 title: How to create content type in an action
 ---
 # Content type
