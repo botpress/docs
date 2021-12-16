@@ -17,6 +17,7 @@ const siteConfig = {
   projectName: 'botpress-docs',
   organizationName: 'botpress',
   botpressServerUrl:"https://github.com/botpress/botpress",
+  editURL: null,
 
   algolia: {
     apiKey: '570227d66d130d069630e7226c740158',
@@ -62,7 +63,7 @@ const siteConfig = {
   ogImage: 'img/docusaurus.png',
   twitterImage: 'img/docusaurus.png',
 
-  editUrl: 'https://github.com/botpress/docs/edit/master/docs/',
+  editUrl: null,
   gaTrackingId: 'UA-90034220-1',
   gaGtag: true
 }
