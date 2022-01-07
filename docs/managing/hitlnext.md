@@ -1,6 +1,6 @@
 ---
 id: hitlnext
-title: HITL Next (beta)
+title: HITL Next
 ---
 
 This revamped HITL works on **all existing and future channels**. It supports all features of its predecessor and a few more :
