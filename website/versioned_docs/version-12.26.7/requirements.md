@@ -20,7 +20,7 @@ You can use your favorite browser. Remember that if you encounter a problem, you
 
 ### PostgreSQL (database)
 - CPU: 2 
-- RAM 4 GB
+- RAM: 4 GB
 - Minimum: 60 messages/second 
 - Maximum: 600-800 messages/second
 
