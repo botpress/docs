@@ -1,6 +1,7 @@
 ---
-id: hitlnext
+id: version-12.26.7-hitlnext
 title: HITL Next
+original_id: hitlnext
 ---
 
 This revamped HITL works on **all existing and future channels**. It supports all features of its predecessor and a few more:
