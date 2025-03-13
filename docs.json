@@ -3,9 +3,16 @@
   "theme": "mint",
   "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0090FF",
+    "light": "#3B9EFF",
+    "dark": "#0588F0"
+  },
+  "background": {
+    "decoration": "grid",
+    "color": {
+      "light": "#FCFCFD",
+      "dark": "#111113"
+    }
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -15,11 +22,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "development"
-            ]
+            "pages": ["introduction", "quickstart", "development"]
           },
           {
             "group": "Essentials",
@@ -39,9 +42,7 @@
         "groups": [
           {
             "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "pages": ["api-reference/introduction"]
           },
           {
             "group": "Endpoint Examples",
