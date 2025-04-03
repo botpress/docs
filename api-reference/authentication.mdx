@@ -1,0 +1,46 @@
+To authenticate with the Botpress Cloud API, you'll need to use an access token. The token types available are:
+
+### Types of Tokens
+
+#### 1. Personal Access Token (PAT)
+
+A Personal Access Token (PAT) can be generated in the **Profile Settings** section of your Botpress Cloud account. Once generated, you can use this token as a Bearer token to authenticate API requests.
+
+#### 2. Bot Token
+
+A Bot Token is provided to the bot once it is deployed. The token is stored in the `BP_TOKEN` environment variable and can be used to authenticate API requests on behalf of the bot.
+
+#### 3. Integration Token
+
+An Integration Token is provided to the integration once it is deployed. Like the Bot Token, it is stored in the `BP_TOKEN` environment variable and is used to authenticate API requests for the integration.
+
+---
+
+## Authentication Methods
+
+Once you have your token, you can authenticate your requests using one of the following methods:
+
+### 1. Authentication with the API
+
+To authenticate using the API, pass the `Authorization` header with the appropriate token. Here's an example of the request format:
+
+```http
+GET /api/endpoint
+Authorization: Bearer {ACCESS_TOKEN}
+```
+
+This header should be included in all requests to the Botpress Cloud API, where `{ACCESS_TOKEN}` is replaced with the actual token you obtained (PAT, Bot Token, or Integration Token).
+
+### 2. Authentication with the Client
+
+You can also authenticate using the client by providing the token when creating a new client instance:
+
+```javascript
+const token = 'your-token'
+const client = new Client({ token })
+```
+
+In this example:
+- `token`: The access token you obtained (either PAT, Bot Token, or Integration Token).
+
+This will create a client instance that is authenticated and can be used to interact with the API.
