@@ -1,0 +1,91 @@
+---
+title: "Documentation"
+mode: "custom"
+---
+
+import Home from "/snippets/home.mdx";
+
+<div className="flex flex-col items-center justify-center my-10">
+  <h1 className="text-4xl text-gray-600 font-bold pb-2">Documentation</h1>
+  <p className="text-lg mb-4">Explore our guides and examples to learn how to use Botpress.</p>
+  <a href="/guides/getting-started">
+  <button  className="flex items-center gap-2 border border-gray-300 bg-blue-500 text-white rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+    Get Started
+  </button>
+  </a>
+</div>
+
+<div className="flex flex-col items-center justify-center mb-20">
+  <CardGroup cols={3}>
+    <Card title="Guides" href="/guides/introduction">
+      Learn about Botpress and how to use its features to build an agent
+    </Card>
+    <Card title="Webchat" href="/webchat/introduction">
+      Learn how to integrate Botpress on your website
+    </Card>
+    <Card title="Chat Api" href="/api-reference/chat-api/getting-started">
+      Use Node.js to talk to your agent
+    </Card>
+    <Card title="Build an integration" href="/for-developers/integration/getting-started">
+      Build your own integration to connect your agent to an external app
+    </Card>
+    <Card title="Knowledge Base" href="/guides/knowledge-base">
+      Learn how to optimize your agent's knowledge
+    </Card>
+    <Card title="Api Reference" href="/api-reference/introduction">
+      Explore Botpress APIs to manage, chat and deploy your agent
+    </Card>
+  </CardGroup>
+</div>
+
+<div className="flex flex-col items-center justify-center pb-20">
+  <h2 className="text-3xl text-gray-600 font-bold pb-2">Community</h2>
+  <p className="text-md mb-4">Join our community to connect with other developers and get help.</p>
+  <button href="https://discord.com/invite/botpress" className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+    <Icon icon="discord" iconType="solid" className='bg-purple-500' color="#5865F2" />
+    <span>Join Discord</span>
+  </button>
+</div>
+
+<div className="flex flex-col items-center justify-center pb-20">
+  <h2 className="text-3xl text-gray-600 font-bold pb-2">Browse by Concepts</h2>
+  <p className="text-md mb-4">There's a lot you can do with Botpress. Browse by concept to learn more.</p>
+  <CardGroup cols={5}>
+    <Card title="Workflows" href="/guides/workflows">
+      Getting started with workflows
+    </Card>
+  </CardGroup>
+</div>
+
+<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 items-center mb-10">
+  <div className="flex flex-col justify-center items-center">
+    <h3 className="text-xl text-gray-600 font-bold pb-2">Additional Resources</h3>
+    <p className="text-md mb-4">There's a lot you can do with Botpress.</p>
+    <div className="flex flex-col gap-2 justify-center items-center">
+      <a href="" className="text-blue-400">Talk to your agent using an API</a>
+      <a href="" className="text-blue-400">Build a custom component for the webchat</a>
+      <a href="" className="text-blue-400">Manage your files using an API</a>
+      <a href="" className="text-blue-400">Manage your tables using an API</a>
+    </div>
+  </div>
+  <div className="flex flex-col justify-center items-center">
+    <h3 className="text-xl text-gray-600 font-bold pb-2">Webchat Guides</h3>
+    <p className="text-md mb-4">There's a lot you can do with Botpress.</p>
+    <div className="flex flex-col gap-2 justify-center items-center">
+      <a href="" className="text-blue-400">Talk to your agent using an API</a>
+      <a href="" className="text-blue-400">Build a custom component for the webchat</a>
+      <a href="" className="text-blue-400">Manage your files using an API</a>
+      <a href="" className="text-blue-400">Manage your tables using an API</a>
+    </div>
+  </div>
+  <div className="flex flex-col justify-center items-center">
+    <h3 className="text-xl text-gray-600 font-bold pb-2">Botpress's APIs</h3>
+    <p className="text-md mb-4">There's a lot you can do with Botpress.</p>
+    <div className="flex flex-col gap-2 justify-center items-center">
+      <a href="" className="text-blue-400">Talk to your agent using an API</a>
+      <a href="" className="text-blue-400">Build a custom component for the webchat</a>
+      <a href="" className="text-blue-400">Manage your files using an API</a>
+      <a href="" className="text-blue-400">Manage your tables using an API</a>
+    </div>
+  </div>
+</div>
