@@ -16,10 +16,14 @@ Files can be in any text or binary format, and documents (such as PDF, Microsoft
 
 ### Access Policies
 
-A file can have a list of special access policies:
+A file can specify a list of special access policies:
 
 - `public_content`: Unauthenticated users can read contents (but not metadata) of the file through a unique permanent URL provided by the API for each file. Without this policy the file URL returned by the API will be temporary and will expire after a short period of time.
 - `integrations`: Grants read, search, list access to all integrations of the bot that owns the file.
+
+Specifying the access policies for a file is completely optional and if not specified the file will be private by default and can only be accessed by the bot or integration that created it.
+
+> 🚧 Important: If a file was created by a bot (not an integration) all workspace members (except those with Viewer and Billing roles) that have access to the bot will be able to read, update, or delete the file regardless of the access policies specified.
 
 ### Permissions
 
