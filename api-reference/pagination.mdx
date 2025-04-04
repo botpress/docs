@@ -7,7 +7,7 @@ To retrieve paginated data, you can use the `nextToken` query parameter in your 
 ### Request Format
 
 ```http
-GET /api/endpoint?nextToken=<nextTokenValue>
+GET https://api.botpress.cloud/v1/endpoint?nextToken=<nextTokenValue>
 ```
 
 Where:
@@ -22,7 +22,7 @@ If the API returns the following response:
 {
   "data": [...],
   "meta": {
-    "nextToken": "abc123"
+    "nextToken": "wwNgQn6tWNR/IHhKGHv/sg9zcIAGsxOk0TfmM+DdmcWkBZrXYjVvcfSZIZSs4ppCr/g="
   }
 }
 ```
@@ -30,10 +30,10 @@ If the API returns the following response:
 You can use the nextToken value "abc123" to request the next page of results.
 
 ```http
-GET /api/endpoint?nextToken=abc123
+GET https://api.botpress.cloud/v1/endpoint?nextToken=wwNgQn6tWNR/IHhKGHv/sg9zcIAGsxOk0TfmM+DdmcWkBZrXYjVvcfSZIZSs4ppCr/g=
 ```
 
-This will return the next set of results.
+This will return the next set of results. Repeat this process by passing the new nextToken until the response body no longer includes a nextToken value, indicating there are no more results.
 
 ## 2. Pagination with Client Utilities
 

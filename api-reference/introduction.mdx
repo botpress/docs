@@ -1,5 +1,30 @@
----
-title: "Api Reference"
-description: "Explore Botpress APIs to manage, chat and deploy your agent"
----
+At Botpress, we love APIs. Every API we develop—whether public or private—is carefully designed with a strong focus on coherence and consistency. API design is at the core of our development process.
 
+Botpress is also a very big and complex system, and there isn't a single API that does everything. Instead, we provide multiple APIs, each tailored to specific functionalities. Below is a comprehensive list of all publicly available APIs in Botpress. Each API has dedicated documentation, which you can find in the left menu.
+
+## Chat API
+
+The Chat API enables interaction with your deployed bots via HTTP requests. Unlike other integrations, which are deployed as static services for all users, the Chat API is unique because it is an integration rather than a service. To use the Chat API in your bot, you first need to install the Chat Integration. For more details, refer to the [Chat API documentation](./chat-api).
+
+## Admin API
+
+The Admin API allows you to manage your workspace and provides a broad set of functionalities, covering everything from bot creation to monitoring and analytics. Key capabilities include: Among others, but not exclusively, it allows managing:
+- Bots
+- Self Developped Integrations
+- Logs, Issues and Analytics
+- Billing and Subscription
+- Workspace Collaborators and Roles
+
+As a general rule, if a feature is available in the Botpress Dashboard, it is likely accessible via the Admin API. For more details, refer to the [Admin API documentation](./admin-api).
+
+## Files API
+
+The Files API allows you to manage files associated with a bot or an integration. It can be used both at build time before the execution of your bot, and by the bot itself at runtime. For more details, refer to the [Files API documentation](./files-api).
+
+## Tables API
+
+Similar to the Files API, the Tables API enables the management of tables linked to a bot. It can be used both at build time and during bot execution. For more details, refer to the [Tables API documentation](./tables-api).
+
+## Runtime API
+
+The Runtime API is designed for bots and integrations to handle messages, events, actions, and webhook requests at runtime. Each request made to this API is authenticated as either a bot or an integration. It can also be accessed externally by providing a bot or integration Id—though doing so effectively authenticates the request as a bot or integration. For more details, refer to the [Runtime API documentation](./runtime-api).
