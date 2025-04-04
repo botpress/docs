@@ -1,0 +1,29 @@
+The following steps will guide you through creating a custom integration for an external service.
+
+## Prerequisites
+- A Botpress Cloud workspace.
+  - The workspace handle must be set. Follow these [instructions](../../../guides/getting-started.mdx) to create and setup your workspace.
+  - The integration limit for your workspace has not been reached.
+- The development environment is set up and the Botpress CLI is installed. Follow these [instructions](../../guides/getting-started.mdx) to install the necessary tools.
+- A personal access token (PAT) is configured for your workspace. Follow these [instructions](../../../guides/getting-started.mdx) to create a PAT.
+## Create your integration project
+<Steps>
+  <Step title="Login">
+  Start by logging into your Botpress Cloud workspace. This allows the CLI to create the integration with the correct workspace handle. Use the following command:
+  ```bash
+  npm exec bp login
+  ```
+  </Step>
+  <Step title="Initialize your project">
+  Create a new integration project. Use the command below to start the project creation wizard. When prompted, select the `integration` project type, then
+  select the workspace you want to create the integration in and finally select the integration template you want to use (select `Empty Integration` to start from scratch):
+  ```bash
+  npm exec bp init
+  ```
+  </Step>
+</Steps>
+## Develop your integration
+The capabilities of your integration are defined in the `integration.definition.ts` file.
+## Deploy your integration
+## Adding your integration to your bot
+## Seeing your integrations logs
