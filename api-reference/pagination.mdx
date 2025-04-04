@@ -1,0 +1,60 @@
+Our APIs support pagination in two primary ways, allowing you to efficiently retrieve large sets of data in smaller, manageable chunks.
+
+## 1. Pagination with API Query Parameters
+
+To retrieve paginated data, you can use the `nextToken` query parameter in your requests. The `nextToken` is a string that the API provides in the response meta section to indicate the next page of results.
+
+### Request Format
+
+```http
+GET /api/endpoint?nextToken=<nextTokenValue>
+```
+
+Where:
+
+- `nextTokenValue`: A string value provided in the `meta.nextToken` field of the last API response.
+
+### Example
+
+If the API returns the following response:
+
+```json
+{
+  "data": [...],
+  "meta": {
+    "nextToken": "abc123"
+  }
+}
+```
+
+You can use the nextToken value "abc123" to request the next page of results.
+
+```http
+GET /api/endpoint?nextToken=abc123
+```
+
+This will return the next set of results.
+
+## 2. Pagination with Client Utilities
+
+### Using .collect() to Fetch Results
+
+You can also paginate results using the .collect() function provided by our client utilities. This is useful when you want to retrieve a specific number of items at once.
+
+```js
+const [latestConversation] = await client.list
+  .conversations({ sortField: "createdAt", sortDirection: "desc", integrationName: "telegram" })
+  .collect({ limit: 1 });
+```
+
+The .collect() function will handle pagination for you automatically.
+
+### Using Async Generator with for await
+
+If you need to handle pagination in a more granular way, you can use an async generator with the for await syntax. This allows you to iterate over the results one by one.
+
+```js
+for await (const message of client.list.messages({ conversationId: latestConversation.id })) {
+  console.log(`### [${message.userId}]`, message.payload);
+}
+```

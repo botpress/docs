@@ -1,0 +1,113 @@
+---
+title: API Concepts
+---
+
+The **Admin API** is used to manage the surrounding infrastructure of the bots. It handles accounts, workspaces, users, quotas, billing, and other administrative functions.
+
+## Account
+
+An **Account** represents a customer entity using the system. It can be an organization or an individual user. Accounts manage billing, workspaces, and quotas.
+
+- Each account has one or more workspaces.
+- Quotas and billing are managed at the account level.
+
+---
+
+## Workspace
+
+A **Workspace** is an isolated environment within an account where users, bots, and integrations operate. Workspaces help segment data and configurations.
+
+- Each workspace belongs to a single account.
+- Users can have access to multiple workspaces.
+- Contains its own configurations, bots, and logs.
+
+---
+
+## Workspace Member
+
+A **Workspace Member** is a user who has access to a workspace. Each member has a role that defines their level of access.
+
+- Roles control permissions for actions like managing bots or settings.
+- Members can belong to multiple workspaces with different roles.
+- Access can be managed via the Admin API.
+
+---
+
+## Billing
+
+**Billing** manages the invoicing and payments for workspaces, tracking charges for resources and services consumed. It ensures that workspaces are billed accurately based on usage and helps admins manage unpaid invoices.
+
+- Workspaces receive invoices for services and usage. These can be listed and reviewed.
+- The API provides details on upcoming invoices, allowing for proactive management.
+- Administrators can trigger payments for unpaid invoices, including tracking which invoices were successfully charged or failed.
+
+---
+
+## Quotas
+
+**Quotas** define usage limits for accounts and workspaces. These limits may apply to API requests, storage, or bot execution.
+
+- Enforced per account, workspace, or bot, depending on the resource type.
+- Some quotas are adjustable based on subscription plans.
+- API responses may include quota-related headers or errors when limits are exceeded.
+
+### Common Quotas
+
+- **AI Usage**: Limits AI spend and website indexing.
+- **Bot Limits**: Caps number of bots, invocations, and always-alive bots.
+- **Integrations & Actions**: Restricts billable actions and owned integrations.
+- **Workspace Limits**: Controls members and general usage quotas.
+- **Storage**: Limits tables and total rows.
+
+---
+
+## Bot
+
+**Bots** are automated entities that perform tasks within a workspace. They interact with users, execute workflows, and process data.
+
+- Manage bots throughout their lifecycle within a workspace with the Admin API.
+- Track and manage different versions of a bot, including deploying a specific version.
+- Generate and retrieve code for embedding bots into web interfaces via webchat.
+
+---
+
+## Integration
+
+**Integrations** allow bots to connect with external systems, enabling them to interact with third-party services such as Slack or WhatsApp. By connecting bots to these external platforms, integrations extend the bot's functionality and enable more complex workflows.
+
+Integrations can be:
+
+- **Public**: These are pre-built integrations developed by Botpress for widely used services (like Slack).
+- **Private**: Custom integrations built for specific workspaces, allowing for connections to internal systems or specialized third-party services. You can manage those using the Admin API.
+
+---
+
+## Activity
+
+**Activities** are key events and actions in the system, primarily related to bot behavior and interactions. These logs help monitor and debug the actions bots take, including messages, tasks, and errors. Activity logs serve as an audit trail for understanding bot actions and system events over time.
+
+- Tracks events such as bot-user interactions, task status changes, and system errors.
+- Useful for monitoring bot performance and diagnosing issues.
+- Helps provide transparency into bot behavior and actions within the system.
+
+---
+
+## Logs
+
+**Logs** capture detailed records of activity for both bots and integrations. These logs encompass system-level events as well as user-generated log entries, such as those created using `console.log` or `logger.log`.
+
+---
+
+## Issues
+
+**Issues** track problems or errors affecting a bot’s functionality. These can be analyzed and resolved to ensure the bot operates smoothly. **Issue events** provide context and detail about what occurred during a specific issue.
+
+---
+
+## Analytics
+
+**Analytics** focus on the performance and usage data of bots. They provide insights into how a bot is performing over time and can be used to track key metrics within a specified time range.
+
+---
+
+For detailed API specifications, refer to the API reference documentation.
