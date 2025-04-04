@@ -63,11 +63,8 @@ for (const passage of passages) {
 
 ```ts
 const params = new URLSearchParams({
-  query: 'what are the most popular products of your company?',
-  tags: JSON.stringify({
-    category: 'Support',
-    subcategory: 'Technical',
-  }),
+  query: encodeURIComponent('what are the most popular products of your company?'),
+  tags: 'tags.category=Support&tags.subcategory=Technical',
 })
 
 const result = await fetch('https://api.botpress.cloud/v1/files/search?' + params.toString(), {
