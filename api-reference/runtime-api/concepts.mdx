@@ -1,0 +1,87 @@
+---
+title: "Concepts"
+---
+
+## Bot
+
+Bots can't be accessed directly from the Runtime API. Instead, they are managable in [the Admin API](../admin-api/concepts.mdx#bot). However, they are still a core concept of the Runtime API. 
+
+{/* TODO: fill this */}
+
+## Integration
+
+{/* TODO: fill this */}
+
+## Definitions and instances
+
+Two cateegories of objects exist in the Botpress Runtime API: definitions and instances. Each of the concepts listed below is first defined in the integration or bot definition and then instantiated the during the bot or integration execution.
+
+### Message
+
+Messages are the core of the Botpress Runtime API. The Integration Definition is responsible for providing message definitions, i.e. define each avaliable message type and their respective payload schemas. 
+
+The message instance is the actual message sent to the bot or integration. It can contain any payload as long as it matches the schema defined in the message definition for the corresponding type. Here's the typescript type of a message object:
+
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type Message = {
+    id: string;
+    createdAt: string;
+    type: string;
+    payload: { [k: string]: any; };
+    direction: "incoming" | "outgoing";
+    userId: string;
+    conversationId: string;
+    tags: { [k: string]: string; };
+}
+```
+
+### Direction
+
+In the Runtime API, messages have a direction. 
+
+To interract with a bot on an external messaging service like WhatsApp, the user starts by sending a message to the bot. The external service (here WhatsApp) is then responsible for sending a request to our API which is handled by the WhatsApp integration. The WhatsApp integration will then call the runtime API to create a message. Since this message comes from outside Botpress, it is considered **incoming**. Following this logic, all messages sent by an integration are considered **incoming**. 
+
+The opposite is true for messages sent by the bot. When a bot receives an incoming messages, he can reply by calling the runtime API to create a message. This message is then sent to the integration which will send it to the external service. Since this message comes from inside Botpress and is sent to an external service, it is considered **outgoing**.
+
+The message direction then simply weither it was created by the integration or by the bot.
+
+### User and Conversation Id
+A message is sent by a user as part of a conversation. Since Bots can send messages, they are also considered users. The `userId` and `conversationId` properties are used to respectively identify the user who sent the message and the conversation in which the message was sent.
+
+### Tags
+Tags are key-value pairs that can be used to store additional information about a message. Only the tags defined in the message definition can be used. See [Tags](#tags) for more information.
+
+### Builtin Message Types
+
+It is stated above that messages can contain any payload as long as it matches the schema defined in the message definition for the corresponding type. This is an oversimplification. It is true that integration can define any message type they want. However, the Botpress Runtime API also defines a set of builtin message types that can not be broken. These are:
+
+- text: A simple text message. The payload is `{ text: string; }`
+- image: An image message. The payload is `{ imageUrl: string; }`
+- audio: An audio message. The payload is `{ audioUrl: string; }`
+- video: A video message. The payload is `{ videoUrl: string; }`
+- file: A file message. The payload is `{ fileUrl: string; }`
+- location: A location message. The payload is `{ latitude: number; longitude: number; address?: string; title?: string; }`
+- carousel: A carousel message. The payload is `{ items: Card[]; }`
+- card: A card message. The payload is `{ title: string; subtitle?: string; imageUrl?: string; actions: CardAction[]; }`
+- dropdown: A dropdown message. The payload is `{ options: DropdownOption[]; }`
+- choice: A choice message. The payload is `{ text: string; options: { label: string; value: string; }[]; }`
+- bloc: A block message which is a composite message that can contain a list of any toher message type.
+
+This means that if an integration defines a message type `text`, the payload must be compatible with `{ text: string; }`. It can add type constraints like new properties to the payload, but it can not remove them.
+
+### Conversation
+
+### User
+
+### Event
+
+### State
+
+### Tags
+
+### Workflows
+
+### Actions
+
+### Analytics
