@@ -55,19 +55,73 @@ Tags are key-value pairs used to attach metadata to messages. Only tags defined 
 
 Botpress enforces a set of built-in message types that must be supported by integrations:
 
-- **text**: `{ text: string }`
-- **image**: `{ imageUrl: string }`
-- **audio**: `{ audioUrl: string }`
-- **video**: `{ videoUrl: string }`
-- **file**: `{ fileUrl: string }`
-- **location**: `{ latitude: number; longitude: number; address?: string; title?: string }`
-- **carousel**: `{ items: Card[] }`
-- **card**: `{ title: string; subtitle?: string; imageUrl?: string; actions: CardAction[] }`
-- **dropdown**: `{ options: DropdownOption[] }`
-- **choice**: `{ text: string; options: { label: string; value: string }[] }`
-- **bloc**: Composite message containing multiple message types.
+{/* TODO(driftable): This list is subject to changes and should be auto-generated */}
+- **text** A plain text message.
+- **image** An image message.
+- **audio** An audio message.
+- **video** A video message.
+- **file** A file message.
+- **location** A message indicating a location with a latitude and longitude.
+- **carousel** A message containing a carousel of card.
+- **card** A message containing an image and a button.
+- **dropdown** A message containing a dropdown with options.
+- **choice** A message containing a choice with options.
+- **bloc** A composite message that can contain multiple message types.
 
-Custom message types must extend, not override, these built-ins. For example, a custom `text` type must still conform to `{ text: string }`, though it may include additional properties.
+Here's the TypeScript representation of each of these message's payload:
+
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type Text = { text: string }
+type Image = { imageUrl: string }
+type Audio = { audioUrl: string }
+type Video = { videoUrl: string }
+type File = {
+  fileUrl: string
+  title?: string
+}
+type Location = {
+  latitude: number
+  longitude: number
+  address?: string
+  title?: string
+}
+
+type Card = {
+  title: string
+  subtitle?: string
+  imageUrl?: string
+  actions: {
+    action: 'postback' | 'url' | 'say'
+    label: string
+    value: string
+  }[]
+}
+
+type Choice = {
+  text: string
+  options: {
+    label: string
+    value: string
+  }[]
+}
+
+type Carousel = {
+  items: Card[]
+}
+
+type Bloc = {
+  items:
+    | { type: 'text'; payload: Text }
+    | { type: 'image'; payload: Image }
+    | { type: 'audio'; payload: Audio }
+    | { type: 'video'; payload: Video }
+    | { type: 'file'; payload: File }
+    | { type: 'location'; payload: Location }
+}
+```
+
+When an integration is deployed, it can defined any message type, but can't override any of the builtin message types with a breaking schema. This means that if an integration defines a message of type `text`, the payload must be _compatible_ with `{ text: string; }`. In other words, it can add type constraints like new properties to the payload, but it can not remove them.
 
 ## Conversation
 
