@@ -4,23 +4,23 @@ title: "Concepts"
 
 ## Bot
 
-Bots can't be accessed directly from the Runtime API. Instead, they are managable in [the Admin API](../admin-api/concepts.mdx#bot). However, they are still a core concept of the Runtime API. 
+Bots can't be accessed directly from the Runtime API. Instead, they are manageable in [the Admin API](../admin-api/concepts.mdx#bot). However, they are still a core concept of the Runtime API.
 
-{/* TODO: fill this */}
+{/* TODO: fill */}
 
 ## Integration
 
-{/* TODO: fill this */}
+{/* TODO: fill */}
 
-## Definitions and instances
+## Definitions and Instances
 
-Two cateegories of objects exist in the Botpress Runtime API: definitions and instances. Each of the concepts listed below is first defined in the integration or bot definition and then instantiated the during the bot or integration execution.
+Two categories of objects exist in the Botpress Runtime API: **definitions** and **instances**. Each concept listed below is first defined in the integration or bot definition and then instantiated during the bot or integration execution.
 
 ### Message
 
-Messages are the core of the Botpress Runtime API. The Integration Definition is responsible for providing message definitions, i.e. define each avaliable message type and their respective payload schemas. 
+Messages are the core of the Botpress Runtime API. The Integration Definition is responsible for providing message definitions, i.e., defining each available message type and their respective payload schemas.
 
-The message instance is the actual message sent to the bot or integration. It can contain any payload as long as it matches the schema defined in the message definition for the corresponding type. Here's the typescript type of a message object:
+The message instance is the actual message sent to the bot or integration. It must conform to the schema defined in the message definition for the corresponding type. Here's the TypeScript type of a message object:
 
 {/* TODO(driftable): This type is subject to changes and should be auto-generated */}
 ```ts
@@ -38,50 +38,64 @@ type Message = {
 
 ### Direction
 
-In the Runtime API, messages have a direction. 
+In the Runtime API, messages have a **direction**.
 
-To interract with a bot on an external messaging service like WhatsApp, the user starts by sending a message to the bot. The external service (here WhatsApp) is then responsible for sending a request to our API which is handled by the WhatsApp integration. The WhatsApp integration will then call the runtime API to create a message. Since this message comes from outside Botpress, it is considered **incoming**. Following this logic, all messages sent by an integration are considered **incoming**. 
+When a user sends a message from an external messaging service (e.g., WhatsApp), the external service sends a request to the Botpress API which is handled by the integration. The integration will then call the runtime API to create a message. Since this message originates externally, it is classified as **incoming**.
 
-The opposite is true for messages sent by the bot. When a bot receives an incoming messages, he can reply by calling the runtime API to create a message. This message is then sent to the integration which will send it to the external service. Since this message comes from inside Botpress and is sent to an external service, it is considered **outgoing**.
+Conversely, when a bot generates a response, it creates a message via the Runtime API, which is then sent to the external service through the integration. Since this message originates within Botpress, it is classified as **outgoing**.
 
-The message direction then simply weither it was created by the integration or by the bot.
+Thus, message direction is determined by whether the message was created by the integration (incoming) or by the bot (outgoing).
 
-### User and Conversation Id
-A message is sent by a user as part of a conversation. Since Bots can send messages, they are also considered users. The `userId` and `conversationId` properties are used to respectively identify the user who sent the message and the conversation in which the message was sent.
+### User and Conversation ID
 
-### Tags
-Tags are key-value pairs that can be used to store additional information about a message. Only the tags defined in the message definition can be used. See [Tags](#tags) for more information.
-
-### Builtin Message Types
-
-It is stated above that messages can contain any payload as long as it matches the schema defined in the message definition for the corresponding type. This is an oversimplification. It is true that integration can define any message type they want. However, the Botpress Runtime API also defines a set of builtin message types that can not be broken. These are:
-
-- text: A simple text message. The payload is `{ text: string; }`
-- image: An image message. The payload is `{ imageUrl: string; }`
-- audio: An audio message. The payload is `{ audioUrl: string; }`
-- video: A video message. The payload is `{ videoUrl: string; }`
-- file: A file message. The payload is `{ fileUrl: string; }`
-- location: A location message. The payload is `{ latitude: number; longitude: number; address?: string; title?: string; }`
-- carousel: A carousel message. The payload is `{ items: Card[]; }`
-- card: A card message. The payload is `{ title: string; subtitle?: string; imageUrl?: string; actions: CardAction[]; }`
-- dropdown: A dropdown message. The payload is `{ options: DropdownOption[]; }`
-- choice: A choice message. The payload is `{ text: string; options: { label: string; value: string; }[]; }`
-- bloc: A block message which is a composite message that can contain a list of any toher message type.
-
-This means that if an integration defines a message type `text`, the payload must be compatible with `{ text: string; }`. It can add type constraints like new properties to the payload, but it can not remove them.
-
-### Conversation
-
-### User
-
-### Event
-
-### State
+A message is sent by a user as part of a conversation. Since bots can send messages, they are also considered users. The `userId` and `conversationId` properties identify the sender and the conversation context.
 
 ### Tags
 
-### Workflows
+Tags are key-value pairs used to store additional metadata about a message. Only tags defined in the message definition can be used. See [Tags](#tags) for more information.
 
-### Actions
+### Built-in Message Types
 
-### Analytics
+Although integrations can define custom message types, the Botpress Runtime API enforces a set of built-in message types that must be supported:
+
+- **text**: `{ text: string; }`
+- **image**: `{ imageUrl: string; }`
+- **audio**: `{ audioUrl: string; }`
+- **video**: `{ videoUrl: string; }`
+- **file**: `{ fileUrl: string; }`
+- **location**: `{ latitude: number; longitude: number; address?: string; title?: string; }`
+- **carousel**: `{ items: Card[]; }`
+- **card**: `{ title: string; subtitle?: string; imageUrl?: string; actions: CardAction[]; }`
+- **dropdown**: `{ options: DropdownOption[]; }`
+- **choice**: `{ text: string; options: { label: string; value: string; }[]; }`
+- **bloc**: Composite message that can contain multiple message types.
+
+Custom message types must be compatible with these built-in types and cannot override them. This means that if an integration defines a message type `text`, the payload must be compatible with `{ text: string; }`. It can add type constraints like new properties to the payload, but it can not remove them.
+
+## Conversation
+
+A conversation represents a series of exchanged messages between a different users including a bot. Conversations are tracked by their `conversationId`.
+
+## User
+
+A user represents an entity interacting with the bot. Each user has a unique `userId`. Users can be human users or bots (for automated responses in multi-bot setups).
+
+## Event
+
+{/* TODO: fill */}
+
+## State
+
+{/* TODO: fill */}
+
+## Tags
+
+Tags provide additional metadata for messages, users, or conversations. They help categorize and filter data for analytics, automation, or custom logic.
+
+## Workflows
+
+{/* TODO: fill */}
+
+## Actions
+
+{/* TODO: fill */}
