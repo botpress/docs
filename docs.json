@@ -19,15 +19,133 @@
     "tabs": [
       {
         "tab": "Guides",
-        "pages": ["home", "guides/introduction"]
+        "pages": [
+          "home",
+          "guides/introduction"
+        ]
       },
       {
         "tab": "For Developers",
         "pages": [
           "for-developers/introduction",
           {
-            "group": "Integration",
-            "pages": ["for-developers/integration/introduction"]
+            "group": "Botpress SDK",
+            "pages": [
+              "for-developers/sdk/introduction",
+              {
+                "group": "Integration",
+                "pages": [
+                  "for-developers/sdk/integration/introduction"
+                ]
+              },
+              {
+                "group": "Interface",
+                "pages": [
+                  "for-developers/sdk/interface/introduction"
+                ]
+              },
+              {
+                "group": "Bot",
+                "pages": [
+                  "for-developers/sdk/bot/introduction"
+                ]
+              },
+              {
+                "group": "Plugin",
+                "hidden": true,
+                "pages": [
+                  "for-developers/sdk/plugin/introduction"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Botpress CLI",
+            "pages": [
+              "for-developers/cli/introduction",
+              {
+                "group": "Authentication",
+                "pages": [
+                  "for-developers/cli/commands/login",
+                  "for-developers/cli/commands/logout"
+                ]
+              },
+              {
+                "group": "Project Lifecycle",
+                "pages": [
+                  {
+                    "group": "Project Creation",
+                    "pages": [
+                      "for-developers/cli/commands/init"
+                    ]
+                  },
+                  {
+                    "group": "Adding Dependencies",
+                    "pages": [
+                      "for-developers/cli/commands/add"
+                    ]
+                  },
+                  {
+                    "group": "Building & Bundling",
+                    "pages": [
+                      "for-developers/cli/commands/build",
+                      "for-developers/cli/commands/bundle",
+                      "for-developers/cli/commands/generate"
+                    ]
+                  },
+                  {
+                    "group": "Deployment",
+                    "pages": [
+                      "for-developers/cli/commands/deploy"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Local Development",
+                "pages": [
+                  "for-developers/cli/commands/chat",
+                  "for-developers/cli/commands/serve",
+                  "for-developers/cli/commands/dev"
+                ]
+              },
+              {
+                "group": "Project Introspection",
+                "pages": [
+                  "for-developers/cli/commands/lint",
+                  "for-developers/cli/commands/read"
+                ]
+              },
+              {
+                "group": "Administrative Commands",
+                "pages": [
+                  {
+                    "group": "Managing Integrations",
+                    "pages": []
+                  },
+                  {
+                    "group": "Managing Interfaces",
+                    "pages": []
+                  },
+                  {
+                    "group": "Managing Bots",
+                    "pages": []
+                  },
+                  {
+                    "group": "Managing Plugins",
+                    "pages": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Zai",
+            "pages": []
+          },
+          {
+            "group": "Vai",
+            "pages": []
           }
         ]
       },
@@ -44,7 +162,9 @@
           },
           {
             "group": "Component Library",
-            "pages": ["webchat/webchat-components/getting-started"]
+            "pages": [
+              "webchat/webchat-components/getting-started"
+            ]
           }
         ]
       },
@@ -57,7 +177,9 @@
           "api-reference/errors",
           {
             "group": "Chat API",
-            "pages": ["api-reference/chat-api/introduction"]
+            "pages": [
+              "api-reference/chat-api/introduction"
+            ]
           },
           {
             "group": "Admin API",
@@ -68,15 +190,21 @@
           },
           {
             "group": "Files API",
-            "pages": ["api-reference/files-api/getting-started"]
+            "pages": [
+              "api-reference/files-api/getting-started"
+            ]
           },
           {
             "group": "Tables API",
-            "pages": ["api-reference/tables-api/getting-started"]
+            "pages": [
+              "api-reference/tables-api/getting-started"
+            ]
           },
           {
             "group": "Runtime Api",
-            "pages": ["api-reference/runtime-api/getting-started"]
+            "pages": [
+              "api-reference/runtime-api/getting-started"
+            ]
           }
         ]
       }
