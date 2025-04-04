@@ -47,17 +47,21 @@ const file = await client.uploadFile({
 
 If you're using Javascript or TypeScript the easiest way to interact with the API is using the [Botpress Client](https://www.npmjs.com/package/@botpress/client). You can install the client package by using your favorite package manager:
 
-```Text npm
+<CodeGroup>
+
+```bash npm
 npm install @botpress/client
 ```
 
-```Text pnpm
+```bash pnpm
 pnpm install @botpress/client
 ```
 
-```Text yarn
+```bash yarn
 yarn add @botpress/client
 ```
+
+</CodeGroup>
 
 The Botpress Client will handle the authentication and other details for you, you just need to provide your Botpress PAT (Personal Access Token) to the client and the ID of the bot that the client will access. If your use-case requires accessing multiple bots, you can define as many client instances as needed (one for each bot).
 

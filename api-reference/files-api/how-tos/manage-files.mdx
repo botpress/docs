@@ -4,9 +4,9 @@ To get the details of a file you can use the [Get File](../docs/api-documentatio
 
 You can also use this endpoint to retrieve a new temporary pre-signed URL to download a file if the previous pre-signed URL has already expired.
 
-#### Using the Botpress Client
+<CodeGroup>
 
-```ts
+```ts Using the Botpress Client
 import { Client } from '@botpress/client'
 
 const client = new Client({
@@ -17,9 +17,7 @@ const client = new Client({
 const file = await client.getFile('YOUR_FILE_ID')
 ```
 
-#### Calling the API directly
-
-```ts
+```ts Calling the API directly
 const result = await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
   method: 'GET',
   headers: {
@@ -32,20 +30,20 @@ const response = await result.json()
 const file = response.file
 ```
 
+</CodeGroup>
+
 ## Listing existing files of a bot
 
 To list all the files of a bot you can use the [List Files](../docs/api-documentation/#list-files) API endpoint.
 
-#### Using the Botpress Client
+<CodeGroup>
 
-```ts
+```ts Using the Botpress Client
 const res = await client.listFiles()
 const files = res.data.files
 ```
 
-#### Calling the API directly
-
-```ts
+```ts Calling the API directly
 const result = await fetch('https://api.botpress.cloud/v1/files', {
   method: 'GET',
   headers: {
@@ -58,14 +56,16 @@ const response = await result.json()
 const files = response.files
 ```
 
+</CodeGroup>
+
 ### Filtering by tags
 
 If you need to filter files by tags, you can just pass the `tags` parameter which should be an object with key-value pairs of tags a file must have in order to be returned. Tag filtering works in an "AND" fashion, so only the files that have all the specified tags will be returned.
 
-#### Using the Botpress Client
+<CodeGroup>
 
-```ts
-const res = await client.listFiles({
+```ts Using the Botpress Client
+const { files } = await client.listFiles({
   tags: {
     category: 'Sales',
   },
@@ -91,7 +91,7 @@ const result = await fetch('https://api.botpress.cloud/v1/files?' + params, {
 
 const response = await result.json()
 const files = response.files
-````
+```
 
 </CodeGroup>
 
@@ -118,9 +118,9 @@ Only the tags and access policies of a file can be updated.
 
 Here's an example of how to update the access policies and tags of a file using the Botpress Client:
 
-#### Using the Botpress Client
+<CodeGroup>
 
-```ts
+```ts Using the Botpress Client
 await client.updateFile({
   id: 'YOUR_FILE_ID',
   accessPolicies: ['integrations'], // This value will replace the existing access policies of the file.
@@ -134,9 +134,7 @@ await client.updateFile({
 })
 ```
 
-#### Calling the API Directly
-
-```ts
+```ts Calling the API directly
 await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
   method: 'PUT',
   headers: {
@@ -156,6 +154,8 @@ await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
 })
 ```
 
+</CodeGroup>
+
 ## Updating file content
 
 If you need to update the content of a file, you can create a new file with the updated content and then delete the old file. The file ID will change in this case.
@@ -164,15 +164,13 @@ If you need to update the content of a file, you can create a new file with the 
 
 To delete a file you can use the "Delete File" API endpoint.
 
-#### Using the Botpress Client
+<CodeGroup>
 
-```ts
+```ts Using the Botpress Client
 await client.deleteFile('YOUR_FILE_ID')
 ```
 
-#### Calling the API Directly
-
-```ts
+```ts Calling the API directly
 await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
   method: 'DELETE',
   headers: {
@@ -181,3 +179,5 @@ await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
   },
 })
 ```
+
+</CodeGroup>
