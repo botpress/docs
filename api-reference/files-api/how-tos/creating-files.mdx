@@ -1,0 +1,166 @@
+## Creating a file
+
+All files are private by default and can only be accessed by the bot that created them.
+
+### In an Execute Card in your bot
+
+The following code snippet can be put in an Execute Card in your bot to create and upload a file that can be accessed by anyone with the file URL and that will be indexed for semantic search:
+
+> Important: Make sure you have enabled the "Use the Botpress Client" setting in your bot's settings in Botpress Studio in order to have access to the `client` global variable, otherwise it will not be accessible and you'll get an error.
+
+```ts
+const file = await client.uploadFile({
+  key: 'optional_prefix/unique_file_name.txt', // Each file needs a unique key under your bot
+  content: 'This is a test file',
+})
+```
+
+Once the code above runs, the URL to download the file will be available in the `file.url` property.
+
+By default the file URL returned will be temporary and change on each request to this endpoint, and will expire after a short period of time and thus should not be stored long-term, but if the file was created with a 'public_content' access policy then this URL will be permanent and can be stored long-term.
+
+#### Uploading from an existing URL
+
+Or if the file is already available in a URL and you want to download and then upload it to Botpress Cloud you can pass it in the `url` parameter instead of using the `content` parameter:
+
+```ts
+const file = await client.uploadFile({
+  key: 'unique_file_name.pdf', // Each file needs a unique key under your bot
+  url: 'https://example.com/test.pdf', // This is the external URL where the file is currently located
+})
+```
+
+#### Uploading a binary file
+
+If you are dealing with a binary file such as a PDF or Microsoft Office document you can also pass a `Buffer` object as the `content` parameter for the file:
+
+```ts
+const buffer = // This must be a Buffer object containing the binary content of the file
+
+const file = await client.uploadFile({
+  key: 'unique_file_name.pdf', // Each file needs a unique key under your bot
+  content: buffer,
+})
+```
+
+### In a custom script using the Botpress Client
+
+If you're using Javascript or TypeScript the easiest way to interact with the API is using the [Botpress Client](https://www.npmjs.com/package/@botpress/client). You can install the client package by using your favorite package manager:
+
+```Text npm
+npm install @botpress/client
+```
+
+```Text pnpm
+pnpm install @botpress/client
+```
+
+```Text yarn
+yarn add @botpress/client
+```
+
+The Botpress Client will handle the authentication and other details for you, you just need to provide your Botpress PAT (Personal Access Token) to the client and the ID of the bot that the client will access. If your use-case requires accessing multiple bots, you can define as many client instances as needed (one for each bot).
+
+You can use the following code snippet to create and upload a file in a custom script using the Botpress Client. Note that in the example below your Botpress PAT (Personal Access Token) and bot ID must be defined in the environment variables `BOTPRESS_PAT` and `BOTPRESS_BOT_ID` respectively.
+
+```ts
+import { Client } from '@botpress/client'
+
+const client = new Client({
+  token: process.env.BOTPRESS_PAT,
+  botId: process.env.BOTPRESS_BOT_ID,
+})
+
+const file = await client.uploadFile({
+  key: 'optional_prefix/unique_file_name.txt',
+  content: 'This is a test file',
+})
+```
+
+### In a custom script using an HTTP client
+
+If you can't use the Botpress Client (e.g. you can't install the package or you're working with a different programming language) you can also use any HTTP client to make requests to the API directly.
+
+Please note that when calling the API directly, an HTTP request to the Botpress API (specifying the file size beforehand) will be needed to create the empty file first, and a separate HTTP request will be needed to upload the file content to the unique upload URL provided in the response of the first request.
+
+Additionally, if you need to access the file URL right away a third request to the "Get File" API endpoint will be needed to get the URL of the file after it has been uploaded.
+
+Here's an example on how to do this using the native `fetch()` function in Javascript/TypeScript, note that your Botpress PAT will need to be defined in the environment variable `BOTPRESS_PAT`:
+
+```ts
+const fileContent = 'Here goes the content of your file'
+
+const buffer = Buffer.from(fileContent)
+
+// Step 1: Create the file in Botpress Cloud.
+// Please note that specifying the file size (in raw bytes, not characters) is required when calling this endpoint.
+const result = await fetch('https://api.botpress.cloud/v1/files', {
+  method: 'PUT',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+  body: JSON.stringify({
+    key: 'unique_file_name.txt',
+    size: buffer.byteLength,
+  }),
+})
+
+const response = await result.json()
+
+// Step 2: Upload the file content to the unique upload URL provided for the created file.
+await fetch(response.file.uploadUrl, {
+  method: 'PUT',
+  body: buffer,
+})
+
+// The variable below will contain the URL to download the file content uploaded above. If the file was
+// created with the 'public_content' access policy it will be a permanent URL that you can store long-term,
+// otherwise it will contain a temporary pre-signed URL that expires after a short period of time.
+// If you need to get a new URL, you can always use the `getFile` API endpoint.
+const downloadUrl = response.file.url
+```
+
+## Creating a public file
+
+If you need to make a file publicly accessible by anyone you can assign the `public_content` access policy to the file:
+
+```ts
+const file = await client.uploadFile({
+  key: 'test.txt',
+  content: 'This is a public file',
+  accessPolicies: ['public_content'],
+})
+
+// This will be a permanent URL (can be stored long-term) to allow anyone to download the file.
+const fileUrl = file.url
+```
+
+> Note: Making a file publicly accessible only makes its content public but not its metadata or the ability to modify the file, which remains private. The file will be accessible through a unique permanent URL provided by the API for each file, and this URL can be stored long-term.
+
+If you only want to allow all the integrations installed in the bot to access the file rather than making it fully public, you can just assign the `integrations` access policy instead:
+
+```ts
+const file = await client.uploadFile({
+  key: 'test.txt',
+  content: 'This is a file that can be accessed by all integrations in a bot',
+  accessPolicies: ['integrations'],
+})
+```
+
+## Adding tags to a file
+
+You can add custom tags to a file by passing the `tags` parameter when it's created. Tags allow you to organize and classify files in any way you see fit, and can be specified as a filter when listing or searching files.
+
+```ts
+const file = await client.uploadFile({
+  key: 'test.txt',
+  content: 'This is a test file',
+  tags: {
+    // Tags are optional but are useful for filtering files by a custom criteria you choose when using the "List Files" or "Search Files" API endpoints. You can change or remove the tags below based on your needs.
+    category: 'Sales',
+    knowledgeBaseName: 'Client Questions',
+  },
+})
+```

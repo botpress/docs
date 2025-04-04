@@ -1,0 +1,180 @@
+## Getting the file's metadata
+
+To get the details of a file you can use the [Get File](../docs/api-documentation/#get-file) API endpoint.
+
+You can also use this endpoint to retrieve a new temporary pre-signed URL to download a file if the previous pre-signed URL has already expired.
+
+#### Using the Botpress Client
+
+```ts
+import { Client } from '@botpress/client'
+
+const client = new Client({
+  token: process.env.BOTPRESS_PAT,
+  botId: process.env.BOTPRESS_BOT_ID,
+})
+
+const file = await client.getFile('YOUR_FILE_ID')
+```
+
+#### Calling the API directly
+
+```ts
+const result = await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+
+const response = await result.json()
+const file = response.file
+```
+
+## Listing existing files of a bot
+
+To list all the files of a bot you can use the [List Files](../docs/api-documentation/#list-files) API endpoint.
+
+#### Using the Botpress Client
+
+```ts
+const res = await client.listFiles()
+const files = res.data.files
+```
+
+#### Calling the API directly
+
+```ts
+const result = await fetch('https://api.botpress.cloud/v1/files', {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+
+const response = await result.json()
+const files = response.files
+```
+
+### Filtering by tags
+
+If you need to filter files by tags, you can just pass the `tags` parameter which should be an object with key-value pairs of tags a file must have in order to be returned. Tag filtering works in an "AND" fashion, so only the files that have all the specified tags will be returned.
+
+#### Using the Botpress Client
+
+```ts
+const res = await client.listFiles({
+  tags: {
+    category: 'Sales',
+  },
+})
+```
+
+#### Calling the API Directly
+
+```ts
+const tags = {
+  category: 'Sales',
+}
+
+const result = await fetch('https://api.botpress.cloud/v1/files?tags=' + encodeURIComponent(JSON.stringify(tags)), {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+```
+
+> 📘 **Calling the API Directly**
+>
+> If you're making the HTTP request directly to the API please note that you'll need to pass the tags parameter as a JSON-serialized, URL-encoded string (the Botpress Client handles this automatically for you).
+
+### Pagination
+
+The [List Files](../docs/api-documentation/#list-files) API endpoint will return by default the 20 most recent files your bot has. If you need to list older files you can use the `nextToken` property returned in the API response to retrieve the next page (if any) of files. The `nextToken` will be included for each page if there are files remaining to be listed.
+
+For example:
+
+```ts
+let res = await client.listFiles()
+const files = res.data.files
+
+// You can put this in a loop to retrieve all the files if needed.
+if (res.data.nextToken) {
+  res = await client.listFiles({ nextToken: res.data.nextToken })
+  files.push(...res.data.files)
+}
+```
+
+## Updating the file metadata
+
+Only the tags and access policies of a file can be updated.
+
+Here's an example of how to update the access policies and tags of a file using the Botpress Client:
+
+#### Using the Botpress Client
+
+```ts
+await client.updateFile({
+  id: 'YOUR_FILE_ID',
+  accessPolicies: ['integrations'], // This value will replace the existing access policies of the file.
+  tags: {
+    // This acts as a "patch" or partial update, so only the tags specified here will be updated, the rest will remain unchanged. If you need to delete an existing tag, you can set it to a `null` value.
+    category: 'Support', // This tag will be updated.
+    knowledgeBaseName: null, // This tag will be deleted.
+    subcategory: 'Technical', // This tag will be added.
+    // Any other tags not specified here will remain unchanged.
+  },
+})
+```
+
+#### Calling the API Directly
+
+```ts
+await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
+  method: 'PUT',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+  body: {
+    accessPolicies: ['integrations'], // This value will replace the existing access policies of the file.
+    tags: {
+      // This acts as a "patch" or partial update, so only the tags specified here will be updated, the rest will remain unchanged. If you need to delete an existing tag, you can set it to a `null` value.
+      category: 'Support', // This tag will be updated.
+      knowledgeBaseName: null, // This tag will be deleted.
+      subcategory: 'Technical', // This tag will be added.
+      // Any other tags not specified here will remain unchanged.
+    },
+  },
+})
+```
+
+## Updating file content
+
+If you need to update the content of a file, you can create a new file with the updated content and then delete the old file. The file ID will change in this case.
+
+## Deleting a file
+
+To delete a file you can use the "Delete File" API endpoint.
+
+#### Using the Botpress Client
+
+```ts
+await client.deleteFile('YOUR_FILE_ID')
+```
+
+#### Calling the API Directly
+
+```ts
+await fetch('https://api.botpress.cloud/v1/files/YOUR_FILE_ID', {
+  method: 'DELETE',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+```
