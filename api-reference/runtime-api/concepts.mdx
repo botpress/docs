@@ -16,11 +16,11 @@ Bots can't be accessed directly from the Runtime API. Instead, they are manageab
 
 Two categories of objects exist in the Botpress Runtime API: **definitions** and **instances**. Each concept listed below is first defined in the integration or bot definition and then instantiated during the bot or integration execution.
 
-### Message
+## Message
 
 Messages are the core of the Botpress Runtime API. The Integration Definition is responsible for providing message definitions, i.e., defining each available message type and their respective payload schemas.
 
-The message instance is the actual message sent to the bot or integration. It must conform to the schema defined in the message definition for the corresponding type. Here's the TypeScript type of a message object:
+The message instance is the actual message sent to the bot or integration. It must conform to the schema as defined in the integration definition for the corresponding type. Here's the TypeScript type of a message object:
 
 {/* TODO(driftable): This type is subject to changes and should be auto-generated */}
 ```ts
@@ -74,28 +74,139 @@ Custom message types must be compatible with these built-in types and cannot ove
 
 ## Conversation
 
-A conversation represents a series of exchanged messages between a different users including a bot. Conversations are tracked by their `conversationId`.
+A conversation represents a series of exchanged messages between a different users including a bot. Conversations are tracked by their `conversationId`. Here's the TypeScript type of a conversation object:
+
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type Conversation = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  channel: string;
+  integration: string;
+  tags: { [k: string]: string; };
+}
+```
+
+### Tags
+
+Just like messages, conversations have tags. Tags are key-value pairs used to store additional metadata about a conversation. Only tags defined in the conversation definition can be used. See [Tags](#tags) for more information.
+
+### Channel
+
+An integration can be connected to multiple channels. For example, the Github integration could allow messaging both on an issue thread and in a pull request. A conversation, thus always belongs to a channel, which itself belongs to an integration. The `channel` property of a conversation is the name of the channel it belongs to and the `integration` property is the name of the integration it belongs to.
 
 ## User
 
-A user represents an entity interacting with the bot. Each user has a unique `userId`. Users can be human users or bots (for automated responses in multi-bot setups).
+A user in the Runtime API is a person or entity that can send messages in a conversation. It is important to mention that many different kind of users exist in the whole Botpress system. This concept only refer to users of the Runtime API or as we often refer to: Chat Users. It must not be confused with users of the Botpress Admin API which are bot and integration Builders. 
+
+Here's the TypeScript type of a user object:
+
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type User = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  name?: string;
+  pictureUrl?: string;
+  tags: { [k: string]: string };
+}
+```
+
+### Tags
+
+Just like messages and conversations, users have tags. Tags are key-value pairs used to store additional metadata about a user. Only tags defined in the user definition can be used. See [Tags](#tags) for more information.
+
+### Name and Picture URL
+
+The `name` and `pictureUrl` properties are optional and can be used to store the user's name and profile picture URL. These properties are not required for the bot to function, but they can be useful for displaying user information in the UI or for logging purposes.
 
 ## Event
 
-{/* TODO: fill */}
+Events just like messages are at the core of the Botpress Runtime API. The Integration Definition is responsible for providing event definitions, i.e., defining each available event type and their respective payload schemas. The Bot can also define events.
+
+The event instance is the actual event sent to the bot. It must conform to the schema as defined in the integration or bot definition for the corresponding type. Here's the TypeScript type of an event object:
+
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type Event = {
+  id: string;
+  createdAt: string;
+  type: string;
+  payload: { [k: string]: any; };
+  conversationId?: string;
+  userId?: string;
+  messageId?: string;
+  status: "pending" | "processed" | "ignored" | "failed" | "scheduled";
+  failureReason: string | null;
+}
+```
+
+### Direction
+
+Contrary to messages, events do not have a direction. They are always considered as incoming events. This is because they are always sent to the Bot, by either an integration or the bot itself. Reminder: Sending an event using the Runtime API externally still requires that you authenticate as either a bot or an integration.
+
+### Conversation, User, and Message ID
+
+An event can be associated with a conversation, user, or message. The `conversationId`, `userId`, and `messageId` properties are optional and can be used to store the IDs of the associated conversation, user, or message. These properties are not required for the bot to function, but they can be useful for tracking events in the UI or for logging purposes.
+
+### Status
+
+Calling the `createEvent` operation of the Runtime API does not directly sends the event to the Bot. Instead, it pushes the event to a queue. The Bot will then process the event asynchronously. The `status` property indicates the current status of the event in the queue.
 
 ## State
 
-{/* TODO: fill */}
+The state is a key-value store that allows you to store data related to a conversation, user, or message. It can have any JSON payload as long as it is compatible with the schema defined in the integration or bot definition. Here's the TypeScript type of a state object:
+
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type State = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  botId: string;
+  conversationId?: string;
+  userId?: string;
+  name: string;
+  type: "conversation" | "user" | "bot" | "integration" | "workflow";
+  payload: { [k: string]: any;  };
+}
+```
+
+### State Names
+
+The `name` property is the type of the state. An integration or bot can define multiple different states that are identified by their name.
+
+### State Types
+
+The `type` property indicates the type of concept to which the state belongs and the properties `botId`, `conversationId`, and `userId` indicates to which exact entity the state belongs. The type `integration` is incorrectly named and should be treated as `bot`.
 
 ## Tags
 
-Tags provide additional metadata for messages, users, or conversations. They help categorize and filter data for analytics, automation, or custom logic.
+Tags provide additional metadata for messages, users, or conversations. They help categorize and filter data for analytics, automation, or custom logic. Here is the TypeScript type of a tag object:
 
-## Workflows
+{/* TODO(driftable): This type is subject to changes and should be auto-generated */}
+```ts
+type Tag = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  type: "user" | "conversation" | "message";
+  key: string;
+  value: string;
+}
+```
 
-{/* TODO: fill */}
+Tags are defined in the integration or bot definition and can be used to store any additional information that is not covered by the other properties of the message, user, or conversation objects. Tags are key-value pairs, where both the key and value are strings. The `type` property indicates whether the tag is associated with a user, conversation, or message. It can be used later to filter or search for specific tags in the API. For example, you could list only conversations with a specific tags or only messages with a specific tag.
+
+Unlike States, Tags are returned with the entity they are linked to. States can be bigger, but must be fetched separately. Also, tags are always string, while states can be any JSON object with a schema defined in the integration or bot definition.
+
+{/* TODO: say something about Bot and Workflow Tags */}
+{/* TODO: add a section about workflows */}
 
 ## Actions
 
-{/* TODO: fill */}
+Both Bot and Integrations can define actions. Actions are functions with a defined input and output schema. They can be used to perform specific tasks or operations within the bot or integration. All actions of an integration can be called from the bot by calling the Runtime API. They are shown as cards in the Botpress Studio. 
+
+Bot actions can also be called by the Bot itself by sending a request to the Runtime API. Reminder: sending a request to the Runtime API requires authentication as either a bot or an integration.
