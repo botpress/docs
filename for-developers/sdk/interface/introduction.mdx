@@ -33,33 +33,13 @@ Entities are a concept specific to interfaces that define standardized data stru
 - Establish common data models across different integrations
 - Allow implementing integrations to extend and customize the base entity
 
+Actions and events defined by an interface may consume or produce these entities.
+
 ## Component Renaming
 
 <Tip>
 Events, actions, channels, and entities defined by an interface can all be renamed by implementing integrations to better align with the concepts and terminology of their specific external service. Entities can also be extended with additional fields to accommodate the unique requirements of the external service.
 </Tip>
-
-## Example: The `listable` Interface
-
-Consider a `listable` interface designed to provide standardized listing functionality across different services:
-
-### Interface Definition
-- Defines an `item` entity as a base structure for listable resources
-- Specifies a `listItems` action that returns `item` results
-
-### GitHub Integration Implementation
-An integration connecting to GitHub might implement this interface as follows:
-
-- Extends the `item` entity to create a `pullRequest` entity with GitHub-specific fields
-- Renames the `listItems` action to `listPullRequests` to reflect GitHub terminology
-- Implements the required functionality while using terminology that makes sense for GitHub
-
-### Slack Integration Implementation
-Similarly, a Slack integration might implement the same interface differently:
-
-- Extends the `item` entity to create a `channel` entity with Slack-specific properties
-- Renames the `listItems` action to `listChannels` to reflect Slack terminology
-- Provides the same core capability but adapted to Slack's specific requirements
 
 ## Benefits of Interfaces
 
