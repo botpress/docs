@@ -1,0 +1,49 @@
+---
+title: "Getting Started"
+---
+
+The Runtime API is designed for bots and integrations to handle messages, events, actions, and webhook requests at runtime. Each request made to this API is authenticated as either a bot or an integration. It can also be accessed externally by providing a bot or integration Id—though doing so effectively authenticates the request as a bot or integration.
+
+All the endpoints of the Runtime API are located behind the `chat` base path. 
+
+## Using cURL
+
+Calling the runtime API can be done using any HTTP client, such as `curl`, `axios`, or `fetch`. Here's an example using `curl`:
+
+```bash
+token="$YOUR_BOTPRESS_TOKEN"
+bot_id="$YOUR_BOT_ID"
+# List your bot's messages
+curl -H "Authorization: bearer $token" -H "x-bot-id: $bot_id" https://api.botpress.cloud/v1/chat/messages
+```
+
+# Using the Official TypeScript Client
+
+The official TypeScript client is available as an NPM package. You can install it using any of the following command:
+
+```bash
+npm install @botpress/runtime # for npm
+yarn add @botpress/runtime # for yarn
+pnpm add @botpress/runtime # for pnpm
+```
+
+Once installed, you can import the client and use it in your TypeScript code:
+
+```ts
+import { Client } from '@botpress/client'
+
+const main = async () => {
+    const token = process.env.BOTPRESS_TOKEN
+    const botId = process.env.BOT_ID
+
+    const client = new Client({
+        token,
+        botId,
+    })
+
+    const { messages } = await client.listMessages({})
+    console.log(messages)
+}
+
+void main()
+```
