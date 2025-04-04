@@ -72,25 +72,28 @@ const res = await client.listFiles({
 })
 ```
 
-#### Calling the API Directly
+```ts Calling the API directly
+import qs from 'qs' // You'll need to install this package first using your favorite package manager
 
-```ts
 const tags = {
   category: 'Sales',
 }
 
-const result = await fetch('https://api.botpress.cloud/v1/files?tags=' + encodeURIComponent(JSON.stringify(tags)), {
+const params = qs.stringify({ tags })
+
+const result = await fetch('https://api.botpress.cloud/v1/files?' + params, {
   method: 'GET',
   headers: {
     'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
     Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
   },
 })
-```
 
-> 📘 **Calling the API Directly**
->
-> If you're making the HTTP request directly to the API please note that you'll need to pass the tags parameter as a JSON-serialized, URL-encoded string (the Botpress Client handles this automatically for you).
+const response = await result.json()
+const files = response.files
+````
+
+</CodeGroup>
 
 ### Pagination
 
