@@ -1,16 +1,16 @@
-## Fab (Floating Action Button)
+The `Fab` (Floating Action Button) component is typically used to toggle the visibility of the Webchat UI in your application.
 
-The Fab component is pretty straightforward, it just a simple button that is used to toggle the webchat interface
-
-### Props
-
-#### onClick
-
-Takes a MouseEventHandler
+![webchat-fab-img](../../assets/webchat-components_component-library_fab.png)
 
 ### Usage
 
 ```ts
 import { Fab } from '@botpress/webchat'
-<Fab onClick={() => setToggleWebchat(!toggleWebchat)}></Fab>
+<Fab onClick={() => setToggleWebchat(!toggleWebchat)} />
 ```
+
+### Props
+
+#### `onClick?: MouseEventHandler<HTMLButtonElement>`
+
+A callback function triggered when the Fab is clicked. Commonly used to toggle the Webchat visibility.

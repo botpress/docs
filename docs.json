@@ -19,10 +19,7 @@
     "tabs": [
       {
         "tab": "Guides",
-        "pages": [
-          "home",
-          "guides/introduction"
-        ]
+        "pages": ["home", "guides/introduction"]
       },
       {
         "tab": "For Developers",
@@ -34,9 +31,7 @@
               "for-developers/sdk/introduction",
               {
                 "group": "Integration",
-                "pages": [
-                  "for-developers/sdk/integration/introduction"
-                ]
+                "pages": ["for-developers/sdk/integration/introduction"]
               },
               {
                 "group": "Interface",
@@ -44,30 +39,22 @@
                   "for-developers/sdk/interface/introduction",
                   {
                     "group": "Key Concepts",
-                    "pages": [
-                      "for-developers/sdk/interface/concepts/entities"
-                    ]
+                    "pages": ["for-developers/sdk/interface/concepts/entities"]
                   },
                   {
                     "group": "How To",
-                    "pages": [
-                      "for-developers/sdk/interface/how-tos/add-and-implement"
-                    ]
+                    "pages": ["for-developers/sdk/interface/how-tos/add-and-implement"]
                   }
                 ]
               },
               {
                 "group": "Bot",
-                "pages": [
-                  "for-developers/sdk/bot/introduction"
-                ]
+                "pages": ["for-developers/sdk/bot/introduction"]
               },
               {
                 "group": "Plugin",
                 "hidden": true,
-                "pages": [
-                  "for-developers/sdk/plugin/introduction"
-                ]
+                "pages": ["for-developers/sdk/plugin/introduction"]
               }
             ]
           },
@@ -77,25 +64,18 @@
               "for-developers/cli/introduction",
               {
                 "group": "Authentication",
-                "pages": [
-                  "for-developers/cli/commands/login",
-                  "for-developers/cli/commands/logout"
-                ]
+                "pages": ["for-developers/cli/commands/login", "for-developers/cli/commands/logout"]
               },
               {
                 "group": "Project Lifecycle",
                 "pages": [
                   {
                     "group": "Project Creation",
-                    "pages": [
-                      "for-developers/cli/commands/init"
-                    ]
+                    "pages": ["for-developers/cli/commands/init"]
                   },
                   {
                     "group": "Adding Dependencies",
-                    "pages": [
-                      "for-developers/cli/commands/add"
-                    ]
+                    "pages": ["for-developers/cli/commands/add"]
                   },
                   {
                     "group": "Building & Bundling",
@@ -107,9 +87,7 @@
                   },
                   {
                     "group": "Deployment",
-                    "pages": [
-                      "for-developers/cli/commands/deploy"
-                    ]
+                    "pages": ["for-developers/cli/commands/deploy"]
                   }
                 ]
               },
@@ -123,10 +101,7 @@
               },
               {
                 "group": "Project Introspection",
-                "pages": [
-                  "for-developers/cli/commands/lint",
-                  "for-developers/cli/commands/read"
-                ]
+                "pages": ["for-developers/cli/commands/lint", "for-developers/cli/commands/read"]
               },
               {
                 "group": "Administrative Commands",
@@ -167,15 +142,14 @@
           "webchat/introduction",
           {
             "group": "Inject Script",
-            "pages": [
-              "webchat/inject/getting-started",
-              "webchat/inject/styling-your-webchat"
-            ]
+            "pages": ["webchat/inject/getting-started", "webchat/inject/styling-your-webchat"]
           },
           {
             "group": "Component Library",
             "pages": [
-              "webchat/webchat-components/getting-started"
+              "webchat/webchat-components/getting-started",
+              "webchat/webchat-components/component-library/fab",
+              "webchat/webchat-components/component-library/composer"
             ]
           }
         ]
@@ -189,16 +163,11 @@
           "api-reference/errors",
           {
             "group": "Chat API",
-            "pages": [
-              "api-reference/chat-api/introduction"
-            ]
+            "pages": ["api-reference/chat-api/introduction"]
           },
           {
             "group": "Admin API",
-            "pages": [
-              "api-reference/admin-api/getting-started",
-              "api-reference/admin-api/concepts"
-            ]
+            "pages": ["api-reference/admin-api/getting-started", "api-reference/admin-api/concepts"]
           },
           {
             "group": "Files API",
@@ -211,15 +180,11 @@
           },
           {
             "group": "Tables API",
-            "pages": [
-              "api-reference/tables-api/getting-started"
-            ]
+            "pages": ["api-reference/tables-api/getting-started"]
           },
           {
             "group": "Runtime Api",
-            "pages": [
-              "api-reference/runtime-api/getting-started"
-            ]
+            "pages": ["api-reference/runtime-api/getting-started"]
           }
         ]
       }

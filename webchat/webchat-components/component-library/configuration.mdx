@@ -13,119 +13,119 @@ type Configuration = {
   /**
    * Display name of the bot shown in the header and intro.
    */
-  botName?: string;
+  botName?: string
 
   /**
    * URL of the bot avatar image.
    */
-  botAvatar?: string;
+  botAvatar?: string
 
   /**
    * Short description or subtitle for the bot.
    */
-  botDescription?: string;
+  botDescription?: string
 
   /**
    * Contact phone information.
    */
-  phone?: { title?: string; link?: string };
+  phone?: { title?: string; link?: string }
 
   /**
    * Contact email information.
    */
-  email?: { title?: string; link?: string };
+  email?: { title?: string; link?: string }
 
   /**
    * Website link to show in the contact info section.
    */
-  website?: { title?: string; link?: string };
+  website?: { title?: string; link?: string }
 
   /**
    * Link to the Terms of Service page.
    */
-  termsOfService?: { title?: string; link?: string };
+  termsOfService?: { title?: string; link?: string }
 
   /**
    * Link to the Privacy Policy page.
    */
-  privacyPolicy?: { title?: string; link?: string };
+  privacyPolicy?: { title?: string; link?: string }
 
   /**
    * Custom placeholder text for the message composer input field.
    */
-  composerPlaceholder?: string;
+  composerPlaceholder?: string
 
   /**
    * Primary theme color of the chat (hex, rgb, or named color).
    */
-  color?: string;
+  color?: string
 
   /**
    * Border radius of the chat widget between 1 and 4.
    */
-  radius?: number;
+  radius?: number
 
   /**
    * UI theme mode — "light" or "dark".
    */
-  themeMode?: "light" | "dark";
+  themeMode?: 'light' | 'dark'
 
   /**
    * Style variant of the chat window — "solid" or "soft".
    */
-  variant?: "solid" | "soft";
+  variant?: 'solid' | 'soft'
 
   /**
    * Font family used inside the webchat — one of the supported fonts.
    */
-  fontFamily?: "rubik" | "inter" | "ibm" | "fira";
+  fontFamily?: 'rubik' | 'inter' | 'ibm' | 'fira'
 
   /**
    * Whether to display the "Powered by Botpress" branding.
    */
-  showPoweredBy?: boolean;
-};
+  showPoweredBy?: boolean
+}
 ```
 
 ### Example
 
 ```ts
 const config: Configuration = {
-  botName: "SupportBot",
-  botAvatar: "https://cdn.botpress.cloud/bot-avatar.png",
-  botDescription: "Your virtual assistant for all things support.",
+  botName: 'SupportBot',
+  botAvatar: 'https://cdn.botpress.cloud/bot-avatar.png',
+  botDescription: 'Your virtual assistant for all things support.',
 
   phone: {
-    title: "Call Support",
-    link: "tel:+1234567890",
+    title: 'Call Support',
+    link: 'tel:+1234567890',
   },
 
   email: {
-    title: "Email Us",
-    link: "mailto:support@example.com",
+    title: 'Email Us',
+    link: 'mailto:support@example.com',
   },
 
   website: {
-    title: "Visit our website",
-    link: "https://www.example.com",
+    title: 'Visit our website',
+    link: 'https://www.example.com',
   },
 
   termsOfService: {
-    title: "Terms of Service",
-    link: "https://www.example.com/terms",
+    title: 'Terms of Service',
+    link: 'https://www.example.com/terms',
   },
 
   privacyPolicy: {
-    title: "Privacy Policy",
-    link: "https://www.example.com/privacy",
+    title: 'Privacy Policy',
+    link: 'https://www.example.com/privacy',
   },
 
-  composerPlaceholder: "Type your message here...",
-  color: "#0052cc",
-  radius: 12,
-  themeMode: "light",
-  variant: "soft",
-  fontFamily: "inter",
+  composerPlaceholder: 'Type your message here...',
+  color: '#0052cc',
+  radius: 3,
+  themeMode: 'light',
+  variant: 'soft',
+  fontFamily: 'inter',
   showPoweredBy: true,
-};
+}
 ```
