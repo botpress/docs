@@ -1,0 +1,80 @@
+---
+title: Usage
+excerpt: See your monthly Workspace limits.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+The Usage tab provides a view of the computational resources used by all of the bots in your Workspace. This helps you understand the performance of each chatbot in your Workspace and plan for future growth. The resources are grouped by the following categories:
+
+## AI Spend
+
+The AI Spend resource shows the amount that service providers charge for the consumption of tokens used to perform actions powered by AI models like generate text and retrieve answers from knowledge bases. AI Spend cost is charged at cost, meaning you pay for the exact amount of tokens used by your bot without any additional markup. You can find additional information about the token consumption of each action taken by your bot in the logs available through the emulator.
+
+AI Spend includes a free monthly credit of 5 USD per month. You can increase this limit by following these steps:
+
+1. Navigate to your Dashboard
+2. Navigate to the Usage tab
+3. Click on 'Manage spending limit'
+4. Change the amount of your 'AI Spend Limit'. You will be prompted to input a credit card.
+
+AI Spend is capped at 100 USD per month. If you plan to exceed 100 USD of AI Spend in a given calendar month, please [contact us](https://botpress.com/contact-us) to increase this limit. You can estimate your AI Spend using our [AI Spend Calculator](https://botpress.com/ai-spend-calculator).
+
+<br />
+
+## File Storage
+
+The File Storage section shows the amount of storage in Megabytes (MB) used across your Workspace, as well as the maximum storage limit. Files included in this storage include photos, videos, and audio files that you've uploaded to be sent by your chatbot.
+
+<br />
+
+## Table Rows
+
+The Table Row section shows the number of rows in the bot's tables and the limit. It accounts for total the number of rows in all of your [chatbot Tables](https://botpress.com/docs/cloud/studio/tables).
+
+<br />
+
+## Vector DB Storage
+
+The Vector Database Storage section shows the maximum storage available for Knowledge Base documents. It accounts for the total number of vectors (condensed pieces of your content) in all of your [Knowledgebase](https://botpress.com/docs/cloud/studio/knowledge-base) documents as well as searchable columns in your tables.
+
+This value is expressed in MB for convenience, but the actual billing unit is a measure of vectorized storage, used for performing RAG (Retrieval Augmented Generation) functions on your Knowledge Base(s).
+
+<br />
+
+## Incoming Messages & Events
+
+The Incoming Messages & Events section shows the number of times the chatbot has been invoked in any channel and the maximum amount of times it can be invoked before it will stop responding. It counts new conversations, conversations resumed after a [Timeout](https://botpress.com/docs/cloud/studio/chatbot-settings/#inactivity-timeout-minutes), and conversations started by [Triggers](https://botpress.com/docs/cloud/toolbox/events-triggers).
+
+<br />
+
+## Collaborators
+
+Collaborators indicates the maximum amount of users that can collaborate in this Workspace. Adding or removing collaborators will increase or decrease this number in real time.
+
+<br />
+
+## Bot Count
+
+Bot Count indicates the maximum number of bots this Workspace can hold. Once you reach the maximum number of bots, you can purchase additional slots, or delete any unused bots to make room for new ones.
+
+<br />
+
+## Always Alive
+
+The Always Alive usage limit indicates how many remaining bots you can allocate the Always Alive status to.
+
+<br />
+
+### What is Always Alive?
+
+Botpress bots are powered by remote, virtual compute instances. Every time your bot begins a conversation, for example when a Trigger is activated or a new user sends a message, Botpress spins up a new instance for that bot. This is known as a 'cold start', which refers to the initial startup process when a virtual machine (VM) or a serverless function is launched for the first time, or after it has been idle and terminated. During a cold start, the system must allocate resources, initialize the environment, load necessary code, and perform any required configuration before the instance is ready to handle requests or tasks.
+
+Always Alive reserves an instance for your bot so that it can bypass this cold start and maintains a ready-to-use instance. The end result is that the first message sent and received from your bot are processed much faster.
+
+Always Alive can be purchased and allocated on a per-bot basis.

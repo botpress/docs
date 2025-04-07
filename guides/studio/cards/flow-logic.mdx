@@ -1,0 +1,81 @@
+---
+title: Flow Logic
+excerpt: Cards that move the user along a defined path under certain conditions.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+```mdx
+# Overview
+
+Flow Logic Cards are essential tools that help control the flow and decision-making within your chatbot's conversation. They enable you to add logic and structure to your bot’s behavior, making it possible to guide the conversation based on user input, bot state, or external factors.
+
+These Cards allow you to create dynamic, interactive, and context-aware bots that respond intelligently to different scenarios.
+
+## Flow Logic Card Types
+
+There are two default types of flow logic cards available to you in the Card Tray.
+
+### Intent
+
+The Intent Card is used to direct the conversation flow based on the user's recognized intent. Intents are predefined categories of user input that represent what the user wants to achieve, such as booking an appointment, asking for help, or providing feedback. When an Intent Card is triggered, it checks if the user’s input matches any of the defined intents and routes the conversation accordingly.
+
+There are two ways to define the intent you want to trigger using this card:
+
+1. By selecting a predefined intent from your Library, or;
+2. By defining an inline intent that only exists for this card.
+
+### Expression
+
+The Expression Card evaluates custom expressions or conditions written in JavaScript to make decisions within the flow. This Card allows you to create more granular control based on specific criteria, such as checking variable values, user input, or any other custom logic. Expression Cards are versatile and can be used to incorporate complex decision-making within your bot.
+
+There are two ways to define conditions for transition:
+
+1. Use AI to generate custom JavaScript based on a specific prompt, or;
+2. Disable the AI-generation tool by clicking on the star icon and manually input the JavaScript code.
+
+<Table>
+  <Tr>
+    <Td>Example</Td>
+    <Td>Description</Td>
+  </Tr>
+  <Tr>
+    <Td>User Input</Td>
+    <Td>
+      To check if the user entered a value between 1 and 10, you can use **User Input** <br/>Example: *user input is between 1 & 10*
+    </Td>
+  </Tr>
+  <Tr>
+    <Td>User Variable</Td>
+    <Td>
+      To retrieve a value from the user variable, you can use **`user.{variable name}`** <br/>
+      Example: *user language is <u>English</u>*
+    </Td>
+  </Tr>
+  <Tr>
+    <Td>Workflow Variable</Td>
+    <Td>
+      To check a workflows variable, you can use **`workflow.{variable name}`**<br/>
+      Example: *workflow variable supportEmail contains Botpress*
+    </Td>
+  </Tr>
+  <Tr>
+    <Td>Intents</Td>
+    <Td>
+      You can combine multiple checks together, for example you can check if an intent is of type "affirmative", and its confidence is more than 50%. <br/>
+      Example: *intent is affirmative and intent confidence is 50%*
+    </Td>
+  </Tr>
+  <Tr>
+    <Td>Advanced</Td>
+    <Td>
+      You can use an advanced javascript expression to move from one node to the next when the expression satisfies the condition.
+    </Td>
+  </Tr>
+</Table>
+```

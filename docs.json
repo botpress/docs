@@ -18,10 +18,178 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Home",
+        "pages": ["home"]
+      },
+      {
         "tab": "Guides",
         "pages": [
-          "home",
-          "guides/introduction"
+          "guides/introduction",
+          "guides/getting-started",
+          {
+            "group": "learn",
+            "pages": [
+              "/guides/learn/learn-by-doing",
+              {
+                "group": "How to connect a bot to messaging platforms",
+                "pages": [
+                  "/guides/learn/how-to-connect-a-bot-to-messaging-platforms/introduction",
+                  "/guides/learn/how-to-connect-a-bot-to-messaging-platforms/telegram"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Dashboard",
+            "pages": [
+              {
+                "group": "Workspace",
+                "pages": [
+                  "/guides/dashboard/workspace/introduction",
+                  "/guides/dashboard/workspace/home",
+                  "/guides/dashboard/workspace/your-integrations",
+                  "/guides/dashboard/workspace/usage",
+                  {
+                    "group": "Settings",
+                    "pages": [
+                      "/guides/dashboard/workspace/settings/introduction",
+                      "/guides/dashboard/workspace/settings/members",
+                      "/guides/dashboard/workspace/settings/audits"
+                    ]
+                  },
+                  "/guides/dashboard/workspace/user-profile"
+                ]
+              },
+              {
+                "group": "Bot",
+                "pages": [
+                  "/guides/dashboard/bot/introduction",
+                  "/guides/dashboard/bot/overview",
+                  "/guides/dashboard/bot/integrations",
+                  "/guides/dashboard/bot/webchat",
+                  "/guides/dashboard/bot/logs",
+                  "/guides/dashboard/bot/conversations",
+                  "/guides/dashboard/bot/analytics",
+                  "/guides/dashboard/bot/events",
+                  "/guides/dashboard/bot/issues",
+                  "/guides/dashboard/bot/configuration-variables"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Studio",
+            "pages": [
+              {
+                "group": "Interface",
+                "pages": [
+                  "/guides/studio/interface/introduction",
+                  "/guides/studio/interface/home",
+                  {
+                    "group": "Nodes",
+                    "pages": [
+                      "/guides/studio/interface/nodes/introduction",
+                      "/guides/studio/interface/nodes/autonomous-node"
+                    ]
+                  },
+                  "/guides/studio/interface/studio-interface-flows",
+                  {
+                    "group": "Knowledge Base",
+                    "pages": [
+                      "/guides/studio/interface/knowledge-base/introduction",
+                      "/guides/studio/interface/knowledge-base/knowledge-base-best-practices"
+                    ]
+                  },
+                  "/guides/studio/interface/tables",
+                  "/guides/studio/interface/actions",
+                  {
+                    "group": "Agents",
+                    "pages": [
+                      "/guides/studio/interface/agents/introduction",
+                      "/guides/studio/interface/agents/summary-agent",
+                      "/guides/studio/interface/agents/personality-agent",
+                      "/guides/studio/interface/agents/policy-agent",
+                      "/guides/studio/interface/agents/translator-agent",
+                      "/guides/studio/interface/agents/knowledge-agent",
+                      "/guides/studio/interface/agents/hitl-agent",
+                      "/guides/studio/interface/agents/vision-agent",
+                      "/guides/studio/interface/agents/analytics-agent"
+                    ]
+                  },
+                  "/guides/studio/interface/library",
+                  "/guides/studio/interface/hooks",
+                  "/guides/studio/interface/card-hub",
+                  "/guides/studio/interface/integrations",
+                  "/guides/studio/interface/schemas",
+                  "/guides/studio/interface/versions",
+                  "/guides/studio/interface/chatbot-settings",
+                  "/guides/studio/interface/find",
+                  "/guides/studio/interface/variables",
+                  "/guides/studio/interface/card-tray",
+                  "/guides/studio/interface/debugger-logs-json",
+                  "/guides/studio/interface/emulator",
+                  "/guides/studio/interface/keyboard-shortcuts",
+                  "/guides/studio/interface/studio-commands",
+                  "/guides/studio/interface/studio-preferences",
+                  "/guides/studio/interface/import-export-bots",
+                  "/guides/studio/interface/copy-to-bot"
+                ]
+              },
+              {
+                "group": "Cards",
+                "pages": [
+                  "/guides/studio/cards/introduction",
+                  "/guides/studio/cards/send-messages",
+                  "/guides/studio/cards/execute",
+                  "/guides/studio/cards/webchat",
+                  "/guides/studio/cards/flow-logic",
+                  {
+                    "group": "AI",
+                    "pages": [
+                      "/guides/studio/cards/ai/introduction",
+                      "/guides/studio/cards/ai/ai-task",
+                      "/guides/studio/cards/ai/ai-transition",
+                      "/guides/studio/cards/ai/ai-generate-text"
+                    ]
+                  },
+                  "/guides/studio/cards/capture-information",
+                  "/guides/studio/cards/events",
+                  "/guides/studio/cards/agents",
+                  "/guides/studio/cards/utilities"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Toolbox",
+            "pages": ["/guides/toolbox/kitchen-sink-advanced-starter-template"]
+          },
+          {
+            "group": "Appendix",
+            "pages": [
+              "/guides/appendix/best-practices-for-state-management",
+              {
+                "group": "Safety",
+                "pages": [
+                  "/guides/appendix/safety/introduction",
+                  "/guides/appendix/safety/preventing-abuse",
+                  "/guides/appendix/safety/brand-safety-framework"
+                ]
+              },
+              {
+                "group": "Exporting Data",
+                "pages": [
+                  "/guides/appendix/exporting-data/introduction",
+                  "/guides/appendix/exporting-data/exporting-raw-conversations-with-the-botpress-api",
+                  "/guides/appendix/exporting-data/getting-the-conversation-history-from-within-your-bot",
+                  "/guides/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
+                  "/guides/appendix/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
+                  "/guides/appendix/exporting-data/analyze-llmz-responses"
+                ]
+              },
+              "/guides/appendix/tips-to-optimize-ai-cost"
+            ]
+          }
         ]
       },
       {
@@ -34,9 +202,7 @@
               "for-developers/sdk/introduction",
               {
                 "group": "Integration",
-                "pages": [
-                  "for-developers/sdk/integration/introduction"
-                ]
+                "pages": ["for-developers/sdk/integration/introduction"]
               },
               {
                 "group": "Interface",
@@ -44,30 +210,21 @@
                   "for-developers/sdk/interface/introduction",
                   {
                     "group": "Key Concepts",
-                    "pages": [
-                      "for-developers/sdk/interface/concepts/entities"
-                    ]
+                    "pages": ["for-developers/sdk/interface/concepts/entities"]
                   },
                   {
                     "group": "How To",
-                    "pages": [
-                      "for-developers/sdk/interface/how-tos/add-and-implement"
-                    ]
+                    "pages": ["for-developers/sdk/interface/how-tos/add-and-implement"]
                   }
                 ]
               },
               {
                 "group": "Bot",
-                "pages": [
-                  "for-developers/sdk/bot/introduction"
-                ]
+                "pages": ["for-developers/sdk/bot/introduction"]
               },
               {
                 "group": "Plugin",
-                "hidden": true,
-                "pages": [
-                  "for-developers/sdk/plugin/introduction"
-                ]
+                "pages": ["for-developers/sdk/plugin/introduction"]
               }
             ]
           },
@@ -77,25 +234,18 @@
               "for-developers/cli/introduction",
               {
                 "group": "Authentication",
-                "pages": [
-                  "for-developers/cli/commands/login",
-                  "for-developers/cli/commands/logout"
-                ]
+                "pages": ["for-developers/cli/commands/login", "for-developers/cli/commands/logout"]
               },
               {
                 "group": "Project Lifecycle",
                 "pages": [
                   {
                     "group": "Project Creation",
-                    "pages": [
-                      "for-developers/cli/commands/init"
-                    ]
+                    "pages": ["for-developers/cli/commands/init"]
                   },
                   {
                     "group": "Adding Dependencies",
-                    "pages": [
-                      "for-developers/cli/commands/add"
-                    ]
+                    "pages": ["for-developers/cli/commands/add"]
                   },
                   {
                     "group": "Building & Bundling",
@@ -107,9 +257,7 @@
                   },
                   {
                     "group": "Deployment",
-                    "pages": [
-                      "for-developers/cli/commands/deploy"
-                    ]
+                    "pages": ["for-developers/cli/commands/deploy"]
                   }
                 ]
               },
@@ -123,10 +271,7 @@
               },
               {
                 "group": "Project Introspection",
-                "pages": [
-                  "for-developers/cli/commands/lint",
-                  "for-developers/cli/commands/read"
-                ]
+                "pages": ["for-developers/cli/commands/lint", "for-developers/cli/commands/read"]
               },
               {
                 "group": "Administrative Commands",
@@ -167,16 +312,15 @@
           "webchat/introduction",
           {
             "group": "Inject Script",
-            "pages": [
-              "webchat/inject/getting-started",
-              "webchat/inject/styling-your-webchat"
-            ]
+            "pages": ["webchat/inject/getting-started", "webchat/inject/styling-your-webchat"]
           },
           {
-            "group": "Component Library",
-            "pages": [
-              "webchat/webchat-components/getting-started"
-            ]
+            "group": "React Library",
+            "pages": ["webchat/webchat-components/getting-started"]
+          },
+          {
+            "group": "Integrate",
+            "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
           }
         ]
       },
@@ -190,16 +334,11 @@
           "api-reference/errors",
           {
             "group": "Chat API",
-            "pages": [
-              "api-reference/chat-api/introduction"
-            ]
+            "pages": ["api-reference/chat-api/introduction"]
           },
           {
             "group": "Admin API",
-            "pages": [
-              "api-reference/admin-api/getting-started",
-              "api-reference/admin-api/concepts"
-            ]
+            "pages": ["api-reference/admin-api/getting-started", "api-reference/admin-api/concepts"]
           },
           {
             "group": "Files API",
@@ -212,15 +351,11 @@
           },
           {
             "group": "Tables API",
-            "pages": [
-              "api-reference/tables-api/getting-started"
-            ]
+            "pages": ["api-reference/tables-api/getting-started"]
           },
           {
             "group": "Runtime Api",
-            "pages": [
-              "api-reference/runtime-api/getting-started"
-            ]
+            "pages": ["api-reference/runtime-api/getting-started"]
           }
         ]
       }

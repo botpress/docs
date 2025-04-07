@@ -1,0 +1,29 @@
+---
+title: Agents
+excerpt: Cards that interact with specific Agent functionalities.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+The cards in the Agents category allow you to perform actions that integrate with your agent's functionalities in some way.
+
+# Knowledge Agent
+
+The Query Knowledge Bases card allows you to programatically query Knowledge Bases from within your bot. This card is useful when you want to retrieve information from your Knowledge Bases and display it to the user during the conversation.
+
+This supports variables and expressions. and will not send the answer directly to the user.
+
+## Query
+
+The question you want to ask to the Knowledge Base. You can type the question direcly or use variables. e.g. `{{event.preview}}` or `{{workflow.question}}`
+
+## Included Knowledge Bases
+
+Select in which Knowledge Bases to answer questions from. By default, it uses all the Knowledge Bases.
+
+The result will be stored in `{{turn.KnowledgeAgent.answer}}` and `{{turn.KnowledgeAgent.citations}}`. You can also store the answer in workflow variables.

@@ -26,9 +26,6 @@ import Home from '/snippets/home.mdx'
     <Card title="Chat API" href="/api-reference/chat-api/introduction">
       Use Node.js to talk to your agent
     </Card>
-    <Card title="Files API" href="/api-reference/files-api/getting-started">
-      Upload, manage, and search files using our API.
-    </Card>
     <Card title="Build an integration" href="/for-developers/integration/getting-started">
       Build your own integration to connect your agent to an external app
     </Card>
@@ -44,13 +41,14 @@ import Home from '/snippets/home.mdx'
 <div className="flex flex-col items-center justify-center pb-20">
   <h2 className="text-3xl text-gray-600 font-bold pb-2">Community</h2>
   <p className="text-md mb-4">Join our community to connect with other developers and get help.</p>
-  <button
-    href="https://discord.com/invite/botpress"
-    className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-  >
-    <Icon icon="discord" iconType="solid" className="bg-purple-500" color="#5865F2" />
-    <span>Join Discord</span>
-  </button>
+  <a href="https://discord.com/invite/botpress" target="_blank" rel="noreferrer">
+    <button
+      className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+    >
+      <Icon icon="discord" iconType="solid" className="bg-purple-500" color="#5865F2" />
+      <span>Join Discord</span>
+    </button>
+  </a>
 </div>
 
 <div className="flex flex-col items-center justify-center pb-20">

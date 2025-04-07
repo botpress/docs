@@ -1,0 +1,119 @@
+---
+title: Execute Code
+excerpt: ''
+deprecated: false
+hidden: true
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+The Execute Code card allows you to run custom code (in javascript) in the context of the current workflow. This code can also be generated automatically using AI. This is useful for making API calls, performing calculations, or any other custom logic you may need.
+
+> 👍 Generative AI
+>
+> Using this natural language feature you can instruct AI to generate the different pieces of code your bot needs to run, and it's contextual, considers your variables and your conversation flow.
+
+<br />
+
+## Inbuilt Packages
+
+The below packages are already imported and available for use in the Execute Code card.
+
+* [Axios](https://axios-http.com/docs/api_intro)
+* [Lodash](https://lodash.com/docs/4.17.15)
+* [Moment Luxon](https://moment.github.io/luxon/#/?id=luxon)
+
+<br />
+
+## How to Use
+
+1. Drag and drop the Execute Code card into a Node or click on the **+ Add Card** button in the Node and select Execute Code.
+2. Write what you want to do in the input field. 
+
+For example, if you want to make an API call, you can write the following:
+
+```
+  Make an API Call to weatherAPI and store the result in a workflow variable
+```
+
+3. Check if the Code satisfies your needs and **Accept** or **Undo** the changes.
+4. This will automatically generate the description of the code in the Code Card.
+
+<br />
+
+## Versioning
+
+Versioning allows you to go back and forth between different versions of the code. This is useful if you want to try out different versions of the code and see which one works best.
+
+1. Once you **Accept**, you can rewrite the code and **Accept** again. This will create a new version of the code.
+2. You can check the changes between versions, and once you're satisfied with the code, you can **Accept** it or **Undo** it.
+3. Use the arrows to go back and forth between versions.
+
+<br />
+
+## Examples
+
+Input: **I want to find the difference between the variables startDate and the endDate**
+
+Generated Output:
+
+```typescript
+const startDate = luxon.fromISO(workflow.startDate) // convert the startDate string to a luxon DateTime object
+const endDate = luxon.fromISO(workflow.endDate) // convert the endDate string to a luxon DateTime object
+const diffInDays = endDate.diff(startDate, 'days').toObject().days // find the difference between the two dates in days
+// store the difference in days in the workflow variable 'dateDiff' as requested
+workflow.dateDiff = diffInDays
+```
+
+***
+
+Input: **I want to get all my issues from Jira filtered by what is not done**
+
+Generated Output:
+
+```typescript
+const jiraUrl = 'https://your-jira-url.com'
+const jiraUsername = 'your-jira-username'
+const jiraPassword = 'your-jira-password'
+
+// get the current date and time in ISO format
+const now = luxon.local().toISO()
+
+// create the JQL query to get all issues that are not done
+const jql = `status != Done AND updated >= "${now}" ORDER BY updated DESC`
+
+// set the request headers for Jira API
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Basic ${btoa(`${jiraUsername}:${jiraPassword}`)}`,
+}
+
+// make the request to Jira API to get all issues that are not done
+const response = await axios.get(`${jiraUrl}/rest/api/2/search?jql=${jql}`, { headers })
+
+// filter the response to only keep the issues that are not done
+const issues = _.filter(response.data.issues, (issue) => issue.fields.status.name !== 'Done')
+```
+
+<br />
+
+## Transitioning from Another Language to Botpress
+
+If you're transitioning from another programming language to Botpress, we've got you covered. With the power of ChatGPT, converting simple code snippets, such as making API requests, is now easier than ever.
+
+Step 1: Take your existing code from another programming language. This could be in a language like Python, C#, or any other language you're coming from.
+
+Step 2: Paste the code snippet you have into ChatGPT and add this instruction below it.
+
+```text
+Convert the code above to deno. Save the variable results to the workflow object (global object available in the code block). Use axios for http requests and use it directly without the "async" keyword. For date management use the luxon library. For string manipulation use the lodash library. All of these libraries are already imported.
+```
+
+Step 3: Paste the result of ChatGPT into the Execute Code card.
+
+Step 4: Test your code and make sure it works as expected.
+
+Step 5: If you need to make any changes, you can do so by editing the code directly or by adding new instructions in the top input of the Execute Code card.

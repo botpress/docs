@@ -1,0 +1,35 @@
+---
+title: Logs
+excerpt: >-
+  Detailed records of bot activities, errors, and system performance in a
+  production environment.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+Botpress production logs are detailed records of the activities, events, and errors that occur during the execution of a Botpress bot in a production environment. These logs are essential for monitoring your bot's performance, diagnosing issues, and maintaining the overall health of your bot project.
+
+You can filter logs by date and time to narrow down your search for a specific event or conversation.
+
+# Custom logging
+
+The `console.log()` function is used to log information to the Botpress logs.
+
+To add logging to your bot, follow these steps:
+
+* In a new or existing Execute Code card, add the following code:
+
+```typescript
+console.log("Some text");
+```
+
+* Replace the text with the information you wish to log, or the statement you'd like to print to the console.
+
+Once you've saved and published your changes, your bot will print that statement to its logs every time the Execute Code card is triggered as part of a workflow.
+
+You can customize this message to include any information that you need to log, such as user input or API responses.
