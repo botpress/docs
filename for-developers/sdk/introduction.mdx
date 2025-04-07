@@ -1,0 +1,85 @@
+---
+title: "Introduction to the SDK"
+---
+
+## Overview
+
+The Botpress SDK provides a robust foundation for developing components within our conversational AI system. With strong TypeScript typing throughout, the SDK enables developers to build robust and maintainable solutions for the Botpress agentic AI platform.
+
+## Key Components
+
+The SDK facilitates development of four primary component types:
+
+### Integrations
+
+Integrations connect bots to external services and platforms, enabling communication between your bots and the outside world. With integrations, your bots can:
+
+- Establish communication with messaging platforms such as Slack, WhatsApp, and Telegram
+- Access and manipulate data from services like Dropbox, Google Drive, or custom APIs
+- Perform operations on behalf of users in external systems
+- Trigger events in your bots based on actions in external services
+
+<CardGroup Cols={2}>
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/integration/introduction">
+        Learn more about integrations
+    </Card>
+    <Card title="Getting started" horizontal icon="play" href="/for-developers/sdk/integration/getting-started">
+        Create your first integration
+    </Card>
+</CardGroup>
+
+### Interfaces
+
+Interfaces extend integrations by providing standardized functionality specifications. They define specific actions and events that integrations must implement to support particular features. Examples include:
+
+- **Human-in-the-loop (HITL)**: Specifies the required events and actions an integration must implement to support human agent intervention
+- **Typing Indicator**: Defines the necessary actions and events an integration must implement to utilize typing indicators supported by the external service
+
+<CardGroup Cols={2}>
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/interface/introduction">
+        Learn more about interfaces
+    </Card>
+    <Card title="How-to" horizontal icon="graduation-cap" href="/for-developers/sdk/interface/typing-indicator">
+        Learn how to implement the typing indicator interface
+    </Card>
+</CardGroup>
+
+### Bots
+
+Using the SDK, developers can create bots through code rather than the Botpress Studio web interface. This programmatic approach provides greater flexibility and seamlessly integrates with version control systems. These "bots-as-code" function as the central orchestrators of your AI agents. They can:
+
+- Leverage multiple integrations to communicate across different platforms
+- Define custom events, primarily for scheduling purposes to trigger self-execution at specified times or intervals
+- Subscribe to events from integrations and interfaces to execute business logic
+
+<CardGroup Cols={2}>
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/bot/introduction">
+        Learn more about bots-as-code
+    </Card>
+    <Card title="Getting started" horizontal icon="play" href="/for-developers/sdk/bot/getting-started">
+        Create your first bot-as-code
+    </Card>
+</CardGroup>
+
+### Plugins
+
+Plugins deliver reusable functionality that can be incorporated across multiple bots. They:
+
+- Define actions and events that can be used by bots
+- Subscribe to events from bots, integrations, and interfaces
+- Encapsulate specific features required across different bot implementations
+
+For example, the HITL plugin adds human-in-the-loop functionality to any bot making use of integrations that implement the HITL interface.
+
+<CardGroup Cols={2}>
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/plugin/introduction">
+        Learn more about plugins
+    </Card>
+    <Card title="How-to" horizontal icon="graduation-cap" href="/for-developers/sdk/plugin/hitl">
+        Learn how to use the HITL plugin
+    </Card>
+</CardGroup>
+
+## Recommendations
+
+The Botpress SDK leverages TypeScript's strong typing system. For optimal development productivity, Visual Studio Code is recommended to benefit from comprehensive code completion and type checking capabilities.

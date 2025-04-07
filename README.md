@@ -2,9 +2,11 @@
 
 ### Development
 
-Make sure to install [Tilt](https://tilt.dev/).
+1. Run `pnpm install`
 
-Run the following command at the root of your documentation
+2. Make sure to install [Tilt](https://tilt.dev/).
+
+3. Run the following command at the root of your documentation
 
 ```
 tilt up

@@ -1,0 +1,68 @@
+---
+title: "Introduction to integrations"
+---
+
+## Overview
+
+Integrations form the foundation of connectivity within the Botpress platform, enabling bots to interact with external services and systems. Through the Botpress SDK, developers can create custom integrations that connect bots to virtually any third-party service, from messaging platforms to data repositories and enterprise systems.
+
+## Integration Definition
+An Integration Definition acts as a comprehensive specification that outlines an integration's features and behaviors. It defines how the integration will communicate with both the Botpress ecosystem and external services, and which functionality it will expose to bots.
+
+## Key Components of Integration Definitions
+
+### Configuration Schema
+
+Integrations can define their configuration requirements using Zod, a TypeScript-first schema validation library. The integration can also provide multiple configuration schemas to support different use cases or environments. This allows end users to select the appropriate configuration method based on their needs.
+
+### Events
+
+Integrations define events that represent activities within the external service. For example:
+
+- A Slack integration might define a `memberLeftChannel` event
+- A GitHub integration might define a `pullRequestOpened` event
+- A Dropbox integration might define a `fileUploaded` event
+
+These events can be subscribed to by bots to trigger specific actions or workflows.
+
+### Actions
+
+Integrations expose actions that bots can invoke to interact with the external service. For example:
+
+- Retrieving or updating information in external systems
+- Performing operations on behalf of users
+
+### Communication Channels
+
+Integrations can define communication channels that represent different communication mediums within the integrated platform. For example:
+
+- Different channels might represent group chats, direct messages, or threads
+- Each channel specifies the types of messages it can send and receive
+- Channel definitions handle platform-specific message formatting and delivery
+
+### Data Persistence
+
+Integrations can maintain state and store data through several mechanisms:
+
+- **States**: Define state structures in the integration definition that serve as the bot's context
+- **Tags**: Add metadata to conversations, individual messages, or users through arbitrary tags
+- **Tables API**: Define tables in the integration definition and manage structured data by adding rows
+- **Files API**: Store and retrieve files for long-term persistence
+
+### Secrets Management
+
+Integrations can define secrets that are required for authentication with external services:
+
+- Secrets are specified in the integration definition
+- Values are provided during deployment
+- Secure access is available to the integration at runtime
+
+### Interface Implementation
+
+Integrations can implement standard interfaces defined by the Botpress Team to provide consistent functionality:
+
+- Enabling compatibility with plugins that rely on those interfaces
+- Enabling compatibility with specific features of the Botpress platform
+- Ensuring consistent behavior across different integrations
+
+<Note>While interface creation is currently limited to the Botpress Team, integrations can implement any available interface to extend their capabilities.</Note>
