@@ -14,18 +14,16 @@ It is a crucial part of the Webchat UI, providing a text area for input, optiona
 import { Composer, useWebchatClient } from '@botpress/webchat'
 import { useRef } from 'react'
 
-const client = useWebchatClient({ clientId: '$CLIENT_ID$' }) // Insert your client id here
-const textareaRef = useRef<HTMLTextAreaElement>(null)
+const {client, clientState} = useWebchatClient({ clientId: '$CLIENT_ID$' }) // Insert your client id here
 
 // Other necessary components
   <Composer
-    inputRef={textareaRef}
     disableComposer={false}
     isReadOnly={false}
     allowFileUpload={true}
-    connected={client.clientState !== 'disconnected'}
-    sendMessage={client.client?.sendMessage}
-    uploadFile={client.client?.uploadFile}
+    connected={clientState !== 'disconnected'}
+    sendMessage={client?.sendMessage}
+    uploadFile={client?.uploadFile}
     composerPlaceholder="Type a message..."
     showPoweredBy={true}
   />
@@ -34,10 +32,6 @@ const textareaRef = useRef<HTMLTextAreaElement>(null)
 ```
 
 ### Props
-
-#### `inputRef?: Ref<HTMLTextAreaElement>`
-
-A React ref to access the underlying `<textarea>`, useful for controlling focus or measuring content.
 
 #### `disableComposer?: boolean`
 
