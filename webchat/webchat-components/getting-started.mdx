@@ -8,8 +8,8 @@ sidebarTitle: Getting Started
 Before installing the Webchat package, make sure you have a React project set up and running.
 
 <Note>
-  Botpress Webchat currently requires React 18. Make sure your project is using
-  this version to avoid compatibility issues.
+  Botpress Webchat currently requires React 18. Make sure your project is using this version to avoid compatibility
+  issues.
 </Note>
 
 <Steps titleSize='h2'>
@@ -42,39 +42,41 @@ Follow these steps to retrieve it:
 4. Copy the Client ID
   </Step>
   <Step title="Basic Webchat component">
+
+![webchat-client-id-img](../assets/webchat-components_getting-started.png)
+
+### 3. Basic Webchat component
+
 Now that we have everything required, we can proceed to build a basic webchat component
 
 ```tsx App.tsx
-import { Fab, Webchat } from "@botpress/webchat";
-import { useState } from "react";
+import { Fab, Webchat } from '@botpress/webchat'
+import { useState } from 'react'
 
 function App() {
-  const [isWebchatOpen, setIsWebchatOpen] = useState(false);
+  const [isWebchatOpen, setIsWebchatOpen] = useState(false)
   const toggleWebchat = () => {
-    setIsWebchatOpen((prevState) => !prevState);
-  };
+    setIsWebchatOpen((prevState) => !prevState)
+  }
   return (
     <>
       <Webchat
         clientId="$CLIENT_ID$" // Your client ID here
         style={{
-          width: "400px",
-          height: "600px",
-          display: isWebchatOpen ? "flex" : "none",
-          position: "fixed",
-          bottom: "90px",
-          right: "20px",
+          width: '400px',
+          height: '600px',
+          display: isWebchatOpen ? 'flex' : 'none',
+          position: 'fixed',
+          bottom: '90px',
+          right: '20px',
         }}
       ></Webchat>
-      <Fab
-        onClick={() => toggleWebchat()}
-        style={{ position: "fixed", bottom: "20px", right: "20px" }}
-      ></Fab>
+      <Fab onClick={() => toggleWebchat()} style={{ position: 'fixed', bottom: '20px', right: '20px' }}></Fab>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
 **Congratulations you just set your first webchat component!**

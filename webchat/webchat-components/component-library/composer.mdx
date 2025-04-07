@@ -1,3 +1,70 @@
-## Composer
+The `Composer` component is where the user writes messages before sending them to the bot.
+It is a crucial part of the Webchat UI, providing a text area for input, optional file uploads, and integration with the chat system.
 
-`Composer` component functions as a container for the text input field and the send message button.
+![webchat-composer-img](../../assets/webchat-components_component-library_composer.png)
+
+### Usage
+
+<Note>
+  The composer is designed to be used within the [Container](./container.mdx) component and alonside the
+  [Header](./header.mdx) and [MessageList](./message-list.mdx) components.
+</Note>
+
+```tsx
+import { Composer, useWebchatClient } from '@botpress/webchat'
+import { useRef } from 'react'
+
+const {client, clientState} = useWebchatClient({ clientId: '$CLIENT_ID$' }) // Insert your client id here
+
+// Other necessary components
+  <Composer
+    disableComposer={false}
+    isReadOnly={false}
+    allowFileUpload={true}
+    connected={clientState !== 'disconnected'}
+    sendMessage={client?.sendMessage}
+    uploadFile={client?.uploadFile}
+    composerPlaceholder="Type a message..."
+    showPoweredBy={true}
+  />
+// Other necessary components
+
+```
+
+### Props
+
+#### `disableComposer?: boolean`
+
+Disables the input field and sending capabilities when set to `true`.
+
+#### `isReadOnly?: boolean`
+
+Makes the input read-only, preventing users from typing messages while still allowing interaction.
+
+#### `allowFileUpload?: boolean`
+
+Enables or disables the file upload button.
+
+#### `connected?: boolean`
+
+Indicates whether the chat is connected. Useful for disabling inputs while offline.
+
+#### `sendMessage?: (payload: Message) => void`
+
+A callback function for sending messages composed by the user.
+
+#### `uploadFile?: (file: File) => Promise<{ fileUrl: string; name: string; type: FileType }>`
+
+Handles the file upload logic and returns file metadata upon success.
+
+#### `composerPlaceholder?: string`
+
+Placeholder text displayed in the input area. Comes from the configuration.
+
+#### `showPoweredBy?: boolean`
+
+Whether to show a "Powered by Botpress" label under the composer. Comes from the configuration.
+
+#### `...props: ComponentProps<'div'>`
+
+You can also pass standard `<div>` props to customize layout or styling.
