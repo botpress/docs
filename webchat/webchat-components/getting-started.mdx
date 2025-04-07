@@ -1,3 +1,8 @@
+---
+title: Webchat Component Library
+sidebarTitle: Getting Started
+---
+
 ## Quickstart
 
 Before installing the Webchat package, make sure you have a React project set up and running.
@@ -7,18 +12,25 @@ Before installing the Webchat package, make sure you have a React project set up
   this version to avoid compatibility issues.
 </Note>
 
-### 1. Install the package
+<Steps titleSize='h2'>
+  <Step title="Install the NPM package">
+The webchat library is hosted on `npm`. Download it with your favorite package manager.
 
-The webchat library is hosted on npm. Download it with your favorite package manager.
-
-```bash
+<CodeGroup>
+```bash npm
 npm install @botpress/webchat
-yarn add @botpress/webchat
-pnpm add @botpress/webchat
 ```
 
-### 2. Obtain your Client ID
+```bash yarn
+yarn add @botpress/webchat
+```
 
+```bash pnpm
+pnpm install @botpress/webchat
+```
+</CodeGroup>
+  </Step>
+  <Step title="Obtain your Client ID">
 To integrate Botpress Webchat Client into your application, you need to obtain your bot's Client ID.
 This ID identifies your bot and enables communication with the Webchat service.
 
@@ -28,9 +40,8 @@ Follow these steps to retrieve it:
 2. Navigate to the Webchat page
 3. Go to the Advanced Settings tab
 4. Copy the Client ID
-
-### 3. Basic Webchat component
-
+  </Step>
+  <Step title="Basic Webchat component">
 Now that we have everything required, we can proceed to build a basic webchat component
 
 ```tsx App.tsx
@@ -67,3 +78,5 @@ export default App;
 ```
 
 **Congratulations you just set your first webchat component!**
+  </Step>
+</Steps>
