@@ -50,37 +50,57 @@ const headerConfig = {
 }
 
 function App() {
-  return <Header configuration={headerConfig} restartConversation={newConversation} />
+  const [isWebchatOpen, setIsWebchatOpen] = useState(false)
+
+  const { newConversation } = useWebchatClient({
+    clientId: '$CLIENT_ID$', // Insert your client id here
+  })
+
+  return (
+    <Header
+      onOpenChange={() => console.log('Override the header open change')}
+      defaultOpen={true}
+      closeWindow={() => setIsWebchatOpen(false)}
+      restartConversation={newConversation}
+      disabled={false}
+      configuration={headerConfig}
+    />
+  )
 }
 ```
 
 ### Props
 
-#### `defaultOpen?: boolean`
+<ResponseField name="defaultOpen" type="boolean">
+  Controls whether the header is expanded by default. Only used when the <code>open</code> prop is uncontrolled.
+</ResponseField>
 
-Controls whether the header is expanded by default. Only used when the open prop is uncontrolled. Defaults to false.
+<ResponseField name="open" type="boolean">
+  Explicitly controls whether the header is open. Useful for managing the open state from a parent component.
+</ResponseField>
 
-#### `open?: boolean`
+<ResponseField name="onOpenChange" type="(open: boolean) => void">
+  Callback triggered when the open state changes. It overrides the default behavior of expanding the header. Receives
+  the new open state as an argument.
+</ResponseField>
 
-Explicitly controls whether the header is open. Useful for managing the open state from a parent component.
+<ResponseField name="disabled" type="boolean">
+  Disables the header toggle functionality when set to <code>true</code>.
+</ResponseField>
 
-#### `onOpenChange?: (open: boolean) => void`
+<ResponseField name="restartConversation" type="() => void">
+  Optional function to restart the current conversation. Typically resets the conversation state to the beginning.
+</ResponseField>
 
-Callback triggered when the open state changes. It overrides the default behavior of expanding the header. Receives the new open state as an argument.
+<ResponseField name="closeWindow" type="() => void">
+  Optional function to close the chat window. Useful for embedding scenarios or controlled UIs.
+</ResponseField>
 
-#### `disabled?: boolean`
-
-Disables the header toggle functionality when set to true. Defaults to false.
-
-#### `restartConversation?: () => void`
-
-Optional function to restart the current conversation. Typically resets the conversation state to the beginning.
-
-#### `closeWindow?: () => void`
-
-Optional function to close the chat window. Useful for embedding scenarios or controlled UIs.
-
-#### `configuration: Pick<Configuration, 'email' | 'phone' | 'privacyPolicy' | 'website' | 'termsOfService' | 'botAvatar' | 'botDescription' | 'botName'>`
-
-A configuration object containing bot identity and contact details.
-To enable the expanded header with additional links (e.g., website, terms of service), include the following fields: email, phone, privacyPolicy, website, and termsOfService.
+<ResponseField
+  name="configuration"
+  type="Pick&lt;Configuration, 'email' | 'phone' | 'privacyPolicy' | 'website' | 'termsOfService' | 'botAvatar' | 'botDescription' | 'botName'&gt;"
+>
+  A configuration object containing bot identity and contact details. To enable the expanded header with additional
+  links (e.g., website, terms of service), include the following fields: <code>email</code>, <code>phone</code>,{' '}
+  <code>privacyPolicy</code>, <code>website</code>, and <code>termsOfService</code>.
+</ResponseField>
