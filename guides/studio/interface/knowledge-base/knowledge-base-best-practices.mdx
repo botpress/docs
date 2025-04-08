@@ -1,0 +1,89 @@
+---
+title: Knowledge Base Best Practices
+description: >-
+  Set up Knowledge Bases effectively by prioritizing structured data, ensuring
+  data quality, and using automated ingestion tools.
+sidebarTitle: Best Practices
+---
+
+The efficiency of your agent relies heavily on the quality of the data fed into the Knowledge Base. Here are some best practices to follow when setting up your Knowledge Base:
+
+# Structured vs. Unstructured Information
+
+The success of your chatbot depends on how well the information in your KB is structured:
+
+Structured Data refers to any kind of information that requires associating two or more records. For example, a Table that contains information about User emails, IDs, and products would be considered structured data.
+
+Unstructured Data refers to any kind of information that doesn't associate multiple records. For example, this might include files like call transcripts, meeting notes, or product descriptions.
+
+# Data Quality
+
+The quality of the data you feed into the KB directly impacts the quality of your agent's responses. Ensure the information is accurate, up-to-date, and free of unnecessary or redundant details.
+
+Poor-quality data will lead to poor agent performance. When planning an AI Agent project that requires KB ingestion, consider doing a redundant, obsolete, or trivial (ROT) analysis of the KB source.
+
+Good-quality data also includes organized data. For example, if you're answering questions about multiple knowledge products, consider separating them into separate KBs, and segregate your agent's access to each KB based on the context of the conversation.
+
+# Choosing the Right Knowledge Type
+
+When populating your KB, use the correct type based on the nature of your information.
+
+For instance, **Tables** are best suited for structured data. If your information can be classified by attributes or specific fields, using Tables will make it easier for your agent to search and extract data.
+
+Use **Rich Text** for unstructured but logically organized content. It’s a great solution when Tables aren’t feasible.
+
+Use **Documents** when your data can’t be easily represented as structured or plain text. Keep in mind that when documents are uploaded, any native styling or images is removed, and the file is converted to markdown in order to be read by an LLM.
+
+# Using Website Crawlers and Search Engines
+
+Botpress offers flexible options for ingesting website data into the KB:
+
+## If you have a valid sitemap
+
+If your website has a valid sitemap, use the Website crawler, which ingests information more effectively. Consider using a sitemap finder and/or validator to verify your sitemap's validity for this purpose.
+
+## If you don't have a valid sitemap
+
+If your website lacks a valid sitemap, use the Search The Web feature, which relies on Bing search to extract relevant information from the web. This will perform a web search each time a user queries information from the relevant KB.
+
+For manual, specific crawling tasks, you can integrate additional solutions or manually validate crawled content.
+
+# Use the Autonomous Node
+
+For KBs built with Tables, we recommend using the Autonomous Node. It is preconfigured to search and return relevant answers from a KB source.
+
+> 📘 Note
+>
+> There are specific configurations in order to ensure the Autonomous Node behaves as expected.
+>
+> [Learn more here.](/autonomous-nodes)
+
+# Other knowledge ingestion methods
+
+In addition to manually uploading files, Botpress provides automated methods for ingesting data into the KB.
+
+## Direct API Calls (Files API)
+
+You can integrate Botpress with your existing systems and applications to insert documents or other data directly into the KB.
+
+### Example
+
+Your CRM system sends updated product info to Botpress KB automatically when a new product is added.
+
+## Fixed Scheduler (Cron Job)
+
+Set up a Cron Job that periodically calls your APIs to fetch data, which can then be synced to a KB or table in Botpress using an Execute Code Card.
+
+### Example
+
+A nightly task pulls inventory data from your ERP system, updating a table in the KB with new product details.
+
+## Webhook (Trigger)
+
+External systems (such as Jira, Zendesk, or other third-party apps) can push data directly to Botpress through webhooks. In Botpress, this data can be processed and synced to a KB or table via an Execute Code Card.
+
+### Example
+
+When a new support ticket is created in Zendesk, a webhook sends relevant details to Botpress to keep the bot updated with the latest customer issues.
+
+Adding extra preprocessing steps in the Execute Code Card can ensure the incoming data is well-prepared for the KB.

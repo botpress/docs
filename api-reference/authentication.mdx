@@ -1,24 +1,30 @@
-To authenticate with the Botpress Cloud API, you'll need to use an access token. The token types available are:
+You can authenticate to Botpress's API (api.botpress.cloud) as a user, a bot, or an integration. To do so, you'll need to use a token.
+
+<Tip>If you are looking to use the webchat API or the chat API to talk to your bot please refer to the [chat API documentation](/api-reference/chat-api/introduction) and [webchat documentation](/webchat/introduction).</Tip>
 
 ### Types of Tokens
 
 #### 1. Personal Access Token (PAT)
 
-A Personal Access Token (PAT) can be generated in the **Profile Settings** section of your Botpress Cloud account. Once generated, you can use this token as a Bearer token to authenticate API requests.
+<Warning>Be careful, your PAT has the same access you have and can be used to access your data. Keep it safe and never share it with anyone.</Warning>
 
-#### 2. Bot Token
+A Personal Access Token (PAT) can be generated in the **Profile Settings** section of your Botpress account. Once generated, you can use this token as a `Bearer token` to authenticate API requests.
 
-A Bot Token is provided to the bot once it is deployed. The token is stored in the `BP_TOKEN` environment variable and can be used to authenticate API requests on behalf of the bot.
+#### 2. Bot Access Key
 
-#### 3. Integration Token
+A Bot Access Key (BAK) is provided to the bot once it is deployed. This token limit the API access to only the actions that the bot can perform. Only the [runtime API](/api-reference/runtime-api/getting-started), [tables API](/api-reference/tables-api/getting-started), and [files API](/api-reference/files-api/getting-started) are available with this token.
 
-An Integration Token is provided to the integration once it is deployed. Like the Bot Token, it is stored in the `BP_TOKEN` environment variable and is used to authenticate API requests for the integration.
+#### 3. Integration Access Key
+
+An Integration Access Key (IAK) is provided to the bot once it is deployed. This token limit the API access to only the actions that the integration can perform. Only the [runtime API](/api-reference/runtime-api/getting-started) and [files API](/api-reference/files-api/getting-started) are available with this token.
+
+<Note>If you are looking to self host your integration you can generate your own Integration Access Key instead of using your own PAT.</Note>
 
 ---
 
 ## Authentication Methods
 
-Once you have your token, you can authenticate your requests using one of the following methods:
+Once you have your token, you can authenticate your requests to Botpress's API (api.botpress.cloud) using one of the following methods:
 
 ### 1. Authentication with the API
 
@@ -26,21 +32,18 @@ To authenticate using the API, pass the `Authorization` header with the appropri
 
 ```http
 GET /api/endpoint
-Authorization: Bearer {ACCESS_TOKEN}
+Authorization: Bearer {TOKEN}
 ```
 
-This header should be included in all requests to the Botpress Cloud API, where `{ACCESS_TOKEN}` is replaced with the actual token you obtained (PAT, Bot Token, or Integration Token).
+This header should be included in all requests to the Botpress Cloud API, where `{TOKEN}` is replaced with the actual token you obtained (PAT, Bot Access Key, or Integration Access Key).
 
 ### 2. Authentication with the Client
 
-You can also authenticate using the client by providing the token when creating a new client instance:
+You can also authenticate using the client by providing the `token` when creating a new Client instance:
 
 ```javascript
 const token = 'your-token'
 const client = new Client({ token })
 ```
 
-In this example:
-- `token`: The access token you obtained (either PAT, Bot Token, or Integration Token).
-
-This will create a client instance that is authenticated and can be used to interact with the API.
+In this example, the `token` you is either a Personal Access Token, Bot Access Key, or Integration Access Key. This will create a Client instance that is authenticated and can be used to interact with the API.

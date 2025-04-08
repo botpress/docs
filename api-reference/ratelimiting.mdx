@@ -1,0 +1,27 @@
+Our APIs are protected using a sliding window ratelimiter. This means that exceeding the allowed number of requests per time window will result in a `429 Too Many Requests` (rate-limited) response.
+
+The ratelimiter returns for each request the following headers:
+
+- `RateLimit-Limit`: The maximum number of requests allowed in the current time window.
+- `RateLimit-Remaining`: The number of requests remaining in the current time window.
+- `RateLimit-Reset`: The time at which the current rate limit window will reset in seconds.
+
+For example, if you exceed the rate limit, you will receive the following response:
+
+```json
+{
+  "type": "RateLimited",
+  "description": "The request has been rate-limited.",
+  "status": 429
+}
+```
+
+### Example Headers
+
+```http
+RateLimit-Limit: 100
+RateLimit-Remaining: 9
+RateLimit-Reset: 6
+```
+
+When using the official Botpress Client, the ratelimiter is automatically handled for you.

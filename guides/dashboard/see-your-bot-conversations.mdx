@@ -1,0 +1,33 @@
+---
+title: Conversations
+excerpt: See your Bot Conversations
+deprecated: false
+hidden: true
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+![](https://files.readme.io/8971e44-image.png)
+
+The Conversations tab is a key feature in Botpress Cloud for tracking your bot's behavior and user interaction. Once you publish and share your chatbot you can use the Conversations tab to test its ensure that it is working as intended.
+
+One of the benefits of using the Conversations tab is that you can see how your bot is performing in real-time. This means that you can see how users are interacting with your bot - the messages they send and the replies they get. This can help you identify any issues with your bot and fix them before they become a problem for other users. It's also very useful for looking for possible improvements to the user experience and constantly refining your bot's performance and functionality.
+
+## Features
+
+### Listing conversations
+
+The left sidebar provides a list of all the conversations that have taken place with your bot. You can click on any of these conversations to see the details of that conversation.
+
+### Conversation details
+
+Once you open a conversation you will have access to the messages history and the list of users in that conversation. You can also see the conversation's metadata, such as date it started and the integration channel it takes place on.
+
+### Filtering conversations by channel
+
+![](https://files.readme.io/b30d996-image.png)
+
+You can filter the conversations by channel. This is useful if you want to see how your bot is performing on a specific channel. For example, you can filter the conversations to only show those that took place on Instagram.

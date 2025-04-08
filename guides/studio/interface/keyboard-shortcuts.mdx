@@ -1,0 +1,39 @@
+---
+title: Keyboard Shortcuts
+excerpt: Studio Keyboard Shortcuts
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+You can use these studio shortcuts for saving your time and focusing on building better bots.
+
+| Shortcut                                             | Windows      | Mac          |
+| :--------------------------------------------------- | :----------- | :----------- |
+| Copy Node                                            | ctrl+c       | cmd+c        |
+| Paste Node                                           | ctrl+v       | cmd+v        |
+| Delete Node                                          | del          | del          |
+| Search                                               | ctrl+f       | cmd+f        |
+| Toggle Left Panel <br /> (Explorer, Library, Hooks)  | ctrl+b       | cmd+b        |
+| Toggle Right Panel <br /> (Inspector & Emulator)     | ctrl+e       | cmd+e        |
+| Toggle Bottom Panel <br /> (Debugger & logs)         | ctrl+j       | cmd+j        |
+| Message History <br /> (Emulator, previous messages) | Arrow ↑ or ↓ | Arrow ↑ or ↓ |
+| Create New Session <br /> (Emulator)                 | ctrl+Enter   | ctrl+Enter   |
+
+# Admin Dashboard Keyboard Shortcuts
+
+| Shortcut                                               | Windows | Mac   |
+| :----------------------------------------------------- | :------ | :---- |
+| Access specific bots and workspaces in Admin Dashboard | ctrl+k  | cmd+k |
+
+# Tables Keyboard Shortcuts
+
+| Shortcut        | Windows                | Mac                    |
+| :-------------- | :--------------------- | :--------------------- |
+| Cell Navigation | Arrow ↑ or ↓ or ← or → | Arrow ↑ or ↓ or ← or → |
+| Edit Cell       | Enter                  | Enter                  |
+| Exit Edit Cell  | Esc                    | Esc                    |

@@ -1,0 +1,29 @@
+---
+title: Personality Agent
+excerpt: Provides your bot with a personality or tone.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+The Personality Agent is used to provide the chatbot with a personality or tone. This agent controls how the bot expresses itself, including its language style, tone, and the types of responses it generates.
+
+# Configuration
+
+## Enable Personality Rewriting
+
+When this option is enabled, all of the messages your bot sends to end users will be rewritten to match the personality you indicate.
+
+## Personality Description
+
+The description you use here will be used along with an LLM to define and rewrite the messages your bot sends to end users. Think of this like the prompt you would send to an LLM to generate a certain type of response. You can include information about personality, tone, and purpose.
+
+This field also supports variable expressions. For example, you can use a predefined variable to dynamically change the name of the bot based on information you collect at the beginning of a conversation.
+
+## Model
+
+This is the model your bot will use to rewrite the responses it generates to suit the personality you've indicated in the Personality Description section.

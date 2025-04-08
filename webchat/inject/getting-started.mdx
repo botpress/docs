@@ -1,4 +1,4 @@
-The Embedded Webchat allows you to integrate chatbot functionality directly into your web application. It supports message handling, event subscriptions, and customization, enabling a dynamic user experience within the browser.
+The Injected Webchat allows you to integrate chatbot functionality directly into your web application. It supports message handling, event subscriptions, and customization, enabling a dynamic user experience within the browser.
 
 ## Setup
 
@@ -8,9 +8,30 @@ The simplest way to get started with Webchat for your web application is by embe
   <Step title="Copy embed script">
     Open your bot in the Botpress Dashboard, then navigate to the Webchat tab in your sidebar. Click on the
     Share tab and copy the provided Embed Code.
+
+    <Frame>![Embed Code](./embed-code.png)</Frame>
   </Step>
-  <Step title="Paste">Paste the code into the body of your HTML file.</Step>
-  <Step title="Chat">You're all set! Open your webpage and start chatting with your bot.</Step>
+  <Step title="Paste">
+Paste the code into the body of your HTML page
+
+  ```html {4-5}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/03/18/14/20250318141028-30WRMG85.js"></script>
+</head>
+<body>
+  <!-- Website content -->
+</body>
+</html>
+  ```
+  </Step>
+  <Step title="Chat">
+    You're all set! Open your webpage and start chatting with your bot. Your page should look something like this:
+
+    <Frame>![Webchat](./webchat.png)</Frame>
+  </Step>
 </Steps>
 
 ### Embedding Webchat as a Component in Your Web Application

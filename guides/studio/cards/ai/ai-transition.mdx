@@ -1,0 +1,29 @@
+---
+title: AI Transition
+excerpt: >-
+  Transition card that uses AI to determine a user's intent from a natural
+  language input.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+# AI Transition Overview
+
+The AI Transition card is a specific type of AI Task that helps you classify text into a set of predefined categories. This is useful for several different cases such as assessing the user intent without needing to create training phrases, or extracting the main topic of a text.
+
+# Using AI Transitions
+
+You have three fields in the AI Transition card:
+
+* Text to categorize: the text input you want to process, you can use variables here (like `{{event.preview}}` to get the last user message)
+* Categories: the list of categories you want to use to classify the text.
+* Store result in variable (Optional): allows you to select a variable to store the resulting category in. This is useful if you want to use the category later in the conversation.
+
+> 📘 Info
+>
+> You can use the AI Transition card to replace Intents. You just need to create a category for each intent you want to replace, and use the AI Transition card instead of adding multiple inline or Library intents.
