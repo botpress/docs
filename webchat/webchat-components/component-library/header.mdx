@@ -1,7 +1,86 @@
-## Header
+The `Header` component sits at the top of the Webchat UI, displaying the bot’s name, avatar, and description.
+It also provides access to key actions like restarting the conversation or closing the chat window.
 
-`Header` component sits at the top of the Webchat, providing clear bot
-identification and quick access to functions like refreshing or closing the
-chat.
+![webchat-header-img](../../assets/webchat-components_component-library_header.png)
+
+_Expanded_
+![webchat-header-expanded-img](../../assets/webchat-components_component-library_header-expanded.png)
+
+### Usage
+
+<Note>
+  Although it can be used as a standalone component, the `Header` is designed to be used within the
+  [Container](./container.mdx) component and alonside the [Composer](./composer.mdx) and
+  [MessageList](./message-list.mdx) components.
+</Note>
+
+```jsx
+import { Header, useWebchatClient } from '@botpress/webchat'
+
+// Every attributes that the header component can take
+const headerConfig = {
+  botName: 'SupportBot',
+  botAvatar: 'https://cdn.botpress.cloud/bot-avatar.png',
+  botDescription: 'Your virtual assistant for all things support.',
+
+  phone: {
+    title: 'Call Support',
+    link: 'tel:+1234567890',
+  },
+
+  email: {
+    title: 'Email Us',
+    link: 'mailto:support@example.com',
+  },
+
+  website: {
+    title: 'Visit our website',
+    link: 'https://www.example.com',
+  },
+
+  termsOfService: {
+    title: 'Terms of Service',
+    link: 'https://www.example.com/terms',
+  },
+
+  privacyPolicy: {
+    title: 'Privacy Policy',
+    link: 'https://www.example.com/privacy',
+  },
+}
+
+function App() {
+  return <Header configuration={headerConfig} restartConversation={newConversation} />
+}
+```
 
 ### Props
+
+#### `defaultOpen?: boolean`
+
+Controls whether the header is expanded by default. Only used when the open prop is uncontrolled. Defaults to false.
+
+#### `open?: boolean`
+
+Explicitly controls whether the header is open. Useful for managing the open state from a parent component.
+
+#### `onOpenChange?: (open: boolean) => void`
+
+Callback triggered when the open state changes. It overrides the default behavior of expanding the header. Receives the new open state as an argument.
+
+#### `disabled?: boolean`
+
+Disables the header toggle functionality when set to true. Defaults to false.
+
+#### `restartConversation?: () => void`
+
+Optional function to restart the current conversation. Typically resets the conversation state to the beginning.
+
+#### `closeWindow?: () => void`
+
+Optional function to close the chat window. Useful for embedding scenarios or controlled UIs.
+
+#### `configuration: Pick<Configuration, 'email' | 'phone' | 'privacyPolicy' | 'website' | 'termsOfService' | 'botAvatar' | 'botDescription' | 'botName'>`
+
+A configuration object containing bot identity and contact details.
+To enable the expanded header with additional links (e.g., website, terms of service), include the following fields: email, phone, privacyPolicy, website, and termsOfService.
