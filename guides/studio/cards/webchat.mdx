@@ -1,0 +1,41 @@
+---
+title: Webchat
+excerpt: Cards that allow you to interact with the webchat widget.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+# Webchat Cards
+
+Webchat Cards are specialized Cards available in Botpress that enable you to directly control and interact with the webchat widget embedded on your website. These Cards allow you to manage the behavior of the webchat widget, handle user interactions, and customize the chat experience for your users.
+
+Below is an overview of each category of Webchat Interaction Cards available through the card tray:
+
+## Configure Webchat
+
+The **Configure Webchat** Card allows you to adjust the settings of the webchat widget dynamically. You can change visual and functional aspects of the webchat, such as modifying the color scheme, adjusting welcome messages, or toggling features like file uploads. This Card helps personalize the user experience based on the context of the conversation or user preferences.
+
+## Send Custom Event
+
+The **Send Custom Event** Card is used to trigger custom events in the webchat widget, allowing you to send data from your bot to the webchat or perform specific actions based on user interactions. This Card is particularly useful for tracking user behavior, integrating analytics, or triggering specific workflows within the webchat.
+
+## Get User Data
+
+The **Get User Data** Card allows you to retrieve information about the user interacting with the webchat widget, such as their location, browser type, or other metadata. This data can be used to tailor the conversation, provide localized responses, or make decisions based on the user’s context.
+
+## Hide Webchat
+
+The **Hide Webchat** Card enables you to programmatically hide the webchat widget from the user’s view. This can be used to control when the chat is accessible, such as hiding the widget after a session ends or when a specific condition is met.
+
+## Show Webchat
+
+The **Show Webchat** Card allows you to display the webchat widget to the user, ensuring the chat is visible when you want to prompt user interaction. This is useful for engaging users at specific moments in their journey, such as after a certain time on the page or following a specific action.
+
+## Toggle Webchat
+
+The **Toggle Webchat** Card provides the ability to switch the webchat widget between visible and hidden states. This Card is useful when you want to allow the user to control the visibility of the chat or when creating interactive flows that respond to user actions dynamically.

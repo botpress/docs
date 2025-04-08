@@ -1,0 +1,17 @@
+---
+title: Audits
+excerpt: A log of changes made to the Workspace and bots it contains.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+This tab contains a list of recent changes and edits made to the Workspace and any bots it contains.
+
+Audit logs are particularly useful in collaborative environments where multiple team members work in the same Workspace.
+
+Ordered chronologically, the Audit log lists the Workspace member, the action they took, and on what time and date this action was taken.

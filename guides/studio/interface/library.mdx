@@ -1,0 +1,108 @@
+---
+title: Library
+excerpt: >-
+  Repository for managing global Intents and Entities, enabling the extraction
+  and classification of messages.
+deprecated: false
+hidden: false
+metadata:
+  title: ''
+  description: ''
+  robots: index
+next:
+  description: ''
+---
+The NLU Library is a key feature within Botpress, designed to manage and organize global Intents and Entities. These components are essential for understanding and processing user input, enabling your bot responds accurately and effectively.
+
+# Intents
+
+Intents are the backbone of understanding in a chatbot. They represent the purpose or goal behind a user's message, allowing the chatbot to determine the appropriate response. Each intent can have multiple utterances—different ways users might express the same request.
+
+For example, an "Ordering a coffee" intent could include utterances like:
+
+"I want coffee"\
+"I'd like some coffee, please"\
+"Do you have a decaf espresso?"\
+"Hi. I'd like to order a latte, please.
+
+The chatbot compares user messages against these utterances to match them to the correct intent with the highest confidence score.
+
+| User Message                                | Intent Matched | Confidence |
+| :------------------------------------------ | :------------: | ---------: |
+| I would like to order a coffee.             |   place-order  |       0.97 |
+| An espresso, please                         |   place-order  |       0.91 |
+| Can you please give me a double cappuccino? |   place-order  |       0.96 |
+
+## Creating an Intent
+
+To create a new intent:
+
+1. Navigate to the Library
+2. Click the + button to add a new intent
+3. Provide a simple name for the intent (e.g., "order coffee")
+
+### Adding Utterances
+
+After creating an intent, you need to define utterances that represent different ways a user might express the same intent.
+
+1. In the intent creation window, enter at least 10 utterances
+2. Save your changes
+
+Utterances currently support a maximum of 280 characters each.
+
+## Inline Intents
+
+Inline intents are specialized intents that can be defined directly on transitions within your chatbot’s flow. They function like global intents but are limited to specific scenarios within a conversation, making them ideal for context-sensitive tasks.
+
+To use inline intents:
+
+* Define them directly on a transition within your flow
+* Add relevant utterances
+
+<br />
+
+# Entities
+
+Entities are data points or parameters that provide additional context within an intent. They allow your chatbot to extract and normalize specific details from a user's message, such as a date, time, color, or any other relevant piece of information.
+
+> 📝 Example
+>
+> The place-order intent contains the following entities:
+>
+> **caffeine** that specifies if the coffee is caffeinated or decaffeinated. 
+>
+> **size** for a single or a double shot. 
+>
+> **drink** that specifies the kind of drink asked for. 
+>
+> Attached to NLU extraction, you will find an entities property which is an array of System and Custom entities.
+
+## Custom Entities
+
+Botpress provides two types of custom entities: pattern and list entities. To define a custom entity, go to the Library tab of the Explorer. From there, you can define your custom entities which will be available for any input message treated by your chatbot. Go ahead and click on New entity.
+
+<br />
+
+## Using Entities
+
+You may access and use entity data by looking up the event.nlu.entities variable in your hooks, flow transitions or Execute Code cards.
+
+<br />
+
+## List Entities
+
+List extraction behaves similarly to pattern extraction. However, you'll be able to add different occurrences of your entity with corresponding synonyms. 
+
+Let's take Airport Codes as an example: 
+
+Extraction will go like this: User said Type Value "Find a flight from SFO to Mumbai" "Airport Codes" ["SFO", "BOM"]
+
+<br />
+
+## Pattern Entities
+
+Pattern or Regular Expression Extraction allows you to extract information presented in a format that can be described using Regular Expression (RegEx). Once you've created a pattern entity, Botpress Native NLU will perform a regex extraction on each incoming message and add it to event.nlu.entities.
+
+Example: 
+
+Given a Pattern Entity definition with [A-Z]\{3}-\[0-9]\{4}-[A-Z]\{3} as a pattern: Extraction will go like this: User said Type Value Find product BHZ-1234-UYT SKU BHZ-1234-UYT
