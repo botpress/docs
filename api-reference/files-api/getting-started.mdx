@@ -12,6 +12,58 @@ Files can be in any text or binary format, and documents (such as PDF, Microsoft
 
 3. Check out the How-To guides (see left sidebar) for examples on how to use the Files API in different scenarios.
 
+### Using cURL
+
+Calling the Files API can be done using any HTTP client, such as `curl`, `axios`, or `fetch`. Here's an example using `curl`:
+
+```bash
+token="$YOUR_BOTPRESS_TOKEN"
+bot_id="$YOUR_BOT_ID"
+# List your bot's files
+curl -H "Authorization: bearer $token" -H "x-bot-id: $bot_id" https://api.botpress.cloud/v1/files
+```
+
+## Using the Official TypeScript Client
+
+The official TypeScript client is available as an NPM package. You can install it using any of the following command:
+
+<CodeGroup>
+```bash npm
+npm install @botpress/client
+```
+
+```bash pnpm
+pnpm install @botpress/client
+```
+
+```bash yarn
+yarn add @botpress/client
+```
+</CodeGroup>
+
+Once installed, you can import the client and use it in your TypeScript code:
+
+{/* TODO(driftable): This script is subject to changes and should be auto-generated */}
+```ts
+import { files } from '@botpress/client'
+
+const main = async () => {
+    const token = process.env.TOKEN
+    const botId = process.env.BOT_ID
+
+    const client = new files.Client({
+        token,
+        botId,
+    })
+
+    const response = await files.listFiles({})
+    console.log(response.files)
+}
+
+void main()
+```
+
+
 ## Security
 
 ### Access Policies
