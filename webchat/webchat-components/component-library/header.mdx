@@ -10,8 +10,8 @@ _Expanded_
 
 <Note>
   Although it can be used as a standalone component, the `Header` is designed to be used within the
-  [Container](./container.mdx) component and alonside the [Composer](./composer.mdx) and
-  [MessageList](./message-list.mdx) components.
+  [Container](./container) component and alonside the [Composer](./composer) and [MessageList](./message-list)
+  components.
 </Note>
 
 ```jsx
@@ -72,7 +72,7 @@ function App() {
 ### Props
 
 <ResponseField name="defaultOpen" type="boolean">
-  Controls whether the header is expanded by default. Only used when the <code>open</code> prop is uncontrolled.
+  Controls whether the header is expanded by default. Only used when the `open` prop is uncontrolled.
 </ResponseField>
 
 <ResponseField name="open" type="boolean">
@@ -85,11 +85,13 @@ function App() {
 </ResponseField>
 
 <ResponseField name="disabled" type="boolean">
-  Disables the header toggle functionality when set to <code>true</code>.
+  Disables the header toggle functionality when set to `true`.
 </ResponseField>
 
 <ResponseField name="restartConversation" type="() => void">
-  Optional function to restart the current conversation. Typically resets the conversation state to the beginning.
+  Optional function to restart the current conversation. Typically resets the conversation state to the beginning. The
+  header must be within a `ModalProvider` for this to work. Such ModalProvider is provided automatically with the
+  `Container` component.
 </ResponseField>
 
 <ResponseField name="closeWindow" type="() => void">
@@ -98,9 +100,10 @@ function App() {
 
 <ResponseField
   name="configuration"
-  type="Pick&lt;Configuration, 'email' | 'phone' | 'privacyPolicy' | 'website' | 'termsOfService' | 'botAvatar' | 'botDescription' | 'botName'&gt;"
+  type="Pick<Configuration, 'email' | 'phone' | 'privacyPolicy' | 'website' | 'termsOfService' | 'botAvatar' | 'botDescription' | 'botName'>"
+  required
 >
   A configuration object containing bot identity and contact details. To enable the expanded header with additional
-  links (e.g., website, terms of service), include the following fields: <code>email</code>, <code>phone</code>,{' '}
-  <code>privacyPolicy</code>, <code>website</code>, and <code>termsOfService</code>.
+  links (e.g., website, terms of service), include the following fields: `email`, `phone`, `privacyPolicy`, `website`,
+  and `termsOfService`.
 </ResponseField>

@@ -1,0 +1,50 @@
+The StylesheetProvider dynamically generates and injects a custom Webchat theme based on your configuration.
+This includes styling variables like colors, border radius, font family, and theme variant.
+
+The generated theme is automatically injected into the page using a `<style>` tag and supports both **light** and dark **modes**.
+
+### Usage
+
+```tsx App.tsx
+
+import { StylesheetProvider } from '@botpress/webchat'
+
+const config: = {
+  color: '#3778f0',
+  fontFamily: 'Inter',
+  radius: 1,
+  variant: 'soft',
+  themeMode: 'light',
+}
+
+function App() {
+  return (
+      <StylesheetProvider
+        color={config.color}
+        fontFamily={config.fontFamily}
+        radius={config.radius}
+        variant={config.variant}
+        themeMode={config.themeMode}
+      />
+  )
+}
+
+```
+
+### Props
+
+<ResponseField name="color" type="string">
+  The primary color used in your generated theme. It must be a **6 digit hex value**.
+</ResponseField>
+<ResponseField name="fontFamily" type="'rubik', 'inter', 'ibm', 'fira'">
+  The font family used throughout the Webchat UI.
+</ResponseField>
+<ResponseField name="radius" type="number (1 - 4)">
+  Controls the border-radius of Webchat UI elements like cards, buttons, and message bubbles.
+</ResponseField>
+<ResponseField name="variant" type="'solid' | 'soft'">
+  Defines the overall style variant of the UI.
+</ResponseField>
+<ResponseField name="themeMode" type="'light' | 'dark'">
+  Sets the theme mode.
+</ResponseField>

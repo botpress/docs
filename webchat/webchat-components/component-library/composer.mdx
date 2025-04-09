@@ -7,8 +7,7 @@ It is a crucial part of the Webchat UI, providing a text area for input, optiona
 
 <Note>
   Altough it can be use as a standalone component, the composer is designed to be used within the
-  [Container](./container.mdx) component and alonside the [Header](./header.mdx) and [MessageList](./message-list.mdx)
-  components.
+  [Container](./container) component and alonside the [Header](./header) and [MessageList](./message-list) components.
 </Note>
 
 ```tsx
@@ -57,10 +56,7 @@ function App() {
   A callback function for sending messages composed by the user.
 </ResponseField>
 
-<ResponseField
-  name="uploadFile"
-  type="(file: File) => Promise&lt;{ fileUrl: string; name: string; type: FileType }&gt;"
->
+<ResponseField name="uploadFile" type="(file: File) => Promise<{ fileUrl: string; name: string; type: FileType }>">
   Handles the file upload logic and returns file metadata upon success.
 </ResponseField>
 

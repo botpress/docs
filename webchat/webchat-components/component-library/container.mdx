@@ -3,9 +3,17 @@ It manages layout, drag-and-drop file uploading, connection status feedback, and
 
 It should be used as the top-level wrapper around your webchat content.
 
+_Empty Container_
+![webchat-container](../../assets/webchat-components_component-library_container.png)
+
+_Disconnected Container_
+![webchat-container](../../assets/webchat-components_component-library_container-disconnected.png)
+
 ### Usage
 
 ```tsx
+import { Container, useWebchatClient } from '@botpress/webchat'
+
 function App() {
   const [isWebchatOpen, setIsWebchatOpen] = useState(false)
 
