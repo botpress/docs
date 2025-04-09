@@ -2,9 +2,10 @@
 title: Implementing Human in the loop (HITL) in an integration
 ---
 
+import { HitlIcon } from '/snippets/icons/plugins/hitl.mdx'
 import { CurrentInterfaceVersion } from '/snippets/interface-version.mdx'
 
-The Human in the loop (HITL) interface allows you to implement human agent intervention in your integration.
+<HitlIcon width={64} style={{float: 'left', marginRight: 5}} role="presentation" /> The Human in the loop (HITL) interface allows you to implement human agent intervention in your integration.
 
 ## Terminology
 
@@ -220,6 +221,139 @@ If you want to rename this channel, you can do so in the configuration object. F
 ## Implementing the interface
 
 ### Implementing the actions
+
+#### Implementing `createUser`
+
+The `createUser` action is used by the HITL plugin to request the creation of an external user (a _requester_) in the external service.
+
+<Note>
+If you opted to rename the action to something else than `createUser` in the previous section, please use the new name instead of `createUser`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 55](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L55).
+
+This action should implement the following logic:
+- Using the Botpress client, create a Botpress user.
+- On the external service, create an external user and map it to the Botpress user.
+  - Please refer to the external service's documentation to know how to set extra metadata for the user. The integration must be able at any time to query the external service in order to retrieve the Botpress user ID from the external user.
+- Update the Botpress user to map it to the external user.
+  - This is typically done by setting a tag on the Botpress user with the external user's ID.
+
+As reference, here's how this logic is implemented in the Zendesk integration:
+
+```typescript src/index.ts {3}
+export default new bp.Integration({
+  actions: {
+    async createUser({ ctx, input, client }) {
+      // Create a Botpress user:
+      const { name, email, pictureUrl } = input
+      const { user } = await client.createUser({
+        name,
+        pictureUrl,
+        tags: {
+          email,
+          role: 'end-user',
+        },
+      })
+
+      // Create an external user on Zendesk:
+      const zendeskClient = getZendeskClient(ctx.configuration)
+      const zendeskUser = await zendeskClient.createOrUpdateUser({
+        role: 'end-user',
+        external_id: user.id, // <= map to the Botpress user ID
+        name,
+        email,
+        remote_photo_url: pictureUrl,
+      })
+
+      // Map the external user to the Botpress user:
+      await client.updateUser({
+        id: user.id,
+        tags: {
+          id: zendeskUser.id.toString(), // <= map to the external user ID
+        },
+      })
+
+      // Yield control back to the plugin and return the user ID:
+      return {
+        userId: user.id,
+      }
+    },
+  },
+})
+```
+
+#### Implementing `startHitl`
+
+The `startHitl` action is used by the HITL plugin to request the creation of a HITL session in the external service. This action should be implemented in your integration to create a new HITL session.
+
+<Note>
+If you opted to rename the action to something else than `startHitl` in the previous section, please use the new name instead of `startHitl`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 71](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L71).
+
+This action should implement the following logic:
+- Fetch the Botpress user with ID `input.userId` that was passed in the input parameters.
+- From the Botpress user's tags, retrieve the external user's ID.
+- On the external service, create the HITL session. This is typically represented as a _ticket_ in the external service.
+- Create a Botpress conversation and map it to the HITL session. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
+- Update the HITL session on the external service to map it to the Botpress conversation.
+  - Please refer to the external service documentation to know how to set extra metadata for the HITL session (typically a _ticket_). The integration must be able at any time to query the external service in order to retrieve the Botpress conversation ID from the HITL session.
+- Yield control back to the plugin by returning the Botpress conversation ID.
+
+As reference, here's how this logic is implemented in the Zendesk integration:
+
+```typescript src/index.ts {3}
+export default new bp.Integration({
+  actions: {
+    async startHitl({ ctx, input, client }) {
+      // Fetch the Botpress user that was passed in the input parameters:
+      const { user } = await client.getUser({
+        id: input.userId,
+      })
+
+      // From the user's tags, retrieve the external user's id:
+      const zendeskAuthorId = user.tags.id
+      if (!zendeskAuthorId) {
+        throw new sdk.RuntimeError(
+          `User ${user.id} is not linked to a Zendesk user`
+        )
+      }
+
+      // Create a new ticket on Zendesk:
+      const zendeskClient = getZendeskClient(ctx.configuration)
+
+      const ticketTitle = input.title ?? 'Untitled Ticket'
+      const ticketBody = 'A user created a support ticket'
+      const createdZendeskTicket = await zendeskClient
+        .createTicket(ticketTitle, ticketBody, {
+          id: zendeskAuthorId,
+        })
+
+      // Create a Botpress conversation and map it to the Zendesk ticket:
+      const { conversation } = await client.getOrCreateConversation({
+        channel: 'hitl',
+        tags: {
+          id: createdZendeskTicket.id.toString(),
+        },
+      })
+
+      // Map the Zendesk ticket to the Botpress conversation:
+      await zendeskClient.updateTicket(createdZendeskTicket.id, {
+        external_id: conversation.id,
+      })
+
+      // Yield control back to the plugin and return the conversation ID:
+      return {
+        conversationId: conversation.id,
+      }
+    },
+  },
+})
+```
 
 ### Implementing the channel
 
