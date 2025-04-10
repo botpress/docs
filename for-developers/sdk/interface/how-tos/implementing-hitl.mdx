@@ -4,6 +4,7 @@ title: Implementing Human in the loop (HITL) in an integration
 
 import { HitlIcon } from '/snippets/icons/plugins/hitl.mdx'
 import { CurrentInterfaceVersion } from '/snippets/interface-version.mdx'
+import { DefinitionList, Definition, DefinitionReference as Term } from '/snippets/definition-list.mdx'
 
 <p>
   <HitlIcon width={64} style={{float: 'left', marginRight: 5}} role="presentation" />
@@ -14,27 +15,45 @@ import { CurrentInterfaceVersion } from '/snippets/interface-version.mdx'
 
 Throughout this document, we will use the following terms:
 
-- **Integration**: The code that connects Botpress to an external service.
-- **External service**: The service that provides HITL functionality. This could be a help desk system like Zendesk, or any other system that allows human agents to send and receive messages to end users.
-- **Human agent**: A person who interacts with end users through the external service. This could be a support agent, a sales representative, or any other type of human agent.
-- **End user**: A person who interacts with your bot through Botpress. This could be a customer, a user, an employee, or any other type of end user.
-- **External user**: A representation of a end user within the external service. This is typically created when a HITL session is started.
-- **HITL session**: A conversation between an end user and a human agent. This is typically represented as a _ticket_ in the external service.
-- **HITL interface**: The interface that defines the contract for implementing HITL functionality in your integration. This interface specifies the actions, events, and channels that your integration must implement to support HITL.
-- **HITL plugin**: The Botpress plugin that manages HITL sessions and relays messages between end users and your integration. Installing this plugin in a bot enables HITL functionality using the selected integration.
+<DefinitionList>
+  <Definition term="integration" id="integration">
+    The code that connects Botpress to an external service.
+  </Definition>
+  <Definition term="external service" id="external-service">
+    The service that provides HITL functionality. This could be a help desk system like Zendesk, or any other system that allows human agents to send and receive messages to end users.
+  </Definition>
+  <Definition term="human agent" id="human-agent">
+    A person who interacts with end users through the external service. This could be a support agent, a sales representative, or any other type of human agent.
+  </Definition>
+  <Definition term="end user" id="end-user">
+    A person who interacts with your bot through Botpress. This could be a customer, a user, an employee, or any other type of end user.
+  </Definition>
+  <Definition term="external user" id="external-user">
+    A representation of an end user within the external service. This is typically created when a HITL session is started.
+  </Definition>
+  <Definition term="HITL session" id="hitl-session">
+    A conversation between an end user and a human agent. This is typically represented as a _ticket_ in the external service.
+  </Definition>
+  <Definition term="HITL interface" id="hitl-interface">
+    The interface that defines the contract for implementing HITL functionality in your integration. This interface specifies the actions, events, and channels that your integration must implement to support HITL.
+  </Definition>
+  <Definition term="HITL plugin" id="hitl-plugin">
+    The Botpress plugin that manages HITL sessions and relays messages between end users and your integration. Installing this plugin in a bot enables HITL functionality using the selected integration.
+  </Definition>
+</DefinitionList>
 
 ## External service requirements
 
-The external service providing HITL functionality **must** support the following:
+The <Term id="external-service"/> providing HITL functionality **must** support the following:
 
-- An API that allows creating external users.
-- An API that allows creating HITL sessions.
-- An API that allows adding messages to HITL sessions.
-- An API that allows closing HITL sessions.
-- Webhooks that can notify your integration of the following events:
-  - HITL session closure.
-  - Human agent assignment.
-  - Human agent reply.
+- An API that allows creating <Term id="external-user" plural/>.
+- An API that allows creating <Term id="hitl-session" plural/>.
+- An API that allows adding messages to <Term id="hitl-session" plural/>.
+- An API that allows closing <Term id="hitl-session" plural/>.
+- Webhooks that can notify your <Term id="integration"/> of the following events:
+  - <Term id="hitl-session" capitalize/> closure.
+  - <Term id="human-agent" capitalize/> assignment.
+  - <Term id="human-agent" capitalize/> reply.
 
 ## Updating your `package.json` file
 
@@ -46,14 +65,14 @@ You will need this version number for the next steps.
 
 ### Adding the interface as a dependency
 
-Once you have the interface version, you can add it as a dependency to your integration:
+Once you have the <Term id="hitl-interface"/> version, you can add it as a dependency to your <Term id="integration"/>:
 
 <Steps>
   <Step title="Open the package.json file">
-    Open your integration's `package.json` file.
+    Open your <Term id="integration"/>'s `package.json` file.
   </Step>
   <Step title="Add the bpDependencies section">
-    If there is no `bpDependencies` section in your integration's `package.json` file, create one:
+    If there is no `bpDependencies` section in your <Term id="integration"/>'s `package.json` file, create one:
     ```json package.json {2}
     {
       "bpDependencies": {}
@@ -61,7 +80,7 @@ Once you have the interface version, you can add it as a dependency to your inte
     ```
   </Step>
   <Step title="Add the interface as a dependency">
-    In the `bpDependencies` section, add the interface as a dependency. For example, for version `0.4.0`, you would add the following:
+    In the `bpDependencies` section, add the <Term id="hitl-interface"/> as a dependency. For example, for version `0.4.0`, you would add the following:
     ```json package.json {3}
     {
       "bpDependencies": {
@@ -78,26 +97,26 @@ Once you have the interface version, you can add it as a dependency to your inte
 
     For example, if you specify `^0.4.0` as the version:
     - You'll automatically get updates like `0.4.6` or `0.5.0` (bug fixes and new features).
-    - You won't get version `1.0.0` (which might break your integration).
+    - You won't get version `1.0.0` (which might break your <Term id="integration"/>).
     </Tip>
   </Step>
   <Step title="Save the package.json file">
     Save the `package.json` file.
   </Step>
   <Step title="Install the interface">
-  Now that you have added the interface as a dependency, you can run the [`bp add`](/for-developers/cli/commands/add) command to install it. This command will:
+  Now that you have added the <Term id="hitl-interface"/> as a dependency, you can run the [`bp add`](/for-developers/cli/commands/add) command to install it. This command will:
   - Download the interface from Botpress.
-  - Install it in a directory named `bp_modules` in your integration's root directory.
+  - Install it in a directory named `bp_modules` in your <Term id="integration"/>'s root directory.
   </Step>
 </Steps>
 
 ### Adding a helper build script
 
-To keep your integration up to date, we recommend adding a helper build script to your integration:
+To keep your <Term id="integration"/> up to date, we recommend adding a helper build script to your `package.json` file:
 
 <Steps>
   <Step title="Open the package.json file">
-    Open your integration's `package.json` file.
+    Open your <Term id="integration"/>'s `package.json` file.
   </Step>
   <Step title="Add the build script">
     In the `scripts` section, add the following script:
@@ -117,20 +136,20 @@ To keep your integration up to date, we recommend adding a helper build script t
   </Step>
 </Steps>
 
-Now, whenever you run `npm run build`, it will automatically install the interface and build your integration. This is useful for ensuring that your integration is always up to date with the latest version of the interface.
+Now, whenever you run `npm run build`, it will automatically install the <Term id="hitl-interface" /> and build your <Term id="integration" />. This is useful for ensuring that your <Term id="integration"/> is always up to date with the latest version of the <Term id="hitl-interface"/>.
 
 ## Editing your integration definition file
 
 ### Adding the interface to your integration definition file
 
-Now that the interface is installed, you must add it your integration definition file in order to implement it.
+Now that the <Term id="hitl-interface"/> is installed, you must add it your integration definition file in order to implement it.
 
 <Steps>
   <Step title="Open the integration.definition.ts file">
-    Open your integration's `integration.definition.ts` file.
+    Open your <Term id="integration"/>'s `integration.definition.ts` file.
   </Step>
   <Step title="Import the interface">
-    At the top of the file, import the interface:
+    At the top of the file, import the <Term id="hitl-interface"/>:
     ```typescript integration.definition.ts
     import hitl from './bp_modules/hitl'
     ```
@@ -157,16 +176,16 @@ The `.extend()` function takes two arguments:
 - The second argument is a configuration object. Using this object, you can override interface defaults with custom names, titles, and descriptions.
 
 <Tip>
-Whilst renaming actions, events and channels is optional, it is highly recommended to rename these to match the terminology of the external service. This will help you avoid confusion and make your integration easier to understand.
+Whilst renaming actions, events and channels is optional, it is highly recommended to rename these to match the terminology of the <Term id="external-service"/>. This will help you avoid confusion and make your <Term id="integration"/> easier to understand.
 </Tip>
 
 #### Renaming actions
 
-The `hitl` interface defines three actions that are used to interact with the external service:
+The `hitl` interface defines three actions that are used to interact with the <Term id="external-service"/>:
 
-- `createUser` - Used by the HITL plugin to request the creation of a user in the external service and on Botpress.
-- `startHitl` - Used by the HITL plugin to request the creation of a HITL session in the external service.
-- `stopHitl` - Used by the HITL plugin to request the closure of a HITL session in the external service.
+- `createUser` - Used by the <Term id="hitl-plugin"/> to request the creation of a user in the <Term id="external-service"/> and on Botpress.
+- `startHitl` - Used by the <Term id="hitl-plugin"/> to request the creation of a <Term id="hitl-session"/> in the <Term id="external-service"/>.
+- `stopHitl` - Used by the <Term id="hitl-plugin"/> to request the closure of a <Term id="hitl-session"/> in the <Term id="external-service"/>.
 
 If you want to rename these actions, you can do so in the configuration object. For example, if you want to rename `createUser` to `hitlCreateUser`, you can do it like this:
 
@@ -181,15 +200,15 @@ If you want to rename these actions, you can do so in the configuration object. 
 ```
 
 <Tip>
-For example, if you're using a _help desk_ system like Zendesk, JIRA Service Desk, or Freshdesk for HITL functionality, you might rename `startHitl` to `createTicket` and `stopHitl` to `closeTicket`. These systems use tickets to represent help requests, so renaming actions to match their terminology makes your integration clearer and easier to understand.
+For example, if you're using a _help desk_ system like Zendesk, JIRA Service Desk, or Freshdesk for HITL functionality, you might rename `startHitl` to `createTicket` and `stopHitl` to `closeTicket`. These systems use tickets to represent help requests, so renaming actions to match their terminology makes your <Term id="integration"/> clearer and easier to understand.
 </Tip>
 
 #### Renaming events
 
 The `hitl` interface defines these events to notify the plugin of changes in the external service:
 
-- `hitlAssigned` - Emitted by your integration to notify the HITL plugin that a human agent has been assigned to a HITL session.
-- `hitlStopped` - Emitted by your integration to notify the HITL plugin that a HITL session has been closed.
+- `hitlAssigned` - Emitted by your <Term id="integration"/> to notify the <Term id="hitl-plugin"/> that a <Term id="human-agent"/> has been assigned to a <Term id="hitl-session"/>.
+- `hitlStopped` - Emitted by your <Term id="integration"/> to notify the <Term id="hitl-plugin"/> that a <Term id="hitl-session"/> has been closed.
 
 If you want to rename these events, you can do so in the configuration object. For example, if you want to rename `hitlAssigned` to `agentAssigned`, you can do it like this:
 
@@ -207,7 +226,7 @@ If you want to rename these events, you can do so in the configuration object. F
 
 The `hitl` interface defines these channels:
 
-- `hitl` - Used by the HITL plugin to send and receive messages from the external service. This represents the communication channel for the HITL session, like a support ticket on Zendesk or a direct message thread on Slack.
+- `hitl` - Used by the <Term id="hitl-plugin"/> to send and receive messages from the <Term id="external-service"/>. This represents the communication channel for the <Term id="hitl-session"/>, like a support ticket on Zendesk or a direct message thread on Slack.
 
 If you want to rename this channel, you can do so in the configuration object. For example, if you want to rename `hitl` to `supportTicket`, you can do it like this:
 
@@ -227,10 +246,10 @@ If you want to rename this channel, you can do so in the configuration object. F
 
 #### Implementing `createUser`
 
-The `createUser` action is used by the HITL plugin to request the creation of an external user (a _requester_) in the external service.
+The `createUser` action is used by the <Term id="hitl-plugin"/> to request the creation of an <Term id="external-user"/> (a _requester_) in the <Term id="external-service"/>.
 
 <Note>
-If you opted to rename the action to something else than `createUser` in the previous section, please use the new name instead of `createUser`.
+If you opted to rename the action to something else than `createUser` in the "Configuring the interface" section, please use the new name instead of `createUser`.
 </Note>
 
 Please refer to the expected input and output schemas for the action:
@@ -243,13 +262,13 @@ This action should implement the following logic:
     Create a Botpress user using the Botpress client by calling the `client.createUser()` method.
   </Step>
   <Step title="Create an external user">
-    Create an external user on the external service using the external service's API or SDK.
+    Create an <Term id="external-user"/> on the <Term id="external-service"/> using the <Term id="external-service"/>'s API or SDK.
   </Step>
   <Step title="Map the external user to the Botpress user">
-    Update the external user on the external service to map it to the Botpress user. Please refer to the external service's documentation to know how to set extra metadata for the external user. The integration must be able at any time to query the external service in order to retrieve the Botpress user ID from the external user.
+    Update the <Term id="external-user"/> on the <Term id="external-service"/> to map it to the Botpress user. Please refer to the <Term id="external-service"/>'s documentation to know how to set extra metadata for the <Term id="external-user"/>. The <Term id="integration"/> must be able at any time to query the <Term id="external-service"/> in order to retrieve the Botpress user ID from the <Term id="external-user"/>.
   </Step>
   <Step title="Map the Botpress user to the external user">
-    Update the Botpress user to map it to the external user. This is typically done by setting a tag on the Botpress user with the external user's ID.
+    Update the Botpress user to map it to the <Term id="external-user"/>. This is typically done by setting a tag on the Botpress user with the <Term id="external-user"/>'s ID.
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the plugin by returning an object containing the Botpress user's ID.
@@ -303,10 +322,10 @@ export default new bp.Integration({
 
 #### Implementing `startHitl`
 
-The `startHitl` action is used by the HITL plugin to request the creation of a HITL session (typically a _ticket_) in the external service.
+The `startHitl` action is used by the <Term id="hitl-plugin"/> to request the creation of a <Term id="hitl-session"/> (typically a _ticket_) in the <Term id="external-service"/>.
 
 <Note>
-If you opted to rename the action to something else than `startHitl` in the previous section, please use the new name instead of `startHitl`.
+If you opted to rename the action to something else than `startHitl` in the "Configuring the interface" section, please use the new name instead of `startHitl`.
 </Note>
 
 Please refer to the expected input and output schemas for the action:
@@ -319,19 +338,19 @@ This action should implement the following logic:
     Fetch the Botpress user with ID `input.userId` that was passed in the input parameters.
   </Step>
   <Step title="Retrieve the external user's ID">
-    From the Botpress user's tags, retrieve the external user's ID.
+    From the Botpress user's tags, retrieve the <Term id="external-user"/>'s ID.
   </Step>
   <Step title="Create a Botpress conversation">
     Create a Botpress conversation using the Botpress client by calling the `client.getOrCreateConversation()` method.
   </Step>
   <Step title="Create the HITL session">
-    On the external service, create the HITL session. This is typically represented as a _ticket_ in the external service.
+    On the <Term id="external-service"/>, create the <Term id="hitl-session"/>. This is typically represented as a _ticket_ in the <Term id="external-service"/>.
   </Step>
   <Step title="Map the Botpress conversation to the HITL session">
-    Update the Botpress conversation to map it to the HITL session. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
+    Update the Botpress conversation to map it to the <Term id="hitl-session"/>. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
   </Step>
   <Step title="Map the HITL session to the Botpress conversation">
-    Update the HITL session on the external service to map it to the Botpress conversation. Please refer to the external service's documentation to know how to set extra metadata for the HITL session (typically a _ticket_). The integration must be able at any time to query the external service in order to retrieve the Botpress conversation ID from the HITL session.
+    Update the <Term id="hitl-session"/> on the <Term id="external-service"/> to map it to the Botpress conversation. Please refer to the <Term id="external-service"/>'s documentation to know how to set extra metadata for the <Term id="hitl-session"/> (typically a _ticket_). The <Term id="integration"/> must be able at any time to query the <Term id="external-service"/> in order to retrieve the Botpress conversation ID from the <Term id="hitl-session"/>.
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the plugin by returning an object containing the Botpress conversation's ID.
@@ -389,12 +408,239 @@ export default new bp.Integration({
 })
 ```
 
+#### Relaying the conversation history
+
+The input parameters of the `startHitl` action contain a `messageHistory` parameter. This parameter contains the conversation history that should be relayed to the <Term id="external-service"/> to provide the <Term id="human-agent"/> with context about the conversation. This parameter is an array of every message that was sent in the conversation prior to the <Term id="hitl-session"/> being started.
+
+<Expandable title="TypeScript schema for the messageHistory parameter">
+```typescript
+type MessageHistory = Array<
+  | TextMessage
+  | ImageMessage
+  | AudioMessage
+  | VideoMessage
+  | FileMessage
+  | LocationMessage
+  | CarouselMessage
+  | CardMessage
+  | DropdownMessage
+  | ChoiceMessage
+  | BlocMessage
+  | MarkdownMessage
+>;
+
+type Source =
+  | {
+      type: "user";
+      userId: string;
+    }
+  | {
+      type: "bot";
+    };
+
+interface TextMessage {
+  source: Source;
+  type: "text";
+  payload: {
+    text: string;
+  };
+}
+
+interface ImageMessage {
+  source: Source;
+  type: "image";
+  payload: {
+    imageUrl: string;
+  };
+}
+
+interface AudioMessage {
+  source: Source;
+  type: "audio";
+  payload: {
+    audioUrl: string;
+  };
+}
+
+interface VideoMessage {
+  source: Source;
+  type: "video";
+  payload: {
+    videoUrl: string;
+  };
+}
+
+interface FileMessage {
+  source: Source;
+  type: "file";
+  payload: {
+    fileUrl: string;
+    title?: string;
+  };
+}
+
+interface LocationMessage {
+  source: Source;
+  type: "location";
+  payload: {
+    latitude: number;
+    longitude: number;
+    address?: string;
+    title?: string;
+  };
+}
+
+interface CarouselMessage {
+  source: Source;
+  type: "carousel";
+  payload: {
+    items: Array<{
+      title: string;
+      subtitle?: string;
+      imageUrl?: string;
+      actions: Array<{
+        action: "postback" | "url" | "say";
+        label: string;
+        value: string;
+      }>;
+    }>;
+  };
+}
+
+interface CardMessage {
+  source: Source;
+  type: "card";
+  payload: {
+    title: string;
+    subtitle?: string;
+    imageUrl?: string;
+    actions: Array<{
+      action: "postback" | "url" | "say";
+      label: string;
+      value: string;
+    }>;
+  };
+}
+
+interface DropdownMessage {
+  source: Source;
+  type: "dropdown";
+  payload: {
+    text: string;
+    options: Array<{
+      label: string;
+      value: string;
+    }>;
+  };
+}
+
+interface ChoiceMessage {
+  source: Source;
+  type: "choice";
+  payload: {
+    text: string;
+    options: Array<{
+      label: string;
+      value: string;
+    }>;
+  };
+}
+
+interface BlocMessage {
+  source: Source;
+  type: "bloc";
+  payload: {
+    items: Array<
+      | BlocTextItem
+      | BlocMarkdownItem
+      | BlocImageItem
+      | BlocAudioItem
+      | BlocVideoItem
+      | BlocFileItem
+      | BlocLocationItem
+    >;
+  };
+}
+
+interface BlocTextItem {
+  type: "text";
+  payload: {
+    text: string;
+  };
+}
+
+interface BlocMarkdownItem {
+  type: "markdown";
+  payload: {
+    markdown: string;
+  };
+}
+
+interface BlocImageItem {
+  type: "image";
+  payload: {
+    imageUrl: string;
+  };
+}
+
+interface BlocAudioItem {
+  type: "audio";
+  payload: {
+    audioUrl: string;
+  };
+}
+
+interface BlocVideoItem {
+  type: "video";
+  payload: {
+    videoUrl: string;
+  };
+}
+
+interface BlocFileItem {
+  type: "file";
+  payload: {
+    fileUrl: string;
+    title?: string;
+  };
+}
+
+interface BlocLocationItem {
+  type: "location";
+  payload: {
+    latitude: number;
+    longitude: number;
+    address?: string;
+    title?: string;
+  };
+}
+
+interface MarkdownMessage {
+  source: Source;
+  type: "markdown";
+  payload: {
+    markdown: string;
+  };
+}
+```
+</Expandable>
+
+If you decide to relay the conversation history to the <Term id="external-service"/>, you can do so by iterating over the `messageHistory` array and sending each message to the <Term id="external-service"/> using its API or SDK. However, doing so might cause a significant number of notifications being sent to the <Term id="external-service"/>. To alleviate this, you can choose to send only the last few messages in the conversation history, or to concatenate the messages into a single message. For example you could combine messages like this:
+
+```markdown
+## User1 said:
+> Hello, I need help with my order.
+
+## Bot replied:
+> I have escalated this conversation to a human agent. Please wait while I connect you.
+```
+
 #### Implementing `stopHitl`
 
-The `stopHitl` action is used by the HITL plugin to request the closure of a HITL session (typically a _ticket_) in the external service.
+The `stopHitl` action is used by the <Term id="hitl-plugin"/> to request the closure of a <Term id="hitl-session"/> (typically a _ticket_) in the <Term id="external-service"/>.
 
 <Note>
-If you opted to rename the action to something else than `stopHitl` in the previous section, please use the new name instead of `stopHitl`.
+If you opted to rename the action to something else than `stopHitl` in the "Configuring the interface" section, please use the new name instead of `stopHitl`.
 </Note>
 
 Please refer to the expected input and output schemas for the action:
@@ -407,15 +653,19 @@ This action should implement the following logic:
     Fetch the Botpress conversation with ID `input.conversationId` that was passed in the input parameters.
   </Step>
   <Step title="Retrieve the HITL session's ID">
-    From the Botpress conversation's tags, retrieve the HITL session's ID.
+    From the Botpress conversation's tags, retrieve the <Term id="hitl-session"/>'s ID.
   </Step>
   <Step title="Close the HITL session">
-    On the external service, close the HITL session. This is typically involves _resolving_ or _closing_ a _ticket_ in the external service.
+    On the <Term id="external-service"/>, close the <Term id="hitl-session"/>. This is typically involves _resolving_ or _closing_ a _ticket_ in the <Term id="external-service"/>.
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the plugin by returning an empty object.
   </Step>
 </Steps>
+
+<Note>
+  The input parameters contain an unused `reason` parameter. Please ignore it. This parameter will be removed in future versions of the <Term id="hitl-interface"/>.
+</Note>
 
 As reference, here's how this logic is implemented in the Zendesk integration:
 
@@ -450,4 +700,66 @@ export default new bp.Integration({
 
 ### Implementing the channel
 
+The `hitl` channel is used by the <Term id="hitl-plugin"/> relay <Term id="end-user"/> messages to the <Term id="hitl-session"/>, which is usually a _ticket_ or _thread_ in the <Term id="external-service"/>.
+
+<Note>
+If you opted to rename the channel to something else than `hitl` in the "Configuring the interface" section, please use the new name instead of `hitl`.
+</Note>
+
+This channel handler should implement the following logic:
+
+<Steps>
+  <Step title="Retrieve the HITL session's ID">
+    From the Botpress conversation's tags, retrieve the <Term id="hitl-session"/>'s ID.
+  </Step>
+  <Step title="Retrieve the external user's ID">
+    - If the payload contains a `userId` parameter, the message has been sent by the <Term id="end-user"/>. Retrieve the <Term id="external-user"/>'s ID from the tags of the Botpress user `payload.userId`.
+    - If the payload does not contain a `userId` parameter, the message has been sent by the bot. Retrieve the <Term id="external-user"/>'s ID from the tags of the attached Botpress user.
+  </Step>
+  <Step title="Send the message to the HITL session">
+    Using the <Term id="external-service"/>'s API or SDK, send the message to the <Term id="hitl-session"/>. This is typically a _comment_ in a _ticket_.
+  </Step>
+</Steps>
+
+As reference, here's how this logic is implemented in the Zendesk integration:
+
+```typescript src/index.ts {6,9,17}
+export default new bp.Integration({
+  channels: {
+    hitl: {
+      messages: {
+        async text({ client, conversation, ctx, payload, user }) {
+          // Retrieve the ticket id from the conversation's tags:
+          const zendeskTicketId = conversation.tags.id
+
+          // Retrieve the external user:
+          let zendeskAuthorId = user.tags.id
+
+          if (payload.userId) {
+            const { user: botpressUser } = await client.getUser({ id: payload.userId })
+            zendeskAuthorId = botpressUser.tags.id
+          }
+
+          // Send the message to Zendesk:
+          return await getZendeskClient(ctx.configuration)
+            .createComment(zendeskTicketId, zendeskAuthorId, payload.text)
+        },
+      },
+    },
+  }
+})
+```
+
 ### Implementing the events
+
+You should set up webhooks so that the <Term id="integration"/> receives notifications about these events:
+
+- A new message is added to the <Term id="hitl-session"/> (usually a _ticket_).
+- A <Term id="human-agent"/> has been assigned to the <Term id="hitl-session"/>.
+- The <Term id="hitl-session"/> was closed.
+
+#### Incoming messages
+
+#### Implementing `hitlAssigned`
+
+#### Implementing `hitlStopped`
