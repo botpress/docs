@@ -1,0 +1,131 @@
+---
+title: How to implement an interface in your integration
+---
+
+import { HitlIcon } from '/snippets/icons/plugins/hitl.mdx'
+
+## Finding the interface to implement
+
+Unfortunately, interface are not yet listed on our website, so you must find them in the Botpress GitHub repository. To find the interface you want to implement, follow these steps:
+
+<Steps>
+  <Step title="Open the interfaces directory">
+    Navigate to the [`interfaces` directory](https://github.com/botpress/botpress/tree/master/interfaces) of the [botpress/botpress](https://github.com/botpress/botpress) repository.
+  </Step>
+  <Step title="Find the interface">
+    Find the interface you want to implement and open its directory.
+  </Step>
+  <Step title="Find the name and version">
+    Open the `interface.definition.ts` file to find the interface `name` and `version`.
+  </Step>
+</Steps>
+
+## Adding the interface as a dependency
+
+Once you have the interface name and version, you can add it as a dependency to your integration:
+
+<Steps>
+  <Step title="Open the package.json file">
+    Open your integration's `package.json` file.
+  </Step>
+  <Step title="Add the bpDependencies section">
+    If there is no `bpDependencies` section in your integration's `package.json` file, create one:
+    ```json
+    {
+      "bpDependencies": {}
+    }
+    ```
+  </Step>
+  <Step title="Add the interface as a dependency">
+    In the `bpDependencies` section, add the interface name and version as a dependency. For example, with an interface named `creatable` and version `0.0.1`, you would add the following:
+    ```json
+    {
+      "bpDependencies": {
+        "creatable": "interface:creatable@^0.0.1"
+      }
+    }
+    ```
+    <Warning>
+    It is very important to follow this syntax: <br/>
+    `"<interface-name>": "interface:<interface-name>@<version>"`.
+    </Warning>
+    <Tip>
+    Interface versions use a numbering system with three parts: MAJOR.MINOR.PATCH (like `1.2.3`). When adding an interface to your integration, we recommend using the caret symbol (`^`) before the version number (like `^2.4.5`). This tells the Botpress CLI to automatically use newer compatible versions when they're available.
+
+    For example, if you specify `^2.4.5` as the version:
+    - You'll automatically get updates like `2.4.6` or `2.5.0` (bug fixes and new features).
+    - You won't get version `3.0.0` (which might break your integration).
+    </Tip>
+  </Step>
+  <Step title="Save the package.json file">
+    Save the `package.json` file.
+  </Step>
+  <Step title="Install the interface">
+  Now that you have added the interface as a dependency, you can run the [`bp add`](/for-developers/cli/commands/add) command to install it. This command will:
+  - Download the interface from Botpress.
+  - Install it in a directory named `bp_modules` in your integration's root directory.
+  </Step>
+</Steps>
+
+## Adding a helper build script
+
+To keep your integration up to date, we recommend adding a helper build script to your integration:
+
+<Steps>
+  <Step title="Open the package.json file">
+    Open your integration's `package.json` file.
+  </Step>
+  <Step title="Add the build script">
+    In the `scripts` section, add the following script:
+    ```json
+    {
+      "scripts": {
+        "build": "bp add -y && bp build"
+      }
+    }
+    ```
+    <Note>
+    If the `build` script already exists in your `package.json` file, please replace it.
+    </Note>
+  </Step>
+  <Step title="Save the package.json file">
+    Save the `package.json` file.
+  </Step>
+</Steps>
+
+Now, whenever you run `npm run build`, it will automatically install the interface and build your integration. This is useful for ensuring that your integration is always up to date with the latest version of the interface.
+
+## Adding the interface to your integration definition file
+
+Now that the interface is installed, you must add it your integration definition file in order to implement it.
+
+<Steps>
+  <Step title="Open the integration.definition.ts file">
+    Open your integration's `integration.definition.ts` file.
+  </Step>
+  <Step title="Import the interface">
+    At the top of the file, import the interface. For example, with an interface named `creatable`, you would add the following import statement:
+    ```typescript
+    import creatable from './bp_modules/creatable'
+    ```
+  </Step>
+  <Step title="Extend your definition">
+  Use the `.extend()` function at the end of your `new IntegrationDefinition()` statement. For example, with an interface named `creatable`, you would add the following:
+  ```typescript
+  export default new sdk.IntegrationDefinition({
+    ...
+  })
+    .extend(creatable, () => ({}))
+  ```
+  </Step>
+</Steps>
+
+## Next steps
+
+Since each interface has its own specific requirements, you should refer to the interface documentation for more information.
+
+<CardGroup Cols={2}>
+  <Card icon={<HitlIcon/>} horizontal title="Human in the loop" href="/for-developers/sdk/interface/how-tos/implementing-hitl">
+  How to implement Human in the loop
+  </Card>
+</CardGroup>

@@ -1,15 +1,10 @@
 ---
 title: Schemas
-excerpt: Blueprint that defines the structure, format, and validation rules for data.
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
+description: Blueprint that defines the structure, format, and validation rules for data.
 ---
+
+import { Img } from '/snippets/image.mdx'
+
 A schema is a blueprint that defines the structure, required fields, data types, and validation rules for a piece of data. In Botpress, schemas are primarily used to ensure that data passed between various components—such as actions, modules, or API requests—meets the expected format and constraints.
 
 Schemas are useful for:
@@ -48,7 +43,7 @@ Here's a simple demo schema you can create to familiarize yourself with them.
 
 1. Create a schema for a user object with the following properties:
 
-```js
+```typescript
 zui.object({
   name: zui.string(),
   age: zui.number(),
@@ -75,9 +70,9 @@ Fetch name, age, email and address from the provided input
 * AI Task Input:
 
 ```
-Rohan Kokkula, 26, at rohan@email.com, received a mysterious parcel at his doorstep: 
-42 Emerald Lane, Mystic Falls, 560078. 
-Inside, a map beckoned him to a hidden world beneath Mumbai's bustling streets, 
+Rohan Kokkula, 26, at rohan@email.com, received a mysterious parcel at his doorstep:
+42 Emerald Lane, Mystic Falls, 560078.
+Inside, a map beckoned him to a hidden world beneath Mumbai's bustling streets,
 where history and magic intertwined.
 ```
 
@@ -87,20 +82,16 @@ where history and magic intertwined.
 
 # Conditionally Show Inputs - Input trees
 
-We'll show you how to use discriminated unions in Zod to conditionally include fields in an object schema. We'll go through two examples: 
+We'll show you how to use discriminated unions in Zod to conditionally include fields in an object schema. We'll go through two examples:
 
 1. Changing the type of a variable based on user input.
 2. Conditionally showing an extra setting when an "Advanced Setting" toggle is activated.
 
-<Image alt="selecting input type text, with no advanced settings" align="center" width="200px" src="https://files.readme.io/4015772fa59ea2e70290e5c00ed8a78cde7aa3c0d229d5ead1543671f73a90e7-image.png">
-  selecting input type text, with no advanced settings
-</Image>
-
-<Image alt="selecting input type number, with advanced settings" align="center" width="200px" src="https://files.readme.io/71423052c8b254a3d97bc8f02b00b488f5996817d0313c862d62548b7a8cc27b-image.png">
-  selecting input type number, with advanced settings
-</Image>
+<img src="./input-type-text.png" />
 
 <br />
+
+<img src="./input-type-text-advance.png" />
 
 ### Example 1: Changing the Type of a Variable
 
@@ -138,7 +129,7 @@ This example demonstrates how to include an extra field when an "Advanced Settin
 
 ```typescript
 z.object({
-  // ... your other inputs 
+  // ... your other inputs
 
   // Using discriminated union to handle the advanced setting toggle with Yes/No options
   settings: z.discriminatedUnion('advancedSetting', [

@@ -26,10 +26,10 @@ import Home from '/snippets/home.mdx'
     <Card title="Chat API" href="/api-reference/chat-api/introduction">
       Use Node.js to talk to your agent
     </Card>
-    <Card title="Build an integration" href="/for-developers/integration/getting-started">
+    <Card title="Build an integration" href="/for-developers/sdk/integration/getting-started">
       Build your own integration to connect your agent to an external app
     </Card>
-    <Card title="Knowledge Base" href="/guides/knowledge-base">
+    <Card title="Knowledge Base" href="/guides/studio/interface/knowledge-base/introduction">
       Learn how to optimize your agent's knowledge
     </Card>
     <Card title="API Reference" href="/api-reference/introduction">
@@ -51,16 +51,58 @@ import Home from '/snippets/home.mdx'
   </a>
 </div>
 
-<div className="flex flex-col items-center justify-center pb-20">
+<div className="flex flex-col items-center justify-center mb-20 mx-10">
   <h2 className="text-3xl text-gray-600 font-bold pb-2">Browse by Concepts</h2>
   <p className="text-md mb-4">There's a lot you can do with Botpress. Browse by concept to learn more.</p>
-  <CardGroup cols={5}>
-    <Card title="Workflows" href="/guides/workflows">
+  <div className="sm:grid-cols-2 grid-cols-1 grid gap-4 md:grid-cols-3 lg:grid-cols-5 items-center mb-10">
+    <Card title="Workflows" href="/guides/studio/interface/studio-interface-flows">
       Getting started with workflows
     </Card>
-  </CardGroup>
+    <Card title="Tables" href="/guides/studio/interface/tables">
+      Getting started with tables
+    </Card>
+    <Card title="Knowledge Bases" href="/guides/studio/interface/knowledge-base/introduction">
+      Getting started with knowledge bases
+    </Card>
+    <Card title="Conversations" href="/guides/dashboard/bot/conversations">
+      Understanding conversations
+    </Card>
+    <Card title="Events" href="/guides/dashboard/bot/events">
+      Understanding events
+    </Card>
+    <Card title="Actions" href="/guides/studio/interface/actions">
+      Getting started with actions
+    </Card>
+    <Card title="Hooks" href="/guides/studio/interface/hooks">
+      Learn how to use hooks
+    </Card>
+    <Card title="Integrations" href="/guides/studio/interface/integrations">
+      Learn more about integrations
+    </Card>
+    <Card title="Variables" href="/guides/studio/interface/variables">
+      Learn to use variables
+    </Card>
+    <Card title="Emulator" href="/guides/studio/interface/emulator">
+      Debug your bot conversation using the emulator
+    </Card>
+    <Card title="Execute Code" href="/guides/studio/cards/execute">
+      Learn how to use the execute code card
+    </Card>
+    <Card title="AI Task" href="/guides/studio/cards/ai/ai-task">
+      Using AI tasks
+    </Card>
+    <Card title="AI Transition" href="/guides/studio/cards/ai/ai-transition">
+      Using AI transitions
+    </Card>
+    <Card title="AI Generate Text" href="/guides/studio/cards/ai/ai-generate-text">
+      Using AI generate text
+    </Card>
+    <Card title="Agents" href="/guides/studio/cards/agents">
+      Using agents
+    </Card>
 </div>
-
+</div>
+{/*
 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 items-center mb-10">
   <div className="flex flex-col justify-center items-center">
     <h3 className="text-xl text-gray-600 font-bold pb-2">Additional Resources</h3>
@@ -116,4 +158,4 @@ import Home from '/snippets/home.mdx'
       </a>
     </div>
   </div>
-</div>
+</div> */}

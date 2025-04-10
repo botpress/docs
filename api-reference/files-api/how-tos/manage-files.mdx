@@ -1,6 +1,6 @@
 ## Getting the file's metadata
 
-To get the details of a file you can use the [Get File](../docs/api-documentation/#get-file) API endpoint.
+To get the details of a file you can use the [Get File](/api-reference/files-api/how-tos/manage-files#getting-the-file’s-metadata) API endpoint.
 
 You can also use this endpoint to retrieve a new temporary pre-signed URL to download a file if the previous pre-signed URL has already expired.
 
@@ -34,7 +34,7 @@ const file = response.file
 
 ## Listing existing files of a bot
 
-To list all the files of a bot you can use the [List Files](../docs/api-documentation/#list-files) API endpoint.
+To list all the files of a bot you can use the [List Files](/api-reference/files-api/how-tos/manage-files#listing-existing-files-of-a-bot) API endpoint.
 
 <CodeGroup>
 
@@ -97,7 +97,7 @@ const files = response.files
 
 ### Pagination
 
-The [List Files](../docs/api-documentation/#list-files) API endpoint will return by default the 20 most recent files your bot has. If you need to list older files you can use the `nextToken` property returned in the API response to retrieve the next page (if any) of files. The `nextToken` will be included for each page if there are files remaining to be listed.
+The [List Files](/api-reference/files-api/how-tos/manage-files#listing-existing-files-of-a-bot) API endpoint will return by default the 20 most recent files your bot has. If you need to list older files you can use the `nextToken` property returned in the API response to retrieve the next page (if any) of files. The `nextToken` will be included for each page if there are files remaining to be listed.
 
 For example:
 

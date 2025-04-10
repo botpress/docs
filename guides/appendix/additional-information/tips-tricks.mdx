@@ -1,16 +1,10 @@
 ---
 title: Tips & Tricks
-excerpt: ''
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
-<Image align="center" src="https://files.readme.io/696c9d8-image.png" />
+
+import { Img } from '/snippets/image.mdx'
+
+<img src="./getting-started-tips-tricks.png" />
 
 # Using Markdown in Botpress
 
@@ -29,11 +23,11 @@ Markdown is a lightweight markup language that you can use to add formatting ele
 | Ordered List    | `1. Item 1`                                                            |
 | Horizontal line | `---`                                                                  |
 
-> 📘 Info: **Supported Integrations**
->
-> Markdown is supported only in Webchat Integration
+<Info>
+Info
 
-<br />
+Markdown is supported only in Webchat Integration
+</Info>
 
 # Timely Greeting
 
@@ -56,8 +50,6 @@ workflow.timelyGreeting = timelyGreeting
 ```
 
 This code will set the variable `timelyGreeting` to the appropriate greeting based on the current time. Make sure to create this variable in your workflow.
-
-<br />
 
 # Using External APIs in Botpress
 
@@ -161,6 +153,8 @@ Make sure to replace **`<OpenAI's APIKey>`** with your actual OpenAI API key, an
 
 Step 3: Test your chatbot in the Botpress Emulator to see if it's generating AI-powered responses.
 
-> 📘 Note
->
-> It's important to note that using this method, ChatGPT does not preserve the context of the messages that you've sent. However, it's a great way to get started with integrating AI-powered responses into your chatbot without needing any technical knowledge.
+<Note>
+Note
+
+It's important to note that using this method, ChatGPT does not preserve the context of the messages that you've sent. However, it's a great way to get started with integrating AI-powered responses into your chatbot without needing any technical knowledge.
+</Note>

@@ -3,6 +3,8 @@ title: Webchat Component Library
 sidebarTitle: Getting Started
 ---
 
+import { Img } from '/snippets/image.mdx'
+
 ## Quickstart
 
 Before installing the Webchat package, make sure you have a React project set up and running.
@@ -16,10 +18,10 @@ Before installing the Webchat package, make sure you have a React project set up
   <Step title="Install the NPM package">
 The webchat library is hosted on `npm`. Download it with your favorite package manager.
 
-<CodeGroup>
-```bash npm
-npm install @botpress/webchat
-```
+  <CodeGroup>
+  ```bash npm
+  npm install @botpress/webchat
+  ```
 
 ```bash yarn
 yarn add @botpress/webchat
@@ -28,9 +30,11 @@ yarn add @botpress/webchat
 ```bash pnpm
 pnpm install @botpress/webchat
 ```
-</CodeGroup>
-  </Step>
-  <Step title="Obtain your Client ID">
+
+  </CodeGroup>
+</Step>
+
+<Step title="Obtain your Client ID">
 To integrate Botpress Webchat Client into your application, you need to obtain your bot's Client ID.
 This ID identifies your bot and enables communication with the Webchat service.
 
@@ -43,9 +47,11 @@ Follow these steps to retrieve it:
   </Step>
   <Step title="Basic Webchat component">
 
-![webchat-client-id-img](../assets/webchat-components_getting-started.png)
+<img src="../assets/webchat-components_getting-started.png" />
 
-### 3. Basic Webchat component
+</Step>
+
+<Step title="Basic Webchat component">
 
 Now that we have everything required, we can proceed to build a basic webchat component
 
@@ -70,8 +76,8 @@ function App() {
           bottom: '90px',
           right: '20px',
         }}
-      ></Webchat>
-      <Fab onClick={() => toggleWebchat()} style={{ position: 'fixed', bottom: '20px', right: '20px' }}></Fab>
+      />
+      <Fab onClick={() => toggleWebchat()} style={{ position: 'fixed', bottom: '20px', right: '20px' }} />
     </>
   )
 }
@@ -79,6 +85,7 @@ function App() {
 export default App
 ```
 
-**Congratulations you just set your first webchat component!**
+**Congratulations you just created your first webchat component!**
+
   </Step>
 </Steps>

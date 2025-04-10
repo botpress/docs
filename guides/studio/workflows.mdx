@@ -1,16 +1,10 @@
 ---
 title: Workflows
-excerpt: ''
-deprecated: false
-hidden: true
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
-![](https://files.readme.io/ce7e620-image.png)
+
+import { Img } from '/snippets/image.mdx'
+
+<img src="./workflows.png" />
 
 A flow allows you to break down a complex chatbot into multiple smaller flows. Breaking down the chatbot into multiple flows makes it easier to maintain, and you can re-use these flows when building other flows or even other chatbots.
 
@@ -19,8 +13,6 @@ A workflow always starts at its Entry Node At the beginning of each conversation
 The flow is event-based and non-blocking by default, meaning it will execute all the nodes and instructions until it needs to **wait**
 
 In other words, once the Entry Node is processed, the flow will continue to proceed to the next node in the flow until it reaches the very end of the flow or until a node needs to “wait” for user input.
-
-<br />
 
 # Global Flows
 
@@ -42,27 +34,33 @@ The **Error Flow** is designed to handle unexpected failures that may occur duri
 
 For example, if you have an Execute Code card with invalid Javascript code like `workflow. = 'some value'`, or custom choices for Captures or Carousels in the wrong format, the Error flow shall be triggered.'
 
-> 📘 Info
->
-> To improve the user experience, you can add a Capture card of type Confirmation that asks the user if they want to resume the conversation. If the user says yes, you can redirect them to the Main flow (remember to reset the state to avoid entering an error loop), otherwise you can flow to the End node which will end the conversation.
->
-> It's also recommended to save these occurrences somehow so you can troubleshoot them later. You could use [Tables](../docs/tables) to create a database of these occurrences, containing the conversation history provided by the [Summary Agent](../docs/agents#summary-agent) and other relevant information.
+<Info>
+Info
+
+To improve the user experience, you can add a Capture card of type Confirmation that asks the user if they want to resume the conversation. If the user says yes, you can redirect them to the Main flow (remember to reset the state to avoid entering an error loop), otherwise you can flow to the End node which will end the conversation.
+
+It's also recommended to save these occurrences somehow so you can troubleshoot them later. You could use [Tables](/guides/studio/interface/tables) to create a database of these occurrences, containing the conversation history provided by the [Summary Agent](/guides/studio/interface/agents/summary-agent) and other relevant information.
+</Info>
 
 ## Timeout
 
-The **Timeout Flow** is triggered when the chatbot doesn't receive a response from the user for a certain period of time. Check out [this article about the Timeout settings](../docs/chatbot-settings#inactivity-timeout-minutes) to learn more.
+The **Timeout Flow** is triggered when the chatbot doesn't receive a response from the user for a certain period of time. Check out [this article about the Timeout settings](/guides/studio/interface/chatbot-settings#inactivity-timeout) to learn more.
 
 This can happen if the user gets distracted with something else or if there is a delay in their internet connection.
 
-The Timeout Flow is important because it helps prevent the chatbot from appearing unresponsive or disconnected, which can lead to user frustration and disengagement. Learn more about the [Inactivity Timeout setting](../docs/chatbot-settings#inactivity-timeout-minutes).
+The Timeout Flow is important because it helps prevent the chatbot from appearing unresponsive or disconnected, which can lead to user frustration and disengagement. Learn more about the [Inactivity Timeout setting](/guides/studio/interface/chatbot-settings#inactivity-timeout).
 
-> 📘 Info
->
-> To improve the user experience, you can add a Text card in this flow that lets the user know the conversation is ending, alternatively add a Confirmation card asking if the user wants to continue the conversation. The timeout will then be reset and start counting down again. If the user says yes, you can redirect them to the Main flow (there is no way to know the previous flow), otherwise you can flow to the End node which will end the conversation.
+<Info>
+Info
 
-> 📘 Note
->
-> The default timeout is 30 minutes. So if the user doesn't respond for 30 minutes, this flow will be triggered.
+To improve the user experience, you can add a Text card in this flow that lets the user know the conversation is ending, alternatively add a Confirmation card asking if the user wants to continue the conversation. The timeout will then be reset and start counting down again. If the user says yes, you can redirect them to the Main flow (there is no way to know the previous flow), otherwise you can flow to the End node which will end the conversation.
+</Info>
+
+<Note>
+Note
+
+The default timeout is 30 minutes. So if the user doesn't respond for 30 minutes, this flow will be triggered.
+</Note>
 
 ## Conversation End
 
@@ -72,11 +70,11 @@ Depending on the context and purpose of the chatbot, this may involve thanking t
 
 The Conversation End Flow is an important part of the chatbot design, as it helps create a positive user experience and encourages users to return in the future.
 
-> 🚧 Please note
->
-> The bot will only enter the End flow if the conversation explicitly transitions to an End node. If the conversation ends because there are no valid transitions in a node it won't trigger the End flow.
+<Warning>
+Please note
 
-<br />
+The bot will only enter the End flow if the conversation explicitly transitions to an End node. If the conversation ends because there are no valid transitions in a node it won't trigger the End flow.
+</Warning>
 
 # Custom Workflow
 
@@ -94,21 +92,15 @@ Here are some key benefits and possibilities of creating custom workflows:
 * **Handling User Input**: With custom workflows, you can capture and process user input in a structured manner. You can define prompts, validate input, and handle different scenarios based on user responses, ensuring a smooth and interactive conversation flow.
 * **Implementing Advanced Features**: Custom workflows enable you to implement advanced features such as user authentication, session management, context preservation, and more. These features enhance the functionality and capabilities of your chatbot, allowing for a more sophisticated user experience.
 
-<br />
-
 # Execute Workflow
 
 After building a few flows, you'll quickly notice that there are some common patterns that you find yourself implementing over and over. These can be seen as reusable components between multiple flows. So, you can create Folders to categorise your workflows.
 
 Once you have created your workflow, right-click in the Flow Editor, hover over the **Execute Workflow** option and select your workflow.
 
-<br />
-
 # Workflow Variables
 
-Learn more about using [workflow variables](../docs/variables#workflow-variables)
-
-<br />
+Learn more about using [workflow variables](/guides/studio/interface/variables#workflow-variables)
 
 # Limits
 

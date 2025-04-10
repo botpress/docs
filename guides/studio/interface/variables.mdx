@@ -1,15 +1,7 @@
 ---
 title: Variables
-excerpt: ''
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 Botpress uses variables to store information from one place and use it in other parts of a flow. Variables help make conversations more personalized and help track information about users. They can also help connect with third-party APIs and data sources.
 
 ## Variable Scopes
@@ -27,13 +19,12 @@ Botpress also includes different types of variables. These Variable types differ
 
 Once the Variable is established, employ `{{workflow.variablename}}` or `@workflow.variablename` to render it in a send message card.
 
-<br />
 
 ## Data Types for Variables
 
 Botpress variables are typed, meaning they are limited in what data they can hold. Not only are these data types important to ensure the code behind Botpress runs smoothly, but these types also help AI tasks generate better results. Here are the different data types available for Botpress variables:
 
-<Table>
+<table>
   <thead>
     <tr>
       <th>
@@ -127,9 +118,7 @@ Botpress variables are typed, meaning they are limited in what data they can hol
       </td>
     </tr>
   </tbody>
-</Table>
-
-<br />
+</table>
 
 ## Workflow Variables
 
@@ -140,9 +129,11 @@ Workflow Variables are created and used only within a single workflow. These var
 3. Organizing data returned from an API call
 4. Saving flags or tags that track the conversation
 
-> 📘 Info
->
-> Workflow variables are not accessible in any workflow other than the one they were created in. For example, a workflow Variable created in a separate workflow will not be accessible in **Main**.
+<Info>
+Info
+
+Workflow variables are not accessible in any workflow other than the one they were created in. For example, a workflow Variable created in a separate workflow will not be accessible in **Main**.
+</Info>
 
 ### Creating a Workflow Variable
 
@@ -169,7 +160,6 @@ Workflows can have inputs and outputs to help pass information throughout the bo
 2. In the inspector panel, click on the Variable you want to make an output. It should get a blue border and appear in the **Exit** node.
 3. When you call this workflow from another flow, the output Variable will be accessible by typing `{{workflow.<workflow-cardName>.<variablename>}}`, replacing `<workflow-cardName>` and `<variablename>` with the name of the card that represents your workflow and Variable respectively.
 
-<br />
 
 ## User Variables
 
@@ -188,8 +178,6 @@ Storing users' personal details or id numbers
 ### Using User Variables
 
 Once the User Variable is established, employ `{{user.variablename}}` or `@user.variablename` to render it in a send message card.
-
-<br />
 
 ## Bot Variables
 
@@ -211,7 +199,6 @@ Bot variables are not encrypted or stored securely. Do not save secrets like API
 
 Bot variables can be used in text and other cards just like user variables - with either `@bot.variablename` or `{{bot.variablename}}`.
 
-<br />
 
 ## Session Variables
 
@@ -230,7 +217,6 @@ To create one, simply write: `event.state.session.variablename = "Hello World"` 
 
 To use a Session Variable in a text or other card, enclose it in double curly brackets like `{{event.state.session.variablename}}` or for short `{{session.variablename}}`
 
-<br />
 
 ## Configuration Variables
 
@@ -248,7 +234,6 @@ Configuration variables are a special kind of secure bot Variable. They can also
 You can use **env.key** in your code to get the value of the Configuration Variable. To use it in an Execute Code Card, you can write env.key to access its value.\
 Once a configuration Variable is created, you can access and manage it from the cloud admin dashboard. Just select your bot and then click on the tab for **Configuration Variables.**
 
-<br />
 
 ## Passing Variables between Flows
 
@@ -257,7 +242,6 @@ Once a configuration Variable is created, you can access and manage it from the 
 3. Now, on the `exit` node of the parent workflow, the one that brings the user to the target workflow, match the parent workflow Variable with the target workflow input Variable.
 4. Now, when you call the target workflow from the parent workflow, you will see the input Variable in the card. You can pass a value or a Variable to it.
 
-<br />
 
 ## Using Variables in Code Card
 
@@ -347,7 +331,6 @@ const data = response.data
 console.log(data)
 ```
 
-<br />
 
 ## Special Variables
 
@@ -356,13 +339,13 @@ Botpress makes available several different variables that can be used in your bo
 | Path                                                                            | Type        | Description                                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `event.preview`                                                                 | Event       | The last message sent by the user. It will be replaced every time there is a new message.                                                                                                                                                    |
-| `conversation.SummaryAgent.summary`                                             | Agent       | Summary of the conversation created by the [Summary Agent](../docs/agents#summary-agent). It's an explanation of what happened.                                                                                                              |
+| `conversation.SummaryAgent.summary`                                             | Agent       | Summary of the conversation created by the [Summary Agent](/guides/studio/interface/agents/summary-agent). It's an explanation of what happened.                                                                                                              |
 | `conversation.SummaryAgent.transcript`                                          | Agent       | Transcript of the conversation going back a certain amount of turns.                                                                                                                                                                         |
-| `turn.KnowledgeAgent.answer`                                                    | Agent       | The answer provided by the [Knowledge Agent](../docs/agents#knowledge-agent)                                                                                                                                                                 |
+| `turn.KnowledgeAgent.answer`                                                    | Agent       | The answer provided by the [Knowledge Agent](/guides/studio/interface/agents/knowledge-agent)                                                                                                                                                                 |
 | `turn.KnowledgeAgent.responded`                                                 | Agent       | Wether the Knowledge Agent has responded automatically to a user question. Its value will be `true` or `false`                                                                                                                               |
-| `turn.KnowledgeAgent?.answer?.length`                                           | Agent       | The amount of characters in the Knowledge answer. Use this in an [Expression](../docs/transition#expression) to check if there is an answer in the KB. Optionally add `!` to start of the code in order to check if there was NOT an answer. |
+| `turn.KnowledgeAgent?.answer?.length`                                           | Agent       | The amount of characters in the Knowledge answer. Use this in an [Expression](/guides/studio/cards/flow-logic#expression) to check if there is an answer in the KB. Optionally add `!` to start of the code in order to check if there was NOT an answer. |
 | `turn.KnowledgeAgent.citations`                                                 | Agent       | A list of citations for the Knowledge answer.                                                                                                                                                                                                |
-| `user.TranslatorAgent.language`                                                 | Agent       | The current user language code in ISO 639-1 format. [More about the Translator Agent](../docs/agents#translator-agen)                                                                                                                        |
+| `user.TranslatorAgent.language`                                                 | Agent       | The current user language code in ISO 639-1 format. [More about the Translator Agent](/guides/studio/interface/agents/translator-agent)                                                                                                                        |
 | `user.TranslatorAgent.language = 'en'`                                          | Agent       | This code snippet set's the user language to English. Replace with any language code in the ISO 639-1 format                                                                                                                                 |
 | `event.kb.results.map((a) => a.dsFriendlyName + '\n' + a.content).join('\n\n')` | Event       | This code snippet returns the raw content that generated the final Knowledge answer.                                                                                                                                                         |
 | `event.tags.conversation['whatsapp:userPhone']`                                 | Integration | The user's phone number on WhatsApp. Includes the international code.                                                                                                                                                                        |

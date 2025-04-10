@@ -161,6 +161,59 @@
             ]
           },
           {
+            "group": "Integrations",
+            "pages": [
+              {
+                "group": "Functional Integrations",
+                "pages": [
+                  "guides/integrations/functional-integrations/introduction",
+                  "guides/integrations/functional-integrations/knowledge-base-optimization",
+                  "guides/integrations/functional-integrations/conversation-analyzer",
+                  "guides/integrations/functional-integrations/improvement"
+                ]
+              },
+              {
+                "group": "Integration Guides",
+                "pages": [
+                  "/guides/integrations/integration-guides/asana",
+                  "/guides/integrations/integration-guides/hitl",
+                  "/guides/integrations/integration-guides/instagram",
+                  "/guides/integrations/integration-guides/intercom",
+                  "/guides/integrations/integration-guides/line",
+                  "/guides/integrations/integration-guides/messenger",
+                  "/guides/integrations/integration-guides/microsoft-teams",
+                  "/guides/integrations/integration-guides/notion",
+                  "/guides/integrations/integration-guides/slack",
+                  {
+                    "group": "Sunshine Conversation",
+                    "pages": [
+                      "/guides/integrations/integration-guides/sunshine-conversations/introduction",
+                      "/guides/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
+                    ]
+                  },
+                  "/guides/integrations/integration-guides/telegram",
+                  "/guides/integrations/integration-guides/trello",
+                  "/guides/integrations/integration-guides/twilio",
+                  "/guides/integrations/integration-guides/viber",
+                  "/guides/integrations/integration-guides/vonage",
+                  "/guides/integrations/integration-guides/webhook",
+                  {
+                    "group": "WhatsApp",
+                    "pages": [
+                      "/guides/integrations/integration-guides/whatsapp/introduction",
+                      "/guides/integrations/integration-guides/whatsapp/manual-configuration"
+                    ]
+                  },
+                  "/guides/integrations/integration-guides/zapier",
+                  "/guides/integrations/integration-guides/zendesk",
+                  "/guides/integrations/integration-guides/chat",
+                  "/guides/integrations/integration-guides/google-sheet",
+                  "/guides/integrations/integration-guides/google-calendar"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Toolbox",
             "pages": ["/guides/toolbox/kitchen-sink-advanced-starter-template"]
           },
@@ -197,112 +250,12 @@
         "pages": [
           "for-developers/introduction",
           {
-            "group": "Botpress SDK",
+            "group": "Integrations",
             "pages": [
-              "for-developers/sdk/introduction",
-              {
-                "group": "Integration",
-                "pages": ["for-developers/sdk/integration/introduction"]
-              },
-              {
-                "group": "Interface",
-                "pages": [
-                  "for-developers/sdk/interface/introduction",
-                  {
-                    "group": "Key Concepts",
-                    "pages": ["for-developers/sdk/interface/concepts/entities"]
-                  },
-                  {
-                    "group": "How To",
-                    "pages": ["for-developers/sdk/interface/how-tos/add-and-implement"]
-                  }
-                ]
-              },
-              {
-                "group": "Bot",
-                "pages": ["for-developers/sdk/bot/introduction"]
-              },
-              {
-                "group": "Plugin",
-                "pages": ["for-developers/sdk/plugin/introduction"]
-              }
+              "for-developers/sdk/integration/introduction",
+              "for-developers/sdk/integration/getting-started",
+              "for-developers/sdk/integration/publish-your-integration-on-botpress-hub"
             ]
-          },
-          {
-            "group": "Botpress CLI",
-            "pages": [
-              "for-developers/cli/introduction",
-              {
-                "group": "Authentication",
-                "pages": ["for-developers/cli/commands/login", "for-developers/cli/commands/logout"]
-              },
-              {
-                "group": "Project Lifecycle",
-                "pages": [
-                  {
-                    "group": "Project Creation",
-                    "pages": ["for-developers/cli/commands/init"]
-                  },
-                  {
-                    "group": "Adding Dependencies",
-                    "pages": ["for-developers/cli/commands/add"]
-                  },
-                  {
-                    "group": "Building & Bundling",
-                    "pages": [
-                      "for-developers/cli/commands/build",
-                      "for-developers/cli/commands/bundle",
-                      "for-developers/cli/commands/generate"
-                    ]
-                  },
-                  {
-                    "group": "Deployment",
-                    "pages": ["for-developers/cli/commands/deploy"]
-                  }
-                ]
-              },
-              {
-                "group": "Local Development",
-                "pages": [
-                  "for-developers/cli/commands/chat",
-                  "for-developers/cli/commands/serve",
-                  "for-developers/cli/commands/dev"
-                ]
-              },
-              {
-                "group": "Project Introspection",
-                "pages": ["for-developers/cli/commands/lint", "for-developers/cli/commands/read"]
-              },
-              {
-                "group": "Administrative Commands",
-                "pages": [
-                  {
-                    "group": "Managing Integrations",
-                    "pages": []
-                  },
-                  {
-                    "group": "Managing Interfaces",
-                    "pages": []
-                  },
-                  {
-                    "group": "Managing Bots",
-                    "pages": []
-                  },
-                  {
-                    "group": "Managing Plugins",
-                    "pages": []
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Zai",
-            "pages": []
-          },
-          {
-            "group": "Vai",
-            "pages": []
           }
         ]
       },
@@ -320,7 +273,11 @@
               "webchat/webchat-components/getting-started",
               "webchat/webchat-components/component-library/fab",
               "webchat/webchat-components/component-library/composer",
-              "webchat/webchat-components/component-library/header"
+              "webchat/webchat-components/component-library/header",
+              "webchat/webchat-components/component-library/container",
+              "webchat/webchat-components/component-library/message-list",
+              "webchat/webchat-components/component-library/stylesheet-provider",
+              "webchat/webchat-components/component-library/use-webchat-client"
             ]
           },
           {

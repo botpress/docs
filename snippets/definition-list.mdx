@@ -1,0 +1,45 @@
+export const DefinitionList = ({ children }) => {
+  globalThis.definitions = new Map()
+
+  return (
+    <dl>
+      {children}
+    </dl>
+  )
+}
+
+export const Definition = ({ term, id, children: definition, plural }) => {
+  const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1)
+
+  const getTextContent = (elem) =>
+    !elem ? '' :
+      typeof elem === 'string' ? elem :
+        Array.isArray(elem.props?.children) ? elem.props.children.map(getTextContent).join('') :
+          getTextContent(elem.props?.children);
+
+  globalThis.definitions.set(id, { term, plural: plural || `${term}s`, definition: getTextContent(definition) })
+
+  return (
+    <>
+      <dt><dfn id={`dfn-${id}`}>{capitalizeFirstLetter(term)}</dfn></dt>
+      <dd>{definition}</dd>
+    </>
+  )
+}
+
+export const DefinitionReference = ({ id, children, plural: isPlural, capitalize }) => {
+  if (!globalThis.definitions.has(id)) {
+    throw new Error(`Definition with id "${id}" not found. Please ensure it is defined in the DefinitionList component.`)
+  }
+
+  const { term, plural, definition } = globalThis.definitions.get(id)
+
+  const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1)
+  const text = isPlural ? plural : term
+
+  return (
+    <a href={`#dfn-${id}`} aria-describedby={`dfn-${id}`} style={{ textDecoration: 'underline dotted', color: 'currentColor', fontWeight: 'inherit', borderBottom: 'none' }} title={definition}>
+      {children || (capitalize ? capitalizeFirstLetter(text) : text)}
+    </a>
+  )
+}

@@ -1,4 +1,96 @@
-## MessageList
+The MessageList component renders the list of messages in the Webchat, including system messages, bot messages, and user responses.
+It has custom message renderers for each type of messages (e.g. video, image, audio, text and multipart messages).
+A typing indicator is displayed when whe are waiting for the bot answer.
 
-`MessageList` component displays the ongoing conversation between the user and
-the bot within the Botpress Webchat.
+<Note>
+  Although it can be used as a standalone component, the `MessageList` is designed to be used within the
+  [Container](./container) component and alonside the [Composer](./composer) and [Header](./header) components.
+</Note>
+
+### Usage
+
+```tsx App.tsx
+import { MessageList, useWebchatClient } from '@botpress/webchat'
+
+const { client, messages, isTyping, user } = useWebchatClient({
+  clientId: '$CLIENT_ID$', // Insert your client id here
+})
+
+const config: = {
+  botName: 'SupportBot',
+  botAvatar: 'https://picsum.photos/id/80/400',
+  botDescription: 'Your virtual assistant for all things support.',
+}
+
+const enrichedMessages: RichMessageObject[] = useMemo(
+  () =>
+    messages.map((message) => {
+      const { authorId } = message
+      const direction = authorId === user?.id ? 'outgoing' : 'incoming'
+      return {
+        ...message,
+        direction,
+        sender:
+          direction === 'outgoing'
+            ? { name: user?.name ?? 'You', avatar: user?.pictureUrl }
+            : { name: config.botName ?? 'Bot', avatar: config.botAvatar },
+      }
+    }),
+  [config.botAvatar, config.botName, messages, user?.id, user?.name, user?.pictureUrl]
+)
+
+function App() {
+  return (
+    <MessageList
+      botAvatar={config.botAvatar}
+      botName={config.botName}
+      botDescription={config.botDescription}
+      isTyping={isTyping}
+      headerMessage="Chat History"
+      showMarquee={true}
+      messages={enrichedMessages}
+      sendMessage={client?.sendMessage}
+    />
+  )
+}
+```
+
+### Props
+
+<ResponseField name="botAvatar" type="string">
+  The bot’s avatar image URL, used when rendering bot messages or typing indicators.
+</ResponseField>
+<ResponseField name="botName" type="string">
+  The display name of the bot. Also shown in the marquee and typing indicator when no custom sender name is set.
+</ResponseField>
+<ResponseField name="botDescription" type="string">
+  The bot’s short description, used in the marquee area above the message list if enabled.
+</ResponseField>
+<ResponseField name="isTyping" type="boolean">
+  Whether the bot is currently "typing." When `true`, a typing indicator bubble is displayed at the end of
+  the message list.
+</ResponseField>
+<ResponseField name="headerMessage" type="string">
+  A message shown at the top of the chat window before any user or bot messages. Useful for welcome or onboarding text.
+</ResponseField>
+<ResponseField name="messages" type="RichMessageObject[]">
+  An array of message objects to render in the chat. Can include standard user ('outgoing') and bot ('incoming') messages, as well as system ('system')
+  messages. You must handle the construction of the RichMessageObject type.
+</ResponseField>
+<ResponseField name="renderers" type="Partial<Renderers>">
+  A mapping of custom message renderers used to override how specific block types are displayed. We provide a set of
+  renderers by default so you do not have to worry about it. You can checkout the default renderers [here](./renderers).
+</ResponseField>
+<ResponseField name="sendMessage" type="(payload: WebchatMessage) => void">
+  A callback function used to send a new message from the message list as a reply.
+  This is used by input messages (e.g. Button, Dropdown) where the user's input is sent directly from the message list in a message object.
+  This means that this is required if your want to use the `Button`, `Dropdown` or any input message types.
+</ResponseField>
+<ResponseField name="showMarquee" type="boolean">
+  Whether to show the bot marquee (bot name, avatar, and description) at the top of the message list. Defaults to
+  `true`
+</ResponseField>
+<ResponseField name="...props" type="ComponentProps<'ul'>">
+  Standard `<ul>` element props. Useful for applying custom class names or event handlers to the outer
+  container.
+</ResponseField>

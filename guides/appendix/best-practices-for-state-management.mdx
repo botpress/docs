@@ -5,6 +5,8 @@ description: >-
   clearing unused variables, and minimizing large data usage.
 ---
 
+import { Img } from '/snippets/image.mdx'
+
 ## **Overview**
 
 Efficient state management is crucial for optimizing chatbot performance in Botpress. This guide outlines best practices to avoid performance degradation and errors caused by exceeding the **128 KB state size limit**, ensuring your bot operates seamlessly.
@@ -39,9 +41,7 @@ How workflows are designed impacts the state management. Consider two scenarios:
 
 Workflow 1 → **End** → Workflow 2 → **End**
 
-![](https://files.readme.io/8f86ee64841673b5d80029525b71c9c6c78987f76779c63d820d669e0548fb69-image.png)
-
-<br />
+<img src="./workflow-example.png" />
 
 ### **Scenario 2: Improper Workflow Exit**
 
@@ -53,9 +53,7 @@ Workflow 1 → **End** → Workflow 2 → **End**
 
 Workflow 1 → Workflow 2 → Workflow 3 → **End**
 
-![](https://files.readme.io/1d122218272a2ca292a2e98c41d50870fde322cd84b393fe671f575ff8e3b865-image.png)
-
-<br />
+<img src="./improper-workflow-exit.png" />
 
 ***
 

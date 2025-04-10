@@ -1,37 +1,32 @@
 ---
 title: Accessing The Autonomous Nodes Thought Process
-excerpt: >-
+description: >-
   Analyze Knowledge Base responses from Autonomous Nodes in Botpress with the
-  “After LLMz Execution” hook. 
+  “After LLMz Execution” hook.
 
 
   Capture metrics like query content, response source, and user context for
   precise insights into Knowledge Base interactions and improved bot
   performance.
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
-> 📘 Note
->
-> If you are looking to simply understand a response in the emulator, you can use the inspect button to get information about the Autonomous nodes thinking. But for other use cases, Botpress allows you to create a javascript hook that allows you do something with the data programatically.
+
+<Note>
+Note
+
+If you are looking to simply understand a response in the emulator, you can use the inspect button to get information about the Autonomous nodes thinking. But for other use cases, Botpress allows you to create a javascript hook that allows you do something with the data programatically.
+</Note>
 
 # Using LLMz hooks
 
-Sometimes you want to do something with that information in your production bots, perhaps for analytics, perhaps for figuring out issues. LLMz hooks allow you to do that. You can use them to monitor and analyze responses from LLMz-powered Autonomous Nodes, especially when they retrieve information from the Knowledge Base (KB), and you can send the information to a Botpress Table, or to your preferred analytics tool. 
+Sometimes you want to do something with that information in your production bots, perhaps for analytics, perhaps for figuring out issues. LLMz hooks allow you to do that. You can use them to monitor and analyze responses from LLMz-powered Autonomous Nodes, especially when they retrieve information from the Knowledge Base (KB), and you can send the information to a Botpress Table, or to your preferred analytics tool.
 
-You can follow the [Botpress guide](https://botpress.com/docs/streaming-analytics-from-within-your-bot-with-hooks#setting-up-mixpanel) for setting up streaming analytics for messages, but if you'd like to get information on LLMz logic, you can follow these steps to adjust for this.
+You can follow the [Botpress guide](/guides/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks) for setting up streaming analytics for messages, but if you'd like to get information on LLMz logic, you can follow these steps to adjust for this.
 
 ## Step 1: Setting Up Your Analytics Tool
 
 Start by configuring your analytics tool to capture data from your Botpress bot. Refer to your tool’s documentation to obtain any necessary API keys or project identifiers.
 
-Likewise, if you'd like to use Botpress Analytics, or Botpress Tables, you can also do so. 
+Likewise, if you'd like to use Botpress Analytics, or Botpress Tables, you can also do so.
 
 ## Step 2: Configuring the "After LLMz Execution" Hook
 
@@ -44,7 +39,7 @@ To set up this hook:
 
 This hook function provides access to two key parameters:
 
-* `event`: The [Event object](https://botpress.com/docs/event) with details about the interaction.
+* `event`: The [Event object](/guides/dashboard/bot/events) with details about the interaction.
 * `execution`: An object containing data on the LLMz execution, including details of each iteration and response content. More information on the `execution` object structure is provided [below](#the-execution-object).
 
 ## Example Code for the After LLMz Execution Hook
@@ -57,21 +52,19 @@ if (event?.kb?.results?.length) {
   const botAnalyticsData = {
     // Timestamp of the event
     time: event.createdOn.getTime(),
-    
     // Unique identifiers
     $insert_id: event.id,          // Prevents duplicate events
     distinct_id: event.userId,     // Identifies unique users
     bot_id: event.botId,
     conversation_id: event.conversationId,
-    
     // Knowledge Base interaction data
     query: event.preview,          // User's query to the Knowledge Base
     result: event?.kb?.results[0].content,  // Matching KB content fragment
     fileName: event?.kb?.results[0].title,  // Source document name
-    
+
     // Bot response data - formatted message sent to user
     autonomousNodeResponse: execution.iterations[execution.iterations.length - 1].message,
-    
+
     // Context information
     current_flow: event.state.context.currentFlow,
     current_node: event.state.context.currentNode,

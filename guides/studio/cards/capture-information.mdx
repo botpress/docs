@@ -1,17 +1,10 @@
 ---
 title: Capture Information
-excerpt: >-
+description: >-
   Cards that stop the bot's workflow and waits for a user's response to capture
   specific pieces of information.
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 **Capture Information** cards instruct the bot to stop processing and wait for the user's response while capturing a specific piece of information from the user's input.
 
 This could include details like the user's name, full address, or raw input.
@@ -24,14 +17,14 @@ A Prompt Field is a type of input field that is used to capture information from
 
 The Prompt Field also includes validation messages and code validation, which helps ensure that the user inputs the correct type of information. This means that if the user inputs an invalid value, they will be notified with an error message and prompted to re-enter the correct information.
 
-<table align={["left","left"]}>
+<table>
   <thead>
     <tr>
-      <th style={{ textAlign: "left" }}>
+      <th>
         **Prompt Fields**
       </th>
 
-      <th style={{ textAlign: "left" }}>
+      <th>
         **Description & Extracted Information**
       </th>
     </tr>
@@ -39,242 +32,242 @@ The Prompt Field also includes validation messages and code validation, which he
 
   <tbody>
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [SingleChoice](../docs/capture-information#single-choice)
+      <td>
+        [SingleChoice](#single-choice)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Single Choice from a finite list of possible Values\
         Variable Type: String
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [MultipleChoice](../docs/capture-information#multi-choice) 
+      <td>
+        [MultipleChoice](#multi-choice)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts one or multiple choices from a finite list of possible Values\
         Variable Type: String
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Boolean](../docs/capture-information#boolean) 
+      <td>
+        [Boolean](#boolean)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extract a Boolean (On/Off) from the Query\
         Variable Type: Boolean
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Confirmation](../docs/capture-information#confirmation) 
+      <td>
+        [Confirmation](#confirmation)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Confirm a Yes/No question with a Boolean from the Query\
         Variable Type: Boolean
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Number](../docs/capture-information#number) 
+      <td>
+        [Number](#number)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Number from the Query\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [EmailAddress](../docs/capture-information#email-address) 
+      <td>
+        [EmailAddress](#email-address)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a full Email Address from the Query\
         Variable Type: String
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [PhoneNumber](../docs/capture-information#phone-number) 
+      <td>
+        [PhoneNumber](#phone-number)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Telephone Number and optionally the Country Code from the Query\
         Variable Type: String
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [FullAddress](../docs/capture-information#fulladdress) 
+      <td>
+        [FullAddress](#fulladdress)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extract the Full Address from the Query\
         Variable Type: Object
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Price](https://botpress.com/docs/cloud/toolbox/capture-information/#price) 
+      <td>
+        [Price](#price)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Price from the Query\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [RawInput](../docs/capture-information#raw-input) 
+      <td>
+        [RawInput](#raw-input)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extract the Input provided by the User, without any processing\
         Variable Type: String
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Percentage](../docs/capture-information#percentage) 
+      <td>
+        [Percentage](#percentage)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Percentage from the Query\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Quantity](../docs/capture-information#quantity) 
+      <td>
+        [Quantity](#quantity)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extract a Quantity from a Query\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Color](../docs/capture-information#color) 
+      <td>
+        [Color](#color)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Color as both HEX and RGB codes from the Query\
         Variable Type: Object
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [TimeMeasurement](../docs/capture-information#time-measurement) 
+      <td>
+        [TimeMeasurement](#time-measurement)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a time measurement as (ns, mu, ms, s, min, h, d, week, month, year) Units\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [WeightMeasurement](../docs/capture-information#weight-measurement) 
+      <td>
+        [WeightMeasurement](#weight-measurement)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Weight Measurement as (mcg, mg, g, kg, oz, lb, mt, t) Units\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [CronSchedule](../docs/capture-information#cron-schedule) 
+      <td>
+        [CronSchedule](#cron-schedule)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a one-time or recurring schedule as a CRON Expression from the Query\
         Variable Type: Object
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [OperatingSystem](../docs/capture-information#operating-system) 
+      <td>
+        [OperatingSystem](#operating-system)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts the name of an Operating System (Windows, OSX, IOS, Android, Linux)\
         Variable Type: Object
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [QuantityofPeople](../docs/capture-information#quantity-of-people) 
+      <td>
+        [QuantityofPeople](#quantity-of-people)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts the Number of People in a Query\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [VolumeMeasurement](../docs/capture-information#volume-measurement) 
+      <td>
+        [VolumeMeasurement](#volume-measurement)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a volume measurement as (mm3, cm3, ml, l, kl, m3, km3, tsp, Tbs, in3, fl-oz, cup, pnt, qt, gal, ft3, yd3) Units\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [TemperatureMeasurement](../docs/capture-information#temperature-measurement) 
+      <td>
+        [TemperatureMeasurement](#temperature-measurement)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts a Temperature Measurement as (C, K, F) Units\
         Variable Type: Number
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [Person](../docs/capture-information#person) 
+      <td>
+        [Person](#person)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts the name of a person(first and last names)\
         Variable Type: Object
       </td>
     </tr>
 
     <tr>
-      <td style={{ textAlign: "left" }}>
-        [DateTime](../docs/capture-information#datetime) 
+      <td>
+        [DateTime](#datetime)
       </td>
 
-      <td style={{ textAlign: "left" }}>
+      <td>
         Extracts date and time relative to the current date\
         Variable Type: Date
       </td>
@@ -288,9 +281,11 @@ The Prompt Field also includes validation messages and code validation, which he
 
 The **Single Choice** is a type of input field that presents the user with a list of options to choose from. The user can only select **one** option from the list, and their choice is then stored as a value in a variable. This variable can be used later in your workflow for further processing.
 
-> 👍 Tip
->
-> If the user enters text instead of clicking a button, the AI will search their text for any of the button options, and, if there is an option the user's text will be treated as if they clicked the button.
+<Tip>
+Tip
+
+If the user enters text instead of clicking a button, the AI will search their text for any of the button options, and, if there is an option the user's text will be treated as if they clicked the button.
+</Tip>
 
 An example of Single Choice would be a survey question with multiple options, where the user selects one answer from the list.
 
@@ -684,7 +679,7 @@ When the user enters a valid quantity, the Quantity card will extract and save t
 
 Here's an example of how you can use the extracted information in a message:
 
-```Text html
+```text
 Thank you for your order! Your total price is {{workflow.productQuantity * productPrice}}.
 ```
 
@@ -789,18 +784,22 @@ Once the card is used, it will automatically extract the weight information from
 The available weight measurement formats are:
 
 <table>
-  <tr>
-    <td>mcg (microgram)</td>
-    <td>mg (milligram)</td>
-    <td>g (gram)</td>
-    <td>kg (kilogram)</td>
-  </tr>
-  <tr>
-    <td>mt (metric ton)</td>
-    <td>oz (ounce)</td>
-    <td>lb (pound)</td>
-    <td>t (ton)</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>mcg (microgram)</th>
+      <th>mg (milligram)</th>
+      <th>g (gram)</th>
+      <th>kg (kilogram)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mt (metric ton)</td>
+      <td>oz (ounce)</td>
+      <td>lb (pound)</td>
+      <td>t (ton)</td>
+    </tr>
+  </tbody>
 </table>
 
 **Example**
@@ -926,16 +925,19 @@ Once the card is used, it will automatically extract the volume value from the u
 The following volume formats are available for conversion:
 
 <table>
+  <thead>
   <tr>
-    <td>
+    <th>
       Cubic millimeters (mm<sup>3</sup>)
-    </td>
-    <td>
+    </th>
+    <th>
       Cubic centimeters (cm<sup>3</sup>)
-    </td>
-    <td>Milliliters (ml)</td>
-    <td>Centiliters (cl)</td>
+    </th>
+    <th>Milliliters (ml)</th>
+    <th>Centiliters (cl)</th>
   </tr>
+  </thead>
+  <tbody>
   <tr>
     <td>Deciliters (dl)</td>
     <td>Liters (l)</td>
@@ -970,6 +972,7 @@ The following volume formats are available for conversion:
     </td>
     <td></td>
   </tr>
+  </tbody>
 </table>
 
 **Example**
@@ -1039,7 +1042,7 @@ Once the card is saved, it will automatically extract the person's name informat
 
 You can then use this variable in other parts of your workflow by referencing the specific fields in the name object using the following syntax:
 
-```typescript
+```text
 {{workflow.variableName.first}} and {{workflow.variableName.last}}
 ```
 
@@ -1132,7 +1135,7 @@ The **Wait for User Input** type is used to pause the flow of a conversation unt
 
 ## File Upload
 
-The **File Upload** type allows users to upload a file through the chatbot interface. Once the file is uploaded, the bot captures the URL of the uploaded file as a string variable. 
+The **File Upload** type allows users to upload a file through the chatbot interface. Once the file is uploaded, the bot captures the URL of the uploaded file as a string variable.
 
 #### Configuration Steps:
 
@@ -1283,7 +1286,7 @@ Once the validation rules are set up, the user's input will be evaluated before 
 
 Suppose you have a Capture Information card that asks the user for their age. You want to ensure that the user enters a number between 18 and 100. You can use the following validation code in the **Validation** section of the card:
 
-```coffeescript
+```ts
 function validate(input: string): boolean
 {
   const age = parseInt(input) if (isNaN(age))
@@ -1298,7 +1301,7 @@ This code first tries to parse the user's input as a number. If the input is not
 
 Suppose you have a Capture Information card that asks the user for their email address. You want to ensure that the user enters a valid email address format. You can use the following validation code in the **Validation** section of the card:
 
-```coffeescript
+```ts
 function validate(input: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(input)
@@ -1358,7 +1361,7 @@ The **Choices** setting is used to offer a list of options to the user as a resp
 You could add fixed options or add variables to each choice to make them dynamic. You can also render the list of choices dynamically by toggling the SuperText input and adding an array variable with the following format:
 
 ```js
-;[
+[
   {
     label: 'French',
     value: 'fr',
@@ -1370,13 +1373,17 @@ You could add fixed options or add variables to each choice to make them dynamic
 ]
 ```
 
-> 🚧 Limit
->
-> If you add more than 5 choices, they will be rendered as a Dropdown/List instead of buttons. This number may vary by channel.\{' '} The choices labels should not be longer than 20 characters otherwise they will get cut in some channels.
+<Warning>
+Limit
 
-> 📘 Note
->
-> Choices are only available for **Single Choice**, **Multiple Choice**, **Boolean**, **Confirmation** and **Raw Input**Capture cards.
+If you add more than 5 choices, they will be rendered as a Dropdown/List instead of buttons. This number may vary by channel.\{' '} The choices labels should not be longer than 20 characters otherwise they will get cut in some channels.
+</Warning>
+
+<Note>
+Note
+
+Choices are only available for **Single Choice**, **Multiple Choice**, **Boolean**, **Confirmation** and **Raw Input**Capture cards.
+</Note>
 
 **Example**
 
@@ -1384,7 +1391,7 @@ Suppose you have a Capture Information card that asks the user to select their p
 
 ## Advanced
 
-\*\*1. Add transition to handle failure
+1. Add transition to handle failure
 
 This is a yes/no flag that determines whether a transition should be added to handle cases where the Capture Information card fails to retrieve information from the user.
 
@@ -1392,7 +1399,7 @@ This is a yes/no flag that determines whether a transition should be added to ha
 
 If this flag is set to **Yes** and the Capture Information card fails to capture the required information, it will transition to the failure transition where a message can be displayed to the user, such as **Sorry, I didn't understand that. Please try again**.
 
-\*\*2. Skip if variable is already filled
+2. Skip if variable is already filled
 
 This is a flag that determines whether the Capture Information card should be skipped if the variable assigned to it already has a value.
 
@@ -1403,8 +1410,6 @@ If this flag is set to **Yes** and the variable already has a value, the Capture
 This flag can be useful in scenarios where a user may have already provided the required information in a previous conversation with the bot.
 
 Combining these two flags can help improve the user experience with the bot by allowing for smoother conversation flows and avoiding unnecessary repetition.
-
-<br />
 
 # Prompt Chaining
 

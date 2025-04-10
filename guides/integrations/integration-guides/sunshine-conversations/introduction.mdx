@@ -1,0 +1,72 @@
+---
+title: Sunshine Conversations
+sidebarTitle: Introduction
+---
+
+import { Img } from '/snippets/image.mdx'
+
+<img src="./sunshine-conversations.png" />
+
+# Prerequisites
+
+* A [Smooch app](https://app.smooch.io) with a channel configured
+* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/guides/getting-started)
+
+# Setting up the Sunshine Conversations integration in Botpress
+
+1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
+2. Find and open the Sunshine Conversations integration then click on the "Install to Bot" button, now go back to your bot settings.
+
+The Sunshine Conversations integration has the following settings:
+
+* **Enabled**: Whether Botpress will communicate with this channel
+* **Webhook URL**: The URL for receiving data in Botpress
+* **App Id**: The App Id of your bot in Azure
+* **Key Id**: The Key Id of your bot in Azure
+* **Key Secret**: The Key Secret of your bot in Azure
+* **Webhook Secret**: The Webhook Secret of your bot in Azure
+
+# Setting up Sunshine Conversations
+
+## Smooch App
+
+1. On the Smooch [home page](https://app.smooch.io/), click on **Create new app.**
+2. Enter a name for your app and click **Create App**
+3. Connect a channel to your app (Telegram, WhatsApp, or any other listed channel)
+4. You should see a channel in the **Overview** section of your app
+
+# Configuration
+
+## App Id
+
+The smooch channel needs the app id to identify the smooch app when making API calls
+
+1. Go to the **Settings** section of your app
+2. You should see an **App Id** section if you scroll down. Copy paste this value to the **App Id** channel configuration
+
+## Key Id and Key Secret
+
+The key id and secret are needed to authenticate API calls to Smooch
+
+1. At the bottom of to the **Settings** section of your app, click **Generate API key**
+2. Copy paste the id (the one that starts with `app_`) in the **Key Id** channel configuration
+3. Copy paste the secret in the **Key Secret** configuration
+
+## Webhook Secret
+
+The webhook secret is needed to validate webhooks requests. You get a webhook secret for each webhook integration you create
+
+1. Go to the **Integration** section of your app
+2. In the **API & Webhooks** section, click on **Webhooks**
+3. Click **Connect**, then **Create a webhook**
+4. Paste the Webhook URL provided in Botpress
+5. Select `v2` as your webhook version
+6. Select **Conversation message** and **Postbacks** in the basic triggers
+7. Click **Create Webhook**. You will see the webhook you created in the table, and the secret in the last column
+8. Copy paste the webhook secret in the **Webhook Secret** channel configuration
+
+## Save Configuration
+
+Channel configuration is complete, you can now click **Save**
+
+That's it, you may now start chatting with your bot on Sunshine Conversations!

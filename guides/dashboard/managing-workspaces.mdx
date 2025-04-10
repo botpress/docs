@@ -1,52 +1,41 @@
 ---
 title: Managing Workspaces
-excerpt: ''
-deprecated: false
-hidden: true
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
-![](https://files.readme.io/6c0059f-image.png)
+
+import { Img } from '/snippets/image.mdx'
+
+<img src="./managing-workspaces.png" />
 
 A Workspace is a collaborative environment where users can create, manage, and deploy chatbots. It provides a centralized location for managing all aspects of a chatbot project.
 
-> 📘 Info
->
-> **Free Plan (Self-Serve)**
->
-> * Ideal for individuals exploring AI chatbot capabilities.
-> * Includes 5 bots, 2,000 messages per month, 3 collaborators, 5,000 table rows, 100MB vector DB storage, and $5 AI credit monthly.
-> * Community support is available, and no credit card is required to start.
->
-> ***
->
-> **Pay-as-You-Go Plan (Self-Serve)**
->
-> * Perfect for bot-building enthusiasts and individual developers.
-> * Start with the Free Plan features and customize by adding bots, messages, collaborators, etc., at an additional cost.
-> * Charges are at cost for AI tokens used, with a $5 monthly AI credit provided.
->
-> ***
->
-> **Team Plan**
->
-> * Suited for teams with mature chatbot projects aiming for savings on limit increases.
-> * Offers 20 bots, 250,000 messages per month, 5 collaborators, 1,000,000 table rows, and 2GB vector DB storage.
-> * Includes live-chat support and represents a `$1000` monthly value for $495 USD/month.
->
-> ***
->
-> **Enterprise Plan**
->
-> * Tailored for businesses that require advanced features and enterprise security.
-> * Provides custom numbers of bots, messages, storage, table rows, and collaborators, along with volume discounts, custom payment terms, and dedicated support.
-> * To get this plan, direct contact with Botpress is necessary for a custom quote. [Get in touch](https://botpress.com/contact-us).
->
-> ***
+<Info>
+Info
+
+**Free Plan (Self-Serve)**
+
+* Ideal for individuals exploring AI chatbot capabilities.
+* Includes 5 bots, 2,000 messages per month, 3 collaborators, 5,000 table rows, 100MB vector DB storage, and $5 AI credit monthly.
+* Community support is available, and no credit card is required to start.
+
+**Pay-as-You-Go Plan (Self-Serve)**
+
+* Perfect for bot-building enthusiasts and individual developers.
+* Start with the Free Plan features and customize by adding bots, messages, collaborators, etc., at an additional cost.
+* Charges are at cost for AI tokens used, with a $5 monthly AI credit provided.
+
+**Team Plan**
+
+* Suited for teams with mature chatbot projects aiming for savings on limit increases.
+* Offers 20 bots, 250,000 messages per month, 5 collaborators, 1,000,000 table rows, and 2GB vector DB storage.
+* Includes live-chat support and represents a `$1000` monthly value for $495 USD/month.
+
+**Enterprise Plan**
+
+* Tailored for businesses that require advanced features and enterprise security.
+* Provides custom numbers of bots, messages, storage, table rows, and collaborators, along with volume discounts, custom payment terms, and dedicated support.
+* To get this plan, direct contact with Botpress is necessary for a custom quote. [Get in touch](https://botpress.com/contact-us).
+
+</Info>
 
 ## Collaborators
 
@@ -61,11 +50,11 @@ You can manage users in a workspace by accessing the Collaborators tab on the da
 
 The user who creates a workspace automatically becomes the owner of the workspace.
 
-> ❗️ **Workspace Ownership**
->
-> Workspace ownership can't be moved or assigned to someone else.
+<Warning>
+**Workspace Ownership**
 
-<br />
+Workspace ownership can't be moved or assigned to someone else.
+</Warning>
 
 ## Usage & Subscriptions
 
@@ -83,7 +72,7 @@ A message is an incoming action that triggers bot activation. For example, if a 
 
 #### Storage
 
-This is the storage for files that are not vectorized (e.g. images used in conversations). 
+This is the storage for files that are not vectorized (e.g. images used in conversations).
 
 #### Table Rows
 
@@ -99,7 +88,7 @@ Track your usage of third-party AI services here. Botpress integrates with OpenA
 
 ### Subscribing to Team Plan
 
-1. If you are on the Free plan, you can upgrade to the Team plan by clicking on the **Manage Subscription** button in the Usage & Subscriptions section of Workspace Settings. 
+1. If you are on the Free plan, you can upgrade to the Team plan by clicking on the **Manage Subscription** button in the Usage & Subscriptions section of Workspace Settings.
 2. Select the Team plan and add features you want to include in your plan.
 3. With the Team Plan chosen, you can enhance your plan by adding extra features, if necessary. Available additions include:
    * Bot: Add bots for **$1** each.
@@ -108,11 +97,9 @@ Track your usage of third-party AI services here. Botpress integrates with OpenA
    * Collaborators: Add seats for collaborators at **$25** each.
    * Adjust the quantities of these features by using the **+** and **-** buttons, and the total cost will be updated accordingly.
 4. Proceed to the **Checkout** button to complete the process after reviewing your features and total cost.
-5. After completing the Checkout process, your plan will be activated, and you can utilize the features as per the limits of the Team Plan. 
+5. After completing the Checkout process, your plan will be activated, and you can utilize the features as per the limits of the Team Plan.
 
 If your needs exceed the provided resources, you can always go back and add more features as previously described. Remember, any modifications to your plan, including added features, will be reflected in your monthly billing.
-
-<br />
 
 ## Billing
 
@@ -144,8 +131,6 @@ Finally, you can view your past payments in the Invoice section of the billing p
 
 In summary, the billing section of Botpress allows you to keep track of your current plan, current monthly bill, payment information, incoming messages, monthly budget, and past payments.
 
-<br />
-
 ## Audits
 
 Audits show the history of important events in a Workspace, such as changes to bots, collaborators, and configuration. They provide a way to track and review the changes made to a Workspace. They are useful for understanding who did what and when, especially in collaborative environments where multiple people work in the same Workspace.
@@ -155,8 +140,6 @@ Audits capture events related to bots, collaborators, and configuration changes.
 You will see a list of audit events, with the most recent ones at the top. You can use the search box to filter the events by email address, action type, or date range.
 
 By reviewing audits, you can understand who did what and when, which is useful for accountability, troubleshooting, and collaboration.
-
-<br />
 
 ## Workspace Settings
 
@@ -178,15 +161,15 @@ The Billing Plan section displays the current billing plan of your workspace. To
 
 The Delete Workspace section allows you to delete your workspace permanently. You must be the owner of the Workspace to do so.
 
-> ❗️ **Deleting a Workspace**
->
-> This is an irreversible process and will permanently erase all data associated with your workspace, including bots, conversations, and analytics.
+<Warning>
+**Deleting a Workspace**
+
+This is an irreversible process and will permanently erase all data associated with your workspace, including bots, conversations, and analytics.
+</Warning>
 
 To proceed with the deletion, click on the **Delete Workspace** button and confirm your decision.
 
 Before deleting your workspace, we recommend downloading your invoices from the Billing section to ensure you have a record of all charges and payments associated with your workspace.
-
-<br />
 
 ## Leaving a Workspace
 

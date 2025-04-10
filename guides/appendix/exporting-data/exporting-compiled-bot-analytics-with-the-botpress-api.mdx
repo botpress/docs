@@ -1,15 +1,7 @@
 ---
 title: Compiled Bot Analytics
-excerpt: ''
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 The Botpress Cloud dashboard provides you with an Analytics page with counters for the total number of users, new users, returning users, sessions and messages. It also shows a chart with the data and allows you to filter by date range.
 
 While this interface is great for understanding reach and engagement in a glance, you may need the data in a third-party service. Luckily, you can use the Botpress API to export the analytics data to your own database or system. Let's see how to do it.
@@ -18,13 +10,15 @@ While this interface is great for understanding reach and engagement in a glance
 
 Send a `GET` request to `https://api.botpress.cloud/v1/admin/bots/<your-bot-id>/analytics` adding the following header: `Authorization: Bearer <your-personal-access-token>`.
 
-> 📘 Note
->
-> You can find your personal access token in your [Botpress Dashboard](https://app.botpress.cloud/). Click your avatar and select "Personal Access Tokens". Generate a new one and copy it.
+<Note>
+Note
+
+You can find your personal access token in your [Botpress Dashboard](https://app.botpress.cloud/). Click your avatar and select "Personal Access Tokens". Generate a new one and copy it.
+</Note>
 
 This is how the request would look like using Axios in a Javascript application:
 
-```js
+```ts
 const requestConfig = {
   headers: {
     Authorization: `Bearer ${process.env.BOTPRESS_PERSONAL_ACCESS_TOKEN}`,
@@ -57,8 +51,10 @@ If you were to print the analytics (available at `getAnalytics.data.records`), t
 ]
 ```
 
-> 📘 Note
->
-> It's a list of records containing the start and end date of the period, the number of returning users, new users, sessions and messages. With this information you can create your own charts and dashboards in your internal systems or favorite BI tool.
+<Note>
+Note
 
-If you need advanced analytics about user behavior and the paths they take when interacting with the bot, you can use the [Hooks method](../docs/hooks) to export the data in real-time to a third-party service like Mixpanel, Hotjar, Segment or Amplitude.
+It's a list of records containing the start and end date of the period, the number of returning users, new users, sessions and messages. With this information you can create your own charts and dashboards in your internal systems or favorite BI tool.
+</Note>
+
+If you need advanced analytics about user behavior and the paths they take when interacting with the bot, you can use the [Hooks method](/guides/studio/interface/hooks) to export the data in real-time to a third-party service like Mixpanel, Hotjar, Segment or Amplitude.

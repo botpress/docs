@@ -1,17 +1,12 @@
 ---
 title: Autonomous Node
-excerpt: >-
+description: >-
   The Autonomous node uses an LLM to determine when, and in what order, to
   execute the cards it contains.
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
+import { Img } from '/snippets/image.mdx'
+
 The Autonomous Node allows you to create AI agents that make decisions, like what to say and which tools to call, based on the context available to them. It is designed to handle both decision-making and execution by understanding user inputs, responding with the right data, and leveraging the tools you make available to it.
 
 # Key Features
@@ -36,7 +31,7 @@ An Autonomous Node can execute actions without manual intervention based on inst
 
 Ensuring your Autonomous Node's instructions are cogent and precise is the key to a performant AI agent. The prompt helps the agent understand its persona and guides its decision-making.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcW_BFE75vwUVOeS0vzhECNdBPYsoiQJVwA9NWGeW8eI_QGlNVGFXxVyG1tSeuQQxyT3Fnt3WGj-5m_rHyjn2yNfuKEjyYFi1y1dX4aCI3WpFoodTi27BjQk11ficYaDa6upnfNHX1d1GD6BB8_Pok5wJfY?key=tcM6xVfTehWnyG265C5blA)
+<img src="./autonomous-configuration.png" />
 
 ## Instructions
 
@@ -61,7 +56,7 @@ An Autonomous Node is equipped with several tools and will call them at various 
 * workflow\.transition: Executes a workflow transition, moving from one part of the conversation to another based on user input.
 * global.Message: Sends a text message to the user as a response.
 
-![](https://files.readme.io/ee040946620bd0886d50957e94db076d097d9ebd74c38346012335be0db9e743-image.png)
+<img src="./autonomous-tools.png" />
 
 By specifying which tool to use in response to user actions, you can control the flow and outcomes of the conversation.
 
@@ -115,11 +110,13 @@ This section contains a list of the most common examples and patterns that you c
 
 To ensure the Autonomous Node differentiates between support questions and other types of inquiries, you can guide it in your prompt as follows:
 
+```markdown instructions
 **IMPORTANT General Process**
 
-* `The global.search tool is to be used only for support-related questions and NOT for general features or price-related questions.`
+- The global.search tool is to be used only for support-related questions and NOT for general features or price-related questions.
 
-* `The browser.websearch tool is to be used only for support questions, and it should not be used for general features or price-related questions.`
+- The browser.websearch tool is to be used only for support questions, and it should not be used for general features or price-related questions.
+```
 
 This prompt ensures the LLM will stick to using specific tools only in the context of support-related queries, maintaining control over the kind of information it retrieves.
 
@@ -167,7 +164,7 @@ This gives the node clear guidance on how to dynamically generate video links wi
 
 The Botpress Studio offers a suite of tools you can use to understand how your Autonomous Node is behaving, why it made certain decisions, and how you can course correct when it's not behaving as expected.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcTPS0_bodYzbTHkkwE0vVBGG-0mRNDCt6GIhSnzrDYoQCOHm2OF90hfjkqtSpI1i_deBFlMfw8TZTxPEsVLECmGE1CtUGeuSAJNfe60sfP2lSVqtXJRTTANrQLxxRA-2zImpdx5r9TqeOWRGnIvJLdhodL?key=tcM6xVfTehWnyG265C5blA)
+<img src="./troubleshooting.png" />
 
 ### Using the Inspect Window
 
@@ -179,7 +176,7 @@ The "Inspect" window surfaces information about the Autonomous Node's process, r
 
 If you notice that the node isn’t responding correctly or seems to ignore certain instructions, inspecting will reveal whether it has misunderstood the prompt or failed to execute a specific tool.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdZdWnjNPsaGcbXWCNqoksqspOkKKswr3y8V-mc_xuNz7stAtfdXBisTbbwYeZwUDpOsfHbP3SwduJgvcDSbn1W4BLM9w6Di8JFCG7dGnwKoRvGe0aiSO5e3rIvdeeieWtMd8Bocehf2pw6sYeEpMBujsY0?key=tcM6xVfTehWnyG265C5blA)
+<img src="./inspect-window.png" />
 
 The Tools section displays all available tools that the Autonomous Node has access to. Each time you add a new card or make a change in the node configuration, the Tools list is updated.
 
@@ -198,7 +195,7 @@ By reviewing the Iterations tab , you can understand:
 * What caused the node to take multiple steps (e.g., fetching additional data from tools like global.search or browser.webSearch)
 * Why a particular outcome was achieved
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXe2l1awCb4v2G3CM67G01E7ZhArQ6n-mFT-KgrFnVhc1FVw4rV2AIptxwu7OWAkN2RDDdA_8Zz7DxKLOFT7B0xX7kUUgSOmBKBzB0II75I3l-tfa5dIKc8ptkPr_eXJ5ex7hXuE2ik-zsUEz-IW9T7ujVRo?key=tcM6xVfTehWnyG265C5blA)
+<img src="./autonomous-iteration.png" />
 
 The Autonomous Node might not be following all of your prompt, executing part of the prompt instead of all of it, or calling the “workflowQueue” without calling the “workflowExecuteAll” tools.
 
@@ -216,7 +213,7 @@ Always make sure you are using the latest stable version of LLMz. This is the au
 
 It also contains bug fixes, making the prompts more agnostic to variance between LLMs.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdoefd_OKvJOHII-GLIhrD8e1C_qyq_6y0MhcKlWMTp6mV0uuugIxj2Ugkrty-INTJgz3uDfXK-ZWFPLOSri0948S6ZXy0Bkw-A-xmsDYmfHgLJ7Fp-HfOCp4fYoTGucMV1YWfLzsWMvFcd7MMHIJgmXUup?key=tcM6xVfTehWnyG265C5blA)
+<img src="./llmz-version.png" />
 
 ### Troubleshooting Code Creation
 
@@ -231,7 +228,7 @@ If the bot is failing to generate code properly:
 * Ensure the tool being used for code generation is correctly referenced in the prompt.
 * Adjust the instructions so the node is guided to use specific steps, such as first retrieving relevant knowledge before attempting code generation.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeX0OzEAKxFkaH0wSSmROQWUEYqymGQ82zkA8Mm6Kv0CyEqMNI3dAjJUQFnyTgBKLtvYczGv-LNNxelnYS7p3TO9dEUaawdlZlgFhjgG3fMGGX7tWp09PuHDmyufCoXqGM6tFg-iXnhkJAjQ5it_-HF-Ejn?key=tcM6xVfTehWnyG265C5blA)
+<img src="./query-knowledge-base-code.png" />
 
 ## Example Instructions
 
