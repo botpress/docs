@@ -760,6 +760,56 @@ You should set up webhooks so that the <Term id="integration"/> receives notific
 
 #### Incoming messages
 
+When notified by the <Term id="external-service"/> that a new message has been added to the <Term id="hitl-session"/>, you should relay the message to the Botpress conversation:
+
+<Steps>
+  <Step title="Retrieve the Botpress conversation's ID">
+    Retrieve the Botpress conversation's ID from the <Term id="hitl-session"/>'s metadata.
+  </Step>
+  <Step title="Retrieve the external user's ID">
+    Retrieve the <Term id="external-user"/>'s ID from the <Term id="hitl-session"/>'s metadata.
+  </Step>
+  <Step title="Add a message to the Botpress conversation">
+    Using the Botpress client, add a message to the Botpress conversation by calling the `client.createMessage()` method.
+  </Step>
+</Steps>
+
 #### Implementing `hitlAssigned`
 
+When notified by the <Term id="external-service"/> that a <Term id="human-agent"/> has been assigned to the <Term id="hitl-session"/>, you should notify the <Term id="hitl-plugin"/> by emitting the `hitlAssigned` event:
+
+<Steps>
+  <Step title="Retrieve the Botpress conversation's ID">
+    Retrieve the Botpress conversation's ID from the <Term id="hitl-session"/>'s metadata.
+  </Step>
+  <Step title="Retrieve the external user's ID">
+    Retrieve the <Term id="external-user"/>'s ID from the <Term id="hitl-session"/>'s metadata.
+  </Step>
+  <Step title="Emit the hitlAssigned event">
+    Using the Botpress client, emit the `hitlAssigned` event by calling the `client.createEvent()` method.
+  </Step>
+</Steps>
+
+<Note>
+  If you opted to rename the event to something else than `hitlAssigned` in the "Configuring the interface" section, please use the new name instead of `hitlAssigned`.
+</Note>
+
 #### Implementing `hitlStopped`
+
+When notified by the <Term id="external-service"/> that the <Term id="hitl-session"/> was closed, you should notify the <Term id="hitl-plugin"/> by emitting the `hitlStopped` event:
+
+<Steps>
+  <Step title="Retrieve the Botpress conversation's ID">
+    Retrieve the Botpress conversation's ID from the <Term id="hitl-session"/>'s metadata.
+  </Step>
+  <Step title="Retrieve the external user's ID">
+    Retrieve the <Term id="external-user"/>'s ID from the <Term id="hitl-session"/>'s metadata.
+  </Step>
+  <Step title="Emit the hitlStopped event">
+    Using the Botpress client, emit the `hitlStopped` event by calling the `client.createEvent()` method.
+  </Step>
+</Steps>
+
+<Note>
+  If you opted to rename the event to something else than `hitlStopped` in the "Configuring the interface" section, please use the new name instead of `hitlStopped`.
+</Note>
