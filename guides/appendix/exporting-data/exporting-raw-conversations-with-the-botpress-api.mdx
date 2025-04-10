@@ -7,7 +7,7 @@ The Botpress API allows you to access your bot's conversations from an external 
 <Note>
 Note
 
-Access the API documentation to verify the schema/structure of the [Conversations](https://botpress.com/docs/api-documentation/#schema_conversation) and the [Messages](https://botpress.com/docs/api-documentation/#schema_message) and see if the data is useful for your use case.
+Access the API documentation to verify the schema/structure of the [Conversations](/guides/dashboard/bot/conversations) and the [Messages](/guides/dashboard/bot/conversations#message) and see if the data is useful for your use case.
 </Note>
 
 <Note>
@@ -80,7 +80,7 @@ Now that you know the methods of getting the first conversations from the API, l
 
 ## Getting conversations gradually
 
-Create a function that will fetch the next batch of conversations when called. You could use a button to trigger it or trigger it automatically with infinite scroll. Pass the `nextToken` property retrieved from the first request as a parameter to the function, then update it on subsequent calls. More about pagination [here](https://botpress.com/docs/api-documentation/#pagination).
+Create a function that will fetch the next batch of conversations when called. You could use a button to trigger it or trigger it automatically with infinite scroll. Pass the `nextToken` property retrieved from the first request as a parameter to the function, then update it on subsequent calls. More about pagination [here](/api-reference/pagination).
 
 ```js
 async function loadConversations(paginationToken) {

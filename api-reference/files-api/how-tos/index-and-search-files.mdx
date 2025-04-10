@@ -31,7 +31,7 @@ The following file formats are supported for indexing:
 ### Notes on indexing
 
 - The file it will initially have a status of "indexing_pending" and will be indexed asynchronously. The time it takes to index the file will depend on the file size and the current load on the system.
-- You can check the status of the file by calling the [Get File](https://botpress.com/docs/api-documentation/#get-file) endpoint and checking that the `file.status` property has changed to "indexing_completed".
+- You can check the status of the file by calling the [Get File](/api-reference/files-api/how-tos/manage-files#getting-the-file’s-metadata) endpoint and checking that the `file.status` property has changed to "indexing_completed".
 - If the indexing failed the status will be set to "indexing_failed" and the reason of the failure will be available in the `failedStatusReason` property of the file.
 
 ## Searching files
