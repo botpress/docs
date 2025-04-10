@@ -52,13 +52,11 @@ if (event?.kb?.results?.length) {
   const botAnalyticsData = {
     // Timestamp of the event
     time: event.createdOn.getTime(),
-
     // Unique identifiers
     $insert_id: event.id,          // Prevents duplicate events
     distinct_id: event.userId,     // Identifies unique users
     bot_id: event.botId,
     conversation_id: event.conversationId,
-
     // Knowledge Base interaction data
     query: event.preview,          // User's query to the Knowledge Base
     result: event?.kb?.results[0].content,  // Matching KB content fragment

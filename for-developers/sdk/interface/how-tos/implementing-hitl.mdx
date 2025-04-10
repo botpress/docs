@@ -1,0 +1,360 @@
+---
+title: Implementing Human in the loop (HITL) in an integration
+---
+
+import { HitlIcon } from '/snippets/icons/plugins/hitl.mdx'
+import { CurrentInterfaceVersion } from '/snippets/interface-version.mdx'
+
+<HitlIcon width={64} style={{float: 'left', marginRight: 5}} role="presentation" /> The Human in the loop (HITL) interface allows you to implement human agent intervention in your integration.
+
+## Terminology
+
+Throughout this document, we will use the following terms:
+
+- **Integration**: The code that connects Botpress to an external service.
+- **External service**: The service that provides HITL functionality. This could be a help desk system like Zendesk, or any other system that allows human agents to send and receive messages to end users.
+- **Human agent**: A person who interacts with end users through the external service. This could be a support agent, a sales representative, or any other type of human agent.
+- **End user**: A person who interacts with your bot through Botpress. This could be a customer, a user, an employee, or any other type of end user.
+- **External user**: A representation of a end user within the external service. This is typically created when a HITL session is started.
+- **HITL session**: A conversation between an end user and a human agent. This is typically represented as a _ticket_ in the external service.
+- **HITL interface**: The interface that defines the contract for implementing HITL functionality in your integration. This interface specifies the actions, events, and channels that your integration must implement to support HITL.
+- **HITL plugin**: The Botpress plugin that manages HITL sessions and relays messages between end users and your integration. Installing this plugin in a bot enables HITL functionality using the selected integration.
+
+## External service requirements
+
+The external service providing HITL functionality **must** support the following:
+
+- An API that allows creating external users.
+- An API that allows creating HITL sessions.
+- An API that allows adding messages to HITL sessions.
+- An API that allows closing HITL sessions.
+- Webhooks that can notify your integration of the following events:
+  - HITL session closure.
+  - Human agent assignment.
+  - Human agent reply.
+
+## Updating your `package.json` file
+
+### Finding the current interface version
+
+The current version of the `hitl` interface is: <code>^<CurrentInterfaceVersion interfaceName="hitl" fallback="0.4.0" /></code>
+
+You will need this version number for the next steps.
+
+### Adding the interface as a dependency
+
+Once you have the interface version, you can add it as a dependency to your integration:
+
+<Steps>
+  <Step title="Open the package.json file">
+    Open your integration's `package.json` file.
+  </Step>
+  <Step title="Add the bpDependencies section">
+    If there is no `bpDependencies` section in your integration's `package.json` file, create one:
+    ```json package.json {2}
+    {
+      "bpDependencies": {}
+    }
+    ```
+  </Step>
+  <Step title="Add the interface as a dependency">
+    In the `bpDependencies` section, add the interface as a dependency. For example, for version `0.4.0`, you would add the following:
+    ```json package.json {3}
+    {
+      "bpDependencies": {
+        "hitl": "interface:hitl@^0.4.0"
+      }
+    }
+    ```
+    <Warning>
+    It is very important to follow this syntax: <br/>
+    `"<interface-name>": "interface:<interface-name>@<version>"`.
+    </Warning>
+    <Tip>
+    Interface versions use a numbering system with three parts: MAJOR.MINOR.PATCH (like `1.2.3`). When adding an interface to your integration, we recommend using the caret symbol (`^`) before the version number (like `^0.4.0`). This tells the Botpress CLI to automatically use newer compatible versions when they're available.
+
+    For example, if you specify `^0.4.0` as the version:
+    - You'll automatically get updates like `0.4.6` or `0.5.0` (bug fixes and new features).
+    - You won't get version `1.0.0` (which might break your integration).
+    </Tip>
+  </Step>
+  <Step title="Save the package.json file">
+    Save the `package.json` file.
+  </Step>
+  <Step title="Install the interface">
+  Now that you have added the interface as a dependency, you can run the [`bp add`](/for-developers/cli/commands/add) command to install it. This command will:
+  - Download the interface from Botpress.
+  - Install it in a directory named `bp_modules` in your integration's root directory.
+  </Step>
+</Steps>
+
+### Adding a helper build script
+
+To keep your integration up to date, we recommend adding a helper build script to your integration:
+
+<Steps>
+  <Step title="Open the package.json file">
+    Open your integration's `package.json` file.
+  </Step>
+  <Step title="Add the build script">
+    In the `scripts` section, add the following script:
+    ```json package.json {3}
+    {
+      "scripts": {
+        "build": "bp add -y && bp build"
+      }
+    }
+    ```
+    <Note>
+    If the `build` script already exists in your `package.json` file, please replace it.
+    </Note>
+  </Step>
+  <Step title="Save the package.json file">
+    Save the `package.json` file.
+  </Step>
+</Steps>
+
+Now, whenever you run `npm run build`, it will automatically install the interface and build your integration. This is useful for ensuring that your integration is always up to date with the latest version of the interface.
+
+## Editing your integration definition file
+
+### Adding the interface to your integration definition file
+
+Now that the interface is installed, you must add it your integration definition file in order to implement it.
+
+<Steps>
+  <Step title="Open the integration.definition.ts file">
+    Open your integration's `integration.definition.ts` file.
+  </Step>
+  <Step title="Import the interface">
+    At the top of the file, import the interface:
+    ```typescript integration.definition.ts
+    import hitl from './bp_modules/hitl'
+    ```
+  </Step>
+  <Step title="Extend your definition">
+  Use the `.extend()` function at the end of your `new IntegrationDefinition()` statement:
+  ```typescript integration.definition.ts {4-6}
+  export default new sdk.IntegrationDefinition({
+    ...
+  })
+    .extend(hitl, () => ({
+      entities: {},
+    }))
+  ```
+  The exact syntax of `.extend()` will be explained in the next section.
+  </Step>
+</Steps>
+
+### Configuring the interface
+
+The `.extend()` function takes two arguments:
+
+- The first argument is a reference to the interface you want to implement. In this case, it is `hitl`.
+- The second argument is a configuration object. Using this object, you can override interface defaults with custom names, titles, and descriptions.
+
+<Tip>
+Whilst renaming actions, events and channels is optional, it is highly recommended to rename these to match the terminology of the external service. This will help you avoid confusion and make your integration easier to understand.
+</Tip>
+
+#### Renaming actions
+
+The `hitl` interface defines three actions that are used to interact with the external service:
+
+- `createUser` - Used by the HITL plugin to request the creation of a user in the external service and on Botpress.
+- `startHitl` - Used by the HITL plugin to request the creation of a HITL session in the external service.
+- `stopHitl` - Used by the HITL plugin to request the closure of a HITL session in the external service.
+
+If you want to rename these actions, you can do so in the configuration object. For example, if you want to rename `createUser` to `hitlCreateUser`, you can do it like this:
+
+```typescript integration.definition.ts {4}
+.extend(hitl, () => ({
+  actions: {
+    createUser: {
+      name: 'hitlCreateUser',
+    },
+  },
+}))
+```
+
+<Tip>
+For example, if you're using a _help desk_ system like Zendesk, JIRA Service Desk, or Freshdesk for HITL functionality, you might rename `startHitl` to `createTicket` and `stopHitl` to `closeTicket`. These systems use tickets to represent help requests, so renaming actions to match their terminology makes your integration clearer and easier to understand.
+</Tip>
+
+#### Renaming events
+
+The `hitl` interface defines these events to notify the plugin of changes in the external service:
+
+- `hitlAssigned` - Emitted by your integration to notify the HITL plugin that a human agent has been assigned to a HITL session.
+- `hitlStopped` - Emitted by your integration to notify the HITL plugin that a HITL session has been closed.
+
+If you want to rename these events, you can do so in the configuration object. For example, if you want to rename `hitlAssigned` to `agentAssigned`, you can do it like this:
+
+```typescript integration.definition.ts {4}
+.extend(hitl, () => ({
+  events: {
+    hitlAssigned: {
+      name: 'agentAssigned',
+    },
+  },
+}))
+```
+
+#### Renaming channels
+
+The `hitl` interface defines these channels:
+
+- `hitl` - Used by the HITL plugin to send and receive messages from the external service. This represents the communication channel for the HITL session, like a support ticket on Zendesk or a direct message thread on Slack.
+
+If you want to rename this channel, you can do so in the configuration object. For example, if you want to rename `hitl` to `supportTicket`, you can do it like this:
+
+```typescript integration.definition.ts {4}
+.extend(hitl, () => ({
+  channels: {
+    hitl: {
+      name: 'supportTicket',
+    },
+  },
+}))
+```
+
+## Implementing the interface
+
+### Implementing the actions
+
+#### Implementing `createUser`
+
+The `createUser` action is used by the HITL plugin to request the creation of an external user (a _requester_) in the external service.
+
+<Note>
+If you opted to rename the action to something else than `createUser` in the previous section, please use the new name instead of `createUser`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 55](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L55).
+
+This action should implement the following logic:
+- Using the Botpress client, create a Botpress user.
+- On the external service, create an external user and map it to the Botpress user.
+  - Please refer to the external service's documentation to know how to set extra metadata for the user. The integration must be able at any time to query the external service in order to retrieve the Botpress user ID from the external user.
+- Update the Botpress user to map it to the external user.
+  - This is typically done by setting a tag on the Botpress user with the external user's ID.
+
+As reference, here's how this logic is implemented in the Zendesk integration:
+
+```typescript src/index.ts {3}
+export default new bp.Integration({
+  actions: {
+    async createUser({ ctx, input, client }) {
+      // Create a Botpress user:
+      const { name, email, pictureUrl } = input
+      const { user } = await client.createUser({
+        name,
+        pictureUrl,
+        tags: {
+          email,
+          role: 'end-user',
+        },
+      })
+
+      // Create an external user on Zendesk:
+      const zendeskClient = getZendeskClient(ctx.configuration)
+      const zendeskUser = await zendeskClient.createOrUpdateUser({
+        role: 'end-user',
+        external_id: user.id, // <= map to the Botpress user ID
+        name,
+        email,
+        remote_photo_url: pictureUrl,
+      })
+
+      // Map the external user to the Botpress user:
+      await client.updateUser({
+        id: user.id,
+        tags: {
+          id: zendeskUser.id.toString(), // <= map to the external user ID
+        },
+      })
+
+      // Yield control back to the plugin and return the user ID:
+      return {
+        userId: user.id,
+      }
+    },
+  },
+})
+```
+
+#### Implementing `startHitl`
+
+The `startHitl` action is used by the HITL plugin to request the creation of a HITL session in the external service. This action should be implemented in your integration to create a new HITL session.
+
+<Note>
+If you opted to rename the action to something else than `startHitl` in the previous section, please use the new name instead of `startHitl`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 71](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L71).
+
+This action should implement the following logic:
+- Fetch the Botpress user with ID `input.userId` that was passed in the input parameters.
+- From the Botpress user's tags, retrieve the external user's ID.
+- On the external service, create the HITL session. This is typically represented as a _ticket_ in the external service.
+- Create a Botpress conversation and map it to the HITL session. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
+- Update the HITL session on the external service to map it to the Botpress conversation.
+  - Please refer to the external service documentation to know how to set extra metadata for the HITL session (typically a _ticket_). The integration must be able at any time to query the external service in order to retrieve the Botpress conversation ID from the HITL session.
+- Yield control back to the plugin by returning the Botpress conversation ID.
+
+As reference, here's how this logic is implemented in the Zendesk integration:
+
+```typescript src/index.ts {3}
+export default new bp.Integration({
+  actions: {
+    async startHitl({ ctx, input, client }) {
+      // Fetch the Botpress user that was passed in the input parameters:
+      const { user } = await client.getUser({
+        id: input.userId,
+      })
+
+      // From the user's tags, retrieve the external user's id:
+      const zendeskAuthorId = user.tags.id
+      if (!zendeskAuthorId) {
+        throw new sdk.RuntimeError(
+          `User ${user.id} is not linked to a Zendesk user`
+        )
+      }
+
+      // Create a new ticket on Zendesk:
+      const zendeskClient = getZendeskClient(ctx.configuration)
+
+      const ticketTitle = input.title ?? 'Untitled Ticket'
+      const ticketBody = 'A user created a support ticket'
+      const createdZendeskTicket = await zendeskClient
+        .createTicket(ticketTitle, ticketBody, {
+          id: zendeskAuthorId,
+        })
+
+      // Create a Botpress conversation and map it to the Zendesk ticket:
+      const { conversation } = await client.getOrCreateConversation({
+        channel: 'hitl',
+        tags: {
+          id: createdZendeskTicket.id.toString(),
+        },
+      })
+
+      // Map the Zendesk ticket to the Botpress conversation:
+      await zendeskClient.updateTicket(createdZendeskTicket.id, {
+        external_id: conversation.id,
+      })
+
+      // Yield control back to the plugin and return the conversation ID:
+      return {
+        conversationId: conversation.id,
+      }
+    },
+  },
+})
+```
+
+### Implementing the channel
+
+### Implementing the events
