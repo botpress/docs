@@ -1,11 +1,10 @@
 ---
 title: Actions
-excerpt: Reusable custom code components to execute specific tasks.
-deprecated: false
-hidden: false
-metadata:
-  robots: index
+description: Reusable custom code components to execute specific tasks.
 ---
+
+import { Img } from '/snippets/image.mdx'
+
 Actions are reusable custom code components that you can add to your agent.
 
 You can use Actions in Autonomous Nodes execute a specific action or piece of code, for things like processing data or making API calls.
@@ -20,6 +19,6 @@ When creating an Action, you should define an input and output schema, which det
 
 After defining your schemas, you can write the code you'd like this specific Action to execute.
 
-<Image align="center" className="border" border={true} src="https://files.readme.io/fd740764fc27b3f21cc1fed3b5a4db1e6533c2d14c5428518b141d52445e509e-Screenshot_2025-03-07_at_2.56.37_PM.png" />
+<Img src="./action-demo.png" />
 
 Once completed, Actions are available for use in Autonomous Nodes via the Card Tray.

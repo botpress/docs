@@ -1,20 +1,10 @@
 ---
 title: Transition
-excerpt: ''
-deprecated: false
-hidden: true
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 A Transition is like a "decision point" in a conversation with a chatbot, where the bot has to decide what to do next based on what the user has said or done. It's like a set of instructions that the bot follows to determine which "path" to take in the conversation.
 
 The transition statement is what tells the bot which response or question to provide based on what the user has said or done.
-
-<br />
 
 # Expression
 
@@ -24,11 +14,11 @@ This type of transition allows you to check user input, user variables, workflow
 
 You can use a combination of these checks to create complex conditions that will determine which node the bot will transition to next.
 
-> 📘 **Generative AI Transitions**
->
-> You can use generative AI to generate your conditions using plain text. In order to achieve what you exactly want, here are some examples that should guide you, but you are not limited to it:
+<Note>
+**Generative AI Transitions**
 
-<br />
+You can use generative AI to generate your conditions using plain text. In order to achieve what you exactly want, here are some examples that should guide you, but you are not limited to it:
+</Note>
 
 ## Always transition to another node
 
@@ -36,9 +26,7 @@ There are two ways to make sure that a transition always triggers:
 
 The recommended approach is to click and drag starting from the circle on the bottom-right of nodes, next to the "Add Card" button. Transitions created this way always trigger when the user reaches the end of the node.
 
-You can also add an Expression card by creating an `Expression Transition` with the label "Always" and by pressing `Enter`. The code generator will insert `true` in the expression input. Anything below this `Transition` in the `Node` will never run. 
-
-<br />
+You can also add an Expression card by creating an `Expression Transition` with the label "Always" and by pressing `Enter`. The code generator will insert `true` in the expression input. Anything below this `Transition` in the `Node` will never run.
 
 # Intent
 

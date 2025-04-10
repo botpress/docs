@@ -1,17 +1,10 @@
 ---
 title: Library
-excerpt: >-
+description: >-
   Repository for managing global Intents and Entities, enabling the extraction
   and classification of messages.
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 The NLU Library is a key feature within Botpress, designed to manage and organize global Intents and Entities. These components are essential for understanding and processing user input, enabling your bot responds accurately and effectively.
 
 # Intents
@@ -59,50 +52,44 @@ To use inline intents:
 * Define them directly on a transition within your flow
 * Add relevant utterances
 
-<br />
-
 # Entities
 
 Entities are data points or parameters that provide additional context within an intent. They allow your chatbot to extract and normalize specific details from a user's message, such as a date, time, color, or any other relevant piece of information.
 
-> 📝 Example
->
-> The place-order intent contains the following entities:
->
-> **caffeine** that specifies if the coffee is caffeinated or decaffeinated. 
->
-> **size** for a single or a double shot. 
->
-> **drink** that specifies the kind of drink asked for. 
->
-> Attached to NLU extraction, you will find an entities property which is an array of System and Custom entities.
+<Info>
+Example
+
+The place-order intent contains the following entities:
+
+**caffeine** that specifies if the coffee is caffeinated or decaffeinated.
+
+**size** for a single or a double shot.
+
+**drink** that specifies the kind of drink asked for.
+
+Attached to NLU extraction, you will find an entities property which is an array of System and Custom entities.
+</Info>
 
 ## Custom Entities
 
 Botpress provides two types of custom entities: pattern and list entities. To define a custom entity, go to the Library tab of the Explorer. From there, you can define your custom entities which will be available for any input message treated by your chatbot. Go ahead and click on New entity.
 
-<br />
-
 ## Using Entities
 
 You may access and use entity data by looking up the event.nlu.entities variable in your hooks, flow transitions or Execute Code cards.
 
-<br />
-
 ## List Entities
 
-List extraction behaves similarly to pattern extraction. However, you'll be able to add different occurrences of your entity with corresponding synonyms. 
+List extraction behaves similarly to pattern extraction. However, you'll be able to add different occurrences of your entity with corresponding synonyms.
 
-Let's take Airport Codes as an example: 
+Let's take Airport Codes as an example:
 
 Extraction will go like this: User said Type Value "Find a flight from SFO to Mumbai" "Airport Codes" ["SFO", "BOM"]
-
-<br />
 
 ## Pattern Entities
 
 Pattern or Regular Expression Extraction allows you to extract information presented in a format that can be described using Regular Expression (RegEx). Once you've created a pattern entity, Botpress Native NLU will perform a regex extraction on each incoming message and add it to event.nlu.entities.
 
-Example: 
+Example:
 
-Given a Pattern Entity definition with [A-Z]\{3}-\[0-9]\{4}-[A-Z]\{3} as a pattern: Extraction will go like this: User said Type Value Find product BHZ-1234-UYT SKU BHZ-1234-UYT
+Given a Pattern Entity definition with `[A-Z]\{3}-\[0-9]\{4}-[A-Z]\{3}` as a pattern: Extraction will go like this: User said Type Value Find product BHZ-1234-UYT SKU BHZ-1234-UYT

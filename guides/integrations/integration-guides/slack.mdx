@@ -1,0 +1,184 @@
+---
+title: Slack
+---
+
+import { Img } from '/snippets/image.mdx'
+
+<Img src="./slack.png" />
+
+# Prerequisites
+
+* A [Slack App](https://api.slack.com/apps) to connect your bot to Slack.
+* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](https://botpress.com/docs/cloud/getting-started/create-and-publish-your-chatbot/)
+
+# Create a Slack App
+
+If you don't have a Slack app already, follow the steps below to create one:
+
+1. Go to [this link](https://api.slack.com/apps?new_app=1).
+2. Select **from scratch**.
+3. Enter a name for your app.
+4. Select the workspace you want to connect your bot to.
+5. Click **Create App**.
+
+Et voilà! You have created a Slack app.
+
+# Setting up the Slack integration in Botpress
+
+1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
+2. Find and open the Slack integration then click on the "Install to Bot" button, now go back to your bot.
+
+The Slack integration has the following settings:
+
+* **Enabled**: Whether Botpress will communicate with Slack
+* **Webhook URL**: The URL for receiving data in Botpress
+* **Bot Token**: The token used to authenticate requests made to Slack
+* **Signing Secret**: The secret used to verify the requests
+* **Bot Name**: The name of the bot that will be displayed in Slack
+* **Bot Avatar URL**: The URL to the bot's avatar that will be displayed in Slack
+
+# Setting up Slack
+
+## Bot Token
+
+1. In the left sidebar, click on **Features** > **OAuth & Permissions**
+2. Scroll down to the **Scope** > **Bot Token Scopes** section, click **Add an OAuth Scope**. Select both `chat:write` and `chat:write.customize` options from the list.
+3. Scroll up and click the **Install to Workspace** button in the **OAuth Tokens for Your Workspace** section
+4. In the next screen, your app will request access to your Slack workspace. Click **Allow**.
+5. In the **OAuth & Permissions > OAuth Tokens for Your Workspace** section, copy the **Bot User OAuth Token**.
+6. Copy the token and paste it in the **Bot Token** input in Botpress.
+
+## Signing Secret
+
+The signing secret is used to verify webhook requests
+
+1. In the left sidebar of the app details page, click on **Settings** > **Basic Information**
+2. Scroll down to **App Credentials** section. Next to **Signing Secret**, click **Show** to reveal the secret.
+3. Copy the secret to the **Signing Secret** input in Botpress.
+
+## Save Configuration
+
+Channel configuration is complete, you can now click **Save**. It is important you save your configuration before configuring the webhooks, otherwise Slack will be unable to validate the webhook url
+
+Important: Do not activate the toggle or authorize Slack before saving. After saving, the toggle can be activated, but do not synchronize yet.
+
+# Webhook Configuration
+
+## Events Webhook
+
+Slack sends regular events such as messages to the event webhook
+
+1. In the left sidebar, click on **Features** > **Event Subscriptions**
+2. Turn on events by click the On/Off button
+3. Copy paste the webhook url provided in the channel configuration UI to the **Request URL** field
+4. Under **Subscribe to bot event**, add `message.im` and `message.channels`
+5. Click the **Save Changes** button. Make sure your Slack channel configuration is saved before doing this step, otherwise webhook validation will fail
+6. A yellow banner will be displayed at the top of the screen. Click the **reinstall your app** link
+7. In the next screen, your app will request access to your Slack workspace. Click **Allow**.
+
+## Interactivity Webhook
+
+Slack sends "interactive" events such as reactions to message to the interactivity webhook
+
+1. In the left sidebar, click on **Features** > **Interactivity & Shortcuts**
+2. Turn on interactivity by click the On/Off button
+3. Copy paste the webhook url provided in the channel configuration UI to the **Request URL** field
+4. Click the **Save Changes** button
+
+# Install App
+
+## Add App to Workspace
+
+Your Slack app needs to be added to your workspace to allow Slack users to communicate with it:
+
+1. In the left sidebar, click on **Features** > **App Home**
+2. Scroll down and in the **Show Tabs > Messages Tab** section, tick **Allow users to send Slash commands and messages from the messages tab**
+3. In Slack, under the **Apps** section of the sidebar, click the **+ Add apps** button. In the search bar, type the name of your Slack app. Click on your Slack app in the search results.
+
+That's it, you may now start chatting with your bot on Slack!
+
+# Tips
+
+* To get the Slack conversation ID, you can read the following variable:\
+  `{{ event.tags.conversation["slack:id"] }}`.
+
+* To get the Slack conversation thread ID (if it is a thread), you can read the following variable:\
+  `{{ event.tags.conversation["slack:thread"] }}`.
+
+* To get the Slack user ID, you can read the following variable:\
+  `{{ event.tags.user["slack:id"] }}`.
+
+* To get the Slack message ID, you can read the following variable:\
+  `{{ event.tags.message["slack:id"] }}`.
+
+# Slack actions in Botpress Studio
+
+## Starting a Conversation Proactively
+
+To start a conversation with a user proactively, you need to know the user's Slack ID.
+
+1. In Studio, add the **Start DM Conversation** card to your flow.
+2. Pass the user's Slack ID in the `Slack User Id` input.
+3. You can store the result of the action in a variable.
+
+## Retrieve a Message
+
+To retrieve a message from Slack, you need to know the `timestamp` and the `channel` of the message.
+
+1. In Studio, add the **Retrieve Message** card to your flow.
+2. Pass the timestamp of the message in the `Timestamp` input.
+3. Pass the channel of the message in the `Channel` input.
+4. You can store the result of the action in a variable.
+
+## Add Reaction to message
+
+To add a reaction on a Slack message, you need to know the `message Id` and the `reaction name`.
+
+1. In Studio, add the **Add Reaction** card to your flow.
+2. Pass the message Id in the `Message Id` input.
+3. Pass the reaction name in the `Reaction Name` input. (see [Slack documentation](https://slack.com/help/articles/202931348-Use-emoji-and-reactions) for more informations on emojis/reactions)
+
+## Synchronize Members
+
+This action will synchronize the members of a Slack workspace with Botpress users.
+
+In Studio, add the **Sync Members** card to your flow.
+
+## Reaction Added trigger
+
+You can use the **Reaction Added** trigger to make actions when a reaction is added to a Slack message.
+
+## Get Slack Profile
+
+You can add the below code in an Execute Code card to allow the bot to retrieve the sender's Display Name or E-mail. You can add other properties as per your needs, all you need is to pass your bot's token in the first line. This can add more personalization and customization to your bot.
+
+```javascript
+const botToken = ''
+
+const userInfoUrl = 'https://slack.com/api/users.profile.get?user=' + event.tags.user['slack:id']
+// Query Slack API
+await axios({ method: 'get', url: userInfoUrl, headers: { Authorization: 'Bearer ' + botToken } })
+  .then((response) => {
+    console.log(response.data)
+    user.userFullName = response.data.profile.display_name
+    user.email = response.data.profile.email
+  })
+  .catch(function (error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.log(error.response.data)
+      console.log(error.response.status)
+      console.log(error.response.headers)
+    } else if (error.request) {
+      // The request was made but no response was received
+      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+      // http.ClientRequest in node.js
+      console.log(error.request)
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.log('Error', error.message)
+    }
+    console.log(error.config)
+  })
+```

@@ -1,26 +1,20 @@
 ---
 title: Raw Conversations
-excerpt: ''
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 The Botpress API allows you to access your bot's conversations from an external service. This is very useful if you need to manage or analyze the conversations somehow. In this tutorial we give steps to use the API for this purpose and steps to format the response data. Let's get started!
 
-> 📘 Note
->
-> Access the API documentation to verify the schema/structure of the [Conversations](https://botpress.com/docs/api-documentation/#schema_conversation) and the [Messages](https://botpress.com/docs/api-documentation/#schema_message) and see if the data is useful for your use case.
+<Note>
+Note
 
-> 📘 Note
->
-> You can find your personal access token in your [Admin Dashboard](https://app.botpress.cloud/). You can find your bot ID in the URL of your bot's dashboard, it's the letters and numbers right after `chatbots/`
+Access the API documentation to verify the schema/structure of the [Conversations](https://botpress.com/docs/api-documentation/#schema_conversation) and the [Messages](https://botpress.com/docs/api-documentation/#schema_message) and see if the data is useful for your use case.
+</Note>
 
-<br />
+<Note>
+Note
+
+You can find your personal access token in your [Admin Dashboard](https://app.botpress.cloud/). You can find your bot ID in the URL of your bot's dashboard, it's the letters and numbers right after `chatbots/`
+</Note>
 
 # 1. Getting the Conversations list from the API
 
@@ -30,7 +24,7 @@ Send a `GET` request to `https://api.botpress.cloud/v1/chat/conversations` addin
 
 This is how the request would look like using Axios in a Javascript application (e.g in a Execute Code in Botpress):
 
-```coffeescript
+```ts
 const requestConfig = {
   headers: {
     // Authorization header with a Bearer token for authentication.
@@ -57,7 +51,7 @@ allConversations.push(...getConversations.data.conversations)
 
 The same logic to get conversations but using the [Botpress Client library](https://www.npmjs.com/package/@botpress/client) in a Node.js application:
 
-```js
+```ts
 import { Client } from '@botpress/client'
 
 const client = new Client({
@@ -74,15 +68,15 @@ const getConversations = await client.listConversations({
 allConversations.push(getConversations.conversations)
 ```
 
-> 📘 Info
->
-> The API returns a maximum of 20 conversations per request. You will need to use the `nextToken` property to fetch the next batch of conversations. The `nextToken` property is returned in the `meta` object of the response.
+<Info>
+Info
 
-<br />
+The API returns a maximum of 20 conversations per request. You will need to use the `nextToken` property to fetch the next batch of conversations. The `nextToken` property is returned in the `meta` object of the response.
+</Info>
 
 # 2. Getting all Conversations from the API
 
-Now that you know the methods of getting the first conversations from the API, let's see how to get them. You can get them gradually or all at once, but you need to use the pagination token regardless. 
+Now that you know the methods of getting the first conversations from the API, let's see how to get them. You can get them gradually or all at once, but you need to use the pagination token regardless.
 
 ## Getting conversations gradually
 
@@ -127,8 +121,6 @@ do {
   // As long as paginationToken has a value, this function will execute again
 } while (paginationToken)
 ```
-
-<br />
 
 # 3. Getting the Messages list
 
@@ -207,17 +199,17 @@ This is how the `allMessages` array is gonna look like:
 ]
 ```
 
-> 📘 Note
->
-> In this example the bot sends a Multiple Choice card, then the user answers by clicking one of the options, and then the bot sends an Image card. Notice how the message payload changes according to the message type, so be mindful of that when reading the `payload` property.
+<Note>
+Note
 
-<br />
+In this example the bot sends a Multiple Choice card, then the user answers by clicking one of the options, and then the bot sends an Image card. Notice how the message payload changes according to the message type, so be mindful of that when reading the `payload` property.
+</Note>
 
 # 4. Formatting the Messages list
 
 Now that you have the list of messages of a conversation it's time to format it so it becomes readable. We are going to use a custom function for that:
 
-```
+```ts
 function formatMessage(message) {
   let messageText = ''
 
@@ -256,6 +248,8 @@ Bot: Media message of type image
 at 24/10/2023, 5:21:09 PM
 ```
 
-> 📘 Note
->
-> You can customize the `formatMessage` function to have different formatting or to return more information of the messages.  Now use the `history` variable however you like - send it via email, add it to a Google Sheets document, send it to Botpress to do further processing, etc.
+<Note>
+Note
+
+You can customize the `formatMessage` function to have different formatting or to return more information of the messages.  Now use the `history` variable however you like - send it via email, add it to a Google Sheets document, send it to Botpress to do further processing, etc.
+</Note>

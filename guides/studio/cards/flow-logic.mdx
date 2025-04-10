@@ -1,16 +1,8 @@
 ---
 title: Flow Logic
-excerpt: Cards that move the user along a defined path under certain conditions.
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
+description: Cards that move the user along a defined path under certain conditions.
 ---
-```mdx
+
 # Overview
 
 Flow Logic Cards are essential tools that help control the flow and decision-making within your chatbot's conversation. They enable you to add logic and structure to your bot’s behavior, making it possible to guide the conversation based on user input, bot state, or external factors.
@@ -39,43 +31,42 @@ There are two ways to define conditions for transition:
 1. Use AI to generate custom JavaScript based on a specific prompt, or;
 2. Disable the AI-generation tool by clicking on the star icon and manually input the JavaScript code.
 
-<Table>
-  <Tr>
-    <Td>Example</Td>
-    <Td>Description</Td>
-  </Tr>
-  <Tr>
-    <Td>User Input</Td>
-    <Td>
+<table>
+  <tr>
+    <td>Example</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>User Input</td>
+    <td>
       To check if the user entered a value between 1 and 10, you can use **User Input** <br/>Example: *user input is between 1 & 10*
-    </Td>
-  </Tr>
-  <Tr>
-    <Td>User Variable</Td>
-    <Td>
+    </td>
+  </tr>
+  <tr>
+    <td>User Variable</td>
+    <td>
       To retrieve a value from the user variable, you can use **`user.{variable name}`** <br/>
       Example: *user language is <u>English</u>*
-    </Td>
-  </Tr>
-  <Tr>
-    <Td>Workflow Variable</Td>
-    <Td>
+    </td>
+  </tr>
+  <tr>
+    <td>Workflow Variable</td>
+    <td>
       To check a workflows variable, you can use **`workflow.{variable name}`**<br/>
       Example: *workflow variable supportEmail contains Botpress*
-    </Td>
-  </Tr>
-  <Tr>
-    <Td>Intents</Td>
-    <Td>
+    </td>
+  </tr>
+  <tr>
+    <td>Intents</td>
+    <td>
       You can combine multiple checks together, for example you can check if an intent is of type "affirmative", and its confidence is more than 50%. <br/>
       Example: *intent is affirmative and intent confidence is 50%*
-    </Td>
-  </Tr>
-  <Tr>
-    <Td>Advanced</Td>
-    <Td>
+    </td>
+  </tr>
+  <tr>
+    <td>Advanced</td>
+    <td>
       You can use an advanced javascript expression to move from one node to the next when the expression satisfies the condition.
-    </Td>
-  </Tr>
-</Table>
-```
+    </td>
+  </tr>
+</table>
