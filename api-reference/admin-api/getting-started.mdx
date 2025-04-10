@@ -70,20 +70,25 @@ npm install @botpress/client
 
 After installing the client, you can instantiate it with your token and workspace ID, then use it to fetch a bot:
 
-```js
-import { Client } from "@botpress/client";
+{/* TODO(driftable): This script is subject to changes and should be auto-generated */}
+```ts
+import { admin } from "@botpress/client";
 
-const client = new Client({
-  token: "YOUR_TOKEN",
-  workspaceId: "YOUR_WORKSPACE_ID",
+const token = process.env.TOKEN;
+const workspaceId = process.env.WORKSPACE_ID;
+const botId = process.env.BOT_ID;
+
+const client = new admin.Client({
+  token,
+  workspaceId,
 });
 
-async function getBot() {
-  const { bot } = await client.getBot({ id: "YOUR_BOT_ID" });
+async function main() {
+  const { bot } = await client.getBot({ id: botId });
   console.log("### bot", bot);
 }
 
-getBot();
+void main();
 ```
 
 ### Error Handling
