@@ -17,7 +17,7 @@ To deploy a chatbot on WhatsApp, your business must first undergo a verification
 ## Prerequisites
 
 * A [WhatsApp Business Platform Account](https://business.whatsapp.com/products/business-platform) to be your bot's interface on WhatsApp
-* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](https://botpress.com/docs/cloud/getting-started/create-and-publish-your-chatbot/)
+* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/guides/getting-started)
 
 ## Installing the integration
 
@@ -113,7 +113,7 @@ const rawFileContent = res.data
 const mimeType = res.headers['content-type']
 ```
 
-For further information, please check the [WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/#download-media) on downloading media files and the [Botpress documentation](https://botpress.com/docs/configuration-variables) on using Configuration Variables.
+For further information, please check the [WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/#download-media) on downloading media files and the [Botpress documentation](/guides/dashboard/bot/configuration-variables) on using Configuration Variables.
 
 ## Other message types
 
@@ -144,17 +144,17 @@ As required by WhatsApp, a conversation with a user can be proactively initiated
 
 Once you have a message template approved by WhatsApp, it's very easy to have your bot start a conversation with a user by just using the Whatsapp "**Start Conversation**" card:
 
-<Img src="./proactive-whatsapp-conversation-workflow.png" />
+<img src="./proactive-whatsapp-conversation-workflow.png" />
 
 Then you just need to pass the following fields to proactively start a Whatsapp conversation with a user:
 
 1. **User Phone**: The phone number of the user, including the country code (e.g. `+1 123 456 7890`).
 2. **Template Name**: The name of your WhatsApp message template to use for the first message of the conversation. The template should be already approved by WhatsApp in order to use it.
-3. **Template Language** *(optional)*: The language code of your WhatsApp message template ([see below](https://botpress.com/docs/whatsapp#template-language) for more details).
-4. **Template Variables JSON** *(optional)*: The values of the variables for your WhatsApp message template, specified as a JSON array representing the list of values ([see below](https://botpress.com/docs/whatsapp#template-variables) for more details).
+3. **Template Language** *(optional)*: The language code of your WhatsApp message template ([see below](/guides/integrations/integration-guides/whatsapp/introduction#template-language) for more details).
+4. **Template Variables JSON** *(optional)*: The values of the variables for your WhatsApp message template, specified as a JSON array representing the list of values ([see below](/guides/integrations/integration-guides/whatsapp/introduction#template-variables) for more details).
 5. **Sender Phone Number ID** *(optional)*: The Whatsapp Phone Number ID you want to use as sender of the message if you have multiple phone numbers available in your Meta Developers dashboard. If you don't specify this field, the Default Phone Number ID specified in the Whatsapp configuration of your bot in your Botpress Cloud dashboard will be used by default.
 
-<Img src="./proactive-whatsapp-conversation.png" />
+<img src="./proactive-whatsapp-conversation.png" />
 
 Once the conversation is created, if the user replies back it will be processed by your bot as a normal incoming message, so nothing else needs to be done.
 

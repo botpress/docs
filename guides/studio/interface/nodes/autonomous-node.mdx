@@ -31,7 +31,7 @@ An Autonomous Node can execute actions without manual intervention based on inst
 
 Ensuring your Autonomous Node's instructions are cogent and precise is the key to a performant AI agent. The prompt helps the agent understand its persona and guides its decision-making.
 
-<Img src="./autonomous-configuration.png" />
+<img src="./autonomous-configuration.png" />
 
 ## Instructions
 
@@ -56,7 +56,7 @@ An Autonomous Node is equipped with several tools and will call them at various 
 * workflow\.transition: Executes a workflow transition, moving from one part of the conversation to another based on user input.
 * global.Message: Sends a text message to the user as a response.
 
-<Img src="./autonomous-tools.png" />
+<img src="./autonomous-tools.png" />
 
 By specifying which tool to use in response to user actions, you can control the flow and outcomes of the conversation.
 
@@ -164,7 +164,7 @@ This gives the node clear guidance on how to dynamically generate video links wi
 
 The Botpress Studio offers a suite of tools you can use to understand how your Autonomous Node is behaving, why it made certain decisions, and how you can course correct when it's not behaving as expected.
 
-<Img src="./troubleshooting.png" />
+<img src="./troubleshooting.png" />
 
 ### Using the Inspect Window
 
@@ -176,7 +176,7 @@ The "Inspect" window surfaces information about the Autonomous Node's process, r
 
 If you notice that the node isn’t responding correctly or seems to ignore certain instructions, inspecting will reveal whether it has misunderstood the prompt or failed to execute a specific tool.
 
-<Img src="./inspect-window.png" />
+<img src="./inspect-window.png" />
 
 The Tools section displays all available tools that the Autonomous Node has access to. Each time you add a new card or make a change in the node configuration, the Tools list is updated.
 
@@ -195,7 +195,7 @@ By reviewing the Iterations tab , you can understand:
 * What caused the node to take multiple steps (e.g., fetching additional data from tools like global.search or browser.webSearch)
 * Why a particular outcome was achieved
 
-<Img src="./autonomous-iteration.png" />
+<img src="./autonomous-iteration.png" />
 
 The Autonomous Node might not be following all of your prompt, executing part of the prompt instead of all of it, or calling the “workflowQueue” without calling the “workflowExecuteAll” tools.
 
@@ -213,7 +213,7 @@ Always make sure you are using the latest stable version of LLMz. This is the au
 
 It also contains bug fixes, making the prompts more agnostic to variance between LLMs.
 
-<Img src="./llmz-version.png" />
+<img src="./llmz-version.png" />
 
 ### Troubleshooting Code Creation
 
@@ -228,7 +228,7 @@ If the bot is failing to generate code properly:
 * Ensure the tool being used for code generation is correctly referenced in the prompt.
 * Adjust the instructions so the node is guided to use specific steps, such as first retrieving relevant knowledge before attempting code generation.
 
-<Img src="./query-knowledge-base-code.png" />
+<img src="./query-knowledge-base-code.png" />
 
 ## Example Instructions
 

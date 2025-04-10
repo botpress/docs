@@ -93,7 +93,7 @@ Double click on a a table cell or press click it and press `Enter` to see an inp
 
 # Operations on Tables - via Cards
 
-Check out the [Table Cards documentation](https://botpress.com/docs/table-cards) to learn more about operations with cards.
+Check out the [Table Cards documentation](/guides/studio/cards/execute#table-cards) to learn more about operations with cards.
 
 # Operations on Tables - via Botpress Client
 
@@ -561,7 +561,7 @@ const { table } = await client.deleteTable({ table: 'Data1Table' })
 
 # Operations on Tables - via Code
 
-<Img src="./table-code-operations.png" />
+<img src="./table-code-operations.png" />
 
 ## createRecord
 
@@ -867,13 +867,13 @@ Columns can be marked as "Computed" which allows the bot builder to observe chan
 
 To use computed columns, simply create a column and toggle the **Computed** field as shown below.
 
-<Img src="./computed-column-switch.png" />
+<img src="./computed-column-switch.png" />
 
 ## Selecting the basis of computation
 
 To compute columns, you must select what information you will base your computed columns on. To do so, click the **Dependencies** field and select all column names that you will use.
 
-<Img src="./table-dependencies.png" />
+<img src="./table-dependencies.png" />
 
 In the above example, we selected a column called **number**.
 
@@ -891,11 +891,11 @@ In the above example, for the number 3, you might get "The Three Clever Squirrel
 
 To run arbitrary code, select the **Execute code** tab. Then, click **Edit Code**.
 
-<Img src="./edit-code-button.png" />
+<img src="./edit-code-button.png" />
 
 You will see a window with a code editor.
 
-<Img src="./code-editor.png" />
+<img src="./code-editor.png" />
 
 Simply add your code above. The proper syntax for accessing columns you've identified as dependencies is row[propertyName], and what is displayed as the cell value is what is returned by this function. You can call asynchronous functions within the function, and have the **axios** library available to perform HTTP requests.
 
@@ -922,11 +922,11 @@ There is currently an execution timeout of 2 minutes these.
 
 To ensure computed values are always kept up to date, we recommend **Auto-compute** be toggled on.
 
-<Img src="./auto-compute.png" />
+<img src="./auto-compute.png" />
 
 If you do not have **Auto-compute** enabled, a grey icon will appear next to stale table cells.
 
-<Img src="./stale-compute-row.png" />
+<img src="./stale-compute-row.png" />
 
 To update the stale data, simply re-activate **Auto-compute**.
 

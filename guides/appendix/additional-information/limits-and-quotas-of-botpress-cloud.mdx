@@ -1,15 +1,7 @@
 ---
 title: Platform Limits
-excerpt: ''
-deprecated: false
-hidden: false
-metadata:
-  title: ''
-  description: ''
-  robots: index
-next:
-  description: ''
 ---
+
 # Limits and Quotas of Botpress Cloud
 
 At Botpress, we have a set of limits and quotas to ensure the stability of our platform and the bots created by our customers and the community.
@@ -21,7 +13,7 @@ At Botpress, we have a set of limits and quotas to ensure the stability of our p
 | The maximum size for the bot settings                                                                                               | 20KB                        | Bot Configuration                 |
 | The maximum number of integrations that can be installed in a bot                                                                   | 30                          | Bot Installed Integrations        |
 | The maximum size for integration settings                                                                                           | 20KB                        | Bot Integration Configuration     |
-| The maximum number of [Schedule Triggers](https://botpress.com/docs/cloud/studio/toolbox/events-triggers/) per bot                  | 5                           | Bot Recurring Events              |
+| The maximum number of [Schedule Triggers](/guides/studio/cards/events#fixed-schedule) per bot                                       | 5                           | Bot Recurring Events              |
 | The maximum size for the Schedule Trigger event payload                                                                             | 128KB                       | Bot Recurring Event Payload Size  |
 | The maximum number of events (used as Triggers) that an integration can define in its definition file                               | 20                          | Event Definition                  |
 | The maximum number of channels an integration can support (e.g., direct messages, public channels, threads)                         | 10                          | Integration Channels              |
@@ -37,15 +29,13 @@ At Botpress, we have a set of limits and quotas to ensure the stability of our p
 | End-user message / event max throughput                                                                                             | 600 requests / minute / bot | API limit                         |
 | Maximum size of deployed bot (excluding file storage)                                                                               | 100MB                       | Bot Size                          |
 
-<br />
-
 ## Quotas
 
 Quotas are limits that can be increased depending on the plan you're subscribed to. For more information, please check our [detailed pricing page](https://botpress.com/pricing).
 
 | **Quota**                                                                                                                                                                                                 | **Amount**                  | **Technical Name**     |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ---------------------- |
-| The maximum time for a bot to process a message or an event before timing out (not the same as [Inactivity Timeout](https://botpress.com/docs/cloud/studio/chatbot-settings/#inactivity-timeout-minutes)) | 60s                         | Invocation Timeout     |
+| The maximum time for a bot to process a message or an event before timing out (not the same as [Inactivity Timeout](/guides/studio/interface/chatbot-settings#inactivity-timeout))                        | 60s                         | Invocation Timeout     |
 | The maximum combined size of documents uploaded to be sent as media messages (e.g., Images, Audios, Videos, Files, and Cards)                                                                             | 100MB                       | Storage Size           |
 | The maximum number of bots per workspace                                                                                                                                                                  | 5                           | Amount of Bots         |
 | The maximum number of members that can be added to a workspace (Collaborators can have roles such as Viewer, Billing Manager, Developer, Manager, Administrator)                                          | 3                           | Amount of Members      |
@@ -56,7 +46,7 @@ Quotas are limits that can be increased depending on the plan you're subscribed 
 | The maximum number of bot invocations per minute                                                                                                                                                          | 100                         | Bot Rate Limit         |
 | The maximum number of custom integrations that can be created per workspace                                                                                                                               | 20                          | Owned Integrations     |
 | The maximum number of AI model credits that can be used per month                                                                                                                                         | 5,000                       | LLM Model Credits      |
-| The maximum number of row sizes in a table. However, you can increase it from the factors section from the API ([Read More Here](https://botpress.com/docs/api-documentation/#create-table))              | 4kb                         | Table Row Size         |
+| The maximum number of row sizes in a table. However, you can increase it from the factors section from the API ([Read More Here](/guides/studio/interface/tables#create-table))                           | 4kb                         | Table Row Size         |
 | The maximum number of http requests sent from the emulator                                                                                                                                                | 30 requests / minute / bot  | External calls         |
 | Botpress API limit [https://api.botpress.cloud/](https://api.botpress.cloud/)\*                                                                                                                           | 100 requests / second       | API limit              |
 | Integrations API limit [https://webhook.botpress.cloud/](https://webhook.botpress.cloud/)\*                                                                                                               | 100 requests / second / bot | API limit              |
