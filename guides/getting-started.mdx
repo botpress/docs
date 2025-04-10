@@ -42,7 +42,7 @@ Each step in a Workflow is represented by a Node. Let's open the **Main** Workfl
 1. In Studio, select Workflow from the left navigation bar.
 2. Select your **Main** Workflow. It should look something like this:
 
-<Img src="./studio-workflow.png" />
+<img src="./studio-workflow.png" />
 
 The **Main** Workflow contains the main logic for your bot — it executes as soon as a user starts a new conversation. By default, the **Main** Workflow contains:
 
@@ -52,7 +52,7 @@ The **Main** Workflow contains the main logic for your bot — it executes as so
 
 Notice the path connecting the Start Node and the Autonomous Node:
 
-<Img src="./autonomous-node.png" />
+<img src="./autonomous-node.png" />
 
 This is a transition. When someone starts a conversation with your bot, it first executes the Start Node, then transitions to the Autonomous Node.
 
@@ -76,7 +76,7 @@ First, we need to create a new `Standard Node`:
 
 You just created a new Node! Notice that because you dragged out from the edge of the Start Node, it automatically transitioned to the new Node:
 
-<Img src="./start-node.png" />
+<img src="./start-node.png" />
 
 Next, let's add the greeting. To do this, we need to add a `Card` to the new Node:
 
@@ -84,7 +84,7 @@ Next, let's add the greeting. To do this, we need to add a `Card` to the new Nod
 2. Select the **Text** Card.
 3. In the **Message to send** field, enter a custom greeting. For this guide, we'll enter "Hello! I'm Teddy, the helpful bot!":
 
-<Img align="center" src="./send-message-card.png" />
+<img align="center" src="./send-message-card.png" />
 
 Now your bot has a custom greeting! Before wrapping up, let's connect the new Node to the Autonomous Node:
 
@@ -94,7 +94,7 @@ Now your bot has a custom greeting! Before wrapping up, let's connect the new No
 
 This creates a transition from the new Node to the Autonomous Node, so your bot continues the conversation after displaying the greeting:
 
-<Img src="./transition-between-nodes.png" />
+<img src="./transition-between-nodes.png" />
 
 ### Add custom instructions
 
@@ -104,7 +104,7 @@ By default, this field contains a detailed list of natural language instructions
 
 For now, let's just tell your bot its name and give it a simple task. Erase everything in the **Instructions** section, and enter "Ask the user if they have any questions about dogs, then assist them".
 
-<Img src="./add-custom-instruction.png" />
+<img src="./add-custom-instruction.png" />
 
 # Step 2: Test your bot
 
@@ -114,13 +114,13 @@ Congratulations! You now have a bot with a custom greeting and instructions. Nex
 
 You can chat with a preview of your bot using the Emulator on the right side of the Studio. To start a conversation, just select **Test your bot**, or type a message into the text field:
 
-<Img src="./emulator.png" />
+<img src="./emulator.png" />
 
 The bot followed your instructions! Notice that the Emulator provides an update whenever your bot transitions to a new Node, or whenever it's waiting for user input.
 
 Let's ask it a question about dogs:
 
-<Img src="./ask-question-emulator.png" />
+<img src="./ask-question-emulator.png" />
 
 Great! Since the bot transitioned to the Autonomous Node, it was able to use an LLM (Large Language Model) to answer the question. You can keep chatting with the bot, and the Autonomous Node will generate AI responses based on the context of the conversation.
 
@@ -139,7 +139,7 @@ To deploy with Webchat preview:
 
 Your preview will open in a new tab. Try sending a message:
 
-<Img src="./webchat-preview.png" />
+<img src="./webchat-preview.png" />
 
 Webchat preview displays your bot the way it appears to an actual user, regardless of where you've deployed it. This makes it great for quickly evaluating your user experience.
 
