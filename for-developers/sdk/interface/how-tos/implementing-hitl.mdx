@@ -5,7 +5,10 @@ title: Implementing Human in the loop (HITL) in an integration
 import { HitlIcon } from '/snippets/icons/plugins/hitl.mdx'
 import { CurrentInterfaceVersion } from '/snippets/interface-version.mdx'
 
-<HitlIcon width={64} style={{float: 'left', marginRight: 5}} role="presentation" /> The Human in the loop (HITL) interface allows you to implement human agent intervention in your integration.
+<p>
+  <HitlIcon width={64} style={{float: 'left', marginRight: 5}} role="presentation" />
+  The Human in the loop (HITL) interface allows you to implement human agent intervention in your integration.
+</p>
 
 ## Terminology
 
@@ -234,15 +237,29 @@ Please refer to the expected input and output schemas for the action:
 [interface.definition.ts line 55](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L55).
 
 This action should implement the following logic:
-- Using the Botpress client, create a Botpress user.
-- On the external service, create an external user and map it to the Botpress user.
-  - Please refer to the external service's documentation to know how to set extra metadata for the user. The integration must be able at any time to query the external service in order to retrieve the Botpress user ID from the external user.
-- Update the Botpress user to map it to the external user.
-  - This is typically done by setting a tag on the Botpress user with the external user's ID.
+
+<Steps>
+  <Step title="Create a Botpress user">
+    Create a Botpress user using the Botpress client by calling the `client.createUser()` method.
+  </Step>
+  <Step title="Create an external user">
+    Create an external user on the external service using the external service's API or SDK.
+  </Step>
+  <Step title="Map the external user to the Botpress user">
+    Update the external user on the external service to map it to the Botpress user. Please refer to the external service's documentation to know how to set extra metadata for the external user. The integration must be able at any time to query the external service in order to retrieve the Botpress user ID from the external user.
+  </Step>
+  <Step title="Map the Botpress user to the external user">
+    Update the Botpress user to map it to the external user. This is typically done by setting a tag on the Botpress user with the external user's ID.
+  </Step>
+  <Step title="Yield control back to the plugin">
+    Yield control back to the plugin by returning an object containing the Botpress user's ID.
+  </Step>
+</Steps>
+
 
 As reference, here's how this logic is implemented in the Zendesk integration:
 
-```typescript src/index.ts {3}
+```typescript src/index.ts {4,15,19,25,29,33,35}
 export default new bp.Integration({
   actions: {
     async createUser({ ctx, input, client }) {
@@ -267,7 +284,7 @@ export default new bp.Integration({
         remote_photo_url: pictureUrl,
       })
 
-      // Map the external user to the Botpress user:
+      // Map the Botpress user to the external user:
       await client.updateUser({
         id: user.id,
         tags: {
@@ -277,7 +294,7 @@ export default new bp.Integration({
 
       // Yield control back to the plugin and return the user ID:
       return {
-        userId: user.id,
+        userId: user.id, // <= return the Botpress user ID
       }
     },
   },
@@ -286,7 +303,7 @@ export default new bp.Integration({
 
 #### Implementing `startHitl`
 
-The `startHitl` action is used by the HITL plugin to request the creation of a HITL session in the external service. This action should be implemented in your integration to create a new HITL session.
+The `startHitl` action is used by the HITL plugin to request the creation of a HITL session (typically a _ticket_) in the external service.
 
 <Note>
 If you opted to rename the action to something else than `startHitl` in the previous section, please use the new name instead of `startHitl`.
@@ -296,17 +313,34 @@ Please refer to the expected input and output schemas for the action:
 [interface.definition.ts line 71](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L71).
 
 This action should implement the following logic:
-- Fetch the Botpress user with ID `input.userId` that was passed in the input parameters.
-- From the Botpress user's tags, retrieve the external user's ID.
-- On the external service, create the HITL session. This is typically represented as a _ticket_ in the external service.
-- Create a Botpress conversation and map it to the HITL session. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
-- Update the HITL session on the external service to map it to the Botpress conversation.
-  - Please refer to the external service documentation to know how to set extra metadata for the HITL session (typically a _ticket_). The integration must be able at any time to query the external service in order to retrieve the Botpress conversation ID from the HITL session.
-- Yield control back to the plugin by returning the Botpress conversation ID.
+
+<Steps>
+  <Step title="Fetch the Botpress user">
+    Fetch the Botpress user with ID `input.userId` that was passed in the input parameters.
+  </Step>
+  <Step title="Retrieve the external user's ID">
+    From the Botpress user's tags, retrieve the external user's ID.
+  </Step>
+  <Step title="Create a Botpress conversation">
+    Create a Botpress conversation using the Botpress client by calling the `client.getOrCreateConversation()` method.
+  </Step>
+  <Step title="Create the HITL session">
+    On the external service, create the HITL session. This is typically represented as a _ticket_ in the external service.
+  </Step>
+  <Step title="Map the Botpress conversation to the HITL session">
+    Update the Botpress conversation to map it to the HITL session. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
+  </Step>
+  <Step title="Map the HITL session to the Botpress conversation">
+    Update the HITL session on the external service to map it to the Botpress conversation. Please refer to the external service's documentation to know how to set extra metadata for the HITL session (typically a _ticket_). The integration must be able at any time to query the external service in order to retrieve the Botpress conversation ID from the HITL session.
+  </Step>
+  <Step title="Yield control back to the plugin">
+    Yield control back to the plugin by returning an object containing the Botpress conversation's ID.
+  </Step>
+</Steps>
 
 As reference, here's how this logic is implemented in the Zendesk integration:
 
-```typescript src/index.ts {3}
+```typescript src/index.ts {4,9,17,24,27,31,35,37,40,42}
 export default new bp.Integration({
   actions: {
     async startHitl({ ctx, input, client }) {
@@ -330,26 +364,85 @@ export default new bp.Integration({
       const ticketBody = 'A user created a support ticket'
       const createdZendeskTicket = await zendeskClient
         .createTicket(ticketTitle, ticketBody, {
-          id: zendeskAuthorId,
+          id: zendeskAuthorId, // <= map the ticket to the external user ID
         })
 
       // Create a Botpress conversation and map it to the Zendesk ticket:
       const { conversation } = await client.getOrCreateConversation({
         channel: 'hitl',
         tags: {
-          id: createdZendeskTicket.id.toString(),
+          id: createdZendeskTicket.id.toString(), // <= map to the ticket ID
         },
       })
 
       // Map the Zendesk ticket to the Botpress conversation:
       await zendeskClient.updateTicket(createdZendeskTicket.id, {
-        external_id: conversation.id,
+        external_id: conversation.id, // <= map to the Botpress conversation ID
       })
 
       // Yield control back to the plugin and return the conversation ID:
       return {
-        conversationId: conversation.id,
+        conversationId: conversation.id, // <= return the Botpress conversation ID
       }
+    },
+  },
+})
+```
+
+#### Implementing `stopHitl`
+
+The `stopHitl` action is used by the HITL plugin to request the closure of a HITL session (typically a _ticket_) in the external service.
+
+<Note>
+If you opted to rename the action to something else than `stopHitl` in the previous section, please use the new name instead of `stopHitl`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 91](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L91).
+
+This action should implement the following logic:
+
+<Steps>
+  <Step title="Fetch the Botpress conversation">
+    Fetch the Botpress conversation with ID `input.conversationId` that was passed in the input parameters.
+  </Step>
+  <Step title="Retrieve the HITL session's ID">
+    From the Botpress conversation's tags, retrieve the HITL session's ID.
+  </Step>
+  <Step title="Close the HITL session">
+    On the external service, close the HITL session. This is typically involves _resolving_ or _closing_ a _ticket_ in the external service.
+  </Step>
+  <Step title="Yield control back to the plugin">
+    Yield control back to the plugin by returning an empty object.
+  </Step>
+</Steps>
+
+As reference, here's how this logic is implemented in the Zendesk integration:
+
+```typescript src/index.ts {4,9,17,22}
+export default new bp.Integration({
+  actions: {
+    async stopHitl({ ctx, input, client }) {
+      // Fetch the Botpress conversation that was passed in the input parameters:
+      const { conversation } = await client.getConversation({
+        id: input.conversationId,
+      })
+
+      // From the conversation's tags, retrieve the Zendesk ticket's id:
+      const ticketId: string | undefined = conversation.tags.id
+      if (!ticketId) {
+        return {}
+      }
+
+      const zendeskClient = getZendeskClient(ctx.configuration)
+
+      // Close the ticket on Zendesk:
+      await zendeskClient.updateTicket(ticketId, {
+        status: 'closed',
+      })
+
+      // Yield control back to the plugin:
+      return {}
     },
   },
 })
