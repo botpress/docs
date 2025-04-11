@@ -1,0 +1,6 @@
+extends: existence
+message: "Sentences require end punctuation"
+level: warning
+scope: sentence
+tokens:
+  - '[.!?]"?$'
