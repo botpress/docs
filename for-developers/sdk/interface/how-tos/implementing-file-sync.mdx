@@ -54,6 +54,7 @@ Throughout this document, we will use the following terms:
 
 The <Term id="external-service"/> providing file synchronization functionality **must** support the following:
 - An API that allows listing all files and folders in a folder.
+  - Must support pagination. This means that the API should return a limited number of items at a time, along with a token that can be used to retrieve the next set of items.
 - An API that allows downloading files.
 
 The <Term id="external-service"/> **may** also support the following in order to provide <Term id="real-time-sync"/>:
@@ -239,8 +240,355 @@ If you want to rename these events, you can do so in the configuration object. F
 
 ### Implementing the actions
 
-TODO
+#### Implementing `listItemsInFolder`
+
+The `listItemsInFolder` action is used by the <Term id="file-synchronizer"/> to request a list of all files and folders in a folder.
+
+<Note>
+  If you opted to rename the action to something else to `listItemsInFolder` in the "Configuring the interface" section, please use the new name instead of `listItemsInFolder`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 52](https://github.com/botpress/botpress/blob/master/interfaces/files-readonly/interface.definition.ts#L52).
+
+This action should implement the following logic:
+
+<Steps>
+  <Step title="Get the folder ID">
+    Get the folder identifier from `input.folderId`. When this value is `undefined`, it means the <Term id="file-synchronizer"/> is requesting a list of all items in the _root directory_ of the <Term id="external-service"/>. For root directory requests, please refer to the documentation of the <Term id="external-service"/> to determine the correct root identifier - this is typically an empty string, a slash character (`/`), or a special value defined by the service.
+  </Step>
+  <Step title="Get the list of items">
+    Use the <Term id="external-service"/>'s API to get the list of items in the folder. If the <Term id="external-service"/> supports filtering by item type (file or folder), by maximum file size, or by modification date, please use these filters to limit the number of items returned. This will help reduce the amount of data transferred and improve performance.
+    <Expandable title="item filters">
+      ```typescript {3-7}
+      type Input = {
+        folderId?: string;
+        filters?: {
+          itemType?: "file" | "folder";
+          maxSizeInBytes?: number;
+          modifiedAfter?: string; // <= ISO 8601 date string
+        };
+        nextToken?: string; // <= pagination token
+      };
+      ```
+    </Expandable>
+    <Note>
+      If a pagination token is provided (`input.nextToken`), use it to get the next page of items. The <Term id="external-service"/> should return a new pagination token in the response, which you should return with the action's response.
+    </Note>
+    <Warning>
+      **Do not** list items recursively. The <Term id="file-synchronizer"/> is responsible for handling recursion. Your <Term id="integration"/> should only return the items in the specified folder.
+    </Warning>
+  </Step>
+  <Step title="Map each items to the expected schema">
+    Map each item to the expected schema. The <Term id="file-synchronizer"/> expects the following schemas:
+    <Expandable title="folder schema">
+      ```typescript {2-4}
+      type Folder = {
+        id: string;
+        type: "folder";
+        name: string;
+        parentId?: string;
+        absolutePath?: string;
+      }
+      ```
+      <ResponseField name="id" type="string" required>
+        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <Term id="integration"/> must be able to resolve this identifier to the actual folder in the <Term id="external-service"/>. The <Term id="file-synchronizer"/> will use this identifier to enumerate children of this folder.
+      </ResponseField>
+      <ResponseField name="type" type="string" required>
+        This should always be `folder`.
+      </ResponseField>
+      <ResponseField name="name" type="string" required>
+        The name of the folder. This should be the name of the folder as it appears in the <Term id="external-service"/>.
+      </ResponseField>
+      <ResponseField name="parentId" type="string" optional>
+        The identifier of the parent folder. This should be the same identifier as the one used in the `folderId` field of the input.
+      </ResponseField>
+      <ResponseField name="absolutePath" type="string" optional>
+        The absolute path of the folder in the <Term id="external-service"/>, if available.
+      </ResponseField>
+    </Expandable>
+    <Expandable title="file schema">
+      ```typescript {2-4}
+      type File = {
+        id: string;
+        type: "file";
+        name: string;
+        parentId?: string;
+        absolutePath?: string;
+        sizeInBytes?: number;
+        lastModifiedDate?: string;
+        contentHash?: string;
+      }
+      ```
+      <ResponseField name="id" type="string" required>
+        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <Term id="integration"/> must be able to resolve this identifier to the actual file in the <Term id="external-service"/>. The <Term id="file-synchronizer"/> will use this identifier to download the file.
+      </ResponseField>
+      <ResponseField name="type" type="string" required>
+        This should always be `file`.
+      </ResponseField>
+      <ResponseField name="name" type="string" required>
+        The name of the file. This should be the name of the file as it appears in the <Term id="external-service"/>, including its file extension. This same name will be used to display the file in Botpress.
+      </ResponseField>
+      <ResponseField name="parentId" type="string" optional>
+        The identifier of the parent folder. This should be the same identifier as the one used in the `folderId` field of the input.
+      </ResponseField>
+      <ResponseField name="absolutePath" type="string" optional>
+        The absolute path of the file in the <Term id="external-service"/>, if available.
+      </ResponseField>
+      <ResponseField name="sizeInBytes" type="number" optional>
+        The size of the file in bytes, if available.
+      </ResponseField>
+      <ResponseField name="lastModifiedDate" type="string" optional>
+        The last modified date of the file, if available. This should be an ISO 8601 date string.
+      </ResponseField>
+      <ResponseField name="contentHash" type="string" optional>
+        The content hash of the file, if available. This should be a unique identifier for the file's content, such as an MD5 or SHA-1 hash.
+        This is used to detect changes in the file's content. If the content hash is not available but the <Term id="external-service"/> provides a version or revision number, you can use that instead.
+      </ResponseField>
+    </Expandable>
+  </Step>
+  <Step title="Yield control back to the plugin">
+    Yield control back to the <Term id="file-synchronizer"/> by returning the list of items. The <Term id="file-synchronizer"/> will then handle the rest of the synchronization process.
+    ```typescript {2-3}
+    return {
+      items: [...mappedFolders, ...mappedFiles],
+      meta: { nextToken: hasMoreItems ? nextToken : undefined },
+    }
+    ```
+    <Note>
+      If the <Term id="external-service"/> indicates it has more items, return the pagination token in the `nextToken` field. The <Term id="file-synchronizer"/> will use this token to request the next page of items. Otherwise, return `undefined`.
+    </Note>
+  </Step>
+</Steps>
+
+As reference, here's how this logic is implemented in the Dropbox integration:
+
+```typescript src/index.ts {4,7,11,14,15,20,27}
+export default new bp.Integration({
+  actions: {
+    async listItemsInFolder({ ctx, input, client }) {
+      // Extract input parameters:
+      const { folderId, filters, nextToken: prevToken } = input
+
+      // Get the folder ID:
+      //    (Dropbox expects an empty string for the root directory)
+      const parentId = folderId ?? ''
+
+      // Get the list of items in the folder
+      const { items, nextToken, hasMore } = await dropboxClient.listItemsInFolder({
+        path: parentId,
+        recursive: false, // <= The integration should not list recursively
+        nextToken: prevToken, // <= Use the pagination token if provided
+      })
+
+      const mappedItems = items
+        .filter((item) => item.itemType !== 'deleted')
+        // Call utility functions to handle the mapping:
+        .map((item) =>
+          item.itemType === 'file' ?
+            filesReadonlyMapping.mapFile(item) :
+            filesReadonlyMapping.mapFolder(item)
+        )
+
+      // Yield control back to the plugin and return the items:
+      return {
+        items: mappedItems,
+        meta: { nextToken: hasMore ? nextToken : undefined },
+      }
+    },
+  },
+})
+```
+
+#### Implementing `transferFileToBotpress`
+
+The `transferFileToBotpress` action is used by the <Term id="file-synchronizer"/> to request that a file be downloaded from the <Term id="external-service"/> and uploaded to Botpress.
+
+<Note>
+  If you opted to rename the action to something else to `transferFileToBotpress` in the "Configuring the interface" section, please use the new name instead of `transferFileToBotpress`.
+</Note>
+
+Please refer to the expected input and output schemas for the action:
+[interface.definition.ts line 88](https://github.com/botpress/botpress/blob/master/interfaces/files-readonly/interface.definition.ts#L88).
+
+This action should implement the following logic:
+
+<Steps>
+  <Step title="Get the file ID">
+    Get the file identifier from `input.file.id`. This is the identifier of the file to be downloaded from the <Term id="external-service"/>.
+  </Step>
+  <Step title="Download the file from the external service">
+    Use the <Term id="external-service"/>'s API to download the file's content.
+  </Step>
+  <Step title="Upload the file to Botpress">
+    Upload the file to Botpress using the `client.uploadFile` method. This method expects both the file's content and a _file key_, which is provided by the <Term id="file-synchronizer"/> as `input.fileKey`.
+  </Step>
+  <Step title="Yield control back to the plugin">
+    Yield control back to the <Term id="file-synchronizer"/> by returning the the ID of the file that was uploaded to Botpress.
+  </Step>
+</Steps>
+
+As reference, here's how this logic is implemented in the Dropbox integration:
+
+```typescript src/index.ts {4,7,10,16}
+export default new bp.Integration({
+  actions: {
+    async transferFileToBotpress({ ctx, input, client }) {
+      // Extract input parameters:
+      const { file: fileToTransfer, fileKey } = input
+
+      // Use Dropbox's SDK to download the file:
+      const fileBuffer = await dropboxClient.getFileContents({ path: fileToTransfer.id })
+
+      // Upload the file to Botpress:
+      const { file: uploadedFile } = await client.uploadFile({
+        key: fileKey,
+        content: fileBuffer,
+      })
+
+      // Yield control back to the plugin:
+      return {
+        botpressFileId: uploadedFile.id
+      }
+    },
+  },
+})
+```
 
 ### Implementing real-time sync
 
-TODO
+The <Term id="file-synchronizer"/> can be configured to use real-time synchronization. This means that changes in the <Term id="external-service"/> are immediately reflected in Botpress. To enable this functionality, the <Term id="external-service"/> must support webhooks that can notify your <Term id="integration"/> of changes in the filesystem.
+
+#### Implementing `fileCreated`
+
+<Steps>
+  <Step title="Add a webhook handler">
+    In your <Term id="integration"/>, add a webhook handler that can receive file change notifications from the <Term id="external-service"/>.
+  </Step>
+  <Step title="Map the file to the expected schema">
+    In your handler, map the file to the expected schema. The <Term id="file-synchronizer"/> expects the following schema:
+    <Expandable title="file schema">
+      ```typescript {2-5}
+      type File = {
+        id: string;
+        type: "file";
+        name: string;
+        absolutePath: string;
+        parentId?: string;
+        sizeInBytes?: number;
+        lastModifiedDate?: string;
+        contentHash?: string;
+      }
+      ```
+      <ResponseField name="id" type="string" required>
+        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <Term id="integration"/> must be able to resolve this identifier to the actual file in the <Term id="external-service"/>. The <Term id="file-synchronizer"/> will use this identifier to download the file.
+      </ResponseField>
+      <ResponseField name="type" type="string" required>
+        This should always be `file`.
+      </ResponseField>
+      <ResponseField name="name" type="string" required>
+        The name of the file. This should be the name of the file as it appears in the <Term id="external-service"/>, including its file extension. This same name will be used to display the file in Botpress.
+      </ResponseField>
+      <ResponseField name="absolutePath" type="string" required>
+        The absolute path of the file in the <Term id="external-service"/>. Unlike with the `listItemsInFolder` action, this field is required for the `fileCreated` event.
+      </ResponseField>
+      <ResponseField name="parentId" type="string" optional>
+        The identifier of the parent folder.
+      </ResponseField>
+      <ResponseField name="sizeInBytes" type="number" optional>
+        The size of the file in bytes, if available.
+      </ResponseField>
+      <ResponseField name="lastModifiedDate" type="string" optional>
+        The last modified date of the file, if available. This should be an ISO 8601 date string.
+      </ResponseField>
+      <ResponseField name="contentHash" type="string" optional>
+        The content hash of the file, if available. This should be a unique identifier for the file's content, such as an MD5 or SHA-1 hash.
+        This is used to detect changes in the file's content. If the content hash is not available but the <Term id="external-service"/> provides a version or revision number, you can use that instead.
+      </ResponseField>
+    </Expandable>
+  </Step>
+  <Step title="Emit the event">
+    Emit the `fileCreated` event with the mapped file as the payload. The <Term id="file-synchronizer"/> will then handle the rest of the synchronization process.
+    ```typescript {2-3}
+    await client.createEvent({
+      name: 'fileCreated',
+      payload: { file: mappedFile },
+    })
+    ```
+  </Step>
+</Steps>
+
+#### Implementing `fileUpdated`
+
+The logic is identical to the `fileCreated` event, but you should emit the `fileUpdated` event instead.
+
+#### Implementing `fileDeleted`
+
+The logic is identical to the `fileCreated` event, but you should emit the `fileDeleted` event instead.
+
+#### Implementing `folderDeletedRecursive`
+
+<Steps>
+  <Step title="Add a webhook handler">
+    In your <Term id="integration"/>, add a webhook handler that can receive file change notifications from the <Term id="external-service"/>.
+  </Step>
+  <Step title="Map the folder to the expected schema">
+    In your handler, map the folder to the expected schema. The <Term id="file-synchronizer"/> expects the following schema:
+    <Expandable title="folder schema">
+      ```typescript {2-5}
+      type Folder = {
+        id: string;
+        type: "folder";
+        name: string;
+        absolutePath: string;
+        parentId?: string;
+      }
+      ```
+      <ResponseField name="id" type="string" required>
+        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique.
+      </ResponseField>
+      <ResponseField name="type" type="string" required>
+        This should always be `folder`.
+      </ResponseField>
+      <ResponseField name="name" type="string" required>
+        The name of the folder. This should be the name of the folder as it appears in the <Term id="external-service"/>
+      </ResponseField>
+      <ResponseField name="absolutePath" type="string" required>
+        The absolute path of the folder in the <Term id="external-service"/>. Unlike with the `listItemsInFolder` action, this field is required for the `folderDeletedRecursive` event.
+      </ResponseField>
+      <ResponseField name="parentId" type="string" optional>
+        The identifier of the parent folder.
+      </ResponseField>
+    </Expandable>
+  </Step>
+  <Step title="Emit the event">
+    Emit the `folderDeletedRecursive` event with the mapped folder as the payload. The <Term id="file-synchronizer"/> will then handle the rest of the synchronization process.
+    ```typescript {2-3}
+    await client.createEvent({
+      name: 'folderDeletedRecursive',
+      payload: { folder: mappedFolder },
+    })
+    ```
+  </Step>
+</Steps>
+
+#### Implementing `aggregateFileChanges`
+
+The logic is identical to the `fileCreated`, `fileUpdated`, `fileDeleted`, or `folderDeletedRecursive` events, but you should emit the `aggregateFileChanges` event instead:
+
+```typescript {4-8}
+await client.createEvent({
+  name: 'aggregateFileChanges',
+  payload: {
+    modifiedItems: {
+      created: [...mappedCreatedFiles],
+      updated: [...mappedUpdatedFiles],
+      deleted: [...mappedDeletedFilesOrFolders],
+    },
+  },
+})
+```
+
+<Tip>
+  If your <Term id="integration"/> needs to emit more than one filesystem change event, you should combine them into a single `aggregateFileChanges` event. This is more efficient and faster to process for the <Term id="file-synchronizer"/>.
+</Tip>
