@@ -12,7 +12,7 @@ An Integration Definition acts as a comprehensive specification that outlines an
 
 ### Configuration Schema
 
-Integrations can define their configuration requirements using Zod, a TypeScript-first schema validation library. The integration can also provide multiple configuration schemas to support different use cases or environments. This allows end users to select the appropriate configuration method based on their needs.
+Integrations can define their configuration requirements using [Zod](https://zod.dev), a TypeScript-first schema validation library. The integration can also provide multiple configuration schemas to support different use cases or environments. This allows end users to select the appropriate configuration method based on their needs.
 
 ### Events
 
@@ -22,7 +22,7 @@ Integrations define events that represent activities within the external service
 - A GitHub integration might define a `pullRequestOpened` event
 - A Dropbox integration might define a `fileUploaded` event
 
-These events can be subscribed to by bots to trigger specific actions or workflows.
+Bots can subscribe to these events to trigger specific actions or workflows.
 
 ### Actions
 
@@ -63,4 +63,4 @@ Integrations can implement standard interfaces defined by the Botpress Team to p
 - Enabling compatibility with specific features of the Botpress platform
 - Ensuring consistent behavior across different integrations
 
-<Note>While interface creation is currently limited to the Botpress Team, integrations can implement any available interface to extend their capabilities.</Note>
+<Note>While interface creation is currently limited to [Botpress Team plans](https://botpress.com/pricing), integrations can implement any available interface to extend their capabilities.</Note>

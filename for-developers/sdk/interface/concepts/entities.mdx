@@ -4,11 +4,16 @@ title: Generic Entities
 
 ## Overview
 
-Entities are a concept specific to interfaces that define standardized data structures. Once entities are defined by an interface, actions and events of that interface may consume or produce instances of these entities. Likewise, plugins may define a dependency on specific interfaces and then consume entities produced by integrations who implement these interfaces.
+Entities define **standardized data structures** for an interface.
 
-Integrations implementing an interface can rename entities to match the terminology of external services more closely. Additionally, entities can be extended with extra fields to meet the specific needs of the external service.
+Once an interface defines entities, its actions and events can consume or produce instances of those entities. Plugins can also define a dependency on specific interfaces, then consume entities produced by integrations that implement those interfaces.
 
-## Example: The `listable` Interface
+Integrations that implement an interface can:
+
+- Rename entities to align with the terminology of external services
+- Extend entities with extra fields to meet the specific needs of the external service.
+
+## Example: `listable` interface
 
 Consider a `listable` interface designed to provide standardized listing functionality across different services:
 
@@ -16,15 +21,15 @@ Consider a `listable` interface designed to provide standardized listing functio
 - Defines an `item` entity as a base structure for listable resources
 - Specifies a `listItems` action that returns `item` results
 
-### GitHub Integration Implementation
+### GitHub integration iconmplementation
 An integration connecting to GitHub might implement this interface as follows:
 
 - Extends the `item` entity to create a `pullRequest` entity with GitHub-specific fields
 - Renames the `listItems` action to `listPullRequests` to reflect GitHub terminology
 - Implements the required functionality while using terminology that makes sense for GitHub
 
-### Slack Integration Implementation
-Similarly, a Slack integration might implement the same interface differently:
+### Slack integration implementation
+A Slack integration might implement the same interface differently:
 
 - Extends the `item` entity to create a `channel` entity with Slack-specific properties
 - Renames the `listItems` action to `listChannels` to reflect Slack terminology
