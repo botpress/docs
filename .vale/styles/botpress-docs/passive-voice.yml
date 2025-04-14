@@ -1,0 +1,10 @@
+extends: existence
+message: "Consider using active voice if possible. Who/what is performing this action?"
+level: warning
+tokens:
+   - '\bcan(?:\s+\w+)*\s+be\s+\w+ed\b'
+   - '\bis(?:\s+\w+)*\s+\w+ed\b'
+   - '\bshould(?:\s+\w+)*\s+be\s+\w+ed\b'
+   - '\bmay(?:\s+\w+)*\s+be\s+\w+ed\b'
+   - '\bmight(?:\s+\w+)*\s+be\s+\w+ed\b'
+   - '\will(?:\s+\w+)*\s+be\s+\w+ed\b'
