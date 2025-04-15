@@ -60,7 +60,7 @@ The <Term id="external-service"/> providing HITL functionality **must** support 
 
 ### Finding the current interface version
 
-The current version of the `hitl` interface is: <code>^<CurrentInterfaceVersion interfaceName="hitl" fallback="0.4.0" /></code>
+The current version of the `hitl` interface is: <code><CurrentInterfaceVersion interfaceName="hitl" fallback="0.4.0" /></code>
 
 You will need this version number for the next steps.
 
@@ -85,7 +85,7 @@ Once you have the <Term id="hitl-interface"/> version, you can add it as a depen
     ```json package.json {3}
     {
       "bpDependencies": {
-        "hitl": "interface:hitl@^0.4.0"
+        "hitl": "interface:hitl@0.4.0"
       }
     }
     ```
@@ -93,13 +93,6 @@ Once you have the <Term id="hitl-interface"/> version, you can add it as a depen
     It is very important to follow this syntax: <br/>
     `"<interface-name>": "interface:<interface-name>@<version>"`.
     </Warning>
-    <Tip>
-    Interface versions use a numbering system with three parts: MAJOR.MINOR.PATCH (like `1.2.3`). When adding an interface to your integration, we recommend using the caret symbol (`^`) before the version number (like `^0.4.0`). This tells the Botpress CLI to automatically use newer compatible versions when they're available.
-
-    For example, if you specify `^0.4.0` as the version:
-    - You'll automatically get updates like `0.4.6` or `0.5.0` (bug fixes and new features).
-    - You won't get version `1.0.0` (which might break your <Term id="integration"/>).
-    </Tip>
   </Step>
   <Step title="Save the package.json file">
     Save the `package.json` file.
@@ -137,7 +130,7 @@ To keep your <Term id="integration"/> up to date, we recommend adding a helper b
   </Step>
 </Steps>
 
-Now, whenever you run `npm run build`, it will automatically install the <Term id="hitl-interface" /> and build your <Term id="integration" />. This is useful for ensuring that your <Term id="integration"/> is always up to date with the latest version of the <Term id="hitl-interface"/>.
+Now, whenever you run `npm run build`, it will automatically install the <Term id="hitl-interface" /> and build your <Term id="integration" />.
 
 ## Editing your integration definition file
 
