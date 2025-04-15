@@ -1,9 +1,15 @@
-The `useWebchatClient` hook provides access to the Botpress Webchat integration instance and related state.
-It enables you to interact with the bot, listen to real-time events, and manage conversation lifecycle, user info, and messages.
+---
+title: useWebchatClient
+---
 
-It’s the primary entry point for integrating the Webchat experience into custom UIs or applications.
+The `useWebchatClient` hook provides access to the Botpress Webchat integration instance and related state. It allows you to:
+- Interact with the bot
+- Listen to real-time events
+- Manage conversation lifecycle, user info, and messages
 
-### Usage
+`useWebchatClient` is the primary entry point for integrating the Webchat experience into custom UIs or applications.
+
+## Usage
 
 ```tsx App.tsx
 import { useWebchatClient } from '@botpress/webchat'
@@ -11,29 +17,28 @@ import { useWebchatClient } from '@botpress/webchat'
 function App() {
   const { client, clientState, on, user, conversationId, newConversation, messages, isFetchingMessages, isTyping } =
     useWebchatClient({
-      clientId: '$CLIENT_ID$', // Insert your client id here
+      clientId: '$CLIENT_ID$', // Insert your Client ID here
     })
 }
 ```
 
-### Parameters
+## Parameters
 
 <ResponseField name="clientId" type="string">
-  Your Botpress project client ID. This is required to initialize the client and establish communication with the
-  backend.
+  Your Botpress project Client ID. Required to initialize the client and establish communication with the backend.
 </ResponseField>
 
-### Returned Values
+## Returned Values
 
 <ResponseField name="client" type="WebchatClient">
-  The underlying client instance that can be used to manually send events, fetch data, or interact with the backend.
+  The underlying client instance. Can be used to manually send events, fetch data, or interact with the backend.
 </ResponseField>
 <ResponseField name="clientState" type="'connecting' | 'connected' | 'error' | 'disconnected'">
   Represents the current connection state of the client.
 </ResponseField>
 <ResponseField name="on" type="(event: string, callback: Function) => void">
   Allows you to listen to client events such as incoming messages, typing indicators, or custom events.
-  Here are the native webchat events that you can listen to:
+  Here are the native Webchat events that you can listen to:
 
 | Events                | Description                                                                   |
 | --------------------- | ----------------------------------------------------------------------------- |
@@ -46,13 +51,11 @@ function App() {
 | **customEvent**       | Triggered when a custom event is received.                                    |
 | **isTyping**          | Triggered when the bot is typing.                                             |
 
-More information on defining your own custom events [here](../how-tos/listen-to-custom-events.mdx)
-
 </ResponseField>
 <ResponseField name="user" type="User">
-  The current user's profile object.
+  The current user's profile object:
 
-```ts
+```ts [expandable]
 const user:
   | {
       name?: string
@@ -72,7 +75,7 @@ const user:
   The active conversation's unique identifier.
 </ResponseField>
 <ResponseField name="newConversation" type="() => void">
-  A function to start a new conversation, resetting the current chat session.
+  A function to start a new conversation. Resets the current chat session.
 </ResponseField>
 <ResponseField name="messages" type="WebchatMessage[]">
   An array of messages for the active conversation. Includes user and bot messages.

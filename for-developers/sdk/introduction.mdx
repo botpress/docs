@@ -1,20 +1,20 @@
 ---
-title: "Introduction to the SDK"
+title: "Introduction"
 ---
 
 ## Overview
 
-The Botpress SDK provides a robust foundation for developing components within our conversational AI system. With strong TypeScript typing throughout, the SDK enables developers to build robust and maintainable solutions for the Botpress agentic AI platform.
+The Botpress SDK provides a robust foundation for developing components within our conversational AI system. With strong TypeScript typing throughout, the SDK enables developers to build robust and maintainable solutions for the Botpress platform.
 
 ## Key Components
 
-The SDK facilitates development of four primary component types:
+The SDK facilitates the development of four primary component types:
 
 ### Integrations
 
 Integrations connect bots to external services and platforms, enabling communication between your bots and the outside world. With integrations, your bots can:
 
-- Establish communication with messaging platforms such as Slack, WhatsApp, and Telegram
+- Establish communication with messaging platforms like Slack, WhatsApp, and Telegram
 - Access and manipulate data from services like Dropbox, Google Drive, or custom APIs
 - Perform operations on behalf of users in external systems
 - Trigger events in your bots based on actions in external services
@@ -32,8 +32,8 @@ Integrations connect bots to external services and platforms, enabling communica
 
 Interfaces extend integrations by providing standardized functionality specifications. They define specific actions and events that integrations must implement to support particular features. Examples include:
 
-- **Human-in-the-loop (HITL)**: Specifies the required events and actions an integration must implement to support human agent intervention
-- **Typing Indicator**: Defines the necessary actions and events an integration must implement to utilize typing indicators supported by the external service
+- **Human-in-the-loop (HITL)**: Defines the events and actions an integration must implement to support human agent intervention
+- **Typing Indicator**: Defines the events and actions an integration must implement to use typing indicators supported by the external service
 
 <CardGroup Cols={2}>
     <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/interface/introduction">
@@ -46,10 +46,18 @@ Interfaces extend integrations by providing standardized functionality specifica
 
 ### Bots
 
-Using the SDK, developers can create bots through code rather than the Botpress Studio web interface. We refer to such bots as **bots-as-code**. This is **not** the recommended way to build bots and is in no way a replacement for the Botpress Studio. However it can be useful for experienced developers who want to build bots in a more programmatic way for greater flexibility or to better integrate with version control systems. It is also used internally by the Botress team since the Studio and SDK both use the same underlying primitives. Just like a studio Bot, a bot made using the SDK can:
+The Botpress SDK allows developers to create bots using code instead of the Botpress Studio web interface. We refer to these bots as **bots-as-code**.
 
-- Leverage multiple integrations to communicate across different platforms
-- Define custom events, primarily for scheduling purposes to trigger self-execution at specified times or intervals
+<Warning>
+    We recommend using Botpress Studio for most use cases. Bots-as-code are not intended to replace Studio and are best suited for experienced developers who need more flexibility or tighter integration with version control systems.
+</Warning>
+
+Bots-as-code are used internally by the Botpress team as well, since both the Studio and SDK share the same underlying primitives.
+
+Just like bots built in Studio, bots-as-code can:
+
+- Use multiple integrations to communicate across different platforms
+- Define custom events, primarily for scheduling purposes (to trigger self-execution at specified times or intervals)
 - Subscribe to events from integrations and interfaces to execute business logic
 
 <CardGroup Cols={2}>
@@ -63,9 +71,9 @@ Using the SDK, developers can create bots through code rather than the Botpress 
 
 ### Plugins
 
-Plugins deliver reusable functionality that can be incorporated across multiple bots. They:
+Plugins deliver reusable functionality that can be incorporated across multiple bots. They can:
 
-- Define actions and events that can be used by bots
+- Define actions and events that bots can use
 - Subscribe to events from bots, integrations, and interfaces
 - Encapsulate specific features required across different bot implementations
 
@@ -82,4 +90,4 @@ For example, the HITL plugin adds human-in-the-loop functionality to any bot mak
 
 ## Recommendations
 
-The Botpress SDK leverages TypeScript's strong typing system. For optimal development productivity, Visual Studio Code is recommended to benefit from comprehensive code completion and type checking capabilities.
+The Botpress SDK leverages TypeScript's strong typing system. We recommend using [Visual Studio Code](https://code.visualstudio.com) for its comprehensive code completion and type checking capabilities.
