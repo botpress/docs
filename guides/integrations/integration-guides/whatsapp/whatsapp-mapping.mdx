@@ -23,8 +23,6 @@ Some data types have restrictions in WhatsApp:
 <AccordionGroup>
 
 <Accordion title="Choices">
-  ## Choices
-
   [Choices](https://botpress.com/docs/capture-information) in Botpress are mapped to [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) of the type `list`  in WhatsApp.
 
   WhatsApp renders choices differently depending on how many choices you specify in Botpress:
@@ -54,8 +52,6 @@ Some data types have restrictions in WhatsApp:
 </Accordion>
 
 <Accordion title="Cards">
-  ## Cards
-
   [Cards](https://botpress.com/docs/capture-information) in Botpress are mapped to [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) of the type `list`  in WhatsApp.
 
   ### Links
@@ -68,20 +64,16 @@ Some data types have restrictions in WhatsApp:
 </Accordion>
 
 <Accordion title="Carousels">
-  ## Carousels
-
   WhatsApp doesn't natively support carousels. If your bot sends a carousel, WhatsApp will send each of its cards individually.
 </Accordion>
 
 <Accordion title="Files">
-  ## Files
-
   For security reasons, Botpress renames files with a generic name ("file") before sending them to WhatsApp.
 </Accordion>
 </AccordionGroup>
   </Tab>
 
-  <Tab title="Fron WhatsApp to Botpress">
+  <Tab title="From WhatsApp to Botpress">
 In Botpress, you can read data sent from a user's WhatsApp message using the `event`'s properties. This is useful if you want to store user-provided data and access it later.
 
 Here's a breakdown of how data from WhatsApp is mapped to Botpress:
