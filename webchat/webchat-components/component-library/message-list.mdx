@@ -1,19 +1,27 @@
-The MessageList component renders the list of messages in the Webchat, including system messages, bot messages, and user responses.
-It has custom message renderers for each type of messages (e.g. video, image, audio, text and multipart messages).
-A typing indicator is displayed when whe are waiting for the bot answer.
+---
+title: MessageList
+---
+
+The `MessageList` component renders the list of messages in the Webchat, including:
+- System messages
+- Bot messages
+- User responses
+
+It has custom message renderers for each type of message (e.g. video, image, audio, text and multipart messages).
+
+It displays a typing indicator while waiting for the bot to answer. 
+
+## Usage
 
 <Note>
-  Although it can be used as a standalone component, the `MessageList` is designed to be used within the
-  [Container](./container) component and alonside the [Composer](./composer) and [Header](./header) components.
+  Although you can use the `MessageList` as a standalone component, we recommend using it within the [Container](./container) component and alonside the [Composer](./composer) and[Header](./header) components.
 </Note>
 
-### Usage
-
-```tsx App.tsx
+```tsx App.tsx [expandable]
 import { MessageList, useWebchatClient } from '@botpress/webchat'
 
 const { client, messages, isTyping, user } = useWebchatClient({
-  clientId: '$CLIENT_ID$', // Insert your client id here
+  clientId: '$CLIENT_ID$', // Insert your Client ID here
 })
 
 const config: = {
@@ -55,7 +63,7 @@ function App() {
 }
 ```
 
-### Props
+## Props
 
 <ResponseField name="botAvatar" type="string">
   The bot’s avatar image URL, used when rendering bot messages or typing indicators.
@@ -74,21 +82,20 @@ function App() {
   A message shown at the top of the chat window before any user or bot messages. Useful for welcome or onboarding text.
 </ResponseField>
 <ResponseField name="messages" type="RichMessageObject[]">
-  An array of message objects to render in the chat. Can include standard user ('outgoing') and bot ('incoming') messages, as well as system ('system')
-  messages. You must handle the construction of the RichMessageObject type.
+  An array of message objects to render in the chat. Can include standard user (`'outgoing'`) and bot (`'incoming'`) messages, as well as system (`'system'`)
+  messages. You must handle the construction of the `RichMessageObject` type.
 </ResponseField>
 <ResponseField name="renderers" type="Partial<Renderers>">
-  A mapping of custom message renderers used to override how specific block types are displayed. We provide a set of
-  renderers by default so you do not have to worry about it. You can checkout the default renderers [here](./renderers).
+  A mapping of custom message renderers used to override how specific block types are displayed.
 </ResponseField>
 <ResponseField name="sendMessage" type="(payload: WebchatMessage) => void">
   A callback function used to send a new message from the message list as a reply.
   This is used by input messages (e.g. Button, Dropdown) where the user's input is sent directly from the message list in a message object.
-  This means that this is required if your want to use the `Button`, `Dropdown` or any input message types.
+  This means that `sendMessage` is required if your want to use the `Button`, `Dropdown` or any input message types.
 </ResponseField>
 <ResponseField name="showMarquee" type="boolean">
   Whether to show the bot marquee (bot name, avatar, and description) at the top of the message list. Defaults to
-  `true`
+  `true`.
 </ResponseField>
 <ResponseField name="...props" type="ComponentProps<'ul'>">
   Standard `<ul>` element props. Useful for applying custom class names or event handlers to the outer

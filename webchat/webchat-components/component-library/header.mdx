@@ -1,23 +1,26 @@
 import { Img } from '/snippets/image.mdx'
 
-The `Header` component sits at the top of the Webchat UI, displaying the bot’s name, avatar, and description.
-It also provides access to key actions like restarting the conversation or closing the chat window.
+The `Header` component sits at the top of the Webchat UI. It displays the bot’s name, avatar, and description. It also provides access to key actions like restarting the conversation or closing the chat window.
 
-<img src="../../assets/webchat-components_component-library_header.png" />
+The `Header` can be collapsed or expanded:
 
-_Expanded_
+<Tabs>
+  <Tab title="Collapsed">
+    <img src="../../assets/webchat-components_component-library_header.png" />
+  </Tab>
+  <Tab title="Expanded">
+    <img src="../../assets/webchat-components_component-library_header-expanded.png" />
+  </Tab>
+</Tabs>
 
-<img src="../../assets/webchat-components_component-library_header-expanded.png" />
-
-### Usage
+## Usage
 
 <Note>
-  Although it can be used as a standalone component, the `Header` is designed to be used within the
-  [Container](./container) component and alonside the [Composer](./composer) and [MessageList](./message-list)
-  components.
+  Although you can use the `Header` as a standalone component, we recommend using it within the
+  [Container](./container) component and alongside the [Composer](./composer) and [MessageList](./message-list) components.
 </Note>
 
-```jsx
+```jsx [expandable]
 import { Header, useWebchatClient } from '@botpress/webchat'
 
 // Every attributes that the header component can take
@@ -72,7 +75,7 @@ function App() {
 }
 ```
 
-### Props
+## Props
 
 <ResponseField name="defaultOpen" type="boolean">
   Controls whether the header is expanded by default. Only used when the `open` prop is uncontrolled.

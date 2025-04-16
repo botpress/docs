@@ -25,9 +25,9 @@
         "tab": "Guides",
         "pages": [
           "guides/introduction",
-          "guides/getting-started",
+          "guides/quick-start",
           {
-            "group": "learn",
+            "group": "Learn",
             "pages": [
               "/guides/learn/learn-by-doing",
               {
@@ -275,23 +275,28 @@
           "webchat/introduction",
           {
             "group": "Inject Script",
-            "pages": ["webchat/inject/getting-started", "webchat/inject/styling-your-webchat"]
+            "pages": ["webchat/inject/get-started", "webchat/inject/styling-your-webchat"]
           },
           {
             "group": "React Library",
             "pages": [
-              "webchat/webchat-components/getting-started",
-              "webchat/webchat-components/component-library/fab",
-              "webchat/webchat-components/component-library/composer",
-              "webchat/webchat-components/component-library/header",
-              "webchat/webchat-components/component-library/container",
-              "webchat/webchat-components/component-library/message-list",
-              "webchat/webchat-components/component-library/stylesheet-provider",
-              "webchat/webchat-components/component-library/use-webchat-client"
+              "webchat/webchat-components/get-started",
+              {
+                "group": "Components",
+                "pages": [
+                  "webchat/webchat-components/component-library/fab",
+                  "webchat/webchat-components/component-library/composer",
+                  "webchat/webchat-components/component-library/header",
+                  "webchat/webchat-components/component-library/container",
+                  "webchat/webchat-components/component-library/message-list",
+                  "webchat/webchat-components/component-library/stylesheet-provider",
+                  "webchat/webchat-components/component-library/use-webchat-client"
+                ]
+              }
             ]
           },
           {
-            "group": "Integrate",
+            "group": "Integrations",
             "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
           }
         ]

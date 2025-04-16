@@ -5,7 +5,7 @@ sidebarTitle: Introduction
 
 ## Overview
 
-Interfaces in the Botpress SDK establish standardized contracts that integrations must implement to enable extra features and capabilities. For example, an integration might implement the `hitl` (human-in-the-loop) interface to support human agent intervention, or the `typing-indicator` interface to utilize typing indicators provided by the external service.
+Interfaces in the Botpress SDK establish standardized contracts that integrations must implement to enable extra features and capabilities. For example, an integration might implement the `hitl` (human-in-the-loop) interface to support human agent intervention, or the `typing-indicator` interface to use typing indicators provided by the external service.
 
 <Warning>Interface creation is **currently restricted to the Botpress Team**. Support for developer-created interfaces _may_ be introduced in future releases at Botpress's sole discretion.</Warning>
 
@@ -17,36 +17,36 @@ Each interface is defined through an Interface Definition that specifies the con
 
 ### Events
 
-Interfaces can define events that implementing integrations must support. These events establish a consistent model for how activities are communicated to bots, regardless of the underlying external service.
+Interfaces can define events that integrations must support. These events establish a consistent model for how activities are communicated to bots, regardless of the underlying external service.
 
 ### Actions
 
-Interfaces specify actions that implementing integrations must provide. These actions define standardized operations that bots can invoke across different integrations that implement the same interface.
+Interfaces can specify actions that integrations must provide. These actions define standardized operations that bots can invoke across different integrations that implement the same interface.
 
 ### Channels
 
-Interfaces can define communication channel requirements that implementing integrations must implement.
+Interfaces can define communication channel requirements that integrations must implement.
 
 ### Entities
 
-Entities are a concept specific to interfaces that define standardized data structures. These entities:
+Entities define standardized data structures for an interface. They:
 
 - Establish common data models across different integrations
-- Allow implementing integrations to extend and customize the base entity
+- Allow integrations to extend and customize the base entity
 
 Actions and events defined by an interface may consume or produce these entities.
 
 ## Component Renaming
 
 <Tip>
-Events, actions, channels, and entities defined by an interface can all be renamed by implementing integrations to better align with the concepts and terminology of their specific external service. Entities can also be extended with additional fields to accommodate the unique requirements of the external service.
+Integrations can rename an interface's events, actions, channels, and entities to better align with the concepts and terminology of their specific external service. Integrations can also extend entities with additional fields to accomodate the requirements of their external service.
 </Tip>
 
 ## Benefits of Interfaces
 
 Interfaces provide significant benefits to the Botpress ecosystem:
 
-- **Consistency**: Bots can interact with diverse external services through a standardized approach
-- **Reusability**: Plugins can build upon interface capabilities without concern for the specific implementing integration
-- **Adaptability**: Integrations can fulfill interface requirements while maintaining terminology appropriate to their external service
+- **Consistency**: Bots can interact with many external services through a standardized approach
+- **Reusability**: Plugins can build upon interfaces instead of individual integrations
+- **Adaptability**: Integrations can fulfill interface requirements while maintaining the appropriate terminology for their external service
 - **Extensibility**: New integrations can quickly provide established functionality by implementing existing interfaces
