@@ -30,7 +30,7 @@ Integrations connect bots to external services and platforms, enabling communica
 
 ### Interfaces
 
-Interfaces extend integrations by providing standardized functionality specifications. They define specific actions and events that integrations must implement to support particular features. Examples include:
+Interfaces are contracts that define the expected behavior of integrations. They specify the events and actions that integrations must implement to support specific features or functionalities. This concept is similar to interfaces in many popular general purpose programming languages, such as Java, C#, and TypeScript. Examples include:
 
 - **Human-in-the-loop (HITL)**: Defines the events and actions an integration must implement to support human agent intervention
 - **Typing Indicator**: Defines the events and actions an integration must implement to use typing indicators supported by the external service
@@ -71,7 +71,7 @@ Just like bots built in Studio, bots-as-code can:
 
 ### Plugins
 
-Plugins deliver reusable functionality that can be incorporated across multiple bots. They can:
+Plugins are reusable pieces of Bots. They can be used to share functionalities across multiple bots. They can:
 
 - Define actions and events that bots can use
 - Subscribe to events from bots, integrations, and interfaces
