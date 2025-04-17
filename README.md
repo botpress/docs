@@ -1,19 +1,42 @@
-# Botpress Documentation
+# 📘 Botpress Documentation
 
-### Development
+Welcome to the Botpress documentation repository! This project powers the docs site of Botpress—The complete AI Agent platform.
 
-1. Run `pnpm install`
+---
 
-2. Make sure to install [Tilt](https://tilt.dev/).
+## 🛠 Development Setup
 
-3. Run the following command at the root of your documentation
+To get started with local development:
 
+1. Install dependencies:
+
+```bash
+pnpm install
 ```
+
+2. Install [Tilt](https://tilt.dev/) if you haven’t already.
+
+3. Start the documentation site:
+
+```bash
 tilt up
 ```
 
-### TODO
+> ℹ️ Make sure you're running this command from the root of the documentation directory.
 
-- [ ] Finish the webchat section
-- [ ] Finish the For Developers section
-- [ ] Finish the API Reference section
+---
+
+## 🤝 Contributing
+
+We welcome all contributions! Before opening an issue, please ensure:
+
+- Your issue is related to the **documentation** itself.
+- Product-related issues should be reported via [Discord](https://discord.gg/botpress).
+
+Whether you're fixing a typo, improving clarity, or adding new content—thank you for helping us improve!
+
+---
+
+## 📬 Questions?
+
+Join the conversation on our [Discord](https://discord.gg/botpress) server—we’d love to hear from you!
