@@ -42,7 +42,7 @@ Once you have the interface name and version, you can add it as a dependency to 
     ```json
     {
       "bpDependencies": {
-        "creatable": "interface:creatable@^0.0.1"
+        "creatable": "interface:creatable@0.0.1"
       }
     }
     ```
@@ -50,13 +50,6 @@ Once you have the interface name and version, you can add it as a dependency to 
     It is very important to follow this syntax: <br/>
     `"<interface-name>": "interface:<interface-name>@<version>"`.
     </Warning>
-    <Tip>
-    Interface versions use a numbering system with three parts: MAJOR.MINOR.PATCH (like `1.2.3`). When adding an interface to your integration, we recommend using the caret symbol (`^`) before the version number (like `^2.4.5`). This tells the Botpress CLI to automatically use newer compatible versions when they're available.
-
-    For example, if you specify `^2.4.5` as the version:
-    - You'll automatically get updates like `2.4.6` or `2.5.0` (bug fixes and new features).
-    - You won't get version `3.0.0` (which might break your integration).
-    </Tip>
   </Step>
   <Step title="Save the package.json file">
     Save the `package.json` file.
