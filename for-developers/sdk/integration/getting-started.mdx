@@ -1,6 +1,6 @@
 ---
-title: "Getting Started Developing Integrations"
-sidebarTitle: Getting Started
+title: "Get Started Developing Integrations"
+sidebarTitle: Get Started
 ---
 
 ## 1. Log in to Botpress
@@ -15,7 +15,7 @@ npx @botpress/cli login
 
 {/* TODO: add a guide on how to create a personal access token and link to it. */}
 
-This command will prompt you for a personal access token. You can create a new token by going to [the dashboard](https://app.botpress.cloud) and navigating to the **Personal Access Tokens** page.
+This command will prompt you for a personal access token. You can create a new token by going to [the Dashboard](https://app.botpress.cloud) and navigating to the **Personal Access Tokens** page.
 
 ## 2. Initialize a New Integration
 
@@ -25,9 +25,9 @@ Next, create a new integration using the Botpress CLI. This will set up a new di
 npx @botpress/cli init --type "integration" --name "my-integration" --template "hello-world"
 ```
 
-{/* TODO: add a guide on how to claim a workspace handle and link to it. */}
+{/* TODO: add a guide on how to claim a Workspace handle and link to it. */}
 
-The CLI will prompt you for some information, including your workspace or workspace handle. If you don't have a workspace handle yet, the CLI should claim one for you. You can also claim one manually by going to [the dashboard](https://app.botpress.cloud) and navigating to the **Settings** page.
+The CLI will prompt you for some information, including your Workspace or Workspace handle. If you don't have a Workspace handle yet, the CLI should claim one for you. You can also claim one manually by going to [the Dashboard](https://app.botpress.cloud) and navigating to the **Settings** page.
 
 ## 3. Install Dependencies and Build
 
@@ -76,15 +76,18 @@ Once you've made the necessary changes to your integration, you can deploy it to
 npx @botpress/cli deploy
 ```
 
-You'll be prompted for some information and confirmations. This integration will be deployed privately to your workspace, and will only be visible and usable by members of your workspace. As long as it remains private, you can update the same version by running the deploy command again. To deploy a new version, update the integration definition and run the deploy command once more.
+You'll be prompted for some information and confirmations. This integration will be deployed privately to your Workspace, and will only be visible and usable by members of your Workspace. As long as it remains private, you can update the same version by running the deploy command again. To deploy a new version, update the integration definition and run the deploy command once more.
 
-After deploying, go to [the dashboard](https://app.botpress.cloud) and navigate to the **Your Integrations** page. You should see your integration listed there.
+After deploying, go to [the Dashboard](https://app.botpress.cloud) and navigate to the **Your Integrations** page. You should see your integration listed there.
 
 ## 7. Try Out Your Integration in Botpress Studio
 
 {/* TODO: add a guide on how to install an integration in the studio and link to it. */}
 
-Now it's time to test your integration. Create a new bot or open an existing one in the Botpress Studio. Navigate to the hub and install your integration. Create a basic flow and use the `helloWorld` card. It will return a greeting message.
+Now you can test your integration:
+1. Create a new bot or open an existing one in Botpress Studio.
+2. Navigate to Botpress Hub and install your integration.
+3. Create a basic Workflow and use the `helloWorld` Card. It will return a greeting message.
 
 ## What's Next?
 
