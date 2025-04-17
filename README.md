@@ -12,8 +12,10 @@
 tilt up
 ```
 
-### TODO
+## Issues
 
-- [ ] Finish the webchat section
-- [ ] Finish the For Developers section
-- [ ] Finish the API Reference section
+Issues are disabled in the repository.
+
+If you find any problems in the documentation, have any suggestions for the documentation or Botpress Cloud in general, or want to report a bug, please reach out to us on [our discord server](https://discord.gg/botpress).
+
+This is to ensure your issue is addressed as soon as possible and to keep all the information in one place.
