@@ -7,9 +7,21 @@ sidebarTitle: Get Started
 
 To get started, first install the Botpress CLI globally on your machine. You can do this by running the following command in your terminal:
 
-```bash
-npm i -g @botpress/cli
+<CodeGroup>
+
+```bash npm
+npm install -g @botpress/cli
 ```
+
+```bash pnpm
+pnpm install -g @botpress/cli
+```
+
+```bash yarn
+yarn add -g @botpress/cli
+```
+
+</CodeGroup>
 
 <Note>All the following examples use `npm`, but feel free to use the package manager of your choice like `yarn` or `pnpm`.</Note>
 
@@ -51,7 +63,8 @@ Once the integration is initialized, navigate to the integration directory and i
 
 ```bash
 cd ./my-integration
-npm i && bp build
+npm i
+bp build
 ```
 
 ## 5. Browse the Integration Files
