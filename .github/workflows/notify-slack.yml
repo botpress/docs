@@ -1,0 +1,21 @@
+name: Notify Slack on PR Merge
+
+on:
+    pull_request:
+        types: closed
+
+jobs:
+    if_merged:
+        if: github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+        steps:
+            - name: Send GitHub Action data to a Slack workflow
+              uses: slackapi/slack-github-action@v2.0.0
+              with:
+                payload: |
+                    {
+                        "author": "${{ github.event.pull_request.user.login }}",
+                        "pr_message": "${{ github.event.pull_request.body }}"
+                    }
+              env:
+                SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL || 'No description provided.' }}
