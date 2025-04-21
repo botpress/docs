@@ -19,7 +19,7 @@ jobs:
                 PARSED_PR_MESSAGE=$(echo "${{ github.event.pull_request.body }}" \
                     | sed -E 's/\*\*(.+?)\*\*/\*\1\*/g' \
                     | sed -E 's/\[([^\]]+)\]\(([^\)]+)\)/<\2|\1>/g' \
-                    | sed -E 's/^\s*-\s*/\* /g'
+                    | sed -E 's/^\s*-\s*/\* /g' \
                     | sed ':a;N;$!ba;s/\n/\n\n/g')
 
                 echo "PARSED_PR_MESSAGE<<EOF" >> $GITHUB_ENV
@@ -33,6 +33,6 @@ jobs:
                 webhook-type: webhook-trigger
                 payload: |
                     {
-                        "author": "<https://github.com/${{ github.event.pull_request.user.login }}|{{ github.event.pull_request.user.login }}>",
+                        "author": "<https://github.com/${{ github.event.pull_request.user.login }}|${{ github.event.pull_request.user.login }}>",
                         "pr_message": "${{ env.PARSED_PR_MESSAGE }}"
                     }
