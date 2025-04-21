@@ -11,11 +11,11 @@ jobs:
         steps:
             - name: Send GitHub Action data to a Slack workflow
               uses: slackapi/slack-github-action@v2.0.0
-              with:
+              with: 
+                webhook: ${{ secrets.SLACK_WEBHOOK_URL || 'No description provided.' }}
+                webhook-type: webhook-trigger
                 payload: |
                     {
                         "author": "${{ github.event.pull_request.user.login }}",
                         "pr_message": "${{ github.event.pull_request.body }}"
                     }
-              env:
-                SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL || 'No description provided.' }}
