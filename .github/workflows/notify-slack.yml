@@ -11,7 +11,7 @@ jobs:
           payload='{ "text": "Docs Update", "channel": "C08K7SB0VT8", "blocks": [ { "type": "markdown", "text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!" }, { "type": "divider" }, { "type": "markdown", "text": "${{ github.event.pull_request.body }}" } ] }'
 
           echo "### PAYLOAD ###"
-          echo $payload | jq
+          echo $payload | jq -Rsa
 
           curl -X POST https://slack.com/api/chat.postMessage \
             -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
