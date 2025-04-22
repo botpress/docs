@@ -8,17 +8,7 @@ jobs:
     steps:
       - name: Notify Slack
         run: |
-          payload='{
-                "type": "markdown",
-                "text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!"
-              },
-              {
-                "type": "divider"
-              },
-              {
-                "type": "markdown",
-                "text": "HELLO WORLD"
-              }'
+          payload='{"type": "markdown","text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!"},{"type": "divider"},{"type": "markdown","text": "HELLO WORLD"}'
           payload=$(echo $payload | jq -c)
 
           echo "### PAYLOAD ###"
