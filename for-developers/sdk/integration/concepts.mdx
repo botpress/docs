@@ -3,18 +3,17 @@ title: "Integrations Concepts"
 sidebarTitle: Concepts
 ---
 
-This guide is a breakdown of the concepts introduced in the [Get Started](./getting-started) guide. It is intended for developers who are creating integrations using the Botpress SDK.
+This guide is a breakdown of the concepts introduced in the [Get Started](./getting-started) and [Messaging](./messaging) guides. The goal is to provide a deeper understanding of the concepts and components that make up integrations in Botpress.
 
-## Integration Definition
-An Integration Definition acts as a comprehensive specification that outlines an integration's features and behaviors. It defines how the integration will communicate with both the Botpress ecosystem and external services, and which functionality it will expose to bots.
+<Note>Most concepts listed below can define data schemas. For this the SDK uses [Zod](https://zod.dev), a TypeScript-first schema validation library. These schemas allow for better intellisense for integration developpers, auto-generated forms for bot developpers in the Studio and validation of data at runtime</Note>
 
-## Key Components of Integration Definitions
+## Configuration
 
-### Configuration Schema
+Integrations can define a configuration schema. This dictates the structure of data that bot developpers must provide when installing the integration. This schema is used to display the form you bot developpers see when installing the integration in the Studio.
 
-Integrations can define their configuration requirements using [Zod](https://zod.dev), a TypeScript-first schema validation library. The integration can also provide multiple configuration schemas to support different use cases or environments. This allows end users to select the appropriate configuration method based on their needs.
+Integration can also provide multiple configuration schemas to support different use cases or environments. This allows bot developpers to select the appropriate configuration method based on their needs.
 
-### Events
+## Events
 
 Integrations define events that represent activities within the external service. For example:
 
@@ -22,16 +21,18 @@ Integrations define events that represent activities within the external service
 - A GitHub integration might define a `pullRequestOpened` event
 - A Dropbox integration might define a `fileUploaded` event
 
-Bots can subscribe to these events to trigger specific actions or workflows.
+Events are defined with a schema that specifies the data structure of the event payload. Bots can subscribe to these events to trigger specific handlers or workflows.
 
-### Actions
+## Actions
 
 Integrations expose actions that bots can invoke to interact with the external service. For example:
 
 - Retrieving or updating information in external systems
 - Performing operations on behalf of users
 
-### Communication Channels
+Actions are defined with an input and output schema, which specifies the expected data structure for both the input parameters and the response. These actions are made available to bots in the Studio with action cards.
+
+## Channels
 
 Integrations can define communication channels that represent different communication mediums within the integrated platform. For example:
 
@@ -39,31 +40,29 @@ Integrations can define communication channels that represent different communic
 - Each channel specifies the types of messages it can send and receive
 - Channel definitions handle platform-specific message formatting and delivery
 
-### Data Persistence
+For example, a Gthub integration might define a `pullRequest` channel and an `issue` channel, each with its own message format and delivery method.
 
-Integrations can maintain state and store data through several mechanisms:
+## States
 
-- **States**: Define state structures in the integration definition that serve as the bot's context
-- **Tags**: Add metadata to conversations, individual messages, or users through arbitrary tags
-- **Files API**: Store and retrieve files for long-term persistence
+Integrations can define states which are data structures attached to either a conversation, a user, or global to the whole bot. When defining a state, the integration must provide its schema, which describes the data structure of the state's payload.
 
-### Secrets Management
+## Tags
 
-Integrations can define secrets that are required for authentication with external services:
+Integrations can define tags that allow bot developers to add metadata to conversations, individual messages, or users. Only tags defined in the integration definition can be used at runtime. 
 
-- Secrets are specified in the integration definition
-- Values are provided during deployment
-- Secure access is available to the integration at runtime
+Just like states, tags can be used as a form of memory, enabling the integration to store and retrieve information. However, tags have key differences from states:
 
-### Interface Implementation
+- Tags values must be strings of less than 500 characters. This is to ensure that tags are lightweight and easy to manage. 
+- Tags can be used as filters for many list and get-or-create operations like `listMessages` and `getOrCreateUser`.
+- Tags are returned in the Botpress API with the entities they are attached to. If you get a message, user or conversation, you will also get the tags attached to it without having to do a separate API call.
 
-Integrations can implement standard interfaces defined by the Botpress Team to provide consistent functionality:
+## Secrets
 
-- Enabling compatibility with plugins that rely on those interfaces
-- Enabling compatibility with specific features of the Botpress platform
-- Ensuring consistent behavior across different integrations
+Integrations can define secrets, such as API keys, tokens, or other sensitive values. While they are most often used for authentication with external services, they can represent any sensitive information required by the integration. 
 
-<Note>All interfaces are currently created and managed internally at Botpress. However, integrations you build can implement any available interface.</Note>
+Secrets are defined in the integration definition. When deploying the CLI prompts for secrets and prevents deployment if a required secret is omitted. The ecret values are then available at runtime for the integration developper to use.
+
+Secrets are global to the integration and are not scoped to individual bots.
 
 ## What's Next?
 
