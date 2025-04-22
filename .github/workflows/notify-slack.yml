@@ -9,7 +9,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Notify Slack directly via curl
+      - name: Notify Slack
         run: |
           curl -X POST https://slack.com/api/chat.postMessage \
           -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
