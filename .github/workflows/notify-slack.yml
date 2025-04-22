@@ -1,8 +1,6 @@
 name: Notify Slack on PR Merge
 
-on:
-  pull_request:
-    types: closed
+on: pull_request
 
 jobs:
   if_merged:
