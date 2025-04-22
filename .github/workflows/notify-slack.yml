@@ -17,7 +17,7 @@ jobs:
               },
               {
                 "type": "markdown",
-                "text": "${{ github.event.pull_request.body }}"
+                "text": "HELLO WORLD"
               }'
           payload=$(echo $payload | jq -c)
 
