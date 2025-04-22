@@ -53,7 +53,7 @@ If Botpress doesn’t yet provide an integration for your preferred messaging se
 
 Follow the [Getting Started](./getting-started) guide and select the `webhook-message` template instead of `hello-world`.
 
-### Channel Definition
+### Integration Definition
 
 After initializing your project, you'll see the following integration definition:
 
@@ -99,11 +99,11 @@ Let's break down this data structure:
 
 - **`configuration`**: Defines the settings bot developpers must provide when installing the integration in the Studio. The configuration schema is used to display a configuration form. Here, only a `webhookUrl` is required to receive outgoing messages.
 - **`channels`**: Specifies supported messaging channels. This example uses a single `webhook` channel, but you can define multiple. For example, Github allows conversing with your both on issues and pull requests. Each channel can have its own set of tags and message types.
-- **`conversation.tags`**: Defines available tags for the conversation. In this case, we are defining a single tag called `id` that identifies the conversation in the external service. This allows binding the botpress conversation to the external service conversation. When sending outgoing message response, this tag will be used to properly route the message to the external service.
+- **`channels["$CHANNEL_NAME"].conversation.tags`**: Defines available tags for the conversation. In this case, we are defining a single tag called `id` that identifies the conversation in the external service. This allows binding the botpress conversation to the external service conversation. When sending outgoing message response, this tag will be used to properly route the message to the external service.
 - **`user.tags`**: Defines available tags for the user. Here, we define a single tag called `id` that identifies the user in the external service. This allows binding the botpress user to the external service user.
 - **`messages`**: Defines available message types. In this case, we are defining a single message type called `text` that contains a single field called `text`. This allows sending text messages to the external service. You could define multiple message types, for example, `image`, `video`, etc. The SDK exports a record of default message types that are supported in most messaging channels.
 
-### Channel Implementation
+### Integration Implementation
 
 The integration implementation looks something like this:
 
@@ -231,7 +231,7 @@ The `getOrCreateConversation` and `getOrCreateUser` operations first check if a 
 
 The `createMessage` operation creates a new message in Botpress with the provided payload. This message is then forwarded to the bot for processing.
 
-The `channels.webhook` property is where you define the outgoing message handlers; i.e. the logic executed when the bot sends a message to the user. In this case, we are defining a single handler for the `text` message type. Here we call the configured webhook with the conversation that was created in the incoming request. It is important here not to confuse the id tag and the conversation id. The id tag is the external id of the conversation in the external service that was provided in the incoming request.
+The `channels["$CHANNEL_NAME"]` property (here the channel name is `webhook`) is where you define the outgoing message handlers; i.e. the logic executed when the bot sends a message to the user. In this case, we are defining a single handler for the `text` message type. Here we call the configured webhook with the conversation that was created in the incoming request. It is important here not to confuse the id tag and the conversation id. The id tag is the external id of the conversation in the external service that was provided in the incoming request.
 
 ## What's Next?
 
