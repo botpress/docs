@@ -1,0 +1,14 @@
+name: Run Checks
+
+on: pull_request
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-lates
+    steps:
+      - uses: actions/checkout@v2
+      - run: pnpm run check:links
