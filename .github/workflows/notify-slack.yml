@@ -13,7 +13,7 @@ jobs:
         run: |
           curl -X POST https://slack.com/api/chat.postMessage \
           -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
-          -H "Content-type: application/json" \
+          -H "Content-type: application/json; charset=utf-8" \
           -d '{
             "text": "Docs Update",
             "channel": "C08K7SB0VT8",
