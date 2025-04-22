@@ -9,30 +9,30 @@ jobs:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
         steps:
-            - name: Parse PR message # Necessary because Slack can't handle standard markdown
-              run: |
-                echo "ORIGINAL_PR_MESSAGE<<EOF" >> $GITHUB_ENV
-                echo "${{ github.event.pull_request.body }}" >> $GITHUB_ENV
-                echo "EOF" >> $GITHUB_ENV
-
-                # Now process the text
-                PARSED_PR_MESSAGE=$(echo "${{ github.event.pull_request.body }}" \
-                    | sed -E 's/\*\*(.+?)\*\*/\*\1\*/g' \
-                    | sed -E 's/\[([^\]]+)\]\(([^\)]+)\)/<\2|\1>/g' \
-                    | sed -E 's/^\s*-\s*/\* /g' \
-                    | sed ':a;N;$!ba;s/\n/\n\n/g')
-
-                echo "PARSED_PR_MESSAGE<<EOF" >> $GITHUB_ENV
-                echo "$PARSED_PR_MESSAGE" >> $GITHUB_ENV
-                echo "EOF" >> $GITHUB_ENV
-
             - name: Send GitHub Action data to a Slack workflow
               uses: slackapi/slack-github-action@v2.0.0
               with: 
                 webhook: ${{ secrets.SLACK_WEBHOOK_URL || 'No description provided.' }}
-                webhook-type: webhook-trigger
+                webhook-type: incoming-webhook
                 payload: |
                     {
-                        "author": "<https://github.com/${{ github.event.pull_request.user.login }}|${{ github.event.pull_request.user.login }}>",
-                        "pr_message": "${{ env.PARSED_PR_MESSAGE }}"
+                        "blocks": [
+                            {
+                                "type": "section",
+                                "text": {
+                                    "type": "markdown",
+                                    "text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!"
+                                }
+                            },
+                            {
+                                "type": "divider"
+                            },
+                            {
+                                "type": "section",
+                                "text": {
+                                    "type": "markdown",
+                                    "text": "${{ github.event.pull_request.body }}"
+                                }
+                            }
+                        ]
                     }
