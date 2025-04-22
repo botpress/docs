@@ -9,6 +9,7 @@ jobs:
       - name: Notify Slack
         run: |
           payload='{ "channel": "C08K7SB0VT8", "text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!" }'
+          payload=$(echo $payload | jq -c)
 
           echo "### PAYLOAD ###"
           echo $payload | jq
