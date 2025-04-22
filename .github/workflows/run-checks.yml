@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   run-checks:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: pnpm run check:links
