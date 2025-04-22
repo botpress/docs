@@ -1,38 +1,33 @@
 name: Notify Slack on PR Merge
 
 on:
-    pull_request:
-        types: closed
+  pull_request:
+    types: closed
 
 jobs:
-    if_merged:
-        if: github.event.pull_request.merged == true
-        runs-on: ubuntu-latest
-        steps:
-            - name: Send GitHub Action data to a Slack workflow
-              uses: slackapi/slack-github-action@v2.0.0
-              with: 
-                webhook: ${{ secrets.SLACK_WEBHOOK_URL || 'No description provided.' }}
-                webhook-type: incoming-webhook
-                payload: |
-                    {
-                        "blocks": [
-                            {
-                                "type": "section",
-                                "text": {
-                                    "type": "markdown",
-                                    "text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!"
-                                }
-                            },
-                            {
-                                "type": "divider"
-                            },
-                            {
-                                "type": "section",
-                                "text": {
-                                    "type": "markdown",
-                                    "text": "${{ github.event.pull_request.body }}"
-                                }
-                            }
-                        ]
-                    }
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Slack directly via curl
+        run: |
+          curl -X POST https://slack.com/api/chat.postMessage \
+          -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+          -H "Content-type: application/json" \
+          -d '{
+            "text": "Docs Update",
+            "channel": "C08K7SB0VT8",
+            "blocks": [
+              {
+                "type": "markdown",
+                "text": ":blue_book: [${{ github.event.pull_request.user.login }}](https://github.com/${{ github.event.pull_request.user.login }}) updated the docs!"
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "markdown",
+                "text": "${{ github.event.pull_request.body }}"
+              }
+            ]
+          }'
