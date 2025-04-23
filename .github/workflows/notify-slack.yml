@@ -1,0 +1,110 @@
+name: Notify Slack on PR
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  notify-slack:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      # 1) Checkout so we can call the GitHub API
+      - uses: actions/checkout@v3
+
+      # 2) Fetch the list of changed files, filter for .mdx,
+      #    and emit either a short message or a bullet-list of links
+      - name: Generate MDX page links
+        id: gen_mdx_links
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            // 1. List all files in the PR
+            const files = await github.paginate(
+              github.rest.pulls.listFiles,
+              {
+                owner: pr.base.repo.owner.login,
+                repo: pr.base.repo.name,
+                pull_number: pr.number
+              }
+            );
+
+            // 2. Keep only .mdx files (preserving status)
+            const mdxFiles = files.filter(f => f.filename.endsWith('.mdx'));
+
+            // If no .mdx files were changed, output a clear message
+            if (mdxFiles.length === 0) {
+              core.setOutput('bullets', '• _No pages updated_');
+              return;
+            }
+
+            // 3. If more than 10 changed, output a single summary line
+            if (mdxFiles.length > 10) {
+              core.setOutput(
+                'bullets',
+                `10+ pages changed — see <${pr.html_url}|pull request>.`
+              );
+              return;
+            }
+
+            // 4. Otherwise, turn each into a link and bullet,
+            //    adding "(new)" or "(deleted)" after added/removed pages
+            const bullets = mdxFiles.map(f => {
+              const slug  = f.filename.replace(/^docs\//, '').replace(/\.mdx$/, '');
+              const label = f.filename.replace(/\.mdx$/, '');
+              let note = '';
+              if (f.status === 'added')   note = ' _(new)_';
+              else if (f.status === 'removed') note = ' _(deleted)_';
+              return `• <https://botpress.com/docs/${slug}|${label}>${note}`;
+            });
+
+            core.setOutput('bullets', bullets.join('\n\n'));
+
+      # 3) Send the Slack notification
+      - name: Send GitHub Action data to a Slack workflow
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "<https://github.com/${{ github.event.pull_request.user.login }}|${{ github.event.pull_request.user.login }}> updated the docs!"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":blue_book: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>*"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ github.event.pull_request.body != '' && github.event.pull_request.body || '_No description provided._' }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":sparkles: *Updated pages:*\n\n${{ steps.gen_mdx_links.outputs.bullets }}"
+                  }
+                }
+              ]
+            }
