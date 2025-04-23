@@ -428,7 +428,7 @@ Prompt message: How many units of this product would you like to purchase?
 
 When the user enters their response, the Number field will extract the numerical value and save it in the productQuantity variable as either an integer or decimal value. You can then use this variable in other parts of your workflow to calculate the total cost of the purchase.
 
-For instance, if the product costs $10 per unit and the user entered **3** as the product quantity, you can calculate the total cost in an [Execute Code Card](../execute-code/) as follows:
+For instance, if the product costs $10 per unit and the user entered **3** as the product quantity, you can calculate the total cost in an [Execute Code Card](./execute) as follows:
 
 ```
 workflow.totalCost = workflow.productQuantity * $10
