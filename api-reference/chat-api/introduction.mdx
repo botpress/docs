@@ -5,7 +5,11 @@ sidebarTitle: Introduction
 
 import { Img } from '/snippets/image.mdx'
 
-The Chat API offers an HTTP API to chat with your bot. It is often referred to as the Chat API even though it is an integration like any other. The Chat integration purpose is to integration Botpress into a backend application (In contrast with the [Webchat integration](/webchat/introduction) that is built to integrate into a website).
+The Chat API offers an HTTP API to chat with your bot. It is often referred to as the Chat API even though it is an integration like any other. The Chat integration purpose is to integrate Botpress into a backend application (In contrast with the [Webchat integration](/webchat/introduction) that is built to integrate into a website).
+
+<Note>
+Since the Chat API is an integration, all users, conversations and messages created using the Chat API belong to the Chat Integration. This mean, you can't use the Chat API to fetch conversations that occured in WhatsApp or in the Webchat. For that, take a look at the [Runtime API](../runtime-api/getting-started.mdx).
+</Note>
 
 ## Installation
 
