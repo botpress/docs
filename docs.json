@@ -259,10 +259,16 @@
           {
             "group": "Interact with Webchat",
             "pages": [
-              "webchat/interact/control-webchat",
+              "webchat/interact/open-close-webchat",
               "webchat/interact/send-user-data",
               "webchat/interact/listen-to-events",
-              "webchat/interact/send-custom-events"
+              {
+                "group": "Send custom events",
+                "pages": [
+                  "webchat/interact/send-custom-events/from-webchat",
+                  "webchat/interact/send-custom-events/to-webchat"
+                ]
+              }
             ]
           },
           {
