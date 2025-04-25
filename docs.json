@@ -251,6 +251,45 @@
         ]
       },
       {
+        "tab": "Webchat",
+        "pages": [
+          "webchat/introduction",
+          "webchat/quick-start",
+          "webchat/styling-your-webchat",
+          {
+            "group": "Interact with Webchat",
+            "pages": [
+              "webchat/interact/control-webchat",
+              "webchat/interact/send-user-data",
+              "webchat/interact/listen-to-events",
+              "webchat/interact/send-custom-events"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
+          },
+          {
+            "group": "React Library",
+            "pages": [
+              "webchat/webchat-components/get-started",
+              {
+                "group": "Components",
+                "pages": [
+                  "webchat/webchat-components/component-library/fab",
+                  "webchat/webchat-components/component-library/composer",
+                  "webchat/webchat-components/component-library/header",
+                  "webchat/webchat-components/component-library/container",
+                  "webchat/webchat-components/component-library/message-list",
+                  "webchat/webchat-components/component-library/stylesheet-provider",
+                  "webchat/webchat-components/component-library/use-webchat-client"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
         "tab": "For Developers",
         "pages": [
           "for-developers/introduction",
@@ -272,38 +311,6 @@
               "for-developers/sdk/interface/how-tos/implementing-hitl",
               "for-developers/sdk/interface/how-tos/implementing-file-sync"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Webchat",
-        "pages": [
-          "webchat/introduction",
-          {
-            "group": "Inject Script",
-            "pages": ["webchat/inject/get-started", "webchat/inject/styling-your-webchat"]
-          },
-          {
-            "group": "React Library",
-            "pages": [
-              "webchat/webchat-components/get-started",
-              {
-                "group": "Components",
-                "pages": [
-                  "webchat/webchat-components/component-library/fab",
-                  "webchat/webchat-components/component-library/composer",
-                  "webchat/webchat-components/component-library/header",
-                  "webchat/webchat-components/component-library/container",
-                  "webchat/webchat-components/component-library/message-list",
-                  "webchat/webchat-components/component-library/stylesheet-provider",
-                  "webchat/webchat-components/component-library/use-webchat-client"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Integrations",
-            "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
           }
         ]
       },
