@@ -1,3 +1,109 @@
 ---
 title: Listen to events
 ---
+
+You can listen to Webchat events within your website's source code. This is useful if you want to:
+
+- Make your website more responsive to Webchat
+- Adjust UI elements depending on Webchat's status
+- Handle Webchat errors on your website
+
+<Tip>
+To listen any of the events on this page, just copy and paste the code snippet into your source code. Then, you can add whatever code you want — it'll execute whenever the event fires.
+</Tip>
+
+<Info>
+    You will need:
+
+    - A website with an [embedded bot](/webchat/quick-start)
+    - Familiarity with JavaScript
+
+</Info>
+
+## Webchat is ready
+
+This event fires when Webchat is initialized and ready:
+
+``` javascript index.js {3}
+window.botpress.on('webchat:ready', (conversationId) => {
+	console.log('Webchat is ready: ', conversationId);
+    // Insert your code here
+});
+```
+
+## Webchat opens
+
+This event fires when the Webchat window is opened:
+
+``` javascript index.js {3}
+window.botpress.on('webchat:opened', (conversationId) => {
+    console.log('Webchat was opened ', conversationId);
+    // Insert your code here
+});
+```
+
+## Webchat closes
+
+This event fires when the Webchat window is closed:
+
+``` javascript index.js {3}
+window.botpress.on('webchat:closed', (conversationId) => {
+    console.log('Webchat was closed ', conversationId);
+    // Insert your code here
+});
+```
+
+## New conversation starts
+
+This event fires when a new conversation starts in Webchat:
+
+``` javascript index.js {3}
+window.botpress.on('conversation', (conversationId) => {
+	console.log('conversation id: ', conversationId);
+    // Insert your code here
+});
+```
+
+## Bot sends message
+
+This event fires when the bot sends a message to the user:
+
+``` javascript index.js {3}
+window.botpress.on('message', (message) => {
+	console.log('message received: ', message);
+    // Insert your code here
+});
+```
+
+## User sends message
+
+This event fires when the user sends a message to the bot:
+
+``` javascript index.js {3}
+window.botpress.on('messageSent', (message) => {
+	console.log('sent message: ', message);
+    // Insert your code here
+});
+```
+
+## Error occurs
+
+This event fires when the bot raises an error:
+
+``` javascript index.js {3}
+window.botpress.on('error', (error) => {
+	console.log('error: ', error);
+    // Insert your code here
+});
+```
+
+## Custom event
+
+This event fires when the bot triggers a custom event:
+
+``` javascript index.js {3}
+window.botpress.on('customEvent', (event) => {
+    console.log(event);
+	// INSERT YOUR LOGIC HERE
+});
+```
