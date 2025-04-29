@@ -4,72 +4,138 @@ description: Proactively start a WhatsApp conversation with a specific user.
 sidebarTitle: Start proactively
 ---
 
-# Starting a Conversation Proactively
+<Info>
+  You will need:
 
-As required by WhatsApp, a conversation with a user can be proactively initiated only by using [Message Templates](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines/), which need to be created in your [WhatsApp Manager](https://business.facebook.com/wa/manage/message-templates/) dashboard first and then reviewed and approved by WhatsApp in order to use them.
+  - A [configured WhatsApp integration](./introduction.mdx)
+  - A [WhatsApp Message Template](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines/)
+</Info>
 
-Once you have a message template approved by WhatsApp, it's very easy to have your bot start a conversation with a user by just using the Whatsapp "**Start Conversation**" card:
+<Note>
+  WhatsApp only allows proactively sending messages if they're created from a template. You can create a template from your [WhatsApp Manager dashboard](https://business.facebook.com/latest/whatsapp_manager/message_templates?business_id=3818287771769899&tab=message-templates&nav_ref=whatsapp_manager&asset_id=1022022276691875).
 
-![](https://files.readme.io/f7109ed-image.png)
+  After WhatsApp reviews and approves your template, follow the steps in this guide.
+</Note>
 
-Then you just need to pass the following fields to proactively start a Whatsapp conversation with a user:
+## Setup
 
-1. **User Phone**: The phone number of the user, including the country code (e.g. `+1 123 456 7890`).
-2. **Template Name**: The name of your WhatsApp message template to use for the first message of the conversation. The template should be already approved by WhatsApp in order to use it.
-3. **Template Language** *(optional)*: The language code of your WhatsApp message template ([see below](../docs/whatsapp#template-language) for more details).
-4. **Template Variables JSON** *(optional)*: The values of the variables for your WhatsApp message template, specified as a JSON array representing the list of values ([see below](../docs/whatsapp#template-variables) for more details).
-5. **Sender Phone Number ID** *(optional)*: The Whatsapp Phone Number ID you want to use as sender of the message if you have multiple phone numbers available in your Meta Developers dashboard. If you don't specify this field, the Default Phone Number ID specified in the Whatsapp configuration of your bot in your Botpress Cloud dashboard will be used by default.
+<Steps titleSize="h3">
+  <Step title="Add the Start Conversation Card">
+    In Studio, add a **Start Conversation** Card to any Node:
 
-![](https://files.readme.io/5f52ceb-image.png)
+    ![Start Conversation](./start-conversation.png)
 
-Once the conversation is created, if the user replies back it will be processed by your bot as a normal incoming message, so nothing else needs to be done.
+  </Step>
+  <Step title="Fill in the required fields">
+    Fill in the fields:
 
-## Template Language
+    <AccordionGroup>
+      <Accordion
+        title="User Phone"
+      >
 
-If the language you selected for your template in the Whatsapp Manager dashboard has a country qualifier, then the value for "Template Language" needs to be specified in the `language_COUNTRY` format where `language` is the 2-letter lowercase [ISO code for the language](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), and `COUNTRY` is the 2-letter uppercase [ISO code for the country](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). On the other hand, if the language in Whatsapp Manager doesn't specify a country then you can enter just the 2-letter lowercase ISO code for the language.
+      The user's phone number, including the country code.
+      
+      **Example**: `+1 123 456 7890`
+      </Accordion>
+      <Accordion
+        title="Template Name"
+      >
+        The name of your WhatsApp message template.
 
-For example:
+        **Example**: `proactive_message`
+      </Accordion>
+      <Accordion
+        title="Template Language (Optional)"
+      >
+        The language code for your WhatsApp message template. Defaults to `en_US`.
 
-* If you selected the "English (US)" option for the language of your Message Template in Whatsapp Manager, then the value you need to enter for "Template Language" in Botpress is `en_US`.
-* If you selected the "English (UK)" option, then the value you need to enter is `en_GB`.
-* If you selected the "French" option, which doesn't have a country qualifier, then the value you need to enter is just `fr`.
+        <Warning>
+          Although this field is optional, an error will occur if you leave the field blank and your message template's language is not **English (US)**.
+        </Warning>
 
-## Template Variables
+        <Tabs>
+          <Tab title="Country qualifier">
+            If the language you selected for your template has a country qualifier, then you need to specify a value in the `language_COUNTRY` format, where:
 
-Template variables need to be passed as a JSON array of string or numeric values representing the list of variable values, as Whatsapp only allows referring to them by their position in your message template (e.g. `{{1}}` for the first variable, `{{2}}` for the second variable, and so on).
+            - `language` is the 2-letter lowercase [ISO language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+            - `COUNTRY` is the 2-letter uppercase [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
-For example, if your Message Template expects a first variable (*referred to as`{{1}}` in the template*) with the person's first name and then a second variable ( *`{{2}}`in the template*) with an account number, then you would pass the following JSON array as the value for the "Template Variables" field:
+            For example, if you selected the **English (UK)** option, enter `en_GB`.
+          </Tab>
+          <Tab title="No country qualifier">
+            If the language you selected for your template has no country qualifier, just specify the 2-letter lowercase [ISO language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
-```json
-["John", "12345"]
-```
+            For example, if you selected the **French** option, enter `fr`.
+          </Tab>
+        </Tabs>
+      </Accordion>
+      <Accordion
+        title="Template Variables JSON (Optional)"
+      >
+      A JSON array containing the values for your message template's variables.
 
-#### Accessing the Botpress Conversation ID
+      WhatsApp uses numbers to name variables within message templates. For example, if you have two variables, you need to name them `{{1}}` and ``{{2}}``
 
-If you need to access the ID of the conversation created in Botpress Cloud by this action, you can choose to store the output value of this action in a variable. The output value of this action will be an object with the following structure:
+      When you enter your JSON array in Botpress, you can order the entries based on how you want WhatsApp to assign the values:
+
+      ```json
+      ["First value", "Second value"]
+      ```
+
+      With the above array:
+      - `"First value"` will be assigned to `{{1}}`
+      - `"Second value"` will be assigned to `{{2}}`.
+
+      </Accordion>
+      <Accordion
+        title="Sender Phone Number ID (Optional)"
+      >
+      
+      The WhatsApp Phone Number ID that will message your user. Defaults to the Phone Number ID you used to configure your integration.
+
+      <Note>
+        To use a different WhatsApp Phone Number ID, you need to have added it via your [Meta developer dashboard](https://developers.facebook.com/apps/).
+      </Note>
+      </Accordion>
+    </AccordionGroup>
+  </Step>
+</Steps>
+
+<Check>
+  Your bot is ready to proactively start a conversation with your user! 
+</Check>
+
+## Access the Conversation ID
+
+You can access the proactively started conversation's ID in Studio by storing the **Start Conversation** Card's output in a variable. Just select a variable to store the value in:
+
+![Output Value field](./output-value.png)
+
+The output value of this action will be an object with the following structure:
 
 ```js
 {
-  conversationId: 'ffa09762-6c37-4ebd-a82f-307048929c97'
+  conversationId: 'xxxxxxxxxxxxxxxxxxxxx'
 }
 ```
 
-So for example, if you choose to store the output value of this action in a variable named `bpWhatsappAction`, you can use `{{ workflow.bpWhatsappAction.conversationId }}` in input fields of the Studio (where supported) to insert the conversation ID, or use `workflow.bpWhatsappAction.conversationId` to access it in code.
+## Create the conversation using the Botpress Client
 
-## Creating the conversation using the Botpress Client
+<Note>
+  This section is for advanced users who build their bot from code instead of in the Studio.
+</Note>
 
-Note: This only works for bots created from code only.
-
-If you're building a bot as code (instead of using Botpress Studio), you can use the Botpress Client instance provided to your bot's handlers to call this action programmatically as shown in the following example:
+If you're building a bot-as-code, you can use the Botpress Client instance provided to your bot's handlers to call this action programmatically. For example:
 
 ```ts
 const result = await client.callAction({
   type: 'whatsapp:startConversation',
   input: {
-    userPhone: '+1 123 456 7890', // The full phone number of the Whatsapp user you want to initiate the conversation with.
-    templateName: 'test_message', // This is the name (identifier) of your WhatsApp message template.
-    templateLanguage: 'en_US', // Optional (defaults to `en_US`)
-    templateVariablesJson: JSON.stringify(['John', '12345']), // Optional (only needed if your message template uses variables)
+    userPhone: '+1 123 456 7890',
+    templateName: 'test_message',
+    templateLanguage: 'en_US',
+    templateVariablesJson: JSON.stringify(['John', '12345']),
   },
 })
 
