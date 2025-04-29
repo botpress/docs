@@ -1,0 +1,163 @@
+---
+title: Mapping between Botpress/WhatsApp
+description: Content mapping for the official WhatsApp integration.
+sidebarTitle: Mapping
+---
+
+<Tabs>
+  <Tab title="From Botpress to WhatsApp">
+Here's a breakdown of how WhatsApp treats data it receives from Botpress:
+
+|     Botpress type    |                                                 WhatsApp type                                                 |
+| :------------------: | :-----------------------------------------------------------------------------------------------------------: |
+|        `text`        |     [Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object)     |
+| `text` with Markdown |     [Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object)     |
+|        `image`       | [Media Image Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+|        `audio`       | [Media Audio Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+|        `video`       | [Media Video Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+|        `file`        |  [Media File Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+|      `location`      | [Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object) |
+
+Some data types have restrictions in WhatsApp:
+
+<AccordionGroup>
+
+<Accordion title="Choices">
+  [Choices](https://botpress.com/docs/capture-information) in Botpress are mapped to [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) of the type `list`  in WhatsApp.
+
+  WhatsApp renders choices differently depending on how many choices you specify in Botpress:
+
+  | Amount of choices in Botpress |      How they're rendered in WhatsApp      |
+  | :---------------------------: | :----------------------------------------: |
+  |              1-3              |                   Buttons                  |
+  |              4-10             |                  Dropdown                  |
+  |           11 or more          | Multiple dropdowns (up to 10 choices each) |
+
+  ### Labels
+
+  In WhatsApp, choices require a label. Since Botpress Studio doesn't currently support labels for choice Cards, WhatsApp uses *“Choose…”* by default.
+
+  ### Character limit
+
+  In WhatsApp:
+
+  * Button titles are limited to 19 characters
+  * Dropdown choice titles are limited to 23 characters
+
+  If a title exceeds the limit, WhatsApp will automatically shorten it:
+
+  |       Title in Botpress       |      WhatsApp button      |       WhatsApp dropdown       |
+  | :---------------------------: | :-----------------------: | :---------------------------: |
+  | "This is a title in Botpress" | "This is a title in ..." | "This is a title in Botp..." |
+</Accordion>
+
+<Accordion title="Cards">
+  [Cards](https://botpress.com/docs/capture-information) in Botpress are mapped to [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) of the type `list`  in WhatsApp.
+
+  ### Links
+
+  WhatsApp only supports one link (label and URL) on a Card. If your Botpress Card has multiple links, WhatsApp will split them into multiple empty Cards.
+
+  ### Reply button
+
+  WhatsApp only supports 3 "reply" action buttons on a Card. If your Botpress Card has more than 3 of these buttons, WhatsApp will split them into multiple Cards.
+</Accordion>
+
+<Accordion title="Carousels">
+  WhatsApp doesn't currently support Carousels.
+</Accordion>
+
+<Accordion title="Files">
+  For security reasons, Botpress renames files with a generic name ("file") before sending them to WhatsApp. The WhatsApp message will still display the original file's name below the file itself.
+</Accordion>
+</AccordionGroup>
+  </Tab>
+
+  <Tab title="From WhatsApp to Botpress">
+In Botpress, you can read data sent from a user's WhatsApp message using the `event`'s properties. This is useful if you want to store user-provided data and access it later.
+
+Here's a breakdown of how data from WhatsApp is mapped to Botpress:
+
+|                                                              WhatsApp type                                                             | Botpress type |            How to read           |
+| :------------------------------------------------------------------------------------------------------------------------------------: | :-----------: | :------------------------------: |
+|                  [Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object)                 |     `text`    | Directly through `event.preview` |
+| Choices made from [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) |     `text`    | Directly through `event.preview` |
+|              [Media Image Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)             |    `image`    |      Through `event.payload`     |
+|              [Media Audio Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)             |    `audio`    |      Through `event.payload`     |
+|              [Media Video Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)             |    `video`    |      Through `event.payload`     |
+|              [Media File Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)              |     `file`    |      Through `event.payload`     |
+|              [Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object)             |   `location`  |      Through `event.payload`     |
+
+## Read data from a payload
+
+To read data from `event.payload`:
+
+1. Add a **Wait for User Input** Card to the Node where you want to prompt the user.
+2. After that Card, check that `event.type` is equal to the data type you're expecting from the user.
+3. Read `event.payload`.
+
+The payload's properties depend on the data type:
+
+|    Type    |        Payload properties       |
+| :--------: | :-----------------------------: |
+|   `image`  |           `imageUrl`            |
+|   `audio`  |           `audioUrl`       |
+|   `video`  |           `videoUrl`       |
+|   `file`   |    `fileUrl`, `filename`   |
+| `location` | `latitude`, `longitude` |
+
+## Read raw file data
+
+To get the raw file content from WhatsApp:
+
+<Steps titleSize="h3">
+  <Step title="Set a configuration variable">
+    1. In your dashboard, navigate to your bot's **Configuration Variables** section in the left sidebar.
+    2. Create a [Configuration Variable](https://botpress.com/docs/configuration-variables-1)  named `WHATSAPP_ACCESS_TOKEN`.
+    3. Set its value to your WhatsApp access token.
+  </Step>
+  <Step title="Make a `GET` request">
+    Now you can make an HTTP `GET` request to get the raw file data:
+
+    ```javascript
+    const whatsappAccessToken = env.WHATSAPP_ACCESS_TOKEN
+
+    const response = await axios.get(event.payload.<URL>, {
+      headers: {
+        Authorization: `Bearer ${whatsappAccessToken}`,
+      },
+    })
+    ```
+
+    Be sure to:
+
+    * Replace `<URL>` with the actual URL provided in the payload
+    * Pass `whatsappAccessToken` as a `Bearer` token in the HTTP `Authorization` header
+
+      <Note>
+      For more information, check the [WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/#download-media) on downloading media files.
+      </Note>
+    </Step>
+</Steps>
+
+## Get WhatsApp user info in Botpress
+
+You can read `event` variables to get information about the WhatsApp user your bot is chatting with.
+
+### Phone number
+
+To get the user's phone number:
+
+`event.tags.conversation['whatsapp:userPhone']`
+
+This number contains the country code. It has no spaces, dashes (-) or symbols.
+
+### Phone number ID
+
+You can also get the conversation's WhatsApp phone number ID:
+
+`event.tags.conversation['whatsapp:phoneNumberId']`
+
+This is useful if you have multiple phone number IDs pointing to the same bot.
+  </Tab>
+</Tabs>
