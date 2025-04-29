@@ -30,7 +30,9 @@ Integrations connect bots to external services and platforms, enabling communica
 
 ### Interfaces
 
-Interfaces extend integrations by providing standardized functionality specifications. They define specific actions and events that integrations must implement to support particular features. Examples include:
+Interfaces are contracts that define the expected behavior of integrations. They specify the events and actions that integrations must implement to support specific features or functionalities. This concept is similar to interfaces in many popular general purpose programming languages, such as Java, C#, and TypeScript.
+
+Examples of interfaces in Botpress include:
 
 - **Human-in-the-loop (HITL)**: Defines the events and actions an integration must implement to support human agent intervention
 - **Typing Indicator**: Defines the events and actions an integration must implement to use typing indicators supported by the external service
@@ -39,8 +41,8 @@ Interfaces extend integrations by providing standardized functionality specifica
     <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/interface/introduction">
         Learn more about interfaces
     </Card>
-    <Card title="How-to" horizontal icon="graduation-cap" href="/for-developers/sdk/interface/typing-indicator">
-        Learn how to implement the typing indicator interface
+    <Card title="How-to" horizontal icon="graduation-cap" href="/for-developers/sdk/interface/how-tos/implementing-hitl">
+        Learn how to implement the hitl indicator interface
     </Card>
 </CardGroup>
 
@@ -71,7 +73,7 @@ Just like bots built in Studio, bots-as-code can:
 
 ### Plugins
 
-Plugins deliver reusable functionality that can be incorporated across multiple bots. They can:
+Plugins are reusable pieces of Bots. They can be used to share functionality across multiple bots. They can:
 
 - Define actions and events that bots can use
 - Subscribe to events from bots, integrations, and interfaces
@@ -82,9 +84,6 @@ For example, the HITL plugin adds human-in-the-loop functionality to any bot mak
 <CardGroup Cols={2}>
     <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/plugin/introduction">
         Learn more about plugins
-    </Card>
-    <Card title="How-to" horizontal icon="graduation-cap" href="/for-developers/sdk/plugin/hitl">
-        Learn how to use the HITL plugin
     </Card>
 </CardGroup>
 

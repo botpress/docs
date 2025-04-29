@@ -9,7 +9,7 @@ The `MessageList` component renders the list of messages in the Webchat, includi
 
 It has custom message renderers for each type of message (e.g. video, image, audio, text and multipart messages).
 
-It displays a typing indicator while waiting for the bot to answer. 
+It displays a typing indicator while waiting for the bot to answer.
 
 ## Usage
 
@@ -18,13 +18,13 @@ It displays a typing indicator while waiting for the bot to answer.
 </Note>
 
 ```tsx App.tsx [expandable]
-import { MessageList, useWebchatClient } from '@botpress/webchat'
+import { MessageList, useWebchatClient, Configuration } from '@botpress/webchat'
 
 const { client, messages, isTyping, user } = useWebchatClient({
   clientId: '$CLIENT_ID$', // Insert your Client ID here
 })
 
-const config: = {
+const config: Configuration = {
   botName: 'SupportBot',
   botAvatar: 'https://picsum.photos/id/80/400',
   botDescription: 'Your virtual assistant for all things support.',

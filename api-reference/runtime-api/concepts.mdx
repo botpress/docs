@@ -4,11 +4,11 @@ title: "Concepts"
 
 ## Bot
 
-Bots are core entities in the Botpress system, but they aren't accessible through the Runtime API directly. Instead, they're managed via the [Admin API](../admin-api/concepts.mdx#bot). Bots are software applications that handle events and messages, responding or acting on them accordingly.
+Bots are core entities in the Botpress system, but they aren't accessible through the Runtime API directly. Instead, they're managed via the [Admin API](../admin-api/concepts#bot). Bots are software applications that handle events and messages, responding or acting on them accordingly.
 
 ## Integration
 
-Integrations connect Botpress to external services. Like bots, they're not directly accessible from the Runtime API but are managed through the [Admin API](../admin-api/concepts.mdx#integration). Integrations handle the sending and receiving of messages, events, and data between Botpress and third-party services. They're defined and managed in the Botpress Admin API.
+Integrations connect Botpress to external services. Like bots, they're not directly accessible from the Runtime API but are managed through the [Admin API](../admin-api/concepts#integration). Integrations handle the sending and receiving of messages, events, and data between Botpress and third-party services. They're defined and managed in the Botpress Admin API.
 
 ## Definitions and Instances
 
@@ -149,7 +149,11 @@ A conversation belongs to a **channel**, which itself is part of an integration.
 
 ## User
 
-A user in the Runtime API is a speaker (person or entity) that can send messages in a conversation. It is important to mention that many different kind of users exist in the whole Botpress system. This concept only refer to users of the Runtime API or as we often refer to: Chat Users. It must not be confused with users of the Botpress Admin API which are bot and integration Builders. 
+A user in the Runtime API is a speaker (person or entity) that can send messages in a conversation. Just like conversations, users belong to a specific integration. Interracting with your bot on WhatsApp and Slack will create two different users, even if they both represent the same person with the same email.
+
+<Note>
+Many different kind of users exist in the whole Botpress system. This concept only refer to users of the Runtime API or as we often refer to: Chat Users. It must not be confused with users of the Botpress Admin API which are bot and integration Builders. 
+</Note>
 
 Here's the user type:
 
@@ -257,3 +261,9 @@ Unlike States, Tags are returned with the entity they are linked to. States can 
 ## Actions
 
 Both bots and integrations can define **actions** which are functions with a specific signature. Both integration and bot actions are meant to be called by the bot itself. You may call an action by running an external call to the Runtime API, but doing so, still requires you to authenticate as either a bot. Actions appear as cards in Botpress Studio and are a core way to execute dynamic logic.
+
+## What's Next
+
+Now that API concepts are clear, you can explore [the API reference](./openapi/createConversation).
+
+
