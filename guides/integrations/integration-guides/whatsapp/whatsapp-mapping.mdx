@@ -35,20 +35,20 @@ Some data types have restrictions in WhatsApp:
 
   ### Labels
 
-  In WhatsApp, choices require a label. Since Botpress Studio doesn't currently support labels for choice cards, WhatsApp uses *“Choose…”* by default.
+  In WhatsApp, choices require a label. Since Botpress Studio doesn't currently support labels for choice Cards, WhatsApp uses *“Choose…”* by default.
 
   ### Character limit
 
   In WhatsApp:
 
-  * Button titles are limited to 20 characters
-  * Dropdown choice titles are limited to 24 characters
+  * Button titles are limited to 19 characters
+  * Dropdown choice titles are limited to 23 characters
 
   If a title exceeds the limit, WhatsApp will automatically shorten it:
 
   |       Title in Botpress       |      WhatsApp button      |       WhatsApp dropdown       |
   | :---------------------------: | :-----------------------: | :---------------------------: |
-  | "This is a title in Botpress" | "This is a title in B..." | "This is a title in Botpr..." |
+  | "This is a title in Botpress" | "This is a title in ..." | "This is a title in Botp..." |
 </Accordion>
 
 <Accordion title="Cards">
@@ -56,19 +56,19 @@ Some data types have restrictions in WhatsApp:
 
   ### Links
 
-  WhatsApp only supports one link (label and URL) on a card. If your Botpress card has multiple links, WhatsApp will split them into multiple empty cards.
+  WhatsApp only supports one link (label and URL) on a Card. If your Botpress Card has multiple links, WhatsApp will split them into multiple empty Cards.
 
   ### Reply button
 
-  WhatsApp only supports 3 "reply" action buttons on a card. If your Botpress card has more than 3 of these buttons, WhatsApp will split them into multiple cards.
+  WhatsApp only supports 3 "reply" action buttons on a Card. If your Botpress Card has more than 3 of these buttons, WhatsApp will split them into multiple Cards.
 </Accordion>
 
 <Accordion title="Carousels">
-  WhatsApp doesn't natively support carousels. If your bot sends a carousel, WhatsApp will send each of its cards individually.
+  WhatsApp doesn't currently support Carousels.
 </Accordion>
 
 <Accordion title="Files">
-  For security reasons, Botpress renames files with a generic name ("file") before sending them to WhatsApp.
+  For security reasons, Botpress renames files with a generic name ("file") before sending them to WhatsApp. The WhatsApp message will still display the original file's name below the file itself.
 </Accordion>
 </AccordionGroup>
   </Tab>
@@ -92,52 +92,53 @@ Here's a breakdown of how data from WhatsApp is mapped to Botpress:
 
 To read data from `event.payload`:
 
-1. Add a **Wait for User Input** card to the Node where you want to prompt the user.
-2. After that card, check that `event.type` is equal to the data type you're expecting from the user.
+1. Add a **Wait for User Input** Card to the Node where you want to prompt the user.
+2. After that Card, check that `event.type` is equal to the data type you're expecting from the user.
 3. Read `event.payload`.
 
 The payload's properties depend on the data type:
 
 |    Type    |        Payload properties       |
 | :--------: | :-----------------------------: |
-|   `image`  |        `type`, `imageUrl`       |
-|   `audio`  |        `type`, `audioUrl`       |
-|   `video`  |        `type`, `videoUrl`       |
-|   `file`   |    `type`, `fileUrl`, `title`   |
-| `location` | `type`, `latitude`, `longitude` |
+|   `image`  |           `imageUrl`            |
+|   `audio`  |           `audioUrl`       |
+|   `video`  |           `videoUrl`       |
+|   `file`   |    `fileUrl`, `filename`   |
+| `location` | `latitude`, `longitude` |
 
 ## Read raw file data
 
 To get the raw file content from WhatsApp:
 
-### Step 1: Set a configuration variable
+<Steps titleSize="h3">
+  <Step title="Set a configuration variable">
+    1. In your dashboard, navigate to your bot's **Configuration Variables** section in the left sidebar.
+    2. Create a [Configuration Variable](https://botpress.com/docs/configuration-variables-1)  named `WHATSAPP_ACCESS_TOKEN`.
+    3. Set its value to your WhatsApp access token.
+  </Step>
+  <Step title="Make a `GET` request">
+    Now you can make an HTTP `GET` request to get the raw file data:
 
-1. In your dashboard, navigate to your bot's **Configuration Variables** section in the left sidebar.
-2. Create a [Configuration Variable](https://botpress.com/docs/configuration-variables-1)  named `WHATSAPP_ACCESS_TOKEN`.
-3. Set its value to your WhatsApp access token.
+    ```javascript
+    const whatsappAccessToken = env.WHATSAPP_ACCESS_TOKEN
 
-### Step 2: Make a `GET` request
+    const response = await axios.get(event.payload.<URL>, {
+      headers: {
+        Authorization: `Bearer ${whatsappAccessToken}`,
+      },
+    })
+    ```
 
-Now you can make an HTTP `GET` request to get the raw file data:
+    Be sure to:
 
-```javascript
-const whatsappAccessToken = env.WHATSAPP_ACCESS_TOKEN
+    * Replace `<URL>` with the actual URL provided in the payload
+    * Pass `whatsappAccessToken` as a `Bearer` token in the HTTP `Authorization` header
 
-const response = await axios.get(event.payload.<URL>, {
-  headers: {
-    Authorization: `Bearer ${whatsappAccessToken}`,
-  },
-})
-```
-
-Be sure to:
-
-* Replace `<URL>` with the actual URL provided in the payload
-* Pass `whatsappAccessToken` as a `Bearer` token in the HTTP `Authorization` header
-
-> 📘 Download media files
->
-> For more information, check the [WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/#download-media) on downloading media files.
+      <Note>
+      For more information, check the [WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/#download-media) on downloading media files.
+      </Note>
+    </Step>
+</Steps>
 
 ## Get WhatsApp user info in Botpress
 
