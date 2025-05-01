@@ -1,0 +1,43 @@
+---
+title: Open/close your Webchat
+description: Manually open or close Webchat on your website.
+---
+
+You can manually open, close, or toggle the Webchat window using JavaScript methods.
+
+<Tip>
+    If you want to open/close your Webchat at a certain point in your Workflow, you can use the [built-in Webchat cards](/guides/studio/cards/webchat).
+</Tip>
+
+<Info>
+    You will need:
+
+    - A website with an [embedded bot](/webchat/quick-start)
+    - Basic familiarity with JavaScript
+</Info>
+
+## Open Webchat
+
+To manually open Webchat:
+
+```javascript
+window.botpress.open()
+```
+
+## Close Webchat
+
+To manually close Webchat:
+
+```javascript
+window.botpress.close()
+```
+
+## Toggle Webchat
+
+To manually toggle Webchat:
+
+```javascript
+window.botpress.toggle()
+```
+
+This **opens** Webchat if it's closed, or **closes** Webchat if it's open.

@@ -14,6 +14,11 @@
       "dark": "#111113"
     }
   },
+  "seo": {
+    "metatags": {
+      "og:logo": "/meta-assets/meta-logo.png"
+    }
+  },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
@@ -234,8 +239,9 @@
               {
                 "group": "WhatsApp",
                 "pages": [
-                  "integrations/integration-guides/whatsapp/introduction",
-                  "integrations/integration-guides/whatsapp/manual-configuration"
+                  "/integrations/integration-guides/whatsapp/introduction",
+                  "/integrations/integration-guides/whatsapp/whatsapp-mapping",
+                  "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
                 ]
               },
               "integrations/integration-guides/zapier",
@@ -248,36 +254,30 @@
         ]
       },
       {
-        "tab": "For Developers",
-        "pages": [
-          "for-developers/introduction",
-          {
-            "group": "Integrations",
-            "pages": [
-              "for-developers/sdk/integration/introduction",
-              "for-developers/sdk/integration/getting-started",
-              "for-developers/sdk/integration/concepts",
-              "for-developers/sdk/integration/publish-your-integration-on-botpress-hub"
-            ]
-          },
-          {
-            "group": "Interfaces",
-            "pages": [
-              "for-developers/sdk/interface/introduction",
-              "for-developers/sdk/interface/how-tos/add-and-implement",
-              "for-developers/sdk/interface/how-tos/implementing-hitl",
-              "for-developers/sdk/interface/how-tos/implementing-file-sync"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Webchat",
         "pages": [
           "webchat/introduction",
+          "webchat/quick-start",
+          "webchat/embedding-webchat",
+          "webchat/styling-your-webchat",
           {
-            "group": "Inject Script",
-            "pages": ["webchat/inject/get-started", "webchat/inject/styling-your-webchat"]
+            "group": "Interact with Webchat",
+            "pages": [
+              "webchat/interact/open-close-webchat",
+              "webchat/interact/send-user-data",
+              "webchat/interact/listen-to-events",
+              {
+                "group": "Send custom events",
+                "pages": [
+                  "webchat/interact/send-custom-events/from-webchat",
+                  "webchat/interact/send-custom-events/to-webchat"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
           },
           {
             "group": "React Library",
@@ -296,10 +296,31 @@
                 ]
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "For Developers",
+        "pages": [
+          "for-developers/introduction",
           {
             "group": "Integrations",
-            "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
+            "pages": [
+              "for-developers/sdk/integration/introduction",
+              "for-developers/sdk/integration/getting-started",
+              "for-developers/sdk/integration/messaging",
+              "for-developers/sdk/integration/concepts",
+              "for-developers/sdk/integration/publish-your-integration-on-botpress-hub"
+            ]
+          },
+          {
+            "group": "Interfaces",
+            "pages": [
+              "for-developers/sdk/interface/introduction",
+              "for-developers/sdk/interface/how-tos/add-and-implement",
+              "for-developers/sdk/interface/how-tos/implementing-hitl",
+              "for-developers/sdk/interface/how-tos/implementing-file-sync"
+            ]
           }
         ]
       },
