@@ -4,11 +4,18 @@ title: "Introduction"
 
 ## Overview
 
-The Botpress SDK provides a robust foundation for developing components within our conversational AI system. With strong TypeScript typing throughout, the SDK enables developers to build robust and maintainable solutions for the Botpress platform.
+The Botpress SDK provides a robust and light-weight foundation for developing components within Botpress.
 
 ## Key Components
 
 The SDK facilitates the development of four primary component types:
+
+1. [Integrations](#integrations)
+2. [Interfaces](#interfaces)
+3. [Bots](#bots)
+4. [Plugins](#plugins)
+
+These components work together to create a cohesive and extensible architecture.
 
 ### Integrations
 
@@ -73,20 +80,8 @@ Just like bots built in Studio, bots-as-code can:
 
 ### Plugins
 
-Plugins are reusable pieces of Bots. They can be used to share functionality across multiple bots. They can:
-
-- Define actions and events that bots can use
-- Subscribe to events from bots, integrations, and interfaces
-- Encapsulate specific features required across different bot implementations
-
-For example, the HITL plugin adds human-in-the-loop functionality to any bot making use of integrations that implement the HITL interface.
-
-<CardGroup Cols={2}>
-    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/plugin/introduction">
-        Learn more about plugins
-    </Card>
-</CardGroup>
+{/* TODO: fill this section with a small preview */}
 
 ## Recommendations
 
-The Botpress SDK leverages TypeScript's strong typing system. We recommend using [Visual Studio Code](https://code.visualstudio.com) for its comprehensive code completion and type checking capabilities.
+The Botpress SDK leverages TypeScript's strong typing system. We strongly recommend using an IDE that offers strong intellisense for Typescript such as [Visual Studio Code](https://code.visualstudio.com). When in doubt, the SDK typings should be used as a reference for the expected types and structures of various components.
