@@ -1,0 +1,36 @@
+---
+title: User Variables
+sidebarTitle: User
+---
+
+User variables let you store and reuse information within the scope of **a single user**.
+
+Any information you assign to a user variable will follow the user across multiple conversations with your bot. This makes user variables great for storing user-specific information, like:
+
+- Personal details
+- User preferences
+- Notes from previous conversations
+
+<Note>
+    If you don't want your variable to follow the user between conversations, use a different [variable scope](/guides/studio/interface/variables/variables#variable-scopes).
+</Note>
+
+<Tip>
+    Need help understanding variables? Check out our [introduction to variables](/guides/studio/interface/variables/variables).
+</Tip>
+
+## Create a user variable
+​
+To create a user variable:
+
+1. Open any Workflow.
+2. Select **+** in the **Variables** section at the bottom of the left navigation bar.
+3. Choose a **Type** and **Name** for your variable:
+
+![User variable](/guides/studio/interface/variables/user-variable.png)
+
+## Read your variable
+
+Once you've created your variable, you can use `{{user.variablename}}` or `@user.variablename` to read it. For example, in a **Text** Card:
+
+![User variable in a text card](/guides/studio/interface/variables/user-variable-example.png)
