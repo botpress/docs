@@ -117,7 +117,7 @@ Let's add some content to the bot. Open the `src/index.ts` file and add the foll
 bot.on.message("*", async (props) => {
   const {
     conversation: { id: conversationId },
-    user: { id: userId },
+    ctx: { botId: userId },
   } = props;
 
   if (props.message.type !== "text") {
@@ -147,7 +147,7 @@ bot.on.message("*", async (props) => {
 
 This bot will respond to any message sent to it. It will echo back the text message sent by the user. If the user sends a non-text message, like an image, the bot will respond with a message saying it can only respond to text messages.
 
-## 7. Deploy the Bot
+## 8. Deploy the Bot
 
 Once you've made the necessary changes to your bot, you can deploy it to Botpress Cloud. Run the following command:
 
@@ -159,7 +159,7 @@ You'll be prompted for some information and confirmations. The `--create-new-bot
 
 After deploying, go to [the Dashboard](https://app.botpress.cloud). You should see your bot listed there.
 
-## 8. Chat with your bot
+## 9. Chat with your bot
 
 Now you can chat with your bot using the CLI. Run the following command:
 
