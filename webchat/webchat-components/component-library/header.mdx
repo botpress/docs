@@ -21,7 +21,7 @@ The `Header` can be collapsed or expanded:
 </Note>
 
 ```jsx [expandable]
-import { Header, useWebchatClient } from '@botpress/webchat'
+import { Header, useWebchat } from '@botpress/webchat'
 
 // Every attributes that the header component can take
 const headerConfig = {
@@ -58,7 +58,7 @@ const headerConfig = {
 function App() {
   const [isWebchatOpen, setIsWebchatOpen] = useState(false)
 
-  const { newConversation } = useWebchatClient({
+  const { newConversation } = useWebchat({
     clientId: '$CLIENT_ID$', // Insert your client id here
   })
 

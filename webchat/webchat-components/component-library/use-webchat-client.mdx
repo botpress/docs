@@ -1,22 +1,22 @@
 ---
-title: useWebchatClient
+title: useWebchat
 ---
 
-The `useWebchatClient` hook provides access to the Botpress Webchat integration instance and related state. It allows you to:
+The `useWebchat` hook provides access to the Botpress Webchat integration instance and related state. It allows you to:
 - Interact with the bot
 - Listen to real-time events
 - Manage conversation lifecycle, user info, and messages
 
-`useWebchatClient` is the primary entry point for integrating the Webchat experience into custom UIs or applications.
+`useWebchat` is the primary entry point for integrating the Webchat experience into custom UIs or applications.
 
 ## Usage
 
 ```tsx App.tsx
-import { useWebchatClient } from '@botpress/webchat'
+import { useWebchat } from '@botpress/webchat'
 
 function App() {
   const { client, clientState, on, user, conversationId, newConversation, messages, isFetchingMessages, isTyping } =
-    useWebchatClient({
+    useWebchat({
       clientId: '$CLIENT_ID$', // Insert your Client ID here
     })
 }
