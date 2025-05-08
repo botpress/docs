@@ -1,6 +1,5 @@
 ---
-title: Workflow Variables
-sidebarTitle: Workflow
+title: Workflow variables
 ---
 
 Workflow variables let you store and reuse information within the scope of **a single [Workflow](/guides/studio/interface/studio-interface-flows)**. They're great for:
@@ -32,23 +31,3 @@ To create a Workflow variable:
 Once you've created your variable, you can use `{{workflow.variablename}}` or `@workflow.variablename` to read it. For example, in a **Text** Card:
 
 ![Workflow variable in a text card](/guides/studio/interface/variables/workflow-variable-example.png)
-
-## Pass variables between Workflows
-
-You can use Workflow variables to assign inputs and outputs to Workflows. This can be useful if you need to pass information from one Workflow to another. For example:
-
-- To x
-- To x
-- To x
-
-### To mark an Input Variable
-
-1. Go into your new Workflow(not Main) and create a Variable and Click it's **Entry** node.
-2. In the inspector panel, click on the Variable you want to make an input. It should get a blue border and appear in the **Entry** node.
-3. When you call this Workflow from another flow, there should be an input box for that Variable in the Workflow's card. This will let you pass information or another Variable into that Workflow.
-
-### To mark an Output Variable
-
-1. Go into your new Workflow(not Main) and create a Variable and click on the **Exit** node.
-2. In the inspector panel, click on the Variable you want to make an output. It should get a blue border and appear in the **Exit** node.
-3. When you call this Workflow from another flow, the output Variable will be accessible by typing `{{Workflow.<Workflow-cardName>.<variablename>}}`, replacing `<Workflow-cardName>` and `<variablename>` with the name of the card that represents your Workflow and Variable respectively.
