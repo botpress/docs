@@ -80,7 +80,26 @@ Just like bots built in Studio, bots-as-code can:
 
 ### Plugins
 
-{/* TODO: fill this section with a small preview */}
+Plugins are reusable pieces of bots; modular, reusable components that extend bot functionality. Like bots, they can listen to events and messages, define hook functions for different stages of the bot lifecycle, send messages, and more. The key difference is that plugins are designed to be shared and reused across multiple bots.
+
+Currently, only the Botpress team can create plugins, similar to how interfaces are managed. While community-created plugins aren't supported yet, this may change in future releases. In the meantime, users can install official Botpress plugins directly from Studio—for example, the **HITL Plugin**, which enables your bot to work with integrations that implement the `hitl` interface.
+
+## The HITL System
+
+In Botpress, **HITL** (Human-in-the-Loop) may refer to an integration, an interface, or a plugin. The HITL system as a whole is a combination of these components working together to provide a human-in-the-loop experience.
+
+The **HITL interface** defines the events and actions that an integration must implement to support human agent intervention. This interface is used by both the HITL plugin and the HITL integration.
+
+The **HITL integration** is similar to integrations like Zendesk or Freshchat. It connects your bot to an external customer support service and implements the `hitl` interface by providing the required events and actions.
+
+The **HITL plugin** contains the logic for human-in-the-loop functionality. It forwards messages to a human agent and allows the agent to respond. The plugin depends on the HITL interface, meaning it can work with any integration that implements it, including the HITL integration.
+
+<CardGroup Cols={2}>
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/interface/how-tos/implementing-hitl">
+        Learn how to implement the hitl interface in your integration
+    </Card>
+</CardGroup>
+
 
 ## Recommendations
 
