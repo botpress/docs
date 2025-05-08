@@ -12,10 +12,10 @@ It is a crucial part of the Webchat UI, providing a text area for input, optiona
 </Note>
 
 ```tsx
-import { Composer, useWebchatClient } from '@botpress/webchat'
+import { Composer, useWebchat } from '@botpress/webchat'
 
 function App() {
-  const { client, clientState } = useWebchatClient({ clientId: '$CLIENT_ID$' }) // Insert your Client ID here
+  const { client, clientState } = useWebchat({ clientId: '$CLIENT_ID$' }) // Insert your Client ID here
 
   return (
     <Composer

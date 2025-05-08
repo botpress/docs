@@ -25,12 +25,12 @@ It also provides a shared context for nested components like `MessageList` and `
 </Note>
 
 ```tsx
-import { Container, useWebchatClient } from '@botpress/webchat'
+import { Container, useWebchat } from '@botpress/webchat'
 
 function App() {
   const [isWebchatOpen, setIsWebchatOpen] = useState(false)
 
-  const { clientState } = useWebchatClient({
+  const { clientState } = useWebchat({
     clientId: '$CLIENT_ID$', // Insert your Client ID here
   })
 

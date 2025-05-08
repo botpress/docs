@@ -18,9 +18,9 @@ It displays a typing indicator while waiting for the bot to answer.
 </Note>
 
 ```tsx App.tsx [expandable]
-import { MessageList, useWebchatClient, Configuration } from '@botpress/webchat'
+import { MessageList, useWebchat, Configuration } from '@botpress/webchat'
 
-const { client, messages, isTyping, user } = useWebchatClient({
+const { client, messages, isTyping, user } = useWebchat({
   clientId: '$CLIENT_ID$', // Insert your Client ID here
 })
 
