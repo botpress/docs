@@ -1,14 +1,21 @@
 ---
-title: "Introduction"
+title: "SDK Overview"
 ---
 
 ## Overview
 
-The Botpress SDK provides a robust foundation for developing components within our conversational AI system. With strong TypeScript typing throughout, the SDK enables developers to build robust and maintainable solutions for the Botpress platform.
+The Botpress SDK provides a robust and lightweight foundation for developing components within Botpress.
 
 ## Key Components
 
 The SDK facilitates the development of four primary component types:
+
+1. [Integrations](#integrations)
+2. [Interfaces](#interfaces)
+3. [Bots](#bots)
+4. [Plugins](#plugins)
+
+These components work together to create a cohesive and extensible architecture.
 
 ### Integrations
 
@@ -73,20 +80,27 @@ Just like bots built in Studio, bots-as-code can:
 
 ### Plugins
 
-Plugins are reusable pieces of Bots. They can be used to share functionality across multiple bots. They can:
+Plugins are reusable pieces of bots; modular, reusable components that extend bot functionality. Like bots, they can listen to events and messages, define hook functions for different stages of the bot lifecycle, send messages, and more. The key difference is that plugins are designed to be shared and reused across multiple bots.
 
-- Define actions and events that bots can use
-- Subscribe to events from bots, integrations, and interfaces
-- Encapsulate specific features required across different bot implementations
+Currently, only the Botpress team can create plugins, similar to how interfaces are managed. While community-created plugins aren't supported yet, this may change in future releases. In the meantime, users can install official Botpress plugins directly from Studio—for example, the **HITL Plugin**, which enables your bot to work with integrations that implement the `hitl` interface.
 
-For example, the HITL plugin adds human-in-the-loop functionality to any bot making use of integrations that implement the HITL interface.
+## The HITL System
+
+In Botpress, **HITL** (Human-in-the-Loop) may refer to an integration, an interface, or a plugin. The HITL system as a whole is a combination of these components working together to provide a human-in-the-loop experience.
+
+The **HITL interface** defines the events and actions that an integration must implement to support human agent intervention. This interface is used by both the HITL plugin and the HITL integration.
+
+The **HITL integration** is similar to integrations like Zendesk or Freshchat. It connects your bot to an external customer support service and implements the `hitl` interface by providing the required events and actions.
+
+The **HITL plugin** contains the logic for human-in-the-loop functionality. It forwards messages to a human agent and allows the agent to respond. The plugin depends on the HITL interface, meaning it can work with any integration that implements it, including the HITL integration.
 
 <CardGroup Cols={2}>
-    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/plugin/introduction">
-        Learn more about plugins
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/interface/how-tos/implementing-hitl">
+        Learn how to implement the HITL interface in your integration
     </Card>
 </CardGroup>
 
+
 ## Recommendations
 
-The Botpress SDK leverages TypeScript's strong typing system. We recommend using [Visual Studio Code](https://code.visualstudio.com) for its comprehensive code completion and type checking capabilities.
+The Botpress SDK leverages TypeScript's strong typing system. We strongly recommend using an IDE that offers strong IntelliSense for Typescript such as [Visual Studio Code](https://code.visualstudio.com). When in doubt, the SDK typings should be used as a reference for the expected types and structures of various components.
