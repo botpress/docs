@@ -1,65 +1,81 @@
 ---
 title: Zendesk
+description: Integrate your bot with Zendesk using the official integration.
 ---
 
-import { Img } from '/snippets/image.mdx'
-import { Youtube } from '/snippets/youtube.mdx'
+The official Zendesk integration allows you to create and manage support tickets directly from your bot. You can also assign a Zendesk agent to communicate directly with the user, all within the same conversation initially handled by the bot.
 
-<img src="./zendesk.png" />
+<Tip>
+Your Zendesk agent can continue the conversation on any messaging channel supported by Botpress. For example:
 
-Turn Botpress chats into Zendesk tickets, with a handy link added to the conversation notes. A Zendesk agent can communicate directly with the user on the same conversation initially handled by the bot on any channels supported by Botpress (e.g. web chat, Whatsapp, Messenger, etc.)
+- [Webchat](/webchat/)
+- [WhatsApp](/integrations/integration-guides/whatsapp/)
+- [Messenger](/integrations/integration-guides/messenger)
+</Tip>
 
-# Getting Started
+## Setup
 
-In this guide, we will demonstrate how to set up the Zendesk integration to facilitate live interactions through the bot.
+<Info>
+  You will need:
 
-<Youtube url="https://www.youtube.com/embed/KR87xwsh33Y?si=7aGzKNvWiyF0D3pb" />
+  - A [published bot](/guides/quick-start)
+  - A [Zendesk account](https://www.zendesk.com/lp/brand/?utm_source=google&utm_medium=Search-Paid&utm_network=g&utm_campaign=SE_AW_AM_CA_EN_N_Sup_Brand_TM_Alpha_D_H&matchtype=e&utm_term=zendesk&utm_content=598844228779&theme=&gad_source=1&gad_campaignid=7993749347&gbraid=0AAAAADn4z6gHcJduDz_4dLVEw2Vc9I-lF&gclid=Cj0KCQjwrPHABhCIARIsAFW2XBOh1fGjHUcrDUDTaKTms6Qyrpi6Vo80Jj9_StfCFnEjiR_REi9zoZEaAjFjEALw_wcB)
+</Info>
 
-## Step 1: Add Zendesk Integration
+<Steps titleSize="h3">
+  <Step title="Add the Zendesk Integration">
+    First, install the official Zendesk integration. Use the search bar to find and select the Zendesk Integration. Once found, install this onto your bot.
+  </Step>
+  <Step title="Setup the Zendesk Integration">
+    Switch to the Zendesk admin center, and find the Zendesk API menu. Ensure you have both password and token access enabled.
 
-Firstly, locate your bot's dashboard and click on the integrations tab. Use the search bar to find and select the Zendesk Integration. Once found, install this onto your bot.
+    You will then need to create a distinct API token. Copy this for later use.
 
-## Step 2: Setting up Zendesk Integration
+    Return to your bot's dashboard. Here you will need to input your organizational subdomain, your consistent Zendesk account email, and the copied API token. Ensure to save this configuration and activate the newly installed integration.
+  </Step>
+  <Step title="Install the HITL plugin">
+    Next, install the official HITL plugin. This will allow you to start HITL from any point in your Workflow.
 
-Switch to the Zendesk admin center, and find the Zendesk API menu. Ensure you have both password and token access enabled.
+    1. Navigate back to Botpress Hub and search for the HITL plugin.
+    2. Select it, then select **Install Plugin**:
 
-You will then need to create a distinct API token. Copy this for later use.
+    ![Install HITL plugin](./install-hitl-plugin.png)
 
-Return to your bot's dashboard. Here you will need to input your organizational subdomain, your consistent Zendesk account email, and the copied API token. Ensure to save this configuration and activate the newly installed integration.
+    3. In the **Configuration** menu, open the dropdown under **HITL integration**.
+    4. Select **Zendesk**.
+    5. Scroll down and select **Save**.
 
-## Step 3: User Info Accumulation
+    <Tip>
+      The **Configuration** section contains many optional fields. You can use these to customize your HITL experience.
+    </Tip>
+  </Step>
+  <Step title="Add the Start HITL Card">
+    Now, you can bring a live agent into the conversation anywhere in your Workflow:
 
-The bot will need the user's name and their email. This data will be saved to user variables.
+    1. Open a Workflow in Studio and create (or select) a Node.
+    2. Add the **Start HITL** Card:
 
-Create a 'user.name' and a 'user.email' variable on the bottom-left variables panel. Make sure to select "User" as the scope. Confirmation of the information will be done using simple capture cards.
+    ![Start HITL](./start-hitl.png)
 
-## Step 4: Enabling HITL Agent
+    3. Fill in the required fields:
 
-From the "Agents" menu of the bot in Botpress Studio, click on the "HITL Agent" option, and then turn on the "Enable Agent" option.
+    | Fields              | Description |
+    | :----------------- | :---------- |
+    | **Ticket Title**    | The name of the ticket created for the live agent. |
+    | **User ID**         | The user ID associated with the ticket. Enter the `{{event.userId}}` variable to use the current user's ID. |
+    | **Conversation ID** | The conversation ID associated with the ticket. Enter the `{{event.conversationId}}` variable to use the current conversation's ID. |
+  </Step>
+</Steps>
 
-This menu will allow you to configure options such as choosing Zendesk as the desired integration. Also, you have the capability to design an 'end\_conversation' intent that permits the user to opt out of speaking to a live agent. To do so, pick a global intent from the dropdown, for instance "Cancel".
+<Check>
+  Done! You can now create and manage support tickets directly from your bot.
+</Check>
 
-Most settings are default, you may choose to modify them to your preference.
+## Cards
 
-## Step 5: Activating HITL
+You can use the following Cards to interact with Zendesk in your Workflow:
 
-Add a new node to your bot in Botpress Studio and then insert a "Start HITL" card, which will trigger the bot into initiating a live agent.
-
-The card will automatically summarize the conversation and provide a transcript for the live agent in the Zendesk menu.
-
-## Step 6: Test the Configuration
-
-Now that everything has been configured accordingly, publish your bot and open the Web Chat.
-
-<Note>
-Note
-
-This integration does not work in the emulator. Try it in other channels such as Web Chat.
-</Note>
-
-# Cards
-
-## Get Ticket
+### Get Ticket
 
 Retrieves details about a specific support ticket in Zendesk.
 
@@ -85,7 +101,7 @@ Retrieves details about a specific support ticket in Zendesk.
 }
 ```
 
-## Create Ticket
+### Create Ticket
 
 Creates a new support ticket in Zendesk.
 
@@ -115,7 +131,7 @@ Creates a new support ticket in Zendesk.
 
 ```
 
-## Close Ticket
+### Close Ticket
 
 Closes the ticket of the provided Ticket ID in Zendesk.
 
@@ -143,7 +159,7 @@ Closes the ticket of the provided Ticket ID in Zendesk.
 
 ```
 
-## Get Ticket Conversation
+### Get Ticket Conversation
 
 Fetches the conversation ID of the provided Ticket ID in Zendesk.
 
@@ -160,7 +176,7 @@ Fetches the conversation ID of the provided Ticket ID in Zendesk.
 
 ```
 
-## Find Customer (WIP)
+### Find Customer
 
 Finds a customer in Zendesk based on the provided search query.
 
@@ -185,7 +201,7 @@ Finds a customer in Zendesk based on the provided search query.
 
 ```
 
-## List Agents (WIP)
+### List Agents
 
 Provides a list of available support agents in Zendesk.
 
@@ -210,25 +226,14 @@ Provides a list of available support agents in Zendesk.
 
 ```
 
-## Set Conversation Requester (WIP)
+## Triggers
 
-Changes the requester of a ticket conversation in Zendesk.
+The Zendesk integration comes with a few built-in triggers:
 
-* **Inputs**:
-  * `Conversation ID`: Get this from the `Get Ticket Conversation` card.
-  * `Requester ID`: Get this from the requester's profile URL in Zendesk (e.g., `https://companyname.zendesk.com/agent/users/1` for `Requester ID` `1`).
-* **Returns**: None. Does not return anything.
+### HITL Assigned
 
-## Trigger - Assigned Ticket
+The **HITL Assigned** trigger fires when a ticket is assigned to an agent. You can use it to notify the agent that they have a new ticket to work on.
 
-This trigger is fired when a ticket is assigned to an agent. This can be used to notify the agent that they have a new ticket to work on.
+### HITL Stopped
 
-## Trigger - Ticket Solved
-
-This trigger is fired when a ticket is marked as solved. This can be used to notify the user that their issue has been resolved.
-
-<Note>
-Note
-
-You can add a message after these triggers to send a notification to the agent. For example, you can use the `Send Message`card to send a message to the agent.
-</Note>
+The **HITL Stopped** trigger fires when a ticket is marked as solved. You can use it to notify the user that their issue has been resolved.
