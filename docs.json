@@ -132,12 +132,20 @@
                   {
                     "group": "Variables",
                     "pages": [
-                      "/guides/studio/interface/variables/variables",
-                      "/guides/studio/interface/variables/workflow",
-                      "/guides/studio/interface/variables/user",
-                      "/guides/studio/interface/variables/conversation",
-                      "/guides/studio/interface/variables/bot",
-                      "/guides/studio/interface/variables/configuration"
+                      "/guides/studio/interface/variables/overview",
+                      {
+                        "group": "Scopes",
+                        "pages": [
+                          "/guides/studio/interface/variables/scopes/workflow",
+                          "/guides/studio/interface/variables/scopes/user",
+                          "/guides/studio/interface/variables/scopes/conversation",
+                          "/guides/studio/interface/variables/scopes/bot",
+                          "/guides/studio/interface/variables/scopes/configuration"
+                        ]
+                      },
+                      "/guides/studio/interface/variables/built-in",
+                      "/guides/studio/interface/variables/pass-between-workflows",
+                      "/guides/studio/interface/variables/in-code"
                     ]
                   },
                   "/guides/studio/interface/card-tray",
