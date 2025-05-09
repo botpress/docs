@@ -5,13 +5,13 @@ sidebarTitle: Concepts
 
 This guide is a breakdown of the concepts introduced in the [Get Started](./getting-started) and [Messaging](./messaging) guides. The goal is to provide a deeper understanding of the concepts and components that make up integrations in Botpress.
 
-<Note>Most concepts listed below can define data schemas. For this the SDK uses [Zod](https://zod.dev), a TypeScript-first schema validation library. These schemas allow for better intellisense for integration developpers, auto-generated forms for bot developpers in the Studio and validation of data at runtime</Note>
+<Note>Most concepts listed below can define data schemas. For this the SDK uses [Zod](https://zod.dev), a TypeScript-first schema validation library. These schemas allow for better intellisense for integration developers, auto-generated forms for bot developers in the Studio and validation of data at runtime</Note>
 
 ## Configuration
 
-Integrations can define a configuration schema. This dictates the structure of data that bot developpers must provide when installing the integration. This schema is used to display the form you bot developpers see when installing the integration in the Studio.
+Integrations can define a configuration schema. This dictates the structure of data that bot developers must provide when installing the integration. This schema is used to display the form you bot developers see when installing the integration in the Studio.
 
-Integration can also provide multiple configuration schemas to support different use cases or environments. This allows bot developpers to select the appropriate configuration method based on their needs.
+Integration can also provide multiple configuration schemas to support different use cases or environments. This allows bot developers to select the appropriate configuration method based on their needs.
 
 ## Events
 
@@ -48,19 +48,19 @@ Integrations can define states which are data structures attached to either a co
 
 ## Tags
 
-Integrations can define tags that allow bot developers to add metadata to conversations, individual messages, or users. Only tags defined in the integration definition can be used at runtime. 
+Integrations can define tags that allow bot developers to add metadata to conversations, individual messages, or users. Only tags defined in the integration definition can be used at runtime.
 
 Just like states, tags can be used as a form of memory, enabling the integration to store and retrieve information. However, tags have key differences from states:
 
-- Tags values must be strings of less than 500 characters. This is to ensure that tags are lightweight and easy to manage. 
+- Tags values must be strings of less than 500 characters. This is to ensure that tags are lightweight and easy to manage.
 - Tags can be used as filters for many list and get-or-create operations like `listMessages` and `getOrCreateUser`.
 - Tags are returned in the Botpress API with the entities they are attached to. If you get a message, user or conversation, you will also get the tags attached to it without having to do a separate API call.
 
 ## Secrets
 
-Integrations can define secrets, such as API keys, tokens, or other sensitive values. While they are most often used for authentication with external services, they can represent any sensitive information required by the integration. 
+Integrations can define secrets, such as API keys, tokens, or other sensitive values. While they are most often used for authentication with external services, they can represent any sensitive information required by the integration.
 
-Secrets are defined in the integration definition. When deploying the CLI prompts for secrets and prevents deployment if a required secret is omitted. The ecret values are then available at runtime for the integration developper to use.
+Secrets are defined in the integration definition. When deploying the CLI prompts for secrets and prevents deployment if a required secret is omitted. The secret values are then available at runtime for the integration developer to use.
 
 Secrets are global to the integration and are not scoped to individual bots.
 

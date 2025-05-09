@@ -120,24 +120,15 @@ The output value of this action will be an object with the following structure:
 }
 ```
 
-## Create the conversation using the Botpress Client
+## Create the conversation from code
 
-<Note>
-  This section is for advanced users who build their bot from code instead of in the Studio.
-</Note>
-
-If you're building a bot-as-code, you can use the Botpress Client instance provided to your bot's handlers to call this action programmatically. For example:
+You can also call `actions.whatsapp.startConversation` in an [Execute Code](/guides/studio/cards/execute) Card to start a conversation:
 
 ```ts
-const result = await client.callAction({
-  type: 'whatsapp:startConversation',
-  input: {
-    userPhone: '+1 123 456 7890',
-    templateName: 'test_message',
-    templateLanguage: 'en_US',
-    templateVariablesJson: JSON.stringify(['John', '12345']),
-  },
+actions.whatsapp.startConversation({
+  userPhone: '+1 123 456 7890',
+  templateName: 'test_message',
+  templateLanguage: 'en',
+  templateVariablesJson: JSON.stringify(['First value', 'Second value'])
 })
-
-console.log('Botpress conversation ID: ' + result.conversationId)
 ```
