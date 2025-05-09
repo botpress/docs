@@ -121,3 +121,23 @@ If you want to customize your bot's appearance further, you can modify the built
 </Accordion>
 
 Just add your styles to the **Styles** field.
+
+### Positioning the Webchat on the Left
+
+By default, the Webchat FAB (Floating Action Button) and the chat window appear on the right side of the screen. You can move them to the left by overriding the default CSS.
+
+Add the following CSS to your website's stylesheet:
+
+```css
+.bpFab {
+  left: 20px !important;
+  right: auto !important;
+}
+
+.bpWebchat {
+  left: 20px !important;
+  right: auto !important;
+}
+```
+
+This will position both the FAB icon and the main webchat window 20px from the left edge of the viewport. You can adjust the `20px` value as needed.
