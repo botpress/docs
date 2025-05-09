@@ -129,7 +129,25 @@
                   "/guides/studio/interface/versions",
                   "/guides/studio/interface/chatbot-settings",
                   "/guides/studio/interface/find",
-                  "/guides/studio/interface/variables",
+                  {
+                    "group": "Variables",
+                    "pages": [
+                      "/guides/studio/interface/variables/overview",
+                      {
+                        "group": "Scopes",
+                        "pages": [
+                          "/guides/studio/interface/variables/scopes/workflow",
+                          "/guides/studio/interface/variables/scopes/user",
+                          "/guides/studio/interface/variables/scopes/conversation",
+                          "/guides/studio/interface/variables/scopes/bot",
+                          "/guides/studio/interface/variables/scopes/configuration"
+                        ]
+                      },
+                      "/guides/studio/interface/variables/built-in",
+                      "/guides/studio/interface/variables/pass-between-workflows",
+                      "/guides/studio/interface/variables/in-code"
+                    ]
+                  },
                   "/guides/studio/interface/card-tray",
                   "/guides/studio/interface/debugger-logs-json",
                   "/guides/studio/interface/emulator",
