@@ -126,9 +126,11 @@ You can also call `actions.whatsapp.startConversation` in an [Execute Code](/gui
 
 ```ts
 actions.whatsapp.startConversation({
-  userPhone: '+1 123 456 7890',
-  templateName: 'test_message',
-  templateLanguage: 'en',
-  templateVariablesJson: JSON.stringify(['First value', 'Second value'])
+  conversation: {
+    userPhone: '+1 123 456 7890',
+    templateName: 'test_message',
+    templateLanguage: 'en',
+    templateVariablesJson: JSON.stringify(['First value', 'Second value'])
+  }
 })
 ```
