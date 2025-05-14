@@ -26,8 +26,8 @@ To listen any of the events on this page, just copy and paste the code snippet i
 This event fires when Webchat is initialized and ready:
 
 ``` javascript index.js {3}
-window.botpress.on('webchat:ready', (conversationId) => {
-	console.log('Webchat is ready: ', conversationId);
+window.botpress.on('webchat:ready', () => {
+	console.log('Webchat is ready.');
     // Insert your code here
 });
 ```
@@ -37,8 +37,8 @@ window.botpress.on('webchat:ready', (conversationId) => {
 This event fires when the Webchat window is opened:
 
 ``` javascript index.js {3}
-window.botpress.on('webchat:opened', (conversationId) => {
-    console.log('Webchat was opened: ', conversationId);
+window.botpress.on('webchat:opened', () => {
+    console.log('Webchat was opened.');
     // Insert your code here
 });
 ```
@@ -48,8 +48,8 @@ window.botpress.on('webchat:opened', (conversationId) => {
 This event fires when the Webchat window is closed:
 
 ``` javascript index.js {3}
-window.botpress.on('webchat:closed', (conversationId) => {
-    console.log('Webchat was closed: ', conversationId);
+window.botpress.on('webchat:closed', () => {
+    console.log('Webchat was closed.');
     // Insert your code here
 });
 ```
@@ -65,24 +65,13 @@ window.botpress.on('conversation', (conversationId) => {
 });
 ```
 
-## Bot sends message
+## Message is sent
 
-This event fires when the bot sends a message to the user:
+This event fires when either the user or the bot sends a message:
 
 ``` javascript index.js {3}
 window.botpress.on('message', (message) => {
 	console.log('Message received: ', message);
-    // Insert your code here
-});
-```
-
-## User sends message
-
-This event fires when the user sends a message to the bot:
-
-``` javascript index.js {3}
-window.botpress.on('messageSent', (message) => {
-	console.log('Sent message: ', message);
     // Insert your code here
 });
 ```
