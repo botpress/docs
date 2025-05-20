@@ -4,6 +4,25 @@ description: "The latest updates and improvements to Botpress."
 mode: "wide"
 ---
 
+<Update label="May 16, 2025">
+    ## Features & Enhancements
+
+    - Fixed links to documentation in Botpress Studio
+    - Added option to filter logs by message content
+    - Added notifications menu in Dashboard:
+
+    <Frame>
+    ![Dashboard notifications](/changelog-assets/2025-05-16/dashboard-notifications.png)
+    </Frame>
+
+    ## Bug fixes
+
+    - Fixed issue where Studio wouldn’t load under certain conditions
+    - Fixed issue where you couldn’t reset FAB/avatar images to default
+    - Fixed an issue where the [Conversation Started](/guides/studio/interface/triggers#conversation-started) Trigger didn’t work within the shareable Webchat window
+    - Improved rendering of Markdown in Webchat
+</Update>
+
 <Update label="May 9, 2025">
     ## Features & Enhancements
 
@@ -27,14 +46,17 @@ mode: "wide"
 
     - The Slack integration now has a configuration option to **reply as a thread**:
 
+    <Frame>
     ![Slack reply threading option](/changelog-assets/2025-05-02/proactive-slack-threads.png)
+    </Frame>
 
     - **HITL improvements**:
         - The Webchat composer for the HITL integration now supports **uploading files**
         - The HITL inbox now displays when the **last message** in each conversation was sent:
 
+        <Frame>
         ![HITL display last message date](/changelog-assets/2025-05-02/display-last-message-date.png)
-
+        </Frame>
     ## Bug fixes
 
     - Fixed an issue where variables with circular dependencies would cause bots to crash
