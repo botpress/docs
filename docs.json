@@ -27,23 +27,21 @@
         "pages": ["home"]
       },
       {
-        "tab": "Guides",
+        "tab": "Learn",
         "pages": [
-          "guides/introduction",
-          "guides/quick-start",
+          "learn/introduction",
+          "learn/quick-start",
           {
-            "group": "Learn",
+            "group": "Guides",
             "pages": [
-              "/guides/learn/learn-by-doing",
-              {
-                "group": "How to connect a bot to messaging platforms",
-                "pages": [
-                  "/guides/learn/how-to-connect-a-bot-to-messaging-platforms/introduction",
-                  "/guides/learn/how-to-connect-a-bot-to-messaging-platforms/telegram"
-                ]
-              }
+              "learn/guides/translate"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "pages": [
           {
             "group": "Dashboard",
             "pages": [
@@ -320,7 +318,7 @@
         ]
       },
       {
-        "tab": "For Developers",
+        "tab": "SDK",
         "pages": [
           "for-developers/introduction",
           "for-developers/sdk/introduction",
@@ -351,7 +349,7 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "API Docs",
         "pages": [
           "api-reference/introduction",
           "api-reference/authentication",
