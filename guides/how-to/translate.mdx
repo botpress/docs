@@ -1,0 +1,138 @@
+---
+title: Translate your bot's Webchat UI
+---
+
+import { Prereqs } from '/snippets/prereqs.mdx'
+
+If your bot is having conversations in a language other than English, you can translate its [Webchat](/webchat/) UI to match. This includes the bot's greeting, buttons, and any other text that appears in the Webchat window.
+
+<Info>
+    You will need:
+
+    - A [published bot](/guides/quick-start)
+    - Knowledge of CSS
+    
+    For the purposes of this guide, we'll translate the bot's Webchat UI to French. However, you can use the same steps to translate your bot into any language.
+</Info>
+
+<Tip>
+    Visual learner? Check out our [YouTube guide](https://www.youtube.com/watch?v=afZCpkWHZsI) on translating your bot.
+</Tip>
+
+## Step 1: Translate elements from Dashboard
+
+You can translate some elements of the Webchat UI directly from your bot's Webchat settings in the [Dashboard](/guides/dashboard):
+
+### Name and description
+
+To translate the name and description of your bot, modify the **Bot Name** and **Description** fields:
+
+<Frame>
+![Translate name and description](./name-and-description.png)
+</Frame>
+
+### Composer placeholder
+
+To translate the placeholder text in the Composer, modify the **Composer placeholder** field:
+
+<Frame>
+![Translate composer placeholder](./translate-composer.png)
+</Frame>
+
+## Step 2: Translate elements with CSS
+
+Other elements of the Webchat UI need to be translated using CSS. To modify Webchat's built-in CSS classes:
+
+1. Open your bot's Webchat settings in the [Dashboard](/guides/dashboard).
+2. Select the **Theme** tab, then scroll to the **Styles** section.
+3. Copy and paste the CSS snippets below into the **Styles** section, then modify the highlighted lines as needed.
+
+<Tip>
+    For a full list of Webchat CSS classes, check out our [guide on styling Webchat](/webchat/styling-your-webchat#use-custom-styles).
+</Tip>
+
+
+### New conversation modal
+
+You can translate the modal that appears when a user restarts a conversation:
+
+<Frame>
+![New conversation modal](./new-convo-modal.png)    
+</Frame>
+
+Just copy and paste the following CSS to the **Styles** section of your bot's Webchat settings, then modify the highlighted lines as needed:
+
+```css [expandable] {11, 24-25, 39}
+/* Change the modal's title */
+.bpModalDialogTitleText {
+    visibility: hidden;
+    position: relative;
+}
+.bpModalDialogTitleText:after {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "Nouveau"; /* Replace this with your own translation*/
+}
+
+/* Change "Start a new conversation?" */
+.bpModalDialogNewConversationText {
+    visibility: hidden;
+    position: relative;
+}
+.bpModalDialogNewConversationText:after {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "Êtes-vous sûr de vouloir démarrer une nouvelle conversation?";
+    /* Replace this with your own translation*/
+}
+
+/* Change the button text */
+.bpModalDialogNewConversationButton {
+    color: transparent;
+    position: relative;
+}
+.bpModalDialogNewConversationButton:after {
+    visibility: visible;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "Oui"; /* Replace this with your own translation*/
+    color: initial;
+    white-space: nowrap;
+}
+```
+
+### "Today" label
+
+You can translate the "Today" label that appears in a Webchat conversation:
+
+<Frame>
+![Today label](./today-label.png)
+</Frame>
+
+Just copy and paste the following CSS to the **Styles** section of your bot's Webchat settings, then modify the highlighted lines as needed:
+
+```css [expandable] {8}
+/* Change the "Today" label text */
+div.bpMessageContainer[data-direction="system"] > p.bpMessageBlocksTextText {
+  visibility: hidden !important;
+  position: relative !important;
+}
+
+div.bpMessageContainer[data-direction="system"] > p.bpMessageBlocksTextText::before {
+  content: "Aujourd'hui" !important; /* Replace this with your own translation*/
+  visibility: visible !important;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  white-space
+```
+
+<Check>
+    Your bot's Webchat UI is now translated!
+</Check>
