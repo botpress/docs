@@ -14,6 +14,10 @@ Triggers are useful if you want your bot to:
 - [Do something at a specific date/time](#fixed-schedule)
 - [Respond to changes on your website](#custom-trigger)
 
+<Warning>
+    Triggers won't work in the Studio's emulator, even when the event they're expecting occurs. Instead, you can [test them](#test-a-trigger) before publishing.
+</Warning>
+
 ## Triggers vs. Nodes
 
 Triggers are different from regular Nodes in a few ways:
@@ -28,6 +32,25 @@ To add a Trigger, just right-click anywhere in a Workflow:
 <Frame>
 ![Add a Trigger](/guides/studio/interface/add-trigger.png)
 </Frame>
+
+## Test a Trigger
+
+Triggers won't work in the Studio's emulator, even when the event they're expecting occurs. Instead, you can use a previously sent event to test your Trigger.
+
+For example, to test the [Conversation Started](#conversation-started) Trigger:
+
+<Steps>
+    <Step title="Add the Trigger to your Workflow">
+        Right-click anywhere in your Workflow. Select **Triggers**, then **Conversation Started**:
+
+        <Frame>
+            
+        </Frame>
+    </Step>
+    <Step title="step 2">
+        
+    </Step>
+</Steps>
 
 ## Webchat Triggers
 
