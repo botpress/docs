@@ -281,7 +281,14 @@
                 "group": "WhatsApp",
                 "pages": [
                   "/integrations/integration-guides/whatsapp/introduction",
-                  "/integrations/integration-guides/whatsapp/whatsapp-mapping",
+                  {
+                    "group": "Mapping",
+                    "pages": [
+                      "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
+                      "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
+                    ]
+                  },
+                  "/integrations/integration-guides/whatsapp/triggers",
                   "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
                 ]
               },
