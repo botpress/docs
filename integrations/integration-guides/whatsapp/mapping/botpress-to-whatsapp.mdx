@@ -73,18 +73,23 @@ WhatsApp will treat an image as a [Sticker](https://developers.facebook.com/docs
 - The image is **exactly** 512x512 in size
 - The image is less than 512kb
 
-If the image doesn't meet these conditions, the message won't be sent and the Studio will emit a warning.
+If the image doesn't meet these conditions, the message won't be sent and a warning will be emitted.
 
 ---
 
 ## Files
 
-For security reasons, Botpress renames files with a generic name ("file") before sending them to WhatsApp. The WhatsApp message will still display the original file's name below the file itself.
+When sending a file to WhatsApp, the file's name will be changed to whatever is specific in the **Title** field of the [Send Message Card](guides/studio/cards/send-messages#file).
+
+
+If you leave **Title** field blank, the file will be renamed with a generic name ("file") before being sent to WhatsApp. The WhatsApp message will still display the original file's name below the file itself.
+
+<Note>
+    You can also set a custom file name by sending the file using an [Execute Code Card](/guides/studio/cards/execute) and specifying a value for the `filename` attribute.
+</Note>
 
 ---
 
 ## Carousels
 
-WhatsApp doesn't currently support Carousels.
-
----
+WhatsApp doesn't natively support Carousels. If the bot sends a Carousel, WhatsApp will display each of its Cards in separate messages.
