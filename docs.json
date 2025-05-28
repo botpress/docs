@@ -23,6 +23,9 @@
   "styling": {
     "eyebrows": "breadcrumbs"
   },
+  "icons": {
+    "library": "lucide"
+  },
   "navigation": {
     "tabs": [
       {
@@ -40,25 +43,65 @@
         "tab": "Learn",
         "groups": [
           {
-            "group": " ",
+            "group": "Get Started",
             "pages": [
               "/guides/introduction",
-              "/guides/quick-start"
+              "/guides/quick-start",
+              {
+                "group": "Dashboard",
+                "icon": "panel-left",
+                "pages": [
+                  {
+                    "group": "Workspace",
+                    "pages": [
+                      "/guides/dashboard/workspace/introduction",
+                      "/guides/dashboard/workspace/home",
+                      "/guides/dashboard/workspace/your-integrations",
+                      "/guides/dashboard/workspace/usage",
+                      {
+                        "group": "Settings",
+                        "pages": [
+                          "/guides/dashboard/workspace/settings/introduction",
+                          "/guides/dashboard/workspace/settings/members",
+                          "/guides/dashboard/workspace/settings/audits"
+                        ]
+                      },
+                      "/guides/dashboard/workspace/user-profile"
+                    ]
+                  },
+                  {
+                    "group": "Bot",
+                    "pages": [
+                      "/guides/dashboard/bot/introduction",
+                      "/guides/dashboard/bot/overview",
+                      "/guides/dashboard/bot/integrations",
+                      "/guides/dashboard/bot/webchat",
+                      "/guides/dashboard/bot/logs",
+                      "/guides/dashboard/bot/conversations",
+                      "/guides/dashboard/bot/analytics",
+                      "/guides/dashboard/bot/events",
+                      "/guides/dashboard/bot/issues",
+                      "/guides/dashboard/bot/configuration-variables"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
             "group": "Guides",
             "pages": [
               "/guides/how-to/introduction",
-              
               {
                 "group": "How-to",
+                "icon": "list-ordered",
                 "pages": [
                   "/guides/how-to/translate"
                 ]
               },
               {
                 "group": "Advanced",
+                "icon": "puzzle",
                 "pages": [
                   {
                     "group": "Toolbox",
@@ -100,47 +143,10 @@
             "group": "Reference",
             "pages": [
               "/guides/studio/interface/introduction",
-              {
-                "group": "Dashboard",
-                "pages": [
-                  {
-                    "group": "Workspace",
-                    "pages": [
-                      "/guides/dashboard/workspace/introduction",
-                      "/guides/dashboard/workspace/home",
-                      "/guides/dashboard/workspace/your-integrations",
-                      "/guides/dashboard/workspace/usage",
-                      {
-                        "group": "Settings",
-                        "pages": [
-                          "/guides/dashboard/workspace/settings/introduction",
-                          "/guides/dashboard/workspace/settings/members",
-                          "/guides/dashboard/workspace/settings/audits"
-                        ]
-                      },
-                      "/guides/dashboard/workspace/user-profile"
-                    ]
-                  },
-                  {
-                    "group": "Bot",
-                    "pages": [
-                      "/guides/dashboard/bot/introduction",
-                      "/guides/dashboard/bot/overview",
-                      "/guides/dashboard/bot/integrations",
-                      "/guides/dashboard/bot/webchat",
-                      "/guides/dashboard/bot/logs",
-                      "/guides/dashboard/bot/conversations",
-                      "/guides/dashboard/bot/analytics",
-                      "/guides/dashboard/bot/events",
-                      "/guides/dashboard/bot/issues",
-                      "/guides/dashboard/bot/configuration-variables"
-                    ]
-                  }
-                ]
-              },
               "/guides/studio/interface/home",
               {
                 "group": "Nodes",
+                "icon": "square-mouse-pointer",
                 "pages": [
                   "/guides/studio/interface/nodes/introduction",
                   "/guides/studio/interface/nodes/autonomous-node"
@@ -148,8 +154,10 @@
               },
               {
                 "group": "Cards",
+                "icon": "rows-3",
                 "pages": [
                   "/guides/studio/cards/introduction",
+                  "/guides/studio/interface/card-tray",
                   "/guides/studio/cards/send-messages",
                   "/guides/studio/cards/execute",
                   "/guides/studio/cards/webchat",
@@ -172,6 +180,7 @@
               "/guides/studio/interface/studio-interface-flows",
               {
                 "group": "Knowledge Base",
+                "icon": "book-open",
                 "pages": [
                   "/guides/studio/interface/knowledge-base/introduction",
                   "/guides/studio/interface/knowledge-base/knowledge-base-best-practices"
@@ -181,6 +190,7 @@
               "/guides/studio/interface/actions",
               {
                 "group": "Agents",
+                "icon": "bot",
                 "pages": [
                   "/guides/studio/interface/agents/introduction",
                   "/guides/studio/interface/agents/summary-agent",
@@ -203,6 +213,7 @@
               "/guides/studio/interface/find",
               {
                 "group": "Variables",
+                "icon": "variable",
                 "pages": [
                   "/guides/studio/interface/variables/overview",
                   {
@@ -221,14 +232,19 @@
                 ]
               },
               "/guides/studio/interface/triggers",
-              "/guides/studio/interface/card-tray",
               "/guides/studio/interface/debugger-logs-json",
               "/guides/studio/interface/emulator",
-              "/guides/studio/interface/keyboard-shortcuts",
-              "/guides/studio/interface/studio-commands",
-              "/guides/studio/interface/studio-preferences",
               "/guides/studio/interface/import-export-bots",
-              "/guides/studio/interface/copy-to-bot"
+              "/guides/studio/interface/copy-to-bot",
+              {
+                "group": "Controls and Settings",
+                "icon": "wrench",
+                "pages": [
+                  "/guides/studio/interface/keyboard-shortcuts",
+                  "/guides/studio/interface/studio-commands",
+                  "/guides/studio/interface/studio-preferences"
+                ]
+              }
             ]
           }
         ]
@@ -237,7 +253,7 @@
         "tab": "Integrations",
         "groups": [
           {
-            "group": " ",
+            "group": "Get Started",
             "pages": [
               "integrations/introduction",
               "integrations/botpress-hub"
@@ -305,7 +321,7 @@
         "tab": "Webchat",
         "groups": [
           {
-            "group": " ",
+            "group": "Get Started",
             "pages": [
               "webchat/introduction",
               "webchat/quick-start",
@@ -361,7 +377,7 @@
         "tab": "For Developers",
         "groups": [
           {
-            "group": " ",
+            "group": "Get Started",
             "pages": [
               "for-developers/introduction",
               "for-developers/sdk/introduction"
@@ -400,7 +416,7 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": " ",
+            "group": "Get Started",
             "pages": [
               "api-reference/introduction",
               "api-reference/authentication",
