@@ -1,5 +1,5 @@
 ---
-Nodes that execute when a certain event fires
+icon: play
 ---
 
 Triggers are a special kind of [Node](/guides/studio/interface/nodes) that only **execute when a certain event occurs**. You can recognize Triggers by their distinctive purple colour:
@@ -13,6 +13,10 @@ Triggers are useful if you want your bot to:
 - [Send a welcome message](#conversation-started)
 - [Do something at a specific date/time](#fixed-schedule)
 - [Respond to changes on your website](#custom-trigger)
+
+<Warning>
+    Triggers won't work in the Studio's emulator, even when the event they're expecting occurs. Instead, you can [test them](#test-a-trigger) before publishing.
+</Warning>
 
 ## Triggers vs. Nodes
 
@@ -28,6 +32,57 @@ To add a Trigger, just right-click anywhere in a Workflow:
 <Frame>
 ![Add a Trigger](/guides/studio/interface/add-trigger.png)
 </Frame>
+
+## Test a Trigger
+
+Triggers won't work in the Studio's emulator, even when the event they're expecting occurs. Instead, you can use a previous event to test your Trigger.
+
+For example, to test the [Conversation Started](#conversation-started) Trigger:
+
+<Steps>
+    <Step title="Add the Trigger to your Workflow">
+        Right-click anywhere in your Workflow. Select **Trigger**, then **Conversation Started**:
+
+            <Frame>
+                ![Conversation Started](/webchat/interact/conversation-started.png)
+            </Frame>
+    </Step>
+    <Step title="Configure a test">
+        Select **Test** in the bottom-left corner of the Trigger:
+
+            <Frame>
+                ![Test Trigger](/guides/studio/interface/test-trigger.png)
+            </Frame>
+
+            Then, select **Show last received events**. This will display a list of past events that would set off your Trigger:
+
+            <Frame>
+                ![Test events](/guides/studio/interface/test-events.png)
+            </Frame>
+
+        For the **Conversation Started** Trigger, each of these is a `conversationStarted` event, which fires every time a user starts a new conversation with your bot.
+        
+        You can use any one of these events as a dummy event to test your Trigger. Just pick one and select **Add as Test**. Then, select **Save**.
+
+        <Note>
+            If there are no events available to choose, make sure your bot is published and that the event your Trigger is listening for has occured at least once before.
+        </Note>
+
+    </Step>
+    <Step title="Test the Trigger">
+        Now, you should see the name of the event in the Trigger:
+
+            <Frame>
+                ![Fire Trigger](/guides/studio/interface/fire-trigger.png)
+            </Frame>
+
+        Just press the play icon to fire the Trigger. Any logic you have connected to the Trigger will execute in the emulator:
+
+            <Frame>
+                ![Trigger fires in emulator](/guides/studio/interface/trigger-emulator.png)
+            </Frame>
+    </Step>
+</Steps>
 
 ## Webchat Triggers
 

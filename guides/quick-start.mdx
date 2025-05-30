@@ -1,6 +1,7 @@
 ---
-title: Quick Start
+title: Quickstart
 description: Build, test, and deploy your first AI agent.
+icon: rocket
 ---
 
 import { Img } from '/snippets/image.mdx'
@@ -15,23 +16,21 @@ By the end of this guide, you'll have a bot that will:
 * Have a unique, shareable link
 
 <Note>
-Keep learning!
-
-This guide is designed to teach a total beginner how to deploy their first bot. If you have more questions and want to get creative with bot-building, check out the [Learn section](/guides/learn/learn-by-doing) for detailed how-to guides.
+This guide is designed to teach a total beginner how to deploy their first bot. If you have more questions and want to get creative with bot-building, check out the [Guides section](/guides/how-to) for detailed how-to guides.
 
 For detailed explanations of any of the concepts introduced on this page, check out our [Dashboard](/guides/dashboard/workspace/introduction) and [Studio](/guides/studio/interface/introduction) guides.
 </Note>
 
-# Step 1: Build your bot
+## Step 1: Build your bot
 
-## Create a new bot
+### Create a new bot
 
 1. Login to [Botpress](https://app.botpress.cloud).
 2. Select **+ New bot** and choose a name for the bot (or randomly generate one).
 3. Select **Open in** [Studio](/guides/studio/interface/introduction).
 4. Start building!
 
-## Configure your bot's behaviour
+### Configure your bot's behaviour
 
 Let's add some custom behaviour to your bot.
 
@@ -64,7 +63,7 @@ You can drag a Node to move it anywhere in your Workflow. Just select and hold t
 Moving a Node doesn't affect your bot's behavior — it just helps keep your Workflow organized.
 </Tip>
 
-### Display a custom greeting
+#### Display a custom greeting
 
 Let's create a new Node to add a custom greeting to your bot.
 
@@ -96,7 +95,7 @@ This creates a transition from the new Node to the Autonomous Node, so your bot 
 
 <img src="./transition-between-nodes.png" />
 
-### Add custom instructions
+#### Add custom instructions
 
 Now that your bot has a greeting, let's add some custom instructions for when it's interacting with a user. From the Autonomous Node, open the **Instructions** section.
 
@@ -106,11 +105,11 @@ For now, let's just tell your bot its name and give it a simple task. Erase ever
 
 <img src="./add-custom-instruction.png" />
 
-# Step 2: Test your bot
+## Step 2: Test your bot
 
 Congratulations! You now have a bot with a custom greeting and instructions. Next, let's test it out to make sure it's working properly.
 
-## Chat with your bot
+### Chat with your bot
 
 You can chat with a preview of your bot using the Emulator on the right side of the Studio. To start a conversation, just select **Test your bot**, or type a message into the text field:
 
@@ -124,11 +123,11 @@ Let's ask it a question about dogs:
 
 Great! Since the bot transitioned to the Autonomous Node, it was able to use an LLM (Large Language Model) to answer the question. You can keep chatting with the bot, and the Autonomous Node will generate AI responses based on the context of the conversation.
 
-# Step 3: Deploy your bot
+## Step 3: Deploy your bot
 
 Now that you've confirmed your bot is working properly, it's time to deploy it!
 
-## Preview and share your bot
+### Preview and share your bot
 
 The easiest way to deploy your bot is with a `Webchat` preview. This generates a unique, shareable link for your bot, so your team can start testing it immediately.
 
@@ -149,10 +148,23 @@ Congratulations!
 You just built, tested and deployed your first bot with Botpress!
 </Check>
 
-# Next steps
+## Next steps
 
-Now that you know the basics of Botpress, you can start getting creative. See the [Learn](/guides/learn/learn-by-doing) section for guides on how to:
+Now that you know the basics of Botpress, you can start getting creative:
 
-* Build specific bots
-* Deploy bots to your app or website
-* Monitor your bot's performance
+<Columns>
+<Card
+    title="Guides"
+    icon="lightbulb"
+    href="/guides/how-to"
+  >
+    Follow detailed how-to guides
+  </Card>
+  <Card
+    title="Reference"
+    icon="book"
+    href="/guides/dashboard"
+  >
+    Learn about the key concepts of Botpress
+  </Card>
+</Columns>

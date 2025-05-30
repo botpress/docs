@@ -1,0 +1,95 @@
+---
+title: Mapping from Botpress to WhatsApp
+description: Content mapping for the official WhatsApp integration.
+sidebarTitle: Botpress to WhatsApp
+---
+
+## Overview
+
+Here's a breakdown of how WhatsApp treats data it receives from Botpress:
+
+| Botpress Type       | WhatsApp Type                                                                                     |
+| :------------------ | :------------------------------------------------------------------------------------------------ |
+| `text`              | [Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object)     |
+| `text` with Markdown | [Text Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#text-object)     |
+| `image`             | [Media Image Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+| `audio`             | [Media Audio Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+| `video`             | [Media Video Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object) |
+| `file`              | [Media File Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#media-object)   |
+| `location`          | [Location Object](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#location-object)  |
+
+Some data types have restrictions in WhatsApp:
+
+## Choices
+
+[Choices](https://botpress.com/docs/capture-information) in Botpress are mapped to [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) of the type `list` in WhatsApp.
+
+WhatsApp renders choices differently depending on how many choices you specify in Botpress:
+
+| Amount of Choices in Botpress | How They're Rendered in WhatsApp  |
+| :---------------------------: | :-------------------------------: |
+| 1-3                           | Buttons                          |
+| 4-10                          | Dropdown                        |
+| 11 or More                    | Multiple dropdowns (up to 10 choices each) |
+
+### Labels
+
+In WhatsApp, choices require a label. Since Botpress Studio doesn't currently support labels for choice Cards, WhatsApp uses *“Choose…”* by default.
+
+### Character Limit
+
+In WhatsApp:
+
+- Button titles are limited to 19 characters
+- Dropdown choice titles are limited to 23 characters
+
+If a title exceeds the limit, WhatsApp will automatically shorten it:
+
+| Title in Botpress              | WhatsApp Button           | WhatsApp Dropdown           |
+| :---------------------------- | :----------------------- | :------------------------- |
+| "This is a title in Botpress" | "This is a title in ..." | "This is a title in Botp..." |
+
+---
+
+## Cards
+
+[Cards](https://botpress.com/docs/capture-information) in Botpress are mapped to [Interactive Objects](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages#interactive-object) of the type `list` in WhatsApp.
+
+### Links
+
+WhatsApp only supports one link (label and URL) on a Card. If your Botpress Card has multiple links, WhatsApp will split them into multiple empty Cards.
+
+### Reply Button
+
+WhatsApp only supports 3 "reply" action buttons on a Card. If your Botpress Card has more than 3 of these buttons, WhatsApp will split them into multiple Cards.
+
+---
+
+## Stickers
+
+WhatsApp will treat an image as a [Sticker](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/sticker-messages) if it meets the following conditions:
+
+- The image is in WebP format
+- The image is **exactly** 512x512 in size
+- The image is less than 512kb
+
+If the image doesn't meet these conditions, the message won't be sent and a warning will be emitted.
+
+---
+
+## Files
+
+When sending a file to WhatsApp, the file's name will be changed to whatever is specific in the **Title** field of the [Send Message Card](guides/studio/cards/send-messages#file).
+
+
+If you leave **Title** field blank, the file will be renamed with a generic name ("file") before being sent to WhatsApp. The WhatsApp message will still display the original file's name below the file itself.
+
+<Note>
+    You can also set a custom file name by sending the file using an [Execute Code Card](/guides/studio/cards/execute) and specifying a value for the `filename` attribute.
+</Note>
+
+---
+
+## Carousels
+
+WhatsApp doesn't natively support Carousels. If the bot sends a Carousel, WhatsApp will display each of its Cards in separate messages.

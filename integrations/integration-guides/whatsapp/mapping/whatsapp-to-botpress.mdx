@@ -1,0 +1,163 @@
+---
+title: Mapping from WhatsApp to Botpress
+description: Content mapping for the official WhatsApp integration.
+sidebarTitle: WhatsApp to Botpress
+---
+
+## Overview
+
+In Botpress, you can read data sent from a user's WhatsApp message using the `event`'s properties. This is useful if you want to store user-provided data and access it later.
+
+Here's a breakdown of how data from WhatsApp is mapped to Botpress:
+
+| WhatsApp Message Type                                                                                                                | Botpress Type | How to Read                  |
+|---------------------------------------------------------------------------------------------------------------------------------------|---------------|------------------------------|
+| [Text messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/text-messages)                                      | `text`        | `event.preview` or `event.payload` |
+| Choices from interactive [buttons](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/interactive-reply-buttons-messages) or [lists](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/interactive-list-messages) | `text`        | `event.preview` or `event.payload` |
+| [Image messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/image-messages)                                    | `image`       | `event.payload`              |
+| [Sticker messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/sticker-messages)                                | `image`       | `event.payload`              |
+| [Audio messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/audio-messages)                                    | `audio`       | `event.payload`              |
+| [Video messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/video-messages)                                    | `video`       | `event.payload`              |
+| [Document messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/document-messages)                              | `file`        | `event.payload`              |
+| [Location messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/location-messages)                              | `location`    | `event.payload`              |
+
+## Read data from a payload
+
+To read data from `event.payload`:
+
+1. Add a **Wait for User Input** Card to the Node where you want to prompt the user.
+2. After that Card, check that `event.type` is equal to the data type you're expecting from the user.
+3. Read `event.payload`.
+
+The payload's properties depend on the data type:
+
+<AccordionGroup>
+
+<Accordion title="Text">
+  <ResponseField name="text" type="string" required>
+  The content of the message
+  </ResponseField>
+  <ResponseField name="value" type="string">
+  The value of the last message. Only specified for choices, postbacks, and buttons
+  </ResponseField>
+</Accordion>
+
+<Accordion title="Image">
+  <ResponseField name="imageUrl" type="string" required>
+  The URL of the image file
+  </ResponseField>
+</Accordion>
+
+<Accordion title="Audio">
+  <ResponseField name="audioUrl" type="string" required>
+  The URL of the audio file
+  </ResponseField>
+</Accordion>
+
+<Accordion title="Video">
+  <ResponseField name="videoUrl" type="string" required>
+  The URL of the video file
+  </ResponseField>
+</Accordion>
+
+<Accordion title="File">
+  <ResponseField name="fileUrl" type="string" required>
+  The URL of the file
+  </ResponseField>
+  <ResponseField name="filename" type="string" required>
+  The name of the file
+  </ResponseField>
+</Accordion>
+
+<Accordion title="Location">
+  <ResponseField name="latitude" type="number" required>
+    The latitude coordinate of the location
+  </ResponseField>
+  <ResponseField name="longitude" type="number" required>
+    The longitude coordinate of the location
+  </ResponseField>
+  <ResponseField name="title" type="string">
+    The title of the location (Optional) 
+  </ResponseField>
+  <ResponseField name="address" type="string">
+    The address of the location (Optional)
+  </ResponseField>
+</Accordion>
+</AccordionGroup>
+
+## Get raw file contents
+
+By default, any media sent by a user is automatically uploaded to the Botpress [Files API](/api-reference/files-api/). This means you can read the raw file contents directly from the payload's URL.
+
+For example, if you prompt the user to send an image, you can read `{{event.payload.imageUrl}}` to get the image.
+
+<Tip>
+    You can also set an expiry time for downloaded files — just update the **Downloaded Media Expiry** field in the **Configuration** menu.
+</Tip>
+
+
+### From WhatsApp API
+
+If you'd rather get file contents from a WhatsApp media URL, you can disable **Download Media** in the **Configuration** menu. When disabled, you'll have to authenticate with the WhatsApp API to get files.
+
+<Accordion
+    title="Get raw file content from the WhatsApp API"
+>
+    <Steps titleSize="h3">
+  <Step title="Set a configuration variable">
+    1. In your dashboard, navigate to your bot's **Configuration Variables** section in the left sidebar.
+    2. Create a [Configuration Variable](https://botpress.com/docs/configuration-variables-1)  named `WHATSAPP_ACCESS_TOKEN`.
+    3. Set its value to your WhatsApp access token.
+  </Step>
+  <Step title="Make a `GET` request">
+    Now you can make an HTTP `GET` request to get the raw file data:
+
+    ```javascript
+    const whatsappAccessToken = env.WHATSAPP_ACCESS_TOKEN
+
+    const response = await axios.get(event.payload.<URL>, {
+      headers: {
+        Authorization: `Bearer ${whatsappAccessToken}`,
+      },
+    })
+    ```
+
+    Be sure to:
+
+    * Replace `<URL>` with the actual URL provided in the payload
+    * Pass `whatsappAccessToken` as a `Bearer` token in the HTTP `Authorization` header
+
+      <Note>
+      For more information, check the [WhatsApp documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media/#download-media) on downloading media files.
+      </Note>
+    </Step>
+</Steps>
+</Accordion>
+
+## Tags
+
+You can read `event` tags to get information about the current WhatsApp user and conversation:
+
+### Phone number
+
+To get the user's phone number:
+
+`event.tags.conversation['whatsapp:userPhone']`
+
+This number contains the country code. It has no spaces, dashes (-) or symbols.
+
+### Phone number ID
+
+To get the conversation's WhatsApp phone number ID:
+
+`event.tags.conversation['whatsapp:phoneNumberId']`
+
+This is useful if you have multiple phone number IDs pointing to the same bot.
+
+### Check if message is reply
+
+To check if a message was a reply to another:
+
+`event.tags.message['whatsapp:replyTo']`
+
+If the message is a reply, the tag's value will be the Botpress `messageId` of the quoted message.

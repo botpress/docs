@@ -10,9 +10,27 @@ Bots are core entities in the Botpress system, but they aren't accessible throug
 
 Integrations connect Botpress to external services. Like bots, they're not directly accessible from the Runtime API but are managed through the [Admin API](../admin-api/concepts#integration). Integrations handle the sending and receiving of messages, events, and data between Botpress and third-party services. They're defined and managed in the Botpress Admin API.
 
+## Authentication
+
+The Runtime API uses the same authentication mechanism as all other Botpress APIs. For details, refer to the [Authentication documentation](../authentication).
+
+In addition to standard authentication, the Runtime API defines two additional headers that are used to know if requests are made on behalf of a bot or an integration:
+
+- `x-bot-id`: **(Required)** The ID of the bot the request is targeting. This header is **mandatory** for all Runtime API requests.
+- `x-integration-id`: **(Optional)** The ID of the integration making the request. This header is included **only** if the request originates from an integration.
+
+The presence of these headers determines the context of the request:
+
+- **Bot request:** Only `x-bot-id` is provided. The action is performed directly on behalf of the bot.
+- **Integration request:** Both `x-bot-id` and `x-integration-id` are provided. The action is performed on behalf of an integration within the specified bot.
+
+<Note>Integrations are only authorized to act within the bots they are installed in. This restriction ensures secure and scoped access to bot data and functionality.</Note>
+
 ## Definitions and Instances
 
 Two categories of objects exist in the Botpress Runtime API: **definitions** and **instances**. Each concept listed below is first defined when deploying the integration or bot and then instantiated during the bot or integration execution.
+
+
 
 ## Message
 
@@ -152,7 +170,7 @@ A conversation belongs to a **channel**, which itself is part of an integration.
 A user in the Runtime API is a speaker (person or entity) that can send messages in a conversation. Just like conversations, users belong to a specific integration. Interracting with your bot on WhatsApp and Slack will create two different users, even if they both represent the same person with the same email.
 
 <Note>
-Many different kind of users exist in the whole Botpress system. This concept only refer to users of the Runtime API or as we often refer to: Chat Users. It must not be confused with users of the Botpress Admin API which are bot and integration Builders. 
+Many different kind of users exist in the whole Botpress system. This concept only refer to users of the Runtime API or as we often refer to: Chat Users. It must not be confused with users of the Botpress Admin API which are bot and integration Builders.
 </Note>
 
 Here's the user type:

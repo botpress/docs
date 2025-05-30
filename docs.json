@@ -20,149 +20,144 @@
     }
   },
   "favicon": "/favicon.svg",
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "icons": {
+    "library": "lucide"
+  },
   "navigation": {
     "tabs": [
       {
         "tab": "Home",
-        "pages": ["home"]
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "home"
+            ]
+          }
+        ]
       },
       {
-        "tab": "Guides",
-        "pages": [
-          "guides/introduction",
-          "guides/quick-start",
+        "tab": "Learn",
+        "groups": [
           {
-            "group": "Learn",
+            "group": "Get Started",
             "pages": [
-              "/guides/learn/learn-by-doing",
+              "/guides/introduction",
+              "/guides/quick-start",
               {
-                "group": "How to connect a bot to messaging platforms",
+                "group": "Dashboard",
+                "icon": "panel-left",
                 "pages": [
-                  "/guides/learn/how-to-connect-a-bot-to-messaging-platforms/introduction",
-                  "/guides/learn/how-to-connect-a-bot-to-messaging-platforms/telegram"
+                  {
+                    "group": "Workspace",
+                    "pages": [
+                      "/guides/dashboard/workspace/introduction",
+                      "/guides/dashboard/workspace/home",
+                      "/guides/dashboard/workspace/your-integrations",
+                      "/guides/dashboard/workspace/usage",
+                      {
+                        "group": "Settings",
+                        "pages": [
+                          "/guides/dashboard/workspace/settings/introduction",
+                          "/guides/dashboard/workspace/settings/members",
+                          "/guides/dashboard/workspace/settings/audits"
+                        ]
+                      },
+                      "/guides/dashboard/workspace/user-profile"
+                    ]
+                  },
+                  {
+                    "group": "Bot",
+                    "pages": [
+                      "/guides/dashboard/bot/introduction",
+                      "/guides/dashboard/bot/overview",
+                      "/guides/dashboard/bot/integrations",
+                      "/guides/dashboard/bot/webchat",
+                      "/guides/dashboard/bot/logs",
+                      "/guides/dashboard/bot/conversations",
+                      "/guides/dashboard/bot/analytics",
+                      "/guides/dashboard/bot/events",
+                      "/guides/dashboard/bot/issues",
+                      "/guides/dashboard/bot/configuration-variables"
+                    ]
+                  }
                 ]
               }
             ]
           },
           {
-            "group": "Dashboard",
+            "group": "Guides",
             "pages": [
+              "/guides/how-to/introduction",
               {
-                "group": "Workspace",
+                "group": "How-to",
+                "icon": "list-ordered",
                 "pages": [
-                  "/guides/dashboard/workspace/introduction",
-                  "/guides/dashboard/workspace/home",
-                  "/guides/dashboard/workspace/your-integrations",
-                  "/guides/dashboard/workspace/usage",
-                  {
-                    "group": "Settings",
-                    "pages": [
-                      "/guides/dashboard/workspace/settings/introduction",
-                      "/guides/dashboard/workspace/settings/members",
-                      "/guides/dashboard/workspace/settings/audits"
-                    ]
-                  },
-                  "/guides/dashboard/workspace/user-profile"
+                  "/guides/how-to/translate"
                 ]
               },
               {
-                "group": "Bot",
+                "group": "Advanced",
+                "icon": "puzzle",
                 "pages": [
-                  "/guides/dashboard/bot/introduction",
-                  "/guides/dashboard/bot/overview",
-                  "/guides/dashboard/bot/integrations",
-                  "/guides/dashboard/bot/webchat",
-                  "/guides/dashboard/bot/logs",
-                  "/guides/dashboard/bot/conversations",
-                  "/guides/dashboard/bot/analytics",
-                  "/guides/dashboard/bot/events",
-                  "/guides/dashboard/bot/issues",
-                  "/guides/dashboard/bot/configuration-variables"
+                  {
+                    "group": "Toolbox",
+                    "pages": [
+                      "/guides/toolbox/kitchen-sink-advanced-starter-template"
+                    ]
+                  },
+                  {
+                    "group": "Appendix",
+                    "pages": [
+                      "/guides/appendix/best-practices-for-state-management",
+                      {
+                        "group": "Safety",
+                        "pages": [
+                          "/guides/appendix/safety/introduction",
+                          "/guides/appendix/safety/preventing-abuse",
+                          "/guides/appendix/safety/brand-safety-framework"
+                        ]
+                      },
+                      {
+                        "group": "Exporting Data",
+                        "pages": [
+                          "/guides/appendix/exporting-data/introduction",
+                          "/guides/appendix/exporting-data/exporting-raw-conversations-with-the-botpress-api",
+                          "/guides/appendix/exporting-data/getting-the-conversation-history-from-within-your-bot",
+                          "/guides/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
+                          "/guides/appendix/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
+                          "/guides/appendix/exporting-data/analyze-llmz-responses"
+                        ]
+                      },
+                      "/guides/appendix/tips-to-optimize-ai-cost"
+                    ]
+                  }
                 ]
               }
             ]
           },
           {
-            "group": "Studio",
+            "group": "Reference",
             "pages": [
+              "/guides/studio/interface/introduction",
+              "/guides/studio/interface/home",
               {
-                "group": "Interface",
+                "group": "Nodes",
+                "icon": "square-mouse-pointer",
                 "pages": [
-                  "/guides/studio/interface/introduction",
-                  "/guides/studio/interface/home",
-                  {
-                    "group": "Nodes",
-                    "pages": [
-                      "/guides/studio/interface/nodes/introduction",
-                      "/guides/studio/interface/nodes/autonomous-node"
-                    ]
-                  },
-                  "/guides/studio/interface/studio-interface-flows",
-                  {
-                    "group": "Knowledge Base",
-                    "pages": [
-                      "/guides/studio/interface/knowledge-base/introduction",
-                      "/guides/studio/interface/knowledge-base/knowledge-base-best-practices"
-                    ]
-                  },
-                  "/guides/studio/interface/tables",
-                  "/guides/studio/interface/actions",
-                  {
-                    "group": "Agents",
-                    "pages": [
-                      "/guides/studio/interface/agents/introduction",
-                      "/guides/studio/interface/agents/summary-agent",
-                      "/guides/studio/interface/agents/personality-agent",
-                      "/guides/studio/interface/agents/policy-agent",
-                      "/guides/studio/interface/agents/translator-agent",
-                      "/guides/studio/interface/agents/knowledge-agent",
-                      "/guides/studio/interface/agents/hitl-agent",
-                      "/guides/studio/interface/agents/vision-agent",
-                      "/guides/studio/interface/agents/analytics-agent"
-                    ]
-                  },
-                  "/guides/studio/interface/library",
-                  "/guides/studio/interface/hooks",
-                  "/guides/studio/interface/card-hub",
-                  "/guides/studio/interface/integrations",
-                  "/guides/studio/interface/schemas",
-                  "/guides/studio/interface/versions",
-                  "/guides/studio/interface/chatbot-settings",
-                  "/guides/studio/interface/find",
-                  {
-                    "group": "Variables",
-                    "pages": [
-                      "/guides/studio/interface/variables/overview",
-                      {
-                        "group": "Scopes",
-                        "pages": [
-                          "/guides/studio/interface/variables/scopes/workflow",
-                          "/guides/studio/interface/variables/scopes/user",
-                          "/guides/studio/interface/variables/scopes/conversation",
-                          "/guides/studio/interface/variables/scopes/bot",
-                          "/guides/studio/interface/variables/scopes/configuration"
-                        ]
-                      },
-                      "/guides/studio/interface/variables/built-in",
-                      "/guides/studio/interface/variables/pass-between-workflows",
-                      "/guides/studio/interface/variables/in-code"
-                    ]
-                  },
-                  "/guides/studio/interface/triggers",
-                  "/guides/studio/interface/card-tray",
-                  "/guides/studio/interface/debugger-logs-json",
-                  "/guides/studio/interface/emulator",
-                  "/guides/studio/interface/keyboard-shortcuts",
-                  "/guides/studio/interface/studio-commands",
-                  "/guides/studio/interface/studio-preferences",
-                  "/guides/studio/interface/import-export-bots",
-                  "/guides/studio/interface/copy-to-bot"
+                  "/guides/studio/interface/nodes/introduction",
+                  "/guides/studio/interface/nodes/autonomous-node"
                 ]
               },
               {
                 "group": "Cards",
+                "icon": "rows-3",
                 "pages": [
                   "/guides/studio/cards/introduction",
+                  "/guides/studio/interface/card-tray",
                   "/guides/studio/cards/send-messages",
                   "/guides/studio/cards/execute",
                   "/guides/studio/cards/webchat",
@@ -181,46 +176,89 @@
                   "/guides/studio/cards/agents",
                   "/guides/studio/cards/utilities"
                 ]
+              },
+              "/guides/studio/interface/studio-interface-flows",
+              {
+                "group": "Knowledge Base",
+                "icon": "book-open",
+                "pages": [
+                  "/guides/studio/interface/knowledge-base/introduction",
+                  "/guides/studio/interface/knowledge-base/knowledge-base-best-practices"
+                ]
+              },
+              "/guides/studio/interface/tables",
+              "/guides/studio/interface/actions",
+              {
+                "group": "Agents",
+                "icon": "bot",
+                "pages": [
+                  "/guides/studio/interface/agents/introduction",
+                  "/guides/studio/interface/agents/summary-agent",
+                  "/guides/studio/interface/agents/personality-agent",
+                  "/guides/studio/interface/agents/policy-agent",
+                  "/guides/studio/interface/agents/translator-agent",
+                  "/guides/studio/interface/agents/knowledge-agent",
+                  "/guides/studio/interface/agents/hitl-agent",
+                  "/guides/studio/interface/agents/vision-agent",
+                  "/guides/studio/interface/agents/analytics-agent"
+                ]
+              },
+              "/guides/studio/interface/library",
+              "/guides/studio/interface/hooks",
+              "/guides/studio/interface/card-hub",
+              "/guides/studio/interface/integrations",
+              "/guides/studio/interface/schemas",
+              "/guides/studio/interface/versions",
+              "/guides/studio/interface/chatbot-settings",
+              "/guides/studio/interface/find",
+              {
+                "group": "Variables",
+                "icon": "variable",
+                "pages": [
+                  "/guides/studio/interface/variables/overview",
+                  {
+                    "group": "Scopes",
+                    "pages": [
+                      "/guides/studio/interface/variables/scopes/workflow",
+                      "/guides/studio/interface/variables/scopes/user",
+                      "/guides/studio/interface/variables/scopes/conversation",
+                      "/guides/studio/interface/variables/scopes/bot",
+                      "/guides/studio/interface/variables/scopes/configuration"
+                    ]
+                  },
+                  "/guides/studio/interface/variables/built-in",
+                  "/guides/studio/interface/variables/pass-between-workflows",
+                  "/guides/studio/interface/variables/in-code"
+                ]
+              },
+              "/guides/studio/interface/triggers",
+              "/guides/studio/interface/debugger-logs-json",
+              "/guides/studio/interface/emulator",
+              "/guides/studio/interface/import-export-bots",
+              "/guides/studio/interface/copy-to-bot",
+              {
+                "group": "Controls and Settings",
+                "icon": "wrench",
+                "pages": [
+                  "/guides/studio/interface/keyboard-shortcuts",
+                  "/guides/studio/interface/studio-commands",
+                  "/guides/studio/interface/studio-preferences"
+                ]
               }
-            ]
-          },
-          {
-            "group": "Toolbox",
-            "pages": ["/guides/toolbox/kitchen-sink-advanced-starter-template"]
-          },
-          {
-            "group": "Appendix",
-            "pages": [
-              "/guides/appendix/best-practices-for-state-management",
-              {
-                "group": "Safety",
-                "pages": [
-                  "/guides/appendix/safety/introduction",
-                  "/guides/appendix/safety/preventing-abuse",
-                  "/guides/appendix/safety/brand-safety-framework"
-                ]
-              },
-              {
-                "group": "Exporting Data",
-                "pages": [
-                  "/guides/appendix/exporting-data/introduction",
-                  "/guides/appendix/exporting-data/exporting-raw-conversations-with-the-botpress-api",
-                  "/guides/appendix/exporting-data/getting-the-conversation-history-from-within-your-bot",
-                  "/guides/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
-                  "/guides/appendix/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
-                  "/guides/appendix/exporting-data/analyze-llmz-responses"
-                ]
-              },
-              "/guides/appendix/tips-to-optimize-ai-cost"
             ]
           }
         ]
       },
       {
         "tab": "Integrations",
-        "pages": [
-          "integrations/introduction",
-          "integrations/botpress-hub",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "integrations/introduction",
+              "integrations/botpress-hub"
+            ]
+          },
           {
             "group": "Functional Integrations",
             "pages": [
@@ -259,7 +297,14 @@
                 "group": "WhatsApp",
                 "pages": [
                   "/integrations/integration-guides/whatsapp/introduction",
-                  "/integrations/integration-guides/whatsapp/whatsapp-mapping",
+                  {
+                    "group": "Mapping",
+                    "pages": [
+                      "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
+                      "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
+                    ]
+                  },
+                  "/integrations/integration-guides/whatsapp/triggers",
                   "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
                 ]
               },
@@ -274,11 +319,16 @@
       },
       {
         "tab": "Webchat",
-        "pages": [
-          "webchat/introduction",
-          "webchat/quick-start",
-          "webchat/embedding-webchat",
-          "webchat/styling-your-webchat",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "webchat/introduction",
+              "webchat/quick-start",
+              "webchat/embedding-webchat",
+              "webchat/styling-your-webchat"
+            ]
+          },
           {
             "group": "Interact with Webchat",
             "pages": [
@@ -297,7 +347,11 @@
           },
           {
             "group": "Integrations",
-            "pages": ["webchat/integrate/wordpress", "webchat/integrate/wix", "webchat/integrate/webflow"]
+            "pages": [
+              "webchat/integrate/wordpress",
+              "webchat/integrate/wix",
+              "webchat/integrate/webflow"
+            ]
           },
           {
             "group": "React Library",
@@ -321,9 +375,14 @@
       },
       {
         "tab": "For Developers",
-        "pages": [
-          "for-developers/introduction",
-          "for-developers/sdk/introduction",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "for-developers/introduction",
+              "for-developers/sdk/introduction"
+            ]
+          },
           {
             "group": "Integrations",
             "pages": [
@@ -346,18 +405,26 @@
           },
           {
             "group": "Bots as-code",
-            "pages": ["for-developers/sdk/bot/introduction", "for-developers/sdk/bot/getting-started"]
+            "pages": [
+              "for-developers/sdk/bot/introduction",
+              "for-developers/sdk/bot/getting-started"
+            ]
           }
         ]
       },
       {
         "tab": "API Reference",
-        "pages": [
-          "api-reference/introduction",
-          "api-reference/authentication",
-          "api-reference/pagination",
-          "api-reference/ratelimiting",
-          "api-reference/errors",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/pagination",
+              "api-reference/ratelimiting",
+              "api-reference/errors"
+            ]
+          },
           {
             "group": "Chat API",
             "pages": [
@@ -371,23 +438,19 @@
                   "/api-reference/chat-api/openapi/listConversations",
                   "/api-reference/chat-api/openapi/getOrCreateConversation",
                   "/api-reference/chat-api/openapi/listenConversation",
-
                   "/api-reference/chat-api/openapi/listMessages",
                   "/api-reference/chat-api/openapi/getMessage",
                   "/api-reference/chat-api/openapi/deleteMessage",
                   "/api-reference/chat-api/openapi/createMessage",
-
                   "/api-reference/chat-api/openapi/addParticipant",
                   "/api-reference/chat-api/openapi/listParticipants",
                   "/api-reference/chat-api/openapi/removeParticipant",
                   "/api-reference/chat-api/openapi/getParticipant",
-
                   "/api-reference/chat-api/openapi/getUser",
                   "/api-reference/chat-api/openapi/updateUser",
                   "/api-reference/chat-api/openapi/deleteUser",
                   "/api-reference/chat-api/openapi/createUser",
                   "/api-reference/chat-api/openapi/getOrCreateUser",
-
                   "/api-reference/chat-api/openapi/getEvent",
                   "/api-reference/chat-api/openapi/createEvent"
                 ]
@@ -404,25 +467,20 @@
                 "pages": [
                   "/api-reference/admin-api/openapi/getAccount",
                   "/api-reference/admin-api/openapi/updateAccount",
-
                   "/api-reference/admin-api/openapi/listPublicIntegrations",
                   "/api-reference/admin-api/openapi/getPublicIntegrationById",
                   "/api-reference/admin-api/openapi/getPublicIntegration",
-
                   "/api-reference/admin-api/openapi/createBot",
                   "/api-reference/admin-api/openapi/listBots",
                   "/api-reference/admin-api/openapi/updateBot",
                   "/api-reference/admin-api/openapi/getBot",
                   "/api-reference/admin-api/openapi/deleteBot",
-
                   "/api-reference/admin-api/openapi/getBotLogs",
                   "/api-reference/admin-api/openapi/getBotAnalytics",
-
                   "/api-reference/admin-api/openapi/getBotIssue",
                   "/api-reference/admin-api/openapi/deleteBotIssue",
                   "/api-reference/admin-api/openapi/listBotIssues",
                   "/api-reference/admin-api/openapi/listBotIssueEvents",
-
                   "/api-reference/admin-api/openapi/createWorkspace",
                   "/api-reference/admin-api/openapi/listWorkspaces",
                   "/api-reference/admin-api/openapi/getPublicWorkspace",
@@ -430,15 +488,12 @@
                   "/api-reference/admin-api/openapi/updateWorkspace",
                   "/api-reference/admin-api/openapi/deleteWorkspace",
                   "/api-reference/admin-api/openapi/listPublicWorkspaces",
-
                   "/api-reference/admin-api/openapi/getAuditRecords",
-
                   "/api-reference/admin-api/openapi/listWorkspaceMembers",
                   "/api-reference/admin-api/openapi/createWorkspaceMember",
                   "/api-reference/admin-api/openapi/getWorkspaceMember",
                   "/api-reference/admin-api/openapi/deleteWorkspaceMember",
                   "/api-reference/admin-api/openapi/updateWorkspaceMember",
-
                   "/api-reference/admin-api/openapi/createIntegration",
                   "/api-reference/admin-api/openapi/listIntegrations",
                   "/api-reference/admin-api/openapi/validateIntegrationCreation",
@@ -515,40 +570,32 @@
                   "/api-reference/runtime-api/openapi/updateConversation",
                   "/api-reference/runtime-api/openapi/deleteConversation",
                   "/api-reference/runtime-api/openapi/getOrCreateConversation",
-
                   "/api-reference/runtime-api/openapi/listParticipants",
                   "/api-reference/runtime-api/openapi/addParticipant",
                   "/api-reference/runtime-api/openapi/getParticipant",
                   "/api-reference/runtime-api/openapi/removeParticipant",
-
                   "/api-reference/runtime-api/openapi/createEvent",
                   "/api-reference/runtime-api/openapi/listEvents",
                   "/api-reference/runtime-api/openapi/getEvent",
-
                   "/api-reference/runtime-api/openapi/createMessage",
                   "/api-reference/runtime-api/openapi/listMessages",
                   "/api-reference/runtime-api/openapi/getOrCreateMessage",
                   "/api-reference/runtime-api/openapi/getMessage",
                   "/api-reference/runtime-api/openapi/updateMessage",
                   "/api-reference/runtime-api/openapi/deleteMessage",
-
                   "/api-reference/runtime-api/openapi/createUser",
                   "/api-reference/runtime-api/openapi/listUsers",
                   "/api-reference/runtime-api/openapi/getUser",
                   "/api-reference/runtime-api/openapi/updateUser",
                   "/api-reference/runtime-api/openapi/deleteUser",
                   "/api-reference/runtime-api/openapi/getOrCreateUser",
-
                   "/api-reference/runtime-api/openapi/setStateExpiry",
                   "/api-reference/runtime-api/openapi/getState",
                   "/api-reference/runtime-api/openapi/setState",
                   "/api-reference/runtime-api/openapi/patchState",
                   "/api-reference/runtime-api/openapi/getOrSetState",
-
                   "/api-reference/runtime-api/openapi/callAction",
-
                   "/api-reference/runtime-api/openapi/configureIntegration",
-
                   "/api-reference/runtime-api/openapi/listTagValues"
                 ]
               }
