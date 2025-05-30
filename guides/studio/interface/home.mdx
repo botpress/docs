@@ -1,57 +1,104 @@
 ---
 title: Home
 description: >-
-  Dashboard in the Studio displaying your bot's global settings and
-  instructions.
+  Main menu with global configuration for your bot.
 icon: house
 ---
 
+import { Image } from "/snippets/image.mdx"
+
+The <Icon icon="house"/> **Home** page is Botpress Studio's main menu. It displays general information about your bot and allows you to configure some global settings.
+
+Most of the options on the **Home** page are shortcuts to configure your main Workflow's [Autonomous Node](/guides/studio/interface/nodes/autonomous-node). If you don't use an Autonomous Node, you can still configure your bot's [communication channels](#communication-channels) or view a [detailed analysis of your bot's conversations](#conversation-analysis).
+
+## Instructions
+
 <Note>
-Home display
-
-The homepage only appears when your Start node is connected to an Autonomous Node.
-
-It's meant to be used alongside the Autonomous Node to manage its behaviour, global settings, and what resources or channels it has access to.
+  The **Instructions** field is only available if you have an [Autonomous Node](/guides/studio/interface/nodes/autonomous-node) in your bot's main Workflow.
 </Note>
 
-From the Home menu located in the Studio, you can configure your agent's global settings. These are broken down into the following categories:
+You can define a global prompt for your bot in the **Instructions** field. This prompt influences how the bot interprets and responds to user input by giving it a specific context or role to operate within:
 
-# Instructions
+<Image
+  alt="Instructions"
+  src="./home-instructions.png"
+  srcDark="./home-instructions-dark.png"
+/>
 
-The Instructions section is where you define the primary role or persona of your bot. This setting influences how the bot interprets and responds to user inputs by giving it a specific context or role to operate within.
+The **Instructions** field directly maps to the **Instructions** for your main Workflow's Autonomous Node. When you update one, the other will also update:
 
-**Instruction Field**: Enter the role or persona that you want your bot to assume. For example, "You are an IT support professional. This setting tailors the bot's responses to align with the specified role, ensuring that the bot provides relevant and context-appropriate answers.
+<Image
+  alt="Instructions for Autonomous Node"
+  src="./node-instructions.png"
+  srcDark="./node-instructions-dark.png"
+/>
 
-For example, if you set the instruction as "You are an IT support professional," the bot will prioritize technical support-related responses, guiding users through troubleshooting steps, and providing IT-related advice.
+## Knowledge Bases
 
-***
+<Note>
+  The **Knowledge Base** section is only available if you have an [Autonomous Node](/guides/studio/interface/nodes/autonomous-node) in your bot's main Workflow.
+</Note>
 
-# Channels
+You can add [Knowledge Bases](/guides/studio/interface/knowledge-base/) to give your bot sources it can reference when answering questions:
 
-The Channels section allows you to enable and configure the platforms where your bot will be active. This is crucial for determining how and where users can interact with your bot.
+<Image
+  alt="Knowledge Bases"
+  src="./knowledge-base.png"
+  srcDark="./knowledge-base-dark.png"
+/>
 
-Available channels shows you which deployment channels are already active. You can add new channels by clicking on the "+ Add channel" button to enable additional channels for your bot. This can include other messaging platforms, social media integrations, or custom channels.
+These sources can include documents, websites, tables, and other forms of structured (or unstructured) data. When you add Knowledge Bases, this section will display a summary of them.
 
-***
+## Tools
 
-# Knowledge Bases
+<Note>
+  The **Tools** section is only available if you have an [Autonomous Node](/guides/studio/interface/nodes/autonomous-node) in your bot's main Workflow.
+</Note>
 
-The "Knowledge Bases" section is where you manage the sources of information that your bot can reference to answer user questions. These sources can include documents, websites, tables, and other forms of structured or unstructured data.
+You can use the **Tools** section to quickly add resources and actions your bot can use:
 
-Toggle the switch in this section to enable or disable the bot’s access to specific knowledge bases. You can create new Knowledge Base files directly from within this interface.
+<Image
+  alt="Tools"
+  src="./tools.png"
+  srcDark="./tools-dark.png"
+/>
 
-***
+The **Tools** section directly maps to the Cards in your main Workflow's Autonomous Node. When you update one, the other will also update:
 
-# Capabilities
+<Image
+  alt="Autonomous Node Cards"
+  src="./node-cards.png"
+  srcDark="./node-cards-dark.png"
+/>
 
-The "Capabilities" section defines the actions your bot can perform based on its enabled agents, integrations, and workflows. This provides you with an overview of all of your bot's functional abilities.
+## Communication Channels
 
-Clicking on any of the capabilities listed here, or the 'Edit Main Flow' button, will take you to the part of the workflow where you can make changes to this configuration.
+<Tip>
+  For detailed guides on setting up different channels, check out the [Integrations documentation](/integrations/).
+</Tip>
 
-***
+You can deploy your bot in different channels  the **Communication Channels** section:
 
-# Agents
+<Image
+  alt="Communication Channels"
+  src="./comm-channels.png"
+  srcDark="./comm-channels-dark.png"
+/>
 
-The "Agents" section is where you manage Agents, the specialized modules that enhance your bot’s capabilities. These agents can provide specific functions, such as summarization or advanced knowledge querying.
+## Conversation analysis
 
-This section lists your bot's available or enabled Agents. Click on the "+ Add" button to integrate new agents that provide additional functionality to your bot. This could include agents for language translation, sentiment analysis, or other specialized tasks.
+You can view a summary of your bot's conversations in the **Conversation Analysis** section. This includes sentiment analysis, summaries of conversation topics, and insights into whether users' questions were resolved.
+
+## Learning Experiences
+
+<Note>
+  The **Learning Experiences** section is only available if you have an [Autonomous Node](/guides/studio/interface/nodes/autonomous-node) in your bot's main Workflow.
+</Note>
+
+You can provide feedback on your bot's responses in the [Emulator](/guides/studio/interface/emulator). Then, you can view a summary of your feedback in the **Learning Experiences** section:
+
+<Image
+  alt="Learning experiences"
+  src="./learning-experiences.png"
+  srcDark="./learning-experiences-dark.png"
+/>
