@@ -5,5 +5,10 @@ export const Image = ({ alt, src, srcDark }) => (
       className="block dark:hidden"
       src={src}
     />
+    <img
+      alt={alt}
+      className="hidden dark:block"
+      src={srcDark ? srcDark : src}
+    />
   </Frame>
 );
