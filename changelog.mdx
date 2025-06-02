@@ -4,6 +4,37 @@ description: "The latest updates and improvements to Botpress."
 mode: "wide"
 ---
 
+<Update label="May 30, 2025">
+## Features & Enhancements
+
+- Added new Card to set a custom inactivity timeout:
+
+    <Frame>
+        <img
+            alt="Inactivity timeout"
+            className="block dark:hidden"
+            src="/changelog-assets/2025-05-30/inactivity-timeout.png"
+        />
+        <img
+            alt="Inactivity timeout"
+            className="hidden dark:block"
+            src="/changelog-assets/2025-05-30/inactivity-timeout-dark.png"
+        />
+    </Frame>
+
+- Bumped LLM timeout from 30 seconds to 90 seconds
+- Bots using the BigCommerce integration can now recommend best-selling products without hallucinating
+
+## Bug fixes
+
+- Fixed issue where variables assigned in the last Card in a Workflow weren’t stored
+- Various WhatsApp integration fixes:
+    - Fixed error with OAuth flow when the user had more than 50 WhatsApp business accounts
+    - Fixed an error when receiving [Contact](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/contacts-messages) messages from WhatsApp
+- Fixed issue with Intercom integration
+
+</Update>
+
 <Update label="May 23, 2025">
     ## Features & Enhancements
     - The [Fixed Schedule](/guides/studio/interface/triggers#fixed-schedule) Trigger now displays both the timezone and next run:
