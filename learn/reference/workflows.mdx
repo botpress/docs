@@ -30,7 +30,7 @@ Instead of having the logic for each of these tasks in one big sequence, you can
 
 ## Overview
 
-Workflows are made up of [Nodes](/guides/studio/interface/nodes/) that determine their behaviour. You can modify the Nodes within a Workflow by dragging and dropping them.
+Workflows are made up of [Nodes](/learn/reference/nodes/) that determine their behaviour. You can modify the Nodes within a Workflow by dragging and dropping them.
 
 Every Workflow you create has at least two Nodes:
 
@@ -40,7 +40,7 @@ Every Workflow you create has at least two Nodes:
 You can put any amount of Nodes in between these two — they'll execute in order when you transition to the Workflow.
 
 <Note>
-  You can [pass data between Workflows](/guides/studio/interface/variables/pass-between-workflows) — check out the [variables](/guides/studio/interface/variables/) section for more information.
+  You can [pass data between Workflows](/learn/reference/variables/pass-between-workflows) — check out the [variables](/learn/reference/variables/) section for more information.
 </Note>
 
 ---
@@ -125,7 +125,7 @@ The Timeout Workflow executes after a period of prolonged inactivity from the us
 Instead of an **Exit** Node, the Timeout Workflow contains an **End** Node. This ensures that the conversation ends after the timeout occurs.
 
 <Tip>
-  You can set a custom timeout delay in your [Bot Settings](/guides/studio/interface/chatbot-settings).
+  You can set a custom timeout delay in your [Bot Settings](/learn/reference/chatbot-settings).
 </Tip>
 
 ### Conversation End
@@ -148,7 +148,7 @@ The Conversation End Workflow executes right before the conversation ends explic
 Instead of an **Exit** Node, the **Conversation End** Workflow contains an **End** Node. This ensures that the conversation ends after the Workflow executes.
 
 <Note>
-  The **Conversation End** Workflow only executes before the conversation ends explicitly — that is, when a Workflow transitions to an [End Node](/guides/studio/interface/nodes/introduction#end-node).
+  The **Conversation End** Workflow only executes before the conversation ends explicitly — that is, when a Workflow transitions to an [End Node](/learn/reference/nodes/introduction#end-node).
 
   Since Autonomous Nodes don't transition to an End Node when the user ends the conversation, they won't transition to the Conversation End Workflow by default.
 </Note>
@@ -189,7 +189,7 @@ Then, select **Create Workflow** and enter a name for the new Workflow:
 
 ### From Botpress Hub
 
-You can also browse [Botpress Hub](/integrations/botpress-hub) for user-uploaded Workflows and add them to your bot. Just filter by Workflow to see all available Workflows:
+You can also browse [Botpress Hub](/integrations/get-started/botpress-hub) for user-uploaded Workflows and add them to your bot. Just filter by Workflow to see all available Workflows:
 
 <Frame>
   <img
@@ -214,7 +214,7 @@ To add any Workflow, select it, then select **Install Workflow**.
 
 ## Transition to a Workflow
 
-Any Workflows you add are available as a [Card](/guides/studio/cards/) from the **Flow Logic** section of the Card tray:
+Any Workflows you add are available as a [Card](/learn/reference/cards/) from the **Flow Logic** section of the Card tray:
 
 <Frame>
   <img
@@ -269,4 +269,4 @@ Just select **Add Folder** in the Workflows menu to create a new folder. Then, y
 
 ## Share a Workflow
 
-You can share any Workflow you create on [Botpress Hub](/integrations/botpress-hub) to make it available to other users. Just select **Share Workflow** <Icon icon="external-link"/> in the upper-right corner of the Workflow and fill out the required fields.
+You can share any Workflow you create on [Botpress Hub](/integrations/get-started/botpress-hub) to make it available to other users. Just select **Share Workflow** <Icon icon="external-link"/> in the upper-right corner of the Workflow and fill out the required fields.

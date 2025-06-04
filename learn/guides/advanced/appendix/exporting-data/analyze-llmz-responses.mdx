@@ -20,7 +20,7 @@ If you are looking to simply understand a response in the emulator, you can use 
 
 Sometimes you want to do something with that information in your production bots, perhaps for analytics, perhaps for figuring out issues. LLMz hooks allow you to do that. You can use them to monitor and analyze responses from LLMz-powered Autonomous Nodes, especially when they retrieve information from the Knowledge Base (KB), and you can send the information to a Botpress Table, or to your preferred analytics tool.
 
-You can follow the [Botpress guide](/guides/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks) for setting up streaming analytics for messages, but if you'd like to get information on LLMz logic, you can follow these steps to adjust for this.
+You can follow the [Botpress guide](/learn/guides/advanced/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks) for setting up streaming analytics for messages, but if you'd like to get information on LLMz logic, you can follow these steps to adjust for this.
 
 ## Step 1: Setting Up Your Analytics Tool
 
@@ -39,7 +39,7 @@ To set up this hook:
 
 This hook function provides access to two key parameters:
 
-* `event`: The [Event object](/guides/dashboard/bot/events) with details about the interaction.
+* `event`: The [Event object](/learn/get-started/dashboard/bot/events) with details about the interaction.
 * `execution`: An object containing data on the LLMz execution, including details of each iteration and response content. More information on the `execution` object structure is provided [below](#the-execution-object).
 
 ## Example Code for the After LLMz Execution Hook
