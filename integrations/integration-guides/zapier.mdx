@@ -8,7 +8,7 @@ import { Img } from '/snippets/image.mdx'
 The Botpress app for Zapier is currently in BETA. In order to use Botpress in your Zaps please [click here to obtain access](https://zapier.com/developer/public-invite/179950/2d89a44be6d7ddcae4ae23df0be19b3c/) to the private beta in Zapier.
 </Info>
 
-<img src="./zapier.png" />
+<Img src="./assets/zapier.png" />
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ The Botpress app for Zapier is currently in BETA. In order to use Botpress in yo
 1. If you're setting up Botpress as a Trigger in Zapier there will be an option to test the trigger and see some sample data that could be received from your bot. Use this to create the rest of your Zap.
 2. To make your bot send real data to Zapier, you'll find a "Send to Zapier" action card in Botpress Studio which you can use to send data from your bot to your Zap:
 
-<img src="./zapier-cards.png" />
+<Img src="./assets/zapier-cards.png" />
 
 3. It's recommended that you send your data in JSON format so you can send multiple value at once, as Zapier will automatically parse it. For example, you could use the following expression to send a JSON object with multiple values in the "Trigger Data" field of the "Send to Zapier" action:
 
@@ -48,7 +48,7 @@ The Botpress app for Zapier is currently in BETA. In order to use Botpress in yo
 
 3. To receive data from Zapier in your bot, you can use the "Event from Zapier" trigger in the Studio:
 
-<img src="./zapier-events.png" />
+<Img src="./assets/zapier-events.png" />
 
 4. Then add an Execute Code card with the following code assuming you sent your data in JSON format:
 
@@ -63,8 +63,8 @@ workflow.zapierData = JSON.parse(event.payload.body)
 You can create an "echo" zap in Zapier to test if everything works well. For example, you can create a zap that triggers when you send a message to your bot and then sends the same message back to your bot.\
 Here's what a simple echo zap would look like:
 
-<img src="./zapier-trigger.png" />
+<Img src="./assets/zapier-trigger.png" />
 
 The first action receives an event from the bot, and the second one sends the same event back to the bot. You can see the events you receive on the "Discover Events" button on the node containing "Events from Zapier" card.
 
-<img src="./zapier-workflow.png" />
+<Img src="./assets/zapier-workflow.png" />

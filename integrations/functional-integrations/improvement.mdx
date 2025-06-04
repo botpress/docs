@@ -21,13 +21,13 @@ Start by installing the Improvement integration from the integration hub.
 
 [Link to integration](https://studio.botpress.cloud?exploreHub=1\&hubItemId=intver_01JDTX5RMZGB170E630HS62GAR)
 
-<img src="./improvement-integration.png" />
+<Img src="./assets/improvement-integration.png" />
 
 ## Store Iterations
 
 After installing the integration, all of the iterations produced by LLMz via an Autonomous Node will be stored in the automatically-created "LLMz iterations" Table. Iterations are produced at the message level, meaning a single conversation will typically have multiple iterations.
 
-<img src="./improvement-table.png" />
+<Img src="./assets/improvement-table.png" />
 
 This table is automatically populated every time an iteration ends. Each iteration takes up its own record, and stores specific data like the conversation or event ID, along with the iteration itself.
 
@@ -35,20 +35,20 @@ This table is automatically populated every time an iteration ends. Each iterati
 
 Once you've installed the Improvement integration, you can access the "Improvement" window through the "Views" button on the top-right corner of the Studio.
 
-<img src="./view-improvement.png" />
+<Img src="./assets/view-improvement.png" />
 
 You can access the Improvements UI from this menu.
 
-<img src="./improvement-ui.png" />
+<Img src="./assets/improvement-ui.png" />
 
 The Improvements UI shows all of your bot's conversations, along with each individual LLMz iteration. This iteration is the code your bot generated to take an action and/or respond to the user.
 
 Hovering over a specific iteration will let you access the Feedback window, in which you can suggest improvements to future iterations of similar tasks.
 
-<img src="./improvement-ui-diff.png" />
+<Img src="./assets/improvement-ui-diff.png" />
 
 Clicking "Re-generate" will produce a new iteration for your review. Once you're satisfied with the new iteration, clicking "Save" will store this to your bot's "Feedback" Table.
 
 Your bot uses the information stored in its "Feedback" Table to inform future LLMz iterations.
 
-<img src="./improvement-table-result.png" />
+<Img src="./assets/improvement-table-result.png" />
