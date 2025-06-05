@@ -5,7 +5,7 @@ sidebarTitle: Implement File Sync
 
 import { FileSynchronizerIcon } from '/snippets/icons/plugins/file-synchronizer.mdx'
 import { CurrentInterfaceVersion } from '/snippets/interface-version.mdx'
-import { DefinitionList, Definition, DefinitionReference as Term } from '/snippets/definition-list.mdx'
+import { DefinitionList, Definition, DefinitionReference } from '/snippets/definition-list.mdx'
 
 <p>
   <FileSynchronizerIcon width={64} style={{float: 'left', marginRight: 15}} role="presentation" />
@@ -53,17 +53,17 @@ Throughout this document, we will use the following terms:
 
 ## External service requirements
 
-The <Term id="external-service"/> providing file synchronization functionality **must** support the following:
+The <DefinitionReference id="external-service"/> providing file synchronization functionality **must** support the following:
 - An API that allows listing all files and folders in a folder.
   - Must support pagination. This means that the API should return a limited number of items at a time, along with a token that can be used to retrieve the next set of items.
 - An API that allows downloading files.
 
-The <Term id="external-service"/> **may** also support the following in order to provide <Term id="real-time-sync"/>:
-- Webhooks that can notify your <Term id="integration"/> of the following events:
-  - A <Term id="file"/> was created.
-  - A <Term id="file"/> was updated.
-  - A <Term id="file"/> was deleted.
-  - A <Term id="folder"/> was deleted.
+The <DefinitionReference id="external-service"/> **may** also support the following in order to provide <DefinitionReference id="real-time-sync"/>:
+- Webhooks that can notify your <DefinitionReference id="integration"/> of the following events:
+  - A <DefinitionReference id="file"/> was created.
+  - A <DefinitionReference id="file"/> was updated.
+  - A <DefinitionReference id="file"/> was deleted.
+  - A <DefinitionReference id="folder"/> was deleted.
 
 ## Updating your `package.json` file
 
@@ -75,14 +75,14 @@ You will need this version number for the next steps.
 
 ### Adding the interface as a dependency
 
-Once you have the <Term id="files-readonly"/> version, you can add it as a dependency to your <Term id="integration"/>:
+Once you have the <DefinitionReference id="files-readonly"/> version, you can add it as a dependency to your <DefinitionReference id="integration"/>:
 
 <Steps>
   <Step title="Open the package.json file">
-    Open your <Term id="integration"/>'s `package.json` file.
+    Open your <DefinitionReference id="integration"/>'s `package.json` file.
   </Step>
   <Step title="Add the bpDependencies section">
-    If there is no `bpDependencies` section in your <Term id="integration"/>'s `package.json` file, create one:
+    If there is no `bpDependencies` section in your <DefinitionReference id="integration"/>'s `package.json` file, create one:
     ```json package.json {2}
     {
       "bpDependencies": {}
@@ -90,7 +90,7 @@ Once you have the <Term id="files-readonly"/> version, you can add it as a depen
     ```
   </Step>
   <Step title="Add the interface as a dependency">
-    In the `bpDependencies` section, add the <Term id="files-readonly"/> as a dependency. For example, for version `0.2.0`, you would add the following:
+    In the `bpDependencies` section, add the <DefinitionReference id="files-readonly"/> as a dependency. For example, for version `0.2.0`, you would add the following:
     ```json package.json {3}
     {
       "bpDependencies": {
@@ -107,19 +107,19 @@ Once you have the <Term id="files-readonly"/> version, you can add it as a depen
     Save the `package.json` file.
   </Step>
   <Step title="Install the interface">
-  Now that you have added the <Term id="files-readonly"/> as a dependency, you can run the [`bp add`](/for-developers/cli/commands/add) command to install it. This command will:
+  Now that you have added the <DefinitionReference id="files-readonly"/> as a dependency, you can run the [`bp add`](/for-developers/cli/commands/add) command to install it. This command will:
   - Download the interface from Botpress.
-  - Install it in a directory named `bp_modules` in your <Term id="integration"/>'s root directory.
+  - Install it in a directory named `bp_modules` in your <DefinitionReference id="integration"/>'s root directory.
   </Step>
 </Steps>
 
 ### Adding a helper build script
 
-To keep your <Term id="integration"/> up to date, we recommend adding a helper build script to your `package.json` file:
+To keep your <DefinitionReference id="integration"/> up to date, we recommend adding a helper build script to your `package.json` file:
 
 <Steps>
   <Step title="Open the package.json file">
-    Open your <Term id="integration"/>'s `package.json` file.
+    Open your <DefinitionReference id="integration"/>'s `package.json` file.
   </Step>
   <Step title="Add the build script">
     In the `scripts` section, add the following script:
@@ -139,20 +139,20 @@ To keep your <Term id="integration"/> up to date, we recommend adding a helper b
   </Step>
 </Steps>
 
-Now, whenever you run `npm run build`, it will automatically install the <Term id="files-readonly" /> and build your <Term id="integration" />.
+Now, whenever you run `npm run build`, it will automatically install the <DefinitionReference id="files-readonly" /> and build your <DefinitionReference id="integration" />.
 
 ## Editing your integration definition file
 
 ### Adding the interface to your integration definition file
 
-Now that the <Term id="files-readonly"/> is installed, you must add it your integration definition file in order to implement it.
+Now that the <DefinitionReference id="files-readonly"/> is installed, you must add it your integration definition file in order to implement it.
 
 <Steps>
   <Step title="Open the integration.definition.ts file">
-    Open your <Term id="integration"/>'s `integration.definition.ts` file.
+    Open your <DefinitionReference id="integration"/>'s `integration.definition.ts` file.
   </Step>
   <Step title="Import the interface">
-    At the top of the file, import the <Term id="files-readonly"/>:
+    At the top of the file, import the <DefinitionReference id="files-readonly"/>:
     ```typescript integration.definition.ts
     import filesReadonly from './bp_modules/files-readonly'
     ```
@@ -179,15 +179,15 @@ The `.extend()` function takes two arguments:
 - The second argument is a configuration object. Using this object, you can override interface defaults with custom names, titles, and descriptions.
 
 <Tip>
-Whilst renaming actions, events and channels is optional, it is highly recommended to rename these to match the terminology of the <Term id="external-service"/>. This will help you avoid confusion and make your <Term id="integration"/> easier to understand.
+Whilst renaming actions, events and channels is optional, it is highly recommended to rename these to match the terminology of the <DefinitionReference id="external-service"/>. This will help you avoid confusion and make your <DefinitionReference id="integration"/> easier to understand.
 </Tip>
 
 #### Renaming actions
 
-The <Term id="files-readonly"/> defines two actions that are used to interact with the <Term id="external-service"/>:
+The <DefinitionReference id="files-readonly"/> defines two actions that are used to interact with the <DefinitionReference id="external-service"/>:
 
-- `listItemsInFolder` - Used by the <Term id="file-synchronizer"/> to request a list of all files and folders in a folder.
-- `transferFileToBotpress` - Used by the <Term id="file-synchronizer"/> to request that a file be downloaded from the <Term id="external-service"/> and uploaded to Botpress.
+- `listItemsInFolder` - Used by the <DefinitionReference id="file-synchronizer"/> to request a list of all files and folders in a folder.
+- `transferFileToBotpress` - Used by the <DefinitionReference id="file-synchronizer"/> to request that a file be downloaded from the <DefinitionReference id="external-service"/> and uploaded to Botpress.
 
 If you want to rename these actions, you can do so in the configuration object. For example, if you want to rename `listItemsInFolder` to `crawlFolder`, you can do it like this:
 
@@ -202,20 +202,20 @@ If you want to rename these actions, you can do so in the configuration object. 
 ```
 
 <Tip>
-For example, if you're using a notetaking platform such as Microsoft OneNote, you might rename `listItemsInFolder` to `listNotebooksAndPages` and `transferFileToBotpress` to `downloadPage`. This way, the action names reflect the specific context of the notetaking platform, making your <Term id="integration"/> clearer and easier to understand.
+For example, if you're using a notetaking platform such as Microsoft OneNote, you might rename `listItemsInFolder` to `listNotebooksAndPages` and `transferFileToBotpress` to `downloadPage`. This way, the action names reflect the specific context of the notetaking platform, making your <DefinitionReference id="integration"/> clearer and easier to understand.
 </Tip>
 
 #### Renaming events
 
-The <Term id="files-readonly"/> interface defines these events to notify the plugin of changes in the <Term id="external-service"/>:
+The <DefinitionReference id="files-readonly"/> interface defines these events to notify the plugin of changes in the <DefinitionReference id="external-service"/>:
 
-- `fileCreated` - Emitted by your <Term id="integration"/> to notify the <Term id="file-synchronizer"/> that a new <Term id="file"/> has been created in the <Term id="external-service"/>.
-- `fileUpdated` - Emitted by your <Term id="integration"/> to notify the <Term id="file-synchronizer"/> that a <Term id="file"/> has been updated in the <Term id="external-service"/>.
-- `fileDeleted` - Emitted by your <Term id="integration"/> to notify the <Term id="file-synchronizer"/> that a <Term id="file"/> has been deleted in the <Term id="external-service"/>.
-- `folderDeletedRecursive` - Emitted by your <Term id="integration"/> to notify the <Term id="file-synchronizer"/> that a <Term id="folder"/> and all of its contents have been deleted in the <Term id="external-service"/>.
+- `fileCreated` - Emitted by your <DefinitionReference id="integration"/> to notify the <DefinitionReference id="file-synchronizer"/> that a new <DefinitionReference id="file"/> has been created in the <DefinitionReference id="external-service"/>.
+- `fileUpdated` - Emitted by your <DefinitionReference id="integration"/> to notify the <DefinitionReference id="file-synchronizer"/> that a <DefinitionReference id="file"/> has been updated in the <DefinitionReference id="external-service"/>.
+- `fileDeleted` - Emitted by your <DefinitionReference id="integration"/> to notify the <DefinitionReference id="file-synchronizer"/> that a <DefinitionReference id="file"/> has been deleted in the <DefinitionReference id="external-service"/>.
+- `folderDeletedRecursive` - Emitted by your <DefinitionReference id="integration"/> to notify the <DefinitionReference id="file-synchronizer"/> that a <DefinitionReference id="folder"/> and all of its contents have been deleted in the <DefinitionReference id="external-service"/>.
 
 <Tip>
-If the <Term id="external-service"/> emits several filesystem changes at once, it is also possible for your integration to emit a `aggregateFileChanges` event, which contains all the changes in a single event.
+If the <DefinitionReference id="external-service"/> emits several filesystem changes at once, it is also possible for your integration to emit a `aggregateFileChanges` event, which contains all the changes in a single event.
 </Tip>
 
 If you want to rename these events, you can do so in the configuration object. For example, if you want to rename `fileCreated` to `pageCreated`, you can do it like this:
@@ -236,7 +236,7 @@ If you want to rename these events, you can do so in the configuration object. F
 
 #### Implementing `listItemsInFolder`
 
-The `listItemsInFolder` action is used by the <Term id="file-synchronizer"/> to request a list of all files and folders in a folder.
+The `listItemsInFolder` action is used by the <DefinitionReference id="file-synchronizer"/> to request a list of all files and folders in a folder.
 
 <Note>
   If you opted to rename the action to something else to `listItemsInFolder` in the "Configuring the interface" section, please use the new name instead of `listItemsInFolder`.
@@ -249,10 +249,10 @@ This action should implement the following logic:
 
 <Steps>
   <Step title="Get the folder ID">
-    Get the folder identifier from `input.folderId`. When this value is `undefined`, it means the <Term id="file-synchronizer"/> is requesting a list of all items in the _root directory_ of the <Term id="external-service"/>. For root directory requests, please refer to the documentation of the <Term id="external-service"/> to determine the correct root identifier - this is typically an empty string, a slash character (`/`), or a special value defined by the service.
+    Get the folder identifier from `input.folderId`. When this value is `undefined`, it means the <DefinitionReference id="file-synchronizer"/> is requesting a list of all items in the _root directory_ of the <DefinitionReference id="external-service"/>. For root directory requests, please refer to the documentation of the <DefinitionReference id="external-service"/> to determine the correct root identifier - this is typically an empty string, a slash character (`/`), or a special value defined by the service.
   </Step>
   <Step title="Get the list of items">
-    Use the <Term id="external-service"/>'s API to get the list of items in the folder. If the <Term id="external-service"/> supports filtering by item type (file or folder), by maximum file size, or by modification date, please use these filters to limit the number of items returned. This will help reduce the amount of data transferred and improve performance.
+    Use the <DefinitionReference id="external-service"/>'s API to get the list of items in the folder. If the <DefinitionReference id="external-service"/> supports filtering by item type (file or folder), by maximum file size, or by modification date, please use these filters to limit the number of items returned. This will help reduce the amount of data transferred and improve performance.
     <Expandable title="item filters">
       ```typescript {3-7}
       type Input = {
@@ -267,14 +267,14 @@ This action should implement the following logic:
       ```
     </Expandable>
     <Note>
-      If a pagination token is provided (`input.nextToken`), use it to get the next page of items. The <Term id="external-service"/> should return a new pagination token in the response, which you should return with the action's response.
+      If a pagination token is provided (`input.nextToken`), use it to get the next page of items. The <DefinitionReference id="external-service"/> should return a new pagination token in the response, which you should return with the action's response.
     </Note>
     <Warning>
-      **Do not** list items recursively. The <Term id="file-synchronizer"/> is responsible for handling recursion. Your <Term id="integration"/> should only return the items in the specified folder.
+      **Do not** list items recursively. The <DefinitionReference id="file-synchronizer"/> is responsible for handling recursion. Your <DefinitionReference id="integration"/> should only return the items in the specified folder.
     </Warning>
   </Step>
   <Step title="Map each items to the expected schema">
-    Map each item to the expected schema. The <Term id="file-synchronizer"/> expects the following schemas:
+    Map each item to the expected schema. The <DefinitionReference id="file-synchronizer"/> expects the following schemas:
     <Expandable title="folder schema">
       ```typescript {2-4}
       type Folder = {
@@ -286,19 +286,19 @@ This action should implement the following logic:
       }
       ```
       <ResponseField name="id" type="string" required>
-        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <Term id="integration"/> must be able to resolve this identifier to the actual folder in the <Term id="external-service"/>. The <Term id="file-synchronizer"/> will use this identifier to enumerate children of this folder.
+        This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <DefinitionReference id="integration"/> must be able to resolve this identifier to the actual folder in the <DefinitionReference id="external-service"/>. The <DefinitionReference id="file-synchronizer"/> will use this identifier to enumerate children of this folder.
       </ResponseField>
       <ResponseField name="type" type="string" required>
         This should always be `folder`.
       </ResponseField>
       <ResponseField name="name" type="string" required>
-        The name of the folder. This should be the name of the folder as it appears in the <Term id="external-service"/>.
+        The name of the folder. This should be the name of the folder as it appears in the <DefinitionReference id="external-service"/>.
       </ResponseField>
       <ResponseField name="parentId" type="string" optional>
         The identifier of the parent folder. This should be the same identifier as the one used in the `folderId` field of the input.
       </ResponseField>
       <ResponseField name="absolutePath" type="string" optional>
-        The absolute path of the folder in the <Term id="external-service"/>, if available.
+        The absolute path of the folder in the <DefinitionReference id="external-service"/>, if available.
       </ResponseField>
     </Expandable>
     <Expandable title="file schema">
@@ -315,19 +315,19 @@ This action should implement the following logic:
       }
       ```
       <ResponseField name="id" type="string" required>
-        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <Term id="integration"/> must be able to resolve this identifier to the actual file in the <Term id="external-service"/>. The <Term id="file-synchronizer"/> will use this identifier to download the file.
+        This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <DefinitionReference id="integration"/> must be able to resolve this identifier to the actual file in the <DefinitionReference id="external-service"/>. The <DefinitionReference id="file-synchronizer"/> will use this identifier to download the file.
       </ResponseField>
       <ResponseField name="type" type="string" required>
         This should always be `file`.
       </ResponseField>
       <ResponseField name="name" type="string" required>
-        The name of the file. This should be the name of the file as it appears in the <Term id="external-service"/>, including its file extension. This same name will be used to display the file in Botpress.
+        The name of the file. This should be the name of the file as it appears in the <DefinitionReference id="external-service"/>, including its file extension. This same name will be used to display the file in Botpress.
       </ResponseField>
       <ResponseField name="parentId" type="string" optional>
         The identifier of the parent folder. This should be the same identifier as the one used in the `folderId` field of the input.
       </ResponseField>
       <ResponseField name="absolutePath" type="string" optional>
-        The absolute path of the file in the <Term id="external-service"/>, if available.
+        The absolute path of the file in the <DefinitionReference id="external-service"/>, if available.
       </ResponseField>
       <ResponseField name="sizeInBytes" type="number" optional>
         The size of the file in bytes, if available.
@@ -337,12 +337,12 @@ This action should implement the following logic:
       </ResponseField>
       <ResponseField name="contentHash" type="string" optional>
         The content hash of the file, if available. This should be a unique identifier for the file's content, such as an MD5 or SHA-1 hash.
-        This is used to detect changes in the file's content. If the content hash is not available but the <Term id="external-service"/> provides a version or revision number, you can use that instead.
+        This is used to detect changes in the file's content. If the content hash is not available but the <DefinitionReference id="external-service"/> provides a version or revision number, you can use that instead.
       </ResponseField>
     </Expandable>
   </Step>
   <Step title="Yield control back to the plugin">
-    Yield control back to the <Term id="file-synchronizer"/> by returning the list of items. The <Term id="file-synchronizer"/> will then handle the rest of the synchronization process.
+    Yield control back to the <DefinitionReference id="file-synchronizer"/> by returning the list of items. The <DefinitionReference id="file-synchronizer"/> will then handle the rest of the synchronization process.
     ```typescript {2-3}
     return {
       items: [...mappedFolders, ...mappedFiles],
@@ -350,7 +350,7 @@ This action should implement the following logic:
     }
     ```
     <Note>
-      If the <Term id="external-service"/> indicates it has more items, return the pagination token in the `nextToken` field. The <Term id="file-synchronizer"/> will use this token to request the next page of items. Otherwise, return `undefined`.
+      If the <DefinitionReference id="external-service"/> indicates it has more items, return the pagination token in the `nextToken` field. The <DefinitionReference id="file-synchronizer"/> will use this token to request the next page of items. Otherwise, return `undefined`.
     </Note>
   </Step>
 </Steps>
@@ -396,7 +396,7 @@ export default new bp.Integration({
 
 #### Implementing `transferFileToBotpress`
 
-The `transferFileToBotpress` action is used by the <Term id="file-synchronizer"/> to request that a file be downloaded from the <Term id="external-service"/> and uploaded to Botpress.
+The `transferFileToBotpress` action is used by the <DefinitionReference id="file-synchronizer"/> to request that a file be downloaded from the <DefinitionReference id="external-service"/> and uploaded to Botpress.
 
 <Note>
   If you opted to rename the action to something else to `transferFileToBotpress` in the "Configuring the interface" section, please use the new name instead of `transferFileToBotpress`.
@@ -409,16 +409,16 @@ This action should implement the following logic:
 
 <Steps>
   <Step title="Get the file ID">
-    Get the file identifier from `input.file.id`. This is the identifier of the file to be downloaded from the <Term id="external-service"/>.
+    Get the file identifier from `input.file.id`. This is the identifier of the file to be downloaded from the <DefinitionReference id="external-service"/>.
   </Step>
   <Step title="Download the file from the external service">
-    Use the <Term id="external-service"/>'s API to download the file's content.
+    Use the <DefinitionReference id="external-service"/>'s API to download the file's content.
   </Step>
   <Step title="Upload the file to Botpress">
-    Upload the file to Botpress using the `client.uploadFile` method. This method expects both the file's content and a _file key_, which is provided by the <Term id="file-synchronizer"/> as `input.fileKey`.
+    Upload the file to Botpress using the `client.uploadFile` method. This method expects both the file's content and a _file key_, which is provided by the <DefinitionReference id="file-synchronizer"/> as `input.fileKey`.
   </Step>
   <Step title="Yield control back to the plugin">
-    Yield control back to the <Term id="file-synchronizer"/> by returning the the ID of the file that was uploaded to Botpress.
+    Yield control back to the <DefinitionReference id="file-synchronizer"/> by returning the the ID of the file that was uploaded to Botpress.
   </Step>
 </Steps>
 
@@ -451,16 +451,16 @@ export default new bp.Integration({
 
 ### Implementing real-time sync
 
-The <Term id="file-synchronizer"/> can be configured to use real-time synchronization. This means that changes in the <Term id="external-service"/> are immediately reflected in Botpress. To enable this functionality, the <Term id="external-service"/> must support webhooks that can notify your <Term id="integration"/> of changes in the filesystem.
+The <DefinitionReference id="file-synchronizer"/> can be configured to use real-time synchronization. This means that changes in the <DefinitionReference id="external-service"/> are immediately reflected in Botpress. To enable this functionality, the <DefinitionReference id="external-service"/> must support webhooks that can notify your <DefinitionReference id="integration"/> of changes in the filesystem.
 
 #### Implementing `fileCreated`
 
 <Steps>
   <Step title="Add a webhook handler">
-    In your <Term id="integration"/>, add a webhook handler that can receive file change notifications from the <Term id="external-service"/>.
+    In your <DefinitionReference id="integration"/>, add a webhook handler that can receive file change notifications from the <DefinitionReference id="external-service"/>.
   </Step>
   <Step title="Map the file to the expected schema">
-    In your handler, map the file to the expected schema. The <Term id="file-synchronizer"/> expects the following schema:
+    In your handler, map the file to the expected schema. The <DefinitionReference id="file-synchronizer"/> expects the following schema:
     <Expandable title="file schema">
       ```typescript {2-5}
       type File = {
@@ -475,16 +475,16 @@ The <Term id="file-synchronizer"/> can be configured to use real-time synchroniz
       }
       ```
       <ResponseField name="id" type="string" required>
-        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <Term id="integration"/> must be able to resolve this identifier to the actual file in the <Term id="external-service"/>. The <Term id="file-synchronizer"/> will use this identifier to download the file.
+        This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <DefinitionReference id="integration"/> must be able to resolve this identifier to the actual file in the <DefinitionReference id="external-service"/>. The <DefinitionReference id="file-synchronizer"/> will use this identifier to download the file.
       </ResponseField>
       <ResponseField name="type" type="string" required>
         This should always be `file`.
       </ResponseField>
       <ResponseField name="name" type="string" required>
-        The name of the file. This should be the name of the file as it appears in the <Term id="external-service"/>, including its file extension. This same name will be used to display the file in Botpress.
+        The name of the file. This should be the name of the file as it appears in the <DefinitionReference id="external-service"/>, including its file extension. This same name will be used to display the file in Botpress.
       </ResponseField>
       <ResponseField name="absolutePath" type="string" required>
-        The absolute path of the file in the <Term id="external-service"/>. Unlike with the `listItemsInFolder` action, this field is required for the `fileCreated` event.
+        The absolute path of the file in the <DefinitionReference id="external-service"/>. Unlike with the `listItemsInFolder` action, this field is required for the `fileCreated` event.
       </ResponseField>
       <ResponseField name="parentId" type="string" optional>
         The identifier of the parent folder.
@@ -497,12 +497,12 @@ The <Term id="file-synchronizer"/> can be configured to use real-time synchroniz
       </ResponseField>
       <ResponseField name="contentHash" type="string" optional>
         The content hash of the file, if available. This should be a unique identifier for the file's content, such as an MD5 or SHA-1 hash.
-        This is used to detect changes in the file's content. If the content hash is not available but the <Term id="external-service"/> provides a version or revision number, you can use that instead.
+        This is used to detect changes in the file's content. If the content hash is not available but the <DefinitionReference id="external-service"/> provides a version or revision number, you can use that instead.
       </ResponseField>
     </Expandable>
   </Step>
   <Step title="Emit the event">
-    Emit the `fileCreated` event with the mapped file as the payload. The <Term id="file-synchronizer"/> will then handle the rest of the synchronization process.
+    Emit the `fileCreated` event with the mapped file as the payload. The <DefinitionReference id="file-synchronizer"/> will then handle the rest of the synchronization process.
     ```typescript {2-3}
     await client.createEvent({
       name: 'fileCreated',
@@ -524,10 +524,10 @@ The logic is identical to the `fileCreated` event, but you should emit the `file
 
 <Steps>
   <Step title="Add a webhook handler">
-    In your <Term id="integration"/>, add a webhook handler that can receive file change notifications from the <Term id="external-service"/>.
+    In your <DefinitionReference id="integration"/>, add a webhook handler that can receive file change notifications from the <DefinitionReference id="external-service"/>.
   </Step>
   <Step title="Map the folder to the expected schema">
-    In your handler, map the folder to the expected schema. The <Term id="file-synchronizer"/> expects the following schema:
+    In your handler, map the folder to the expected schema. The <DefinitionReference id="file-synchronizer"/> expects the following schema:
     <Expandable title="folder schema">
       ```typescript {2-5}
       type Folder = {
@@ -539,16 +539,16 @@ The logic is identical to the `fileCreated` event, but you should emit the `file
       }
       ```
       <ResponseField name="id" type="string" required>
-        This could be a unique identifier from the <Term id="external-service"/>, or a relative or absolute path, so long as it's unique.
+        This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique.
       </ResponseField>
       <ResponseField name="type" type="string" required>
         This should always be `folder`.
       </ResponseField>
       <ResponseField name="name" type="string" required>
-        The name of the folder. This should be the name of the folder as it appears in the <Term id="external-service"/>
+        The name of the folder. This should be the name of the folder as it appears in the <DefinitionReference id="external-service"/>
       </ResponseField>
       <ResponseField name="absolutePath" type="string" required>
-        The absolute path of the folder in the <Term id="external-service"/>. Unlike with the `listItemsInFolder` action, this field is required for the `folderDeletedRecursive` event.
+        The absolute path of the folder in the <DefinitionReference id="external-service"/>. Unlike with the `listItemsInFolder` action, this field is required for the `folderDeletedRecursive` event.
       </ResponseField>
       <ResponseField name="parentId" type="string" optional>
         The identifier of the parent folder.
@@ -556,7 +556,7 @@ The logic is identical to the `fileCreated` event, but you should emit the `file
     </Expandable>
   </Step>
   <Step title="Emit the event">
-    Emit the `folderDeletedRecursive` event with the mapped folder as the payload. The <Term id="file-synchronizer"/> will then handle the rest of the synchronization process.
+    Emit the `folderDeletedRecursive` event with the mapped folder as the payload. The <DefinitionReference id="file-synchronizer"/> will then handle the rest of the synchronization process.
     ```typescript {2-3}
     await client.createEvent({
       name: 'folderDeletedRecursive',
@@ -584,5 +584,5 @@ await client.createEvent({
 ```
 
 <Tip>
-  If your <Term id="integration"/> needs to emit more than one filesystem change event, you should combine them into a single `aggregateFileChanges` event. This is more efficient and faster to process for the <Term id="file-synchronizer"/>.
+  If your <DefinitionReference id="integration"/> needs to emit more than one filesystem change event, you should combine them into a single `aggregateFileChanges` event. This is more efficient and faster to process for the <DefinitionReference id="file-synchronizer"/>.
 </Tip>
