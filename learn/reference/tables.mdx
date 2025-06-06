@@ -800,6 +800,15 @@ Please note that these filters and operators can be used together to create comp
  }
 ```
 
+If you have a column of type object, you can also use operators on nested paths:
+
+```json
+{ 
+  "customer.name": { "$regex": "[a-z]" },
+  "customer.age": { "$gte": 18 }
+}
+```
+
 ### Using AI to generate filters
 
 Thankfully, Botpress comes with artificial intelligence (AI) capabilities when it comes to filtering records. This means you can provide a human-like query, and the AI will intelligently decipher it and create the right filters for your query.
