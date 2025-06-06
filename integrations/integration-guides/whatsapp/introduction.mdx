@@ -6,6 +6,8 @@ sidebarTitle: Setup
 
 The official WhatsApp integration allows your users to chat with your bot by messaging a WhatsApp number.
 
+## Setup
+
 <Tabs>
   <Tab title="Basic configuration">
 
@@ -105,4 +107,38 @@ You will need:
   You've manually configured your WhatsApp integration!
 </Check>
 </Tab>
+<Tab title="Playground">
+  If you want to test your bot's behaviour in WhatsApp before going through the actual setup process, you can use the WhatsApp integration playground.
+
+  <Info>
+    You will need:
+
+    - A [published bot](https://botpress.com/docs/botpress-quickstart)
+    - A [WhatsApp account](https://web.whatsapp.com)
+  </Info>
+
+  1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+  2. Search for the **WhatsApp** integration, then select **Install Integration**.
+  3. Select **Test your agent on WhatsApp**.
+  4. Follow the instructions to setup the playground. 
+</Tab>
 </Tabs>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion
+    title="Not receiving messages from bot on WhatsApp"
+  >
+    Until Meta has verified your business, your bot won't be able to send messages to WhatsApp users, even if you've configured it correctly.
+
+    If you need to test out your bot right away, you can use the [WhatsApp Playground](#playground) while waiting for business verification.
+  </Accordion>
+  <Accordion
+    title="Meta business verification taking too long"
+  >
+    Unfortunately, we can't help speed up Meta's business verification process.
+    
+    If you need to test out your bot right away, you can use the [WhatsApp Playground](#playground) while waiting for business verification.
+  </Accordion>
+</AccordionGroup>
