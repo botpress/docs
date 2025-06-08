@@ -1,19 +1,52 @@
----
-title: Workspace
-description: Environment to manage and organize bot projects.
-sidebarTitle: Introduction
----
+// File: actions/extractEntities.js (add to Botpress custom actions)
+async function extractEntities(input) {
+  const entities = event.nlu.entities || [];
+  let response = '';
+  const level = entities.find(e => e.name === 'level_or_stage')?.value;
+  const feature = entities.find(e => e.name === 'game_feature')?.value;
 
-In Botpress, a workspace is an environment where you can organize, manage, and collaborate on multiple bot projects. It allows teams to collaborate effectively by sharing access to these resources in a defined space.
+  if (level && feature) {
+    response = `Bawk! In ${level}, aim for ${feature} by landing egg scatters!`;
+    // Store context
+    temp.current_level = level;
+    temp.current_topic = feature;
+  } else if (temp.current_level && input.includes('next')) {
+    response = `Next up, ${temp.current_level + 1} has more ${temp.current_topic}!`;
+  } else {
+    response = `Clucky needs more info! Ask about free spins or levels.`;
+  }
 
-Each Workspace can contain multiple bots, so you can keep them organized by client, department, or other specific use case. Within a Workspace, you can manage permissions, track integrations, and monitor analytics.
+  await bp.events.replyToEvent(event, { type: 'text', text: response });
+}
+return extractEntities;
+{"text": "How to get free spins in level 3?", "entities": [{"label": "GAME_FEATURE", "value": "free spins"}, {"label": "LEVEL", "value": "level 3"}]}
+{"text": "Dodge foxes in stage 2", "entities": [{"label": "GAME_ELEMENT", "value": "foxes"}, {"label": "LEVEL", "value": "stage 2"}]}
+from transformers import AutoModelForTokenClassification, AutoTokenizer
+model = AutoModelForTokenClassification.from_pretrained("bert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+# Load dataset and fine-tune (requires labeled data)
+# Save model and deploy with Ollama
+from flask import Flask, request, jsonify
+import ollama
+app = Flask(__name__)
 
-<br />
+@app.route('/chat', methods=['POST'])
+def chat():
+    user_input = request.json['text']
+    response = ollama.generate(model='llama3', prompt=user_input)
+    entities = extract_entities(response)  # Custom NER logic
+    level = entities.get('level_or_stage')
+    feature = entities.get('game_feature')
+    if level and feature:
+        reply = f"Bawk! In {level}, land egg scatters for {feature}!"
+        # Store context in Redis
+        redis_client.set(f"session:{user_id}", {"level": level, "feature": feature})
+    else:
+        reply = "Clucky needs more info! Ask about Chicken Road 2 bonuses."
+    return jsonify({"response": reply})
 
-<Note>
-Workspaces are the billing unit on Botpress
+def extract_entities(response):
+    # Placeholder for NER logic (use spaCy or fine-tuned model)
+    return {"level_or_stage": "level 3", "game_feature": "free spins"}  # Example
 
-Add-ons purchased by PAYG and Team plan users are distributed at the Workspace level, meaning that they only apply to the bots living in the Workspace in which those add-ons are purchased.
-
-Various Workspaces in a single account can subscribe to different plans and add-ons.
-</Note>
+app.run(host='0.0.0.0', port=5000)
