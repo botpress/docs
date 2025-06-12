@@ -1,19 +1,23 @@
 .transparent-accordion .bg-background-light {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Info callout background and border */
-.callout[data-callout-type="info"]{
-    background-color: light-dark(rgba(253, 244, 255, 0.5), rgba(217, 70, 239, 0.1));
-    border-color: light-dark(rgba(217, 70, 239, 0.2), rgba(168, 85, 247, 0.3));
+.callout[data-callout-type='info'] {
+  background-color: light-dark(rgba(253, 244, 255, 0.5), rgba(217, 70, 239, 0.1));
+  border-color: light-dark(rgba(217, 70, 239, 0.2), rgba(168, 85, 247, 0.3));
 }
 
 /* Info callout icon */
-.callout[data-callout-type="info"] [data-component-part="callout-icon"] svg{
-  color: light-dark(rgba(192, 38, 211), rgba(232, 121, 249, 0.8))
+.callout[data-callout-type='info'] [data-component-part='callout-icon'] svg {
+  color: light-dark(rgba(192, 38, 211), rgba(232, 121, 249, 0.8));
 }
 
 /* Info callout text */
-.callout[data-callout-type="info"] [data-component-part="callout-content"] {
-  color: light-dark(rgba(112, 26, 117), rgba(245, 208, 254))
+.callout[data-callout-type='info'] [data-component-part='callout-content'] {
+  color: light-dark(rgba(112, 26, 117), rgba(245, 208, 254));
+}
+
+#assistant-entry {
+  display: none;
 }
