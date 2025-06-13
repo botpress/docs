@@ -36,11 +36,11 @@ To add a new table, go to the explorer menu and select `Add Table`. You can then
 
 ## Making Fields Searchable
 
-You can make a field searchable by checking the `Searchable` checkbox. This will allow you to search for records based on the values in the field. For example, if you have a field called `Name` and you make it searchable, you can search for records based on the name of the person. This is only available for fields with the type `String`.
+You can make a field searchable by checking the `Searchable` checkbox. This will allow you to search for records based on the values in the field. For example, if you have a field called `Name` and you make it searchable, you can search for records based on the name of the person. This is available for fields of type `String`, `Object`, `Array` and [custom schemas](/learn/reference/schema).
 
 # Types of Fields (Columns)
 
-There are several types of fields you can add to a table. Each field type has a specific purpose and can only store certain types of data. These are the field types you can choose from: `String`, `Number`, `Boolean`, `Date`, and `Object`.
+There are several types of fields you can add to a table. Each field type has a specific purpose and can only store certain types of data. These are the field types you can choose from: `String`, `Number`, `Boolean`, `Date`, `Object`, `Array` and [custom schemas](/learn/reference/schema).
 
 <Warning>
 Warning
@@ -460,16 +460,17 @@ const { deletedRows } = await client.deleteTableRows({
 
 ## Upsert Table Rows
 
-The upsert operation is a combination of insert and update, allowing you to insert new rows or update existing ones. The operation is based on the row's ID.
+The upsert operation is a combination of insert or update, allowing you to insert new rows or update existing ones. The operation is based on the row's `keyColumn`.
 
 **keyColumn**: The column used to identify the row. This column must be unique. Failure occurs if more than one row is found for the same key.
 
 ```javascript
 const { rows, inserted, updated, errors, warnings } = await client.upsertTableRows({
   table: 'Data1Table',
-  keyColumn: 'id',
+  keyColumn: 'email',
   rows: [
     {
+      email: 'hello@world.com', // will update this row, or create a new one if not found
       name: 'test'
     }
   ]
@@ -540,13 +541,15 @@ const { table } = await client.updateTable({
 })
 ```
 
-### Renaming the table:
+### Renaming the table
+
+A table name must end with "Table".
 
 ```javascript
 await client.updateTable({ table: 'Data1Table', name: 'myNewTable' })
 ```
 
-### Rename Table Column:
+### Rename Table Column
 
 To rename a table column, specify both the current and new names. The column's data type and attributes will remain unchanged.
 
@@ -560,10 +563,10 @@ const { table } = await client.renameTableColumn({
 
 ## Get Table
 
-To retrieve a table's schema, use the `getTable` function. This will return the table's name and schema.
+To retrieve a table's schema, use the `getTable` function. This will return the table definition, along with the total number of rows, number of stale rows and number of indexing rows.
 
 ```javascript
-const { table } = await client.getTable({ table: 'Data1Table' })
+const { table, indexing, rows, stale } = await client.getTable({ table: 'Data1Table' })
 ```
 
 ## Delete Table
@@ -795,6 +798,15 @@ Please note that these filters and operators can be used together to create comp
       }
    ]
  }
+```
+
+If you have a column of type object, you can also use operators on nested paths:
+
+```json
+{ 
+  "customer.name": { "$regex": "[a-z]" },
+  "customer.age": { "$gte": 18 }
+}
 ```
 
 ### Using AI to generate filters
