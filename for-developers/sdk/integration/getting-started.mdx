@@ -51,6 +51,16 @@ Next, create a new integration using the Botpress CLI. This will set up a new di
 bp init --type "integration" --name "my-integration" --template "hello-world"
 ```
 
+<Note>
+  Choose a valid name for your integration by following these rules:
+
+  - Use only lowercase letters
+  - Include dashes ( **-** ) or underscores ( **_** ) if desired
+  - Avoid spaces and special characters like **!**, **@**, **#**, etc.
+
+  If your integration name doesn't follow these rules, you'll get an error when you try to [deploy the integration](#7.deploy-the-integration).
+</Note>
+
 {/* TODO: add a guide on how to claim a Workspace handle and link to it. */}
 
 The CLI will prompt you for some information, including your Workspace or Workspace handle. If you don't have a Workspace handle yet, the CLI should claim one for you. You can also claim one manually by going to [the Dashboard](https://app.botpress.cloud) and navigating to the **Settings** page.
