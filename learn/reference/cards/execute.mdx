@@ -1,41 +1,48 @@
 ---
-title: Execute
-description: Executes a custom piece of code or tabular operation.
+title: Execute Code
 ---
 
-Execute Cards  allow you to run custom JavaScript code within your bot’s workflow, providing a powerful way to extend the functionality of your bot beyond the built-in actions and logic. These Cards enable you to perform complex calculations, manipulate data, call external APIs, or execute any other custom logic directly within the bot flow.
+The Execute Code Card lets you **run custom [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) code within a Node**. 
+
+You can use the Execute Code Card to extend the functionality of your bot beyond Studio's built-in Cards, like:
+
+- Perform calculations
+- Manipulate data and variables
+- Call external APIs
 
 <Tip>
-Generate code with AI
+The Execute Code card allows you to generate code using AI, so you don't have to write it all from scratch.
 
-The Execute Code card allows you to generate code using AI, so you don't have to write it all from scratch. At the top of the code editor, place the prompt for which you'd like to generate code, like fetching data from an API or manipulating a certain user input, and AI will generate code for you.
-
-You're then free to edit this code further, or ask AI to make revisions to it.
+At the top of the code editor, place the prompt for which you'd like to generate code, like fetching data from an API or manipulating a certain user input, and AI will generate code for you. You can then edit this code further, or ask AI to make revisions to it.
 </Tip>
 
-# Execute Cards Overview
+<Note>
+    You can't import external libraries within an Execute Code Card. To make API requests, you can use [axios](https://axios-http.com/docs/intro).
+</Note>
 
-## Run Custom Logic
+## Execute Cards Overview
+
+### Run Custom Logic
 
 Execute Code Cards allow you to write JavaScript code to handle tasks that are not covered by standard Cards. This includes processing user input, transforming data, or implementing unique business logic.
 
-## Dynamic Interactions
+### Dynamic Interactions
 
 Use Execute Code Cards to make your bot’s behavior dynamic. For example, you can use them to adjust responses based on user data, perform calculations, or interact with external services in real-time.
 
-## API Integrations
+### API Integrations
 
 These Cards can be used to call external APIs, handle responses, and process the data within your bot. This capability allows seamless integration with third-party services directly through JavaScript.
 
-## Access to Bot State
+### Access to Bot State
 
 You can interact with the bot’s state, modify variables, and store information that can be used later in the conversation flow. This allows your bot to maintain context and provide more personalized interactions.
 
-## Error Handling
+### Error Handling
 
 Implement custom error handling within your code to manage exceptions, ensure robust operations, and gracefully handle unexpected situations during execution.
 
-# Table Cards
+## Table Cards
 
 Execute cards also allow you to perform operations on the data you have stored in a Table.
 
@@ -45,7 +52,7 @@ Info
 Table cards do not directly display their result. You'll need to first save the data in variables to be able to use them in the conversation.
 </Info>
 
-## Get Record
+### Get Record
 
 To retrieve a specific record from a table, use the **Get Record** card. For example, you might use the Get Record operation to retrieve a user's profile information based on their unique user ID. Here's how to do it:
 
@@ -55,7 +62,7 @@ To retrieve a specific record from a table, use the **Get Record** card. For exa
 4. Choose the result variable that will store the record data. (This variable needs to have the Object type since table records are objects.)
 5. Now you use the variable in subsequent cards to access the record data.
 
-## Insert Record
+### Insert Record
 
 To create a new record in a table, use the **Insert Record** card. This operation can be particularly useful when you need to store new information, such as a new user's details or a newly completed transaction. Here's how to do it:
 
@@ -64,7 +71,7 @@ To create a new record in a table, use the **Insert Record** card. This operatio
 3. Define a value for each field. You can either define a value manually or use variables.
 4. You're done, once the conversation goes through this card, the record will be created in the table.
 
-## Update Record
+### Update Record
 
 To update a record in a table, use the **Update Record** card. For example, you might use this operation to update a user's profile information or to update the status of a transaction. Here's how to do it:
 
@@ -89,7 +96,7 @@ Reminder
 Be careful when using this card. Ensure you are deleting the correct record and that you no longer need it. Deleted records cannot be recovered!
 </Warning>
 
-## Find Records
+### Find Records
 
 The Find Records operation allows you to search for and fetch multiple records that match certain criteria. This operation is beneficial when you need to handle multiple related records at once, such as fetching all transactions made by a specific user. Here's how to do it:
 
