@@ -98,7 +98,7 @@ export default new IntegrationDefinition({
 Let's break down this data structure:
 
 - **`configuration`**: Defines the settings bot developers must provide when installing the integration in the Studio. The configuration schema is used to display a configuration form. Here, only a `webhookUrl` is required to receive outgoing messages.
-- **`channels`**: Specifies supported messaging channels. This example uses a single `webhook` channel, but you can define multiple. For example, Github allows conversing with your both on issues and pull requests. Each channel can have its own set of tags and message types.
+- **`channels`**: Specifies supported messaging channels. This example uses a single `webhook` channel, but you can define multiple. For example, Github allows conversing with your bot on issues and pull requests. Each channel can have its own set of tags and message types.
 - **`channels["$CHANNEL_NAME"].conversation.tags`**: Defines available tags for the conversation. In this case, we are defining a single tag called `id` that identifies the conversation in the external service. This allows binding the botpress conversation to the external service conversation. When sending outgoing message response, this tag will be used to properly route the message to the external service.
 - **`user.tags`**: Defines available tags for the user. Here, we define a single tag called `id` that identifies the user in the external service. This allows binding the botpress user to the external service user.
 - **`messages`**: Defines available message types. In this case, we are defining a single message type called `text` that contains a single field called `text`. This allows sending text messages to the external service. You could define multiple message types, for example, `image`, `video`, etc. The SDK exports a record of default message types that are supported in most messaging channels.
@@ -223,11 +223,11 @@ export default new bp.Integration({
 
 Let's break down this code:
 
-The `handler` function is where the incoming request is handled. When you or an external service calls `webhook.botpress.cloud/$webhookId` this is where Botpress forwards the request to. 
+The `handler` function is where the incoming request is handled. When you or an external service calls `webhook.botpress.cloud/$webhookId` this is where Botpress forwards the request to.
 
-The first thing done in this handler is always to parse the HTTP request. Once the request is parsed and validated you can see three consecutive calls made to the runtime API, respectively `getOrCreateConversation`, `getOrCreateUser`, and `createMessage`. This is a very common pattern in Botpress integrations that integrate with a messaging channel. 
+The first thing done in this handler is always to parse the HTTP request. Once the request is parsed and validated you can see three consecutive calls made to the runtime API, respectively `getOrCreateConversation`, `getOrCreateUser`, and `createMessage`. This is a very common pattern in Botpress integrations that integrate with a messaging channel.
 
-The `getOrCreateConversation` and `getOrCreateUser` operations first check if a conversation or user already exist for the provided tags (here the external ids). If they do, the operations return the existing conversation and user. If they don't, the operations create a new conversation and user with the provided tags. This ensures that subsequent messages from the same user and conversation are routed to the same conversation and user in Botpress. 
+The `getOrCreateConversation` and `getOrCreateUser` operations first check if a conversation or user already exist for the provided tags (here the external ids). If they do, the operations return the existing conversation and user. If they don't, the operations create a new conversation and user with the provided tags. This ensures that subsequent messages from the same user and conversation are routed to the same conversation and user in Botpress.
 
 The `createMessage` operation creates a new message in Botpress with the provided payload. This message is then forwarded to the bot for processing.
 
