@@ -18,6 +18,14 @@
   color: light-dark(rgba(112, 26, 117), rgba(245, 208, 254));
 }
 
-#assistant-entry {
-  display: none;
+.bpFab {
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) { .bpWebchat {
+    box-shadow: none !important;
+    min-width: 450px;
+    width: 29.7vw !important;
+    max-height: 83.2vh !important;
+  }
 }
