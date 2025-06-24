@@ -33,14 +33,14 @@ Here's how to use the Chat API:
 <img src="./webhook-id.png" />
 
 2. Check if you can reach the API by doing a GET request on `https://chat.botpress.cloud/$YOUR_WEBHOOK_ID/hello`.
-3. Create a chat user (this is not the same as a user in your Botpress Dashboard) by calling the [createUser](https://botpress.com/reference/createuser-1) operation.
+3. Create a chat user (this is not the same as a user in your Botpress Dashboard) by calling the [createUser](/api-reference/chat-api/openapi/createUser) operation.
 
 This operation won't be available if you are using manual authentication. See the Authentication section for more information.
 
 4. In the response's body you will find a user key. Copy this key.
-5. Create a conversation with your bot by calling the [createConversation](https://botpress.com/reference/createconversation-1) operation. you will need to provide a user key to authenticate yourself.
-6. Send a message to your bot by calling the [createMessage](https://botpress.com/reference/createmessage-1) operation. You will need to provide a user key to authenticate yourself, a conversation ID to specify which conversation you are sending the message to and a message payload. A simple text message has the following payload format: `{ "type": "text", "text": "hello bot" }`.
-7. Wait for your bot to respond and list messages on the conversation by calling the [listMessages](https://botpress.com/reference/listmessages-1) operation. You will need to provide a user key to authenticate yourself and a conversation ID to specify which conversation you are listing the messages from.
+5. Create a conversation with your bot by calling the [createConversation](/api-reference/chat-api/openapi/createConversation) operation. you will need to provide a user key to authenticate yourself.
+6. Send a message to your bot by calling the [createMessage](/api-reference/chat-api/openapi/createMessage) operation. You will need to provide a user key to authenticate yourself, a conversation ID to specify which conversation you are sending the message to and a message payload. A simple text message has the following payload format: `{ "type": "text", "text": "hello bot" }`.
+7. Wait for your bot to respond and list messages on the conversation by calling the [listMessages](/api-reference/chat-api/openapi/listMessages) operation. You will need to provide a user key to authenticate yourself and a conversation ID to specify which conversation you are listing the messages from.
 
 ## Authentication
 
@@ -82,7 +82,7 @@ The Chat API offers two ways of listening to chat events in real time:
 
 ### Server-Sent Events
 
-To listen to chat-related events on an SSE stream, you must call the [listenConversation](https://botpress.com/reference/listenconversation) operation. This operation will open an SSE stream that you can listen to.
+To listen to chat-related events on an SSE stream, you must call the [listenConversation](/api-reference/chat-api/openapi/listenConversation) operation. This operation will open an SSE stream that you can listen to.
 
 ## Official JavaScript Client
 
