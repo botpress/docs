@@ -184,7 +184,9 @@ Due to the sensitive nature of email communication, the Gmail integration requir
         https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/gmail.readonly%20https://www.googleapis.com/auth/gmail.send&access_type=offline&prompt=consent&redirect_uri=https://botpress.com&client_id=
         `
 
-        > Make sure to add your OAuth **Client ID** from [Step 4](#step-4-create-oauth-credentials) to the end of the URL. For example, if your OAuth client ID is `abcd`, the URL should end with `&client_id=abcd`.
+        <Note>
+        Make sure to add your OAuth **Client ID** from [Step 4](#step-4-create-oauth-credentials) to the end of the URL. For example, if your OAuth client ID is `abcd`, the URL should end with `&client_id=abcd`.
+        </Note>
 
         3. Follow the on-screen instructions to authorize the OAuth application with your personal Gmail account.
 
@@ -208,7 +210,7 @@ Due to the sensitive nature of email communication, the Gmail integration requir
         4. Fill in the required fields with all the information you saved from the previous steps.
 
         <Warning>
-        The authorization code is only valid for a short period of time. If the code has expired, you will need to repeat the steps outlined in the [Authorize the OAuth application](#authorize-the-oauth-application) section.
+        The authorization code is only valid for a short period of time. If the code has expired, you will need to repeat the steps outlined in [Step 10](#step-10-authorize-the-oauth-application).
         </Warning>
 
         10. Select **Save Configuration**. If no error message is displayed, the integration was successfully configured.
