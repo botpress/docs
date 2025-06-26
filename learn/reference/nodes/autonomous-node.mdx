@@ -1,72 +1,72 @@
 ---
 title: Autonomous Node
-description: >-
-  The Autonomous node uses an LLM to determine when, and in what order, to
-  execute the cards it contains.
 ---
 
-The Autonomous Node allows you to create AI agents that make decisions, like what to say and which tools to call, based on the context available to them. It is designed to handle both decision-making and execution by understanding user inputs, responding with the right data, and leveraging the tools you make available to it.
+The Autonomous Node **uses AI to make decisions** — like what your bot should say or what tools it should use.
 
-# Key Features
+Unlike a [standard Node](break.on.purpose), which executes its [Cards](break.onpurpiose) one by one, the Autonomous Node uses a Large Language Model (LLM) to decide when to execute its Cards. It can understand the conversation's context, write responses to users, and leverage the tools you give it.
 
-## LLM-Driven
+<Frame>
+  <img
+    alt="alt"
+    className="block dark:hidden"
+    src="./assets/an.png"
+  />
+  <img
+    alt="alt"
+    className="hidden dark:block"
+    src="./assets/an-dark.png"
+  />
+</Frame>
 
-An Autonomous Node uses an LLM to make intelligent decisions instead of relying on hard-coded logic. This includes executing specific tools, calling functions, writing and executing custom code, and deciding on the direction of a conversations.
+You can use the Autonomous Node to build an independent AI agent that:
 
-## Toolset Integration
+- Aligns with your brand
+- Learns your users' needs
+- Doesn't need human intervention to take actions
 
-The Autonomous Node understands and utilizes the tools that you explicitly make available to it. For example, it can query knowledge bases, perform web searches, and execute workflow transitions.
+---
 
-## Prompt Customization
+## Add an Autonomous Node
 
-By configuring an Autonomous Node with a persona and instructions, you can ensure that it behaves on-brand and within scope during conversations.
+By default, every bot has an Autonomous Node installed in its main [Workflow](/learn/reference/workflows). If you need to create a new Autonomous Node:
 
-## Autonomous Behaviour
+1. Right-click anywhere in a Workflow.
+2. Select **Autonomous Node**.
 
-An Autonomous Node can execute actions without manual intervention based on instructions and user input.
+---
 
-# Configuration
+## Configuration
 
-Ensuring your Autonomous Node's instructions are cogent and precise is the key to a performant AI agent. The prompt helps the agent understand its persona and guides its decision-making.
+<Tip>
+  If your main Workflow contains an Autonomous Node, you can quickly update its configuration from the Studio's [Home](/learn/reference/home) page.
+</Tip>
 
-<img src="./assets/autonomous-configuration.png" />
+Select your Autonomous Node to open its configuration menu. Here's a breakdown of the configuration options:
 
-## Instructions
+- **Allow Conversation**: This option toggles the Autonomous Node's ability to communicate with users directly. If turned off, the Node only processes commands and executes its internal logic without sending messages to users.
 
-Provide clear guidelines in this section. The more specific the instructions, the better the agent’s decision-making. Avoid using lengthy, convoluted descriptions with jargon and redundant terms.
+- **Instructions**: This field is your Autonomous Node's main prompt. Provide clear guidelines in this section — the more specific you are, the better the agent’s decision-making.
 
-Example: “You are a helpful assistant who always answers questions using the \`global.search’ tool. If the user says ‘search,’ use the ‘browser.webSearch’ tool.”
+<Tip>
+  For a detailed guide to prompting, check out the [Prompting tips](#prompting-tips) section.
+</Tip>
 
-## Allow Conversation
+{/* **Example**: “You are a helpful assistant who always answers questions using the `global.search` tool. If the user says `search,` use the `browser.webSearch` tool.” */}
 
-The Allow Conversation toggle enables the Autonomous Node to communicate with users directly. If turned off, the Node only processes commands and executes its internal logic without sending messages to users.
+- **Vision Agent**: This section configures whether your Autonomous Node uses the [Vision Agent](/learn/reference/agents/vision-agent) to extract text content form incoming images. Toggle **Extract from Incoming Images** to enable or disable this option.
 
-## Tool Calling
+---
 
-An Autonomous Node is equipped with several tools and will call them at various points in a conversation based on the instructions it is given. You can also add new tools by installing and configuring integrations.
+## Prompting tips
 
-### Commonly-used Tools
+Here are some general tips and guidelines that will help you write better prompts for the Autonomous Node:
 
-* global.think: Allows the node to process or pause briefly.
-* browser.webSearch: Enables the agent to search the web for answers.
-* global.search: Queries an internal knowledge base for relevant information.
-* clock.setReminder: Sets a reminder for future tasks or responses.
-* workflow\.transition: Executes a workflow transition, moving from one part of the conversation to another based on user input.
-* global.Message: Sends a text message to the user as a response.
+### Use Markdown
 
-<img src="./assets/autonomous-tools.png" />
+To create a structured prompt, we recommend using [Markdown syntax](https://www.markdownguide.org/basic-syntax/) like headers, bullet points, and bold text.
 
-By specifying which tool to use in response to user actions, you can control the flow and outcomes of the conversation.
-
-For example, you can instruct the LLM to always perform certain actions when specific conditions are met: “When the user says ‘1’, use the ‘workflow\.transition’ tool to move to the next step.”
-
-Or: “If the user asks a question, first try to answer it using the ‘global.search’ tool.”
-
-## Writing Instructions
-
-Clear instructions ensure the Autonomous Node behaves as expected.
-
-Here are 3 best practices for writing instructions for your Autonomous Node:
+This syntax helps the Autonomous Node recognize the hierarchy of your instructions. For example: **PUT AN EXAMPLE HERE**
 
 ### Be specific
 
@@ -74,13 +74,7 @@ Instead of vague commands, use explicit language that guides the agent clearly.
 
 Example: “If the user says ‘help’, send them a predefined list of support options using ‘global.search’.”
 
-### Define tool usage
-
-Explicitly state which tool should be used under which circumstances.
-
-Example: “Always use ‘global.search’ for answering product-related questions.”
-
-### Guide the flow
+### Guide the conversation
 
 Use clear transitions and steps to ensure the conversation flows in the right direction.
 
@@ -92,31 +86,50 @@ You can find more information at the following links:
 * [Building Systems with the ChatGPT API](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/)
 * [ChatGPT Prompt Engineering for Developers](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
 
-## Markdown Syntax
+### Specify tool usage ----- EVEN FOR INTEGRATIONS
 
-To create a structured prompt, we recommend using markdown syntax like headers, bullet points, and bold text.
+An Autonomous Node is equipped with several tools and will call them at various points in a conversation based on the instructions it is given. You can also add new tools by installing and configuring integrations.
 
-This syntax helps the LLM recognize and respect the hierarchy of instructions, guiding it to differentiate between main sections, sub-instructions, and examples.
+- `global.think`: Allows the Node to process a response or pause briefly.
+- `browser.webSearch`: Allows the Node to search the web for answers.
+- `global.search`: Queries an internal knowledge base for relevant information.
+- `clock.setReminder`: Sets a reminder for future tasks or responses.
+- `workflow.transition`: Executes a Workflow transition, moving from one part of the conversation to another based on user input.
+- `global.Message`: Sends a text message to the user as a response.
 
-[More about Markdown Basic Syntax](https://www.markdownguide.org/basic-syntax/)
+<img src="./assets/autonomous-tools.png" />
 
-## Useful Prompts
+By specifying which tool to use in response to user actions, you can control the flow and outcomes of the conversation.
 
-This section contains a list of the most common examples and patterns that you can use to control the behaviour of the Autonomous Node.
+For example, you can instruct the LLM to always perform certain actions when specific conditions are met: “When the user says ‘1’, use the ‘workflow\.transition’ tool to move to the next step.”
+
+Or: “If the user asks a question, first try to answer it using the ‘global.search’ tool.”
+
+## Example prompts
+
+This section contains a list of common examples that you can use to prompt the Autonomous Node.
+
+<AccordionGroup>
+  <Accordion
+    title="Focus on Internal Knowledge"
+  >
+    
+  </Accordion>
+</AccordionGroup>
 
 ### Focus on Internal Knowledge
 
 To ensure the Autonomous Node differentiates between support questions and other types of inquiries, you can guide it in your prompt as follows:
 
-```markdown instructions
+```markdown Instructions
 **IMPORTANT General Process**
 
-- The global.search tool is to be used only for support-related questions and NOT for general features or price-related questions.
+- Only use the `global.search` tool for support-related questions and NOT for general features or price-related questions.
 
-- The browser.websearch tool is to be used only for support questions, and it should not be used for general features or price-related questions.
+- Only use the `browser.websearch` tool for support questions and **not** for general features or price-related questions.
 ```
 
-This prompt ensures the LLM will stick to using specific tools only in the context of support-related queries, maintaining control over the kind of information it retrieves.
+This prompt ensures the LLM will use certain tools in the context of specific questions.
 
 ### Transition to Other Workflows
 
@@ -157,76 +170,6 @@ You can further clarify the prompt by providing an actual example of how the sys
 `"""{{workflow.contentLinks}}"""`
 
 This gives the node clear guidance on how to dynamically generate video links with specific timestamps, ensuring consistent and user-friendly responses.
-
-## Troubleshooting & Diagnosis
-
-The Botpress Studio offers a suite of tools you can use to understand how your Autonomous Node is behaving, why it made certain decisions, and how you can course correct when it's not behaving as expected.
-
-<img src="./assets/troubleshooting.png" />
-
-### Using the Inspect Window
-
-The "Inspect" window surfaces information about the Autonomous Node's process, reasoning, and functions. In it, you'll see:
-
-* What instructions the node is prioritizing
-* How it interprets your prompt
-* Whether it is adhering to the constraints and instructions you provided
-
-If you notice that the node isn’t responding correctly or seems to ignore certain instructions, inspecting will reveal whether it has misunderstood the prompt or failed to execute a specific tool.
-
-<img src="./assets/inspect-window.png" />
-
-The Tools section displays all available tools that the Autonomous Node has access to. Each time you add a new card or make a change in the node configuration, the Tools list is updated.
-
-* Ensure that the tools listed match what you expect to be available in the node’s decision-making process.
-* Ensure that the tool names are spelled correctly in your prompt to ensure the node can correctly execute the specified action.
-
-<br />
-
-The Autonomous Node typically tries to execute all instructions within one or two iterations. The number of iterations depends on the complexity of the prompt and how the Node analyzes it.
-
-For more complex tasks, the node might take multiple iterations to gather data, make decisions, or fetch external information.
-
-By reviewing the Iterations tab , you can understand:
-
-* How many iterations were required for the node to reach its final decision
-* What caused the node to take multiple steps (e.g., fetching additional data from tools like global.search or browser.webSearch)
-* Why a particular outcome was achieved
-
-<img src="./assets/autonomous-iteration.png" />
-
-The Autonomous Node might not be following all of your prompt, executing part of the prompt instead of all of it, or calling the “workflowQueue” without calling the “workflowExecuteAll” tools.
-
-### Choosing the Right Model
-
-Less performant LLMs may struggle with the complexity of operations typically executed by the Autonomous Node.
-
-For this reason, we recommend using a highly performant model to power Autonomous Nodes, roughly equivalent to a model like Open AI's GPT-4o.
-
-A smaller LLM might result in parts of the prompt being truncated, specifically the definition wrapper that Botpress adds to ensure the LLM understands how the cards function, or what parameters are required.
-
-### LLMz
-
-Always make sure you are using the latest stable version of LLMz. This is the autonomous engine that directs the Autonomous Node to work.
-
-It also contains bug fixes, making the prompts more agnostic to variance between LLMs.
-
-<img src="./assets/llmz-version.png" />
-
-### Troubleshooting Code Creation
-
-Let’s say an Autonomous Node is generating code but isn’t following the prompt correctly. Here’s how you might troubleshoot:
-
-1. Inspect: Check what instructions the node is following. Is it correctly understanding the request for code generation?
-2. Tools: Verify that the node has access to the necessary tools (e.g., code generation tools or knowledge base query tools). Ensure the prompt references these tools explicitly.
-3. Iterations: Look at the iterations tab to see how the node reached the point of generating the code. Did it take one or multiple steps? Did it query a knowledge base first, or did it try to generate code immediately?
-
-If the bot is failing to generate code properly:
-
-* Ensure the tool being used for code generation is correctly referenced in the prompt.
-* Adjust the instructions so the node is guided to use specific steps, such as first retrieving relevant knowledge before attempting code generation.
-
-<img src="./assets/query-knowledge-base-code.png" />
 
 ## Example Instructions
 
@@ -276,7 +219,7 @@ You are an AI-powered troubleshooting agent named XYZ Assistant’, focused on p
 
 If the user asks a general or unclear question, prompt them to provide more details so that you can offer a better solution.
 
-## Prompt Breakdown
+#### Prompt Breakdown
 
 In the sample instructions above, the user has created an agent that answers questions from students about educational courses.
 
@@ -284,19 +227,19 @@ The above example is a guideline that can be amended for your needs, but this la
 
 Let’s break down the structure of these instructions:
 
-### 1. Important Notice
+##### 1. Important Notice
 
 \*\*IMPORTANT: Query Knowledge Base is to be used only for support questions related explicitly to student courses, and NOT for general features or pricing inquiries.
 
 * Set boundaries on when and how the Query Knowledge Base tool should be used. Emphasizes that it's strictly for course-related support, not for general inquiries about features or pricing. This helps narrow down the bot’s scope, focusing its responses and enhancing relevance for users, and ensures that responses align with educational content.
 
-### 2. Role Description
+##### 2. Role Description
 
 You are an AI-powered troubleshooting chatbot named XYZ Assistant’, focused on providing support related to professional courses offered by XYZ LMS. Your primary goal is to handle student inquiries efficiently by retrieving accurate information from the knowledge base and answering questions clearly.
 
 * This defines the AI’s role as a support-oriented assistant, clearly outlining its primary objective to resolve course-related inquiries. With this, you can ensure that the assistant’s responses align with its intended purpose, managing user expectations and staying relevant to its domain (which, in this case, is XYZ LMS).
 
-### 3. Tone and Language
+##### 3. Tone and Language
 
 * Maintain a courteous, professional, and helpful demeanor at all times.
 * Use language that is clear, concise, and appropriate for students and professionals in finance and investment.
@@ -309,9 +252,9 @@ You are an AI-powered troubleshooting chatbot named XYZ Assistant’, focused on
 
 This section provides guidance on the assistant’s demeanor, tone, and professionalism while maintaining secure, data-protective interactions. In this way, you establish a friendly and secure tone, aligning with your company's brand guidelines and user expectations for a supportive and professional assistant.
 
-### 4. Interaction Flow and Instructions
+##### 4. Interaction Flow and Instructions
 
-#### Greeting and Initial Query
+###### Greeting and Initial Query
 
 Start with a friendly and professional greeting.
 
@@ -319,7 +262,7 @@ Encourage users to ask questions about course content, support materials, or oth
 
 * This instruction directs the assistant to begin with a warm, professional greeting and encourage users to ask specific questions about their course. It establishes an inviting entry point that enhances user engagement and helps the bot gather details for a better response.
 
-#### Information Retrieval and Issue Resolution
+###### Information Retrieval and Issue Resolution
 
 * Utilize the ‘Query Knowledge Base’ tool to find accurate answers to student inquiries.
 * Provide clear, concise, and helpful responses to resolve the user's question.
@@ -327,13 +270,13 @@ Encourage users to ask questions about course content, support materials, or oth
 
 This instructs the assistant to leverage the knowledge base for relevant, clear responses. Additionally, it includes a structured approach for sharing video resources with time-based links.
 
-#### Conclusion
+###### Conclusion
 
 Once the issue is resolved, politely conclude the interaction and ask if there's anything else you can assist with.
 
 This guides the bot on how to wrap up interactions politely, asking if further help is needed.
 
-### 5. Extra Instructions
+##### 5. Extra Instructions
 
 -If the user is asking for a video link, the link to the video is provided below. To direct them to a specific second, append the "t" parameter with the time you want to reference. For example, to link to the 15-second mark, it should look like this: "t=15":
 
@@ -348,3 +291,73 @@ Significance: Provides clarity on sharing video resources, especially for time-s
 If the user asks a general or unclear question, prompt them to provide more details so that you can offer a better solution.
 
 This prepares the assistant to handle vague or general inquiries by prompting users for more details.
+
+## Troubleshooting
+
+The Botpress Studio offers a suite of tools you can use to understand how your Autonomous Node is behaving, why it made certain decisions, and how you can course correct when it's not behaving as expected.
+
+<img src="./assets/troubleshooting.png" />
+
+### Using the inspect window
+
+The "Inspect" window surfaces information about the Autonomous Node's process, reasoning, and functions. In it, you'll see:
+
+* What instructions the node is prioritizing
+* How it interprets your prompt
+* Whether it is adhering to the constraints and instructions you provided
+
+If you notice that the node isn’t responding correctly or seems to ignore certain instructions, inspecting will reveal whether it has misunderstood the prompt or failed to execute a specific tool.
+
+<img src="./assets/inspect-window.png" />
+
+The Tools section displays all available tools that the Autonomous Node has access to. Each time you add a new card or make a change in the node configuration, the Tools list is updated.
+
+* Ensure that the tools listed match what you expect to be available in the node’s decision-making process.
+* Ensure that the tool names are spelled correctly in your prompt to ensure the node can correctly execute the specified action.
+
+<br />
+
+The Autonomous Node typically tries to execute all instructions within one or two iterations. The number of iterations depends on the complexity of the prompt and how the Node analyzes it.
+
+For more complex tasks, the node might take multiple iterations to gather data, make decisions, or fetch external information.
+
+By reviewing the Iterations tab , you can understand:
+
+* How many iterations were required for the node to reach its final decision
+* What caused the node to take multiple steps (e.g., fetching additional data from tools like global.search or browser.webSearch)
+* Why a particular outcome was achieved
+
+<img src="./assets/autonomous-iteration.png" />
+
+The Autonomous Node might not be following all of your prompt, executing part of the prompt instead of all of it, or calling the “workflowQueue” without calling the “workflowExecuteAll” tools.
+
+### Choosing the right model
+
+Less performant LLMs may struggle with the complexity of operations typically executed by the Autonomous Node.
+
+For this reason, we recommend using a highly performant model to power Autonomous Nodes, roughly equivalent to a model like Open AI's GPT-4o.
+
+A smaller LLM might result in parts of the prompt being truncated, specifically the definition wrapper that Botpress adds to ensure the LLM understands how the cards function, or what parameters are required.
+
+### LLMz version
+
+Always make sure you are using the latest stable version of LLMz. This is the autonomous engine that directs the Autonomous Node to work.
+
+It also contains bug fixes, making the prompts more agnostic to variance between LLMs.
+
+<img src="./assets/llmz-version.png" />
+
+### Troubleshooting code generation
+
+Let’s say an Autonomous Node is generating code but isn’t following the prompt correctly. Here’s how you might troubleshoot:
+
+1. Inspect: Check what instructions the node is following. Is it correctly understanding the request for code generation?
+2. Tools: Verify that the node has access to the necessary tools (e.g., code generation tools or knowledge base query tools). Ensure the prompt references these tools explicitly.
+3. Iterations: Look at the iterations tab to see how the node reached the point of generating the code. Did it take one or multiple steps? Did it query a knowledge base first, or did it try to generate code immediately?
+
+If the bot is failing to generate code properly:
+
+* Ensure the tool being used for code generation is correctly referenced in the prompt.
+* Adjust the instructions so the node is guided to use specific steps, such as first retrieving relevant knowledge before attempting code generation.
+
+<img src="./assets/query-knowledge-base-code.png" />
