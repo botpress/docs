@@ -12,7 +12,7 @@ title: Style your Webchat
 
 To style your bot using the built-in Webchat theme styler:
 
-1. Navigate to the Dashboard and open your bot's Workspace.
+1. Navigate to the [Dashboard](/learn/get-started/dashboard/) and open your bot's Workspace.
 2. In the left navigation bar, find the bot you want to style and select **Webchat**.
 3. Select the **Theme** tab to open the theme styler:
 
@@ -24,98 +24,134 @@ You can view your changes in the Webchat preview on the right side of the screen
 
 If you want to customize your bot's appearance further, you can modify the built-in CSS classes:
 
-<Accordion title="CSS Classes" icon="fa-info-circle">
-   | Element Name                                         | CSS Class                                          | Description                                        |
-   | :--------------------------------------------------- | :------------------------------------------------- | :------------------------------------------------- |
-   | Container                                            | `bpContainer`                                      | Main container for the component                   |
-   | Modal Container                                      | `bpModalContainer`                                 | Wrapper for the modal                              |
-   | Modal Overlay                                        | `bpModalOverlay`                                   | Background overlay for the modal                   |
-   | Modal Dialog Container                               | `bpModalDialogContainer`                           | Container for the modal dialog                     |
-   | Modal Dialog Title Container                         | `bpModalDialogTitleContainer`                      | Wrapper for the modal title                        |
-   | Modal Dialog Title Text                              | `bpModalDialogTitleText`                           | Text style for the modal title                     |
-   | Modal Dialog Title Close Icon                        | `bpModalDialogTitleCloseIcon`                      | Close icon for the modal                           |
-   | Modal Dialog Content                                 | `bpModalDialogContent`                             | Content area within the modal                      |
-   | Modal New Conversation Button                        | `bpModalDialogNewConversationButton`               | Button for starting a new conversation             |
-   | FAB Container                                        | `bpFabContainer`                                   | Container for floating action button               |
-   | FAB Icon                                             | `bpFabIcon`                                        | Icon within the floating action button             |
-   | Notification Container                               | `bpNotificationContainer`                          | Wrapper for notifications                          |
-   | Notification Title                                   | `bpNotificationTitle`                              | Title text for the notification                    |
-   | Notification Description                             | `bpNotificationDescription`                        | Description text for the notification              |
-   | Notification Icon                                    | `bpNotificationIcon`                               | Icon used in the notification                      |
-   | Notification Close Icon                              | `bpNotificationCloseIcon`                          | Close icon for the notification                    |
-   | Header Container                                     | `bpHeaderContainer`                                | Main container for the header                      |
-   | Header Content Container                             | `bpHeaderContentContainer`                         | Wrapper for header content                         |
-   | Header Content Title                                 | `bpHeaderContentTitle`                             | Title text in the header                           |
-   | Header Content Description                           | `bpHeaderContentDescription`                       | Description text in the header                     |
-   | Header Content Avatar Container                      | `bpHeaderContentAvatarContainer`                   | Wrapper for avatar in the header                   |
-   | Header Content Avatar Image                          | `bpHeaderContentAvatarImage`                       | Avatar image in the header                         |
-   | Header Content Avatar Fallback                       | `bpHeaderContentAvatarFallback`                    | Fallback for avatar if image fails to load         |
-   | Header Content Actions Container                     | `bpHeaderContentActionsContainer`                  | Wrapper for action buttons in the header           |
-   | Header Content Actions Icons                         | `bpHeaderContentActionsIcons`                      | Icons for actions in the header                    |
-   | Header Expanded Content Container                    | `bpHeaderExpandedContentContainer`                 | Wrapper for expanded content in the header         |
-   | Header Expanded Content Description Items Container  | `bpHeaderExpandedContentDescriptionItemsContainer` | Container for description items in expanded header |
-   | Header Expanded Content Description Items Powered By | `bpHeaderExpandedContentDescriptionItemsPoweredBy` | "Powered By" text in expanded header               |
-   | Header Expanded Content Description Items Icon       | `bpHeaderExpandedContentDescriptionItemsIcon`      | Icon in expanded header description items          |
-   | Header Expanded Content Description Items Text       | `bpHeaderExpandedContentDescriptionItemsText`      | Text in expanded header description items          |
-   | Header Expanded Content Description Items Link       | `bpHeaderExpandedContentDescriptionItemsLink`      | Link in expanded header description items          |
-   | Header Expanded Content Group                        | `bpHeaderExpandedContentGroup`                     | Grouping element in expanded header                |
-   | Header New Conversation Icon                         | `bpHeaderNewConversationIcon`                      | Icon for new conversation in the header            |
-   | Composer Container                                   | `bpComposerContainer`                              | Main container for the composer                    |
-   | Composer Input                                       | `bpComposerInput`                                  | Input field in the composer                        |
-   | Composer Button Container                            | `bpComposerButtonContainer`                        | Wrapper for buttons in the composer                |
-   | Composer Button Icon                                 | `bpComposerButtonIcon`                             | Icon for buttons in the composer                   |
-   | Composer Upload Button Icon                          | `bpComposerUploadButtonIcon`                       | Upload button icon in the composer                 |
-   | Message List Scrollbar Container                     | `bpMessageListScrollbarContainer`                  | Container for the message list scrollbar           |
-   | Message List Scrollbar Viewport                      | `bpMessageListScrollbarViewport`                   | Viewport area for the message list scrollbar       |
-   | Message List Scrollbar Background                    | `bpMessageListScrollbarBackground`                 | Background for the message list scrollbar          |
-   | Message List Scrollbar Thumb                         | `bpMessageListScrollbarThumb`                      | Thumb element of the scrollbar                     |
-   | Message List Scroll Down Button Container            | `bpMessageListScrollDownButtonContainer`           | Wrapper for the scroll down button                 |
-   | Message List Scroll Down Button Button               | `bpMessageListScrollDownButtonButton`              | Scroll down button                                 |
-   | Message List Scroll Down Button Icon                 | `bpMessageListScrollDownButtonIcon`                | Icon for scroll down button                        |
-   | Message List Container                               | `bpMessageListContainer`                           | Main container for the message list                |
-   | Message List Marquee Container                       | `bpMessageListMarqueeContainer`                    | Wrapper for the marquee in message list            |
-   | Message List Marquee Content                         | `bpMessageListMarqueeContent`                      | Content area for the marquee in message list       |
-   | Message List Marquee Title                           | `bpMessageListMarqueeTitle`                        | Title in the marquee                               |
-   | Message List Marquee Description                     | `bpMessageListMarqueeDescription`                  | Description in the marquee                         |
-   | Message List Marquee Avatar Container                | `bpMessageListMarqueeAvatarContainer`              | Wrapper for avatar in marquee                      |
-   | Message List Marquee Avatar Image                    | `bpMessageListMarqueeAvatarImage`                  | Avatar image in the marquee                        |
-   | Message List Marquee Avatar Fallback                 | `bpMessageListMarqueeAvatarFallback`               | Fallback for avatar in the marquee                 |
-   | Message Container - everyone                         | `bpMessageContainer`                               | Main container for individual messages             |
-   | Message Container - users                            | `bpMessageContainer[data-direction="incoming"]`    | Container for user messages                        |
-   | Message Container - bots                             | `bpMessageContainer[data-direction="outgoing"]`    | Container for bot messages                         |
-   | Message Avatar Container                             | `bpMessageAvatarContainer`                         | Wrapper for avatar in messages                     |
-   | Message Avatar Image                                 | `bpMessageAvatarImage`                             | Avatar image in messages                           |
-   | Message Avatar Fallback                              | `bpMessageAvatarFallback`                          | Fallback for avatar in messages                    |
-   | Message Blocks Text Heading1                         | `bpMessageBlocksTextHeading1`                      | Heading 1 text block in a message                  |
-   | Message Blocks Text Heading2                         | `bpMessageBlocksTextHeading2`                      | Heading 2 text block in a message                  |
-   | Message Blocks Text Heading3                         | `bpMessageBlocksTextHeading3`                      | Heading 3 text block in a message                  |
-   | Message Blocks Text UnorderedList                    | `bpMessageBlocksTextUnorderedList`                 | Unordered list text block in a message             |
-   | Message Blocks Text OrderedList                      | `bpMessageBlocksTextOrderedList`                   | Ordered list text block in a message               |
-   | Message Blocks Text Link                             | `bpMessageBlocksTextLink`                          | Link text block in a message                       |
-   | Message Blocks Image Image                           | `bpMessageBlocksImageImage`                        | Image block in a message                           |
-   | Message Blocks Image Placeholder                     | `bpMessageBlocksImagePlaceholder`                  | Placeholder for image block in a message           |
-   | Message Blocks Video                                 | `bpMessageBlocksVideo`                             | Video block in a message                           |
-   | Message Blocks Location Container                    | `bpMessageBlocksLocationContainer`                 | Container for location block in a message          |
-   | Message Blocks Location Title                        | `bpMessageBlocksLocationTitle`                     | Title for location block in a message              |
-   | Message Blocks Location Icon                         | `bpMessageBlocksLocationIcon`                      | Icon for location block in a message               |
-   | Message Blocks File Container                        | `bpMessageBlocksFileContainer`                     | Container for file block in a message              |
-   | Message Blocks File Title                            | `bpMessageBlocksFileTitle`                         | Title for file block in a message                  |
-   | Message Blocks File Icon                             | `bpMessageBlocksFileIcon`                          | Icon for file block in a message                   |
-   | Message Blocks Row                                   | `bpMessageBlocksRow`                               | Row layout block in a message                      |
-   | Message Blocks Column                                | `bpMessageBlocksColumn`                            | Column layout block in a message"                  |
-   | Message Blocks Bubble                                | `bpMessageBlocksBubble`                            | Bubble block in a message.                         |
-   | Message Blocks Carousel Container                    | `bpMessageBlocksCarouselContainer`                 | Container for carousel block in a message          |
-   | Message Blocks Carousel Slides Container             | `bpMessageBlocksCarouselSlidesContainer`           | Container for slides in a carousel block           |
-   | Message Blocks Carousel Back Button                  | `bpMessageBlocksCarouselBackButton`                | Back button for carousel                           |
-   | Message Blocks Carousel Next Button                  | `bpMessageBlocksCarouselNextButton`                | Next button for carousel                           |
-   | Message Blocks Dropdown Button Container             | `bpMessageBlocksDropdownButtonContainer`           | Container for dropdown button block                |
-   | Message Blocks Dropdown Button Text                  | `bpMessageBlocksDropdownButtonText`                | Text for dropdown button block                     |
-   | Message Blocks Dropdown Button Icon                  | `bpMessageBlocksDropdownButtonIcon`                | Icon for dropdown button block                     |
-   | Message Blocks Dropdown Content Container            | `bpMessageBlocksDropdownContentContainer`          | Container for dropdown content block               |
-   | Message Blocks Dropdown Content Item                 | `bpMessageBlocksDropdownContentItem`               | Individual item in dropdown content block          |
-   | Message Blocks Button                                | `bpMessageBlocksButton`                            | Button block in a message                          |
-   | Loading Indicator Container                          | `bpLoadingIndicatorContainer`                      | Main container for loading indicator               |
-   | Loading Indicator Loader                             | `bpLoadingIndicatorLoader`                         | Loader element in loading indicator                |
+<Accordion
+  title="CSS Classes"
+>
+| CSS Class | Element description |
+| :--- | :--- |
+| `bpContainer` | Main Webchat container |
+| `bpDropzoneOverlay` | Overlay shown when dragging files into the chat |
+| `bpDropzoneContainer` | Container for the dropzone area during file uploads |
+| `bpLoader` | Loader/spinner container for loading states |
+| `bpModalOverlay` | Background overlay behind modals |
+| `bpModalContainer` | Wrapper for the modal dialog |
+| `bpModalTitle` | Styles the title text in modals |
+| `bpModalDescription` | Styles the description text in modals |
+| `bpModalContentContainer` | Container for content inside the modal |
+| `bpModalContentTextArea` | Text area element inside modals |
+| `bpModalButtonContainer` | Wrapper for modal action buttons |
+| `bpModalButtonConfirm` | Styles the confirm button in modals |
+| `bpModalButtonCancel` | Styles the cancel button in modals |
+| `bpFabContainer` | Container for the floating action button |
+| `bpFabIcon` | Icon inside the FAB |
+| `bpFabImage` | Image inside the FAB (when using custom images) |
+| `bpNotificationContainer` | Wrapper for notification messages |
+| `bpNotificationTitle` | Title text in notifications |
+| `bpNotificationDescription` | Description text in notifications |
+| `bpNotificationIcon` | Icon displayed in notifications |
+| `bpNotificationCloseIcon` | Close icon/button on notifications |
+| `bpHeaderContainer` | Container for the chat header |
+| `bpHeaderContentContainer` | Wrapper for header content (title, avatar, actions) |
+| `bpHeaderContentTitle` | Title text in the header |
+| `bpHeaderContentDescription` | Description text in the header |
+| `bpHeaderContentAvatarContainer` | Container for the header avatar |
+| `bpHeaderContentAvatarImage` | Styles the avatar image in the header |
+| `bpHeaderContentAvatarFallback` | Fallback avatar styling if image fails |
+| `bpHeaderContentActionsContainer` | Wrapper for header action icons |
+| `bpHeaderContentActionsIcons` | Styles the action icons in the header |
+| `bpHeaderExpandedContentContainer` | Container for expanded header content |
+| `bpHeaderExpandedContentDescriptionItemsContainer` | Wrapper for description items in expanded header |
+| `bpHeaderExpandedContentDescriptionItemsIcon` | Icon for each expanded header description item |
+| `bpHeaderExpandedContentDescriptionItemsText` | Text for expanded header description items |
+| `bpHeaderExpandedContentDescriptionItemsLink` | Link styling for expanded header description items |
+| `bpHeaderExpandedContentGroup` | Grouping container for expanded header items |
+| `bpHeaderNewConversationIcon` | Icon for starting a new conversation in the header |
+| `bpComposerWrapper` | Wrapper around the entire composer area |
+| `bpComposerContainer` | Container for the composer |
+| `bpComposerFooter` | Footer area of the composer (e.g., upload/voice buttons) |
+| `bpComposerInputContainer` | Container for the text input field |
+| `bpComposerInput` | Text input field styling |
+| `bpComposerSendButton` | Send button styling in the composer |
+| `bpComposerUploadButton` | File upload button in the composer |
+| `bpComposerVoiceButton` | Voice recording button in the composer |
+| `bpComposerFileContainer` | Container for attached files in the composer |
+| `bpComposerFileAttachement` | Wrapper for each file attachment |
+| `bpComposerFileLoader` | Loader shown during file upload in composer |
+| `bpComposerFileIconWrapper` | Container for the file type icon |
+| `bpComposerFileIcon` | Icon representing the file type |
+| `bpComposerFileMetadata` | Container for file metadata (name and type) |
+| `bpComposerFileName` | Styles the file name text |
+| `bpComposerFileExtension` | Styles the file extension/type text |
+| `bpComposerFileRemoveIcon` | Icon/button to remove an attached file |
+| `bpComposerFileErrorIcon` | Icon indicating an error with the attached file |
+| `bpComposerFilePreviewImage` | Thumbnail preview image for attachments |
+| `bpMessageListScrollDownButton` | Button to scroll to the latest message |
+| `bpMessageListContainer` | Container for the message list |
+| `bpMessageListViewport` | Viewport area for scrolling messages |
+| `bpMessageListMarqueeContainer` | Container for marquee/announcement banners |
+| `bpMessageListMarqueeContent` | Content area for marquee messages |
+| `bpMessageListMarqueeTitle` | Title text in marquee banners |
+| `bpMessageListMarqueeDescription` | Description text in marquee banners |
+| `bpMessageListMarqueeAvatarContainer` | Container for avatars in marquee banners |
+| `bpMessageListMarqueeAvatarImage` | Avatar image in marquee banners |
+| `bpMessageListMarqueeAvatarFallback` | Fallback avatar styling in marquee banners |
+| `bpMessageListHeaderMessage` | Header message block styling |
+| `bpMessageContainer` | Container for individual messages |
+| `bpMessageAvatarContainer` | Container for the message avatar |
+| `bpMessageAvatarImage` | Styles the avatar image in messages |
+| `bpMessageAvatarFallback` | Fallback styling for missing message avatars |
+| `bpMessageBlocksTextHeading1` | H1 text block within messages |
+| `bpMessageBlocksTextHeading2` | H2 text block within messages |
+| `bpMessageBlocksTextHeading3` | H3 text block within messages |
+| `bpMessageBlocksTextHeading4` | H4 text block within messages |
+| `bpMessageBlocksTextUnorderedList` | Unordered list text block |
+| `bpMessageBlocksTextOrderedList` | Ordered list text block |
+| `bpMessageBlocksTextListItem` | List item text block |
+| `bpMessageBlocksTextLink` | Hyperlink text block |
+| `bpMessageBlocksTextItalic` | Italic text styling |
+| `bpMessageBlocksTextBold` | Bold text styling |
+| `bpMessageBlocksTextText` | Standard paragraph text block |
+| `bpMessageBlocksTextImage` | Inline image block within text |
+| `bpMessageBlocksTextHorizontalRule` | Horizontal rule within text |
+| `bpMessageBlocksTextLineBreak` | Line break within text |
+| `bpMessageBlocksTextInput` | Input field block within messages |
+| `bpMessageBlocksTextCodeBlockContainer` | Container for code block elements |
+| `bpMessageBlocksTextCodeBlockTitle` | Title area for code blocks |
+| `bpMessageBlocksTextCodeBlockCopyIcon` | Copy-to-clipboard icon in code blocks |
+| `bpMessageBlocksTextCodeBlock` | Code block styling |
+| `bpMessageBlocksTextCode` | Inline code text styling |
+| `bpMessageBlocksTextTableContainer` | Container for tables within messages |
+| `bpMessageBlocksTextTable` | Table element styling |
+| `bpMessageBlocksTextTableHeader` | Table header cell styling |
+| `bpMessageBlocksTextTableData` | Table data cell styling |
+| `bpMessageBlocksTextTableRow` | Table row styling |
+| `bpMessageBlocksAudio` | Audio player block styling |
+| `bpMessageBlocksImageImage` | Image block styling |
+| `bpMessageBlocksImagePlaceholder` | Placeholder for loading images |
+| `bpMessageBlocksVideo` | Video player block styling |
+| `bpMessageBlocksLocationContainer` | Container for location blocks |
+| `bpMessageBlocksLocationTitle` | Title text for location blocks |
+| `bpMessageBlocksLocationIcon` | Icon for location blocks |
+| `bpMessageBlocksFileContainer` | Container for file blocks |
+| `bpMessageBlocksFileTitle` | Title text for file blocks |
+| `bpMessageBlocksFileIcon` | Icon for file blocks |
+| `bpMessageBlocksRow` | Row layout block within messages |
+| `bpMessageBlocksColumn` | Column layout block within messages |
+| `bpMessageBlocksBubble` | Chat bubble container |
+| `bpMessageBlocksBubbleFeedbackContainer` | Container for bubble feedback icons |
+| `bpMessageBlocksBubbleFeedbackIcon` | Feedback icon inside bubbles |
+| `bpMessageBlocksCarouselContainer` | Container for carousel blocks |
+| `bpMessageBlocksCarouselSlidesContainer` | Slides container within carousels |
+| `bpMessageBlocksCarouselBackButton` | Back button in carousel blocks |
+| `bpMessageBlocksCarouselNextButton` | Next button in carousel blocks |
+| `bpMessageBlocksDropdownButtonContainer` | Dropdown button container |
+| `bpMessageBlocksDropdownButtonText` | Text inside dropdown buttons |
+| `bpMessageBlocksDropdownButtonIcon` | Icon inside dropdown buttons |
+| `bpMessageBlocksDropdownContentContainer` | Container for dropdown content |
+| `bpMessageBlocksDropdownContentItem` | Individual dropdown item styling |
+| `bpMessageBlocksButton` | Button block styling within messages |
+| `bpTypingIndicatorContainer` | Container for typing indicator |
+| `bpTypingIndicatorLoader` | Loader animation for typing indicator |
 </Accordion>
 
 Just add your styles to the **Styles** field.
