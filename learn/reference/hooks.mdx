@@ -1,37 +1,264 @@
 ---
 title: Hooks
-description: >-
-  Customizable points that allow you to execute custom code in response to
-  specific events.
 icon: anchor
 ---
 
-Hooks in Botpress are powerful tools that enable you to customize the behaviour of your bot by executing custom code at specific points during its operation. Hooks allow you to intercept and modify messages, manage sessions, perform logging, integrate with external systems, and more. By leveraging hooks, you can fine-tune your bot's interactions and responses to meet your specific requirements.
+Hooks **execute custom JavaScript code** at specific cycles of your bot's operation. For example:
 
-Hooks can be customized similarly to the Execute Code cards and Validation fields.
+- [Before each outgoing message](#before-outgoing)
+- [After each LLMz iteration](#after-llmz-iteration)
+- [At the end of each conversation](#after-conversation-end)
 
-# Parameters
+You can use Hooks to intercept and modify messages, perform logging, integrate with external systems, and more.
 
-Hooks are functions that take parameters. The parameters are different depending on the hook type. `event` is the most common parameter, and it is always available. The event object contains all the information about the event that triggered the hook.
+<Tip>
+### Hooks vs. Actions / Execute Code
 
-# Using Hooks
+Hooks let you use custom code with your bot, just like [Actions](/learn/reference/actions) and [Execute Code Cards](/learn/reference/cards/execute). The key difference is when the code runs:
+    - Actions and Execute Code Cards run at some point in your [Workflow](/learn/reference/workflows).
+    - Hooks run during specific stages of the bot’s operation cycle
+</Tip>
 
-The instances where you can inject hooks into your bot's flow are as follows:
+## Overview
 
-## After Incoming Message
+When you add a new Hook, it defines a [function](https://www.w3schools.com/js/js_functions.asp) that executes every time your bot reaches a certain cycle of its operation.
 
-This hook is called right after all incoming middleware have processed the event but before the Dialogue Engine starts processing it. You can access all the required data (including NLU intent) for special processing and decide what happens to the event.
+All Hooks take an `event` parameter, which contains information about the event that triggered the Hook.
 
-A typical operation here is to tell Botpress to ignore the event and not process it (e.g., not send it to the dialogue engine).
+<Note>
+    Some Hook types take additional parameters — check out the Hook guides on this page for more information.
+</Note>
 
-## Before Incoming Message
+### Add a Hook
 
-Botpress calls this hook after receiving an event but before processing any middleware. It is possible to change event properties.
+1. Navigate to the <Icon icon="anchor"/> Hooks section in the Studio's left navigation bar.
+2. Select **Create Hook**, then choose a type for the Hook.
+3. Choose a name for the Hook. Done!
 
-Botpress often uses this hook to set flags to skip some processing, for example, to prevent the QnA from processing it when it's a quick reply.
+---
 
-## Before Outgoing Middleware
+## Hook types
 
-The Dialogue Manager calls this hook before the bot's reply is sent to the user.
+Here's a breakdown of each type of Hook:
 
-Here you can save the bot's complete response.
+### Before Incoming
+
+This Hook type executes its code before your bot processes an incoming `event`.
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot.
+</ResponseField>
+
+### After Incoming
+
+This Hook type executes its code after the incoming message has been processed, but before the bot has responded..
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot.
+</ResponseField>
+
+### Before Outgoing
+
+This Hook type executes its code before the bot's reply is sent to the user.
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot
+</ResponseField>
+<ResponseField
+    name="outgoingEvent"
+    type="IO.OutgoingEvent"
+>
+    The message sent by the bot
+</ResponseField>
+
+### Before LLMz Execution
+
+This Hook type executes its code before the LLMz engine begins its execution.
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot
+</ResponseField>
+<ResponseField
+    name="context"
+    type="LLMZ.CreateContext"
+>
+    The current context provided to the LLMz
+
+    <Expandable>
+
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    The unique identifier of the LLMz execution, prefixed with `llmz_`
+  </ResponseField>
+
+  <ResponseField
+    name="version"
+    type="any"
+  >
+    The version of the LLMz engine or context
+  </ResponseField>
+
+  <ResponseField
+    name="instructions"
+    type="string"
+    optional
+  >
+    Optional instructions provided to guide the LLMz execution
+  </ResponseField>
+
+  <ResponseField
+    name="objects"
+    type="LLMZ.Obj[]"
+  >
+    A list of objects relevant to the LLMz context
+  </ResponseField>
+
+  <ResponseField
+    name="tools"
+    type="LLMZ.Tool[]"
+  >
+    A list of tools available for the LLMz engine to use
+  </ResponseField>
+
+  <ResponseField
+    name="loop"
+    type="number"
+  >
+    The current loop count of the LLMz iteration process
+  </ResponseField>
+
+  <ResponseField
+    name="temperature"
+    type="number"
+  >
+    The temperature setting used for the LLM model
+  </ResponseField>
+
+  <ResponseField
+    name="model"
+    type="string"
+  >
+    The name or identifier of the LLM model being used.
+  </ResponseField>
+
+  <ResponseField
+    name="transcript"
+    type="OAI.Message[]"
+  >
+    The conversation transcript, including all prior messages in the current context
+  </ResponseField>
+
+  <ResponseField
+    name="location"
+    type="LLMZ.Location"
+  >
+    The current location within the bot's logic
+  </ResponseField>
+
+</Expandable>
+</ResponseField>
+
+### After LLMz Execution
+
+This Hook type executes its code after the LLMz engine finishes its execution.
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot
+</ResponseField>
+<ResponseField
+    name="execution"
+    type="LLMZ.ExecutionResult"
+>
+    The result of the execution
+</ResponseField>
+
+### After LLMz iteration
+
+Depending on how demanding the task is, the LLMz may loop through multiple iterations before finishing its execution. This Hook type executes its code after each iteration.
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot
+</ResponseField>
+<ResponseField
+    name="iteration"
+    type="LLMZ.IterationResult"
+>
+    The result of the iteration
+</ResponseField>
+
+### After Conversation End
+
+This Hook type executes after the conversation has **explicitly ended** (transitioned to an [End Node](/learn/reference/nodes/introduction#end-node))
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot
+</ResponseField>
+
+### After Turn End
+
+This Hook type executes after a full turn has completed — meaning the bot has received user input, processed it, and responded.
+
+**Parameters**:
+
+<ResponseField
+    name="event"
+    type="IO.IncomingEvent"
+>
+    The message received by the bot
+</ResponseField>
+<ResponseField
+    name="metadata"
+    type="IO.TurnMetadata"
+>
+    The turn's metadata
+
+    <Expandable>
+        <ResponseField
+            name="tokens"
+            type="IO.TokenReport"
+        >
+            Token information and cost for the current turn
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+## Troubleshooting
+
+If your Hook isn't behaving as expected, you can [check your bot's logs](/learn/reference/debugger-logs-json) to diagnose any problems.
