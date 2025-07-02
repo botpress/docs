@@ -43,7 +43,7 @@ Here's a breakdown of each type of Hook:
 
 ### Before Incoming
 
-Any Hook of this type will execute its code before your bot processes an incoming `event`.
+This Hook type executes its code before your bot processes an incoming `event`.
 
 **Parameters**:
 
@@ -56,9 +56,7 @@ Any Hook of this type will execute its code before your bot processes an incomin
 
 ### After Incoming
 
-This Hook is called right after all incoming middleware have processed the event but before the Dialogue Engine starts processing it. You can access all the required data (including NLU intent) for special processing and decide what happens to the event.
-
-A typical operation here is to tell Botpress to ignore the event and not process it (e.g., not send it to the dialogue engine).
+This Hook type executes its code after the incoming message has been processed, but before the bot has responded..
 
 **Parameters**:
 
@@ -222,7 +220,7 @@ Depending on how demanding the task is, the LLMz may loop through multiple itera
 
 ### After Conversation End
 
-This Hook executes after the conversation has **explicitly ended** (transitioned to an [End Node](/learn/reference/nodes/introduction#end-node))
+This Hook type executes after the conversation has **explicitly ended** (transitioned to an [End Node](/learn/reference/nodes/introduction#end-node))
 
 **Parameters**:
 
@@ -235,7 +233,7 @@ This Hook executes after the conversation has **explicitly ended** (transitioned
 
 ### After Turn End
 
-This Hook executes after a full turn has completed — meaning the bot has received user input, processed it, and responded.
+This Hook type executes after a full turn has completed — meaning the bot has received user input, processed it, and responded.
 
 **Parameters**:
 
