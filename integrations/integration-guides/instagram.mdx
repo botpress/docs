@@ -1,8 +1,144 @@
 ---
-title: Instagram
+description: Add your bot to Instagram using the official integration.
 ---
 
-## Prerequisites
+The official Instagram integration allows your users to chat with your bot by messaging an Instagram account.
+
+## Setup
+
+<Tabs>
+    <Tab title="Basic configuration">
+
+        <Info>
+            You will need:
+
+            - A [published bot](/learn/get-started/quick-start)
+            - A [professional Instagram account](https://help.instagram.com/138925576505882?helpref=faq_content). If you have a personal Instagram account, the setup wizard will ask you to switch to a professional account.
+        </Info>
+
+        1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+        2. Search for the **Instagram** integration, then select **Install Integration**.
+        3. In the **Configuration** menu, select **Authorize Instagram**.
+        4. Follow the instructions to connect Botpress to your Instagram account.
+
+    </Tab>
+    <Tab title="Manual configuration">
+
+        You can also manually configure the Instagram integration with your own Meta app.
+
+        <Info>
+
+            You will need:
+
+            - A [published bot](/learn/get-started/quick-start)
+            - A [Meta developer app](https://developers.facebook.com/apps/creation/). Check out the [Meta developer documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started#set-up-developer-assets) to learn more about the setup process.
+            - A [professional Instagram account](https://help.instagram.com/138925576505882?helpref=faq_content). If you have a personal Instagram account, the setup wizard will ask you to switch to a professional account.
+        </Info>
+
+        <Steps titleSize="h3">
+            <Step title="Install the integration">
+                First, install the integration to your bot:
+
+                1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+                2. Search for the **Instagram** integration, then select **Install Integration**.
+                3. In the **Configuration** menu, open the drop-down menu and select **Manual Configuration**.
+                4. Copy the webhook URL — it should begin with `webhook.botpress.cloud`.
+            </Step>
+            <Step title="Add the Instagram API">
+                To configure your integration, you need to access the Instagram API:
+
+                1. Login to your [Meta developer account](https://developers.facebook.com/apps/).
+                2. Select the app you want to use with the integration.
+                3. From the left navigation bar, select **Add Product**.
+                4. Under the **Instagram** section, select **Set up**.
+            </Step>
+            <Step title="Configure Instagram Tester role">
+                Next, add an Instagram Tester role to your Meta App:
+
+                1. From the left navigation bar, select **App roles**, then **Roles**.
+                2. Select **Add People**, then **Instagram Tester**.
+                3. Enter your Instagram username, then select **Add**.
+                4. Login to your Instagram account, then open the [Apps and websites](https://www.instagram.com/accounts/manage_access/) settings.
+                2. Open the **Tester Invites** tab, then select **Accept**.
+            </Step>
+            <Step title="Configure the integration">
+                To configure the integration, you need to create a webhook endpoint for the WhatsApp integration. To do this, fill in the integration’s configuration fields:
+
+                <AccordionGroup>
+                    <Accordion
+                        title="Client Secret"
+                    >
+                        1. From your Meta app's left sidebar, expand **Instagram** and select **API setup with Instagram login**.
+                        2. Copy the code under **Instagram app secret**.
+                        3. Go back to the integration's configuration menu in Botpress.
+                        4. Paste the code into the **Client Secret** field.
+                    </Accordion>
+                    <Accordion
+                        title="Verify Token"
+                    >
+                        Used by Meta to verify that you’re the real owner of the provided webhook. Can be any alphanumeric string.
+                    </Accordion>
+                    <Accordion
+                        title="Access Token"
+                    >
+                        1. From your Meta app's left sidebar, expand **Instagram** and select **API setup with Instagram login**.
+                        2. Expand **Generate access tokens**, then **Generate token**.
+                        3. Select **Allow**, then copy the access token.
+                        4. Go back to the integration's configuration menu in Botpress.
+                        5. Paste the access token into the **Access token** field.
+                    </Accordion>
+                    <Accordion
+                        title="Instagram Account ID"
+                    >
+                        1. From your Meta app's left sidebar, expand **Instagram** and select **API setup with Instagram login**.
+                        2. Expand **Generate access tokens**. Then, copy the number under your Instagram account handle.
+                        3. Go back to the integration's configuration menu in Botpress.
+                        4. Paste the number into the **Instagram Account ID** field.
+                    </Accordion>
+                </AccordionGroup>
+
+                When you’ve filled in all the fields, select **Save Configuration**. This will automatically enable your integration.
+            </Step>
+
+            <Step title="Setup the Instagram API">
+                Now, you can setup the Instagram API and add the webhook to your Meta app:
+
+                1. Go back to your Meta developer dashboard, then select **Instagram** from the left navigation bar.
+                2. Select **API setup with Instagram login**.
+                3. Under **Configure webhooks**, paste your Botpress webhook URL into the **Callback URL** field.
+                4. In the **Verify token** field, enter the same token you created in the [previous section](integrations/integration-guides/instagram#verify-token).
+                5. Select **Verify and save**.
+
+                <Note>
+                    If you receive an error message after selecting **Verify and save**, make sure you saved your integration's configuration properly in the previous step.
+                </Note>
+
+                6. Now, you can select subscriptions for your webhook. Select Add Subscriptions, then select `instagram_manage_messages` (if app has been [reviewed by Meta](/integrations/integration-guides/instagram#submit-your-app-for-meta-review)), `messages` and `messaging_postbacks`. Then select **Save**. 
+            </Step>
+        </Steps>
+        <Check>
+            You’ve manually configured your Instagram integration!
+        </Check>
+    </Tab>
+    <Tab title="Playground">
+        If you want to test your bot’s behaviour in Instagram before going through the actual setup process, you can use the Instagram integration playground.
+
+        <Info>
+            You will need:
+
+            - A [published bot](/learn/get-started/quick-start)
+            - A [professional Instagram account](https://help.instagram.com/138925576505882?helpref=faq_content). If you have a personal Instagram account, the setup wizard will ask you to switch to a professional account.
+        </Info>
+    </Tab>
+</Tabs>
+
+## Cards
+
+### Get Or Create Conversation DM
+
+### Get Or Create User
+
+{/* ## Prerequisites
 
 * A [Meta developer app](https://developers.facebook.com/apps) that will serve as the primary platform for managing connection between Instagram and Botpress, including the configuration of webhooks and access tokens.
 * A [Facebook page](https://www.facebook.com/pages/create) in which you have the administrator or developer roles. Instagram accounts must be linked to a Facebook page to use the Facebook Graph API.
@@ -100,4 +236,4 @@ When your app is in Development Mode, your bot will work for admins, developers,
 
 Read more about the App Review process on [the official documentation](https://developers.facebook.com/docs/app-review/submission-guide) and find some help if necessary [in this Github issue](https://github.com/microsoft/botframework-sdk/issues/1465).
 
-You can find some troubleshooting [in this documentation](https://developers.facebook.com/docs/app-review/support/rejection-guides/instagram) in case you app get rejected.
+You can find some troubleshooting [in this documentation](https://developers.facebook.com/docs/app-review/support/rejection-guides/instagram) in case you app get rejected. */}
