@@ -235,6 +235,8 @@ This Hook type executes after the conversation has **explicitly ended** (transit
 
 This Hook type executes after a full turn has completed — meaning the bot has received user input, processed it, and responded.
 
+You can use a Hook of this type to [track AI spend and token cost](/learn/guides/how-to/track-ai-spend-in-table/) for your bot.
+
 **Parameters**:
 
 <ResponseField
@@ -254,7 +256,91 @@ This Hook type executes after a full turn has completed — meaning the bot has 
             name="tokens"
             type="IO.TokenReport"
         >
-            Token information and cost for the current turn
+            The token information and cost for the current turn
+
+            <Expandable>
+              <ResponseField
+                name="summary"
+                type="string"
+              >
+                A summary of the token usage for the last turn
+              </ResponseField>
+              <ResponseField
+                name="details"
+                type="string"
+              >
+                A detailed breakdown of token usage for the last turn
+              </ResponseField>
+              <ResponseField
+                name="billedTokens"
+                type="number"
+              >
+                The number of billed tokens during the last turn
+              </ResponseField>
+              <ResponseField
+                name="usages"
+                type="IO.TokenUsage[]"
+              >
+                An array of token usages
+
+                <Expandable>
+                  <ResponseField
+                    name="count"
+                    type="number"
+                  >
+                    The number of tokens in the usage
+                  </ResponseField>
+                  <ResponseField
+                    name="spend"
+                    type="number"
+                  >
+                    The AI spend for the usage (in nanodollars). To get the number in dollars, divide this number by 1,000,000,000.
+                  </ResponseField>
+                  <ResponseField
+                    name="duration"
+                    type="number"
+                  >
+                    The duration (in milliseconds) of the usage
+                  </ResponseField>
+                  <ResponseField
+                    name="location"
+                    type="string"
+                  >
+                    The location in the Workflow where the usage occured
+                  </ResponseField>
+                  <ResponseField
+                    name="cached"
+                    type="boolean"
+                  >
+                    Whether the usage was cached
+                  </ResponseField>
+                </Expandable>
+              </ResponseField> 
+              <ResponseField
+                name="totalTokens"
+                type="number"
+              >
+                The total number of tokens used in the last turn
+              </ResponseField>
+              <ResponseField
+                name="billedTokens"
+                type="number"
+              >
+                The total number of billed tokens used in the last turn
+              </ResponseField>
+              <ResponseField
+                name="cost"
+                type="number"
+              >
+                The AI spend for the last turn (in nanodollars). To get the number in dollars, divide this number by 1,000,000,000.
+              </ResponseField>
+              <ResponseField
+                name="savingsPercent"
+                type="number"
+              >
+                The percentage of savings on AI spend for this turn.
+              </ResponseField>
+            </Expandable>
         </ResponseField>
     </Expandable>
 </ResponseField>
