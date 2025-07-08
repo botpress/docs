@@ -5,13 +5,13 @@ description: >-
   clearing unused variables, and minimizing large data usage.
 ---
 
-## **Overview**
+## Overview
 
 Efficient state management is crucial for optimizing chatbot performance in Botpress. This guide outlines best practices to avoid performance degradation and errors caused by exceeding the **128 KB state size limit**, ensuring your bot operates seamlessly.
 
 ***
 
-## **Understanding State Size Limits**
+## Understanding State Size Limits
 
 Botpress enforces a **state size limit of 128 KB** to maintain optimal performance. Poorly managed state variables, especially in nested workflows, can lead to:
 
@@ -23,13 +23,13 @@ Botpress enforces a **state size limit of 128 KB** to maintain optimal performan
 
 ***
 
-## **Avoiding Common Workflow Design Pitfalls**
+## Avoiding Common Workflow Design Pitfalls
 
-### **Workflow Structure and State Retention**
+### Workflow Structure and State Retention
 
 How workflows are designed impacts the state management. Consider two scenarios:
 
-### **Scenario 1: Proper Workflow Exit**
+### Scenario 1: Proper Workflow Exit
 
 * **Workflow 1** ends completely before transitioning to **Workflow 2**.
 
@@ -41,7 +41,7 @@ Workflow 1 → **End** → Workflow 2 → **End**
 
 <img src="./assets/workflow-example.png" />
 
-### **Scenario 2: Improper Workflow Exit**
+### Scenario 2: Improper Workflow Exit
 
 * **Workflow 1** transitions directly into **Workflow 2** without exiting.
 
@@ -55,9 +55,9 @@ Workflow 1 → Workflow 2 → Workflow 3 → **End**
 
 ***
 
-## **Best Practices for State Management**
+## Best Practices for State Management
 
-### **1. Design Workflows with Proper Exits**
+### 1. Design Workflows with Proper Exits
 
 Ensure that each workflow completes before initiating the next. This prevents unused variables from lingering in the state.
 
@@ -67,7 +67,7 @@ Workflow 1 → End
 
 Workflow 2 → End
 
-### **2. Manually Clear Unused Variables**
+### 2. Manually Clear Unused Variables
 
 In scenarios where restructuring workflows is impractical, manually clear state variables to manage size effectively.
 
@@ -75,7 +75,7 @@ In scenarios where restructuring workflows is impractical, manually clear state 
 
 * Remove variables that are no longer needed by setting it to null value or by reusing it.
 
-### **3. Minimize Use of Large Variables in Main Workflow**
+### 3. Minimize Use of Large Variables in Main Workflow
 
 Avoid storing large data structures (e.g., arrays, objects) in the main workflow (`wf-main`). Instead, limit variables to essentials for transitions or core logic.
 
@@ -85,7 +85,7 @@ Avoid storing large data structures (e.g., arrays, objects) in the main workflow
 
 * Use modular workflows for better management.
 
-### **4. Monitor and Audit State Size**
+### 4. Monitor and Audit State Size
 
 Regularly inspect and optimize state size to identify potential issues early.
 
@@ -97,7 +97,7 @@ Regularly inspect and optimize state size to identify potential issues early.
 
 ***
 
-## **Optimizing Nested Workflow Designs**
+## Optimizing Nested Workflow Designs
 
 Nested workflows can be efficient but require careful handling to avoid state retention issues. Follow these strategies:
 
@@ -109,7 +109,7 @@ Nested workflows can be efficient but require careful handling to avoid state re
 
 ***
 
-## **Conclusion**
+## Conclusion
 
 Adhering to these state management best practices ensures your bot performs optimally, avoids the **128 KB state size limit**, and maintains clean and efficient workflows:
 
