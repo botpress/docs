@@ -3,6 +3,8 @@ title: Hooks
 icon: anchor
 ---
 
+import IncomingEvent from '/snippets/incoming-event.mdx'
+
 Hooks **execute custom JavaScript code** at specific cycles of your bot's operation. For example:
 
 - [Before each outgoing message](#before-outgoing)
@@ -47,12 +49,7 @@ This Hook type executes its code before your bot processes an incoming `event`.
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot.
-</ResponseField>
+<IncomingEvent/>
 
 ### After Incoming
 
@@ -60,12 +57,7 @@ This Hook type executes its code after the incoming message has been processed, 
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot.
-</ResponseField>
+<IncomingEvent/>
 
 ### Before Outgoing
 
@@ -73,12 +65,7 @@ This Hook type executes its code before the bot's reply is sent to the user.
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot
-</ResponseField>
+<IncomingEvent/>
 <ResponseField
     name="outgoingEvent"
     type="IO.OutgoingEvent"
@@ -92,12 +79,7 @@ This Hook type executes its code before the LLMz engine begins its execution.
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot
-</ResponseField>
+<IncomingEvent/>
 <ResponseField
     name="context"
     type="LLMZ.CreateContext"
@@ -106,78 +88,77 @@ This Hook type executes its code before the LLMz engine begins its execution.
 
     <Expandable>
 
-  <ResponseField
-    name="id"
-    type="string"
-  >
-    The unique identifier of the LLMz execution, prefixed with `llmz_`
-  </ResponseField>
+      <ResponseField
+        name="id"
+        type="string"
+      >
+        The unique identifier of the LLMz execution, prefixed with `llmz_`
+      </ResponseField>
 
-  <ResponseField
-    name="version"
-    type="any"
-  >
-    The version of the LLMz engine or context
-  </ResponseField>
+      <ResponseField
+        name="version"
+        type="any"
+      >
+        The version of the LLMz engine or context
+      </ResponseField>
 
-  <ResponseField
-    name="instructions"
-    type="string"
-    optional
-  >
-    Optional instructions provided to guide the LLMz execution
-  </ResponseField>
+      <ResponseField
+        name="instructions"
+        type="string"
+        optional
+      >
+        Optional instructions provided to guide the LLMz execution
+      </ResponseField>
 
-  <ResponseField
-    name="objects"
-    type="LLMZ.Obj[]"
-  >
-    A list of objects relevant to the LLMz context
-  </ResponseField>
+      <ResponseField
+        name="objects"
+        type="LLMZ.Obj[]"
+      >
+        A list of objects relevant to the LLMz context
+      </ResponseField>
 
-  <ResponseField
-    name="tools"
-    type="LLMZ.Tool[]"
-  >
-    A list of tools available for the LLMz engine to use
-  </ResponseField>
+      <ResponseField
+        name="tools"
+        type="LLMZ.Tool[]"
+      >
+        A list of tools available for the LLMz engine to use
+      </ResponseField>
 
-  <ResponseField
-    name="loop"
-    type="number"
-  >
-    The current loop count of the LLMz iteration process
-  </ResponseField>
+      <ResponseField
+        name="loop"
+        type="number"
+      >
+        The current loop count of the LLMz iteration process
+      </ResponseField>
 
-  <ResponseField
-    name="temperature"
-    type="number"
-  >
-    The temperature setting used for the LLM model
-  </ResponseField>
+      <ResponseField
+        name="temperature"
+        type="number"
+      >
+        The temperature setting used for the LLM model
+      </ResponseField>
 
-  <ResponseField
-    name="model"
-    type="string"
-  >
-    The name or identifier of the LLM model being used.
-  </ResponseField>
+      <ResponseField
+        name="model"
+        type="string"
+      >
+        The name or identifier of the LLM model being used.
+      </ResponseField>
 
-  <ResponseField
-    name="transcript"
-    type="OAI.Message[]"
-  >
-    The conversation transcript, including all prior messages in the current context
-  </ResponseField>
+      <ResponseField
+        name="transcript"
+        type="OAI.Message[]"
+      >
+        The conversation transcript, including all prior messages in the current context
+      </ResponseField>
 
-  <ResponseField
-    name="location"
-    type="LLMZ.Location"
-  >
-    The current location within the bot's logic
-  </ResponseField>
-
-</Expandable>
+      <ResponseField
+        name="location"
+        type="LLMZ.Location"
+      >
+        The current location within the bot's logic
+      </ResponseField>
+    </Expandable>
 </ResponseField>
 
 ### After LLMz Execution
@@ -186,12 +167,7 @@ This Hook type executes its code after the LLMz engine finishes its execution.
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot
-</ResponseField>
+<IncomingEvent/>
 <ResponseField
     name="execution"
     type="LLMZ.ExecutionResult"
@@ -205,12 +181,7 @@ Depending on how demanding the task is, the LLMz may loop through multiple itera
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot
-</ResponseField>
+<IncomingEvent/>
 <ResponseField
     name="iteration"
     type="LLMZ.IterationResult"
@@ -224,12 +195,7 @@ This Hook type executes after the conversation has **explicitly ended** (transit
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot
-</ResponseField>
+<IncomingEvent/>
 
 ### After Turn End
 
@@ -237,12 +203,7 @@ This Hook type executes after a full turn has completed — meaning the bot has 
 
 **Parameters**:
 
-<ResponseField
-    name="event"
-    type="IO.IncomingEvent"
->
-    The message received by the bot
-</ResponseField>
+<IncomingEvent/>
 <ResponseField
     name="metadata"
     type="IO.TurnMetadata"
