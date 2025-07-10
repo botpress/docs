@@ -1,0 +1,10 @@
+## Quoi faire pour starter un bot en dev localement
+
+- Créer un bot: `bp init --type "bot" --name "my-bot"`
+- Lancer l'intégration en dev `bp dev`
+- Ajouter l'intégration au bot
+- Ajouter l'intégration de chat au bot
+- dans bot.definition.ts, importer chat et l'autre intégration `import chat from "./bp_modules/chat"`
+- dans my-bot/index.ts, ajouter une `bot.on.message()` **\***Incomplet
+- dans my-bot, exécuter `bp dev`
+- dans une nouvelle fenêtre, exécuter `bp chat <id du bot>`
