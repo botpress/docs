@@ -1,23 +1,27 @@
 ---
-title: Build your first Webchat component
-description: Use the React library to build a basic Webchat component.
-sidebarTitle: Get Started
+title: Get started
+description: Install the Webchat React library and build your first component.
+sidebarTitle: Get started
 ---
+
+Botpress offers a **fully customizable React library** that lets you seamlessly add Webchat to your existing React projects.
+
+## Installation
 
 <Info>
   You will need:
 
   - A [published bot](/learn/get-started/quick-start)
-  - A working [React app](https://react.dev/learn/installation)
+  - A [React app](https://react.dev/learn/installation)
 </Info>
 
 <Note>
-  Webchat currently requires React 18. Make sure your project is using this version to avoid compatibility
+  The Webchat library currently requires React 18. Make sure your project is using this version to avoid compatibility
   issues.
 </Note>
 
-<Steps titleSize='h2'>
-  <Step title="Install the NPM package">
+### Install the NPM package
+
 The Webchat library is hosted on `npm`. Download it with your favorite package manager:
 
   <CodeGroup>
@@ -34,27 +38,45 @@ pnpm install @botpress/webchat
 ```
 
   </CodeGroup>
-</Step>
 
-<Step title="Obtain your Client ID">
-To integrate Botpress Webchat Client into your application, you need to obtain your bot's Client ID.
+### Obtain your Client ID
+
+To integrate the Webchat client into your application, you need to obtain your bot's Client ID.
 This ID identifies your bot and enables communication with the Webchat service.
 
 To get your bot's Client ID:
 
-1. Select your bot in your workspace.
+1. From the [Dashboard](/learn/get-started/dashboard/), select your bot.
 2. In the left navigation bar, select **Webchat**.
 3. Select the **Advanced Settings** tab.
 4. Copy the **Client ID**:
 
-  ![Client ID](./assets/webchat-components_getting-started.png)
-  </Step>
+  <Frame>
+    <img
+      alt="Client ID"
+      className="block dark:hidden"
+      src="./assets/client-id.png"
+    />
+    <img
+      alt="Client ID"
+      className="hidden dark:block"
+      src="./assets/client-id-dark.png"
+    />
+  </Frame>
 
-<Step title="Build your component">
+---
 
-Now that we have everything we need, let's build a basic React component:
+## Build a component
 
-```tsx App.tsx [expandable]
+The library gives you two options for building a full Webchat experience:
+
+### Option 1: Use the `Webchat` component
+
+The library provides a batteries-included [Webchat](/webchat/react-library/components/webchat) component that contains most of what you'd expect when [injecting Webchat](/webchat/get-started/quick-start).
+
+With this approach, the only other component you need to import is the [Fab](/webchat/react-library/components/fab). Here's an example implementation:
+
+``` jsx App.jsx expandable
 import { Fab, Webchat } from '@botpress/webchat'
 import { useState } from 'react'
 
@@ -76,16 +98,24 @@ function App() {
           right: '20px',
         }}
       />
-      <Fab onClick={() => toggleWebchat()} style={{ position: 'fixed', bottom: '20px', right: '20px' }} />
+      <Fab
+        onClick={() => toggleWebchat()}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          width: '64px',
+          height: '64px'
+        }}
+      />
     </>
   )
 }
 
 export default App
 ```
-  </Step>
-</Steps>
 
-<Check>
-  Congratulations! You just created your first Webchat component!
-</Check>
+### Option 2: Build Webchat manually
+
+If you need more customization over each part of the Webchat experience, you can build it manually using the rest of the component library. Here's an example implementation:
+

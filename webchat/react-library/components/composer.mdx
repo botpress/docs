@@ -1,34 +1,45 @@
 The `Composer` component is where the user writes messages before sending them to the bot.
 It is a crucial part of the Webchat UI, providing a text area for input, optional file uploads, and integration with the chat system:
 
-<img src="./assets/webchat-components_component-library_composer.png" />
+<Panel>
+<Tabs>
+    <Tab title="Example">
+        <Frame>
+        <iframe
+            src="http://localhost:6006/iframe.html?args=&globals=&id=composer--primary&viewMode=story"
+            className="w-full rounded-xl"
+            height="500px"
+            />
+        </Frame>
+    </Tab>
+    <Tab title="Code">
+        ```jsx App.jsx
+        import { Composer, useWebchat } from '@botpress/webchat'
 
-## Usage
+        function App() {
+          const { client, clientState } = useWebchat({ clientId: '$CLIENT_ID$' }) // Insert your Client ID here
+
+          return (
+            <Composer
+              disableComposer={false}
+              isReadOnly={false}
+              allowFileUpload={true}
+              connected={clientState !== 'disconnected'}
+              sendMessage={client?.sendMessage}
+              uploadFile={client?.uploadFile}
+              composerPlaceholder="Type a message..."
+              showPoweredBy={true}
+            />
+          )
+        }
+        ```
+    </Tab>
+</Tabs>
+</Panel>
 
 <Note>
   Although you can use the `Composer` as a standalone component, we recommend using it within the [Container](./container) component and alongside the [Header](./header) and [MessageList](./message-list) components.
 </Note>
-
-```tsx
-import { Composer, useWebchat } from '@botpress/webchat'
-
-function App() {
-  const { client, clientState } = useWebchat({ clientId: '$CLIENT_ID$' }) // Insert your Client ID here
-
-  return (
-    <Composer
-      disableComposer={false}
-      isReadOnly={false}
-      allowFileUpload={true}
-      connected={clientState !== 'disconnected'}
-      sendMessage={client?.sendMessage}
-      uploadFile={client?.uploadFile}
-      composerPlaceholder="Type a message..."
-      showPoweredBy={true}
-    />
-  )
-}
-```
 
 ## Props
 
@@ -47,7 +58,7 @@ function App() {
 </ResponseField>
 
 <ResponseField name="connected" type="boolean">
-  Indicates whether the webchat is currently connected. When `false`, a modal appears prompting the user to retry by
+  Indicates whether Eebchat is currently connected. When `false`, a modal appears prompting the user to retry by
   reloading the page.
 </ResponseField>
 
@@ -63,8 +74,18 @@ function App() {
   Placeholder text displayed in the input area. Comes from the configuration.
 </ResponseField>
 
-<ResponseField name="showPoweredBy" type="boolean">
-  Whether to show a "Powered by Botpress" label under the composer. Comes from the configuration.
+<ResponseField
+  name="footer"
+  type="string"
+>
+  Displays a footer at the bottom of the Composer.
+</ResponseField>
+
+<ResponseField
+  name="inputRef"
+  type="Ref<HTMLTextAreaElement>"
+>
+  Provides a ref to the text input element. Useful for focusing or manipulating the input programmatically.
 </ResponseField>
 
 <ResponseField name="...props" type="ComponentProps<'div'>">

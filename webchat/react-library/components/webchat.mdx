@@ -1,0 +1,98 @@
+The `Webchat` component is a batteries-included implementation of the Webchat window. It contains most of what you'd expect when [injecting Webchat](/webchat/get-started/quick-start).
+
+<Panel>
+<Tabs>
+    <Tab title="Example">
+        <Frame>
+        <iframe
+            src="http://localhost:6006/iframe.html?globals=&id=webchat--primary&viewMode=story"
+            title="Webchat component"
+            className="w-full rounded-xl"
+            height="500px"
+            />
+        </Frame>
+    </Tab>
+    <Tab title="Code">
+        ``` jsx App.jsx
+        import { Fab, Webchat } from '@botpress/webchat'
+        import { useState } from 'react'
+
+        function App() {
+        const [isWebchatOpen, setIsWebchatOpen] = useState(false)
+        const toggleWebchat = () => {
+            setIsWebchatOpen((prevState) => !prevState)
+        }
+        return (
+            <>
+            <Webchat
+                clientId="$CLIENT_ID$" // Your client ID here
+                style={{
+                width: '400px',
+                height: '600px',
+                display: isWebchatOpen ? 'flex' : 'none',
+                position: 'fixed',
+                bottom: '90px',
+                right: '20px',
+                }}
+            />
+            <Fab
+                onClick={() => toggleWebchat()}
+                style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                width: '64px',
+                height: '64px'
+                }}
+            />
+            </>
+        )
+        }
+
+        export default App
+        ```
+    </Tab>
+</Tabs>
+</Panel>
+
+<Note>
+    By default, the `Webchat` component uses the latest configuration set in your bot's [Dashboard](/learn/get-started/dashboard/bot/webchat). You can override this configuration using the [configuration](#configuration) prop.
+</Note>
+
+## Props
+
+<ResponseField
+    name="clientId"
+    type="string"
+    required
+>
+    Your bot's [client ID](/webchat/react-library/get-started#obtain-your-client-id).
+</ResponseField>
+
+<ResponseField
+    name="storageKey"
+    type="string"
+>
+    
+</ResponseField>
+
+<ResponseField
+    name="user"
+    type="UserCredentials"
+>
+    
+</ResponseField>
+
+<ResponseField
+    name="conversationId"
+    type="string"
+>
+    
+</ResponseField>
+
+<ResponseField
+    name="configuration"
+    type="configuration"
+>
+    
+</ResponseField>

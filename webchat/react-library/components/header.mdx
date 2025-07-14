@@ -1,77 +1,79 @@
 The `Header` component sits at the top of the Webchat UI. It displays the bot’s name, avatar, and description. It also provides access to key actions like restarting the conversation or closing the chat window.
 
-The `Header` can be collapsed or expanded:
-
+<Panel>
 <Tabs>
-  <Tab title="Collapsed">
-    <img src="./assets/webchat-components_component-library_header.png" />
-  </Tab>
-  <Tab title="Expanded">
-    <img src="./assets/webchat-components_component-library_header-expanded.png" />
-  </Tab>
-</Tabs>
+    <Tab title="Example">
+        <Frame>
+        <iframe
+            src="http://localhost:6006/iframe.html?globals=&args=&id=header--primary&viewMode=story"
+            title="Webchat component"
+            className="w-full h-96 rounded-xl"
+            />
+        </Frame>
+    </Tab>
+    <Tab title="Code">
+        ```jsx App.jsx
+        import { Header, useWebchat } from '@botpress/webchat'
 
-## Usage
+        // Every attribute that the header component can take
+        const headerConfig = {
+          botName: 'SupportBot',
+          botAvatar: 'https://cdn.botpress.cloud/bot-avatar.png',
+          botDescription: 'Your virtual assistant for all things support.',
+
+          phone: {
+            title: 'Call Support',
+            link: 'tel:+1234567890',
+          },
+
+          email: {
+            title: 'Email Us',
+            link: 'mailto:support@example.com',
+          },
+
+          website: {
+            title: 'Visit our website',
+            link: 'https://www.example.com',
+          },
+
+          termsOfService: {
+            title: 'Terms of Service',
+            link: 'https://www.example.com/terms',
+          },
+
+          privacyPolicy: {
+            title: 'Privacy Policy',
+            link: 'https://www.example.com/privacy',
+          },
+        }
+
+        function App() {
+          const [isWebchatOpen, setIsWebchatOpen] = useState(false)
+
+          const { newConversation } = useWebchat({
+            clientId: '$CLIENT_ID$', // Insert your client id here
+          })
+
+          return (
+            <Header
+              onOpenChange={() => console.log('Override the header open change')}
+              defaultOpen={true}
+              closeWindow={() => setIsWebchatOpen(false)}
+              restartConversation={newConversation}
+              disabled={false}
+              configuration={headerConfig}
+            />
+          )
+        }
+        ```
+    </Tab>
+</Tabs>
+</Panel>
 
 <Note>
   Although you can use the `Header` as a standalone component, we recommend using it within the
   [Container](./container) component and alongside the [Composer](./composer) and [MessageList](./message-list) components.
 </Note>
-
-```jsx [expandable]
-import { Header, useWebchat } from '@botpress/webchat'
-
-// Every attributes that the header component can take
-const headerConfig = {
-  botName: 'SupportBot',
-  botAvatar: 'https://cdn.botpress.cloud/bot-avatar.png',
-  botDescription: 'Your virtual assistant for all things support.',
-
-  phone: {
-    title: 'Call Support',
-    link: 'tel:+1234567890',
-  },
-
-  email: {
-    title: 'Email Us',
-    link: 'mailto:support@example.com',
-  },
-
-  website: {
-    title: 'Visit our website',
-    link: 'https://www.example.com',
-  },
-
-  termsOfService: {
-    title: 'Terms of Service',
-    link: 'https://www.example.com/terms',
-  },
-
-  privacyPolicy: {
-    title: 'Privacy Policy',
-    link: 'https://www.example.com/privacy',
-  },
-}
-
-function App() {
-  const [isWebchatOpen, setIsWebchatOpen] = useState(false)
-
-  const { newConversation } = useWebchat({
-    clientId: '$CLIENT_ID$', // Insert your client id here
-  })
-
-  return (
-    <Header
-      onOpenChange={() => console.log('Override the header open change')}
-      defaultOpen={true}
-      closeWindow={() => setIsWebchatOpen(false)}
-      restartConversation={newConversation}
-      disabled={false}
-      configuration={headerConfig}
-    />
-  )
-}
-```
 
 ## Props
 
@@ -94,7 +96,7 @@ function App() {
 
 <ResponseField name="restartConversation" type="() => void">
   Optional function to restart the current conversation. Typically resets the conversation state to the beginning. The
-  header must be within a `ModalProvider` for this to work. Such ModalProvider is provided automatically with the
+  header must be within a `ModalProvider` for this to work. A  ModalProvider is provided automatically with the
   `Container` component.
 </ResponseField>
 

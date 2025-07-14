@@ -3,13 +3,14 @@ title: Floating Action Button
 sidebarTitle: Fab
 ---
 
+import { Fab, fabStyles, bpFabSVG } from '/snippets/react/fab.jsx'
+
 You can use the `Fab` (Floating Action Button) component to toggle the visibility of the Webchat UI in your application:
 
-<img src="./assets/webchat-components_component-library_fab.png" />
+{/* <Fab/> */}
 
-## Usage
-
-```tsx
+<RequestExample>
+```jsx App.jsx wrap
 import { Fab } from '@botpress/webchat'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   return <Fab onClick={() => setIsWebchatOpen(!isWebchatOpen)} />
 }
 ```
+</RequestExample>
 
 ## Props
 
