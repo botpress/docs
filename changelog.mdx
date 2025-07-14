@@ -4,6 +4,43 @@ description: "The latest updates and improvements to Botpress."
 mode: "wide"
 ---
 
+<Update label="July 11, 2025">
+
+    ## Features & Enhancements
+
+    - Added a notification indicator to Webchat:
+
+    <Frame>
+      <img
+        alt="Webchat notification"
+        className="block dark:hidden"
+        src="./changelog-assets/2025-07-11/webchat-notification.png"
+      />
+      <img
+        alt="Webchat notification"
+        className="hidden dark:block"
+        src="./changelog-assets/2025-07-11/webchat-notification-dark.png"
+      />
+    </Frame>
+
+    - Improved timeout handling for integration API calls longer than 60 seconds
+    - Added helpful messages to Webchat window when error occurs
+    - Integration updates:
+        - **SendGrid**: added support for Markdown
+        - **Resend**: added CC and BCC fields to sendMail action
+        - **Messenger**: added support for sending media and files
+        - **Slack/WhatsApp**: improved Markdown handling
+        
+    - Added Gemini 2.5
+
+    ## Bug Fixes
+
+        - Fixed aggregation issues for Tables API
+        - Fixed an issue with renaming bots
+        - Fixed an issue with Slack reply threading
+
+</Update>
+
 <Update label="July 4, 2025">
 
     ## Features & Enhancements
