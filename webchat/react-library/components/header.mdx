@@ -3,13 +3,13 @@ The `Header` component sits at the top of the Webchat UI. It displays the bot’
 <Panel>
 <Tabs>
     <Tab title="Example">
-        <Frame>
         <iframe
-            src="http://localhost:6006/iframe.html?globals=&args=&id=header--primary&viewMode=story"
-            title="Webchat component"
-            className="w-full h-96 rounded-xl"
-            />
-        </Frame>
+            src="https://botpress.github.io/docs-examples/iframe.html?args=&globals=&id=header--primary"
+            title="Header component"
+            className="w-full rounded-xl"
+            height={'500px'}
+            wid
+        />
     </Tab>
     <Tab title="Code">
         ```jsx App.jsx
@@ -112,4 +112,33 @@ The `Header` component sits at the top of the Webchat UI. It displays the bot’
   A configuration object containing bot identity and contact details. To enable the expanded header with additional
   links (e.g., website, terms of service), include the following fields: `email`, `phone`, `privacyPolicy`, `website`,
   and `termsOfService`.
+
+    <Expandable>
+
+      <ResponseField name="botName" type="string">
+          Name of the bot displayed in the header.
+      </ResponseField>
+      <ResponseField name="botAvatar" type="string">
+          URL to the bot avatar image.
+      </ResponseField>
+      <ResponseField name="botDescription" type="string">
+          Description text shown in the Webchat header.
+      </ResponseField>
+      <ResponseField name="phone" type="{ title?: string, link?: string }">
+          Phone contact information with title and link.
+      </ResponseField>
+      <ResponseField name="email" type="{ title?: string, link?: string }">
+          Email contact information with title and link.
+      </ResponseField>
+      <ResponseField name="website" type="{ title?: string, link?: string }">
+          Website link information with title and URL.
+      </ResponseField>
+      <ResponseField name="termsOfService" type="{ title?: string, link?: string }">
+          Terms of Service link with title and URL.
+      </ResponseField>
+      <ResponseField name="privacyPolicy" type="{ title?: string, link?: string }">
+          Privacy Policy link with title and URL.
+      </ResponseField>
+
+    </Expandable>
 </ResponseField>

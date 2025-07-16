@@ -2,6 +2,33 @@
 title: StylesheetProvider
 ---
 
+<Panel>
+  ```jsx App.jsx
+  import { StylesheetProvider } from '@botpress/webchat'
+
+  const config = {
+    color: '#3778f0',
+    fontFamily: 'Inter',
+    radius: 1,
+    variant: 'soft',
+    themeMode: 'light',
+    headerVariant: 'solid'
+  }
+
+  function App() {
+    return (
+        <StylesheetProvider
+          color={config.color}
+          fontFamily={config.fontFamily}
+          radius={config.radius}
+          variant={config.variant}
+          themeMode={config.themeMode}
+        />
+    )
+  }
+  ```
+</Panel>
+
 The `StylesheetProvider` component dynamically generates and injects a custom Webchat theme based on your configuration.
 This includes styling variables like:
 
@@ -12,46 +39,24 @@ This includes styling variables like:
 
 The generated theme is automatically injected into the page using a `<style>` tag and supports both light and dark modes.
 
-## Usage
-
-```tsx App.tsx
-import { StylesheetProvider } from '@botpress/webchat'
-
-const config: = {
-  color: '#3778f0',
-  fontFamily: 'Inter',
-  radius: 1,
-  variant: 'soft',
-  themeMode: 'light',
-}
-
-function App() {
-  return (
-      <StylesheetProvider
-        color={config.color}
-        fontFamily={config.fontFamily}
-        radius={config.radius}
-        variant={config.variant}
-        themeMode={config.themeMode}
-      />
-  )
-}
-```
 
 ## Props
 
-<ResponseField name="color" type="string">
-  The primary color used in your generated theme. It must be a **6-digit hex value**.
+ <ResponseField name="color" type="string">
+    Primary theme color in hex format.
 </ResponseField>
-<ResponseField name="fontFamily" type="'rubik', 'inter', 'ibm', 'fira'">
-  The font family used throughout the Webchat UI.
-</ResponseField>
-<ResponseField name="radius" type="number (1 - 4)">
-  Controls the border radius of Webchat UI elements like cards, buttons, and message bubbles.
-</ResponseField>
-<ResponseField name="variant" type="'solid' | 'soft'">
-  Defines the overall style variant of the UI.
+<ResponseField name="radius" type="number">
+    Corner radius for UI elements. Can be `0.5` - `4`
 </ResponseField>
 <ResponseField name="themeMode" type="'light' | 'dark'">
-  Sets the theme mode.
+    Light or dark mode theme.
+</ResponseField>
+<ResponseField name="variant" type="'solid' | 'soft'">
+    Visual style of the chat window.
+</ResponseField>
+<ResponseField name="fontFamily" type="'rubik' | 'inter' | 'ibm' | 'fira'">
+    Font family used in Webchat.
+</ResponseField>
+<ResponseField name="headerVariant" type="'solid' | 'glass'">
+    Style variant of the header.
 </ResponseField>

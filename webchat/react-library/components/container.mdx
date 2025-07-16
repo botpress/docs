@@ -7,48 +7,47 @@ It manages:
 
 It also provides a shared context for nested components like `MessageList` and `Composer`.
 
-<AccordionGroup>
-  <Accordion title="Empty Container">
-    <img src="./assets/webchat-components_component-library_container.png" />
-  </Accordion>
-  <Accordion title="Disconnected Container">
-    <img src="./assets/webchat-components_component-library_container-disconnected.png" />
-  </Accordion>
-</AccordionGroup>
+<Panel>
+<Tabs>
+    <Tab title="Example">
+        <iframe
+            src="https://botpress.github.io/docs-examples/iframe.html?args=&globals=&id=container--primary"
+            title="Container component"
+            className="w-full rounded-xl"
+            height="500px"
+            />
+    </Tab>
+    <Tab title="Code">
+        ```jsx App.jsx
+        import { Container, useWebchat } from '@botpress/webchat'
 
-## Usage
+        function App() {
+          const [isWebchatOpen, setIsWebchatOpen] = useState(false)
 
-<Note>
-  We recommend using the `Container` as the top-level wrapper around your Webchat content.
-</Note>
+          const { clientState } = useWebchat({
+            clientId: '$CLIENT_ID$', // Insert your Client ID here
+          })
 
-```jsx App.jsx
-import { Container, useWebchat } from '@botpress/webchat'
-
-function App() {
-  const [isWebchatOpen, setIsWebchatOpen] = useState(false)
-
-  const { clientState } = useWebchat({
-    clientId: '$CLIENT_ID$', // Insert your Client ID here
-  })
-
-  return (
-    <Container
-      connected={clientState !== 'disconnected'}
-      style={{
-        width: '500px',
-        height: '800px',
-        display: isWebchatOpen ? 'flex' : 'none',
-        position: 'fixed',
-        bottom: '90px',
-        right: '20px',
-      }}
-    >
-      // Your webchat content goes here
-    </Container>
-  )
-}
-```
+          return (
+            <Container
+              connected={clientState !== 'disconnected'}
+              style={{
+                width: '500px',
+                height: '800px',
+                display: isWebchatOpen ? 'flex' : 'none',
+                position: 'fixed',
+                bottom: '90px',
+                right: '20px',
+              }}
+            >
+              // Your webchat content goes here
+            </Container>
+          )
+        }
+        ```
+    </Tab>
+</Tabs>
+</Panel>
 
 ## Props
 
@@ -56,6 +55,9 @@ function App() {
   Indicates whether the Webchat is currently connected. When `false`, a modal appears and prompts the user to retry by reloading the page.
 </ResponseField>
 
-<ResponseField name="...props" type="ComponentProps<'div'>">
-  All standard `<div>` props are passed through, allowing further customization like styling or event handlers.
+<ResponseField
+  name="allowFileUpload"
+  type="boolean"
+>
+  Controls whether the container has a dropzone for uploading files. Doesn't affect whether the [Composer](/webchat/react-library/components/composer) contains a file upload button.
 </ResponseField>
