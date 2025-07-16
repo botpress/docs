@@ -2,68 +2,72 @@
 title: MessageList
 ---
 
-The `MessageList` component renders the list of messages in the Webchat, including:
-- System messages
-- Bot messages
-- User responses
+The `MessageList` component renders the list of messages in the current Webchat conversation.
 
-It has custom message renderers for each type of message (e.g. video, image, audio, text and multipart messages).
+<Panel>
+<Tabs>
+    <Tab title="Example">
+        <iframe
+            src="https://botpress.github.io/docs-examples/iframe.html?args=&globals=&id=messagelist--primary"
+            title="MessageList component"
+            className="w-full rounded-xl"
+            height="500px"
+            />
+    </Tab>
+    <Tab title="Code">
+        ```tsx App.tsx
+        import { MessageList, useWebchat, Configuration } from '@botpress/webchat'
 
-It displays a typing indicator while waiting for the bot to answer.
+        const { client, messages, isTyping, user } = useWebchat({
+          clientId: '$CLIENT_ID$', // Insert your Client ID here
+        })
 
-## Usage
+        const config: Configuration = {
+          botName: 'SupportBot',
+          botAvatar: 'https://picsum.photos/id/80/400',
+          botDescription: 'Your virtual assistant for all things support.',
+        }
 
-<Note>
-  Although you can use the `MessageList` as a standalone component, we recommend using it within the [Container](./container) component and alonside the [Composer](./composer) and[Header](./header) components.
-</Note>
+        const enrichedMessages: RichMessageObject[] = useMemo(
+          () =>
+            messages.map((message) => {
+              const { authorId } = message
+              const direction = authorId === user?.id ? 'outgoing' : 'incoming'
+              return {
+                ...message,
+                direction,
+                sender:
+                  direction === 'outgoing'
+                    ? { name: user?.name ?? 'You', avatar: user?.pictureUrl }
+                    : { name: config.botName ?? 'Bot', avatar: config.botAvatar },
+              }
+            }),
+          [config.botAvatar, config.botName, messages, user?.id, user?.name, user?.pictureUrl]
+        )
 
-```tsx App.tsx [expandable]
-import { MessageList, useWebchat, Configuration } from '@botpress/webchat'
-
-const { client, messages, isTyping, user } = useWebchat({
-  clientId: '$CLIENT_ID$', // Insert your Client ID here
-})
-
-const config: Configuration = {
-  botName: 'SupportBot',
-  botAvatar: 'https://picsum.photos/id/80/400',
-  botDescription: 'Your virtual assistant for all things support.',
-}
-
-const enrichedMessages: RichMessageObject[] = useMemo(
-  () =>
-    messages.map((message) => {
-      const { authorId } = message
-      const direction = authorId === user?.id ? 'outgoing' : 'incoming'
-      return {
-        ...message,
-        direction,
-        sender:
-          direction === 'outgoing'
-            ? { name: user?.name ?? 'You', avatar: user?.pictureUrl }
-            : { name: config.botName ?? 'Bot', avatar: config.botAvatar },
-      }
-    }),
-  [config.botAvatar, config.botName, messages, user?.id, user?.name, user?.pictureUrl]
-)
-
-function App() {
-  return (
-    <MessageList
-      botAvatar={config.botAvatar}
-      botName={config.botName}
-      botDescription={config.botDescription}
-      isTyping={isTyping}
-      headerMessage="Chat History"
-      showMarquee={true}
-      messages={enrichedMessages}
-      sendMessage={client?.sendMessage}
-    />
-  )
-}
-```
+        function App() {
+          return (
+            <MessageList
+              botAvatar={config.botAvatar}
+              botName={config.botName}
+              botDescription={config.botDescription}
+              isTyping={isTyping}
+              showMarquee={true}
+              messages={enrichedMessages}
+              sendMessage={client?.sendMessage}
+            />
+          )
+        }
+        ```
+    </Tab>
+</Tabs>
+</Panel>
 
 ## Props
+
+<Note>
+  Although all of the `MessageList` component's props are optional, you need to send the [messages](#messages) prop to display messages.
+</Note>
 
 <ResponseField name="botAvatar" type="string">
   The bot’s avatar image URL, used when rendering bot messages or typing indicators.
@@ -83,12 +87,16 @@ function App() {
 </ResponseField>
 <ResponseField name="messages" type="RichMessageObject[]">
   An array of message objects to render in the chat. Can include standard user (`'outgoing'`) and bot (`'incoming'`) messages, as well as system (`'system'`)
-  messages. You must handle the construction of the `RichMessageObject` type.
+  messages.
+
+  <Warning>
+  When using the `MessageList` component, you need to handle the creation of this array yourself. Copy the code example on this page for a working implementation.
+  </Warning>
 </ResponseField>
 <ResponseField name="renderers" type="Partial<Renderers>">
   A mapping of custom message renderers used to override how specific block types are displayed.
 </ResponseField>
-<ResponseField name="sendMessage" type="(payload: WebchatMessage) => void">
+<ResponseField name="sendMessage" type="(payload: IntegrationMessage) => void">
   A callback function used to send a new message from the message list as a reply.
   This is used by input messages (e.g. Button, Dropdown) where the user's input is sent directly from the message list in a message object.
   This means that `sendMessage` is required if your want to use the `Button`, `Dropdown` or any input message types.
@@ -96,8 +104,4 @@ function App() {
 <ResponseField name="showMarquee" type="boolean">
   Whether to show the bot marquee (bot name, avatar, and description) at the top of the message list. Defaults to
   `true`.
-</ResponseField>
-<ResponseField name="...props" type="ComponentProps<'ul'>">
-  Standard `<ul>` element props. Useful for applying custom class names or event handlers to the outer
-  container.
 </ResponseField>
