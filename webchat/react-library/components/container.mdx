@@ -7,15 +7,18 @@ It manages:
 
 It also provides a shared context for nested components like `MessageList` and `Composer`.
 
+import { ContainerToggles } from '/snippets/container-toggles.jsx'
+
 <Panel>
 <Tabs>
     <Tab title="Example">
-        <iframe
+        {/* <iframe
             src="https://botpress.github.io/docs-examples/iframe.html?args=&globals=&id=container--primary"
             title="Container component"
             className="w-full rounded-xl"
             height="500px"
-            />
+            /> */}
+        <ContainerToggles/>
     </Tab>
     <Tab title="Code">
         ```jsx App.jsx
