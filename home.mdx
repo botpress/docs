@@ -3,14 +3,27 @@ title: 'Documentation'
 mode: 'custom'
 ---
 
-<div className="flex flex-col items-center justify-center my-10">
-  <h1 className="text-4xl text-gray-600 font-bold pb-2">Documentation</h1>
-  <p className="text-lg mb-4 text-center">Explore our guides and examples to learn how to use Botpress.</p>
-  <a href="learn/guides/introduction">
-    <button className="flex items-center gap-2 border border-gray-300 bg-blue-500 text-white rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-      Get Started
+<div
+  style={{
+    backgroundImage: 'url(/homepage-assets/background-graphic.svg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: '8rem',
+    paddingBottom: '8rem',
+  }}
+>
+  <div className="flex flex-col items-center justify-center my-10">
+    <h1 className="inline-block text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight dark:text-gray-200 home-header">Documentation</h1>
+    <p className="mt-2 text-lg prose prose-gray dark:prose-invert">Explore our guides and examples to learn how to use Botpress.</p>
+    <button type="button" class="flex-none hidden lg:flex items-center justify-center gap-1.5 pl-3 pr-3.5 h-9 rounded-xl shadow-sm bg-background-light dark:bg-background-dark dark:brightness-[1.1] dark:ring-1 dark:hover:brightness-[1.25] ring-1 ring-gray-400/20 hover:ring-gray-600/25 dark:ring-gray-600/30 dark:hover:ring-gray-500/30 focus:outline-primary" id="assistant-entry">
+      <img src='/logo/dark.svg' alt="Botpress logo" />
+      <span class="text-sm text-gray-500 dark:text-white/50 whitespace-nowrap">Ask AI</span>
     </button>
-  </a>
+  </div>
 </div>
 
 <div className="flex flex-col items-center justify-center mb-20 mx-10">
@@ -47,6 +60,22 @@ mode: 'custom'
       <span>Join Discord</span>
     </button>
   </a>
+</div>
+
+<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
+  <h2 class="flex whitespace-pre-wrap group font-semibold" style={{ fontSize: '28px' }}>
+    <p>Get started</p>
+  </h2>
+
+  <CardGroup>
+    <Card
+      title="Webchat"
+      icon="message-square"
+      href="href"
+    >
+      Add your bot to your website.
+    </Card>
+  </CardGroup>
 </div>
 
 <div className="flex flex-col items-center justify-center mb-20 mx-10">
