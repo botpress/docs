@@ -34,8 +34,65 @@
   letter-spacing: normal !important;
 }
 
-.home-header {
-  font-size: 50px !important;
+.high-contrast {
+  color: light-dark(black, white) !important;
+}
+
+/* Hero background image for home page */
+.hero-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 400px; /* fallback for very small screens */
+}
+
+.hero_banner {
+    background-color: var(--_bp2025---color-base-bg-main);
+    color: var(--_bp2025---color-base-300);
+    text-align: center;
+    border: 1px solid #3c8135;
+    border-radius: 0;
+    padding: .5rem 1rem;
+    font-size: .8rem;
+    line-height: 130%;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative
+}
+
+.hero_banner:hover {
+    background-color: #2b5b27;
+    color: white;
+}
+
+.hero_banner_dot {
+    background-color: #3c8135;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    inset: -4px auto auto -4px
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    /* Desktop SVG background */
+    background-image: url('https://i.ibb.co/jvt7Zv4W/background-graphic-desktop.webp');
+    aspect-ratio: 7000 / 1773;
+    min-height: 500px;
+    background-size: 100% auto;
+    /* background-position: center 0%; */
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-bg {
+    /* Mobile SVG background */
+    background-image: url('https://i.ibb.co/ksc4V3xB/background-graphic-mobile.webp');
+    aspect-ratio: 2066 / 1223;
+    min-height: 350px;
+    background-size: 95% auto;
+    background-position: center 40%;
+  }
 }
 
 @media (min-width: 768px) { .bpWebchat {

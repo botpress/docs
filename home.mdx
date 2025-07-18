@@ -3,53 +3,175 @@ title: 'Documentation'
 mode: 'custom'
 ---
 
-<div
-  style={{
-    backgroundImage: 'url(/homepage-assets/background-graphic.svg)',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: '8rem',
-    paddingBottom: '8rem',
-  }}
->
-  <div className="flex flex-col items-center justify-center my-10">
-    <h1 className="inline-block text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight dark:text-gray-200 home-header">Documentation</h1>
-    <p className="mt-2 text-lg prose prose-gray dark:prose-invert">Explore our guides and examples to learn how to use Botpress.</p>
-    <button type="button" class="flex-none hidden lg:flex items-center justify-center gap-1.5 pl-3 pr-3.5 h-9 rounded-xl shadow-sm bg-background-light dark:bg-background-dark dark:brightness-[1.1] dark:ring-1 dark:hover:brightness-[1.25] ring-1 ring-gray-400/20 hover:ring-gray-600/25 dark:ring-gray-600/30 dark:hover:ring-gray-500/30 focus:outline-primary" id="assistant-entry">
-      <img src='/logo/dark.svg' alt="Botpress logo" />
-      <span class="text-sm text-gray-500 dark:text-white/50 whitespace-nowrap">Ask AI</span>
-    </button>
-  </div>
+
+<div className="hero-bg high-contrast flex flex-col items-center justify-center w-full" >
+  <h1 className="text-5xl md:text-6xl font-bold text-center mb-4">
+    Documentation
+  </h1>
+  <p className="text-xl md:text-1xl text-center text-gray-700 dark:text-gray-300 mb-8 max-w-2xl">
+    Explore guides and examples to learn how to use Botpress.
+  </p>
+  <a data-wf-native-id-path="2083bdcc-fcfc-120b-af83-0bc3c6cda1c6" data-wf-ao-click-engagement-tracking="true" data-wf-element-id="2083bdcc-fcfc-120b-af83-0bc3c6cda1c6" href="https://discord.gg/botpress" target="_blank" data-wf-event-ids="157039259-157047193" class="hero_banner w-inline-block"><div>Join other builders on Discord</div><div class="hero_banner_dot"></div></a>
 </div>
 
-<div className="flex flex-col items-center justify-center mb-20 mx-10">
+<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
+  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '28px' }}>
+    Learn
+  </h2>
+
   <CardGroup cols={3}>
-    <Card title="Guides" href="/learn/guides/introduction">
-      Learn about Botpress and how to use its features to build an agent
+    <Card
+      title="Quickstart"
+      icon="rocket"
+      href="href"
+    >
+      Build, test and deploy your first AI agent.
     </Card>
-    <Card title="Webchat" href="/webchat/get-started/introduction">
-      Learn how to integrate Botpress on your website
+    <Card
+      title="Guides"
+      icon="lightbulb"
+      href="href"
+    >
+      Follow detailed how-to guides.
     </Card>
-    <Card title="Chat API" href="/api-reference/chat-api/introduction">
-      Use Node.js to talk to your agent
-    </Card>
-    <Card title="Build an integration" href="/for-developers/sdk/integration">
-      Build your own integration to connect your agent to an external app
-    </Card>
-    <Card title="Knowledge Base" href="/learn/reference/knowledge-base/introduction">
-      Learn how to optimize your agent's knowledge
-    </Card>
-    <Card title="API Reference" href="/api-reference/introduction">
-      Explore Botpress APIs to manage, chat with, and deploy your agent
+    <Card
+      title="Reference"
+      icon="book"
+      href="href"
+    >
+      Learn about the key concepts of Botpress.
     </Card>
   </CardGroup>
 </div>
 
-<div className="flex flex-col items-center justify-center pb-20">
+<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
+  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '28px' }}>
+    Integrations
+  </h2>
+
+  <CardGroup  cols={3}>
+    <Card
+      title="Functional integrations"
+      icon="rocket"
+      href="href"
+    >
+      Build, test and deploy your first AI agent.
+    </Card>
+    <Card
+      title="Botpress Hub"
+      icon="boxes"
+      href="href"
+    >
+      Marketplace to find and install integrations.
+    </Card>
+  </CardGroup>
+</div>
+
+<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
+  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '28px' }}>
+    Webchat
+  </h2>
+
+  <CardGroup cols={3}>
+    <Card
+      title="Add a bot to your website"
+      icon="message-square"
+      href="href"
+    >
+      Use a script tag to embed a bot in your website.
+    </Card>
+    <Card
+      title="React library"
+      icon="react"
+      href="href"
+    >
+      Use the React library to build a Webchat component directly into your application.
+    </Card>
+  </CardGroup>
+</div>
+
+<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
+  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '28px' }}>
+    SDK
+  </h2>
+
+  <CardGroup cols={3}>
+    <Card
+      title="Integrations"
+      icon="code"
+      href="href"
+    >
+      Build integrations to connect your bot to external services.
+    </Card>
+    <Card
+      title="Interfaces"
+      icon="interface"
+      href="href"
+    >
+      Some description of interface.
+    </Card>
+    <Card
+      title="Bots-as-code"
+      icon="bot"
+      href="href"
+    >
+      Some description of bots-as-code.
+    </Card>
+    <Card
+      title="Plugins"
+      icon="plugin"
+      href="href"
+    >
+      Some description of plugins.
+    </Card>
+  </CardGroup>
+</div>
+
+<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
+  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '28px' }}>
+    API Reference
+  </h2>
+
+  <CardGroup cols={3}>
+    <Card
+      title="Chat API"
+      icon="code"
+      href="href"
+    >
+      tbc
+    </Card>
+    <Card
+      title="Admin API"
+      icon="code"
+      href="href"
+    >
+      tbc
+    </Card>
+    <Card
+      title="Files API"
+      icon="code"
+      href="href"
+    >
+      tbc
+    </Card>
+    <Card
+      title="Tables API"
+      icon="code"
+      href="href"
+    >
+      tbc
+    </Card>
+    <Card
+      title="Runtime API"
+      icon="code"
+      href="href"
+    >
+      tbc
+    </Card>
+  </CardGroup>
+</div>
+
+{/* <div className="flex flex-col items-center justify-center pb-20">
   <h2 className="text-3xl text-gray-600 font-bold pb-2">Community</h2>
   <p className="text-md mb-4 text-center">Join our community to connect with other developers and get help.</p>
   <a href="https://discord.com/invite/botpress" target="_blank" rel="noreferrer">
@@ -60,129 +182,4 @@ mode: 'custom'
       <span>Join Discord</span>
     </button>
   </a>
-</div>
-
-<div style={{ maxWidth: '70rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1.25rem', paddingRight: '1.25rem', marginTop: '3rem' }}>
-  <h2 class="flex whitespace-pre-wrap group font-semibold" style={{ fontSize: '28px' }}>
-    <p>Get started</p>
-  </h2>
-
-  <CardGroup>
-    <Card
-      title="Webchat"
-      icon="message-square"
-      href="href"
-    >
-      Add your bot to your website.
-    </Card>
-  </CardGroup>
-</div>
-
-<div className="flex flex-col items-center justify-center mb-20 mx-10">
-  <h2 className="text-3xl text-gray-600 font-bold pb-2">Browse by Concept</h2>
-  <p className="text-md mb-4 text-center">There's a lot you can do with Botpress. Browse by concept to learn more.</p>
-  <div className="sm:grid-cols-2 grid-cols-1 grid gap-4 md:grid-cols-3 lg:grid-cols-5 items-center mb-10">
-    <Card title="Workflows" href="/learn/reference/workflows">
-      Getting started with workflows
-    </Card>
-    <Card title="Tables" href="/learn/reference/tables">
-      Getting started with tables
-    </Card>
-    <Card title="Knowledge Bases" href="/learn/reference/knowledge-base/introduction">
-      Getting started with knowledge bases
-    </Card>
-    <Card title="Conversations" href="/learn/get-started/dashboard/bot/conversations">
-      Understanding conversations
-    </Card>
-    <Card title="Events" href="/learn/get-started/dashboard/bot/events">
-      Understanding events
-    </Card>
-    <Card title="Actions" href="/learn/reference/actions">
-      Getting started with actions
-    </Card>
-    <Card title="Hooks" href="/learn/reference/hooks">
-      Learn how to use hooks
-    </Card>
-    <Card title="Integrations" href="/learn/reference/integrations">
-      Learn more about integrations
-    </Card>
-    <Card title="Variables" href="/learn/reference/variables">
-      Learn to use variables
-    </Card>
-    <Card title="Emulator" href="/learn/reference/emulator">
-      Debug your bot conversation using the emulator
-    </Card>
-    <Card title="Execute Code" href="/learn/reference/cards/execute">
-      Learn how to use the execute code card
-    </Card>
-    <Card title="AI Task" href="/learn/reference/cards/ai/ai-task">
-      Using AI tasks
-    </Card>
-    <Card title="AI Transition" href="/learn/reference/cards/ai/ai-transition">
-      Using AI transitions
-    </Card>
-    <Card title="AI Generate Text" href="/learn/reference/cards/ai/ai-generate-text">
-      Using AI generate text
-    </Card>
-    <Card title="Agents" href="/learn/reference/cards/agents">
-      Using agents
-    </Card>
-</div>
-</div>
-{/*
-<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 items-center mb-10">
-  <div className="flex flex-col justify-center items-center">
-    <h3 className="text-xl text-gray-600 font-bold pb-2">Additional Resources</h3>
-    <p className="text-md mb-4">There's a lot you can do with Botpress.</p>
-    <div className="flex flex-col gap-2 justify-center items-center">
-      <a href="" className="text-blue-400">
-        Talk to your agent using an API
-      </a>
-      <a href="" className="text-blue-400">
-        Build a custom component for the webchat
-      </a>
-      <a href="" className="text-blue-400">
-        Manage your files using an API
-      </a>
-      <a href="" className="text-blue-400">
-        Manage your tables using an API
-      </a>
-    </div>
-  </div>
-  <div className="flex flex-col justify-center items-center">
-    <h3 className="text-xl text-gray-600 font-bold pb-2">Webchat Guides</h3>
-    <p className="text-md mb-4">There's a lot you can do with Botpress.</p>
-    <div className="flex flex-col gap-2 justify-center items-center">
-      <a href="" className="text-blue-400">
-        Talk to your agent using an API
-      </a>
-      <a href="" className="text-blue-400">
-        Build a custom component for the webchat
-      </a>
-      <a href="" className="text-blue-400">
-        Manage your files using an API
-      </a>
-      <a href="" className="text-blue-400">
-        Manage your tables using an API
-      </a>
-    </div>
-  </div>
-  <div className="flex flex-col justify-center items-center">
-    <h3 className="text-xl text-gray-600 font-bold pb-2">Botpress's APIs</h3>
-    <p className="text-md mb-4">There's a lot you can do with Botpress.</p>
-    <div className="flex flex-col gap-2 justify-center items-center">
-      <a href="" className="text-blue-400">
-        Talk to your agent using an API
-      </a>
-      <a href="" className="text-blue-400">
-        Build a custom component for the webchat
-      </a>
-      <a href="" className="text-blue-400">
-        Manage your files using an API
-      </a>
-      <a href="" className="text-blue-400">
-        Manage your tables using an API
-      </a>
-    </div>
-  </div>
 </div> */}
