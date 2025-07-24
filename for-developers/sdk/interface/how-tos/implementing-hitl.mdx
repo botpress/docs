@@ -655,7 +655,7 @@ If you decide to relay the conversation history to the <DefinitionReference id="
 
 #### Adding extra parameters to the `startHitl` action
 
-If the <DefinitionReference id="external-service"/> requires extra parameters when starting a <DefinitionReference id="hitl-session"/>, you can add them to the `hitlSession` entity, or whichever name you chose for the entity in the "Adding the interface to your integration definition file" section. For example, if the <DefinitionReference id="external-service"/> requires a `priority` parameter, you can add it like this:
+If the <DefinitionReference id="external-service"/> requires extra parameters when starting a <DefinitionReference id="hitl-session"/>, you can add them to the `hitlSession` entity, or whichever name you chose for the entity in the [Adding the interface to your integration definition file](#adding-the-interface-to-your-integration-definition-file) section. For example, if the <DefinitionReference id="external-service"/> requires a `priority` parameter, you can add it like this:
 
 ```typescript integration.definition.ts {5}
 export default new sdk.IntegrationDefinition({
