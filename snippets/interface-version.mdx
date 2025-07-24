@@ -1,20 +1,14 @@
 export const CurrentInterfaceVersion = ({ interfaceName, fallback }) => {
   const getCurrentVersion = async () => {
-    const definitionUrl = `https://raw.githubusercontent.com/botpress/botpress/refs/heads/master/interfaces/${interfaceName}/interface.definition.ts`
+    const definitionUrl = `https://api.botpress.cloud/v1/admin/hub/interfaces/${interfaceName}/latest`
     try {
       const response = await fetch(definitionUrl)
       if (!response.ok) {
         throw new Error(`Failed to fetch interface definition: ${response.statusText}`)
       }
 
-      const text = await response.text()
-      const versionMatch = text.match(/  version: '([^']+)',/)
-
-      if (versionMatch) {
-        return versionMatch[1]
-      } else {
-        throw new Error('Version not found in interface definition')
-      }
+      const definition = await response.json()
+      return definition.interface?.version ?? fallback ?? 'unknown'
     } catch (error) {
       console.error(error)
     }
