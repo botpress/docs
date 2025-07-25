@@ -37,62 +37,80 @@
 .high-contrast {
   color: light-dark(black, white) !important;
 }
-
-/* Hero background image for home page */
 .hero-bg {
+  --bg-desktop: url('https://i.ibb.co/67wnp4P5/bg-desktop-light.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 400px; /* fallback for very small screens */
 }
 
-.hero_banner {
-    background-color: var(--_bp2025---color-base-bg-main);
-    color: var(--_bp2025---color-base-300);
+.ai-banner {
+    background-color: #0588f0;
+    color: white;
     text-align: center;
-    border: 1px solid #3c8135;
-    border-radius: 0;
+    border: 1px solid #0588f0;
+    font-weight: 500;
+    border-radius: 100rem;
     padding: .5rem 1rem;
-    font-size: .8rem;
+    font-size: 0.9rem;
     line-height: 130%;
     text-decoration: none;
     transition: all .2s;
     position: relative
 }
 
-.hero_banner:hover {
-    background-color: #2b5b27;
-    color: white;
+.ai-banner:hover {
+  filter: brightness(120%);
 }
 
-.hero_banner_dot {
-    background-color: #3c8135;
-    width: 8px;
-    height: 8px;
-    position: absolute;
-    inset: -4px auto auto -4px
+.discord_banner {
+    text-align: center;
+    background-color: light-dark(#fcfcfc, #1a1a1a);
+    border: 1px solid #626762;
+    border-radius: 100rem;
+    padding: .5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 130%;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative
+}
+
+.home-columns {
+  margin-bottom: 0.66em;
+}
+
+.home-subheading {
+  max-width: 32vw !important;
 }
 
 @media (min-width: 768px) {
   .hero-bg {
-    /* Desktop SVG background */
-    background-image: url('https://i.ibb.co/jvt7Zv4W/background-graphic-desktop.webp');
-    aspect-ratio: 7000 / 1773;
-    min-height: 500px;
+    background-image: var(--bg-desktop);
     background-size: 100% auto;
-    /* background-position: center 0%; */
+    min-height: 300px;
+  }
+  .home-columns {
+    flex: 1 1 0%;
+    max-width: 33.333%
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .hero-bg {
-    /* Mobile SVG background */
-    background-image: url('https://i.ibb.co/ksc4V3xB/background-graphic-mobile.webp');
-    aspect-ratio: 2066 / 1223;
-    min-height: 350px;
+    background-image: none;
     background-size: 95% auto;
     background-position: center 40%;
+    margin-top: 2em;
   }
+  .home-subheading {
+    max-width: 95vw !important;
+  }
+}
+
+/* Dark mode overrides */
+.dark .hero-bg {
+  --bg-desktop: url('https://i.ibb.co/5hWC1650/bg-desktop-dark.webp');
 }
 
 @media (min-width: 768px) { .bpWebchat {
