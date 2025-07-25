@@ -30,6 +30,89 @@
   box-shadow: none !important;
 }
 
+.tracking-tight {
+  letter-spacing: normal !important;
+}
+
+.high-contrast {
+  color: light-dark(black, white) !important;
+}
+.hero-bg {
+  --bg-desktop: url('https://i.ibb.co/67wnp4P5/bg-desktop-light.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ai-banner {
+    background-color: #0588f0;
+    color: white;
+    text-align: center;
+    border: 1px solid #0588f0;
+    font-weight: 500;
+    border-radius: 100rem;
+    padding: .5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 130%;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative
+}
+
+.ai-banner:hover {
+  filter: brightness(120%);
+}
+
+.discord_banner {
+    text-align: center;
+    background-color: light-dark(#fcfcfc, #1a1a1a);
+    border: 1px solid #626762;
+    border-radius: 100rem;
+    padding: .5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 130%;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative
+}
+
+.home-columns {
+  margin-bottom: 0.66em;
+}
+
+.home-subheading {
+  max-width: 32vw !important;
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    background-image: var(--bg-desktop);
+    background-size: 100% auto;
+    min-height: 300px;
+  }
+  .home-columns {
+    flex: 1 1 0%;
+    max-width: 33.333%
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-image: none;
+    background-size: 95% auto;
+    background-position: center 40%;
+    margin-top: 2em;
+  }
+  .home-subheading {
+    max-width: 95vw !important;
+  }
+}
+
+/* Dark mode overrides */
+.dark .hero-bg {
+  --bg-desktop: url('https://i.ibb.co/5hWC1650/bg-desktop-dark.webp');
+}
+
 @media (min-width: 768px) { .bpWebchat {
     box-shadow: none !important;
     min-width: 450px;

@@ -39,6 +39,12 @@ function loadWebchat() {
   })
 };
 
+function askAi() {
+  if (window.botpress) {
+    window.botpress.open()
+  }
+}
+
 webchatScript.onload = () => {
   if (window.botpress && typeof window.botpress.init === 'function') {
     loadWebchat()
