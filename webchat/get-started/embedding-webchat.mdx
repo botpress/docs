@@ -27,20 +27,45 @@ You can embed Webchat directly in your website as a component:
     <Tab title="From the Studio">
       1. Select **Share** in the upper-right corner.
       2. Select **Configure**, then copy the `src` URL in the **second** `script` tag:
-      ![Studio Client ID](./assets/studio-clientid.png)
+      
+      <Frame>
+        <img
+          alt="Studio Client ID"
+          className="block dark:hidden"
+          src="./assets/studio-client-id.png"
+        />
+        <img
+          alt="Studio Client ID"
+          className="hidden dark:block"
+          src="./assets/studio-client-id-dark.png"
+        />
+      </Frame>
     </Tab>
     <Tab title="From the Dashboard">
-      1. Open your bot's Workspace. In the left navigation bar, find the bot you want to embed.
+      1. Open your bot's Workspace. In the left navigation bar, find the bot you want to embed.√
       2. Select **Webchat**, then open the Share tab.
       3. Copy the `src` URL in the **second** `script` tag:
-      ![Dashboard Client ID](./assets/dashboard-clientid.png)
+      
+      <Frame>
+        <img
+          alt="Dashboard Client ID"
+          className="block dark:hidden"
+          src="./assets/dashboard-client-id.png"
+        />
+        <img
+          alt="Dashboard Client ID"
+          className="hidden dark:block"
+          src="./assets/dashboard-client-id-dark.png"
+        />
+      </Frame>
+
     </Tab>
   </Tabs>
   </Step>
   <Step title="Copy the script URL">
       Open the URL in your browser and **copy the content of the page**. It should look something like this:
 
-      ``` uri https://files.bpcontent.cloud/2025/03/18/14/20250318141028-30WRMG85.js [expandable]
+      ``` uri https://files.bpcontent.cloud/20XX/0X/0X/XX/XXXXXXXXXXXXXXXX-XXXXXXXX.js [expandable]
       window.botpress.init({
           "botId": "xxxxxxxxxxxxxxxxxxxxxx",
           "configuration": {
@@ -69,7 +94,7 @@ You can embed Webchat directly in your website as a component:
         <html lang="en">
           <head></head>
           <body>
-            <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+            <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
             <script defer>
               window.botpress.on("webchat:ready", () => {
                 botpress.open();
@@ -105,20 +130,45 @@ You can embed Webchat directly in an HTML `<div>`:
     <Tab title="From the Studio">
       1. Select **Share** in the upper-right corner.
       2. Select **Configure**, then copy the `src` URL in the **second** `script` tag:
-      ![Studio Client ID](./assets/studio-clientid.png)
+      
+      <Frame>
+        <img
+          alt="Studio Client ID"
+          className="block dark:hidden"
+          src="./assets/studio-client-id.png"
+        />
+        <img
+          alt="Studio Client ID"
+          className="hidden dark:block"
+          src="./assets/studio-client-id-dark.png"
+        />
+      </Frame>
     </Tab>
     <Tab title="From the Dashboard">
-      1. Open your bot's Workspace. In the left navigation bar, find the bot you want to embed.
+      1. Open your bot's Workspace. In the left navigation bar, find the bot you want to embed.√
       2. Select **Webchat**, then open the Share tab.
       3. Copy the `src` URL in the **second** `script` tag:
-      ![Dashboard Client ID](./assets/dashboard-clientid.png)
+      
+      <Frame>
+        <img
+          alt="Dashboard Client ID"
+          className="block dark:hidden"
+          src="./assets/dashboard-client-id.png"
+        />
+        <img
+          alt="Dashboard Client ID"
+          className="hidden dark:block"
+          src="./assets/dashboard-client-id-dark.png"
+        />
+      </Frame>
+
     </Tab>
   </Tabs>
   </Step>
   <Step title="Copy the script URL">
       Open the URL in your browser and **copy the content of the page**. It should look something like this:
 
-      ``` uri https://files.bpcontent.cloud/2025/03/18/14/20250318141028-30WRMG85.js [expandable]
+      ``` uri https://files.bpcontent.cloud/20XX/0X/0X/XX/XXXXXXXXXXXXXXXX-XXXXXXXX.js [expandable]
       window.botpress.init({
           "botId": "xxxxxxxxxxxxxxxxxxxxxx",
           "configuration": {
@@ -140,7 +190,7 @@ You can embed Webchat directly in an HTML `<div>`:
 
     ```html {8} [expandable]
     <div id="webchat-container" style="position: relative; width: 100%; height: 100%;">
-      <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+      <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
       <script>
         window.botpress.on("webchat:ready", () => {
           window.botpress.open();

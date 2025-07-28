@@ -1,0 +1,57 @@
+---
+title: Event Properties
+---
+
+import IncomingEvent from '/snippets/incoming-event.mdx'
+
+<ResponseExample>
+``` json Event properties
+{
+  "botId": "<string>",
+  "conversationId": "<string>",
+  "createdOn": "<Date>",
+  "direction": "<EventDirection>",
+  "id": "<string>",
+  "integration": "<string>",
+  "kb": {
+    "included": [],
+    "results": []
+  },
+  "messageId": "<string>",
+  "payload": {},
+  "preview": "<string>",
+  "state": {},
+  "tags": {
+    "conversation": {},
+    "message": {},
+    "user": {}
+  },
+  "trigger": {
+    "conversationId": "<string>",
+    "eventName": "<string>",
+    "flowId": "<string>",
+    "integration": "<string>",
+    "nodeId": "<string>",
+    "userId": "<string>"
+  },
+  "type": "<string>",
+  "userId": "<string>"
+}
+```
+</ResponseExample>
+
+Whenever an event occurs during your bot's execution — like a message being sent — you can access details about that event using the `event` object's properties.
+
+The `event` object is available wherever you can use code in [Botpress Studio](/learn/reference/introduction). This includes:
+
+- [Hooks](/learn/reference/hooks)
+- [Actions](/learn/reference/actions)
+- [Execute Code Cards](/learn/reference/cards/execute)
+
+You can also access the `event` object within certain [Cards](/learn/reference/cards/introduction)' configuration fields.
+
+<Warning>
+    This documentation omits certain properties of the `event` object which exist to maintain internal functionality and aren't useful for <Tooltip tip="Happy bot building!">bot builders</Tooltip>.
+</Warning>
+
+<IncomingEvent />

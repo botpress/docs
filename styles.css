@@ -1,19 +1,122 @@
 .transparent-accordion .bg-background-light {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 /* Info callout background and border */
-.callout[data-callout-type="info"]{
-    background-color: light-dark(rgba(253, 244, 255, 0.5), rgba(217, 70, 239, 0.1));
-    border-color: light-dark(rgba(217, 70, 239, 0.2), rgba(168, 85, 247, 0.3));
+.callout[data-callout-type='info'] {
+  background-color: light-dark(rgba(253, 244, 255, 0.5), rgba(217, 70, 239, 0.1));
+  border-color: light-dark(rgba(217, 70, 239, 0.2), rgba(168, 85, 247, 0.3));
 }
 
 /* Info callout icon */
-.callout[data-callout-type="info"] [data-component-part="callout-icon"] svg{
-  color: light-dark(rgba(192, 38, 211), rgba(232, 121, 249, 0.8))
+.callout[data-callout-type='info'] [data-component-part='callout-icon'] svg {
+  color: light-dark(rgba(192, 38, 211), rgba(232, 121, 249, 0.8));
 }
 
 /* Info callout text */
-.callout[data-callout-type="info"] [data-component-part="callout-content"] {
-  color: light-dark(rgba(112, 26, 117), rgba(245, 208, 254))
+.callout[data-callout-type='info'] [data-component-part='callout-content'] {
+  color: light-dark(rgba(112, 26, 117), rgba(245, 208, 254));
+}
+
+.tooltip {
+  text-decoration-line: none !important;
+}
+
+.bg-tooltip {
+  background-color: rgb(255, 0, 255);
+}
+
+.bpFab {
+  box-shadow: none !important;
+}
+
+.tracking-tight {
+  letter-spacing: normal !important;
+}
+
+.high-contrast {
+  color: light-dark(black, white) !important;
+}
+.hero-bg {
+  --bg-desktop: url('https://i.ibb.co/67wnp4P5/bg-desktop-light.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ai-banner {
+    background-color: #0588f0;
+    color: white;
+    text-align: center;
+    border: 1px solid #0588f0;
+    font-weight: 500;
+    border-radius: 100rem;
+    padding: .5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 130%;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative
+}
+
+.ai-banner:hover {
+  filter: brightness(120%);
+}
+
+.discord_banner {
+    text-align: center;
+    background-color: light-dark(#fcfcfc, #1a1a1a);
+    border: 1px solid #626762;
+    border-radius: 100rem;
+    padding: .5rem 1rem;
+    font-size: 0.9rem;
+    line-height: 130%;
+    text-decoration: none;
+    transition: all .2s;
+    position: relative
+}
+
+.home-columns {
+  margin-bottom: 0.66em;
+}
+
+.home-subheading {
+  max-width: 32vw !important;
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    background-image: var(--bg-desktop);
+    background-size: 100% auto;
+    min-height: 300px;
+  }
+  .home-columns {
+    flex: 1 1 0%;
+    max-width: 33.333%
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-image: none;
+    background-size: 95% auto;
+    background-position: center 40%;
+    margin-top: 2em;
+  }
+  .home-subheading {
+    max-width: 95vw !important;
+  }
+}
+
+/* Dark mode overrides */
+.dark .hero-bg {
+  --bg-desktop: url('https://i.ibb.co/5hWC1650/bg-desktop-dark.webp');
+}
+
+@media (min-width: 768px) { .bpWebchat {
+    box-shadow: none !important;
+    min-width: 450px;
+    width: 29.7vw !important;
+    max-height: 83.2vh !important;
+  }
 }

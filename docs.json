@@ -8,10 +8,17 @@
     "dark": "#0588F0"
   },
   "background": {
-    "decoration": "grid",
     "color": {
-      "light": "#FCFCFD",
-      "dark": "#111113"
+      "light": "#fcfcfc",
+      "dark": "#1a1a1a"
+    }
+  },
+  "fonts":{
+    "heading": {
+      "family": "Aspekta, sans-serif",
+      "weight": 600,
+      "source": "https://aspekta-cdn.vercel.app/fonts/AspektaVF.woff2",
+      "format": "woff2"
     }
   },
   "seo": {
@@ -96,45 +103,39 @@
                 "group": "How-to",
                 "icon": "list-ordered",
                 "pages": [
-                  "/learn/guides/how-to/translate"
+                  "/learn/guides/how-to/translate",
+                  "/learn/guides/how-to/send-reminders",
+                  "/learn/guides/how-to/track-ai-spend-in-table"
                 ]
               },
               {
                 "group": "Advanced",
                 "icon": "puzzle",
                 "pages": [
-                  {
-                    "group": "Toolbox",
-                    "pages": [
-                      "/learn/guides/advanced/toolbox/kitchen-sink-advanced-starter-template"
-                    ]
-                  },
-                  {
-                    "group": "Appendix",
-                    "pages": [
-                      "/learn/guides/advanced/appendix/best-practices-for-state-management",
+                  "/learn/guides/advanced/event-properties",
+                      "/learn/guides/advanced/best-practices-for-state-management",
                       {
                         "group": "Safety",
                         "pages": [
-                          "/learn/guides/advanced/appendix/safety/introduction",
-                          "/learn/guides/advanced/appendix/safety/preventing-abuse",
-                          "/learn/guides/advanced/appendix/safety/brand-safety-framework"
+                          "/learn/guides/advanced/safety/introduction",
+                          "/learn/guides/advanced/safety/preventing-abuse",
+                          "/learn/guides/advanced/safety/brand-safety-framework"
                         ]
                       },
                       {
                         "group": "Exporting Data",
                         "pages": [
-                          "/learn/guides/advanced/appendix/exporting-data/introduction",
-                          "/learn/guides/advanced/appendix/exporting-data/exporting-raw-conversations-with-the-botpress-api",
-                          "/learn/guides/advanced/appendix/exporting-data/getting-the-conversation-history-from-within-your-bot",
-                          "/learn/guides/advanced/appendix/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
-                          "/learn/guides/advanced/appendix/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
-                          "/learn/guides/advanced/appendix/exporting-data/analyze-llmz-responses"
+                          "/learn/guides/advanced/exporting-data/introduction",
+                          "/learn/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
+                          "/learn/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
+                          "/learn/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
+                          "/learn/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
+                          "/learn/guides/advanced/exporting-data/analyze-llmz-responses"
                         ]
                       },
-                      "/learn/guides/advanced/appendix/tips-to-optimize-ai-cost"
-                    ]
-                  }
+                      "/learn/guides/advanced/kitchen-sink-advanced-starter-template",
+                      "/learn/guides/advanced/tips-to-optimize-ai-cost",
+                      "/learn/guides/advanced/retention-period"
                 ]
               }
             ]
@@ -272,6 +273,10 @@
             "group": "Integration Guides",
             "pages": [
               "/integrations/integration-guides/asana",
+              "/integrations/integration-guides/chat",
+              "/integrations/integration-guides/gmail",
+              "/integrations/integration-guides/google-calendar",
+              "/integrations/integration-guides/google-sheet",
               "/integrations/integration-guides/hitl",
               "/integrations/integration-guides/instagram",
               "/integrations/integration-guides/intercom",
@@ -309,10 +314,7 @@
                 ]
               },
               "/integrations/integration-guides/zapier",
-              "/integrations/integration-guides/zendesk",
-              "/integrations/integration-guides/chat",
-              "/integrations/integration-guides/google-sheet",
-              "/integrations/integration-guides/google-calendar"
+              "/integrations/integration-guides/zendesk"
             ]
           }
         ]
@@ -360,13 +362,19 @@
               {
                 "group": "Components",
                 "pages": [
+                  "/webchat/react-library/components/webchat",
                   "/webchat/react-library/components/fab",
-                  "/webchat/react-library/components/composer",
-                  "/webchat/react-library/components/header",
                   "/webchat/react-library/components/container",
+                  "/webchat/react-library/components/header",
                   "/webchat/react-library/components/message-list",
-                  "/webchat/react-library/components/stylesheet-provider",
-                  "/webchat/react-library/components/use-webchat-client"
+                  "/webchat/react-library/components/composer",
+                  "/webchat/react-library/components/stylesheet-provider"
+                ]
+              },
+              {
+                "group": "Hooks",
+                "pages": [
+                  "/webchat/react-library/hooks/use-webchat-client"
                 ]
               }
             ]

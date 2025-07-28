@@ -3,60 +3,77 @@ title: Chat API Introduction
 sidebarTitle: Introduction
 ---
 
-The Chat API offers an HTTP API to chat with your bot. It is often referred to as the Chat API even though it is an integration like any other. The Chat integration purpose is to integrate Botpress into a backend application (In contrast with the [Webchat integration](/webchat/get-started/introduction) that is built to integrate into a website).
+The Chat API offers an HTTP API to chat with your bot. It allows you to integrate Botpress into a backend application (in contrast with [Webchat](/webchat/get-started/introduction), which allows you to integrate Botpress with your website).
 
 <Note>
-Since the Chat API is an integration, all users, conversations and messages created using the Chat API belong to the Chat Integration. This mean, you can't use the Chat API to fetch conversations that occured in WhatsApp or in the Webchat. For that, take a look at the [Runtime API](../runtime-api/getting-started).
+The Chat API is only available via an integration built by Botpress. Because of this, all users, conversations and messages created using the Chat API belong to the Chat integration.
+
+This means you can't use the Chat API to fetch conversations that occur within other integrations, like WhatsApp or Webchat. For that, check out the [Runtime API](../runtime-api/getting-started).
 </Note>
 
 ## Installation
 
 {/* TODO(driftable): This hub link is subject to changes and should be auto-generated */}
-To use this API, you must install the Chat Integration in your bot. You can find the Chat integration [here](https://app.botpress.cloud/hub/integrations/intver_01JN74V90FDTNKWESAWBVGP7EX). Then, make sure your integration is enabled and configured.
+To use this API, make sure the Chat integration is installed to your bot. You can find the Chat integration [here](https://app.botpress.cloud/hub/integrations/intver_01JN74V90FDTNKWESAWBVGP7EX). Then, make sure your integration is enabled and configured.
 
 ## Configuration
 
-The Chat Integration has no required configuration. You can use it as is. But it does expose a few options:
+The Chat Integration has no required configuration — you can use it as-is.  However, it does expose a few options:
 
-* **Encryption Key:** This key is entirely optional. If you are just starting with the Chat API, you should probably leave it empty. This key is used to verify incoming requests. If you set it, you are then responsible for signing the `x-user-key` header yourself. See the Authentication section for more information.
+* **Encryption Key:** Used to verify incoming requests. If you set this field, you are then responsible for signing the `x-user-key` header yourself. Check out the [Authentication](#authentication) section for more information.
 
-* **Webhook URL:** This URL is entirely optional. If you are just starting with the Chat API, you should probably leave it empty. This URL will be called by the Chat API to notify you of chat-related events. It is optional because the standard way of listening to Chat API events is by opening an SSE stream. If you set this URL, you will receive events both on the SSE stream and on the webhook. See the Realtime section for more information.
+* **Webhook URL:** Called by the Chat API to notify you of chat-related events. The standard way of listening to Chat API events is by opening an SSE stream — if you set this field, you will receive events both on the SSE stream and on the webhook. Check out the [Realtime](#realtime) section for more information.
 
-* **Webhook Secret:** This secret is only used if you set a webhook URL. It will be included in requests sent to your webhook so you ensure that requests made to your webhook are indeed coming from the Chat API.
+* **Webhook Secret:** Only used if you set a webhook URL. Included in requests sent to your webhook to ensure that requests made to your webhook are coming from the Chat API.
 
 ## Getting Started
 
-Here's how to use the Chat API:
+To use the Chat API:
 
-1. Find your webhook ID. You can find it in the Chat Integration's configuration page. The webhook id is found in the webhook URL. In this case, the webhook id start with **90** and ends with **51**:
+1. Find your webhook ID. You can find it in the Chat Integration's configuration page:
 
 <img src="./webhook-id.png" />
 
-2. Check if you can reach the API by doing a GET request on `https://chat.botpress.cloud/$YOUR_WEBHOOK_ID/hello`.
-3. Create a chat user (this is not the same as a user in your Botpress Dashboard) by calling the [createUser](https://botpress.com/reference/createuser-1) operation.
+The webhook ID is the string at the end of the **Webhook URL**. In this case, the webhook ID starts with **90** and ends with **51**:
 
-This operation won't be available if you are using manual authentication. See the Authentication section for more information.
+2. Check if you can reach the API by sending a GET request on `https://chat.botpress.cloud/$YOUR_WEBHOOK_ID/hello`.
+
+3. Create a chat user (this is not the same as a user in your Botpress Dashboard) by calling the [createUser](/api-reference/chat-api/openapi/createUser) operation.
+
+<Note>
+This operation won't be available if you are using manual authentication. Check out the [Authentication](#authentication) section for more information.
+</Note>
 
 4. In the response's body you will find a user key. Copy this key.
-5. Create a conversation with your bot by calling the [createConversation](https://botpress.com/reference/createconversation-1) operation. you will need to provide a user key to authenticate yourself.
-6. Send a message to your bot by calling the [createMessage](https://botpress.com/reference/createmessage-1) operation. You will need to provide a user key to authenticate yourself, a conversation ID to specify which conversation you are sending the message to and a message payload. A simple text message has the following payload format: `{ "type": "text", "text": "hello bot" }`.
-7. Wait for your bot to respond and list messages on the conversation by calling the [listMessages](https://botpress.com/reference/listmessages-1) operation. You will need to provide a user key to authenticate yourself and a conversation ID to specify which conversation you are listing the messages from.
+
+5. Create a conversation with your bot by calling the [createConversation](/api-reference/chat-api/openapi/createConversation) operation. You will need to provide a user key to authenticate yourself.
+
+6. Send a message to your bot by calling the [createMessage](/api-reference/chat-api/openapi/createMessage) operation. You will need to provide:
+
+    - A user key to authenticate yourself
+    - A conversation ID to specify which conversation you are sending the message to
+    - A message payload. For example, a simple text message has the following payload format: `{ "type": "text", "text": "hello bot" }`.
+    
+7. Wait for your bot to respond, then list messages on the conversation by calling the [listMessages](/api-reference/chat-api/openapi/listMessages) operation. You will need to provide:
+
+    - A user key to authenticate yourself
+    - A conversation ID to specify which conversation you are listing the messages from.
 
 ## Authentication
 
 All requests sent to the Chat Integration's API are authenticated with a `x-user-key` header. There are two ways to get this user key:
 
-1. You call the `createUser` operation and get the key in the response's body. This operation is the only one that is not authenticated.
-2. You can sign it yourself.
+- You call the `createUser` operation and get the key in the response's body. This operation is the only one that is not authenticated.
+- You can sign it yourself.
 
 We refer to the second method as manual authentication. Use this method to ensure that only you can chat with your bot over the Chat API.
 
 ### How to sign your requests manually
 
-To sign your requests yourself, you must pick 2 things:
+To sign your requests yourself, you must choose:
 
-1. A user ID. This user ID is of your choosing. It can be any valid string that is not yet used by another user.
-2. An encryption key. This key is also of your choosing. It can be any valid string. You must set this key in the Chat Integration's configuration. This way the integration knows that you are using manual authentication.
+- A **user ID**. This can be any valid string, as long as it's not already taken by another user.
+2. An **encryption key**. This can be any valid string. You must set this key in the Chat integration's [configuration](#configuration). This is so the integration knows that you are using manual authentication.
 
 The `x-user-key` header is a [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token). Here's how to sign it using the [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) NodeJS library:
 
@@ -71,7 +88,11 @@ When handling an incoming request, the Chat Integration will detect that you are
 
 By manually signing your requests, you ensure that nobody except you can chat with your bot over the Chat API.
 
-**Important:** When using manual authentication, you can no longer call the `createUser` operation and must call the `getOrCreateUser` operation instead. The first one is disabled to ensure only you can chat with your bot. Attempting to call the `createUser` operation will result in an error response.
+<Warning>
+
+### Limitation to manual authentication
+When using manual authentication, calling [createUser](/api-reference/chat-api/openapi/createUser) will result in an error response. When needed, call [getOrCreateUser](/api-reference/chat-api/openapi/getOrCreateUser) instead.
+</Warning>
 
 ## Realtime
 
@@ -82,7 +103,7 @@ The Chat API offers two ways of listening to chat events in real time:
 
 ### Server-Sent Events
 
-To listen to chat-related events on an SSE stream, you must call the [listenConversation](https://botpress.com/reference/listenconversation) operation. This operation will open an SSE stream that you can listen to.
+To listen to chat-related events on an SSE stream, you must call the [listenConversation](/api-reference/chat-api/openapi/listenConversation) operation. This operation will open an SSE stream that you can listen to.
 
 ## Official JavaScript Client
 

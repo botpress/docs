@@ -60,48 +60,46 @@ You can translate the modal that appears when a user restarts a conversation:
 
 Just copy and paste the following CSS to the **Styles** section of your bot's Webchat settings, then modify the highlighted lines as needed:
 
-```css [expandable] {11, 24-25, 39}
+```css [expandable] {9, 24-25, 39}
 /* Change the modal's title */
-.bpModalDialogTitleText {
+.bpModalTitle {
     visibility: hidden;
     position: relative;
 }
-.bpModalDialogTitleText:after {
+.bpModalTitle:after {
     visibility: visible;
     position: absolute;
-    top: 0;
-    left: 0;
-    content: "Nouveau"; /* Replace this with your own translation*/
+    content: "Créer une nouvelle conversation"; /* Replace this with your own translation*/
 }
 
-/* Change "Start a new conversation?" */
-.bpModalDialogNewConversationText {
+/* Change "New Conversation" */
+.bpModalButtonConfirm {
+  position: relative;
+  color: transparent;
+}
+.bpModalButtonConfirm:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--message-text);
+  white-space: nowrap;
+  content: "Nouvelle conversation";
+  /* Replace this with your own translation*/
+}
+
+.bpModalButtonCancel {
     visibility: hidden;
     position: relative;
 }
-.bpModalDialogNewConversationText:after {
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "Êtes-vous sûr de vouloir démarrer une nouvelle conversation?";
-    /* Replace this with your own translation*/
-}
 
-/* Change the button text */
-.bpModalDialogNewConversationButton {
-    color: transparent;
-    position: relative;
-}
-.bpModalDialogNewConversationButton:after {
+.bpModalButtonCancel:after {
     visibility: visible;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    content: "Oui"; /* Replace this with your own translation*/
-    color: initial;
-    white-space: nowrap;
+    content: "Annuler"; /* Replace this with your own translation*/
 }
 ```
 
@@ -128,7 +126,8 @@ div.bpMessageContainer[data-direction="system"] > p.bpMessageBlocksTextText::bef
   position: absolute !important;
   top: 0;
   left: 0;
-  white-space
+  white-space: nowrap;
+}
 ```
 
 <Check>

@@ -41,6 +41,9 @@ Throughout this document, we will use the following terms:
   <Definition term="HITL plugin" id="hitl-plugin">
     The Botpress plugin that manages HITL sessions and relays messages between end users and your integration. Installing this plugin in a bot enables HITL functionality using the selected integration.
   </Definition>
+  <Definition term="entity" id="entity">
+    In the context of the HITL interface and plugin, an entity can be provided in order to support extra parameters in the `startHitl` action. This is useful to provide extra information about the HITL session, such as a ticket priority or customer identification number.
+  </Definition>
 </DefinitionList>
 
 ## External service requirements
@@ -60,7 +63,7 @@ The <DefinitionReference id="external-service"/> providing HITL functionality **
 
 ### Finding the current interface version
 
-The current version of the `hitl` interface is: <code><CurrentInterfaceVersion interfaceName="hitl" fallback="0.4.0" /></code>
+The current version of the `hitl` interface is: <code><CurrentInterfaceVersion interfaceName="hitl" fallback="2.0.0" /></code>
 
 You will need this version number for the next steps.
 
@@ -81,11 +84,11 @@ Once you have the <DefinitionReference id="hitl-interface"/> version, you can ad
     ```
   </Step>
   <Step title="Add the interface as a dependency">
-    In the `bpDependencies` section, add the <DefinitionReference id="hitl-interface"/> as a dependency. For example, for version `0.4.0`, you would add the following:
+    In the `bpDependencies` section, add the <DefinitionReference id="hitl-interface"/> as a dependency. For example, for version `2.0.0`, you would add the following:
     ```json package.json {3}
     {
       "bpDependencies": {
-        "hitl": "interface:hitl@0.4.0"
+        "hitl": "interface:hitl@2.0.0"
       }
     }
     ```
@@ -148,17 +151,38 @@ Now that the <DefinitionReference id="hitl-interface"/> is installed, you must a
     import hitl from './bp_modules/hitl'
     ```
   </Step>
+  <Step title="Add an empty entity">
+    In your `new IntegrationDefinition()` statement, add an empty entity:
+    ```typescript integration.definition.ts {2-6}
+    export default new sdk.IntegrationDefinition({
+      entities: {
+        ticket: {                     // <= name of the entity
+          schema: sdk.z.object({})
+        },
+      },
+    })
+    ```
+    <Note>
+      The name of the entity is not important, but it is recommended to use a name that matches the terminology of the <DefinitionReference id="external-service"/>. For exemple, if the <DefinitionReference id="external-service"/> uses the term _ticket_ to refer to a <DefinitionReference id="hitl-session"/>, you could name the entity `ticket` or `hitlTicket`.
+    </Note>
+  </Step>
   <Step title="Extend your definition">
-  Use the `.extend()` function at the end of your `new IntegrationDefinition()` statement:
-  ```typescript integration.definition.ts {4-6}
-  export default new sdk.IntegrationDefinition({
-    ...
-  })
-    .extend(hitl, () => ({
-      entities: {},
-    }))
-  ```
-  The exact syntax of `.extend()` will be explained in the next section.
+    Use the `.extend()` function at the end of your `new IntegrationDefinition()` statement:
+    ```typescript integration.definition.ts {8-12}
+    export default new sdk.IntegrationDefinition({
+      entities: {
+        ticket: {                     // <= name of the entity
+          schema: sdk.z.object({})
+        },
+      },
+    })
+      .extend(hitl, (self) => ({
+        entities: {
+          hitlSession: self.entities.ticket, // <= name of the entity
+        },
+      }))
+    ```
+    The exact syntax of `.extend()` will be explained in the next section.
   </Step>
 </Steps>
 
@@ -247,7 +271,7 @@ If you opted to rename the action to something else than `createUser` in the "Co
 </Note>
 
 Please refer to the expected input and output schemas for the action:
-[interface.definition.ts line 55](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L55).
+[interface.definition.ts line 85](https://github.com/botpress/botpress/blob/023d7de196e63f1a1b7cac0cf4f97c3d4aac940f/interfaces/hitl/interface.definition.ts#L85).
 
 This action should implement the following logic:
 
@@ -323,7 +347,7 @@ If you opted to rename the action to something else than `startHitl` in the "Con
 </Note>
 
 Please refer to the expected input and output schemas for the action:
-[interface.definition.ts line 71](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L71).
+[interface.definition.ts line 109](https://github.com/botpress/botpress/blob/023d7de196e63f1a1b7cac0cf4f97c3d4aac940f/interfaces/hitl/interface.definition.ts#L109).
 
 This action should implement the following logic:
 
@@ -629,6 +653,41 @@ If you decide to relay the conversation history to the <DefinitionReference id="
 > I have escalated this conversation to a human agent. Please wait while I connect you.
 ```
 
+#### Adding extra parameters to the `startHitl` action
+
+If the <DefinitionReference id="external-service"/> requires extra parameters when starting a <DefinitionReference id="hitl-session"/>, you can add them to the `hitlSession` entity, or whichever name you chose for the entity in the [Adding the interface to your integration definition file](#adding-the-interface-to-your-integration-definition-file) section. For example, if the <DefinitionReference id="external-service"/> requires a `priority` parameter, you can add it like this:
+
+```typescript integration.definition.ts {5}
+export default new sdk.IntegrationDefinition({
+  entities: {
+    ticket: {                     // <= name of your entity
+      schema: sdk.z.object({
+        priority: sdk.z.string().optional(), // <= add the extra parameter here
+      })
+    },
+  },
+})
+```
+
+Doing so will display the `priority` parameter in the "Start HITL" card within the Botpress Studio, allowing the bot authors to set it. The value of this parameter will then be passed to the `startHitl` action as part of the `hitlSession` input parameter:
+
+```typescript src/index.ts {5,10}
+export default new bp.Integration({
+  actions: {
+    async startHitl({ ctx, input, client }) {
+      // Retrieve the extra parameter:
+      const priority = input.hitlSession?.priority ?? 'normal'
+
+      // Then use it to create the HITL session:
+      const createdZendeskTicket = await zendeskClient
+        .createTicket(ticketTitle, ticketBody, {
+          priority, // <= pass the extra parameter to the external service
+        })
+    },
+  },
+})
+```
+
 #### Implementing `stopHitl`
 
 The `stopHitl` action is used by the <DefinitionReference id="hitl-plugin"/> to request the closure of a <DefinitionReference id="hitl-session"/> (typically a _ticket_) in the <DefinitionReference id="external-service"/>.
@@ -638,7 +697,7 @@ If you opted to rename the action to something else than `stopHitl` in the "Conf
 </Note>
 
 Please refer to the expected input and output schemas for the action:
-[interface.definition.ts line 91](https://github.com/botpress/botpress/blob/master/interfaces/hitl/interface.definition.ts#L91).
+[interface.definition.ts line 162](https://github.com/botpress/botpress/blob/023d7de196e63f1a1b7cac0cf4f97c3d4aac940f/interfaces/hitl/interface.definition.ts#L162).
 
 This action should implement the following logic:
 
