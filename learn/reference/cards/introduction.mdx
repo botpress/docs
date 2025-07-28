@@ -1,9 +1,76 @@
 ---
 title: Cards
-description: Drag-and-drop elements representing actions your bot can take.
-sidebarTitle: Introduction
+sidebarTitle: Overview
 ---
 
-Cards are prebuilt, reusable workflows and drag-and-drop elements in Botpress that represent individual actions your bot can take. They simplify and accelerate the creation of AI-driven chatbots and agents by providing modular building blocks for various functions and interactions.
+Cards are drag-and-drop elements that **perform tasks within a [Node](/learn/reference/nodes)**:
 
-This section outlines the different Card categories made available to you through the Card Tray.
+<Frame>
+  <img
+    alt="Cards"
+    className="block dark:hidden"
+    src="./assets/cards.png"
+  />
+  <img
+    alt="Cards"
+    className="hidden dark:block"
+    src="./assets/cards-dark.png"
+  />
+</Frame>
+
+You can use Cards to:
+
+<CardGroup cols="3">
+  <Card
+    title="Send messages"
+    href="/learn/reference/cards/send-messages"
+  >
+    Send text, images, and other content to users
+  </Card>
+  <Card
+    title="Control Workflow logic"
+    href="/learn/reference/cards/flow-logic"
+  >
+    Transition to another Workflow
+  </Card>
+  <Card
+    title="Execute code"
+    href="/learn/reference/cards/execute-code"
+  >
+    Add custom JavaScript code to your Workflow
+  </Card>
+</CardGroup>
+
+This section contains documentation for all Cards in the Studio.
+
+## Add a Card
+
+1. Select **+ Add Card** on any Node to open the Card tray.
+2. Select any Card to add it to your Node.
+
+<Note>
+  Not all Cards work with every type of Node. The Card tray will only display Cards that are compatible with the Node you've selected.
+</Note>
+
+<Tip>
+  When you install an integration, its Cards will become available in the Card tray. Check out the [integrations documentation](/integrations/get-started/introduction) for more information on integration-specific Cards.
+</Tip>
+
+## Configure a Card
+
+Most Cards have a configuration panel. You can access it by selecting the Card after adding it to your Workflow:
+
+<Frame>
+  <img
+    alt="Card configuration"
+    className="block dark:hidden"
+    src="./assets/card-configuration.png"
+  />
+  <img
+    alt="Card configuration"
+    className="hidden dark:block"
+    src="./assets/card-configuration-dark.png"
+  />
+</Frame>
+
+The Card's configuration fields could be either mandatory or optional — mandatory fields are marked with <span style={{ color: 'rgba(189, 59, 56, 1)' }}>*</span>.
