@@ -25,7 +25,7 @@ function loadWebchat() {
         },
         privacyPolicy: {},
         color: '#0588F0',
-        variant: 'soft',
+        variant: 'solid',
         headerVariant: 'glass',
         themeMode: 'light',
         fontFamily: 'inter',
