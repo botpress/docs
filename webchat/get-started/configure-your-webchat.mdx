@@ -1,5 +1,5 @@
 ---
-title: Style your Webchat
+title: Configure your Webchat
 ---
 
 <Info>
@@ -8,17 +8,82 @@ title: Style your Webchat
     - Familiarity with CSS (if you want to use custom styles)
 </Info>
 
-## Use the theme styler
+## General configuration
 
-To style your bot using the built-in Webchat theme styler:
+You can configure your bot in the Dashboard:
 
 1. Navigate to the [Dashboard](/learn/get-started/dashboard/) and open your bot's Workspace.
 2. In the left navigation bar, find the bot you want to style and select **Webchat**.
-3. Select the **Theme** tab to open the theme styler:
 
-![Theme styler](./assets/theme-styler.png)
+Here's a breakdown of each configuration section:
 
-You can view your changes in the Webchat preview on the right side of the screen.
+### About your bot
+
+This section lets you configure general information about your bot:
+
+- Your bot's name (defaults to `Bot`)
+- Your bot's avatar (defaults to the first letter of your bot's name)
+- Your bot's description (optional)
+- A placeholder for your bot's composer (defaults to `Type your message...`)
+- A custom footer for your bot (requires a [Plus plan](https://botpress.com/pricing))
+- A custom avatar for the FAB (Floating Action Button)
+
+### Contact
+
+This section lets you configure optional contact information for your bot:
+
+- Email address
+- Phone number
+- Website
+- Terms of service
+- Privacy policy
+
+### Settings
+
+This section lets you configure your bot's settings:
+
+- Enable/disbable message feedback. When enabled, you can view feedback data in the [Analytics](/learn/get-started/dashboard/bot/analytics) tab
+- Enable/disable user file upload
+- Choose between local storage and session storage
+
+<Note>
+  #### Session storage vs. Local storage
+
+  Session storage creates a new user and conversation each time the page is re-opened. Local storage keeps them for your next visits.
+
+  You can learn more about local and session storage [here](https://www.geeksforgeeks.org/javascript/difference-between-local-storage-session-storage-and-cookies/).
+</Note>
+
+## Style and appearance
+
+To style your bot using the built-in Webchat styler:
+
+1. Navigate to the [Dashboard](/learn/get-started/dashboard/) and open your bot's Workspace.
+2. In the left navigation bar, find the bot you want to style and select **Webchat**.
+3. Select the **Theme** tab to open the styler:
+
+<Frame>
+  <img
+    alt="Appearance"
+    className="block dark:hidden"
+    src="./assets/appearance.png"
+  />
+  <img
+    alt="Appearance"
+    className="hidden dark:block"
+    src="./assets/appearance-dark.png"
+  />
+</Frame>
+
+You can view your changes in the Webchat preview on the right side of the screen. Whenever you want to update the bot's configuration, select **Save Configuration** in the bottom-right corner.
+
+<Warning>
+  Styles from this section won't apply if:
+
+    - You're [manually initializing Webchat](/webchat/get-started/embedding-webchat) by calling `window.botpress.init` in your website's source code. In this case, use the `configuration` object to configure Webchat.
+
+    - You're using the [Webchat React library](/webchat/react-library/get-started). In this case, use the [configuration prop](/webchat/react-library/components/webchat#param-configuration) to configure Webchat.
+</Warning>
 
 ## Use custom styles
 
