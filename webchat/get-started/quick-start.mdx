@@ -1,7 +1,9 @@
 ---
-title: Quick Start
+title: Quickstart
 description: Use the Webchat embed code to add a bot to your website.
 ---
+
+import GetEmbedCode from "/snippets/webchat/get-embed-code.mdx"
 
 Webchat makes it easy to embed a bot on your website. If you self-host your website, just follow the instructions on this page.
 
@@ -17,32 +19,19 @@ Webchat makes it easy to embed a bot on your website. If you self-host your webs
 
 <Steps titleSize='h2'>
   <Step title="Get your embed code">
-    To embed a bot a bot on your website, you need the bot's Webchat embed code. You can get the embed code from either the [Studio](/learn/reference/introduction) or the [Dashboard](/learn/get-started/dashboard/).
-
-  <Tabs>
-    <Tab title="From the Studio">
-      1. Select **Share** in the upper-right corner.
-      2. Select **Configure**, then copy the `script` tags:
-      ![Studio Client ID](./assets/studio-clientid.png)
-    </Tab>
-    <Tab title="From the Dashboard">
-      1. Open your bot's Workspace. In the left navigation bar, find the bot you want to embed.
-      2. Select **Webchat**, then open the Share tab.
-      3. Copy the **Embed code**:
-      ![Dashboard Client ID](./assets/dashboard-clientid.png)
-    </Tab>
-  </Tabs>
+    
+    <GetEmbedCode/>
 
   </Step>
   <Step title="Add to your website">
-    Next, add the Webchat embed code to the head section of your website's HTML. For example:
+    Next, add the Webchat embed code to the `head` section of your website's HTML. For example:
 
     ```html index.html {4-5}
     <!DOCTYPE html>
     <html>
     <head>
-      <script src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"></script>
-      <script src="https://files.bpcontent.cloud/2025/03/18/14/20250318141028-30WRMG85.js"></script>
+      <script src="https://cdn.botpress.cloud/webchat/vX.X/inject.js"></script>
+      <script src="https://files.bpcontent.cloud/xxxx/xx/xx/xx/xxxxxxxxxxxxx-xxxxxxxx.js"></script>
     </head>
     <body>
       <!-- Website content -->
@@ -53,7 +42,18 @@ Webchat makes it easy to embed a bot on your website. If you self-host your webs
   <Step>
     You're all set! Open your website and start chatting with your bot. It should look something like this:
 
-    ![webchat-demo](./assets/webchat.png)
+    <Frame>
+      <img
+        alt="Webchat"
+        className="block dark:hidden"
+        src="./assets/webchat.png"
+      />
+      <img
+        alt="Webchat"
+        className="hidden dark:block"
+        src="./assets/webchat-dark.png"
+      />
+    </Frame>
   </Step>
 </Steps>
 
