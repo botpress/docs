@@ -2,6 +2,8 @@
 title: "Getting Started"
 ---
 
+import tablesApiPayloadSize from "/snippets/api-payload-limits.mdx"
+
 The Tables API allows you to manage your tables, which store structured data and offer various features. You can use tables to store user data, automatically label data, and extract information from content. 
 
 All the endpoints of the Tables API are located behind the `tables` base path (api.botpress.cloud/v1/tables/).
@@ -56,3 +58,7 @@ const main = async () => {
 
 void main()
 ```
+
+## Quotas/limits
+
+The maximum payload size for the Tables API is {tablesApiPayloadSize}.
