@@ -1,0 +1,68 @@
+---
+title: Slack Cards
+sidebarTitle: Cards
+---
+
+Here's a list of all [Cards](/learn/reference/cards/introduction) available with the Slack integration:
+
+## Start DM conversation
+
+Use this Card to proactively start a conversation with a user.
+
+1. In Studio, add the **Start DM Conversation** card to your Workflow.
+2. In the Card's **User ID** field, enter the user's [Slack ID](https://slack.com/help/articles/221769328-Locate-your-Slack-URL-or-ID).
+
+Optionally, you can store the Card's output in a [variable](/learn/reference/variables/overview). The output will contain the conversation ID and user ID associated with the new conversation.
+
+## Retrieve Message
+
+Use this Card to retrieve a specific message from Slack.
+
+1. In Studio, add the **Retrieve Message** Card to your Workflow.
+2. In the **Timestamp** field, add the message's `ts` property. This is a unique identifer for individual Slack messages — you can retrieve a message's `ts` programatically using the [Slack API](https://api.slack.com/messaging/retrieving#conversations). 
+3. In the **Channel** field, add the channel the message was sent in.
+4. Store the result in a [variable](/learn/reference/variables/overview).
+
+## Add Reaction
+
+Use this Card to add a [reaction](https://slack.com/help/articles/202931348-Use-emoji-and-reactions) to a Slack message.
+
+1. In Studio, add the **Add Reaction** card to your Workflow.
+2. In the **Reaction name** field, enter the name of the reaction.
+3. In the **Message ID** field, enter a Botpress message ID.
+
+  <Tip>
+    To get the current message ID, you can read `event.messageId`.
+  </Tip>
+
+## Sync Members
+
+Use this Card to synchronize members of your Slack workspace with Botpress users. If any members of your Slack workspace don't have a corresponding Botpress user ID, using this Card will create one for them.
+
+Optionally, you can store the Card's output in a [variable](/learn/reference/variables/overview). The output will contain the number of members synced.
+
+## Get User Profile
+
+Use this Card to get information about a Slack user's profile.
+
+1. In Studio, add the **Get User Profile** Card to your Workflow.
+2. In the **User ID** field, enter a Botpress user ID.
+
+  <Tip>
+    To get the current user ID, you can read `event.userId`.
+  </Tip>
+
+3. Store the result in a [variable](/learn/reference/variables/overview). The result wil contain the user's:
+
+  - First name
+  - Last name
+  - Email address
+  - Slack display name
+
+## Update Channel Topic
+
+Use this Card to update the [topic](https://slack.com/help/articles/201654083-Set-a-conversation-topic-or-channel-description) of the Slack channel your bot is in.
+
+1. In Studio, add the **Update Channel Topic** Card to your Workflow.
+2. In the **New Topic** field, enter a new topic for the channel.
+3. In the **Channel ID** field, enter the ID of the channel whose topic you want to update.
