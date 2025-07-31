@@ -1,0 +1,48 @@
+``` yaml YAML [expandable] lines
+display_information:
+  name: Bot (powered by Botpress)
+features:
+  bot_user:
+    display_name: Bot (powered by Botpress)
+    always_online: false
+oauth_config:
+  redirect_urls:
+    - https://webhook.botpress.cloud/oauth
+  scopes:
+    bot:
+      - channels:history
+      - channels:manage
+      - channels:read
+      - chat:write
+      - groups:history
+      - groups:read
+      - groups:write
+      - im:write
+      - im:read
+      - im:history
+      - mpim:history
+      - mpim:read
+      - mpim:write
+      - reactions:read
+      - reactions:write
+      - team:read
+      - users.profile:read
+      - users:read
+      - users:read.email
+settings:
+  event_subscriptions:
+    request_url: https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    bot_events:
+      - member_joined_channel
+      - member_left_channel
+      - message.channels
+      - message.groups
+      - message.im
+      - message.mpim
+      - reaction_added
+      - reaction_removed
+      - team_join
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
+```

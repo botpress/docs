@@ -1,0 +1,388 @@
+---
+title: Slack Triggers
+sidebarTitle: Triggers
+---
+
+Here's a list of all [Triggers](/learn/reference/triggers) available with the Slack integration:
+
+<Tip>
+  You can access data from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+## Reaction Added
+
+This Trigger executes whenever a [reaction is added](https://www.google.com/search?client=safari&rls=en&q=slack+reactions&ie=UTF-8&oe=UTF-8) to a message in a channel that your bot is a member of.
+
+It receives the `slack:reactionAdded` event and returns the following payload:
+
+<ResponseField
+  name="payload"
+  type="object"
+>
+  <Expandable>
+    <ResponseField
+      name="reaction"
+      type="string"
+      required
+    >
+      The name of the Slack reaction.
+    </ResponseField>
+    <ResponseField
+      name="userId"
+      type="string"
+      required
+    >
+      The ID of the user who added the reaction.
+    </ResponseField>
+    <ResponseField
+      name="conversationId"
+      type="string"
+      required
+    >
+      The ID of the conversation the reaction was added to.
+    </ResponseField>
+    <ResponseField
+      name="targets"
+      type="object"
+      required
+    >
+      The targets of the reaction.
+      <Expandable>
+        <ResponseField
+          name="dm"
+          type="object"
+          required
+        >
+          The DM targeted by the reaction.
+
+          <Expandable>
+            <ResponseField
+              name="id"
+              type="string"
+            >
+              The ID of the DM.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField
+          name="channel"
+          type="object"
+          required
+        >
+          The channel targeted by the reaction.
+
+          <Expandable>
+            <ResponseField
+              name="id"
+              type="string"
+            >
+              The ID of the channel.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField
+          name="thread"
+          type="object | undefined"
+          required
+        >
+          The thread targeted by the reaction.
+
+          <Expandable>
+            <ResponseField
+              name="id"
+              type="string"
+            >
+              The ID of the channel.
+            </ResponseField>
+            <ResponseField
+              name="thread"
+              type="string"
+            >
+              The ID of the thread.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Reaction Removed
+
+This Trigger executes whenever a [reaction is removed](https://www.google.com/search?client=safari&rls=en&q=slack+reactions&ie=UTF-8&oe=UTF-8) from a message in a channel that your bot is a member of.
+
+It receives the `slack:reactionRemoved` event and returns the following payload:
+
+<ResponseField
+  name="payload"
+  type="object"
+>
+  <Expandable>
+    <ResponseField
+      name="reaction"
+      type="string"
+      required
+    >
+      The name of the Slack reaction.
+    </ResponseField>
+    <ResponseField
+      name="userId"
+      type="string"
+      required
+    >
+      The ID of the user who removed the reaction.
+    </ResponseField>
+    <ResponseField
+      name="conversationId"
+      type="string"
+      required
+    >
+      The ID of the conversation the reaction was removed from.
+    </ResponseField>
+    <ResponseField
+      name="targets"
+      type="object"
+      required
+    >
+      The targets of the reaction.
+      <Expandable>
+        <ResponseField
+          name="dm"
+          type="object"
+          required
+        >
+          The DM targeted by the reaction.
+
+          <Expandable>
+            <ResponseField
+              name="id"
+              type="string"
+            >
+              The ID of the DM.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField
+          name="channel"
+          type="object"
+          required
+        >
+          The channel targeted by the reaction.
+
+          <Expandable>
+            <ResponseField
+              name="id"
+              type="string"
+            >
+              The ID of the channel.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField
+          name="thread"
+          type="object | undefined"
+          required
+        >
+          The thread targeted by the reaction.
+
+          <Expandable>
+            <ResponseField
+              name="id"
+              type="string"
+            >
+              The ID of the channel.
+            </ResponseField>
+            <ResponseField
+              name="thread"
+              type="string"
+            >
+              The ID of the thread.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Member Joined Channel
+
+This Trigger executes whenever a new member [joins a channel](https://slack.com/help/articles/205239967-Join-a-channel) that your bot is a member of.
+
+It receives the `slack:memberJoinedChannel` event and returns the following payload:
+
+<ResponseField
+  name="payload"
+  type="object"
+>
+  <Expandable>
+    <ResponseField
+      name="botpressUserId"
+      type="string"
+      required
+    >
+      The Botpress user ID associated with the Slack member who joined the channel.
+    </ResponseField>
+    <ResponseField
+      name="botpressConversationId"
+      type="string"
+      required
+    >
+      The Botpress conversation ID associated with the channel that the user joined.
+    </ResponseField>
+    <ResponseField
+      name="inviterBotpressUserId"
+      type="string"
+      required
+    >
+      The Botpress user ID associated with the Slack user who invited the new member.
+    </ResponseField>
+    <ResponseField
+      name="targets"
+      type="object"
+      required
+    >
+      The Slack IDs of the new member, channel and inviter.
+
+      <Expandable>
+        <ResponseField
+          name="slackUserId"
+          type="string"
+          required
+        >
+          The Slack ID of the user who joined the channel.
+        </ResponseField>
+        <ResponseField
+          name="slackChannelId"
+          type="string"
+          required
+        >
+          The Slack ID of the channel that the user joined.
+        </ResponseField>
+        <ResponseField
+          name="slackInviterId"
+          type="string"
+          required
+        >
+          The Slack ID of the user who invited the new member.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Member Left Channel
+
+This Trigger executes whenever a new member [leaves a channel](https://slack.com/help/articles/201375146-Leave-a-channel) that your bot is a member of.
+
+It receives the `slack:memberLeftChannel` event and returns the following payload:
+
+<ResponseField
+  name="payload"
+  type="object"
+>
+  <Expandable>
+    <ResponseField
+      name="botpressUserId"
+      type="string"
+      required
+    >
+      The Botpress user ID associated with the Slack member who left the channel.
+    </ResponseField>
+    <ResponseField
+      name="botpressConversationId"
+      type="string"
+      required
+    >
+      The Botpress conversation ID associated with the channel that the user left.
+    </ResponseField>
+    <ResponseField
+      name="targets"
+      type="object"
+      required
+    >
+      The Slack IDs of the member who left and the channel they left.
+
+      <Expandable>
+        <ResponseField
+          name="slackUserId"
+          type="string"
+          required
+        >
+          The Slack ID of the user who left the channel.
+        </ResponseField>
+        <ResponseField
+          name="slackChannelId"
+          type="string"
+          required
+        >
+          The Slack ID of the channel that the user left.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Member Joined Workspace
+
+This Trigger executes whenever a new member [joins the Slack workspace](https://slack.com/help/articles/212675257-Join-a-Slack-workspace) that your bot is installed to.
+
+It receives the `slack:memberJoinedWorkspace` event and returns the following payload:
+
+<ResponseField
+  name="payload"
+  type="object"
+>
+  <Expandable>
+    <ResponseField
+      name="userId"
+      type="string"
+      required
+    >
+      The Botpress user ID associated with the new workspace member.
+    </ResponseField>
+    <ResponseField
+      name="target"
+      type="object"
+      required
+    >
+      Slack data associated with the new workspace member.
+
+      <Expandable>
+        <ResponseField
+          name="userId"
+          type="string"
+          required
+        >
+          The Slack ID of the new workspace member.
+        </ResponseField>
+        <ResponseField
+          name="userName"
+          type="string"
+          required
+        >
+          The Slack username of the new workspace member.
+        </ResponseField>
+        <ResponseField
+          name="userRealName"
+          type="string"
+          required
+        >
+          The full Slack name (first and last names) of the new workspace member.
+        </ResponseField>
+        <ResponseField
+          name="userDisplayName"
+          type="string"
+          required
+        >
+          The Slack [display name](https://slack.com/help/articles/216360827-Change-your-display-name) of the new workspace member.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+{/* TODO: document how to use Workflow webhook */}
+{/* ### Workflow webhook
+
+This Trigger executes whenever a [Slack workflow](https://slack.com/features/workflow-automation) executes. */}
