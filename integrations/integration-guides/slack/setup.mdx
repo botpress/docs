@@ -180,3 +180,24 @@ If you want the bot to only reply in a thread when [mentioned](https://slack.com
   TODO: modify conditional to account for other channel types 
   3. Create an End Card and connect the expression Card to it.
 </Note> */}
+
+## Limitations
+
+Here are some limitations with the Slack integration:
+
+### API rate limits
+
+Standard Slack API limits apply to the Slack integration in Botpress. These include rate limits, message size restrictions, and other constraints imposed by the Slack platform. Ensure that your bot adheres to these limits to maintain optimal performance and reliability.
+
+<Note>
+  For more information, check out the [Slack API documentation](https://api.slack.com/apis/rate-limits).
+</Note>
+
+### Rich text processing
+
+Slack uses a proprietary markup language, [mrkdwn](https://api.slack.com/reference/surfaces/formatting#lists), to format rich text in messages. Since Botpress uses [standard Markdown](https://www.markdownguide.org/cheat-sheet/) for rich text, we convert incoming `mrkdwn` messages from Slack to Markdown. This is to ensure that:
+
+- Studio's interface can read them properly
+- Botpress' AI inference engine can understand them
+
+However, any outgoing AI-generated messages your bot sends to the Slack integration will stil be rendered in Markdown by default. This means **rich text messages from your bot may not be rendered properly in Slack** without additional processing.
