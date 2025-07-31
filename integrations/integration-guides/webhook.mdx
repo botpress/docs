@@ -2,16 +2,17 @@
 title: Webhook
 ---
 
+import webhookPayloadSize from "/snippets/api-payload-limits.mdx"
 
 <img src="./assets/webhook.png" />
 
 Webhooks provide a powerful way to integrate Botpress with other services. This guide will walk you through how to set up a webhook in Botpress to allow your bot to receive external updates in real-time.
 
-# Prerequisites
+## Prerequisites
 
 * A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/learn/get-started/quick-start)
 
-# Setting up the Webhook integration in Botpress
+## Setting up the Webhook integration in Botpress
 
 1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
 2. Find and open the Webhook integration then click on the "Install to Bot" button, now go back to your bot.
@@ -24,7 +25,7 @@ The Webhook integration will have the following settings:
 
 That's it! Now the Webhook integration is operational and ready for use within your bot.
 
-# Sending data to your Webhook from Javascript
+## Sending data to your Webhook from Javascript
 
 You can make requests to your webhook from any environment that supports HTTP requests, such as a Node.js app, a React app, a Javascript script running in the browser, a Zapier zap, a curl script, etc.
 
@@ -52,7 +53,7 @@ await axios.post(webhookUrl, data, header)
 // Webhooks don't return any data in the response body
 ```
 
-# Sending data to your Webhook from a HTTP client (for testing)
+## Sending data to your Webhook from a HTTP client (for testing)
 
 1. Open a HTTP client like Postman or Insomnia and create a new request
 2. Set the request type to `POST`
@@ -73,7 +74,7 @@ await axios.post(webhookUrl, data, header)
 
 7. Send the request and you should see a `200 OK` success response.
 
-# Using the Webhook Event data in your bot
+## Using the Webhook Event data in your bot
 
 1. Go to the Botpress Studio and right-click the editor to add a Trigger node, that triggers on `Webhook Event`.
    * This is where the conversation will start when the webhook received data, instead of following the regular path of beginning with the `Start` node.
@@ -81,7 +82,7 @@ await axios.post(webhookUrl, data, header)
 3. Click on `Discover Events` button to see the events that were received. You can choose an event and save it as an example to trigger the conversation for testing.
 4. You can access the data from the request using the `event.payload` variable.
 
-# Webhook Event Payload
+## Webhook Event Payload
 
 Webhook requests make available four properties that you can read in your bot:
 
@@ -92,7 +93,11 @@ Webhook requests make available four properties that you can read in your bot:
 * `event.payload.method`: The HTTP method of the request - usually `POST`
 * `event.payload.path`: The path of the request - usually `/`
 
-# Additional Information
+### Payload size limit
+
+The maximum size for a Webhook payload is {webhookPayloadSize}.
+
+## Additional Information
 
 * You can create filters to manage when the trigger will be actually activated and also create alternative flows by using Expressions that consider the request data.
 * For example, you can add a filter that checks if the request path is new-comment (`event.payload.path === '/new-comment'`), in which case the conversation will only start if the request is made to this url - `https://your-webhook.url/new-comment`

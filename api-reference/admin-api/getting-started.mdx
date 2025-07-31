@@ -1,3 +1,5 @@
+import adminApiPayloadSize from "/snippets/api-payload-limits.mdx"
+
 The Admin API allows administrators to manage users, settings, and logs within the platform. This guide will help you quickly get up and running with the API.
 
 ## Prerequisites
@@ -13,7 +15,7 @@ All API requests will be made to endpoints under this URL.
 
 There are two ways to interact with the Admin API: using **HTTP requests** or the **Botpress client**. Choose the one that fits your needs.
 
-### 1. Using HTTP Requests
+### Option 1: Using HTTP Requests
 
 You can interact with the Admin API directly through HTTP requests. The base URL for the Admin API is:
 
@@ -54,7 +56,7 @@ This will return a JSON object containing a list of bots.
 }
 ```
 
-### Using the Botpress Client
+### Option 2: Using the Botpress Client
 
 Alternatively, you can use the [Botpress client](https://www.npmjs.com/package/@botpress/client) to interact with the Admin API programmatically. This is ideal for integrating the Admin API within your application.
 
@@ -91,7 +93,7 @@ async function main() {
 void main();
 ```
 
-### Error Handling
+## Error Handling
 
 In case of errors, the API will return an appropriate [HTTP status code and an error message](../errors). Here are some common errors you might encounter, and why:
 
@@ -100,11 +102,15 @@ In case of errors, the API will return an appropriate [HTTP status code and an e
 - 404 Not Found: The requested resource could not be found.
 - 500 Internal Server Error: Something went wrong on the server side.
 
-#### Example: Handling a 401 Unauthorized Error
+### Example: Handling a 401 Unauthorized Error
 
 If you receive a 401 Unauthorized error, check that your token is valid and included in the Authorization header of your request, and that the correct x-workspace-id is provided.
 
-### Next Steps
+## Quotas/limits
+
+The maximum payload size for the Chat API is {adminApiPayloadSize}.
+
+## Next Steps
 
 Now that you’ve successfully made your first request, you can explore other API endpoints and features. Here are a few things you can do next:
 
@@ -112,7 +118,7 @@ Now that you’ve successfully made your first request, you can explore other AP
 - [Learn how to manage user permissions through the API](#).
 - [Learn how to fetch usage data](#)
 
-### Resources
+## Resources
 
 - [API Reference](#)
 - [Authorization Guide](../authentication)

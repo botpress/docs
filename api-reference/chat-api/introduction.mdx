@@ -3,6 +3,8 @@ title: Chat API Introduction
 sidebarTitle: Introduction
 ---
 
+import chatApiPayloadSize from "/snippets/api-payload-limits.mdx"
+
 The Chat API offers an HTTP API to chat with your bot. It allows you to integrate Botpress into a backend application (in contrast with [Webchat](/webchat/get-started/introduction), which allows you to integrate Botpress with your website).
 
 <Note>
@@ -40,9 +42,9 @@ The webhook ID is the string at the end of the **Webhook URL**. In this case, th
 
 3. Create a chat user (this is not the same as a user in your Botpress Dashboard) by calling the [createUser](/api-reference/chat-api/openapi/createUser) operation.
 
-<Note>
-This operation won't be available if you are using manual authentication. Check out the [Authentication](#authentication) section for more information.
-</Note>
+    <Note>
+    This operation won't be available if you are using manual authentication. Check out the [Authentication](#authentication) section for more information.
+    </Note>
 
 4. In the response's body you will find a user key. Copy this key.
 
@@ -114,3 +116,7 @@ Features:
 * Strongly typed operation inputs and outputs.
 * Handled manual authentication if you pass an encryption key and user ID.
 * Uses an SSE client to listen to conversation events.
+
+## Quotas/limits
+
+The maximum payload size for the Chat API is {chatApiPayloadSize}.
