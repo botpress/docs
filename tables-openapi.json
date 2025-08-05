@@ -1,7 +1,15 @@
 {
   "openapi": "3.0.0",
-  "servers": [{ "url": "https://api.botpress.cloud" }],
-  "info": { "title": "Botpress API", "description": "API for Botpress Cloud", "version": "1.1.0" },
+  "servers": [
+    {
+      "url": "https://api.botpress.cloud"
+    }
+  ],
+  "info": {
+    "title": "Botpress API",
+    "description": "API for Botpress Cloud",
+    "version": "1.1.0"
+  },
   "paths": {
     "/v1/tables": {
       "get": {
@@ -12,12 +20,21 @@
             "name": "tags",
             "in": "query",
             "description": "Optional filters to narrow down the list by tags associated with tables.",
-            "schema": { "type": "object", "additionalProperties": { "type": "string" } }
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/listTablesResponse" },
-          "default": { "$ref": "#/components/responses/listTablesResponse" }
+          "200": {
+            "$ref": "#/components/responses/listTablesResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/listTablesResponse"
+          }
         }
       },
       "post": {
@@ -25,10 +42,16 @@
         "description": "Initiates the creation of a new table based on the provided schema, excluding system-managed fields like IDs and timestamps.",
         "parameters": [],
         "responses": {
-          "200": { "$ref": "#/components/responses/createTableResponse" },
-          "default": { "$ref": "#/components/responses/createTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/createTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/createTableResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/createTableBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createTableBody"
+        }
       }
     },
     "/v1/tables/{table}": {
@@ -41,12 +64,18 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/getTableResponse" },
-          "default": { "$ref": "#/components/responses/getTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/getTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/getTableResponse"
+          }
         }
       },
       "post": {
@@ -58,14 +87,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/getOrCreateTableResponse" },
-          "default": { "$ref": "#/components/responses/getOrCreateTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/getOrCreateTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/getOrCreateTableResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/getOrCreateTableBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/getOrCreateTableBody"
+        }
       },
       "put": {
         "operationId": "updateTable",
@@ -76,14 +113,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/updateTableResponse" },
-          "default": { "$ref": "#/components/responses/updateTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/updateTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/updateTableResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/updateTableBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/updateTableBody"
+        }
       },
       "delete": {
         "operationId": "deleteTable",
@@ -94,12 +139,18 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/deleteTableResponse" },
-          "default": { "$ref": "#/components/responses/deleteTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/deleteTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/deleteTableResponse"
+          }
         }
       }
     },
@@ -113,14 +164,22 @@
             "in": "path",
             "description": "The table's unique identifier",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/duplicateTableResponse" },
-          "default": { "$ref": "#/components/responses/duplicateTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/duplicateTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/duplicateTableResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/duplicateTableBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/duplicateTableBody"
+        }
       }
     },
     "/v1/tables/{table}/export": {
@@ -133,24 +192,39 @@
             "in": "path",
             "description": "The table's unique identifier",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "format",
             "in": "query",
             "description": "The format of the exported file. CSV includes only the data while JSON includes the schema.",
-            "schema": { "type": "string", "enum": ["csv", "json"] }
+            "schema": {
+              "type": "string",
+              "enum": [
+                "csv",
+                "json"
+              ]
+            }
           },
           {
             "name": "compress",
             "in": "query",
             "description": "Whether or not the export is compressed (gzipped).",
-            "schema": { "default": true, "type": "boolean" }
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/exportTableResponse" },
-          "default": { "$ref": "#/components/responses/exportTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/exportTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/exportTableResponse"
+          }
         }
       }
     },
@@ -164,12 +238,18 @@
             "in": "path",
             "description": "The table's unique identifier",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/getTableJobsResponse" },
-          "default": { "$ref": "#/components/responses/getTableJobsResponse" }
+          "200": {
+            "$ref": "#/components/responses/getTableJobsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/getTableJobsResponse"
+          }
         }
       }
     },
@@ -183,14 +263,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/importTableResponse" },
-          "default": { "$ref": "#/components/responses/importTableResponse" }
+          "200": {
+            "$ref": "#/components/responses/importTableResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/importTableResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/importTableBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/importTableBody"
+        }
       }
     },
     "/v1/tables/{table}/column": {
@@ -203,14 +291,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/renameTableColumnResponse" },
-          "default": { "$ref": "#/components/responses/renameTableColumnResponse" }
+          "200": {
+            "$ref": "#/components/responses/renameTableColumnResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/renameTableColumnResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/renameTableColumnBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/renameTableColumnBody"
+        }
       }
     },
     "/v1/tables/{table}/row": {
@@ -223,19 +319,27 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "id",
             "in": "query",
             "description": "Identifier of the row within the table.",
             "required": true,
-            "schema": { "type": "integer" }
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/getTableRowResponse" },
-          "default": { "$ref": "#/components/responses/getTableRowResponse" }
+          "200": {
+            "$ref": "#/components/responses/getTableRowResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/getTableRowResponse"
+          }
         }
       }
     },
@@ -249,14 +353,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/findTableRowsResponse" },
-          "default": { "$ref": "#/components/responses/findTableRowsResponse" }
+          "200": {
+            "$ref": "#/components/responses/findTableRowsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/findTableRowsResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/findTableRowsBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/findTableRowsBody"
+        }
       }
     },
     "/v1/tables/{table}/rows": {
@@ -269,14 +381,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/createTableRowsResponse" },
-          "default": { "$ref": "#/components/responses/createTableRowsResponse" }
+          "200": {
+            "$ref": "#/components/responses/createTableRowsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/createTableRowsResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/createTableRowsBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createTableRowsBody"
+        }
       },
       "put": {
         "operationId": "updateTableRows",
@@ -287,14 +407,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/updateTableRowsResponse" },
-          "default": { "$ref": "#/components/responses/updateTableRowsResponse" }
+          "200": {
+            "$ref": "#/components/responses/updateTableRowsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/updateTableRowsResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/updateTableRowsBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/updateTableRowsBody"
+        }
       }
     },
     "/v1/tables/{table}/rows/delete": {
@@ -307,14 +435,22 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/deleteTableRowsResponse" },
-          "default": { "$ref": "#/components/responses/deleteTableRowsResponse" }
+          "200": {
+            "$ref": "#/components/responses/deleteTableRowsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/deleteTableRowsResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/deleteTableRowsBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/deleteTableRowsBody"
+        }
       }
     },
     "/v1/tables/{table}/rows/upsert": {
@@ -327,23 +463,48 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
-          "200": { "$ref": "#/components/responses/upsertTableRowsResponse" },
-          "default": { "$ref": "#/components/responses/upsertTableRowsResponse" }
+          "200": {
+            "$ref": "#/components/responses/upsertTableRowsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/upsertTableRowsResponse"
+          }
         },
-        "requestBody": { "$ref": "#/components/requestBodies/upsertTableRowsBody" }
+        "requestBody": {
+          "$ref": "#/components/requestBodies/upsertTableRowsBody"
+        }
       }
     }
   },
   "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "BotIdHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-bot-id",
+        "description": "Your bot ID."
+      }
+    },
     "schemas": {
       "Bot": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "minLength": 28, "maxLength": 36, "description": "Id of the [Bot](#schema_bot)" },
+          "id": {
+            "type": "string",
+            "minLength": 28,
+            "maxLength": 36,
+            "description": "Id of the [Bot](#schema_bot)"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -364,7 +525,9 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "enabled": { "type": "boolean" },
+                "enabled": {
+                  "type": "boolean"
+                },
                 "name": {
                   "type": "string",
                   "maxLength": 200,
@@ -375,11 +538,27 @@
                   "maxLength": 200,
                   "description": "Version of the [Integration](#schema_integration)"
                 },
-                "webhookUrl": { "type": "string", "maxLength": 2000 },
-                "webhookId": { "type": "string", "maxLength": 200 },
-                "identifier": { "type": "string", "maxLength": 2000 },
-                "configurationType": { "type": "string", "maxLength": 200, "nullable": true },
-                "configuration": { "type": "object", "additionalProperties": true },
+                "webhookUrl": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "webhookId": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "identifier": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "configurationType": {
+                  "type": "string",
+                  "maxLength": 200,
+                  "nullable": true
+                },
+                "configuration": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
                 "status": {
                   "type": "string",
                   "enum": [
@@ -391,7 +570,11 @@
                     "unregistration_failed"
                   ]
                 },
-                "statusReason": { "type": "string", "maxLength": 2000, "nullable": true },
+                "statusReason": {
+                  "type": "string",
+                  "maxLength": 2000,
+                  "nullable": true
+                },
                 "id": {
                   "type": "string",
                   "minLength": 28,
@@ -429,7 +612,12 @@
                 },
                 "verificationStatus": {
                   "type": "string",
-                  "enum": ["unapproved", "pending", "approved", "rejected"],
+                  "enum": [
+                    "unapproved",
+                    "pending",
+                    "approved",
+                    "rejected"
+                  ],
                   "description": "Status of the integration version verification"
                 }
               },
@@ -464,15 +652,25 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                    "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
                   },
                   "description": "Definition of a tag that can be provided on the object",
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["tags"],
+            "required": [
+              "tags"
+            ],
             "description": "User object configuration",
             "additionalProperties": false
           },
@@ -484,15 +682,25 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                    "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
                   },
                   "description": "Definition of a tag that can be provided on the object",
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["tags"],
+            "required": [
+              "tags"
+            ],
             "description": "Conversation object configuration",
             "additionalProperties": false
           },
@@ -504,15 +712,25 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                    "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
                   },
                   "description": "Definition of a tag that can be provided on the object",
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["tags"],
+            "required": [
+              "tags"
+            ],
             "description": "Message object configuration",
             "additionalProperties": false
           },
@@ -523,7 +741,12 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": ["conversation", "user", "bot", "task"],
+                  "enum": [
+                    "conversation",
+                    "user",
+                    "bot",
+                    "task"
+                  ],
                   "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
                 },
                 "schema": {
@@ -537,7 +760,10 @@
                   "description": "Expiry of the [State](#schema_state) in milliseconds. The state will expire if it is idle for the configured value. By default, a state doesn't expire."
                 }
               },
-              "required": ["type", "schema"],
+              "required": [
+                "type",
+                "schema"
+              ],
               "additionalProperties": false
             },
             "description": "A mapping of states to their definition"
@@ -545,14 +771,21 @@
           "configuration": {
             "type": "object",
             "properties": {
-              "data": { "type": "object", "additionalProperties": true, "description": "Configuration data" },
+              "data": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Configuration data"
+              },
               "schema": {
                 "type": "object",
                 "additionalProperties": true,
                 "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
               }
             },
-            "required": ["data", "schema"],
+            "required": [
+              "data",
+              "schema"
+            ],
             "description": "Configuration of the bot",
             "additionalProperties": false
           },
@@ -561,11 +794,24 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the event" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the event" },
-                "schema": { "type": "object", "additionalProperties": true }
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the event"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the event"
+                },
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "description": "Event Definition",
               "additionalProperties": false
             },
@@ -578,12 +824,25 @@
               "properties": {
                 "schedule": {
                   "type": "object",
-                  "properties": { "cron": { "type": "string", "maxLength": 200 } },
-                  "required": ["cron"],
+                  "properties": {
+                    "cron": {
+                      "type": "string",
+                      "maxLength": 200
+                    }
+                  },
+                  "required": [
+                    "cron"
+                  ],
                   "additionalProperties": false
                 },
-                "type": { "type": "string", "maxLength": 200 },
-                "payload": { "type": "object", "additionalProperties": true },
+                "type": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
                 "failedAttempts": {
                   "type": "number",
                   "description": "The number of times the recurring event failed to run. This counter resets once the recurring event runs successfully."
@@ -595,7 +854,13 @@
                   "nullable": true
                 }
               },
-              "required": ["schedule", "type", "payload", "failedAttempts", "lastFailureReason"],
+              "required": [
+                "schedule",
+                "type",
+                "payload",
+                "failedAttempts",
+                "lastFailureReason"
+              ],
               "additionalProperties": false
             },
             "description": "Recurring events"
@@ -605,12 +870,17 @@
             "properties": {
               "events": {
                 "type": "object",
-                "additionalProperties": { "type": "object", "additionalProperties": false },
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": false
+                },
                 "nullable": true,
                 "description": "Events that the bot is currently subscribed on (ex: \"slack:reactionAdded\"). If null, the bot is subscribed to all events."
               }
             },
-            "required": ["events"],
+            "required": [
+              "events"
+            ],
             "description": "Subscriptions of the bot",
             "additionalProperties": false
           },
@@ -619,24 +889,53 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the action" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the action" },
-                "billable": { "type": "boolean" },
-                "cacheable": { "type": "boolean" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the action"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the action"
+                },
+                "billable": {
+                  "type": "boolean"
+                },
+                "cacheable": {
+                  "type": "boolean"
+                },
                 "input": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 },
                 "output": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 }
               },
-              "required": ["input", "output"],
+              "required": [
+                "input",
+                "output"
+              ],
               "description": "Action definition",
               "additionalProperties": false
             },
@@ -644,10 +943,15 @@
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Tags of [Bot](#schema_bot)"
           },
-          "name": { "type": "string", "description": "Name of the [Bot](#schema_bot)" },
+          "name": {
+            "type": "string",
+            "description": "Name of the [Bot](#schema_bot)"
+          },
           "deployedAt": {
             "type": "string",
             "format": "date-time",
@@ -657,21 +961,40 @@
             "type": "boolean",
             "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
           },
-          "createdBy": { "type": "string", "description": "Id of the user that created the bot" },
+          "createdBy": {
+            "type": "string",
+            "description": "Id of the user that created the bot"
+          },
           "alwaysAlive": {
             "type": "boolean",
             "description": "Indicates if the [Bot](#schema_bot) should be in always alive mode"
           },
-          "status": { "type": "string", "enum": ["active", "deploying"], "description": "Status of the bot" },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "deploying"
+            ],
+            "description": "Status of the bot"
+          },
           "medias": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "url": { "type": "string", "description": "URL of the media file" },
-                "name": { "type": "string", "description": "Name of the media file" }
+                "url": {
+                  "type": "string",
+                  "description": "URL of the media file"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the media file"
+                }
               },
-              "required": ["url", "name"]
+              "required": [
+                "url",
+                "name"
+              ]
             },
             "description": "Media files associated with the [Bot](#schema_bot)"
           }
@@ -772,15 +1095,35 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "id": { "type": "string", "minLength": 28, "maxLength": 36, "description": "ID of the interface" },
-                "name": { "type": "string", "maxLength": 200, "description": "Name of the interface" },
-                "version": { "type": "string", "maxLength": 200, "description": "Version of the interface" },
+                "id": {
+                  "type": "string",
+                  "minLength": 28,
+                  "maxLength": 36,
+                  "description": "ID of the interface"
+                },
+                "name": {
+                  "type": "string",
+                  "maxLength": 200,
+                  "description": "Name of the interface"
+                },
+                "version": {
+                  "type": "string",
+                  "maxLength": 200,
+                  "description": "Version of the interface"
+                },
                 "entities": {
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "properties": { "name": { "type": "string", "maxLength": 200 } },
-                    "required": ["name"],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
                     "additionalProperties": false
                   }
                 },
@@ -788,8 +1131,15 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "properties": { "name": { "type": "string", "maxLength": 200 } },
-                    "required": ["name"],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
                     "additionalProperties": false
                   }
                 },
@@ -797,8 +1147,15 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "properties": { "name": { "type": "string", "maxLength": 200 } },
-                    "required": ["name"],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
                     "additionalProperties": false
                   }
                 },
@@ -806,28 +1163,58 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "properties": { "name": { "type": "string", "maxLength": 200 } },
-                    "required": ["name"],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
                     "additionalProperties": false
                   }
                 }
               },
-              "required": ["id", "name", "version", "entities", "actions", "events", "channels"],
+              "required": [
+                "id",
+                "name",
+                "version",
+                "entities",
+                "actions",
+                "events",
+                "channels"
+              ],
               "additionalProperties": false
             }
           },
           "configuration": {
             "type": "object",
             "properties": {
-              "title": { "type": "string", "maxLength": 64, "description": "Title of the configuration" },
-              "description": { "type": "string", "maxLength": 256, "description": "Description of the configuration" },
+              "title": {
+                "type": "string",
+                "maxLength": 64,
+                "description": "Title of the configuration"
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 256,
+                "description": "Description of the configuration"
+              },
               "identifier": {
                 "type": "object",
                 "properties": {
-                  "linkTemplateScript": { "type": "string", "maxLength": 2000 },
-                  "required": { "type": "boolean" }
+                  "linkTemplateScript": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "required": {
+                    "type": "boolean"
+                  }
                 },
-                "required": ["required"],
+                "required": [
+                  "required"
+                ],
                 "description": "Identifier configuration of the [Integration](#schema_integration)",
                 "additionalProperties": false
               },
@@ -837,7 +1224,10 @@
                 "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
               }
             },
-            "required": ["identifier", "schema"],
+            "required": [
+              "identifier",
+              "schema"
+            ],
             "description": "Configuration definition",
             "additionalProperties": false
           },
@@ -846,7 +1236,11 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the configuration" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the configuration"
+                },
                 "description": {
                   "type": "string",
                   "maxLength": 256,
@@ -855,10 +1249,17 @@
                 "identifier": {
                   "type": "object",
                   "properties": {
-                    "linkTemplateScript": { "type": "string", "maxLength": 2000 },
-                    "required": { "type": "boolean" }
+                    "linkTemplateScript": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "required": {
+                      "type": "boolean"
+                    }
                   },
-                  "required": ["required"],
+                  "required": [
+                    "required"
+                  ],
                   "description": "Identifier configuration of the [Integration](#schema_integration)",
                   "additionalProperties": false
                 },
@@ -868,7 +1269,10 @@
                   "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
                 }
               },
-              "required": ["identifier", "schema"],
+              "required": [
+                "identifier",
+                "schema"
+              ],
               "description": "Configuration definition",
               "additionalProperties": false
             }
@@ -878,14 +1282,29 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the channel" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the channel" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the channel"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the channel"
+                },
                 "messages": {
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                    "required": ["schema"],
+                    "properties": {
+                      "schema": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "required": [
+                      "schema"
+                    ],
                     "description": "Message definition",
                     "additionalProperties": false
                   }
@@ -898,8 +1317,16 @@
                       "additionalProperties": {
                         "type": "object",
                         "properties": {
-                          "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                          "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                          "title": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "description": "Title of the tag"
+                          },
+                          "description": {
+                            "type": "string",
+                            "maxLength": 256,
+                            "description": "Description of the tag"
+                          }
                         },
                         "description": "Definition of a tag that can be provided on the object",
                         "additionalProperties": false
@@ -908,19 +1335,30 @@
                     "creation": {
                       "type": "object",
                       "properties": {
-                        "enabled": { "type": "boolean", "description": "Enable conversation creation" },
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Enable conversation creation"
+                        },
                         "requiredTags": {
                           "type": "array",
-                          "items": { "type": "string" },
+                          "items": {
+                            "type": "string"
+                          },
                           "description": "The list of tags that are required to be specified when calling the API directly to create a conversation."
                         }
                       },
-                      "required": ["enabled", "requiredTags"],
+                      "required": [
+                        "enabled",
+                        "requiredTags"
+                      ],
                       "description": "The conversation creation setting determines how to create a conversation through the API directly. The integration will have to implement the `createConversation` functionality to support this setting.",
                       "additionalProperties": false
                     }
                   },
-                  "required": ["tags", "creation"],
+                  "required": [
+                    "tags",
+                    "creation"
+                  ],
                   "description": "Conversation object configuration",
                   "additionalProperties": false
                 },
@@ -932,20 +1370,34 @@
                       "additionalProperties": {
                         "type": "object",
                         "properties": {
-                          "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                          "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                          "title": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "description": "Title of the tag"
+                          },
+                          "description": {
+                            "type": "string",
+                            "maxLength": 256,
+                            "description": "Description of the tag"
+                          }
                         },
                         "description": "Definition of a tag that can be provided on the object",
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": ["tags"],
+                  "required": [
+                    "tags"
+                  ],
                   "description": "Message object configuration",
                   "additionalProperties": false
                 }
               },
-              "required": ["messages", "conversation", "message"],
+              "required": [
+                "messages",
+                "conversation",
+                "message"
+              ],
               "description": "Channel definition",
               "additionalProperties": false
             }
@@ -957,7 +1409,11 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": ["conversation", "user", "integration"],
+                  "enum": [
+                    "conversation",
+                    "user",
+                    "integration"
+                  ],
                   "description": "Type of the [State](#schema_state) (`conversation`, `user` or `integration`)"
                 },
                 "schema": {
@@ -966,7 +1422,10 @@
                   "description": "Schema of the [State](#schema_state) in the `JSON schema` format. This `JSON schema` is going to be used for validating the state data."
                 }
               },
-              "required": ["type", "schema"],
+              "required": [
+                "type",
+                "schema"
+              ],
               "description": "State definition",
               "additionalProperties": false
             }
@@ -976,11 +1435,24 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the event" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the event" },
-                "schema": { "type": "object", "additionalProperties": true }
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the event"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the event"
+                },
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "description": "Event Definition",
               "additionalProperties": false
             }
@@ -990,24 +1462,53 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the action" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the action" },
-                "billable": { "type": "boolean" },
-                "cacheable": { "type": "boolean" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the action"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the action"
+                },
+                "billable": {
+                  "type": "boolean"
+                },
+                "cacheable": {
+                  "type": "boolean"
+                },
                 "input": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 },
                 "output": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 }
               },
-              "required": ["input", "output"],
+              "required": [
+                "input",
+                "output"
+              ],
               "description": "Action definition",
               "additionalProperties": false
             }
@@ -1020,8 +1521,16 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                    "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
                   },
                   "description": "Definition of a tag that can be provided on the object",
                   "additionalProperties": false
@@ -1030,19 +1539,30 @@
               "creation": {
                 "type": "object",
                 "properties": {
-                  "enabled": { "type": "boolean", "description": "Enable user creation" },
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Enable user creation"
+                  },
                   "requiredTags": {
                     "type": "array",
-                    "items": { "type": "string" },
+                    "items": {
+                      "type": "string"
+                    },
                     "description": "The list of tags that are required to be specified when calling the API directly to create a user."
                   }
                 },
-                "required": ["enabled", "requiredTags"],
+                "required": [
+                  "enabled",
+                  "requiredTags"
+                ],
                 "description": "The user creation setting determines how to create a user through the API directly. The integration will have to implement the `createUser` functionality to support this setting.",
                 "additionalProperties": false
               }
             },
-            "required": ["tags", "creation"],
+            "required": [
+              "tags",
+              "creation"
+            ],
             "description": "User object configuration",
             "additionalProperties": false
           },
@@ -1051,11 +1571,24 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the entity" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the entity" },
-                "schema": { "type": "object", "additionalProperties": true }
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the entity"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the entity"
+                },
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "description": "Entity definition",
               "additionalProperties": false
             }
@@ -1089,12 +1622,19 @@
           },
           "verificationStatus": {
             "type": "string",
-            "enum": ["unapproved", "pending", "approved", "rejected"],
+            "enum": [
+              "unapproved",
+              "pending",
+              "approved",
+              "rejected"
+            ],
             "description": "Status of the integration version verification"
           },
           "secrets": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "Secrets are integration-wide values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
           }
         },
@@ -1145,7 +1685,11 @@
             "format": "date-time",
             "description": "Updating date of the [Interface](#schema_interface) in ISO 8601 format"
           },
-          "name": { "type": "string", "maxLength": 200, "description": "Name of the [Interface](#schema_interface)" },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Name of the [Interface](#schema_interface)"
+          },
           "version": {
             "type": "string",
             "maxLength": 200,
@@ -1156,11 +1700,24 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the entity" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the entity" },
-                "schema": { "type": "object", "additionalProperties": true }
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the entity"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the entity"
+                },
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "description": "Entity definition",
               "additionalProperties": false
             }
@@ -1170,11 +1727,24 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the event" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the event" },
-                "schema": { "type": "object", "additionalProperties": true }
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the event"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the event"
+                },
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "description": "Event Definition",
               "additionalProperties": false
             }
@@ -1184,24 +1754,53 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the action" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the action" },
-                "billable": { "type": "boolean" },
-                "cacheable": { "type": "boolean" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the action"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the action"
+                },
+                "billable": {
+                  "type": "boolean"
+                },
+                "cacheable": {
+                  "type": "boolean"
+                },
                 "input": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 },
                 "output": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 }
               },
-              "required": ["input", "output"],
+              "required": [
+                "input",
+                "output"
+              ],
               "description": "Action definition",
               "additionalProperties": false
             }
@@ -1211,35 +1810,71 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the channel" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the channel" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the channel"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the channel"
+                },
                 "messages": {
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                    "required": ["schema"],
+                    "properties": {
+                      "schema": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "required": [
+                      "schema"
+                    ],
                     "description": "Message definition",
                     "additionalProperties": false
                   }
                 }
               },
-              "required": ["messages"],
+              "required": [
+                "messages"
+              ],
               "additionalProperties": false
             }
           },
           "nameTemplate": {
             "type": "object",
             "properties": {
-              "script": { "type": "string", "maxLength": 2000 },
-              "language": { "type": "string", "maxLength": 200 }
+              "script": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "language": {
+                "type": "string",
+                "maxLength": 200
+              }
             },
-            "required": ["script", "language"],
+            "required": [
+              "script",
+              "language"
+            ],
             "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
             "additionalProperties": false
           }
         },
-        "required": ["id", "createdAt", "updatedAt", "name", "version", "entities", "events", "actions", "channels"],
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "version",
+          "entities",
+          "events",
+          "actions",
+          "channels"
+        ],
         "additionalProperties": false
       },
       "Plugin": {
@@ -1251,8 +1886,16 @@
             "maxLength": 36,
             "description": "ID of the [Plugin](#schema_plugin)"
           },
-          "name": { "type": "string", "maxLength": 200, "description": "Name of the [Plugin](#schema_plugin)" },
-          "version": { "type": "string", "maxLength": 200, "description": "Version of the [Plugin](#schema_plugin)" },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Name of the [Plugin](#schema_plugin)"
+          },
+          "version": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Version of the [Plugin](#schema_plugin)"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -1266,15 +1909,25 @@
           "configuration": {
             "type": "object",
             "properties": {
-              "title": { "type": "string", "maxLength": 64, "description": "Title of the configuration" },
-              "description": { "type": "string", "maxLength": 256, "description": "Description of the configuration" },
+              "title": {
+                "type": "string",
+                "maxLength": 64,
+                "description": "Title of the configuration"
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 256,
+                "description": "Description of the configuration"
+              },
               "schema": {
                 "type": "object",
                 "additionalProperties": true,
                 "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
               }
             },
-            "required": ["schema"],
+            "required": [
+              "schema"
+            ],
             "description": "Configuration definition",
             "additionalProperties": false
           },
@@ -1285,7 +1938,12 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "enum": ["conversation", "user", "bot", "task"],
+                  "enum": [
+                    "conversation",
+                    "user",
+                    "bot",
+                    "task"
+                  ],
                   "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
                 },
                 "schema": {
@@ -1299,7 +1957,10 @@
                   "description": "Expiry of the [State](#schema_state) in milliseconds. The state will expire if it is idle for the configured value. By default, a state doesn't expire."
                 }
               },
-              "required": ["type", "schema"],
+              "required": [
+                "type",
+                "schema"
+              ],
               "additionalProperties": false
             }
           },
@@ -1308,11 +1969,24 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the event" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the event" },
-                "schema": { "type": "object", "additionalProperties": true }
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the event"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the event"
+                },
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "description": "Event Definition",
               "additionalProperties": false
             }
@@ -1322,24 +1996,53 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "title": { "type": "string", "maxLength": 64, "description": "Title of the action" },
-                "description": { "type": "string", "maxLength": 256, "description": "Description of the action" },
-                "billable": { "type": "boolean" },
-                "cacheable": { "type": "boolean" },
+                "title": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "description": "Title of the action"
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 256,
+                  "description": "Description of the action"
+                },
+                "billable": {
+                  "type": "boolean"
+                },
+                "cacheable": {
+                  "type": "boolean"
+                },
                 "input": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 },
                 "output": {
                   "type": "object",
-                  "properties": { "schema": { "type": "object", "additionalProperties": true } },
-                  "required": ["schema"],
+                  "properties": {
+                    "schema": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "schema"
+                  ],
                   "additionalProperties": false
                 }
               },
-              "required": ["input", "output"],
+              "required": [
+                "input",
+                "output"
+              ],
               "description": "Action definition",
               "additionalProperties": false
             }
@@ -1352,11 +2055,25 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string", "minLength": 28, "maxLength": 36 },
-                    "name": { "type": "string", "maxLength": 200 },
-                    "version": { "type": "string", "maxLength": 200 }
+                    "id": {
+                      "type": "string",
+                      "minLength": 28,
+                      "maxLength": 36
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 200
+                    },
+                    "version": {
+                      "type": "string",
+                      "maxLength": 200
+                    }
                   },
-                  "required": ["id", "name", "version"],
+                  "required": [
+                    "id",
+                    "name",
+                    "version"
+                  ],
                   "additionalProperties": false
                 }
               },
@@ -1365,16 +2082,33 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string", "minLength": 28, "maxLength": 36 },
-                    "name": { "type": "string", "maxLength": 200 },
-                    "version": { "type": "string", "maxLength": 200 }
+                    "id": {
+                      "type": "string",
+                      "minLength": 28,
+                      "maxLength": 36
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 200
+                    },
+                    "version": {
+                      "type": "string",
+                      "maxLength": 200
+                    }
                   },
-                  "required": ["id", "name", "version"],
+                  "required": [
+                    "id",
+                    "name",
+                    "version"
+                  ],
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["interfaces", "integrations"],
+            "required": [
+              "interfaces",
+              "integrations"
+            ],
             "additionalProperties": false
           },
           "user": {
@@ -1385,15 +2119,25 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                    "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
                   },
                   "description": "Definition of a tag that can be provided on the object",
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["tags"],
+            "required": [
+              "tags"
+            ],
             "description": "User object configuration",
             "additionalProperties": false
           },
@@ -1405,15 +2149,25 @@
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "title": { "type": "string", "maxLength": 64, "description": "Title of the tag" },
-                    "description": { "type": "string", "maxLength": 256, "description": "Description of the tag" }
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
                   },
                   "description": "Definition of a tag that can be provided on the object",
                   "additionalProperties": false
                 }
               }
             },
-            "required": ["tags"],
+            "required": [
+              "tags"
+            ],
             "description": "Conversation object configuration",
             "additionalProperties": false
           },
@@ -1460,23 +2214,77 @@
       "Workspace": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "name": { "type": "string" },
-          "ownerId": { "type": "string" },
-          "createdAt": { "type": "string" },
-          "updatedAt": { "type": "string" },
-          "botCount": { "type": "number" },
-          "billingVersion": { "type": "string", "enum": ["v1", "v2", "v3"] },
-          "plan": { "type": "string", "enum": ["community", "team", "enterprise", "plus"] },
-          "blocked": { "type": "boolean" },
-          "spendingLimit": { "type": "number" },
-          "about": { "default": "", "type": "string" },
-          "profilePicture": { "default": "", "type": "string" },
-          "contactEmail": { "default": "", "type": "string" },
-          "website": { "default": "", "type": "string" },
-          "socialAccounts": { "default": [], "type": "array", "items": { "type": "string" } },
-          "isPublic": { "type": "boolean" },
-          "handle": { "default": "", "type": "string" }
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "botCount": {
+            "type": "number"
+          },
+          "billingVersion": {
+            "type": "string",
+            "enum": [
+              "v1",
+              "v2",
+              "v3"
+            ]
+          },
+          "plan": {
+            "type": "string",
+            "enum": [
+              "community",
+              "team",
+              "enterprise",
+              "plus"
+            ]
+          },
+          "blocked": {
+            "type": "boolean"
+          },
+          "spendingLimit": {
+            "type": "number"
+          },
+          "about": {
+            "default": "",
+            "type": "string"
+          },
+          "profilePicture": {
+            "default": "",
+            "type": "string"
+          },
+          "contactEmail": {
+            "default": "",
+            "type": "string"
+          },
+          "website": {
+            "default": "",
+            "type": "string"
+          },
+          "socialAccounts": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "handle": {
+            "default": "",
+            "type": "string"
+          }
         },
         "required": [
           "id",
@@ -1496,33 +2304,78 @@
       "WorkspaceMember": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "userId": { "type": "string", "format": "uuid" },
-          "email": { "type": "string" },
-          "createdAt": { "type": "string" },
-          "role": { "type": "string", "enum": ["viewer", "billing", "developer", "manager", "administrator", "owner"] },
-          "profilePicture": { "type": "string" },
-          "displayName": { "type": "string", "maxLength": 100 }
+          "id": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "email": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "viewer",
+              "billing",
+              "developer",
+              "manager",
+              "administrator",
+              "owner"
+            ]
+          },
+          "profilePicture": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string",
+            "maxLength": 100
+          }
         },
-        "required": ["id", "email", "createdAt", "role"],
+        "required": [
+          "id",
+          "email",
+          "createdAt",
+          "role"
+        ],
         "title": "updateWorkspaceMemberResponse",
         "additionalProperties": false
       },
       "Account": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "email": { "type": "string" },
-          "displayName": { "type": "string", "maxLength": 100 },
-          "emailVerified": { "type": "boolean" },
-          "profilePicture": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "profilePicture": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
             "description": "Creation date of the [Account](#schema_account) in ISO 8601 format"
           }
         },
-        "required": ["id", "email", "emailVerified", "createdAt"],
+        "required": [
+          "id",
+          "email",
+          "emailVerified",
+          "createdAt"
+        ],
         "additionalProperties": false
       },
       "Usage": {
@@ -1532,9 +2385,18 @@
             "type": "string",
             "description": "Id of the usage that it is linked to. It can either be a workspace id or a bot id"
           },
-          "period": { "type": "string", "description": "Period of the quota that it is applied to" },
-          "value": { "type": "number", "description": "Value of the current usage" },
-          "quota": { "type": "number", "description": "Quota of the current usage" },
+          "period": {
+            "type": "string",
+            "description": "Period of the quota that it is applied to"
+          },
+          "value": {
+            "type": "number",
+            "description": "Value of the current usage"
+          },
+          "quota": {
+            "type": "number",
+            "description": "Quota of the current usage"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -1555,30 +2417,72 @@
             "description": "Usage type that can be used"
           }
         },
-        "required": ["id", "period", "value", "quota", "type"],
+        "required": [
+          "id",
+          "period",
+          "value",
+          "quota",
+          "type"
+        ],
         "additionalProperties": false
       },
       "Issue": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "code": { "type": "string" },
-          "createdAt": { "type": "string", "format": "date-time" },
-          "lastSeenAt": { "type": "string", "format": "date-time" },
-          "title": { "type": "string" },
-          "description": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastSeenAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
           "groupedData": {
             "type": "object",
             "additionalProperties": {
               "type": "object",
-              "properties": { "raw": { "type": "string" }, "pretty": { "type": "string" } },
-              "required": ["raw"],
+              "properties": {
+                "raw": {
+                  "type": "string"
+                },
+                "pretty": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "raw"
+              ],
               "additionalProperties": false
             }
           },
-          "eventsCount": { "type": "number" },
-          "category": { "type": "string", "enum": ["user_code", "limits", "configuration", "other"] },
-          "resolutionLink": { "type": "string", "nullable": true }
+          "eventsCount": {
+            "type": "number"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "user_code",
+              "limits",
+              "configuration",
+              "other"
+            ]
+          },
+          "resolutionLink": {
+            "type": "string",
+            "nullable": true
+          }
         },
         "required": [
           "id",
@@ -1597,27 +2501,51 @@
       "IssueEvent": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "createdAt": { "type": "string", "format": "date-time" },
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "data": {
             "type": "object",
             "additionalProperties": {
               "type": "object",
-              "properties": { "raw": { "type": "string" }, "pretty": { "type": "string" } },
-              "required": ["raw"],
+              "properties": {
+                "raw": {
+                  "type": "string"
+                },
+                "pretty": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "raw"
+              ],
               "additionalProperties": false
             }
           }
         },
-        "required": ["id", "createdAt", "data"],
+        "required": [
+          "id",
+          "createdAt",
+          "data"
+        ],
         "additionalProperties": false
       },
       "Activity": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "description": { "type": "string" },
-          "taskId": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "taskId": {
+            "type": "string"
+          },
           "category": {
             "type": "string",
             "enum": [
@@ -1633,26 +2561,54 @@
               "exception"
             ]
           },
-          "data": { "type": "object", "additionalProperties": true },
+          "data": {
+            "type": "object",
+            "additionalProperties": true
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
             "description": "Creation date of the activity in ISO 8601 format"
           }
         },
-        "required": ["id", "description", "taskId", "category", "data", "createdAt"],
+        "required": [
+          "id",
+          "description",
+          "taskId",
+          "category",
+          "data",
+          "createdAt"
+        ],
         "additionalProperties": false
       },
       "Version": {
         "type": "object",
-        "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "description": { "type": "string" } },
-        "required": ["id", "name"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
         "additionalProperties": false
       },
       "User": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "minLength": 28, "maxLength": 36, "description": "Id of the [User](#schema_user)" },
+          "id": {
+            "type": "string",
+            "minLength": 28,
+            "maxLength": 36,
+            "description": "Id of the [User](#schema_user)"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -1665,17 +2621,28 @@
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [User](#schema_user). The set of [Tags](/docs/developers/concepts/tags) available on a [User](#schema_user) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
           },
-          "name": { "type": "string", "maxLength": 200, "description": "Name of the [User](#schema_user)" },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Name of the [User](#schema_user)"
+          },
           "pictureUrl": {
             "type": "string",
             "maxLength": 40000,
             "description": "Picture URL of the [User](#schema_user)"
           }
         },
-        "required": ["id", "createdAt", "updatedAt", "tags"],
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "tags"
+        ],
         "description": "The user object represents someone interacting with the bot within a specific integration. The same person interacting with a bot in slack and messenger will be represented with two different users.",
         "additionalProperties": false
       },
@@ -1720,11 +2687,20 @@
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Conversation](#schema_conversation). The set of [Tags](/docs/developers/concepts/tags) available on a [Conversation](#schema_conversation) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
           }
         },
-        "required": ["id", "createdAt", "updatedAt", "channel", "integration", "tags"],
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "channel",
+          "integration",
+          "tags"
+        ],
         "description": "The [Conversation](#schema_conversation) object represents an exchange of messages between one or more users. A [Conversation](#schema_conversation) is always linked to an integration's channels. For example, a Slack channel represents a conversation.",
         "additionalProperties": false
       },
@@ -1742,7 +2718,11 @@
             "format": "date-time",
             "description": "Creation date of the [Event](#schema_event) in ISO 8601 format"
           },
-          "type": { "type": "string", "maxLength": 200, "description": "Type of the [Event](#schema_event)." },
+          "type": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Type of the [Event](#schema_event)."
+          },
           "payload": {
             "type": "object",
             "additionalProperties": true,
@@ -1766,7 +2746,16 @@
             "maxLength": 36,
             "description": "ID of the [Message](#schema_message) to link the event to."
           },
-          "status": { "type": "string", "enum": ["pending", "processed", "ignored", "failed", "scheduled"] },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "processed",
+              "ignored",
+              "failed",
+              "scheduled"
+            ]
+          },
           "failureReason": {
             "type": "string",
             "maxLength": 2000,
@@ -1774,7 +2763,14 @@
             "description": "Reason why the event failed to be processed"
           }
         },
-        "required": ["id", "createdAt", "type", "payload", "status", "failureReason"],
+        "required": [
+          "id",
+          "createdAt",
+          "type",
+          "payload",
+          "status",
+          "failureReason"
+        ],
         "description": "The event object represents an action or an occurrence.",
         "additionalProperties": false
       },
@@ -1809,7 +2805,10 @@
           },
           "direction": {
             "type": "string",
-            "enum": ["incoming", "outgoing"],
+            "enum": [
+              "incoming",
+              "outgoing"
+            ],
             "description": "Direction of the message (`incoming` or `outgoing`)."
           },
           "userId": {
@@ -1826,7 +2825,9 @@
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Conversation](#schema_conversation). The set of [Tags](/docs/developers/concepts/tags) available on a [Conversation](#schema_conversation) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
           }
         },
@@ -1888,7 +2889,14 @@
           },
           "type": {
             "type": "string",
-            "enum": ["conversation", "user", "bot", "task", "integration", "workflow"],
+            "enum": [
+              "conversation",
+              "user",
+              "bot",
+              "task",
+              "integration",
+              "workflow"
+            ],
             "description": "Type of the [State](#schema_state) represents the resource type (`conversation`, `user`, `bot`, `task`, `integration` or `workflow`) that the state is related to"
           },
           "payload": {
@@ -1897,25 +2905,58 @@
             "description": "Payload is the content of the state defined by your bot."
           }
         },
-        "required": ["id", "createdAt", "updatedAt", "botId", "name", "type", "payload"],
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "botId",
+          "name",
+          "type",
+          "payload"
+        ],
         "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation or a user.",
         "additionalProperties": false
       },
       "Task": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "minLength": 28, "maxLength": 36, "description": "Id of the [Task](#schema_task)" },
-          "title": { "type": "string", "maxLength": 64, "description": "Title describing the task" },
+          "id": {
+            "type": "string",
+            "minLength": 28,
+            "maxLength": 36,
+            "description": "Id of the [Task](#schema_task)"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "Title describing the task"
+          },
           "description": {
             "type": "string",
             "maxLength": 256,
             "description": "All the notes related to the execution of the current task"
           },
-          "type": { "type": "string", "description": "Type of the task" },
-          "data": { "type": "object", "additionalProperties": true, "description": "Content related to the task" },
+          "type": {
+            "type": "string",
+            "description": "Type of the task"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Content related to the task"
+          },
           "status": {
             "type": "string",
-            "enum": ["pending", "in_progress", "failed", "completed", "blocked", "paused", "timeout", "cancelled"],
+            "enum": [
+              "pending",
+              "in_progress",
+              "failed",
+              "completed",
+              "blocked",
+              "paused",
+              "timeout",
+              "cancelled"
+            ],
             "description": "Status of the task"
           },
           "parentTaskId": {
@@ -1958,7 +2999,9 @@
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Task](#schema_task). Individual keys can be unset by posting an empty value to them."
           }
         },
@@ -1986,10 +3029,23 @@
             "maxLength": 36,
             "description": "Id of the [Workflow](#schema_workflow)"
           },
-          "name": { "type": "string", "maxLength": 200, "description": "Name of the workflow" },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Name of the workflow"
+          },
           "status": {
             "type": "string",
-            "enum": ["pending", "in_progress", "failed", "completed", "listening", "paused", "timedout", "cancelled"],
+            "enum": [
+              "pending",
+              "in_progress",
+              "failed",
+              "completed",
+              "listening",
+              "paused",
+              "timedout",
+              "cancelled"
+            ],
             "description": "Status of the [Workflow](#schema_workflow)"
           },
           "input": {
@@ -2047,18 +3103,33 @@
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Workflow](#schema_workflow). Individual keys can be unset by posting an empty value to them."
           }
         },
-        "required": ["id", "name", "status", "input", "output", "createdAt", "updatedAt", "timeoutAt", "tags"],
+        "required": [
+          "id",
+          "name",
+          "status",
+          "input",
+          "output",
+          "createdAt",
+          "updatedAt",
+          "timeoutAt",
+          "tags"
+        ],
         "description": "Workflow definition",
         "additionalProperties": false
       },
       "Table": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "description": "Unique identifier for the table" },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the table"
+          },
           "name": {
             "description": "Required. This name is used to identify your table.",
             "type": "string",
@@ -2078,31 +3149,70 @@
           "schema": {
             "type": "object",
             "properties": {
-              "$schema": { "type": "string" },
+              "$schema": {
+                "type": "string"
+              },
               "properties": {
                 "type": "object",
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
-                    "type": { "type": "string", "enum": ["string", "number", "boolean", "object", "array", "null"] },
-                    "format": { "type": "string", "enum": ["date-time"] },
-                    "description": { "type": "string" },
-                    "pattern": { "type": "string", "description": "String properties must match this pattern" },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "string",
+                        "number",
+                        "boolean",
+                        "object",
+                        "array",
+                        "null"
+                      ]
+                    },
+                    "format": {
+                      "type": "string",
+                      "enum": [
+                        "date-time"
+                      ]
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "pattern": {
+                      "type": "string",
+                      "description": "String properties must match this pattern"
+                    },
                     "enum": {
                       "type": "array",
-                      "items": { "type": "string" },
+                      "items": {
+                        "type": "string"
+                      },
                       "description": "String properties must be one of these values"
                     },
                     "items": {
                       "type": "object",
                       "properties": {
-                        "type": { "type": "string", "enum": ["string", "number", "boolean", "object", "array", "null"] }
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "string",
+                            "number",
+                            "boolean",
+                            "object",
+                            "array",
+                            "null"
+                          ]
+                        }
                       },
-                      "required": ["type"],
+                      "required": [
+                        "type"
+                      ],
                       "additionalProperties": true,
                       "description": "Defines the shape of items in an array"
                     },
-                    "nullable": { "default": true, "type": "boolean" },
+                    "nullable": {
+                      "default": true,
+                      "type": "boolean"
+                    },
                     "properties": {
                       "type": "object",
                       "additionalProperties": {
@@ -2110,33 +3220,78 @@
                         "properties": {
                           "type": {
                             "type": "string",
-                            "enum": ["string", "number", "boolean", "object", "array", "null"]
+                            "enum": [
+                              "string",
+                              "number",
+                              "boolean",
+                              "object",
+                              "array",
+                              "null"
+                            ]
                           }
                         },
-                        "required": ["type"],
+                        "required": [
+                          "type"
+                        ],
                         "additionalProperties": true
                       }
                     },
                     "x-zui": {
                       "type": "object",
                       "properties": {
-                        "index": { "type": "integer" },
-                        "id": { "type": "string", "description": "[deprecated] ID of the column." },
+                        "index": {
+                          "type": "integer"
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "[deprecated] ID of the column."
+                        },
                         "searchable": {
                           "type": "boolean",
                           "description": "Indicates if the column is vectorized and searchable."
                         },
-                        "hidden": { "type": "boolean", "description": "Indicates if the field is hidden in the UI" },
-                        "order": { "type": "number", "description": "Order of the column in the UI" },
-                        "width": { "type": "number", "description": "Width of the column in the UI" },
-                        "schemaId": { "type": "string", "description": "ID of the schema" },
+                        "hidden": {
+                          "type": "boolean",
+                          "description": "Indicates if the field is hidden in the UI"
+                        },
+                        "order": {
+                          "type": "number",
+                          "description": "Order of the column in the UI"
+                        },
+                        "width": {
+                          "type": "number",
+                          "description": "Width of the column in the UI"
+                        },
+                        "schemaId": {
+                          "type": "string",
+                          "description": "ID of the schema"
+                        },
                         "computed": {
                           "type": "object",
                           "properties": {
-                            "action": { "type": "string", "enum": ["ai", "code", "workflow"] },
-                            "dependencies": { "default": [], "type": "array", "items": { "type": "string" } },
-                            "prompt": { "type": "string", "description": "Prompt when action is \"ai\"" },
-                            "code": { "type": "string", "description": "Code to execute when action is \"code\"" },
+                            "action": {
+                              "type": "string",
+                              "enum": [
+                                "ai",
+                                "code",
+                                "workflow"
+                              ]
+                            },
+                            "dependencies": {
+                              "default": [],
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "prompt": {
+                              "type": "string",
+                              "description": "Prompt when action is \"ai\""
+                            },
+                            "code": {
+                              "type": "string",
+                              "description": "Code to execute when action is \"code\""
+                            },
                             "model": {
                               "default": "gpt-4o",
                               "type": "string",
@@ -2148,9 +3303,13 @@
                               "maxLength": 20,
                               "description": "ID of Workflow to execute when action is \"workflow\""
                             },
-                            "enabled": { "type": "boolean" }
+                            "enabled": {
+                              "type": "boolean"
+                            }
                           },
-                          "required": ["action"],
+                          "required": [
+                            "action"
+                          ],
                           "additionalProperties": false
                         },
                         "typings": {
@@ -2158,60 +3317,107 @@
                           "description": "TypeScript typings for the column. Recommended if the type is \"object\", ex: \"\\{ foo: string; bar: number \\}\""
                         }
                       },
-                      "required": ["index"],
+                      "required": [
+                        "index"
+                      ],
                       "additionalProperties": false
                     }
                   },
-                  "required": ["type", "x-zui"],
+                  "required": [
+                    "type",
+                    "x-zui"
+                  ],
                   "additionalProperties": false
                 },
                 "description": "List of keys/columns in the table."
               },
               "additionalProperties": {
                 "type": "boolean",
-                "enum": [true],
+                "enum": [
+                  true
+                ],
                 "description": "Additional properties can be provided, but they will be ignored if no column matches."
               },
               "required": {
                 "type": "array",
-                "items": { "type": "string" },
+                "items": {
+                  "type": "string"
+                },
                 "description": "Array of required properties."
               },
-              "type": { "type": "string", "enum": ["object"] }
+              "type": {
+                "type": "string",
+                "enum": [
+                  "object"
+                ]
+              }
             },
-            "required": ["properties", "additionalProperties", "type"],
+            "required": [
+              "properties",
+              "additionalProperties",
+              "type"
+            ],
             "additionalProperties": false
           },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string" },
+            "additionalProperties": {
+              "type": "string"
+            },
             "description": "Optional tags to help organize your tables. These should be passed here as an object representing key/value pairs."
           },
           "isComputeEnabled": {
             "type": "boolean",
             "description": "Indicates if the table is enabled for computation."
           },
-          "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of table creation." },
-          "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of the last table update." }
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of table creation."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of the last table update."
+          }
         },
-        "required": ["id", "name", "schema"],
+        "required": [
+          "id",
+          "name",
+          "schema"
+        ],
         "additionalProperties": false
       },
       "Column": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "description": "Unique identifier for the column." },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the column."
+          },
           "name": {
             "type": "string",
             "minLength": 1,
             "maxLength": 30,
             "description": "Name of the column, must be within length limits."
           },
-          "description": { "type": "string", "description": "Optional descriptive text about the column." },
-          "searchable": { "type": "boolean", "description": "Indicates if the column is vectorized and searchable." },
+          "description": {
+            "type": "string",
+            "description": "Optional descriptive text about the column."
+          },
+          "searchable": {
+            "type": "boolean",
+            "description": "Indicates if the column is vectorized and searchable."
+          },
           "type": {
             "type": "string",
-            "enum": ["string", "number", "boolean", "date", "object"],
+            "enum": [
+              "string",
+              "number",
+              "boolean",
+              "date",
+              "object"
+            ],
             "description": "Specifies the data type of the column. Use \"object\" for complex data structures."
           },
           "typings": {
@@ -2221,10 +3427,29 @@
           "computed": {
             "type": "object",
             "properties": {
-              "action": { "type": "string", "enum": ["ai", "code", "workflow"] },
-              "dependencies": { "default": [], "type": "array", "items": { "type": "string" } },
-              "prompt": { "type": "string", "description": "Prompt when action is \"ai\"" },
-              "code": { "type": "string", "description": "Code to execute when action is \"code\"" },
+              "action": {
+                "type": "string",
+                "enum": [
+                  "ai",
+                  "code",
+                  "workflow"
+                ]
+              },
+              "dependencies": {
+                "default": [],
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "prompt": {
+                "type": "string",
+                "description": "Prompt when action is \"ai\""
+              },
+              "code": {
+                "type": "string",
+                "description": "Code to execute when action is \"code\""
+              },
               "model": {
                 "default": "gpt-4o",
                 "type": "string",
@@ -2236,39 +3461,72 @@
                 "maxLength": 20,
                 "description": "ID of Workflow to execute when action is \"workflow\""
               },
-              "enabled": { "type": "boolean" }
+              "enabled": {
+                "type": "boolean"
+              }
             },
-            "required": ["action"],
+            "required": [
+              "action"
+            ],
             "additionalProperties": false
           },
-          "schema": { "type": "object", "additionalProperties": true }
+          "schema": {
+            "type": "object",
+            "additionalProperties": true
+          }
         },
-        "required": ["name", "type"],
+        "required": [
+          "name",
+          "type"
+        ],
         "additionalProperties": false
       },
       "Row": {
         "type": "object",
         "properties": {
-          "id": { "type": "number", "description": "Unique identifier for the row." },
-          "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of row creation." },
-          "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of the last row update." },
+          "id": {
+            "type": "number",
+            "description": "Unique identifier for the row."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of row creation."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of the last row update."
+          },
           "computed": {
             "type": "object",
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "status": { "type": "string" },
-                "error": { "type": "string" },
-                "updatedBy": { "type": "string" },
-                "updatedAt": { "type": "string" }
+                "status": {
+                  "type": "string"
+                },
+                "error": {
+                  "type": "string"
+                },
+                "updatedBy": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
               },
-              "required": ["status"],
+              "required": [
+                "status"
+              ],
               "additionalProperties": false
             }
           },
           "stale": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "[Read-only] List of stale values that are waiting to be recomputed."
           },
           "similarity": {
@@ -2276,14 +3534,23 @@
             "description": "Optional numeric value indicating similarity, when using findTableRows."
           }
         },
-        "required": ["id", "computed"],
+        "required": [
+          "id",
+          "computed"
+        ],
         "additionalProperties": true
       },
       "File": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "description": "File ID" },
-          "botId": { "type": "string", "description": "The ID of the bot the file belongs to" },
+          "id": {
+            "type": "string",
+            "description": "File ID"
+          },
+          "botId": {
+            "type": "string",
+            "description": "The ID of the bot the file belongs to"
+          },
           "key": {
             "type": "string",
             "description": "Unique key for the file. Must be unique across the bot (and the integration, when applicable)."
@@ -2297,22 +3564,42 @@
             "description": "File size in bytes. Non-null if file upload status is \"COMPLETE\".",
             "nullable": true
           },
-          "contentType": { "type": "string", "description": "MIME type of the file's content" },
+          "contentType": {
+            "type": "string",
+            "description": "MIME type of the file's content"
+          },
           "tags": {
             "type": "object",
-            "additionalProperties": { "type": "string", "maxLength": 1000 },
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 1000
+            },
             "description": "The tags of the file as an object of key/value pairs"
           },
           "metadata": {
             "type": "object",
-            "additionalProperties": { "nullable": true },
+            "additionalProperties": {
+              "nullable": true
+            },
             "description": "Metadata of the file as an object of key/value pairs. The values can be of any type."
           },
-          "createdAt": { "type": "string", "description": "File creation timestamp in ISO 8601 format" },
-          "updatedAt": { "type": "string", "description": "File last update timestamp in ISO 8601 format" },
+          "createdAt": {
+            "type": "string",
+            "description": "File creation timestamp in ISO 8601 format"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "File last update timestamp in ISO 8601 format"
+          },
           "accessPolicies": {
             "type": "array",
-            "items": { "type": "string", "enum": ["integrations", "public_content"] },
+            "items": {
+              "type": "string",
+              "enum": [
+                "integrations",
+                "public_content"
+              ]
+            },
             "description": "Access policies configured for the file."
           },
           "index": {
@@ -2335,7 +3622,10 @@
             "type": "string",
             "description": "If the file status is `upload_failed` or `indexing_failed` this will contain the reason of the failure."
           },
-          "expiresAt": { "type": "string", "description": "File expiry timestamp in ISO 8601 format" }
+          "expiresAt": {
+            "type": "string",
+            "description": "File expiry timestamp in ISO 8601 format"
+          }
         },
         "required": [
           "id",
@@ -2362,8 +3652,17 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": { "tables": { "type": "array", "items": { "$ref": "#/components/schemas/Table" } } },
-              "required": ["tables"],
+              "properties": {
+                "tables": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Table"
+                  }
+                }
+              },
+              "required": [
+                "tables"
+              ],
               "title": "listTablesResponse",
               "additionalProperties": false
             }
@@ -2377,8 +3676,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "table": { "$ref": "#/components/schemas/Table" },
-                "rows": { "type": "number", "description": "The total number of rows present in the table." },
+                "table": {
+                  "$ref": "#/components/schemas/Table"
+                },
+                "rows": {
+                  "type": "number",
+                  "description": "The total number of rows present in the table."
+                },
                 "stale": {
                   "type": "number",
                   "description": "The number of stale rows that are waiting to be processed"
@@ -2388,7 +3692,12 @@
                   "description": "The number of rows that are waiting to be indexed (for search)"
                 }
               },
-              "required": ["table", "rows", "stale", "indexing"],
+              "required": [
+                "table",
+                "rows",
+                "stale",
+                "indexing"
+              ],
               "title": "getTableResponse",
               "additionalProperties": false
             }
@@ -2402,9 +3711,17 @@
             "schema": {
               "type": "object",
               "properties": {
-                "table": { "$ref": "#/components/schemas/Table" },
-                "created": { "type": "boolean", "description": "Flag indicating if the table was newly created." },
-                "rows": { "type": "number", "description": "The total number of rows present in the table." },
+                "table": {
+                  "$ref": "#/components/schemas/Table"
+                },
+                "created": {
+                  "type": "boolean",
+                  "description": "Flag indicating if the table was newly created."
+                },
+                "rows": {
+                  "type": "number",
+                  "description": "The total number of rows present in the table."
+                },
                 "stale": {
                   "type": "number",
                   "description": "The number of stale rows that are waiting to be processed"
@@ -2414,7 +3731,13 @@
                   "description": "The number of rows that are waiting to be indexed (for search)"
                 }
               },
-              "required": ["table", "created", "rows", "stale", "indexing"],
+              "required": [
+                "table",
+                "created",
+                "rows",
+                "stale",
+                "indexing"
+              ],
               "title": "getOrCreateTableResponse",
               "additionalProperties": false
             }
@@ -2427,8 +3750,14 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": { "table": { "$ref": "#/components/schemas/Table" } },
-              "required": ["table"],
+              "properties": {
+                "table": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "required": [
+                "table"
+              ],
               "title": "createTableResponse",
               "additionalProperties": false
             }
@@ -2442,10 +3771,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "table": { "$ref": "#/components/schemas/Table" },
-                "rows": { "type": "number", "description": "The total number of rows present in the table." }
+                "table": {
+                  "$ref": "#/components/schemas/Table"
+                },
+                "rows": {
+                  "type": "number",
+                  "description": "The total number of rows present in the table."
+                }
               },
-              "required": ["table", "rows"],
+              "required": [
+                "table",
+                "rows"
+              ],
               "title": "duplicateTableResponse",
               "additionalProperties": false
             }
@@ -2462,19 +3799,52 @@
                 "job": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string" },
-                    "botId": { "type": "string" },
-                    "tableId": { "type": "string" },
-                    "type": { "type": "string", "enum": ["export", "import"] },
+                    "id": {
+                      "type": "string"
+                    },
+                    "botId": {
+                      "type": "string"
+                    },
+                    "tableId": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "export",
+                        "import"
+                      ]
+                    },
                     "status": {
                       "type": "string",
-                      "enum": ["pending", "in_progress", "finalizing", "completed", "failed"]
+                      "enum": [
+                        "pending",
+                        "in_progress",
+                        "finalizing",
+                        "completed",
+                        "failed"
+                      ]
                     },
-                    "progress": { "default": 0, "type": "number" },
-                    "inputFileId": { "type": "string", "nullable": true },
-                    "outputFileId": { "type": "string", "nullable": true },
-                    "createdAt": { "type": "string", "format": "date-time" },
-                    "updatedAt": { "type": "string", "format": "date-time" }
+                    "progress": {
+                      "default": 0,
+                      "type": "number"
+                    },
+                    "inputFileId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "outputFileId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
                   },
                   "required": [
                     "id",
@@ -2490,7 +3860,9 @@
                   "additionalProperties": false
                 }
               },
-              "required": ["job"],
+              "required": [
+                "job"
+              ],
               "title": "exportTableResponse",
               "additionalProperties": false
             }
@@ -2509,19 +3881,52 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "id": { "type": "string" },
-                      "botId": { "type": "string" },
-                      "tableId": { "type": "string" },
-                      "type": { "type": "string", "enum": ["export", "import"] },
+                      "id": {
+                        "type": "string"
+                      },
+                      "botId": {
+                        "type": "string"
+                      },
+                      "tableId": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "export",
+                          "import"
+                        ]
+                      },
                       "status": {
                         "type": "string",
-                        "enum": ["pending", "in_progress", "finalizing", "completed", "failed"]
+                        "enum": [
+                          "pending",
+                          "in_progress",
+                          "finalizing",
+                          "completed",
+                          "failed"
+                        ]
                       },
-                      "progress": { "default": 0, "type": "number" },
-                      "inputFileId": { "type": "string", "nullable": true },
-                      "outputFileId": { "type": "string", "nullable": true },
-                      "createdAt": { "type": "string", "format": "date-time" },
-                      "updatedAt": { "type": "string", "format": "date-time" }
+                      "progress": {
+                        "default": 0,
+                        "type": "number"
+                      },
+                      "inputFileId": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "outputFileId": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
                     },
                     "required": [
                       "id",
@@ -2537,7 +3942,9 @@
                   }
                 }
               },
-              "required": ["jobs"],
+              "required": [
+                "jobs"
+              ],
               "title": "getTableJobsResponse",
               "additionalProperties": false
             }
@@ -2554,19 +3961,52 @@
                 "job": {
                   "type": "object",
                   "properties": {
-                    "id": { "type": "string" },
-                    "botId": { "type": "string" },
-                    "tableId": { "type": "string" },
-                    "type": { "type": "string", "enum": ["export", "import"] },
+                    "id": {
+                      "type": "string"
+                    },
+                    "botId": {
+                      "type": "string"
+                    },
+                    "tableId": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "export",
+                        "import"
+                      ]
+                    },
                     "status": {
                       "type": "string",
-                      "enum": ["pending", "in_progress", "finalizing", "completed", "failed"]
+                      "enum": [
+                        "pending",
+                        "in_progress",
+                        "finalizing",
+                        "completed",
+                        "failed"
+                      ]
                     },
-                    "progress": { "default": 0, "type": "number" },
-                    "inputFileId": { "type": "string", "nullable": true },
-                    "outputFileId": { "type": "string", "nullable": true },
-                    "createdAt": { "type": "string", "format": "date-time" },
-                    "updatedAt": { "type": "string", "format": "date-time" }
+                    "progress": {
+                      "default": 0,
+                      "type": "number"
+                    },
+                    "inputFileId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "outputFileId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
                   },
                   "required": [
                     "id",
@@ -2582,7 +4022,9 @@
                   "additionalProperties": false
                 }
               },
-              "required": ["job"],
+              "required": [
+                "job"
+              ],
               "title": "importTableResponse",
               "additionalProperties": false
             }
@@ -2596,14 +4038,20 @@
             "schema": {
               "type": "object",
               "properties": {
-                "table": { "$ref": "#/components/schemas/Table" },
+                "table": {
+                  "$ref": "#/components/schemas/Table"
+                },
                 "staleColumns": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "List of columns that have become stale following the modification."
                 }
               },
-              "required": ["table"],
+              "required": [
+                "table"
+              ],
               "title": "updateTableResponse",
               "additionalProperties": false
             }
@@ -2616,8 +4064,14 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": { "table": { "$ref": "#/components/schemas/Table" } },
-              "required": ["table"],
+              "properties": {
+                "table": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "required": [
+                "table"
+              ],
               "title": "renameTableColumnResponse",
               "additionalProperties": false
             }
@@ -2628,7 +4082,11 @@
         "description": "Confirmation that the table has been deleted.",
         "content": {
           "application/json": {
-            "schema": { "type": "object", "title": "deleteTableResponse", "additionalProperties": false }
+            "schema": {
+              "type": "object",
+              "title": "deleteTableResponse",
+              "additionalProperties": false
+            }
           }
         }
       },
@@ -2638,8 +4096,14 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": { "row": { "$ref": "#/components/schemas/Row" } },
-              "required": ["row"],
+              "properties": {
+                "row": {
+                  "$ref": "#/components/schemas/Row"
+                }
+              },
+              "required": [
+                "row"
+              ],
               "title": "getTableRowResponse",
               "additionalProperties": false
             }
@@ -2653,17 +4117,36 @@
             "schema": {
               "type": "object",
               "properties": {
-                "rows": { "type": "array", "items": { "$ref": "#/components/schemas/Row" } },
-                "hasMore": { "type": "boolean", "description": "Flag indicating if there are more rows to fetch." },
-                "offset": { "type": "integer" },
-                "limit": { "type": "integer" },
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Row"
+                  }
+                },
+                "hasMore": {
+                  "type": "boolean",
+                  "description": "Flag indicating if there are more rows to fetch."
+                },
+                "offset": {
+                  "type": "integer"
+                },
+                "limit": {
+                  "type": "integer"
+                },
                 "warnings": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Alerts for minor issues that don't block the operation but suggest possible improvements."
                 }
               },
-              "required": ["rows", "hasMore", "offset", "limit"],
+              "required": [
+                "rows",
+                "hasMore",
+                "offset",
+                "limit"
+              ],
               "title": "findTableRowsResponse",
               "additionalProperties": false
             }
@@ -2677,19 +4160,30 @@
             "schema": {
               "type": "object",
               "properties": {
-                "rows": { "type": "array", "items": { "$ref": "#/components/schemas/Row" } },
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Row"
+                  }
+                },
                 "warnings": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Alerts for minor issues that don't block the operation but suggest possible improvements."
                 },
                 "errors": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Critical issues in specific elements that prevent their successful processing, allowing partial operation success."
                 }
               },
-              "required": ["rows"],
+              "required": [
+                "rows"
+              ],
               "title": "createTableRowsResponse",
               "additionalProperties": false
             }
@@ -2702,8 +4196,14 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": { "deletedRows": { "type": "number" } },
-              "required": ["deletedRows"],
+              "properties": {
+                "deletedRows": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "deletedRows"
+              ],
               "title": "deleteTableRowsResponse",
               "additionalProperties": false
             }
@@ -2717,19 +4217,30 @@
             "schema": {
               "type": "object",
               "properties": {
-                "rows": { "type": "array", "items": { "$ref": "#/components/schemas/Row" } },
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Row"
+                  }
+                },
                 "warnings": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Alerts for minor issues that don't block the operation but suggest possible improvements."
                 },
                 "errors": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Critical issues in specific elements that prevent their successful processing, allowing partial operation success."
                 }
               },
-              "required": ["rows"],
+              "required": [
+                "rows"
+              ],
               "title": "updateTableRowsResponse",
               "additionalProperties": false
             }
@@ -2743,20 +4254,37 @@
             "schema": {
               "type": "object",
               "properties": {
-                "inserted": { "type": "array", "items": { "$ref": "#/components/schemas/Row" } },
-                "updated": { "type": "array", "items": { "$ref": "#/components/schemas/Row" } },
+                "inserted": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Row"
+                  }
+                },
+                "updated": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Row"
+                  }
+                },
                 "warnings": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Alerts for minor issues that don't block the operation but suggest possible improvements."
                 },
                 "errors": {
                   "type": "array",
-                  "items": { "type": "string" },
+                  "items": {
+                    "type": "string"
+                  },
                   "description": "Critical issues in specific elements that prevent their successful processing, allowing partial operation success."
                 }
               },
-              "required": ["inserted", "updated"],
+              "required": [
+                "inserted",
+                "updated"
+              ],
               "title": "upsertTableRowsResponse",
               "additionalProperties": false
             }
@@ -2790,7 +4318,9 @@
                 },
                 "tags": {
                   "type": "object",
-                  "additionalProperties": { "type": "string" },
+                  "additionalProperties": {
+                    "type": "string"
+                  },
                   "description": "Optional tags to help organize your tables. These should be passed here as an object representing key/value pairs."
                 },
                 "isComputeEnabled": {
@@ -2798,7 +4328,9 @@
                   "description": "Indicates if the table is enabled for computation."
                 }
               },
-              "required": ["schema"],
+              "required": [
+                "schema"
+              ],
               "title": "getOrCreateTableBody",
               "additionalProperties": false
             }
@@ -2835,7 +4367,9 @@
                 },
                 "tags": {
                   "type": "object",
-                  "additionalProperties": { "type": "string" },
+                  "additionalProperties": {
+                    "type": "string"
+                  },
                   "description": "Optional tags to help organize your tables. These should be passed here as an object representing key/value pairs."
                 },
                 "isComputeEnabled": {
@@ -2843,7 +4377,10 @@
                   "description": "Indicates if the table is enabled for computation."
                 }
               },
-              "required": ["name", "schema"],
+              "required": [
+                "name",
+                "schema"
+              ],
               "title": "createTableBody",
               "additionalProperties": false
             }
@@ -2857,8 +4394,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "tableName": { "type": "string" },
-                "schemaOnly": { "type": "boolean", "description": "Only duplicate the schema, not the content" },
+                "tableName": {
+                  "type": "string"
+                },
+                "schemaOnly": {
+                  "type": "boolean",
+                  "description": "Only duplicate the schema, not the content"
+                },
                 "factor": {
                   "type": "number",
                   "description": "Use a different factor for the table. Leave empty to use the same as the duplicated table."
@@ -2882,7 +4424,9 @@
                   "description": "The file ID to import. It must have been uploaded to the Files API before. Supported formats: CSV, JSON (gzipped or not)"
                 }
               },
-              "required": ["fileId"],
+              "required": [
+                "fileId"
+              ],
               "title": "importTableBody",
               "additionalProperties": false
             }
@@ -2912,7 +4456,9 @@
                 },
                 "tags": {
                   "type": "object",
-                  "additionalProperties": { "type": "string" },
+                  "additionalProperties": {
+                    "type": "string"
+                  },
                   "description": "Optional tags to help organize your tables. These should be passed here as an object representing key/value pairs."
                 },
                 "isComputeEnabled": {
@@ -2933,7 +4479,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": { "type": "string", "description": "The existing name of the column." },
+                "name": {
+                  "type": "string",
+                  "description": "The existing name of the column."
+                },
                 "newName": {
                   "description": "The new name to assign to the column.",
                   "type": "string",
@@ -2941,7 +4490,10 @@
                   "maxLength": 30
                 }
               },
-              "required": ["name", "newName"],
+              "required": [
+                "name",
+                "newName"
+              ],
               "title": "renameTableColumnBody",
               "additionalProperties": false
             }
@@ -2991,7 +4543,10 @@
                 "orderDirection": {
                   "default": "asc",
                   "type": "string",
-                  "enum": ["asc", "desc"],
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ],
                   "description": "Specifies the direction of sorting, either ascending or descending."
                 }
               },
@@ -3010,7 +4565,11 @@
               "properties": {
                 "rows": {
                   "type": "array",
-                  "items": { "type": "object", "properties": {}, "additionalProperties": true },
+                  "items": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true
+                  },
                   "minItems": 1,
                   "maxItems": 1000
                 },
@@ -3019,7 +4578,9 @@
                   "description": "Ensure computed columns are fully processed before returning the result. This is applicable only when the number of rows involved is fewer than 1."
                 }
               },
-              "required": ["rows"],
+              "required": [
+                "rows"
+              ],
               "title": "createTableRowsBody",
               "additionalProperties": false
             }
@@ -3033,7 +4594,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "ids": { "type": "array", "items": { "type": "number" }, "maxItems": 1000 },
+                "ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 1000
+                },
                 "filter": {
                   "type": "object",
                   "additionalProperties": true,
@@ -3061,8 +4628,14 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "properties": { "id": { "type": "number" } },
-                    "required": ["id"],
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id"
+                    ],
                     "additionalProperties": true
                   },
                   "minItems": 1,
@@ -3074,7 +4647,9 @@
                   "description": "Ensure computed columns are fully processed before returning the result. This is applicable only when the number of rows involved is fewer than 1."
                 }
               },
-              "required": ["rows"],
+              "required": [
+                "rows"
+              ],
               "title": "updateTableRowsBody",
               "additionalProperties": false
             }
@@ -3092,7 +4667,11 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "properties": { "id": { "type": "number" } },
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      }
+                    },
                     "additionalProperties": true
                   },
                   "minItems": 1,
@@ -3110,7 +4689,9 @@
                   "description": "Ensure computed columns are fully processed before returning the result. This is applicable only when the number of rows involved is fewer than 1."
                 }
               },
-              "required": ["rows"],
+              "required": [
+                "rows"
+              ],
               "title": "upsertTableRowsBody",
               "additionalProperties": false
             }
@@ -3119,5 +4700,11 @@
       }
     },
     "parameters": {}
-  }
+  },
+  "security": [
+      {
+        "BearerAuth": [],
+        "BotIdHeader": []
+      }
+    ]
 }
