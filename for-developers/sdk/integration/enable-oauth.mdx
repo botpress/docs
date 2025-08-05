@@ -1,0 +1,22 @@
+---
+title: Enable OAuth
+sidebarTitle: Allow installing with OAuth
+---
+
+Some Botpress maintained integrations allow Bot developers to install them using either a manual configuration with a bunch of tokens or by using OAuth, i.e. by clicking a big shiny button and authorizing the integration to access your information. This is the case of Slack, Github, Linear, Notion and many more.
+
+This feature is not reserved to Botpress integration developers. You can also enable it for your own integrations. This guide will walk you through the steps to enable OAuth for your integration.
+
+## Steps
+
+1. You need to create an OAuth application on the platform you want to integrate with. This step is specific to each platform, so please refer to their documentation. You'll need to configure this application with the following webhook URL: `https://webhook.botpress.cloud/sandbox/global/$YOUR_INTEGRATION_NAME`.
+
+2. In your integration definition, you must add a config type with a `linkTemplateScript` field. This field should contain the name of a vrl script localted in the directory of your integration. This script written in VRL is used to generate the OAuth link to navigate to when clicking the button in the integration configuration page. Here's an example of the link for the Slack integration:
+
+`https://slack.com/oauth/v2/authorize?client_id=$CLIENT_ID&state=$WEBHOOK_ID&redirect_uri=https://webhook.botpress.cloud/$WEBHOOK_ID/oauth&scope=channels:history`
+
+The redirect URI will also call the Botpress webhook endpoint and will be forwarded to the proper integration with the `/oauth` path.
+
+3. In your integration implementation, you must handle requests made with the `/oauth` path and store the access token in a state. You must also call the `configureIntegration` operation to set the ID identifying the bot in the oauth application. This ID should be found in the oauth request.
+
+4. In your integration definition, you must add an `identifier` field with an object containing the `extractScript` field. This field should contain the name of a vrl script located in the directory of your integration. This script is used when receiving request by your application on the global webhook endpoint to extract the application user. This identifier is then used by boptress to know to which bot the request should be forwarded.
