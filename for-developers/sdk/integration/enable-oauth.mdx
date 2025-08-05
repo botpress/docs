@@ -5,22 +5,59 @@ sidebarTitle: Allow installing with OAuth
 
 Some Botpress maintained integrations allow Bot developers to install them using either a manual configuration with a bunch of tokens or by using OAuth, i.e. by clicking a big shiny button and authorizing the integration to access your information. This is the case of Slack, Github, Linear, Notion and many more.
 
-This feature is not reserved to Botpress integration developers. You can also enable it for your own integrations. This guide will walk you through the steps to enable OAuth for your integration.
+This feature isn't limited to official Botpress integrations. You can also enable OAuth in your own integrations too. This guide walks you through how to do that.
 
 ## Steps
 
-1. You need to create an OAuth application on the platform you want to integrate with. This step is specific to each platform, so please refer to their documentation. You'll need to configure this application with the following webhook URL: `https://webhook.botpress.cloud/integration/global/$YOUR_INTEGRATION_NAME`.
+1. **Create an Application in the external service**
 
-2. In your integration definition, you must add a config type with a `linkTemplateScript` field. This field should contain the name of a vrl script localted in the directory of your integration. This script written in VRL is used to generate the OAuth link to navigate to when clicking the button in the integration configuration page. Here's an example of the link for the Slack integration:
+On the platform you're integrating with, create an OAuth application. This step varies per platform (Slack, GitHub, etc.), so refer to their documentation.
 
-`https://slack.com/oauth/v2/authorize?client_id=$CLIENT_ID&state=$WEBHOOK_ID&redirect_uri=https://webhook.botpress.cloud/oauth&scope=channels:history`
+When asked for a redirect URI or webhook, use:
 
-The state query param must contain the webhook ID of your integration. This is used to identify the integration when the OAuth flow is completed. The redirect URI must be set to `https://webhook.botpress.cloud/oauth`.
+  https://webhook.botpress.cloud/integration/global/$YOUR_INTEGRATION_NAME
 
-The redirect URI will also call the Botpress webhook endpoint and will be forwarded to the proper integration with the `/oauth` path.
+2. **Add a link template script in your integration definition**
 
-3. In your integration implementation, you must handle requests made with the `/oauth` path and store the access token in a state. You must also call the `configureIntegration` operation to set the ID identifying the bot in the oauth application. This ID should be found in the oauth request.
+In your integration definition, add a `config` type with a `linkTemplateScript` field. This field is a path to a `.vrl` script relative to your integration's directory. The script generates the OAuth URL that users will be redirected to when clicking the OAuth button in the integration UI.
 
-4. In your integration definition, you must add an `identifier` field with an object containing the `extractScript` field. This field should contain the name of a vrl script located in the directory of your integration. This script is used when receiving request by your application on the global webhook endpoint to extract the application user. This identifier is then used by boptress to know to which bot the request should be forwarded.
+For Slack, the link looks something like this:
 
-Note: you might have to add global secrets to your integrations to provide credentials to the OAuth application. For that your can refer to the [Secrets](./concepts#secrets) guide.
+```vrl
+https://slack.com/oauth/v2/authorize?client_id={{ clientId }}&state={{ webhookId }}&redirect_uri={{ webhookUrl }}/oauth
+```
+
+Notes:
+- The `state` parameter **must** contain the webhook ID — it's used by Botpress to identify which bot and which integration initiated the flow.
+- The `redirect_uri` **must** be:
+  `https://webhook.botpress.cloud/oauth`
+
+When the OAuth flow completes, the platform will redirect to this URL, and Botpress will forward the request to your integration's webhook handler.
+
+3. **Handle the `/oauth` path in your integration**
+
+In your integration implementation, handle incoming requests with the `/oauth` path.
+
+Your code should:
+
+- Extract the access token and any other relevant data from the request
+- Store the token in an integration's [state](./concepts#states)
+- Call `configureIntegration` to associate the integration with a user or workspace ID from the third-party platform
+
+4. **Add an `identifier` with an `extractScript`**
+
+In your integration definition, add an `identifier` field with an `extractScript`:
+
+```ts
+identifier: {
+  extractScript: 'extract-id.vrl'
+}
+```
+
+This script is used when receiving incoming requests on the global webhook. It should extract an external user or workspace ID from the request. Botpress uses this ID to route the request to the correct bot.
+
+## Use global secrets
+
+If your OAuth flow requires credentials like client_id or client_secret, you can provide them using global [secrets](./concepts#secrets). These can be accessed from your VRL scripts or code.
+
+Once all of this is set up, users installing your integration will be able to authenticate with a single click — just like they can with Slack, GitHub, and other official integrations.
