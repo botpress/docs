@@ -1998,6 +1998,18 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "WorkspaceIdHeader": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-workspace-id",
+        "description": "Your workspace ID."
+      }
+    },
     "schemas": {
       "Bot": {
         "type": "object",
@@ -10256,5 +10268,11 @@
       }
     },
     "parameters": {}
-  }
+  },
+  "security": [
+      {
+        "BearerAuth": [],
+        "WorkspaceIdHeader": []
+      }
+    ]
 }
