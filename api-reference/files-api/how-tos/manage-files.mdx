@@ -14,7 +14,7 @@ const client = new Client({
   botId: process.env.BOTPRESS_BOT_ID,
 })
 
-const file = await client.getFile('YOUR_FILE_ID')
+const file = await client.getFile({ id: "YOUR_FILE_ID" });
 ```
 
 ```ts Calling the API directly
