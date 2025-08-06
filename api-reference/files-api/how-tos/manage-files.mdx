@@ -167,7 +167,7 @@ To delete a file you can use the "Delete File" API endpoint.
 <CodeGroup>
 
 ```ts Using the Botpress Client
-await client.deleteFile('YOUR_FILE_ID')
+await client.deleteFile({ id: "YOUR_FILE_ID" })
 ```
 
 ```ts Calling the API directly
