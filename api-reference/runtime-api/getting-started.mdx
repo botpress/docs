@@ -8,16 +8,11 @@ The Runtime API is designed for bots and integrations to handle messages, events
 
 All the endpoints of the Runtime API are located behind the `chat` base path (api.botpress.cloud/v1/chat/).
 
-## Using cURL
+<Warning>
+    The Runtime API has many nuances that aren't relevant to bot developers — because of this, we recommend only making your requests using the official [Botpress TypeScript Client](#using-the-official-typescript-client), which simplifies some of the API's trickier aspects.
 
-Calling the runtime API can be done using any HTTP client, such as `curl`, `axios`, or `fetch`. Here's an example using `curl`:
-
-```bash
-token="$YOUR_BOTPRESS_TOKEN"
-bot_id="$YOUR_BOT_ID"
-# List your bot's messages
-curl -H "Authorization: bearer $token" -H "x-bot-id: $bot_id" https://api.botpress.cloud/v1/chat/messages
-```
+    If you decide to interact with the Runtime API using another HTTP client, you may experience unintended behaviour or encounter issues.
+</Warning>
 
 ## Using the Official TypeScript Client
 
