@@ -1,45 +1,158 @@
 ---
 title: Nodes
-description: The primary unit of conversational logic in your agent.
 sidebarTitle: Introduction
 ---
 
-Nodes are the primary units of conversational logic of your agent. A node generally executes an action or a set of actions and transitions to another node or flow. You can think of a node as a step in a conversation.
+Nodes are the **primary units of conversational logic** in your bot.
 
-A single node can have multiple content types, instructions, and transitions. When there aren't any more transitions, the conversation ends.
+Think of a Node as a single step in a conversation. It executes a sequence of actions — like sending a message, capturing information from a user, or performing a task — then transitions to the next Node.
 
-# Types of Nodes
+<Frame>
+  <img alt="Nodes" className="block dark:hidden" src="./assets/node.png" />
+  <img alt="Nodes" className="hidden dark:block" src="./assets/node-dark.png" />
+</Frame>
 
-## Standard Node
+---
 
-The Standard node is a versatile building block in your bot's workflow. It allows you to add both instructions and transitions to your flow, and it can be used to represent a variety of steps in the conversation with the user.
+## Overview
 
-You can add instructions to the Standard node to define what the bot should do at that point in the conversation, such as sending a message or asking the user for input. You can also add transitions to the Standard node to specify the conditions under which the conversation should proceed to the next node.
+An individual Node's behaviour depends on what [Cards](/learn/reference/cards/introduction) it contains. You can add any combination of Cards to a Node to achieve your desired behaviour.
 
-Standard nodes can be connected to other nodes within the same workflow using transitions, allowing you to create complex conversation flows that adapt to the user's input and actions. They are essential building blocks for creating conversational AI experiences that are engaging and useful for your users.
+A Node [transitions to the next Node](#transition-between-Nodes) when either:
 
-## Autonomous Node
+- It finishes executing all its Cards
+- One of its Cards manually transitions to a new Node. You can set up manual transitions based on [user choice](/learn/reference/cards/capture-information), [true/false conditions](/learn/reference/cards/flow-logic), and more.
 
-The Autonomous node uses an LLM to determine when, and in what order, to execute the cards it contains. Based on the context of the conversation, as well as a set of instructions provided by the builder, Autonomous nodes manage conversation flows and decide what actions to perform.
+<Note>
+  Some Nodes have specific properties that make them behave differently — check out [Types of Node](#types-of-node) for
+  more details.
+</Note>
 
-Autonomous Nodes can be created by right-clicking in the studio and selecting "Autonomous Node" from the dropdown menu.
+<Tip>
+  A group of Nodes is called a [Workflow](/learn/reference/workflows). You can use Workflows to organize your bot's
+  behaviour.
+</Tip>
 
-## Start Node
+---
 
-The Start Node is a specialized Entry Node that is only available in the main flow of a Botpress bot. It serves as the starting point for the conversation and can only execute transitions to other standard nodes.
+## Usage
 
-## Entry Node
+### Add a Node
 
-Every workflow in your bot, except the main flow, starts with an Entry node. The Entry node is the starting point for each individual workflow and can only execute transitions to other standard nodes within that workflow. It is used to define the entry point for the workflow and the initial conditions that must be met for the workflow to start executing.
+To add a new Node:
 
-## Exit Node
+1. Right-click anywhere in a Workflow.
+2. Select a [type of Node](#types-of-node) from the popup menu.
 
-Similar to the Entry node, every workflow in your bot, except the main flow, should end with an Exit node. The Exit node is the final node in a workflow and can only receive transitions from other standard nodes within that workflow. It is used to define the exit point for the workflow and specify the conditions that must be met for the workflow to end. The Exit node typically contains cleanup or finalization logic, such as sending a message to the user or updating a database, before the workflow is completed.
+### Transition between Nodes
 
-## End Node
+To create a transition between two Nodes:
 
-The End Node is a unique node in your bot's Main Flow. Its purpose is to clear the conversation session and reset the bot to its initial state once it is reached. When the End Node is executed, it will erase all variables and user data associated with the conversation and set the cursor back to the beginning of the Main Flow.
+1. Select and hold the right edge of the Node you want to transition _from_.
+2. Drag outwards, then release on the left edge of the Node you want to transition _to_. This will create a transition between the two Nodes:
 
-The End Node is typically used when you want to reset the conversation with the user and start a new session from scratch. It is particularly useful for bots that handle sensitive or personal information, where it is important to ensure that previous session data is not accessible to subsequent users.
+<Frame>
+  <img alt="Transition" className="block dark:hidden" src="./assets/transition.png" />
+  <img alt="Transition" className="hidden dark:block" src="./assets/transition-dark.png" />
+</Frame>
 
-Note that the End Node is only available in the Main Flow of your bot and cannot be used in other workflows.
+### Move a Node
+
+To move a Node around your Workflow, just drag and drop it wherever you like.
+
+### Rename a Node
+
+To rename a Node, just select its title and type in a new name.
+
+### Test a Node
+
+You can test a specific Node in the Studio's [Emulator](/learn/reference/emulator). Just select any Node, then press the <Icon icon="play" /> Play button to start a conversation with your bot from that Node.
+
+### Copy/Delete a Node
+
+Right-click any Node to copy or delete it.
+
+---
+
+## Types of Node
+
+Nodes behave differently and have different available Cards based on their type. Here's a breakdown of each type of Node:
+
+### Standard Node
+
+Standard Nodes execute each of their Cards one-by-one, then transition to the next Node. They're the most basic type of Node, and are useful when you need full control over your bot's behaviour.
+
+### Autonomous Node
+
+The Autonomous Node uses AI to make decisions — like what your bot should say or what tools it should use.
+
+Unlike a standard Node, which executes its Cards one by one, the Autonomous Node uses a Large Language Model (LLM) to decide when to execute its Cards. It can understand the conversation’s context, write responses to users, and leverage the tools you give it.
+
+<Tip>For more information, check out the [Autonomous Node guide](/learn/reference/nodes/autonomous-node).</Tip>
+
+### Start Node
+
+The Start Node is the entrance point to every conversation with your bot. It's only available in the [Main Workflow](/learn/reference/workflows#main), can't be modified/deleted, and can't use Cards.
+
+You can select the Start Node to configure:
+
+- Which [Knowledge Base](/learn/reference/knowledge-base/introduction) your bot has access to
+- Whether your bot has access to the [Vision Agent](/learn/reference/agents/vision-agent)
+
+### Entry Node
+
+The Entry Node is the start of every Workflow in your bot (except for the [Main Workflow](/learn/reference/workflows#main)). It executes whenever you [transition to a new Workflow](/learn/reference/workflows#transition-to-a-workflow) and can't be deleted.
+
+The only Cards you can add to an Entry Node are:
+
+- [Expression/Intent](/learn/reference/cards/flow-logic) Cards
+- [Log](/learn/reference/cards/utilities#log) Cards
+
+<Tip>
+  You can toggle variables within an Entry Node — check out the guide to [passing variables between
+  Workflows](/learn/reference/variables/pass-between-workflows) for more information.
+</Tip>
+
+### Exit Node
+
+The Exit Node is the end of every custom Workflow in your bot ([built-in Workflows](/learn/reference/workflows#built-in-workflows) end with an [End Node](/learn/reference/nodes/introduction#end-node) instead). It defines the exit point for the Workflow — each custom Workflow must contain at least one Exit Node.
+
+Exit Nodes can't use Cards.
+
+<Tip>
+  You can configure the Exit Node to pass a variable back to its parent Workflow — check out the guide to [passing
+  variables between Workflows](/learn/reference/variables/pass-between-workflows) for more information.
+</Tip>
+
+### End Node
+
+The End Node is the end point of every conversation with your bot. It has no configuration options and can't use Cards.
+
+Only End Nodes can explicitly end a conversation, which:
+
+- Clears the conversation session
+- Erases all variables and user data
+- Resets the bot to its initial state.
+
+Each [built-in Workflow](/learn/reference/workflows#built-in-workflows) must contain at least one End node. You can also add End Nodes to custom Workflows.
+
+### Triggers
+
+Triggers are a special kind of Node that only execute when a certain event occurs. They're different from regular Nodes in a few ways:
+
+- You can’t transition from a regular Node to a Trigger. Any Triggers in your Workflow will only execute when the event they listen for occurs.
+- Unlike other Nodes, you can’t add or remove Cards from a Trigger. Each Trigger is built around a single Card that determines when it executes.
+
+<Tip>For more information, check out the [Triggers guide](/learn/reference/triggers).</Tip>
+
+### Exception handlers
+
+Exception handlers are Nodes that execute whenever your bot encounters an error. They're optional, have no configuration options, and can't contain any Cards.
+
+By default, your bot uses the built-in [Error Workflow](/learn/reference/workflows#error) to handle errors, regardless of which Workflow the error occurred in — exception handlers let you handle errors differently for specific Workflows.
+
+You can only add exceptional handlers to the [Main Workflow](/learn/reference/workflows#main) or to custom Workflows. Each Workflow can contain one exception handler.
+
+### Comments
+
+You can leave comments, images or videos in your Workflow. They have no effect on your bot's behaviour — you can use them to annotate your Workflows and make them easier to understand for any collaborators.
