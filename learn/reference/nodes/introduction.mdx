@@ -14,9 +14,46 @@ Think of a Node as a single step in a conversation. It executes a sequence of ac
 
 ## Overview
 
-A Node's behaviour depends on what [Cards](/learn/reference/cards/introduction) it contains. Typically, a Node will execute each of its Cards one by one.
+An individual Node's behaviour depends on what [Cards](/learn/reference/cards/introduction) it contains. You can add any combination of Cards to a Node to achieve your desired behaviour.
 
-## Add a Node
+A Node [transitions to the next Node](#transition-to-from-a-node) when either:
+
+- It finishes executing all its Cards
+- One of its Cards manually transitions to a new Node. You can set up manual transitions based on [user choice](/learn/reference/cards/capture-information), [true/false conditions](/learn/reference/cards/flow-logic), and more.
+
+<Note>
+  Some Nodes have specific properties that make them behave differently — check out [Types of Node](#types-of-node) for
+  more details.
+</Note>
+
+<Tip>
+  A group of Nodes is called a [Workflow](/learn/reference/workflows). You can use Workflows to organize your bot's
+  behaviour.
+</Tip>
+
+## Usage
+
+### Add a Node
+
+To add a new Node:
+
+1. Right-click anywhere in a Workflow.
+2. Select a type of Node from the popup menu.
+
+### Transition to/from a Node
+
+To create a transition to/from a Node:
+
+1. Select and hold one of the Node's edges and drag outwards.
+2. Release on another Node's edge. This will create a transition between the two Nodes.
+
+Any transitions to a Node's left edge determine transitions _to_ that Node, while transitions from its right edge determine transitions _from_ that Node:
+
+### Rename a Node
+
+### Test a Node
+
+### Copy a Node
 
 ## Types of Node
 
@@ -55,3 +92,5 @@ The End Node is typically used when you want to reset the conversation with the 
 Note that the End Node is only available in the Main Flow of your bot and cannot be used in other workflows.
 
 ### Triggers
+
+### Comment Node
