@@ -1,0 +1,171 @@
+---
+title: Error handling
+---
+
+When Webchat encounters an error, it displays a dedicated error screen instead of the normal chat interface. Here's a breakdown of all possible error screens:
+
+## Configuration Errors
+
+### Missing client ID
+
+<Frame>
+  <img alt="Missing client ID" className="block dark:hidden" src="./assets/missing-client-id.png" />
+  <img alt="Missing client ID" className="hidden dark:block" src="./assets/missing-client-id-dark.png" />
+</Frame>
+
+- **Cause**: Client ID not provided during initialization
+- **Solution**: Provide a valid client ID
+
+### Invalid client ID
+
+<Frame>
+  <img alt="Invalid client ID" className="block dark:hidden" src="./assets/invalid-client-id.png" />
+  <img alt="Invalid client ID" className="hidden dark:block" src="./assets/invalid-client-id-dark.png" />
+</Frame>
+
+- **Cause**: Provided Client ID is not valid
+- **Solution**: Use a valid Botpress Client ID
+
+### Missing API URL
+
+<Frame>
+  <img alt="Missing API URL" className="block dark:hidden" src="./assets/missing-api-url.png" />
+  <img alt="Missing API URL" className="hidden dark:block" src="./assets/missing-api-url-dark.png" />
+</Frame>
+
+- **Cause**: API URL not provided during initialization
+- **Solution**: Provide a valid API URL
+
+### Invalid API URL
+
+<Frame>
+  <img alt="Invalid API URL" className="block dark:hidden" src="./assets/invalid-api-url.png" />
+  <img alt="Invalid API URL" className="hidden dark:block" src="./assets/invalid-api-url-dark.png" />
+</Frame>
+
+- **Cause**: API URL format is incorrect
+- **Solution**: Use HTTPS URL format
+
+### Missing bot ID
+
+<Frame>
+  <img alt="Missing bot ID" className="block dark:hidden" src="./assets/missing-bot-id.png" />
+  <img alt="Missing bot ID" className="hidden dark:block" src="./assets/missing-bot-id-dark.png" />
+</Frame>
+
+- **Cause**: Bot ID not provided during initialization
+- **Solution**: Provide a valid Bot ID
+
+### Missing config URL
+
+<Frame>
+  <img alt="Missing config URL" className="block dark:hidden" src="./assets/missing-config-url.png" />
+  <img alt="Missing config URL" className="hidden dark:block" src="./assets/missing-config-url-dark.png" />
+</Frame>
+
+- **Cause**: No configuration URL provided
+- **Solution**: Provide a configuration URL
+
+### Invalid config URL
+
+<Frame>
+  <img alt="Invalid config URL" className="block dark:hidden" src="./assets/invalid-config-url.png" />
+  <img alt="Invalid config URL" className="hidden dark:block" src="./assets/invalid-config-url-dark.png" />
+</Frame>
+
+- **Cause**: Provided configuration URL is invalid
+- **Solution**: Use a valid configuration URL
+
+### Invalid config
+
+<Frame>
+  <img alt="Invalid configuration" className="block dark:hidden" src="./assets/invalid-config.png" />
+  <img alt="Invalid configuration" className="hidden dark:block" src="./assets/invalid-config-dark.png" />
+</Frame>
+
+- **Cause**: Webchat configuration file is malformed
+- **Solution**: Fix configuration file format
+
+### Config access denied
+
+<Frame>
+  <img alt="Config access denied" className="block dark:hidden" src="./assets/config-access-denied.png" />
+  <img alt="Config access denied" className="hidden dark:block" src="./assets/config-access-denied-dark.png" />
+</Frame>
+
+- **Cause**: Access to configuration file is restricted
+- **Solution**: Check credentials and URL accessibility
+
+## Bot Errors
+
+### Bot is blocked
+
+<Frame>
+  <img alt="Bot is blocked" className="block dark:hidden" src="./assets/bot-is-blocked.png" />
+  <img alt="Bot is blocked" className="hidden dark:block" src="./assets/bot-is-blocked-dark.png" />
+</Frame>
+
+- **Cause**: Bot has been temporarily paused
+- **Solution**: Check bot status in [Dashboard](/learn/get-started/dashboard/)
+
+### Quota exceeded
+
+<Frame>
+  <img alt="Quota exceeded" className="block dark:hidden" src="./assets/quota-exceeded.png" />
+  <img alt="Quota exceeded" className="hidden dark:block" src="./assets/quota-exceeded-dark.png" />
+</Frame>
+
+- **Cause**: Bot has reached usage limits
+- **Solution**: Check usage quotas and limits in [Dashboard](/learn/get-started/dashboard/bot/)
+
+### Not a participant
+
+<Frame>
+  <img alt="Not a participant" className="block dark:hidden" src="./assets/not-a-participant.png" />
+  <img alt="Not a participant" className="hidden dark:block" src="./assets/not-a-participant-dark.png" />
+</Frame>
+
+- **Cause**: User not authorized for conversation
+- **Solution**: Clear browser storage and refresh
+
+### Invalid message content type
+
+<Frame>
+  <img
+    alt="Invalid message content type"
+    className="block dark:hidden"
+    src="./assets/invalid-message-content-type.png"
+  />
+  <img
+    alt="Invalid message content type"
+    className="hidden dark:block"
+    src="./assets/invalid-message-content-type-dark.png"
+  />
+</Frame>
+
+- **Cause**: Unable to process message format
+- **Solution**
+  - Check your bot's logs for any integration errors
+  - Start a new conversation
+
+## Network Errors
+
+### Network error
+
+<Frame>
+  <img alt="Network error" className="block dark:hidden" src="./assets/network-error.png" />
+  <img alt="Network error" className="hidden dark:block" src="./assets/network-error-dark.png" />
+</Frame>
+
+- **Cause**: General network connectivity problems
+- **Solution**: Check internet connection
+
+### SSE disconnected
+
+<Frame>
+  <img alt="SSE disconnected" className="block dark:hidden" src="./assets/sse-disconnected.png" />
+  <img alt="SSE disconnected" className="hidden dark:block" src="./assets/sse-disconnected-dark.png" />
+</Frame>
+
+- **Cause**: Server-Sent Events connection lost
+- **Solution**: Refresh the page
