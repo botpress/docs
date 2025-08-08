@@ -2906,7 +2906,7 @@
               "language": { "type": "string", "maxLength": 200 }
             },
             "required": ["script", "language"],
-            "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
+            "description": "Template string optionally used at build time by integrations implementing this interface to pick a name for actions and events.",
             "additionalProperties": false
           }
         },
@@ -9723,7 +9723,7 @@
                     "language": { "type": "string", "maxLength": 200 }
                   },
                   "required": ["script", "language"],
-                  "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
+                  "description": "Template string optionally used at build time by integrations implementing this interface to pick a name for actions and events.",
                   "additionalProperties": false
                 }
               },
@@ -9833,7 +9833,7 @@
                     "language": { "type": "string", "maxLength": 200 }
                   },
                   "required": ["script", "language"],
-                  "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
+                  "description": "Template string optionally used at build time by integrations implementing this interface to pick a name for actions and events.",
                   "nullable": true,
                   "additionalProperties": false
                 }
