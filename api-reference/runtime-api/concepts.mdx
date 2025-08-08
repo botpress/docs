@@ -139,7 +139,7 @@ type Bloc = {
 }
 ```
 
-When an integration is deployed, it can defined any message type, but can't override any of the builtin message types with a breaking schema. This means that if an integration defines a message of type `text`, the payload must be _compatible_ with `{ text: string; }`. In other words, it can add type constraints like new properties to the payload, but it can not remove them.
+When an integration is deployed, it can defined any message type, but can't override any of the builtin message types with a breaking schema. This means that if an integration defines a message of type `text`, the payload must be _compatible_ with `{ text: string; }`. In other words, it can add type constraints like new properties to the payload, but it cannot remove them.
 
 ## Conversation
 
