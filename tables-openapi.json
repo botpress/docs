@@ -608,7 +608,7 @@
                 },
                 "public": {
                   "type": "boolean",
-                  "description": "Indicates if the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
+                  "description": "Indicates whether the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
                 },
                 "verificationStatus": {
                   "type": "string",
@@ -959,7 +959,7 @@
           },
           "dev": {
             "type": "boolean",
-            "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
+            "description": "Indicates whether the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
           },
           "createdBy": {
             "type": "string",
@@ -967,7 +967,7 @@
           },
           "alwaysAlive": {
             "type": "boolean",
-            "description": "Indicates if the [Bot](#schema_bot) should be in always alive mode"
+            "description": "Indicates whether the [Bot](#schema_bot) should be in always alive mode"
           },
           "status": {
             "type": "string",
@@ -1595,7 +1595,7 @@
           },
           "dev": {
             "type": "boolean",
-            "description": "Indicates if the integration is a development integration; Dev integrations run locally"
+            "description": "Indicates whether the integration is a development integration; Dev integrations run locally"
           },
           "title": {
             "type": "string",
@@ -1618,7 +1618,7 @@
           },
           "public": {
             "type": "boolean",
-            "description": "Indicates if the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
+            "description": "Indicates whether the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
           },
           "verificationStatus": {
             "type": "string",
@@ -3248,11 +3248,11 @@
                         },
                         "searchable": {
                           "type": "boolean",
-                          "description": "Indicates if the column is vectorized and searchable."
+                          "description": "Indicates whether the column is vectorized and searchable."
                         },
                         "hidden": {
                           "type": "boolean",
-                          "description": "Indicates if the field is hidden in the UI"
+                          "description": "Indicates whether the field is hidden in the UI"
                         },
                         "order": {
                           "type": "number",
@@ -3368,7 +3368,7 @@
           },
           "isComputeEnabled": {
             "type": "boolean",
-            "description": "Indicates if the table is enabled for computation."
+            "description": "Indicates whether the table is enabled for computation."
           },
           "createdAt": {
             "type": "string",
@@ -3407,7 +3407,7 @@
           },
           "searchable": {
             "type": "boolean",
-            "description": "Indicates if the column is vectorized and searchable."
+            "description": "Indicates whether the column is vectorized and searchable."
           },
           "type": {
             "type": "string",
@@ -4325,7 +4325,7 @@
                 },
                 "isComputeEnabled": {
                   "type": "boolean",
-                  "description": "Indicates if the table is enabled for computation."
+                  "description": "Indicates whether the table is enabled for computation."
                 }
               },
               "required": [
@@ -4374,7 +4374,7 @@
                 },
                 "isComputeEnabled": {
                   "type": "boolean",
-                  "description": "Indicates if the table is enabled for computation."
+                  "description": "Indicates whether the table is enabled for computation."
                 }
               },
               "required": [
@@ -4463,7 +4463,7 @@
                 },
                 "isComputeEnabled": {
                   "type": "boolean",
-                  "description": "Indicates if the table is enabled for computation."
+                  "description": "Indicates whether the table is enabled for computation."
                 }
               },
               "title": "updateTableBody",
