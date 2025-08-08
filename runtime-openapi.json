@@ -4556,7 +4556,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                        "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                     },
                     "size": {
                         "type": "number",
