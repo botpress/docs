@@ -755,10 +755,10 @@ Primitive filters are easy and simple to use, allowing you to match the exact va
   { "name": { "$regex": "[a-z]" } }
   ```
 
-* `$options`: Modifies the `$regex` operator to enable options. Currently, there are two options, 'i' for case insensitive and 'c' for case sensitive.
+* `$options`: Modifies the `$regex` operator to enable options. Currently, there are two options, 'i' for case-insensitive and 'c' for case sensitive.
 
   ```json
-  { "name": { "$regex": "[a-z]", "$options": 'i' } } // case insensitive
+  { "name": { "$regex": "[a-z]", "$options": 'i' } } // case-insensitive
 
   { "name": { "$regex": "[a-z]", "$options": 'c' } } // case sensitive
   ```
