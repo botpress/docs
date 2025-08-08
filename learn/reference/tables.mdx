@@ -3,7 +3,7 @@ title: Tables
 icon: table
 ---
 
-import { Youtube } from '/snippets/youtube.mdx'
+import { YouTube } from '/snippets/youtube.mdx'
 
 Tables are an essential feature in the explorer, functioning as a local database within your chatbot's environment. They provide structured storage for various types of data that can be accessed and manipulated as required within your workflows.
 
@@ -585,7 +585,7 @@ const { table } = await client.deleteTable({ table: 'Data1Table' })
 
 To create a new record in a table, use the `createRecord` function. You can specify the values for each field in the record. This function can be particularly useful when you need to store new information, such as a new user's details or a newly completed transaction.
 
-<Youtube url="https://www.youtube.com/embed/M0S3r-7FiVk?si=PZc5P9Q2zUHhL5Zq" />
+<YouTube url="https://www.youtube.com/embed/M0S3r-7FiVk?si=PZc5P9Q2zUHhL5Zq" />
 
 ```javascript
 // Create a record in the table
@@ -596,7 +596,7 @@ await Data1Table.createRecord({ Age: 25, Name: 'Tom', Occupation: 'Student' })
 
 To create multiple records in a table, use the `createRecords` function. You can specify the values for each field in the record. Useful for creating multiple records at once.
 
-<Youtube url="https://www.youtube.com/embed/AAUO9p6zniw?si=jSb5DzGAVIyTr2D6" />
+<YouTube url="https://www.youtube.com/embed/AAUO9p6zniw?si=jSb5DzGAVIyTr2D6" />
 
 ```JavaScript
 // Creating two records in the table
@@ -610,7 +610,7 @@ await Data1Table.createRecords([
 
 To delete a record in a table, use the `deleteRecord` function. You need to specify the record ID of the record you want to delete.
 
-<Youtube url="https://www.youtube.com/embed/8zoqG07tulY?si=DH6GdQ-vuuME207-" />
+<YouTube url="https://www.youtube.com/embed/8zoqG07tulY?si=DH6GdQ-vuuME207-" />
 
 ```javascript
 // Delete a record in the table at record ID 7
@@ -621,7 +621,7 @@ await Data1Table.deleteRecord(7)
 
 To delete multiple records in a table, use the `deleteRecords` function. You need to specify the record IDs of the records you want to delete in an array.
 
-<Youtube url="https://www.youtube.com/embed/TsUPf2FwrFY?si=cd19VWqxb5M2mC5R" />
+<YouTube url="https://www.youtube.com/embed/TsUPf2FwrFY?si=cd19VWqxb5M2mC5R" />
 
 ```JavaScript
  // Delete records in the table at record IDs 7, 8, 9
@@ -835,7 +835,7 @@ For example, you might use the query selector "People with age greater than 18" 
 2. Add query as `People with age greater than 18`
 3. use below code to find records and save it in a variable called `adults`
 
-<Youtube url="https://www.youtube.com/embed/wYpsx6cvT5Q?si=u3YWiDmyasHEed0M" />
+<YouTube url="https://www.youtube.com/embed/wYpsx6cvT5Q?si=u3YWiDmyasHEed0M" />
 
 ```javascript
 // Find records in the table
@@ -855,7 +855,7 @@ Although the AI Filter is not primarily designed for exact string hunting, it's 
 
 You can use the `getRecord` function to retrieve a specific record from a table based on a unique identifier. For example, you might use the `getRecord` function to retrieve a user's profile information based on their unique user ID.
 
-<Youtube url="https://www.youtube.com/embed/zbcTGK8T1PQ?si=fZmhfg7gJVjgsab3" />
+<YouTube url="https://www.youtube.com/embed/zbcTGK8T1PQ?si=fZmhfg7gJVjgsab3" />
 
 ```javascript
 // 1 is the record ID and User is the variable name
