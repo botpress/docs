@@ -325,7 +325,7 @@
     "/v1/admin/bots/{id}/transfer": {
       "post": {
         "operationId": "transferBot",
-        "description": "Transfer bot to another workspace. You need to be a Manager member of the workspace the bot currently belongs to and have permission to create bots in the target workspace.",
+        "description": "Transfer bot to another workspace. You need to be a Manager member of the workspace to which the bot currently belongs and have permission to create bots in the target workspace.",
         "parameters": [
           { "name": "id", "in": "path", "description": "Bot ID", "required": true, "schema": { "type": "string" } }
         ],
