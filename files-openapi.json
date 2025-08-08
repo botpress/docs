@@ -517,7 +517,7 @@
                     },
                     "botId": {
                         "type": "string",
-                        "description": "The ID of the bot the file belongs to"
+                        "description": "The ID of the bot to which the file belongs"
                     },
                     "key": {
                         "type": "string",
@@ -525,7 +525,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                        "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                     },
                     "size": {
                         "type": "number",
@@ -656,7 +656,7 @@
                                         },
                                         "botId": {
                                             "type": "string",
-                                            "description": "The ID of the bot the file belongs to"
+                                            "description": "The ID of the bot to which the file belongs"
                                         },
                                         "key": {
                                             "type": "string",
@@ -664,7 +664,7 @@
                                         },
                                         "url": {
                                             "type": "string",
-                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                                         },
                                         "size": {
                                             "type": "number",
@@ -822,7 +822,7 @@
                                             },
                                             "botId": {
                                                 "type": "string",
-                                                "description": "The ID of the bot the file belongs to"
+                                                "description": "The ID of the bot to which the file belongs"
                                             },
                                             "key": {
                                                 "type": "string",
@@ -830,7 +830,7 @@
                                             },
                                             "url": {
                                                 "type": "string",
-                                                "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                                                "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                                             },
                                             "size": {
                                                 "type": "number",
@@ -979,7 +979,7 @@
                                         },
                                         "botId": {
                                             "type": "string",
-                                            "description": "The ID of the bot the file belongs to"
+                                            "description": "The ID of the bot to which the file belongs"
                                         },
                                         "key": {
                                             "type": "string",
@@ -987,7 +987,7 @@
                                         },
                                         "url": {
                                             "type": "string",
-                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                                         },
                                         "size": {
                                             "type": "number",
@@ -1126,7 +1126,7 @@
                                         },
                                         "botId": {
                                             "type": "string",
-                                            "description": "The ID of the bot the file belongs to"
+                                            "description": "The ID of the bot to which the file belongs"
                                         },
                                         "key": {
                                             "type": "string",
@@ -1134,7 +1134,7 @@
                                         },
                                         "url": {
                                             "type": "string",
-                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                                         },
                                         "size": {
                                             "type": "number",
@@ -1273,7 +1273,7 @@
                                         },
                                         "botId": {
                                             "type": "string",
-                                            "description": "The ID of the bot the file belongs to"
+                                            "description": "The ID of the bot to which the file belongs"
                                         },
                                         "key": {
                                             "type": "string",
@@ -1281,7 +1281,7 @@
                                         },
                                         "url": {
                                             "type": "string",
-                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                                            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                                         },
                                         "size": {
                                             "type": "number",
@@ -1523,7 +1523,7 @@
                                                         },
                                                         "offset": {
                                                             "type": "integer",
-                                                            "description": "Position of the context passage relative to the current passage. Negative for preceding passages, positive for subsequent, ommited for breadcrumbs."
+                                                            "description": "Position of the context passage relative to the current passage. Negative for preceding passages, positive for subsequent, omitted for breadcrumbs."
                                                         },
                                                         "type": {
                                                             "type": "string",
@@ -2099,7 +2099,7 @@
                             "properties": {
                                 "overwrite": {
                                     "type": "boolean",
-                                    "description": "Set to `true` to overwrite the file if it already exists, otherwise an error will be returned.\n\nWhen this endpoint is called using bot authentication, the existing file must have been originally created by the same bot making the file copy request in order to overwrite it."
+                                    "description": "Set to `true` to overwrite the file if it already exists; otherwise, an error will be returned.\n\nWhen this endpoint is called using bot authentication, the existing file must have been originally created by the same bot making the file copy request in order to overwrite it."
                                 }
                             },
                             "title": "copyFileBody",

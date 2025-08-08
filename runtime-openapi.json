@@ -527,7 +527,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Id of the Message",
+                        "description": "ID of the Message",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1504,7 +1504,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Bot](#schema_bot)"
+                        "description": "ID of the [Bot](#schema_bot)"
                     },
                     "createdAt": {
                         "type": "string",
@@ -1609,7 +1609,7 @@
                                 },
                                 "public": {
                                     "type": "boolean",
-                                    "description": "Idicates if the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
+                                    "description": "Indicates whether the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
                                 },
                                 "verificationStatus": {
                                     "type": "string",
@@ -1960,15 +1960,15 @@
                     },
                     "dev": {
                         "type": "boolean",
-                        "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
+                        "description": "Indicates whether the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
                     },
                     "createdBy": {
                         "type": "string",
-                        "description": "Id of the user that created the bot"
+                        "description": "ID of the user that created the bot"
                     },
                     "alwaysAlive": {
                         "type": "boolean",
-                        "description": "Indicates if the [Bot](#schema_bot) should be in always alive mode"
+                        "description": "Indicates whether the [Bot](#schema_bot) should be in always alive mode"
                     },
                     "status": {
                         "type": "string",
@@ -2596,7 +2596,7 @@
                     },
                     "dev": {
                         "type": "boolean",
-                        "description": "Indicates if the integration is a development integration; Dev integrations run locally"
+                        "description": "Indicates whether the integration is a development integration; Dev integrations run locally"
                     },
                     "title": {
                         "type": "string",
@@ -2619,7 +2619,7 @@
                     },
                     "public": {
                         "type": "boolean",
-                        "description": "Idicates if the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
+                        "description": "Indicates whether the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
                     },
                     "verificationStatus": {
                         "type": "string",
@@ -2861,7 +2861,7 @@
                             "script",
                             "language"
                         ],
-                        "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
+                        "description": "Template string optionally used at build time by integrations implementing this interface to pick a name for actions and events.",
                         "additionalProperties": false
                     }
                 },
@@ -3382,7 +3382,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "Id of the usage that it is linked to. It can either be a workspace id or a bot id"
+                        "description": "ID of the usage that it is linked to. It can either be a workspace id or a bot id"
                     },
                     "period": {
                         "type": "string",
@@ -3606,7 +3606,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [User](#schema_user)"
+                        "description": "ID of the [User](#schema_user)"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3652,19 +3652,19 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Conversation](#schema_conversation)"
+                        "description": "ID of the [Conversation](#schema_conversation)"
                     },
                     "currentTaskId": {
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the current [Task](#schema_task)"
+                        "description": "ID of the current [Task](#schema_task)"
                     },
                     "currentWorkflowId": {
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the current [Workflow](#schema_workflow)"
+                        "description": "ID of the current [Workflow](#schema_workflow)"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3710,7 +3710,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Event](#schema_event)"
+                        "description": "ID of the [Event](#schema_event)"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3780,7 +3780,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Message](#schema_message)"
+                        "description": "ID of the [Message](#schema_message)"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3851,7 +3851,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [State](#schema_state)"
+                        "description": "ID of the [State](#schema_state)"
                     },
                     "createdAt": {
                         "type": "string",
@@ -3867,19 +3867,19 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Bot](#schema_bot)"
+                        "description": "ID of the [Bot](#schema_bot)"
                     },
                     "conversationId": {
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Conversation](#schema_conversation)"
+                        "description": "ID of the [Conversation](#schema_conversation)"
                     },
                     "userId": {
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [User](#schema_user)"
+                        "description": "ID of the [User](#schema_user)"
                     },
                     "name": {
                         "type": "string",
@@ -3913,7 +3913,7 @@
                     "type",
                     "payload"
                 ],
-                "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation or a user.",
+                "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation, or a user.",
                 "additionalProperties": false
             },
             "Task": {
@@ -3923,7 +3923,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Task](#schema_task)"
+                        "description": "ID of the [Task](#schema_task)"
                     },
                     "title": {
                         "type": "string",
@@ -4026,7 +4026,7 @@
                         "type": "string",
                         "minLength": 28,
                         "maxLength": 36,
-                        "description": "Id of the [Workflow](#schema_workflow)"
+                        "description": "ID of the [Workflow](#schema_workflow)"
                     },
                     "name": {
                         "type": "string",
@@ -4247,11 +4247,11 @@
                                                 },
                                                 "searchable": {
                                                     "type": "boolean",
-                                                    "description": "Indicates if the column is vectorized and searchable."
+                                                    "description": "Indicates whether the column is vectorized and searchable."
                                                 },
                                                 "hidden": {
                                                     "type": "boolean",
-                                                    "description": "Indicates if the field is hidden in the UI"
+                                                    "description": "Indicates whether the field is hidden in the UI"
                                                 },
                                                 "order": {
                                                     "type": "number",
@@ -4367,7 +4367,7 @@
                     },
                     "isComputeEnabled": {
                         "type": "boolean",
-                        "description": "Indicates if the table is enabled for computation."
+                        "description": "Indicates whether the table is enabled for computation."
                     },
                     "createdAt": {
                         "type": "string",
@@ -4406,7 +4406,7 @@
                     },
                     "searchable": {
                         "type": "boolean",
-                        "description": "Indicates if the column is vectorized and searchable."
+                        "description": "Indicates whether the column is vectorized and searchable."
                     },
                     "type": {
                         "type": "string",
@@ -4548,7 +4548,7 @@
                     },
                     "botId": {
                         "type": "string",
-                        "description": "The ID of the bot the file belongs to"
+                        "description": "The ID of the bot to which the file belongs"
                     },
                     "key": {
                         "type": "string",
@@ -4556,7 +4556,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file, otherwise this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
+                        "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
                     },
                     "size": {
                         "type": "number",
