@@ -89,7 +89,7 @@ The official Slack integration allows members of your Slack workspace to chat wi
         <Step title="Configure the integration in Botpress">
 
         Now you can use your app's credentials to fill in the configuration fields from [Step 1](#step-1-install-the-slack-integration-in-botpress):
-        
+
         <AccordionGroup>
           <Accordion
             title="Slack Refresh Token or Bot Token"
@@ -140,7 +140,7 @@ The official Slack integration allows members of your Slack workspace to chat wi
       </Steps>
 
       <Check>
-        Your Slack integration is ready. Within your Slack workspace, you can search for the app and add it to any channel — it should respond as your bot. 
+        Your Slack integration is ready. Within your Slack workspace, you can search for the app and add it to any channel — it should respond as your bot.
       </Check>
   </Tab>
 </Tabs>
@@ -177,7 +177,7 @@ If you want the bot to only reply in a thread when [mentioned](https://slack.com
   1. Insert a Standard Node at the very beginning of your Main Workflow. Then, connect it to your existing Workflow.
   2. Add an [expression Card](/learn/reference/cards/flow-logic#expression) to the Standard Node.
   3. Set the expression Card's condition to `event.channel === 'channel'`.
-  TODO: modify conditional to account for other channel types 
+  TODO: modify conditional to account for other channel types
   3. Create an End Card and connect the expression Card to it.
 </Note> */}
 
@@ -200,4 +200,4 @@ Slack uses a proprietary markup language, [mrkdwn](https://api.slack.com/referen
 - Studio's interface can read them properly
 - Botpress' AI inference engine can understand them
 
-However, any outgoing AI-generated messages your bot sends to the Slack integration will stil be rendered in Markdown by default. This means **rich text messages from your bot may not be rendered properly in Slack** without additional processing.
+However, any outgoing AI-generated messages your bot sends to the Slack integration will still be rendered in Markdown by default. This means **rich text messages from your bot may not be rendered properly in Slack** without additional processing.
