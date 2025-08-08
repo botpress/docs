@@ -3952,7 +3952,7 @@
         "type": "object",
         "properties": {
           "id": { "type": "string", "description": "File ID" },
-          "botId": { "type": "string", "description": "The ID of the bot the file belongs to" },
+          "botId": { "type": "string", "description": "The ID of the bot to which the file belongs" },
           "key": {
             "type": "string",
             "description": "Unique key for the file. Must be unique across the bot (and the integration, when applicable)."
