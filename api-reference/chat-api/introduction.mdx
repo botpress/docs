@@ -16,7 +16,7 @@ This means you can't use the Chat API to fetch conversations that occur within o
 ## Installation
 
 {/* TODO(driftable): This hub link is subject to changes and should be auto-generated */}
-To use this API, make sure the Chat integration is installed to your bot. You can find the Chat integration [here](https://app.botpress.cloud/hub/integrations/intver_01JN74V90FDTNKWESAWBVGP7EX). Then, make sure your integration is enabled and configured.
+To use this API, make sure the [Chat integration](https://studio.botpress.cloud/home?exploreHub=1&hubItemId=intver_01JVYWESY3BVAM5FR3XT9X813H&search=Chat+integration) is installed to your bot. Then, make sure your integration is enabled and configured.
 
 ## Configuration
 
@@ -55,7 +55,7 @@ The webhook ID is the string at the end of the **Webhook URL**. In this case, th
     - A user key to authenticate yourself
     - A conversation ID to specify which conversation you are sending the message to
     - A message payload. For example, a simple text message has the following payload format: `{ "type": "text", "text": "hello bot" }`.
-    
+
 7. Wait for your bot to respond, then list messages on the conversation by calling the [listMessages](/api-reference/chat-api/openapi/listMessages) operation. You will need to provide:
 
     - A user key to authenticate yourself
