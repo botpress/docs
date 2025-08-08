@@ -401,7 +401,7 @@
     "/v1/admin/bots/{id}/webchat": {
       "get": {
         "operationId": "getBotWebchat",
-        "description": "Get the webchat code/URL for a bot",
+        "description": "Get the Webchat code/URL for a bot",
         "parameters": [
           { "name": "id", "in": "path", "description": "Bot ID", "required": true, "schema": { "type": "string" } },
           {
