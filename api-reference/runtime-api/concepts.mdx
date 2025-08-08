@@ -16,7 +16,7 @@ The Runtime API uses the same authentication mechanism as all other Botpress API
 
 In addition to standard authentication, the Runtime API defines two additional headers that are used to know if requests are made on behalf of a bot or an integration:
 
-- `x-bot-id`: **(Required)** The ID of the bot the request is targeting. This header is **mandatory** for all Runtime API requests.
+- `x-bot-id`: **(Required)** The bot ID targeted by the request. This header is **mandatory** for all Runtime API requests.
 - `x-integration-id`: **(Optional)** The ID of the integration making the request. This header is included **only** if the request originates from an integration.
 
 The presence of these headers determines the context of the request:
