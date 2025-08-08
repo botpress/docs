@@ -20,9 +20,9 @@ You can create up to **10 tables** with **20 columns** and **10,000 rows** in th
   <div id='test' class='transparent-accordion'>
   <Accordion title='What are row factors?'>
     Every table has a row factor that determines the storage limit for each of its rows. When you create a new table, the default row factor is 1 — this allows you store up to 4KB of data per row.
-    
+
     If you need to store more than 4KB of data in each row, you can create a table with a higher row factor. However, increasing the table's row factor makes each row count more towards your table's row limit.
-    
+
     **Example**: If you create a table with a row factor of 3, each row will have a storage limit of 12KB (because 4KB x 3 =  12KB). This will make each row will count as 3 rows towards your table's row limit.
 
     You can check any table's row factor in the bottom-right corner of that table.
@@ -803,7 +803,7 @@ Please note that these filters and operators can be used together to create comp
 If you have a column of type object, you can also use operators on nested paths:
 
 ```json
-{ 
+{
   "customer.name": { "$regex": "[a-z]" },
   "customer.age": { "$gte": 18 }
 }
@@ -976,5 +976,5 @@ Don't edit the CSV file directly to avoid data loss and import errors. Instead, 
 <Note>
 Note
 
-When you export a bot the tables are exported as well so there is no need to export them separately unless you want to use them in another bot.
+When you export a bot, the tables are exported as well so there is no need to export them separately unless you want to use them in another bot.
 </Note>
