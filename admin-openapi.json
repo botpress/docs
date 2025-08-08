@@ -3558,7 +3558,7 @@
           "type": {
             "type": "string",
             "enum": ["conversation", "user", "bot", "task", "integration", "workflow"],
-            "description": "Type of the [State](#schema_state) represents the resource type (`conversation`, `user`, `bot`, `task`, `integration` or `workflow`) that the state is related to"
+            "description": "Type of the [State](#schema_state) represents the resource type (`conversation`, `user`, `bot`, `task`, `integration`, or `workflow`) that the state is related to"
           },
           "payload": {
             "type": "object",
@@ -3567,7 +3567,7 @@
           }
         },
         "required": ["id", "createdAt", "updatedAt", "botId", "name", "type", "payload"],
-        "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation or a user.",
+        "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation, or a user.",
         "additionalProperties": false
       },
       "Task": {
