@@ -45,7 +45,7 @@ const file = await client.uploadFile({
 
 ### In a custom script using the Botpress Client
 
-If you're using JavaScript or TypeScript the easiest way to interact with the API is using the [Botpress Client](https://www.npmjs.com/package/@botpress/client). You can install the client package by using your favorite package manager:
+If you're using JavaScript or TypeScript, the easiest way to interact with the API is with the [Botpress Client](https://www.npmjs.com/package/@botpress/client). You can install the client package using your favourite package manager:
 
 <CodeGroup>
 
@@ -89,7 +89,7 @@ Please note that when calling the API directly, an HTTP request to the Botpress 
 
 Additionally, if you need to access the file URL right away a third request to the "Get File" API endpoint will be needed to get the URL of the file after it has been uploaded.
 
-Here's an example on how to do this using the native `fetch()` function in JavaScript/TypeScript, note that your Botpress PAT will need to be defined in the environment variable `BOTPRESS_PAT`:
+Here's an example on how to do this using the native `fetch()` function in JavaScript/TypeScript. Note that your Botpress PAT will need to be defined in the environment variable `BOTPRESS_PAT`:
 
 ```ts
 const fileContent = 'Here goes the content of your file'
