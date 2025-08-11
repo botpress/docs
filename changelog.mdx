@@ -1,8 +1,37 @@
 ---
-title: "Changelog"
-description: "The latest updates and improvements to Botpress."
-mode: "wide"
+title: 'Changelog'
+description: 'The latest updates and improvements to Botpress.'
+mode: 'wide'
 ---
+
+<Update label="August 8, 2025">
+
+## Features & Enhancements
+
+<Frame>![GPT-5 in Botpress](/changelog-assets/2025-08-08/gpt5-botpress.png)</Frame>
+
+- GPT-5 is now available in Botpress Studio
+  - OpenAI's new GPT-OSS models are also available with Fireworks AI, Cerebras and Groq integrations
+- Various UI improvements in Studio:
+  - Improved UI for integration playgrounds
+  - Card tray now displays the Card type (based on the currently selected Node) and displays a message when a Card can’t be added to a Node
+- Webchat:
+  - Added a `conversationId` argument to the Webchat initialization script — this allows users to programmatically load Webchat with a specific conversation
+  - Improved handling of images that fail to load
+- Integrations:
+  - **Messenger**: Added a playground and made general improvements
+  - **Telegram:** Improved Markdown support, added support for captions on images, improved error handling
+  - **Freshchat:** General fixes and improvements
+  - **Zendesk:** Added the option to customize the Botpress system username in Zendesk
+  - **Email:** Minor fix
+
+## Bug Fixes
+
+- Fixed an issue where conversation variables were not usable in Capture Information Cards and Autonomous Nodes
+- Fixed an issue with searching for files based on tags in the Dashboard
+- Fixed a visual issue with filtering logs in Dashboard
+
+</Update>
 
 <Update label="August 1, 2025">
 
@@ -27,7 +56,7 @@ mode: "wide"
     - Improved UX for deleting bots in the Dashboard
     - Improvements to log filtering in the Dashboard
     - Integration updates:
-        - **Email**: added a new provider-agnostic email integration 
+        - **Email**: added a new provider-agnostic email integration
         - **HITL**: Start HITL Card now provides more specific configuration fields based on which HITL integration is being used
         - **Slack**: added support for threading in all channel types
         - **Teams**: improvements to Start DM Card
@@ -93,7 +122,7 @@ mode: "wide"
         - **Resend**: added CC and BCC fields to sendMail action
         - **Messenger**: added support for sending media and files
         - **Slack/WhatsApp**: improved Markdown handling
-        
+
     - Added Gemini 2.5
 
     ## Bug Fixes
@@ -333,7 +362,7 @@ mode: "wide"
         - Bots using the BigCommerce integration can now recommend best-selling products without hallucinating
 
     ## Bug Fixes
-    
+
         - Fixed issue where variables assigned in the last Card in a Workflow weren’t stored
         - Various WhatsApp integration fixes:
             - Fixed error with OAuth flow when the user had more than 50 WhatsApp business accounts
@@ -401,7 +430,7 @@ mode: "wide"
         - You can now filter your bot’s logs by `userId` or `conversationId`
 
     ## Bug Fixes
-    
+
         - Updated React library version and documentation
 
     ## Miscellaneous
