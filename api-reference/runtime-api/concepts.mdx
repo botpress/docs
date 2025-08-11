@@ -167,7 +167,7 @@ A conversation belongs to a **channel**, which itself is part of an integration.
 
 ## User
 
-A user in the Runtime API is a speaker (person or entity) that can send messages in a conversation. Just like conversations, users belong to a specific integration. interacting with your bot on WhatsApp and Slack will create two different users, even if they both represent the same person with the same email.
+A user in the Runtime API is a speaker (person or entity) that can send messages in a conversation. Just like conversations, users belong to a specific integration. Interacting with your bot on WhatsApp and Slack will create two different users, even if they both represent the same person with the same email.
 
 <Note>
 Many different kind of users exist in the whole Botpress system. This concept only refer to users of the Runtime API or as we often refer to: Chat Users. It must not be confused with users of the Botpress Admin API which are bot and integration Builders.
@@ -216,7 +216,7 @@ type Event = {
 
 ### Direction
 
-Unlike messages, events have no direction. They are always considered **incoming**. This is because they are always sent to the Bot, by either an integration or the bot itself. You may send an event to your bot by an external calls to the Runtime API, but doing so, still requires you to authenticate as either a bot or an integration.
+Unlike messages, events have no direction — they are always considered **incoming**. This is because they are always sent to the Bot by either an integration or the bot itself. You may send an event to your bot by an external call to the Runtime API, but doing so still requires you to authenticate as either a bot or an integration.
 
 ### Associated IDs
 
