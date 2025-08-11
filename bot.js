@@ -1,6 +1,6 @@
 // Inject the Botpress Webchat script
 const webchatScript = document.createElement('script')
-webchatScript.src = 'https://cdn.botpress.cloud/webchat/v3.0/inject.js'
+webchatScript.src = 'https://cdn.botpress.cloud/webchat/v3.2/inject.js'
 webchatScript.async = true
 webchatScript.defer = true
 
