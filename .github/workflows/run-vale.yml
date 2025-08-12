@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-      
+
     steps:
       - uses: actions/checkout@v4
       - uses: errata-ai/vale-action@v2.1.1
         with:
           filter_mode: added
           reporter: github-pr-review
+          fail_on_error: true
           token: ${{secrets.GITHUB_TOKEN}}
