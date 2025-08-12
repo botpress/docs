@@ -4,10 +4,12 @@ on: pull_request
 
 permissions:
   id-token: write
+  pull-requests: write
   contents: read
 
 jobs:
-  run-checks:
+  broken-links:
+    name: Broken Links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,3 +18,16 @@ jobs:
           version: 8.6.2
       - run: pnpm i --frozen-lockfile
       - run: pnpm run check:links
+  vale:
+    name: Writing Checks
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: errata-ai/vale-action@v2.1.1
+        with:
+          filter_mode: added
+          fail_on_error: true
+          token: ${{secrets.GITHUB_TOKEN}}
