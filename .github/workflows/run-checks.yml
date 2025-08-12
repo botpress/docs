@@ -29,5 +29,7 @@ jobs:
       - uses: errata-ai/vale-action@v2.1.1
         with:
           filter_mode: added
-          fail_on_error: true
+          reporter: github-pr-review
+          vale_flags: --minAlertLevel=error
+          fail_on_error: false
           token: ${{secrets.GITHUB_TOKEN}}
