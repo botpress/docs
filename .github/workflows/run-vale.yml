@@ -8,3 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: errata-ai/vale-action@v2.1.1
+        with:
+          filter_mode: added
+          reporter: github-pr-review
+          token: ${{secrets.GITHUB_TOKEN}}
