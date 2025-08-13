@@ -94,7 +94,7 @@ export default new IntegrationDefinition({
 })
 ```
 
-In src/index.ts is the main logic for generating a shareable sign-up url for Oauth, and a handler method to handle the Oauth response.
+In src/index.ts is the main logic for generating a shareable sign-up url for OAuth, and a handler method to handle the OAuth response.
 
 ```typescript index.ts
 import * as sdk from "@botpress/sdk";
@@ -185,7 +185,7 @@ export default new bp.Integration({
 });
 ```
 
-In src/store.ts we add some logic to be able to save authentication parameters which will help us know who is who when getting a callback request from Oauth.
+In src/store.ts we add some logic to be able to save authentication parameters which will help us know who is who when getting a callback request from OAuth.
 
 ```typescript store.ts
 import * as sdk from "@botpress/sdk";
@@ -270,4 +270,4 @@ If you'd like to try out the GitHub example above, you can use this link to crea
 
 The "Authorization callback URL" should be your webhook URL, located in the configuration page of the integration. There is no need to enable the device flow.
 
-That's it, now you can publish your bot, and try it out. Once that works, feel free to use this code as a starting point for your Oauth Integration.
+That's it, now you can publish your bot, and try it out. Once that works, feel free to use this code as a starting point for your OAuth Integration.
