@@ -24,7 +24,7 @@ The presence of these headers determines the context of the request:
 - **Bot request:** Only `x-bot-id` is provided. The action is performed directly on behalf of the bot.
 - **Integration request:** Both `x-bot-id` and `x-integration-id` are provided. The action is performed on behalf of an integration within the specified bot.
 
-<Note>Integrations are only authorized to act within the bots they are installed in. This restriction ensures secure and scoped access to bot data and functionality.</Note>
+<Note>Integrations are only authorized to act within the bots they're installed in. This restriction ensures secure and scoped access to bot data and functionality.</Note>
 
 ## Definitions and Instances
 
@@ -216,7 +216,7 @@ type Event = {
 
 ### Direction
 
-Unlike messages, events have no direction—they are always considered **incoming**. This is because they are always sent to the Bot by either an integration or the bot itself. You may send an event to your bot by an external call to the Runtime API, but doing so still requires you to authenticate as either a bot or an integration.
+Unlike messages, events have no direction—they're always considered **incoming**. This is because they're always sent to the Bot by either an integration or the bot itself. You may send an event to your bot by an external call to the Runtime API, but doing so still requires you to authenticate as either a bot or an integration.
 
 ### Associated IDs
 
@@ -271,7 +271,7 @@ type Tag = {
 
 Tags are defined by the integration or bot and can be used to store any additional information that isn't covered by the other properties of the message, user, or conversation objects. Tags are key-value pairs, where both the key and value are strings. The `type` property indicates whether the tag is associated with a user, conversation, or message. It can be used later to filter or search user, conversation, or message objects based on their tags.
 
-Unlike States, Tags are returned with the entity they are linked to. States can be bigger, but must be fetched separately. Also, tags are always string, while states can be any JSON object with a schema defined in the integration or bot definition.
+Unlike States, Tags are returned with the entity they're linked to. States can be bigger, but must be fetched separately. Also, tags are always string, while states can be any JSON object with a schema defined in the integration or bot definition.
 
 {/* TODO: say something about Bot and Workflow Tags */}
 {/* TODO: add a section about workflows */}
