@@ -18,7 +18,7 @@ The file synchronization interface provides a filesystem-like abstraction that w
 
 For example:
 - If you are building a website crawler, individual pages could be folders and HTML contents and assets like images or stylesheets could be files.
-- For a notetaking platform, notebooks could be folders with individual notes being files.
+- For a note-taking platform, notebooks could be folders with individual notes being files.
 - For an email provider, mailboxes or labels could be folders and individual emails could be files.
 
 This abstraction allows the interface to work consistently regardless of what type of data is being synchronized from your external service.
@@ -202,7 +202,7 @@ If you want to rename these actions, you can do so in the configuration object. 
 ```
 
 <Tip>
-For example, if you're using a notetaking platform such as Microsoft OneNote, you might rename `listItemsInFolder` to `listNotebooksAndPages` and `transferFileToBotpress` to `downloadPage`. This way, the action names reflect the specific context of the notetaking platform, making your <DefinitionReference id="integration"/> clearer and easier to understand.
+For example, if you're using a note-taking platform such as Microsoft OneNote, you might rename `listItemsInFolder` to `listNotebooksAndPages` and `transferFileToBotpress` to `downloadPage`. This way, the action names reflect the specific context of the note-taking platform, making your <DefinitionReference id="integration"/> clearer and easier to understand.
 </Tip>
 
 #### Renaming events
@@ -418,7 +418,7 @@ This action should implement the following logic:
     Upload the file to Botpress using the `client.uploadFile` method. This method expects both the file's content and a _file key_, which is provided by the <DefinitionReference id="file-synchronizer"/> as `input.fileKey`.
   </Step>
   <Step title="Yield control back to the plugin">
-    Yield control back to the <DefinitionReference id="file-synchronizer"/> by returning the the ID of the file that was uploaded to Botpress.
+    Yield control back to the <DefinitionReference id="file-synchronizer"/> by returning the ID of the file that was uploaded to Botpress.
   </Step>
 </Steps>
 

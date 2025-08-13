@@ -2,13 +2,13 @@
 title: Messenger
 ---
 
-import { Youtube } from '/snippets/youtube.mdx'
+import { YouTube } from '/snippets/youtube.mdx'
 
 <img src="./assets/messenger.png" />
 
 <br />
 
-<Youtube url="https://www.youtube.com/embed/pOIrLMpZZqc?si=98JjAEk6hnSEiKZ2" />
+<YouTube url="https://www.youtube.com/embed/pOIrLMpZZqc?si=98JjAEk6hnSEiKZ2" />
 
 # Prerequisites
 
@@ -25,17 +25,17 @@ The Messenger integration has the following settings:
 
 * **Enabled**: Whether Botpress will communicate with Messenger
 * **Webhook URL**: The URL for receiving data in Botpress
-* **App Id**: The id of your Meta App
+* **App ID**: The ID of your Meta App
 * **App Secret**: The secret of your Meta App
 * **Verify Token**: The token used to verify the webhook requests
-* **Page Id**: The id of your Facebook page
+* **Page ID**: The ID of your Facebook page
 * **Access Token**: The access token used to send messages to the Messenger API
 
 # Setting up Messenger
 
 ## Create a Facebook Page
 
-If you do not already have a Facebook page you will need to create one. You can find details on how to create a new Facebook page [here](https://www.facebook.com/pages/create/). To link your chatbot to a pre-existing page, you must have an administrator or developer role.
+If you don't already have a Facebook page, you'll need to [create one](https://www.facebook.com/pages/create/). To link your bot to a preexisting page, you must have an administrator or developer role.
 
 ## Messenger API version
 
@@ -53,10 +53,10 @@ Messenger is not added by default in your Meta app, so it must be added manually
 1. In the left sidebar, click on **Add Product**
 2. In the Facebook Messenger section click **Set Up**
 
-## App Id and Secret
+## App ID and Secret
 
 1. In the left sidebar, expand the **Settings** menu and select **Basic**. Here you can find the App ID and App Secret
-2. Click on the **Show** button in the **App Secret** text box. Copy the App Id and App Secret to your channel configuration
+2. Click on the **Show** button in the **App Secret** text box. Copy the App ID and App Secret to your channel configuration
 
 ## Verify Token
 
@@ -64,27 +64,27 @@ The verify token is used by Facebook to verify that you are the real owner of th
 
 You can generate any random alphanumerical string for this configuration. Paste it in your **Verify Token** channel configuration
 
-## Page Id and Access Token
+## Page ID and Access Token
 
 1. In the left sidebar, expand the **Messenger** menu and select **Messenger API Settings**
 2. In the **Access Tokens** section, click **Add or remove Pages** and add your Facebook page
-3. Copy the number under your page name and paste it in your **Page Id** channel configuration
+3. Copy the number under your page name and paste it in your **Page ID** channel configuration
 4. Click on **Generate token**. Copy this token and paste it in the **Access Token** channel configuration
 
 ## Save Configuration
 
-Channel configuration is completed, you can now click **Save**. It is important to save your configuration in Botpress before updating the webhook in the Meta app settings, otherwise Meta will be unable to validate the webhook URL.
+Channel configuration is completed — you can now click **Save**. It is important to save your configuration in Botpress before updating the webhook in the Meta app settings; otherwise, Meta will be unable to validate the webhook URL.
 
 # Webhook Configuration
 
-To receive messages from Messenger in your Botpress bot, you will need to setup a webhook.
+To receive messages from Messenger in your Botpress bot, you will need to set up a webhook.
 
 1. Go to your Meta app.
 2. In the left sidebar, expand the **Messenger** menu and select **Messenger API Settings**
 3. In the **Webhooks** section, click **Add Callback URL**
 4. Copy paste the **Webhook URL** provided in the integration configuration page in Botpress.
 5. Copy and paste the **Verify Token** that you generated earlier in the integration configuration page in Botpress.
-6. Click on **Verify and save**. Make sure your channel configuration was saved before doing this step, otherwise the webhook validation will fail
+6. Click on **Verify and save**. Make sure your channel configuration was saved before doing this step; otherwise, the webhook validation will fail
 7. Click on **Add Subscriptions**, then select `messages` and `messaging_postbacks`. Then click **Save**.
 
 You may now start chatting with your bot on Messenger!
@@ -99,7 +99,7 @@ If the bot does not answer to some people, that's probably because your app has 
 
 When your app is in Development Mode, your bot will work for admins, developers, and testers of the app only. After your app is approved and made public, it will work for the general public.
 
-Read more about the App Review process on [the official documentation](https://developers.facebook.com/docs/app-review/submission-guide) and find some help if necessary [in this Github issue](https://github.com/microsoft/botframework-sdk/issues/1465).
+Read more about the App Review process on [the official documentation](https://developers.facebook.com/docs/app-review/submission-guide) and find some help if necessary [in this GitHub issue](https://github.com/microsoft/botframework-sdk/issues/1465).
 
 You can find some troubleshooting [in this documentation](https://developers.facebook.com/docs/app-review/support/rejection-guides/messenger) in case you app get rejected.
 

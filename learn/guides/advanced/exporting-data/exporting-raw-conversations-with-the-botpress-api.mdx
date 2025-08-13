@@ -22,7 +22,7 @@ You can find your personal access token in your [Admin Dashboard](https://app.bo
 
 Send a `GET` request to `https://api.botpress.cloud/v1/chat/conversations` adding the following headers: `Authorization: Bearer <your-personal-access-token>` and `x-bot-id: <your-bot-id>`.
 
-This is how the request would look like using Axios in a Javascript application (e.g in a Execute Code in Botpress):
+This is how the request would look like using Axios in a JavaScript application (e.g in a Execute Code in Botpress):
 
 ```ts
 const requestConfig = {
@@ -76,11 +76,11 @@ The API returns a maximum of 20 conversations per request. You will need to use 
 
 # 2. Getting all Conversations from the API
 
-Now that you know the methods of getting the first conversations from the API, let's see how to get them. You can get them gradually or all at once, but you need to use the pagination token regardless.
+Now that you know the methods of getting the first conversations from the API, let's see how to get them. You can get them gradually or all at once, but you need to use the [pagination](/api-reference/pagination) token regardless.
 
 ## Getting conversations gradually
 
-Create a function that will fetch the next batch of conversations when called. You could use a button to trigger it or trigger it automatically with infinite scroll. Pass the `nextToken` property retrieved from the first request as a parameter to the function, then update it on subsequent calls. More about pagination [here](/api-reference/pagination).
+Create a function that will fetch the next batch of conversations when called. You could use a button to trigger it or trigger it automatically with infinite scroll. Pass the `nextToken` property retrieved from the first request as a parameter to the function, then update it on subsequent calls.
 
 ```js
 async function loadConversations(paginationToken) {

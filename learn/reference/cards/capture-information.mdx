@@ -284,7 +284,7 @@ The **Single Choice** is a type of input field that presents the user with a lis
 <Tip>
 Tip
 
-If the user enters text instead of clicking a button, the AI will search their text for any of the button options, and, if there is an option the user's text will be treated as if they clicked the button.
+If the user enters text instead of clicking a button, the AI will check the text for any matching button labels. If it finds a match, it will handle the input as though the user had clicked that button.
 </Tip>
 
 An example of Single Choice would be a survey question with multiple options, where the user selects one answer from the list.
@@ -621,7 +621,7 @@ After the user submits their question, the chatbot will automatically conduct a 
 
 ## Percentage
 
-The **Percentage** extracts the decimal representing the percentage the user is using from the user's input and saves it in a variable of type number. The extracted information can include values like 50%, 75%, or any other percentage.
+The **Percentage** extracts the decimal representing the percentage from the user's input and saves it in a variable of type number. The extracted information can include values like 50%, 75%, or any other percentage.
 
 **Steps to use Percentage Field**
 
@@ -980,7 +980,7 @@ The following volume formats are available for conversion:
 Let's say you want to ask the user about the volume of a liquid they want to order. You can create a new capture information card with the following properties:
 
 ```
-Type: VolumMeasurement
+Type: VolumeMeasurement
 Variable name: liquidVolume
 Prompt message: What is the volume of liquid you want to order? Please enter a number and choose a volume format from the following list: mm3, cm3, ml, cl, dl, l, kl, m3, km3, tsp, Tbs, in3, fl-oz, cup, pnt, qt, gal, ft3, yd3.
 ```
@@ -1020,7 +1020,7 @@ Prompt message: Please enter your body temperature in Celsius (°C), Kelvin (K),
 
 When the user enters their response, the Temperature Measurement card will extract the temperature value, convert it to the specified format, and save it in the **bodyTemperature** workflow variable as a **Number**. You can then use this variable in other parts of your workflow to decide what action to take based on the user's body temperature.
 
-If the user's body temperature is higher than the normal range, you can send them to a doctor's appointment node. If not, you can proceed with the conversation as usual.
+If the user's body temperature is above the normal range, you can send them to a doctor's appointment node. If not, you can proceed with the conversation as usual.
 
 This will display a message based on the user's response and the action you decide to take based on their body temperature.
 
