@@ -371,7 +371,7 @@ export default new bp.Integration({
       // Get the list of items in the folder
       const { items, nextToken, hasMore } = await dropboxClient.listItemsInFolder({
         path: parentId,
-        recursive: false, // <= The integration should not list recursively
+        recursive: false, // <= The integration shouldn't list recursively
         nextToken: prevToken, // <= Use the pagination token if provided
       })
 
