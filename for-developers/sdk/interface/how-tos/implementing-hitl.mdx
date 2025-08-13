@@ -767,7 +767,7 @@ This channel handler should implement the following logic:
   </Step>
   <Step title="Retrieve the external user's ID">
     - If the payload contains a `userId` parameter, the message has been sent by the <DefinitionReference id="end-user"/>. Retrieve the <DefinitionReference id="external-user"/>'s ID from the tags of the Botpress user `payload.userId`.
-    - If the payload does not contain a `userId` parameter, the message has been sent by the bot. Retrieve the <DefinitionReference id="external-user"/>'s ID from the tags of the attached Botpress user.
+    - If the payload doesn't contain a `userId` parameter, the message has been sent by the bot. Retrieve the <DefinitionReference id="external-user"/>'s ID from the tags of the attached Botpress user.
   </Step>
   <Step title="Send the message to the HITL session">
     Using the <DefinitionReference id="external-service"/>'s API or SDK, send the message to the <DefinitionReference id="hitl-session"/>. This is typically a _comment_ in a _ticket_.

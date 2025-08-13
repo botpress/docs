@@ -152,7 +152,7 @@ z.object({
 
 * **`advancedSetting`**: Acts as the discriminator that determines whether to include the `extraSetting` field.
 * **Discriminated Union**:
-  * If `advancedSetting` is `"No"`, the schema does not include `extraSetting`.
+  * If `advancedSetting` is `"No"`, the schema doesn't include `extraSetting`.
   * If `advancedSetting` is `"Yes"`, the schema requires `extraSetting` to be provided.
 
 This pattern is useful when you want to include additional settings only when an "Advanced Setting" option is enabled.
