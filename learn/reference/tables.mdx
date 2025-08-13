@@ -779,7 +779,7 @@ Logical operators allow you to connect more filtering clauses.
   { "$or": [{ "price": { "$eq": 1.99 } }, { "price": { "$exists": false } }] }
   ```
 
-* `$not`: Inverts the effect of a query expression and returns documents that do not match the query expression.
+* `$not`: Inverts the effect of a query expression and returns documents that don't match the query expression.
 
   ```json
   { "$not": { "price": { "$eq": 1.99 } } }
@@ -951,7 +951,7 @@ To ensure computed values are always kept up to date, we recommend **Auto-comput
 
 <img src="./assets/auto-compute.png" />
 
-If you do not have **Auto-compute** enabled, a grey icon will appear next to stale table cells.
+If you don't have **Auto-compute** enabled, a grey icon will appear next to stale table cells.
 
 <img src="./assets/stale-compute-row.png" />
 

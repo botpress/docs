@@ -270,7 +270,7 @@ This action should implement the following logic:
       If a pagination token is provided (`input.nextToken`), use it to get the next page of items. The <DefinitionReference id="external-service"/> should return a new pagination token in the response, which you should return with the action's response.
     </Note>
     <Warning>
-      **Do not** list items recursively. The <DefinitionReference id="file-synchronizer"/> is responsible for handling recursion. Your <DefinitionReference id="integration"/> should only return the items in the specified folder.
+      **Don't** list items recursively. The <DefinitionReference id="file-synchronizer"/> is responsible for handling recursion. Your <DefinitionReference id="integration"/> should only return the items in the specified folder.
     </Warning>
   </Step>
   <Step title="Map each items to the expected schema">
