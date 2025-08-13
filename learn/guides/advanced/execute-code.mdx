@@ -82,7 +82,7 @@ const jiraPassword = 'your-jira-password'
 // get the current date and time in ISO format
 const now = luxon.local().toISO()
 
-// create the JQL query to get all issues that are not done
+// create the JQL query to get all issues that aren't done
 const jql = `status != Done AND updated >= "${now}" ORDER BY updated DESC`
 
 // set the request headers for Jira API
@@ -91,10 +91,10 @@ const headers = {
   Authorization: `Basic ${btoa(`${jiraUsername}:${jiraPassword}`)}`,
 }
 
-// make the request to Jira API to get all issues that are not done
+// make the request to Jira API to get all issues that aren't done
 const response = await axios.get(`${jiraUrl}/rest/api/2/search?jql=${jql}`, { headers })
 
-// filter the response to only keep the issues that are not done
+// filter the response to only keep the issues that aren't done
 const issues = _.filter(response.data.issues, (issue) => issue.fields.status.name !== 'Done')
 ```
 
