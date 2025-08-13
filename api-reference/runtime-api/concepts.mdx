@@ -269,7 +269,7 @@ type Tag = {
 }
 ```
 
-Tags are defined by the integration or bot and can be used to store any additional information that is not covered by the other properties of the message, user, or conversation objects. Tags are key-value pairs, where both the key and value are strings. The `type` property indicates whether the tag is associated with a user, conversation, or message. It can be used later to filter or search user, conversation, or message objects based on their tags.
+Tags are defined by the integration or bot and can be used to store any additional information that isn't covered by the other properties of the message, user, or conversation objects. Tags are key-value pairs, where both the key and value are strings. The `type` property indicates whether the tag is associated with a user, conversation, or message. It can be used later to filter or search user, conversation, or message objects based on their tags.
 
 Unlike States, Tags are returned with the entity they are linked to. States can be bigger, but must be fetched separately. Also, tags are always string, while states can be any JSON object with a schema defined in the integration or bot definition.
 

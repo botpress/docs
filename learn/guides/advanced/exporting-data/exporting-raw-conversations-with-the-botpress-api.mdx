@@ -98,7 +98,7 @@ async function loadConversations(paginationToken) {
 
 ## Getting all conversations
 
-Use a loop to fetch all conversations at once using the above logic. This is not recommended for bots with a large number of conversations as it may take a long time to complete and may cause timeouts. The use of a library like\
+Use a loop to fetch all conversations at once using the above logic. This isn't recommended for bots with a large number of conversations as it may take a long time to complete and may cause timeouts. The use of a library like\
 [p-retry](https://www.npmjs.com/package/p-retry) to retry requests automatically is recommended.
 
 ```js

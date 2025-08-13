@@ -163,7 +163,7 @@ Now that the <DefinitionReference id="hitl-interface"/> is installed, you must a
     })
     ```
     <Note>
-      The name of the entity is not important, but it is recommended to use a name that matches the terminology of the <DefinitionReference id="external-service"/>. For example, if the <DefinitionReference id="external-service"/> uses the term _ticket_ to refer to a <DefinitionReference id="hitl-session"/>, you could name the entity `ticket` or `hitlTicket`.
+      The name of the entity isn't important, but it is recommended to use a name that matches the terminology of the <DefinitionReference id="external-service"/>. For example, if the <DefinitionReference id="external-service"/> uses the term _ticket_ to refer to a <DefinitionReference id="hitl-session"/>, you could name the entity `ticket` or `hitlTicket`.
     </Note>
   </Step>
   <Step title="Extend your definition">
@@ -390,7 +390,7 @@ export default new bp.Integration({
       const zendeskAuthorId = user.tags.id
       if (!zendeskAuthorId) {
         throw new sdk.RuntimeError(
-          `User ${user.id} is not linked to a Zendesk user`
+          `User ${user.id} isn't linked to a Zendesk user`
         )
       }
 

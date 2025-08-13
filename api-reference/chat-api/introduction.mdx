@@ -40,7 +40,7 @@ The webhook ID is the string at the end of the **Webhook URL**. In this case, th
 
 2. Check if you can reach the API by sending a GET request on `https://chat.botpress.cloud/$YOUR_WEBHOOK_ID/hello`.
 
-3. Create a chat user (this is not the same as a user in your Botpress Dashboard) by calling the [createUser](/api-reference/chat-api/openapi/createUser) operation.
+3. Create a chat user (this isn't the same as a user in your Botpress Dashboard) by calling the [createUser](/api-reference/chat-api/openapi/createUser) operation.
 
     <Note>
     This operation won't be available if you are using manual authentication. Check out the [Authentication](#authentication) section for more information.
@@ -65,7 +65,7 @@ The webhook ID is the string at the end of the **Webhook URL**. In this case, th
 
 All requests sent to the Chat Integration's API are authenticated with a `x-user-key` header. There are two ways to get this user key:
 
-- You call the `createUser` operation and get the key in the response's body. This operation is the only one that is not authenticated.
+- You call the `createUser` operation and get the key in the response's body. This operation is the only one that isn't authenticated.
 - You can sign it yourself.
 
 We refer to the second method as manual authentication. Use this method to ensure that only you can chat with your bot over the Chat API.

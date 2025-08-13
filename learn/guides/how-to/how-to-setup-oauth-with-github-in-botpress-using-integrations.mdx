@@ -239,7 +239,7 @@ export class Store {
 
   private validateKey(key: string): void {
     if (!this.validKeys.includes(key)) {
-      throw new Error(`Key ${key} is not a valid key, valid keys are: ${this.validKeys.join(", ")}`);
+      throw new Error(`Key ${key} isn't a valid key, valid keys are: ${this.validKeys.join(", ")}`);
     }
   }
 

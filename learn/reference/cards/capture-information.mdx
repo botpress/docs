@@ -605,7 +605,7 @@ To enable the search across all available Knowledge Bases when the user asks a q
 3. In the **Prompt message** property, enter a message that encourages the user to input their question (e.g., “What would you like to know?”).
 4. Store the user's input in a variable by setting the **Variable name** property (e.g., `userQuery`) if you want to use it later.
 
-Once set up, the bot will automatically search all configured Knowledge Bases for the user's inputted question and display the answer, provided that the Knowledge Agent's manual answering feature is not enabled.
+Once set up, the bot will automatically search all configured Knowledge Bases for the user's inputted question and display the answer, provided that the Knowledge Agent's manual answering feature isn't enabled.
 
 **Searching a Particular Knowledge Base**
 
@@ -1090,7 +1090,7 @@ Prompt message: When would you like to book the room? Please enter a date or dur
 
 When the user enters their response, the Datetime card will extract the date or duration value and save it in the **bookingDate** workflow variable as an object. You can then use this variable in other parts of your workflow to decide when to book the room or provide available dates for the user to choose from.
 
-You can check the user's preferred booking date against your available dates to ensure the room is available for booking on that day. If the room is not available, you can offer other available dates or suggest another hotel that is available on the preferred date.
+You can check the user's preferred booking date against your available dates to ensure the room is available for booking on that day. If the room isn't available, you can offer other available dates or suggest another hotel that is available on the preferred date.
 
 #### Formatting Date
 
@@ -1256,7 +1256,7 @@ Let's say you have a card that asks the user to choose between **Food** and **Dr
 
 Now, let's change the example to have the **Number of retries** set to 2 and the **Retry message** set to **Sorry, I didn't understand that, try to choose from the choices**, and the **Add transition to handle failure** flag turned on. If the user says, **I want Cars**, the bot will respond with **Sorry, I didn't understand that. Try to choose from the choices**, and show the choices again.
 
-If the user provides another message that is not related to the choices, the bot will retry again, up to a maximum of 2 retries. If the user still fails to provide the required information after the maximum retries, the bot will redirect the user directly to the failure transition, where you can have a message like **Sorry, I didn't understand that**.
+If the user provides another message that isn't related to the choices, the bot will retry again, up to a maximum of 2 retries. If the user still fails to provide the required information after the maximum retries, the bot will redirect the user directly to the failure transition, where you can have a message like **Sorry, I didn't understand that**.
 
 ## Validation
 
@@ -1295,7 +1295,7 @@ function validate(input: string): boolean
 }
 ```
 
-This code first tries to parse the user's input as a number. If the input is not a valid number, the code returns **false**. Otherwise, it checks if the age is between 18 and 100 and returns **true** if it is.
+This code first tries to parse the user's input as a number. If the input isn't a valid number, the code returns **false**. Otherwise, it checks if the age is between 18 and 100 and returns **true** if it is.
 
 **Example 2:**
 
@@ -1427,7 +1427,7 @@ To chain multiple Capture Information cards together, you need to follow these s
 6. Add the next Capture Information card to the flow.
 7. Repeat steps 1-6 for each additional Capture Information card you want to add, making sure to use a different variable name for each one.
 
-Once the user enters a value, it will automatically extract the requested information from the user's message using each Capture Information card in sequence. If a value is not found for a particular Capture Information card, it will ask the user for the value before proceeding to the next node/card.
+Once the user enters a value, it will automatically extract the requested information from the user's message using each Capture Information card in sequence. If a value isn't found for a particular Capture Information card, it will ask the user for the value before proceeding to the next node/card.
 
 You can then use the extracted variables in other parts of your flow by referencing the specific variable names using the following syntax: **`{{workflow.variableName}}`**.
 
@@ -1462,7 +1462,7 @@ Prompt message: Please enter your phone number
 Extract from history: 1
 ```
 
-When the user sends a message, the flow will begin extracting the requested information from the user's message using each Capture Information card in sequence. If a value is not found for a particular Capture Information card, it will ask the user for the value before proceeding to the next card.
+When the user sends a message, the flow will begin extracting the requested information from the user's message using each Capture Information card in sequence. If a value isn't found for a particular Capture Information card, it will ask the user for the value before proceeding to the next card.
 
 You can then use the extracted variables in other parts of your flow, such as sending a confirmation message to the user with their captured information:
 
