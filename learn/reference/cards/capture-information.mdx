@@ -757,7 +757,7 @@ Let's say you want to schedule a meeting with a user based on their availability
 ```text
 Type: Time Measurement
 Variable name: meetingTime
-Prompt message: When are you available for a meeting? Please enter a date or duration (e.g. next week, in 2 days, in 30 minutes).
+Prompt message: When are you available for a meeting? Please enter a date or duration (for example: next week, in 2 days, in 30 minutes).
 ```
 
 When the user enters their response, the Time Measurement card will extract the time measurement value and save it in the **meetingTime** workflow variable as a number value in the chosen format. You can then use this variable in other parts of your workflow to schedule the meeting accordingly.
@@ -842,7 +842,7 @@ Let's say you want to ask the user for a cron schedule to trigger a certain even
 ```
 Type: Cron Schedule
 Variable name: cronSchedule
-Prompt message: Please enter the interval in cron format, e.g. '0 \* \* \* \*' for every hour, and indicate whether this should be repeated or not with 'true' or 'false'.
+Prompt message: Please enter the interval in cron format, for example: '0 \* \* \* \*' for every hour, and indicate whether this should be repeated or not with 'true' or 'false'.
 ```
 
 When the user enters their response, the Cron Schedule card will extract the interval value and save it in the **cronSchedule** workflow variable as an object with two properties: the **cron** value, which represents the extracted interval in a cron format, and the **repeatable** boolean value, which indicates whether the interval should be repeated or not.
@@ -1073,7 +1073,7 @@ The **DateTime** capture information type in Botpress. This type of capture info
 **Steps to use DateTime Field**
 
 1. Pick the **DateTime** Capture Information Card from the Cards.
-2. (Optional) - Add a question to ask. (e.g. when would you like to book an appointment?)
+2. (Optional) - Add a question to ask. (for example: when would you like to book an appointment?)
 3. Store the output in a variable.
 
 Once the card is used, it will automatically extract the date or duration value from the user's input and save it in the workflow variable you specified as an object. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's response.

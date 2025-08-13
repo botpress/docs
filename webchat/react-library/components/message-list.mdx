@@ -98,7 +98,7 @@ The `MessageList` component renders the list of messages in the current Webchat 
 </ResponseField>
 <ResponseField name="sendMessage" type="(payload: IntegrationMessage) => void">
   A callback function used to send a new message from the message list as a reply.
-  This is used by input messages (e.g. Button, Dropdown) where the user's input is sent directly from the message list in a message object.
+  This is used by input messages (for example: Button, Dropdown) where the user's input is sent directly from the message list in a message object.
   This means that `sendMessage` is required if your want to use the `Button`, `Dropdown` or any input message types.
 </ResponseField>
 <ResponseField name="showMarquee" type="boolean">

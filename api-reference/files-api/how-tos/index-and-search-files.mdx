@@ -42,7 +42,7 @@ To run a semantic search on your bot's files you can use the [Search Files](../o
 
 ```ts Using the Botpress Client
 const res = await client.searchFiles({
-  query: 'what are the most popular products of your company?', // This is the natural language query (e.g. a user's question) to be used for running a semantic search on the files of the bot.
+  query: 'what are the most popular products of your company?', // This is the natural language query (for example: a user's question) to be used for running a semantic search on the files of the bot.
   contextDepth: 1, // Optional (default: 0), allows you prepend and append the surrounding context to each matching passage in the search results
   tags: {
     // Optional, allows you to only search files that match the specified tags. Useful if you only want to search a subset of the bot's files.

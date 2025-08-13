@@ -83,7 +83,7 @@ const file = await client.uploadFile({
 
 ### In a custom script using an HTTP client
 
-If you can't use the Botpress Client (e.g. you can't install the package or you're working with a different programming language) you can also use any HTTP client to make requests to the API directly.
+If you can't use the Botpress Client (for example: you can't install the package or you're working with a different programming language) you can also use any HTTP client to make requests to the API directly.
 
 Please note that when calling the API directly, an HTTP request to the Botpress API (specifying the file size beforehand) will be needed to create the empty file first, and a separate HTTP request will be needed to upload the file content to the unique upload URL provided in the response of the first request.
 
