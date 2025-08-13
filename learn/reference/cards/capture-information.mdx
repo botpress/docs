@@ -1256,7 +1256,7 @@ Let's say you have a card that asks the user to choose between **Food** and **Dr
 
 Now, let's change the example to have the **Number of retries** set to 2 and the **Retry message** set to **Sorry, I didn't understand that, try to choose from the choices**, and the **Add transition to handle failure** flag turned on. If the user says, **I want Cars**, the bot will respond with **Sorry, I didn't understand that. Try to choose from the choices**, and show the choices again.
 
-If the user provides another message that isn't related to the choices, the bot will retry again, up to a maximum of 2 retries. If the user still fails to provide the required information after the maximum retries, the bot will redirect the user directly to the failure transition, where you can have a message like **Sorry, I didn't understand that**.
+If the user provides another message that isn't related to the choices, the bot will retry again, up to a maximum of two retries. If the user still fails to provide the required information after the maximum retries, the bot will redirect the user directly to the failure transition, where you can have a message like **Sorry, I didn't understand that**.
 
 ## Validation
 

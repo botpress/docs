@@ -17,7 +17,7 @@ You can store data about your bot's AI spend in a table that automatically updat
 ## Step 1: Create a table
 
 1. [Create a new table](/learn/reference/tables#creating-a-table) named `SpendTable`.
-2. Add 2 columns to the table:
+2. Add two columns to the table:
     - **Cost** (set the type to **Number**)
     - **ConversationID** (set the type to **String**)
 
@@ -87,7 +87,7 @@ Try chatting with your bot in the emulator. After every message your bot sends, 
 Your table now stores the AI spend for each turn—but you can also store each conversation's total AI spend in a separate table.
 
 1. Create a second table named `TotalSpendTable`.
-2. Add the same 2 columns as the first table:
+2. Add the same two columns as the first table:
     - **Cost** (set the type to **Number**)
     - **ConversationID** (set the type to **String**)
 3. [Create a new Hook](/learn/reference/hooks#add-a-hook) with the type [After Conversation End](/learn/reference/hooks#after-conversation-end).
