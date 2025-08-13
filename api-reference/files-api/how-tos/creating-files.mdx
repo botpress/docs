@@ -6,7 +6,7 @@ All files are private by default and can only be accessed by the bot or integrat
 
 The following code snippet can be put in an Execute Card in your bot to create and upload a file that can be accessed by anyone with the file URL and that will be indexed for semantic search:
 
-> Important: Make sure you have enabled the "Use the Botpress Client" setting in your bot's settings in Botpress Studio in order to have access to the `client` global variable; otherwise, it will not be accessible and you'll get an error.
+> Important: Make sure you have enabled the "Use the Botpress Client" setting in your bot's settings in Botpress Studio in order to have access to the `client` global variable; otherwise, it won't be accessible and you'll get an error.
 
 ```ts
 const file = await client.uploadFile({
