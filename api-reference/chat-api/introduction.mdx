@@ -20,11 +20,11 @@ To use this API, make sure the [Chat integration](https://studio.botpress.cloud/
 
 ## Configuration
 
-The Chat Integration has no required configuration — you can use it as-is.  However, it does expose a few options:
+The Chat Integration has no required configuration—you can use it as-is.  However, it does expose a few options:
 
 * **Encryption Key:** Used to verify incoming requests. If you set this field, you are then responsible for signing the `x-user-key` header yourself. Check out the [Authentication](#authentication) section for more information.
 
-* **Webhook URL:** Called by the Chat API to notify you of chat-related events. The standard way of listening to Chat API events is by opening an SSE stream — if you set this field, you will receive events both on the SSE stream and on the webhook. Check out the [Realtime](#realtime) section for more information.
+* **Webhook URL:** Called by the Chat API to notify you of chat-related events. The standard way of listening to Chat API events is by opening an SSE stream—if you set this field, you will receive events both on the SSE stream and on the webhook. Check out the [Realtime](#realtime) section for more information.
 
 * **Webhook Secret:** Only used if you set a webhook URL. Included in requests sent to your webhook to ensure that requests made to your webhook are coming from the Chat API.
 

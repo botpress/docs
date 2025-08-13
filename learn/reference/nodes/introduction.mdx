@@ -5,7 +5,7 @@ sidebarTitle: Introduction
 
 Nodes are the **primary units of conversational logic** in your bot.
 
-Think of a Node as a single step in a conversation. It executes a sequence of actions — like sending a message, capturing information from a user, or performing a task — then transitions to the next Node.
+Think of a Node as a single step in a conversation. It executes a sequence of actions—like sending a message, capturing information from a user, or performing a task—then transitions to the next Node.
 
 <Frame>
   <img alt="Nodes" className="block dark:hidden" src="./assets/node.png" />
@@ -24,7 +24,7 @@ A Node [transitions to the next Node](#transition-between-Nodes) when either:
 - One of its Cards manually transitions to a new Node. You can set up manual transitions based on [user choice](/learn/reference/cards/capture-information), [true/false conditions](/learn/reference/cards/flow-logic), and more.
 
 <Note>
-  Some Nodes have specific properties that make them behave differently — check out [Types of Node](#types-of-node) for
+  Some Nodes have specific properties that make them behave differently—check out [Types of Node](#types-of-node) for
   more details.
 </Note>
 
@@ -84,7 +84,7 @@ Standard Nodes execute each of their Cards one-by-one, then transition to the ne
 
 ### Autonomous Node
 
-The Autonomous Node uses AI to make decisions — like what your bot should say or what tools it should use.
+The Autonomous Node uses AI to make decisions—like what your bot should say or what tools it should use.
 
 Unlike a standard Node, which executes its Cards one by one, the Autonomous Node uses a Large Language Model (LLM) to decide when to execute its Cards. It can understand the conversation’s context, write responses to users, and leverage the tools you give it.
 
@@ -109,18 +109,18 @@ The only Cards you can add to an Entry Node are:
 - [Log](/learn/reference/cards/utilities#log) Cards
 
 <Tip>
-  You can toggle variables within an Entry Node — check out the guide to [passing variables between
+  You can toggle variables within an Entry Node—check out the guide to [passing variables between
   Workflows](/learn/reference/variables/pass-between-workflows) for more information.
 </Tip>
 
 ### Exit Node
 
-The Exit Node is the end of every custom Workflow in your bot ([built-in Workflows](/learn/reference/workflows#built-in-workflows) end with an [End Node](/learn/reference/nodes/introduction#end-node) instead). It defines the exit point for the Workflow — each custom Workflow must contain at least one Exit Node.
+The Exit Node is the end of every custom Workflow in your bot ([built-in Workflows](/learn/reference/workflows#built-in-workflows) end with an [End Node](/learn/reference/nodes/introduction#end-node) instead). It defines the exit point for the Workflow—each custom Workflow must contain at least one Exit Node.
 
 Exit Nodes can't use Cards.
 
 <Tip>
-  You can configure the Exit Node to pass a variable back to its parent Workflow — check out the guide to [passing
+  You can configure the Exit Node to pass a variable back to its parent Workflow—check out the guide to [passing
   variables between Workflows](/learn/reference/variables/pass-between-workflows) for more information.
 </Tip>
 
@@ -149,10 +149,10 @@ Triggers are a special kind of Node that only execute when a certain event occur
 
 Exception handlers are Nodes that execute whenever your bot encounters an error. They're optional, have no configuration options, and can't contain any Cards.
 
-By default, your bot uses the built-in [Error Workflow](/learn/reference/workflows#error) to handle errors, regardless of which Workflow the error occurred in — exception handlers let you handle errors differently for specific Workflows.
+By default, your bot uses the built-in [Error Workflow](/learn/reference/workflows#error) to handle errors, regardless of which Workflow the error occurred in—exception handlers let you handle errors differently for specific Workflows.
 
 You can only add exceptional handlers to the [Main Workflow](/learn/reference/workflows#main) or to custom Workflows. Each Workflow can contain one exception handler.
 
 ### Comments
 
-You can leave comments, images or videos in your Workflow. They have no effect on your bot's behaviour — you can use them to annotate your Workflows and make them easier to understand for any collaborators.
+You can leave comments, images or videos in your Workflow. They have no effect on your bot's behaviour—you can use them to annotate your Workflows and make them easier to understand for any collaborators.
