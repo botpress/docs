@@ -121,7 +121,7 @@ export default new bp.Integration({
     webhook: {
       messages: {
         text: async (props) => {
-          // This is the outgoing message handler. It is called when a bot sends a message to the user.
+          // This is the outgoing message handler. It's called when a bot sends a message to the user.
           const {
             ctx: {
               configuration: { webhookUrl },
@@ -146,7 +146,7 @@ export default new bp.Integration({
     },
   },
   handler: async (props) => {
-    // This is the incoming request handler. It is called by the external service you are integrating with.
+    // This is the incoming request handler. It's called by the external service you are integrating with.
     const {
       client,
       req: { body },
@@ -231,7 +231,7 @@ The `getOrCreateConversation` and `getOrCreateUser` operations first check if a 
 
 The `createMessage` operation creates a new message in Botpress with the provided payload. This message is then forwarded to the bot for processing.
 
-The `channels["$CHANNEL_NAME"]` property (here the channel name is `webhook`) is where you define the outgoing message handlers; i.e. the logic executed when the bot sends a message to the user. In this case, we are defining a single handler for the `text` message type. Here we call the configured webhook with the conversation that was created in the incoming request. It is important here not to confuse the id tag and the conversation id. The id tag is the external id of the conversation in the external service that was provided in the incoming request.
+The `channels["$CHANNEL_NAME"]` property (here the channel name is `webhook`) is where you define the outgoing message handlers; i.e. the logic executed when the bot sends a message to the user. In this case, we are defining a single handler for the `text` message type. Here we call the configured webhook with the conversation that was created in the incoming request. It's important here not to confuse the id tag and the conversation id. The id tag is the external id of the conversation in the external service that was provided in the incoming request.
 
 ## What's Next?
 

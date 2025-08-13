@@ -77,7 +77,7 @@ This feature isn't limited to official Botpress integrations—you can also enab
     ```
 
     <Note>
-      Just like the `linkTemplateScript`, this is a path to a `.vrl` script relative to your integration's directory. The script is executed when Botpress receives incoming requests on the global webhook. It should extract an external user or workspace ID from the request and return it in the format expected by Botpress. It is called with the following variables:
+      Just like the `linkTemplateScript`, this is a path to a `.vrl` script relative to your integration's directory. The script is executed when Botpress receives incoming requests on the global webhook. It should extract an external user or workspace ID from the request and return it in the format expected by Botpress. It's called with the following variables:
 
       ```ts
       type ScriptInput = {
