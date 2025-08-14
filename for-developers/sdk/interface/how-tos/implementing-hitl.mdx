@@ -370,7 +370,9 @@ This action should implement the following logic:
     Create a Botpress conversation using the Botpress client by calling the `client.getOrCreateConversation()` method.
   </Step>
   <Step title="Create the HITL session">
+
     On the <DefinitionReference id="external-service"/>, create the <DefinitionReference id="hitl-session"/>. This is typically represented as a _ticket_ in the <DefinitionReference id="external-service"/>.
+
   </Step>
   <Step title="Map the Botpress conversation to the HITL session">
     Update the Botpress conversation to map it to the <DefinitionReference id="hitl-session"/>. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
