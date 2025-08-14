@@ -9,7 +9,7 @@ description: >-
 
 This could include details like the user's name, full address, or raw input.
 
-To collect multiple pieces of information, multiple prompt fields can be added to a single prompt node. Once the information is collected, a flow variable should be created to store the extracted information for later use in the conversation or to be passed on to other systems. This allows for a more personalized and efficient experience for the user, as well as providing valuable data for the chatbot's developers.
+To collect multiple pieces of information, multiple prompt fields can be added to a single prompt node. Once the information is collected, a flow variable should be created to store the extracted information for later use in the conversation or to be passed on to other systems. This allows for a more personalized and efficient experience for the user, as well as providing valuable data for the bot's developers.
 
 # Prompt Field Types
 
@@ -309,11 +309,11 @@ Variable name: preferredTransportation
 Prompt message: What is your preferred mode of transportation? Choose one from the following: car, bus, bike.
 ```
 
-When the user selects their preferred mode of transportation, the Single Choice card will save the value in the **preferredTransportation** workflow variable. You can then use this variable to tailor the conversation based on the user's choice.
+When the user selects their preferred mode of transportation, the Single Choice card will save the value in the `preferredTransportation` workflow variable. You can then use this variable to tailor the conversation based on the user's choice.
 
 For example, if they choose bike, you can ask follow-up questions related to biking or suggest some scenic bike routes.
 
-You can also use the value of the **preferredTransportation** variable in transitions. For example, if the user selects car, you can move them to a node related to car-related services or if they choose bus, you can move them to a node related to public transportation schedules.
+You can also use the value of the `preferredTransportation` variable in transitions. For example, if the user selects car, you can move them to a node related to car-related services or if they choose bus, you can move them to a node related to public transportation schedules.
 
 ## Multi Choice
 
@@ -341,19 +341,19 @@ Variable name: pizzaToppings
 Prompt message: What toppings would you like on your pizza? Please select all that apply: pepperoni, mushrooms, onions, olives, sausage.
 ```
 
-When the user enters their response, the Multi Choice card will extract the selected options and save them in the **pizzaToppings** workflow variable. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's response.
+When the user enters their response, the Multi Choice card will extract the selected options and save them in the `pizzaToppings` workflow variable. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's response.
 
-For example, if the user selects **pepperoni** and **mushrooms,** you can use the **pizzaToppings** variable to customise their order and display a message like **Your pizza with pepperoni and mushrooms is on the way!**
+For example, if the user selects **pepperoni** and **mushrooms,** you can use the `pizzaToppings` variable to customise their order and display a message like **Your pizza with pepperoni and mushrooms is on the way!**
 
 ## Boolean
 
-**Boolean** type extracts a binary value from the user's input and saves it in a variable of type boolean. The extracted information can include values like true and false, agree and disagree, accept and decline, or any other binary values.
+**Boolean** type extracts a binary value from the user's input and saves it in a variable of type Boolean. The extracted information can include values like true and false, agree and disagree, accept and decline, or any other binary values.
 
 **Steps to use Boolean Field**
 
 1. Create a new capture information card.
 2. Set the Type property to **Boolean**.
-3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted boolean value.
+3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted Boolean value.
 4. Set the **Prompt message** property to a message that prompts the user to enter a binary value.
 5. Optionally, you can edit the Choices property if you want to customize the binary values that the user can select. By default, the choices are **Yes** and **No**. When the user provides an input, the system will extract either a **true** or **false** value based on whether the user selects **Yes** or **No**.
 
@@ -379,11 +379,11 @@ The **Confirmation** type is a way to ask the user to confirm or agree to someth
 
 1. Create a new capture information card.
 2. Set the Type property to **Confirmation**.
-3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted boolean value.
+3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted Boolean value.
 4. Set the **Prompt message** property to a message that prompts the user to confirm or agree to something.
 5. Optionally, you can edit the Choices property if you want to customize the binary values that the user can select. By default, the choices are **Accept** and **Decline**. When the user provides an input, the system will extract either a **true** or **false** value based on whether the user selects **Accept** or **Decline**.
 
-Once the card is used, it will automatically extract the confirmation from the user's input and save it in the workflow variable you specified as a boolean value (true or false). You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's confirmation.
+Once the card is used, it will automatically extract the confirmation from the user's input and save it in the workflow variable you specified as a Boolean value (true or false). You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's confirmation.
 
 **Example**
 
@@ -426,7 +426,7 @@ Variable name: productQuantity
 Prompt message: How many units of this product would you like to purchase?
 ```
 
-When the user enters their response, the Number field will extract the numerical value and save it in the productQuantity variable as either an integer or decimal value. You can then use this variable in other parts of your workflow to calculate the total cost of the purchase.
+When the user enters their response, the Number field will extract the numerical value and save it in the `productQuantity` variable as either an integer or decimal value. You can then use this variable in other parts of your workflow to calculate the total cost of the purchase.
 
 For instance, if the product costs $10 per unit and the user entered **3** as the product quantity, you can calculate the total cost in an [Execute Code Card](./execute-code) as follows:
 
@@ -459,7 +459,7 @@ Variable name: userEmail
 Prompt message: Please enter your email address to subscribe to our newsletter.
 ```
 
-When the user enters their email address, the EmailAddress card will extract the value and save it in the **userEmail** workflow variable as a string. You can then use this variable in other parts of your workflow to add the user to your newsletter subscription list or perform other actions based on the user's response.
+When the user enters their email address, the EmailAddress card will extract the value and save it in the `userEmail` workflow variable as a string. You can then use this variable in other parts of your workflow to add the user to your newsletter subscription list or perform other actions based on the user's response.
 
 ## Phone Number
 
@@ -510,7 +510,7 @@ Variable name: shippingAddress
 Prompt message: **Please enter your full shipping address:**
 ```
 
-When the user enters their address, the FullAddress card will extract the information and save it in the **shippingAddress** workflow variable. You can then use this variable in other parts of your workflow to complete the shipping process, such as sending an email confirmation to the user with their shipping details.
+When the user enters their address, the FullAddress card will extract the information and save it in the `shippingAddress` workflow variable. You can then use this variable in other parts of your workflow to complete the shipping process, such as sending an email confirmation to the user with their shipping details.
 
 Here's an example of how you can use the extracted information in a message:
 
@@ -548,7 +548,7 @@ Prompt message: Please enter the payment amount:
 Default value: 0.00
 ```
 
-When the user enters the price, the Price card will extract and save the information in the **paymentAmount** workflow variable. You can then use this variable in other parts of your workflow to process the payment, such as sending the payment information to a payment gateway.
+When the user enters the price, the Price card will extract and save the information in the `paymentAmount` workflow variable. You can then use this variable in other parts of your workflow to process the payment, such as sending the payment information to a payment gateway.
 
 Here's an example of how you can use the extracted information in a message:
 
@@ -581,7 +581,7 @@ Variable name: issueDescription
 Prompt message: Please describe the issue you are experiencing.
 ```
 
-When the user enters the issue description, the Raw Input card will extract the user's input and save it in the **issueDescription** workflow variable as a string value. You can then use this variable in other parts of your workflow to log the issue or escalate it to the relevant team for resolution.
+When the user enters the issue description, the Raw Input card will extract the user's input and save it in the `issueDescription` workflow variable as a string value. You can then use this variable in other parts of your workflow to log the issue or escalate it to the relevant team for resolution.
 
 You can create a message node with the following text:
 
@@ -642,7 +642,7 @@ Variable name: discountPercentage
 Prompt message: **Please enter the percentage discount you would like to apply to your purchase.**
 ```
 
-When the user enters their response, the Percentage card will extract the decimal value representing the percentage and save it in the **discountPercentage** workflow variable as a number. You can then use this variable in other parts of your workflow to calculate the discount or take actions based on the user's desired discount.
+When the user enters their response, the Percentage card will extract the decimal value representing the percentage and save it in the `discountPercentage` workflow variable as a number. You can then use this variable in other parts of your workflow to calculate the discount or take actions based on the user's desired discount.
 
 For example, if the user entered 50%, you could calculate the discount amount as follows:
 
@@ -675,7 +675,7 @@ Variable name: productQuantity
 Prompt message: **How many units of the product do you want?**
 ```
 
-When the user enters a valid quantity, the Quantity card will extract and save the information in the **productQuantity** workflow variable as a number. You can then use this variable in other parts of your workflow to calculate the total price or to check the stock availability.
+When the user enters a valid quantity, the Quantity card will extract and save the information in the `productQuantity` workflow variable as a number. You can then use this variable in other parts of your workflow to calculate the total price or to check the stock availability.
 
 Here's an example of how you can use the extracted information in a message:
 
@@ -708,7 +708,7 @@ Variable name: favoriteColor
 Prompt message: Please enter your favourite colour:
 ```
 
-When the user enters their favourite colour, the Color card will extract the information and save it in the **favoriteColor** workflow variable. You can then use this variable in other parts of your workflow to customise your marketing campaigns, such as using the colour in promotional materials or emails.
+When the user enters their favourite colour, the Color card will extract the information and save it in the `favoriteColor` workflow variable. You can then use this variable in other parts of your workflow to customise your marketing campaigns, such as using the colour in promotional materials or emails.
 
 Here's an example of how you can use the extracted information in a message:
 
@@ -737,16 +737,16 @@ Once the card is used, it will automatically extract the date/duration value fro
 
 The following formats are available for the extracted time measurement value:
 
-ns (nanoseconds)\
-mu (microseconds)\
-ms (milliseconds)\
-s (seconds)\
-min (minutes)\
-h (hours)\
-d (days)\
-week (weeks)\
-month (months)\
-year (years)
+`ns` (nanoseconds)\
+`mu` (microseconds)\
+`ms` (milliseconds)\
+`s` (seconds)\
+`min` (minutes)\
+`h` (hours)\
+`d` (days)\
+`week` (weeks)\
+`month` (months)\
+`year` (years)
 
 You can choose any of these formats based on your requirement.
 
@@ -760,7 +760,7 @@ Variable name: meetingTime
 Prompt message: When are you available for a meeting? Please enter a date or duration (for example: next week, in 2 days, in 30 minutes).
 ```
 
-When the user enters their response, the Time Measurement card will extract the time measurement value and save it in the **meetingTime** workflow variable as a number value in the chosen format. You can then use this variable in other parts of your workflow to schedule the meeting accordingly.
+When the user enters their response, the Time Measurement card will extract the time measurement value and save it in the `meetingTime` workflow variable as a number value in the chosen format. You can then use this variable in other parts of your workflow to schedule the meeting accordingly.
 
 If the user is available at the specified time, you can schedule the meeting and confirm the details with the user. If not, you can ask for their availability again.
 
@@ -768,7 +768,7 @@ This will allow you to schedule meetings with users based on their availability 
 
 ## Weight Measurement
 
-The **WeightMeasurement** extracts weight information from the user's input and saves it in a variable of type number after converting it to the chosen format. The available formats are mcg, mg, g, kg, mt, oz, lb, t.
+The **WeightMeasurement** extracts weight information from the user's input and saves it in a variable of type number after converting it to the chosen format. The available formats are `mcg`, `mg`, `g`, `kg`, `mt`, `oz`, `lb`, `t`.
 
 **Steps to use Weight Measurement Field**
 
@@ -812,7 +812,7 @@ Variable name: userWeight
 Prompt message: Please enter your weight in kilograms.
 ```
 
-When the user enters their response, the Weight Measurement card will extract the weight information and convert it to kilograms, saving it in the **userWeight** workflow variable as a number value. You can then use this variable in other parts of your workflow to decide what to do based on the user's response.
+When the user enters their response, the Weight Measurement card will extract the weight information and convert it to kilograms, saving it in the `userWeight` workflow variable as a number value. You can then use this variable in other parts of your workflow to decide what to do based on the user's response.
 
 You can ask the user if they want to proceed if their weight is over a certain limit or if it falls under a certain range. You can also display the weight measurement in different formats by using a formatted node.
 
@@ -822,18 +822,18 @@ This will display the user's weight in the desired format and provide relevant i
 
 The **CronSchedule** type takes a specific interval of time that a user inputs and convert it into a format that a computer program can understand. This interval can be things like **every 5 minutes** or **once a day at 3pm.**
 
-The Cron Schedule then saves this interval in two ways: first, in a format that follows the **Cron** convention (which is a standard way of representing time intervals in programming); and second, as a boolean value that indicates whether the interval should be repeated or not (for example, if the interval is "every 5 minutes," the Cron Schedule would set the repeatable property to true, whereas if the interval is "once a day at 3pm," the Cron Schedule would set the repeatable property to false).
+The cron schedule then saves this interval in two ways: first, in a format that follows the cron convention (which is a standard way of representing time intervals in programming); and second, as a Boolean value that indicates whether the interval should be repeated or not (for example, if the interval is "every 5 minutes," the cron schedule would set the repeatable property to true, whereas if the interval is "once a day at 3pm," the cron schedule would set the repeatable property to false).
 
 This makes it easier for developers to program applications that need to run certain tasks at specific intervals of time.
 
-**Steps to use Cron Schedule Field**
+**Steps to use cron schedule field**
 
 1. Create a new capture information card.
-2. Set the Type property to **Cron Schedule**.
+2. Set the Type property to **cron schedule**.
 3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted cron interval.
 4. Set the **Prompt message** property to a message that prompts the user to enter the desired interval value.
 
-Once the card is used, it will automatically extract the interval value from the user's input and save it in the workflow variable you specified as an object containing the cron interval and the **repeatable** boolean value.
+Once the card is used, it will automatically extract the interval value from the user's input and save it in the workflow variable you specified as an object containing the cron interval and the **repeatable** Boolean value.
 
 **Example**
 
@@ -845,7 +845,7 @@ Variable name: cronSchedule
 Prompt message: Please enter the interval in cron format, for example: '0 \* \* \* \*' for every hour, and indicate whether this should be repeated or not with 'true' or 'false'.
 ```
 
-When the user enters their response, the Cron Schedule card will extract the interval value and save it in the **cronSchedule** workflow variable as an object with two properties: the **cron** value, which represents the extracted interval in a cron format, and the **repeatable** boolean value, which indicates whether the interval should be repeated or not.
+When the user enters their response, the cron Schedule card will extract the interval value and save it in the `cronSchedule` workflow variable as an object with two properties: the **cron** value, which represents the extracted interval in a cron format, and the **repeatable** Boolean value, which indicates whether the interval should be repeated or not.
 
 You can then use this variable in other parts of your workflow to set up the event trigger according to the user's input.
 
@@ -985,9 +985,9 @@ Variable name: liquidVolume
 Prompt message: What is the volume of liquid you want to order? Please enter a number and choose a volume format from the following list: mm3, cm3, ml, cl, dl, l, kl, m3, km3, tsp, Tbs, in3, fl-oz, cup, pnt, qt, gal, ft3, yd3.
 ```
 
-The **Volume Measurement** type extracts the volume value and save it in the **liquidVolume** workflow variable as a number value. The value will be converted to the format specified by the user. You can then use this variable in other parts of your workflow to perform calculations or use the value in responses to the user.
+The **Volume Measurement** type extracts the volume value and save it in the `liquidVolume` workflow variable as a number value. The value will be converted to the format specified by the user. You can then use this variable in other parts of your workflow to perform calculations or use the value in responses to the user.
 
-For example, you could use the **liquidVolume** variable to calculate the price of the liquid based on the volume and price per unit of volume, or you could use it in response to the user like **Thank you for ordering** `{{workflow.liquidVolume}}` **ml of liquid.** Your order will be delivered soon.
+For example, you could use the `liquidVolume` variable to calculate the price of the liquid based on the volume and price per unit of volume, or you could use it in response to the user like **Thank you for ordering** `{{workflow.liquidVolume}}` **ml of liquid.** Your order will be delivered soon.
 
 ## Temperature Measurement
 
@@ -1018,7 +1018,7 @@ Variable name: bodyTemperature
 Prompt message: Please enter your body temperature in Celsius (°C), Kelvin (K), or Fahrenheit (°F)
 ```
 
-When the user enters their response, the Temperature Measurement card will extract the temperature value, convert it to the specified format, and save it in the **bodyTemperature** workflow variable as a **Number**. You can then use this variable in other parts of your workflow to decide what action to take based on the user's body temperature.
+When the user enters their response, the Temperature Measurement card will extract the temperature value, convert it to the specified format, and save it in the `bodyTemperature` workflow variable as a **Number**. You can then use this variable in other parts of your workflow to decide what action to take based on the user's body temperature.
 
 If the user's body temperature is above the normal range, you can send them to a doctor's appointment node. If not, you can proceed with the conversation as usual.
 
@@ -1088,7 +1088,7 @@ Variable name: bookingDate
 Prompt message: When would you like to book the room? Please enter a date or duration (e.g., next week, in a month, after two months, in 15 days, 2 working days).
 ```
 
-When the user enters their response, the Datetime card will extract the date or duration value and save it in the **bookingDate** workflow variable as an object. You can then use this variable in other parts of your workflow to decide when to book the room or provide available dates for the user to choose from.
+When the user enters their response, the Datetime card will extract the date or duration value and save it in the `bookingDate` workflow variable as an object. You can then use this variable in other parts of your workflow to decide when to book the room or provide available dates for the user to choose from.
 
 You can check the user's preferred booking date against your available dates to ensure the room is available for booking on that day. If the room isn't available, you can offer other available dates or suggest another hotel that's available on the preferred date.
 
@@ -1220,7 +1220,7 @@ Variable name: favoritePizza
 Prompt message: **What's your favorite type of pizza? Please enter the name of one of our popular pizza types.
 ```
 
-When the user enters their response, the Entity List card will extract the information that matches an entry (or synonym) in the custom entity list and save it in the **favoritePizza** workflow variable. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's favorite pizza type.
+When the user enters their response, the Entity List card will extract the information that matches an entry (or synonym) in the custom entity list and save it in the `favoritePizza` workflow variable. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's favorite pizza type.
 
 For example, you could use this variable to direct the user to the pizza ordering process, or to suggest additional toppings based on their selection.
 
@@ -1420,8 +1420,8 @@ Prompt Chaining allows you to extract multiple values from a single user message
 To chain multiple Capture Information cards together, you need to follow these steps:
 
 1. Add the first Capture Information card to the flow.
-2. Set the Type property to the type of information you want to capture (e.g., Fullname).
-3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted information (e.g., fullname).
+2. Set the Type property to the type of information you want to capture (e.g., **Person Name**).
+3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted information (e.g., **Person Name**).
 4. Set the **Prompt message** property to a message that prompts the user to enter the information (e.g., **Please enter your full name**).
 5. Set the **Extract from history** property to **1**.
 6. Add the next Capture Information card to the flow.

@@ -6,7 +6,7 @@ import runtimeApiPayloadSize from "/snippets/api-payload-limits.mdx"
 
 The Runtime API is designed for bots and integrations to handle messages, events, actions, and webhook requests at runtime. Each request made to this API is authenticated as either a bot or an integration. It can also be accessed externally by providing a bot or integration ID, though doing so effectively authenticates the request as a bot or integration.
 
-All the endpoints of the Runtime API are located behind the `chat` base path (api.botpress.cloud/v1/chat/).
+All the endpoints of the Runtime API are located behind the `chat` base path (`api.botpress.cloud/v1/chat/`).
 
 <Warning>
     The Runtime API has many nuances that aren't relevant to bot developers—because of this, we recommend only making your requests using the official [Botpress TypeScript Client](#using-the-official-typescript-client), which simplifies some of the API's trickier aspects.
@@ -19,7 +19,9 @@ All the endpoints of the Runtime API are located behind the `chat` base path (ap
 The official TypeScript client is available as an NPM package. You can install it using any of the following command:
 
 <CodeGroup>
+
 ```bash npm
+
 npm install @botpress/client
 ```
 

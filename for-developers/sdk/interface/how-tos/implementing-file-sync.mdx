@@ -41,7 +41,7 @@ Throughout this document, we will use the following terms:
     The Botpress plugin that orchestrates file synchronization. This plugin is responsible for managing the synchronization process, including scheduling, error handling, and reporting.
   </Definition>
   <Definition term="file" id="file">
-    A file is a single unit of data that can be synchronized from the external service to Botpress. Files can contain any type of data, such as text, images, or binary data. Files _can't_ contain other files or folders.
+    A file is a single unit of data that can be synchronized from the external service to Botpress. Files can contain any type of data, such as text, images, or binary data. Files can't contain other files or folders.
   </Definition>
   <Definition term="folder" id="folder">
     A folder is a container for files. Folders can contain other folders and files, allowing for a hierarchical organization of data.
@@ -153,9 +153,11 @@ Now that the <DefinitionReference id="files-readonly"/> is installed, you must a
   </Step>
   <Step title="Import the interface">
     At the top of the file, import the <DefinitionReference id="files-readonly"/>:
+
     ```typescript integration.definition.ts
     import filesReadonly from './bp_modules/files-readonly'
     ```
+
   </Step>
   <Step title="Extend your definition">
   Use the `.extend()` function at the end of your `new IntegrationDefinition()` statement:
@@ -249,11 +251,12 @@ This action should implement the following logic:
 
 <Steps>
   <Step title="Get the folder ID">
-    Get the folder identifier from `input.folderId`. When this value is `undefined`, it means the <DefinitionReference id="file-synchronizer"/> is requesting a list of all items in the _root directory_ of the <DefinitionReference id="external-service"/>. For root directory requests, please refer to the documentation of the <DefinitionReference id="external-service"/> to determine the correct root identifier - this is typically an empty string, a slash character (`/`), or a special value defined by the service.
+    Get the folder identifier from `input.folderId`. When this value is `undefined`, it means the <DefinitionReference id="file-synchronizer"/> is requesting a list of all items in the root directory of the <DefinitionReference id="external-service"/>. For root directory requests, please refer to the documentation of the <DefinitionReference id="external-service"/> to determine the correct root identifier - this is typically an empty string, a slash character (`/`), or a special value defined by the service.
   </Step>
   <Step title="Get the list of items">
     Use the <DefinitionReference id="external-service"/>'s API to get the list of items in the folder. If the <DefinitionReference id="external-service"/> supports filtering by item type (file or folder), by maximum file size, or by modification date, please use these filters to limit the number of items returned. This will help reduce the amount of data transferred and improve performance.
     <Expandable title="item filters">
+
       ```typescript {3-7}
       type Input = {
         folderId?: string;
@@ -265,6 +268,7 @@ This action should implement the following logic:
         nextToken?: string; // <= pagination token
       };
       ```
+
     </Expandable>
     <Note>
       If a pagination token is provided (`input.nextToken`), use it to get the next page of items. The <DefinitionReference id="external-service"/> should return a new pagination token in the response, which you should return with the action's response.
@@ -276,6 +280,7 @@ This action should implement the following logic:
   <Step title="Map each items to the expected schema">
     Map each item to the expected schema. The <DefinitionReference id="file-synchronizer"/> expects the following schemas:
     <Expandable title="folder schema">
+
       ```typescript {2-4}
       type Folder = {
         id: string;
@@ -285,6 +290,7 @@ This action should implement the following logic:
         absolutePath?: string;
       }
       ```
+
       <ResponseField name="id" type="string" required>
         This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <DefinitionReference id="integration"/> must be able to resolve this identifier to the actual folder in the <DefinitionReference id="external-service"/>. The <DefinitionReference id="file-synchronizer"/> will use this identifier to enumerate children of this folder.
       </ResponseField>
@@ -302,6 +308,7 @@ This action should implement the following logic:
       </ResponseField>
     </Expandable>
     <Expandable title="file schema">
+
       ```typescript {2-4}
       type File = {
         id: string;
@@ -314,6 +321,7 @@ This action should implement the following logic:
         contentHash?: string;
       }
       ```
+
       <ResponseField name="id" type="string" required>
         This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <DefinitionReference id="integration"/> must be able to resolve this identifier to the actual file in the <DefinitionReference id="external-service"/>. The <DefinitionReference id="file-synchronizer"/> will use this identifier to download the file.
       </ResponseField>
@@ -343,12 +351,14 @@ This action should implement the following logic:
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the <DefinitionReference id="file-synchronizer"/> by returning the list of items. The <DefinitionReference id="file-synchronizer"/> will then handle the rest of the synchronization process.
+
     ```typescript {2-3}
     return {
       items: [...mappedFolders, ...mappedFiles],
       meta: { nextToken: hasMoreItems ? nextToken : undefined },
     }
     ```
+
     <Note>
       If the <DefinitionReference id="external-service"/> indicates it has more items, return the pagination token in the `nextToken` field. The <DefinitionReference id="file-synchronizer"/> will use this token to request the next page of items. Otherwise, return `undefined`.
     </Note>
@@ -415,7 +425,7 @@ This action should implement the following logic:
     Use the <DefinitionReference id="external-service"/>'s API to download the file's content.
   </Step>
   <Step title="Upload the file to Botpress">
-    Upload the file to Botpress using the `client.uploadFile` method. This method expects both the file's content and a _file key_, which is provided by the <DefinitionReference id="file-synchronizer"/> as `input.fileKey`.
+    Upload the file to Botpress using the `client.uploadFile` method. This method expects both the file's content and a file key, which is provided by the <DefinitionReference id="file-synchronizer"/> as `input.fileKey`.
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the <DefinitionReference id="file-synchronizer"/> by returning the ID of the file that was uploaded to Botpress.
@@ -462,6 +472,7 @@ The <DefinitionReference id="file-synchronizer"/> can be configured to use real-
   <Step title="Map the file to the expected schema">
     In your handler, map the file to the expected schema. The <DefinitionReference id="file-synchronizer"/> expects the following schema:
     <Expandable title="file schema">
+
       ```typescript {2-5}
       type File = {
         id: string;
@@ -474,6 +485,7 @@ The <DefinitionReference id="file-synchronizer"/> can be configured to use real-
         contentHash?: string;
       }
       ```
+
       <ResponseField name="id" type="string" required>
         This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique. Your <DefinitionReference id="integration"/> must be able to resolve this identifier to the actual file in the <DefinitionReference id="external-service"/>. The <DefinitionReference id="file-synchronizer"/> will use this identifier to download the file.
       </ResponseField>
@@ -503,12 +515,14 @@ The <DefinitionReference id="file-synchronizer"/> can be configured to use real-
   </Step>
   <Step title="Emit the event">
     Emit the `fileCreated` event with the mapped file as the payload. The <DefinitionReference id="file-synchronizer"/> will then handle the rest of the synchronization process.
+
     ```typescript {2-3}
     await client.createEvent({
       name: 'fileCreated',
       payload: { file: mappedFile },
     })
     ```
+
   </Step>
 </Steps>
 
@@ -529,6 +543,7 @@ The logic is identical to the `fileCreated` event, but you should emit the `file
   <Step title="Map the folder to the expected schema">
     In your handler, map the folder to the expected schema. The <DefinitionReference id="file-synchronizer"/> expects the following schema:
     <Expandable title="folder schema">
+
       ```typescript {2-5}
       type Folder = {
         id: string;
@@ -538,6 +553,7 @@ The logic is identical to the `fileCreated` event, but you should emit the `file
         parentId?: string;
       }
       ```
+
       <ResponseField name="id" type="string" required>
         This could be a unique identifier from the <DefinitionReference id="external-service"/>, or a relative or absolute path, so long as it's unique.
       </ResponseField>
@@ -557,12 +573,14 @@ The logic is identical to the `fileCreated` event, but you should emit the `file
   </Step>
   <Step title="Emit the event">
     Emit the `folderDeletedRecursive` event with the mapped folder as the payload. The <DefinitionReference id="file-synchronizer"/> will then handle the rest of the synchronization process.
+
     ```typescript {2-3}
     await client.createEvent({
       name: 'folderDeletedRecursive',
       payload: { folder: mappedFolder },
     })
     ```
+
   </Step>
 </Steps>
 

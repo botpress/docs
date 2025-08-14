@@ -5,7 +5,7 @@ icon: table
 
 import { YouTube } from '/snippets/youtube.mdx'
 
-Tables are an essential feature in the explorer, functioning as a local database within your chatbot's environment. They provide structured storage for various types of data that can be accessed and manipulated as required within your workflows.
+Tables are an essential feature in the explorer, functioning as a local database within your bot's environment. They provide structured storage for various types of data that can be accessed and manipulated as required within your workflows.
 
 They're particularly useful for storing information that needs to be persisted across multiple sessions, such as user profiles, transaction histories, and other types of data that need to be retrieved and updated over time.
 
@@ -114,7 +114,7 @@ Check out the [Table Cards documentation](/learn/reference/cards/execute-code#ta
 
 You can also interact with tables using the Botpress Client. Here are some of the functions you can use to interact with tables:
 
-## listTables
+## List tables
 
 To list all the tables in the bot, use the `listTables` function. This function will return an array of all the tables in the bot.
 
@@ -462,7 +462,7 @@ const { deletedRows } = await client.deleteTableRows({
 
 The upsert operation is a combination of insert or update, allowing you to insert new rows or update existing ones. The operation is based on the row's `keyColumn`.
 
-**keyColumn**: The column used to identify the row. This column must be unique. Failure occurs if more than one row is found for the same key.
+`keyColumn`: The column used to identify the row. This column must be unique. Failure occurs if more than one row is found for the same key.
 
 ```javascript
 const { rows, inserted, updated, errors, warnings } = await client.upsertTableRows({
@@ -581,7 +581,7 @@ const { table } = await client.deleteTable({ table: 'Data1Table' })
 
 <img src="./assets/table-code-operations.png" />
 
-## createRecord
+## Create record
 
 To create a new record in a table, use the `createRecord` function. You can specify the values for each field in the record. This function can be particularly useful when you need to store new information, such as a new user's details or a newly completed transaction.
 
@@ -592,7 +592,7 @@ To create a new record in a table, use the `createRecord` function. You can spec
 await Data1Table.createRecord({ Age: 25, Name: 'Tom', Occupation: 'Student' })
 ```
 
-## createRecords
+## Create records
 
 To create multiple records in a table, use the `createRecords` function. You can specify the values for each field in the record. Useful for creating multiple records at once.
 
@@ -606,7 +606,7 @@ await Data1Table.createRecords([
 ])
 ```
 
-## deleteRecord
+## Delete record
 
 To delete a record in a table, use the `deleteRecord` function. You need to specify the record ID of the record you want to delete.
 
@@ -617,7 +617,7 @@ To delete a record in a table, use the `deleteRecord` function. You need to spec
 await Data1Table.deleteRecord(7)
 ```
 
-## deleteRecords
+## Delete records
 
 To delete multiple records in a table, use the `deleteRecords` function. You need to specify the record IDs of the records you want to delete in an array.
 
@@ -628,7 +628,7 @@ To delete multiple records in a table, use the `deleteRecords` function. You nee
 await Data1Table.deleteRecords([7, 8, 9])
 ```
 
-## findRecords
+## Find records
 
 To find records in a table, use the `findRecords` function. You can add filters, just query everything or search using semantic search (like a Google Search!).
 
@@ -671,7 +671,7 @@ To perform a traditional search, use the search parameter when calling the DataT
 workflow.records = await DataTable1.findRecords({ search: 'red velvet chairs' })
 ```
 
-You can pass variables like event.preview to the search parameter to search for user input or any other variable. This allows you to preprocess the user's input before performing the search.
+You can pass variables like event.preview to the search parameter to search for user input or any other variable. This allows you to pre-process the user's input before performing the search.
 
 ### Filtering results
 
@@ -924,9 +924,9 @@ You will see a window with a code editor.
 
 <img src="./assets/code-editor.png" />
 
-Simply add your code above. The proper syntax for accessing columns you've identified as dependencies is row[propertyName], and the displayed cell value is what's returned by this function. You can call asynchronous functions within the function, and have the **axios** library available to perform HTTP requests.
+Simply add your code above. The proper syntax for accessing columns you've identified as dependencies is row[propertyName], and the displayed cell value is what's returned by this function. You can call asynchronous functions within the function, and have the **Axios** library available to perform HTTP requests.
 
-For instance, the following code will return the fibonacci number of the row value for the column **number**.
+For instance, the following code will return the Fibonacci number of the row value for the column **number**.
 
 ```js
 function fibonacci(n) {

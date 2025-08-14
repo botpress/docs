@@ -11,7 +11,9 @@ Unfortunately, interfaces aren't yet listed on our website, so you must find the
 
 <Steps>
   <Step title="Open the interfaces directory">
+
     Navigate to the [`interfaces` directory](https://github.com/botpress/botpress/tree/master/interfaces) of the [botpress/botpress](https://github.com/botpress/botpress) repository.
+
   </Step>
   <Step title="Find the interface">
     Find the interface you want to implement and open its directory.
@@ -30,12 +32,14 @@ Once you have the interface name and version, you can add it as a dependency to 
     Open your integration's `package.json` file.
   </Step>
   <Step title="Add the bpDependencies section">
+
     If there is no `bpDependencies` section in your integration's `package.json` file, create one:
     ```json
     {
       "bpDependencies": {}
     }
     ```
+
   </Step>
   <Step title="Add the interface as a dependency">
     In the `bpDependencies` section, add the interface name and version as a dependency. For example, with an interface named `creatable` and version `0.0.1`, you would add the following:
