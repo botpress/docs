@@ -2,7 +2,7 @@
 title: Autonomous Node
 ---
 
-The Autonomous Node **uses AI to make decisions** — like what your bot should say or what tools it should use.
+The Autonomous Node **uses AI to make decisions**—like what your bot should say or what tools it should use.
 
 Unlike a [standard Node](/learn/reference/nodes/introduction#standard-node), which executes its [Cards](/learn/reference/cards) one by one, the Autonomous Node uses a Large Language Model (LLM) to decide when to execute its Cards. It can understand the conversation's context, write responses to users, and leverage the tools you give it.
 
@@ -46,7 +46,7 @@ Select your Autonomous Node to open its configuration menu. Here's a breakdown o
 
 - **Allow Conversation**: This option toggles the Autonomous Node's ability to communicate with users directly. If turned off, the Node only processes commands and executes its internal logic without sending messages to users.
 
-- **Instructions**: This field is your Autonomous Node's main prompt. Provide clear guidelines in this section — the more specific you are, the better the agent’s decision-making.
+- **Instructions**: This field is your Autonomous Node's main prompt. Provide clear guidelines in this section—the more specific you are, the better the agent’s decision-making.
 
   For a detailed guide to prompting, check out the [Prompting tips](#prompting-tips) section.
 
@@ -56,7 +56,7 @@ Select your Autonomous Node to open its configuration menu. Here's a breakdown o
 
 You can add Cards to your Autonomous Node to expand its capabilities. The LLM powering the Autonomous Node will decide when to use these Cards based on your instructions (and the conversation's context).
 
-You can refer to Cards using natural language in your instructions — however, your bot may generate better responses if you [refer to them using code](#refer-to-tools-directly).
+You can refer to Cards using natural language in your instructions—however, your bot may generate better responses if you [refer to them using code](#refer-to-tools-directly).
 
 ---
 
@@ -85,14 +85,14 @@ To create a structured prompt, we recommend using [Markdown syntax](https://www.
 
   ## Scope
   - Focus on customer inquiries about orders, billing, account issues, and general support.
-  - **Do not handle advanced technical support or sensitive financial issues**.
+  - **Don't handle advanced technical support or sensitive financial issues**.
   - Redirect or escalate issues outside your expertise to a human agent.
 
   ## Response Style
   - Maintain a friendly, clear, and professional tone.
   - Keep responses brief and to the point.
-  - **Never use unexplained jargon or acronyms.**  
-  - **Always confirm and echo user inputs before proceeding.** 
+  - **Never use unexplained jargon or acronyms.**
+  - **Always confirm and echo user inputs before proceeding.**
   ```
 </Accordion>
 
@@ -119,13 +119,13 @@ Provide clear instructions on how the conversation should flow. This could inclu
 >
   ```markdown Instructions wrap
   ## Instructions
-  - **Greeting**: Start every conversation with a friendly welcome.  
+  - **Greeting**: Start every conversation with a friendly welcome.
     _Example_: "Hi, welcome to [COMPANY NAME] Support! How can I help you today?"
 
-  - **Escalation**: When a customer query becomes too complex or sensitive, transition to the "Human agent" sub-Workflow and notify the customer that you'll escalate the conversation to a human agent.  
+  - **Escalation**: When a customer query becomes too complex or sensitive, transition to the "Human agent" sub-Workflow and notify the customer that you'll escalate the conversation to a human agent.
     _Example_: "I’m having trouble resolving this. Let me get a human agent to assist you further."
 
-  - **Closing**: End interactions by confirming that the customer's issue has been addressed.  
+  - **Closing**: End interactions by confirming that the customer's issue has been addressed.
     _Example_: "Is there anything else I can help you with today?"
     ```
 </Accordion>
@@ -171,7 +171,7 @@ You can view a full list of tools your bot currently has access to in the [Inspe
       When the user wants to checkout with their current cart, use `global.checkout`.
       ```
     </Accordion>
-      
+
   </Tab>
   <Tab title="Integration tools">
     Any additional Cards you've added to the Autonomous Node also have their own tools that you can refer to directly. This includes Cards from external integrations.
@@ -200,7 +200,7 @@ You are the Customer Support AI Agent for [COMPANY NAME]. Your role is to intera
 
 ## Scope
 - Focus on customer inquiries about orders, billing, account issues, and general support.
-- Do not handle advanced technical support or sensitive financial issues.
+- Don't handle advanced technical support or sensitive financial issues.
 - Redirect or escalate issues outside your expertise to a human agent.
 
 ## Responsibility
@@ -222,13 +222,13 @@ You are the Customer Support AI Agent for [COMPANY NAME]. Your role is to intera
 - **Accuracy**: Provide verified and factual responses coming from Knowledge Base or official sources. Avoid speculation.
 
 ## Instructions
-- **Greeting**: Start every conversation with a friendly welcome.  
+- **Greeting**: Start every conversation with a friendly welcome.
   _Example_: "Hi, welcome to [COMPANY NAME] Support! How can I help you today?"
 
-- **Escalation**: When a customer query becomes too complex or sensitive, notify the customer that you'll escalate the conversation to a human agent.  
+- **Escalation**: When a customer query becomes too complex or sensitive, notify the customer that you'll escalate the conversation to a human agent.
   _Example_: "I’m having trouble resolving this. Let me get a human agent to assist you further."
 
-- **Closing**: End interactions by confirming that the customer's issue has been addressed.  
+- **Closing**: End interactions by confirming that the customer's issue has been addressed.
   _Example_: "Is there anything else I can help you with today?"
 ```
 

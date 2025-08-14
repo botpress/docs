@@ -30,9 +30,9 @@ The following file formats are supported for indexing:
 
 ### Notes on indexing
 
-- The file it will initially have a status of "indexing_pending" and will be indexed asynchronously. The time it takes to index the file will depend on the file size and the current load on the system.
-- You can check the status of the file by calling the [Get File](/api-reference/files-api/how-tos/manage-files#getting-the-file’s-metadata) endpoint and checking that the `file.status` property has changed to "indexing_completed".
-- If the indexing failed the status will be set to "indexing_failed" and the reason of the failure will be available in the `failedStatusReason` property of the file.
+- The file it will initially have a status of `indexing_pending` and will be indexed asynchronously. The time it takes to index the file will depend on the file size and the current load on the system.
+- You can check the status of the file by calling the [Get File](/api-reference/files-api/how-tos/manage-files#getting-the-file’s-metadata) endpoint and checking that the `file.status` property has changed to `indexing_completed`.
+- If the indexing failed the status will be set to `indexing_failed` and the reason of the failure will be available in the `failedStatusReason` property of the file.
 
 ## Searching files
 
@@ -42,7 +42,7 @@ To run a semantic search on your bot's files you can use the [Search Files](../o
 
 ```ts Using the Botpress Client
 const res = await client.searchFiles({
-  query: 'what are the most popular products of your company?', // This is the natural language query (e.g. a user's question) to be used for running a semantic search on the files of the bot.
+  query: 'what are the most popular products of your company?', // This is the natural language query (for example: a user's question) to be used for running a semantic search on the files of the bot.
   contextDepth: 1, // Optional (default: 0), allows you prepend and append the surrounding context to each matching passage in the search results
   tags: {
     // Optional, allows you to only search files that match the specified tags. Useful if you only want to search a subset of the bot's files.
@@ -89,7 +89,7 @@ You can check the [API reference](../openapi/searchFiles) for more details on th
 
 ### Using the search results for RAG
 
-You can use the search results to provide relevant information to a chatbot for generating a response to a user's question.
+You can use the search results to provide relevant information to a bot for generating a response to a user's question.
 
 Here's an example of a simple RAG (Retrieval Augmented Generation) implementation that shows how you can use the ChatGPT large language model (through the OpenAI API) and the search results provided by our API to answer a user's question:
 

@@ -86,7 +86,7 @@ await axios.post(webhookUrl, data, header)
 
 Webhook requests make available four properties that you can read in your bot:
 
-* `event.payload.body`: The body of the request - it is usually a JSON object
+* `event.payload.body`: The body of the request - it's usually a JSON object
 * `event.payload.query`: A JSON object containing the URL params of the request
   * For example if you make a request to `https://your-webhook.url/?param1=hello&param2=world` the query object will look like this: `{ param1: 'hello', param2: 'world' }`
   * Then you can access the params using this notation: `event.payload.query.param1`

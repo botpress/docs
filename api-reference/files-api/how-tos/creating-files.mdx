@@ -6,7 +6,7 @@ All files are private by default and can only be accessed by the bot or integrat
 
 The following code snippet can be put in an Execute Card in your bot to create and upload a file that can be accessed by anyone with the file URL and that will be indexed for semantic search:
 
-> Important: Make sure you have enabled the "Use the Botpress Client" setting in your bot's settings in Botpress Studio in order to have access to the `client` global variable; otherwise, it will not be accessible and you'll get an error.
+> Important: Make sure you have enabled the "Use the Botpress Client" setting in your bot's settings in Botpress Studio in order to have access to the `client` global variable; otherwise, it won't be accessible and you'll get an error.
 
 ```ts
 const file = await client.uploadFile({
@@ -17,7 +17,7 @@ const file = await client.uploadFile({
 
 Once the code above runs, the URL to download the file will be available in the `file.url` property.
 
-By default the file URL returned will be temporary and change on each request to this endpoint, and will expire after a short period of time and thus should not be stored long-term, but if the file was created with a 'public_content' access policy then this URL will be permanent and can be stored long-term.
+By default the file URL returned will be temporary and change on each request to this endpoint, and will expire after a short period of time and thus shouldn't be stored long-term, but if the file was created with a 'public_content' access policy then this URL will be permanent and can be stored long-term.
 
 #### Uploading from an existing URL
 
@@ -83,7 +83,7 @@ const file = await client.uploadFile({
 
 ### In a custom script using an HTTP client
 
-If you can't use the Botpress Client (e.g. you can't install the package or you're working with a different programming language) you can also use any HTTP client to make requests to the API directly.
+If you can't use the Botpress Client (for example: you can't install the package or you're working with a different programming language) you can also use any HTTP client to make requests to the API directly.
 
 Please note that when calling the API directly, an HTTP request to the Botpress API (specifying the file size beforehand) will be needed to create the empty file first, and a separate HTTP request will be needed to upload the file content to the unique upload URL provided in the response of the first request.
 

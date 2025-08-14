@@ -16,19 +16,19 @@ The choice of an AI model significantly impacts cost. Since GPT-3.5 Turbo is fas
 Our KB Agent hybrid mode offers an excellent middle ground, as we initially use GPT-3.5 Turbo to attempt a response to a query and escalate to GPT-4 Turbo only if necessary.
 
 **Tip 2: Shield Your KB**\
-You can reduce your AI Spend by shielding your KB from unnecessary typical FAQs that don’t need AI or smart answering with a Find Records card. This is how it works: if you know that users typically ask one question and we have 50 well-known questions with their answers, we can add them to a table and query that table using a Find Records card. In case we don’t find an answer, only then do we look in a KB.
+You can reduce your AI Spend by shielding your KB from unnecessary typical FAQs that don’t need AI or smart answering with a Find Records card. This is how it works: if you know that users typically ask one question and you have 50 well-known questions with their answers, you can add them to a table and query that table using a Find Records card. In case you don’t find an answer, only then should you look in a KB.
 
 **Tip 3: Properly Scope your KBs**\
-Depending on the type of information and the quantity of information that you want to add to a KB, it is usually best practice to do two things in parallel to cut AI Spend cost. First, organize your information into smaller KBs, with each KB scoped to a specific product/feature/topic. Second, drive the user through a workflow with multiple questions to scope down your search to a specific KB; this will not only reduce the cost, but it will also yield better results.
+Depending on the type of information and the quantity of information that you want to add to a KB, it's usually best practice to do two things in parallel to cut AI Spend cost. First, organize your information into smaller KBs, with each KB scoped to a specific product/feature/topic. Second, drive the user through a workflow with multiple questions to scope down your search to a specific KB; this won't only reduce the cost, but it will also yield better results.
 
 **Tip 4: Website KB Data Source vs Search the Web KB Data Source**\
-If you use a website as your KB data source but don’t make constant changes to the website that need to be reflected to your bot in real time then a good cost effective alternative is to use the Search The Web as your KB data source instead of the Website KB data source. Before making that transition, make sure to test that the performance on the questions you anticipate being asked is not degraded with this switch.
+If you use a website as your KB data source but don’t make constant changes to the website that need to be reflected to your bot in real time then a good cost effective alternative is to use the Search The Web as your KB data source instead of the Website KB data source. Before making that transition, make sure to test that the performance on the questions you anticipate being asked isn't degraded with this switch.
 
 **Tip 5: Query Tables with Find Records or Execute Code card**\
 If you have a Table with data you want to query, consider using the Find Records card instead of using the Table in a KB. For those with technical expertise, executing code can be an even more cost-efficient method of querying a Table. You do so by querying the Table directly from the Execute Code card and storing the output in a workflow variable that you can refer to later.
 
 **Tip 6: Control The Chunks**\
-By chunks I'm referring to the number of chunks that will be retrieved from the Knowledge Base to generate an answer. Generally the more chunks retrieved, the more accurate the answer – but it will take longer to generate and cost more AI tokens. Experiment with chunk size to establish the lowest amount that still leads to accurate responses.
+By chunks I'm referring to the number of chunks that will be retrieved from the Knowledge Base to generate an answer. Generally the more chunks retrieved, the more accurate the answer—but it will take longer to generate and cost more AI tokens. Experiment with chunk size to establish the lowest amount that still leads to accurate responses.
 
 ## Use Execute Code Card to lower AI Spend cost
 
@@ -45,7 +45,7 @@ Depending on the conversation volume, the amount you save by implementing this m
 For simple tasks, such as data reformatting or extracting information from structured data, using the Execute Code card can be more efficient, cheaper and faster than relying on an LLM.
 
 **Alternatives to Summary Agent**\
-You can use Execute Code cards to create your own transcript.  Place an Execute Code card wherever you want to track the users’ and bot’s message in an array variable. Afterwards, you can use that array and feed it as context to your KB.
+You can use Execute Code cards to create your own transcript. Place an Execute Code card wherever you want to track the users’ and bot’s message in an array variable. Afterwards, you can use that array and feed it as context to your KB.
 
 **Simplify When Possible**\
 Opt for the simpler interaction method that accomplishes the same goal without degrading user experience. For example, if you’re interested in collecting user feedback a simple star rating system with comments will be more cost-effective than using AI to collect the same information.
@@ -63,7 +63,7 @@ Our recommendation is to be conscious about decreasing this number because it wi
 **AI Task vs AI Generate Text**\
 For simple text outputs, the AI Generate Text card uses fewer tokens and is easier to set up than the AI Task card. For tasks involving parsing information, the AI Task card outperforms the AI Generate Text card.
 
-Therefore, our recommendation is to use the AI Task card when you want to use AI to process information (e.g. if you want to detect the user’s intention or if you want the AI to analyze the input). But, if you want to leverage AI to generate text, then use the AI Generate Text card instead (e.g. if you want to take a KB answer and expand it or if you want to generate a question creatively).
+Therefore, our recommendation is to use the AI Task card when you want to use AI to process information (for example: if you want to detect the user’s intention or if you want the AI to analyze the input). But, if you want to leverage AI to generate text, then use the AI Generate Text card instead (for example: if you want to take a KB answer and expand it or if you want to generate a question creatively).
 
 **Translations**\
 If your bot is going to be handling a high amount of multilingual conversations, consider integrating hooks with external translation services for a more cost-effective option.

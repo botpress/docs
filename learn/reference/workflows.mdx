@@ -29,10 +29,10 @@ Every Workflow you create has at least two Nodes:
 - An **Entry Node** that executes whenever you transition to the Workflow
 - An **Exit Node** which exits the current Workflow and returns to its parent Workflow
 
-You can put any amount of Nodes in between these two — they'll execute in order when you transition to the Workflow.
+You can put any amount of Nodes in between these two—they'll execute in order when you transition to the Workflow.
 
 <Note>
-  You can [pass data between Workflows](/learn/reference/variables/pass-between-workflows) — check out the
+  You can [pass data between Workflows](/learn/reference/variables/pass-between-workflows)—check out the
   [variables](/learn/reference/variables/) section for more information.
 </Note>
 
@@ -99,7 +99,7 @@ The Conversation End Workflow executes right before the conversation ends explic
 Instead of an **Exit** Node, the **Conversation End** Workflow contains an **End** Node. This ensures that the conversation ends after the Workflow executes.
 
 <Note>
-  The **Conversation End** Workflow only executes before the conversation ends explicitly — that is, when a Workflow transitions to an [End Node](/learn/reference/nodes/introduction#end-node).
+  The **Conversation End** Workflow only executes before the conversation ends explicitly—that is, when a Workflow transitions to an [End Node](/learn/reference/nodes/introduction#end-node).
 
 Since Autonomous Nodes don't transition to an End Node when the user ends the conversation, they won't transition to the Conversation End Workflow by default.
 
@@ -136,7 +136,7 @@ To add any Workflow, select it, then select **Install Workflow**.
 
 <Tip>
   To edit a Workflow you installed from Botpress Hub, you need to make a copy of it within your bot. After installing,
-  select **Make a copy and Edit** — the Workflow will then open in Studio.
+  select **Make a copy and Edit**—the Workflow will then open in Studio.
 </Tip>
 
 ---

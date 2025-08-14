@@ -33,7 +33,7 @@ When creating the Knowledge Base, you would provide a brief description that out
 For example,\
 **"This Knowledge Base provides information and support for our home appliances product line, including troubleshooting tips, user manuals, and frequently asked questions."**
 
-This description helps the NLU engine understand the focus of the Knowledge Base and identify the relevant sources of information to answer customer queries, such as **"How do I clean the filter in my washing machine?"** or **"What should I do if my oven is not heating up properly?"**
+This description helps the NLU engine understand the focus of the Knowledge Base and identify the relevant sources of information to answer customer queries, such as **"How do I clean the filter in my washing machine?"** or **"What should I do if my oven isn't heating up properly?"**
 
 # Knowledge Sources
 
@@ -88,7 +88,7 @@ When utilizing the Web Search Knowledge Base Source, you can further enhance you
 
 To enhance your web search capabilities and filter search results by time period, you can utilize the following options:
 
-* **Do not filter based on time**: Selecting this option ensures that the search results are not filtered based on a specific time period. It includes all available information without any time restrictions.
+* **Don't filter based on time**: Selecting this option ensures that the search results aren't filtered based on a specific time period. It includes all available information without any time restrictions.
 * **Pages discovered in the last 24 hours**: By choosing this option, the search results will focus on web pages that have been discovered or indexed within the past 24 hours. This allows you to access the most recent information available on the web.
 * **Pages discovered in the last 7 days**: Selecting this option narrows down the search results to web pages that have been discovered or indexed within the past 7 days. It helps you stay updated with recent developments and information.
 * **Pages discovered in the last 30 days**: This option filters the search results to include web pages that have been discovered or indexed within the past 30 days. It provides a slightly broader time range for retrieving recent information.
@@ -105,7 +105,7 @@ Let's say that the customer support team at this company receives a lot of quest
 
 Using the Text Document Knowledge Base, the team creates a series of Text Document documents that contain troubleshooting tips for each type of product. They organize these documents by title (e.g., "Refrigerators," "Washing Machines," "Ovens") and add description for common issues (e.g., "Not cooling," "Won't spin," "Not heating up").
 
-So, when users search for a specific problem like **My refrigerator is not cooling**, Botpress's Natural Language Understanding (NLU) functionality will retrieve the relevant response from the Text Document Knowledge Base, providing users with the necessary troubleshooting information.
+So, when users search for a specific problem like **My refrigerator isn't cooling**, Botpress's Natural Language Understanding (NLU) functionality will retrieve the relevant response from the Text Document Knowledge Base, providing users with the necessary troubleshooting information.
 
 ## 5. Tables: Organized Information
 
@@ -163,7 +163,7 @@ All chatbots have a limit of **5000** vectors - which is the equivalent to appro
 
 # Enabling/Disabling KB on Capture Information cards
 
-In Botpress, you have the ability to enable or disable the Knowledge Base feature for specific Capture Information cards - it is enabled by default.
+In Botpress, you have the ability to enable or disable the Knowledge Base feature for specific Capture Information cards - it's enabled by default.
 
 To enable the Knowledge Base on a Capture Information Card:
 
@@ -174,13 +174,13 @@ To enable the Knowledge Base on a Capture Information Card:
 By enabling this option, you allow the Knowledge Base to provide answers during the interaction when the user is asked for a response. If the user's input is relevant to the information stored in the Knowledge Base, Botpress's Natural Language Understanding (NLU) will retrieve the corresponding answer from the Knowledge Base and display it to the user. The conversation then proceeds to the next step of capturing information.\
 This feature helps to enhance the user experience by providing quick and accurate answers sourced from the Knowledge Base when appropriate.
 
-If you disable the Knowledge Base feature on the Capture Info action in Botpress, the system **will not** utilize the Knowledge Base to provide answers during the interaction.
+If you disable the Knowledge Base feature on the Capture Info action in Botpress, the system **won't** utilize the Knowledge Base to provide answers during the interaction.
 
-Disabling the Knowledge Base means that when users are prompted for a response and their input matches a query that could be answered using the Knowledge Base, Botpress's NLU will not retrieve answers from the Knowledge Base. Instead, the conversation will continue without incorporating information from the Knowledge Base.
+Disabling the Knowledge Base means that when users are prompted for a response and their input matches a query that could be answered using the Knowledge Base, Botpress's NLU won't retrieve answers from the Knowledge Base. Instead, the conversation will continue without incorporating information from the Knowledge Base.
 
 By disabling the Knowledge Base, you essentially exclude it as a potential source of information for those specific cards. This may be useful if you want to handle user responses differently or if you prefer to rely on other mechanisms to provide answers or capture information in those particular cards.
 
-Let's consider an example of a chatbot for a travel agency. The bot is designed to capture information from users regarding their travel preferences and provide relevant recommendations. The bot uses the Capture Info action in certain cards to gather specific details from users.
+Let's consider an example of a bot for a travel agency. The bot is designed to capture information from users regarding their travel preferences and provide relevant recommendations. The bot uses the Capture Info action in certain cards to gather specific details from users.
 
 ## Example 1: Enabling the Knowledge Base
 
@@ -207,7 +207,7 @@ Included Knowledge Bases: Disable Search
 
 User Input: "I prefer to travel by train."
 
-Response: Since the Knowledge Base feature is disabled for this card, the bot's NLU does not consult the Knowledge Base. It simply captures the user's response without incorporating any information from the Knowledge Base.
+Response: Since the Knowledge Base feature is disabled for this card, the bot's NLU doesn't consult the Knowledge Base. It simply captures the user's response without incorporating any information from the Knowledge Base.
 ```
 
 The conversation continues to the next step based on the specific logic or action defined for that card, without utilizing the Knowledge Base to provide answers or additional information.
@@ -216,7 +216,7 @@ In both examples, enabling or disabling the Knowledge Base on the Capture Info a
 
 # Removing the references
 
-To disable auto-generated references, utilize the **Execute Code** card with the following code:
+To disable autogenerated references, utilize the **Execute Code** card with the following code:
 
 ```javascript
 workflow.kbAnswerWithoutRef = event.preview.split("References:")[0].
@@ -243,13 +243,13 @@ Connect this card to a node with the message you want to show.
 
 # Debugging
 
-If your bot is not returning the expected results you can try debugging it in a few different ways:
+If your bot isn't returning the expected results you can try debugging it in a few different ways:
 
 ## 1. Check the [Logs](/learn/reference/debugger-logs-json#logs)
 
 The logs will show you the exact query that was sent to the Knowledge Base and the results (including source name, content preview, amount of tokens used by the content, row metadata if the source is a table) if there are any matches.
 
-With that information you can try refining what is sent to the Knowledge Base or the content itself.
+With that information you can try refining what's sent to the Knowledge Base or the content itself.
 
 ## 2. Check the [Emulator](/learn/reference/emulator) answers
 
