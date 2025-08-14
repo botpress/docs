@@ -7,7 +7,7 @@ import { YouTube } from '/snippets/youtube.mdx'
 
 Tables are an essential feature in the explorer, functioning as a local database within your chatbot's environment. They provide structured storage for various types of data that can be accessed and manipulated as required within your workflows.
 
-They are particularly useful for storing information that needs to be persisted across multiple sessions, such as user profiles, transaction histories, and other types of data that need to be retrieved and updated over time.
+They're particularly useful for storing information that needs to be persisted across multiple sessions, such as user profiles, transaction histories, and other types of data that need to be retrieved and updated over time.
 
 <Note>
 Note
@@ -19,11 +19,11 @@ You can create up to **10 tables** with **20 columns** and **10,000 rows** in th
   Table row capacity filling up quicker than you expected? Check your table's **row factor**.
   <div id='test' class='transparent-accordion'>
   <Accordion title='What are row factors?'>
-    Every table has a row factor that determines the storage limit for each of its rows. When you create a new table, the default row factor is 1 — this allows you store up to 4KB of data per row.
+    Every table has a row factor that determines the storage limit for each of its rows. When you create a new table, the default row factor is 1—this allows you store up to 4KB of data per row.
 
     If you need to store more than 4KB of data in each row, you can create a table with a higher row factor. However, increasing the table's row factor makes each row count more towards your table's row limit.
 
-    **Example**: If you create a table with a row factor of 3, each row will have a storage limit of 12KB (because 4KB x 3 =  12KB). This will make each row will count as 3 rows towards your table's row limit.
+    **Example**: If you create a table with a row factor of 3, each row will have a storage limit of 12KB (because 4KB x 3 =  12KB). This will make each row will count as three rows towards your table's row limit.
 
     You can check any table's row factor in the bottom-right corner of that table.
   </Accordion>
@@ -63,15 +63,15 @@ Table filters are a powerful feature that allows you to refine and display only 
 Rules define the individual conditions applied to each column of data.
 
 * `is equal to`: Shows records where the field is equal to the specified value.
-* `is not equal to`: Shows records where the field is not equal to the specified value.
+* `is not equal to`: Shows records where the field isn't equal to the specified value.
 * `less than`: Shows records where the field is less than the specified value.
 * `less than or equal to`: Shows records where the field is less than or equal to the specified value.
 * `greater than`: Shows records where the field is greater than the specified value.
 * `greater than or equal to`: Shows records where the field is greater than or equal to the specified value.
 * `in`: Shows records where the field matches any of the specified values.
-* `not in`: Shows records where the field does not match any of the specified values.
+* `not in`: Shows records where the field doesn't match any of the specified values.
 * `is null`: Shows records where the field is empty.
-* `is not null`: Shows records where the field is not empty.
+* `is not null`: Shows records where the field isn't empty.
 
 ## Rule Groups
 
@@ -713,7 +713,7 @@ Primitive filters are easy and simple to use, allowing you to match the exact va
   { "age": { "$lte": 20 } }
   ```
 
-* `$ne`: Matches all values that are not equal to a specified value.
+* `$ne`: Matches all values that aren't equal to a specified value.
 
   ```json
   { "name": { "$ne": "John" } }
@@ -779,7 +779,7 @@ Logical operators allow you to connect more filtering clauses.
   { "$or": [{ "price": { "$eq": 1.99 } }, { "price": { "$exists": false } }] }
   ```
 
-* `$not`: Inverts the effect of a query expression and returns documents that do not match the query expression.
+* `$not`: Inverts the effect of a query expression and returns documents that don't match the query expression.
 
   ```json
   { "$not": { "price": { "$eq": 1.99 } } }
@@ -831,7 +831,7 @@ Selectors are filters that you can re-use. They don't have to be written again a
 
 For example, you might use the query selector "People with age greater than 18" to find all users who are above 18.
 
-1. Create a query selector in the table and give it a name. (e.g. adults)
+1. Create a query selector in the table and give it a name. (for example: adults)
 2. Add query as `People with age greater than 18`
 3. use below code to find records and save it in a variable called `adults`
 
@@ -849,7 +849,7 @@ A standard `Search` in Botpress is employed to identify specific strings like a 
 
 On the other hand, an `AI Filter` broadens the scope and is used primarily for filtering results rather than explicitly searching them. It helps you track down users based on certain criteria, such as age above 25.
 
-Although the AI Filter is not primarily designed for exact string hunting, it's flexible enough to allow it. For instance, you could use it to filter results for `Canada` as a country.
+Although the AI Filter isn't primarily designed for exact string hunting, it's flexible enough to allow it. For instance, you could use it to filter results for `Canada` as a country.
 
 ## getRecord
 
@@ -858,7 +858,7 @@ You can use the `getRecord` function to retrieve a specific record from a table 
 <YouTube url="https://www.youtube.com/embed/zbcTGK8T1PQ?si=fZmhfg7gJVjgsab3" />
 
 ```javascript
-// 1 is the record ID and User is the variable name
+// The record ID is 1 and User is the variable name
 const data = await Data1Table.getRecord(1)
 workflow.User = data
 ```
@@ -874,7 +874,7 @@ await Data1Table.updateRecord(8, { Age: 45 })
 
 ## upsertRecords
 
-The `upsertRecords` function allows you to update or create records in a table in a single operation. It is useful for any situation where you need to update or insert data into a table without having to worry about whether the rows already exist.
+The `upsertRecords` function allows you to update or create records in a table in a single operation. It's useful for any situation where you need to update or insert data into a table without having to worry about whether the rows already exist.
 
 **Example:**
 
@@ -924,7 +924,7 @@ You will see a window with a code editor.
 
 <img src="./assets/code-editor.png" />
 
-Simply add your code above. The proper syntax for accessing columns you've identified as dependencies is row[propertyName], and what is displayed as the cell value is what is returned by this function. You can call asynchronous functions within the function, and have the **axios** library available to perform HTTP requests.
+Simply add your code above. The proper syntax for accessing columns you've identified as dependencies is row[propertyName], and the displayed cell value is what's returned by this function. You can call asynchronous functions within the function, and have the **axios** library available to perform HTTP requests.
 
 For instance, the following code will return the fibonacci number of the row value for the column **number**.
 
@@ -943,7 +943,7 @@ if (!row.number) {
 return fibonacci(row.number)
 ```
 
-There is currently an execution timeout of 2 minutes these.
+There is currently an execution timeout of two minutes these.
 
 ## Updating computed values
 
@@ -951,7 +951,7 @@ To ensure computed values are always kept up to date, we recommend **Auto-comput
 
 <img src="./assets/auto-compute.png" />
 
-If you do not have **Auto-compute** enabled, a grey icon will appear next to stale table cells.
+If you don't have **Auto-compute** enabled, a grey icon will appear next to stale table cells.
 
 <img src="./assets/stale-compute-row.png" />
 

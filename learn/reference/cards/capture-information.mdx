@@ -13,7 +13,7 @@ To collect multiple pieces of information, multiple prompt fields can be added t
 
 # Prompt Field Types
 
-A Prompt Field is a type of input field that is used to capture information from a user in a structured and organized manner. It can include various types of input fields such as Single Choice, Multiple Choice, Number, Email Address, Phone Number, and more.
+A Prompt Field is a type of input field that's used to capture information from a user in a structured and organized manner. It can include various types of input fields such as Single Choice, Multiple Choice, Number, Email Address, Phone Number, and more.
 
 The Prompt Field also includes validation messages and code validation, which helps ensure that the user inputs the correct type of information. This means that if the user inputs an invalid value, they will be notified with an error message and prompted to re-enter the correct information.
 
@@ -472,7 +472,7 @@ In this section, we'll discuss the **PhoneNumber** capture information type in B
 3. Set the **Variable name** property to the name of the workflow variable you want to use to store the extracted phone number value.
 4. Set the **Prompt message** property to a message that prompts the user to enter a phone number.
 
-Once the card is used, it will automatically extract the phone number from the user's input and save it in the workflow variable you specified as a string value. The extracted information will not include the country code, only the digits representing the phone number. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's phone number.
+Once the card is used, it will automatically extract the phone number from the user's input and save it in the workflow variable you specified as a string value. The extracted information won't include the country code, only the digits representing the phone number. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's phone number.
 
 **Example**
 
@@ -560,7 +560,7 @@ This will display the user's payment amount in a clear and easy-to-read format f
 
 ## Raw Input
 
-The **RawInput** extracts the user's input as it is and saves it in a variable of type string. The extracted information can include any type of user input, including text, numbers, and special characters.
+The **RawInput** extracts the user's input as it's and saves it in a variable of type string. The extracted information can include any type of user input, including text, numbers, and special characters.
 
 **Steps to use Raw Input Field**
 
@@ -605,7 +605,7 @@ To enable the search across all available Knowledge Bases when the user asks a q
 3. In the **Prompt message** property, enter a message that encourages the user to input their question (e.g., “What would you like to know?”).
 4. Store the user's input in a variable by setting the **Variable name** property (e.g., `userQuery`) if you want to use it later.
 
-Once set up, the chatbot will automatically search all configured Knowledge Bases for the user's inputted question and display the answer, provided that the Knowledge Agent's manual answering feature is not enabled.
+Once set up, the bot will automatically search all configured Knowledge Bases for the user's inputted question and display the answer, provided that the Knowledge Agent's manual answering feature isn't enabled.
 
 **Searching a Particular Knowledge Base**
 
@@ -617,7 +617,7 @@ For more targeted information retrieval, you may want to search within a specifi
 4. In the **Prompt message** property, enter a prompt directing the user to ask their question.
 5. Set the **Variable name** property to save the user's query (e.g., `userQuerySpecific`) if you want to use it later.
 
-After the user submits their question, the chatbot will automatically conduct a search within the specified Knowledge Base and display the relevant answer. This happens seamlessly without the need for an action card to trigger the search, assuming that manual answering is turned off for the Knowledge Agent.
+After the user submits their question, the bot will automatically conduct a search within the specified Knowledge Base and display the relevant answer. This happens seamlessly without the need for an action card to trigger the search, assuming that manual answering is turned off for the Knowledge Agent.
 
 ## Percentage
 
@@ -757,7 +757,7 @@ Let's say you want to schedule a meeting with a user based on their availability
 ```text
 Type: Time Measurement
 Variable name: meetingTime
-Prompt message: When are you available for a meeting? Please enter a date or duration (e.g. next week, in 2 days, in 30 minutes).
+Prompt message: When are you available for a meeting? Please enter a date or duration (for example: next week, in 2 days, in 30 minutes).
 ```
 
 When the user enters their response, the Time Measurement card will extract the time measurement value and save it in the **meetingTime** workflow variable as a number value in the chosen format. You can then use this variable in other parts of your workflow to schedule the meeting accordingly.
@@ -842,7 +842,7 @@ Let's say you want to ask the user for a cron schedule to trigger a certain even
 ```
 Type: Cron Schedule
 Variable name: cronSchedule
-Prompt message: Please enter the interval in cron format, e.g. '0 \* \* \* \*' for every hour, and indicate whether this should be repeated or not with 'true' or 'false'.
+Prompt message: Please enter the interval in cron format, for example: '0 \* \* \* \*' for every hour, and indicate whether this should be repeated or not with 'true' or 'false'.
 ```
 
 When the user enters their response, the Cron Schedule card will extract the interval value and save it in the **cronSchedule** workflow variable as an object with two properties: the **cron** value, which represents the extracted interval in a cron format, and the **repeatable** boolean value, which indicates whether the interval should be repeated or not.
@@ -864,7 +864,7 @@ Once the card is used, it will automatically extract the operating system from t
 
 **Example**
 
-Let's say you want to ask the user about the operating system they are using to access your website. You can create a new capture information card with the following properties:
+Let's say you want to ask the user about the operating system they're using to access your website. You can create a new capture information card with the following properties:
 
 ```
 Type: OperatingSystem
@@ -878,7 +878,7 @@ You can then use this variable in other parts of your workflow to tailor respons
 
 ## Quantity of People
 
-The **QuantityofPeople** type extracts a number representing the quantity of people from the user's input and saves it in a variable of type **Number**. The extracted information can include values like 1, 2, 3, and so on.
+The **QuantityofPeople** type extracts a number representing the quantity of people from the user's input and saves it in a variable of type **Number**. The extracted information can include values like 1, 2, or 3.
 
 For example, if you are building a reservation system for a restaurant, you can use the QuantityofPeople type to ask the user how many people will be dining, and then save that number as a variable. This variable can then be used to ensure that the restaurant has enough seats available for the group, or to calculate the total cost of the meal based on the number of people.
 
@@ -1073,7 +1073,7 @@ The **DateTime** capture information type in Botpress. This type of capture info
 **Steps to use DateTime Field**
 
 1. Pick the **DateTime** Capture Information Card from the Cards.
-2. (Optional) - Add a question to ask. (e.g. when would you like to book an appointment?)
+2. (Optional) - Add a question to ask. (for example: when would you like to book an appointment?)
 3. Store the output in a variable.
 
 Once the card is used, it will automatically extract the date or duration value from the user's input and save it in the workflow variable you specified as an object. You can then use this variable in other parts of your workflow to make decisions or take actions based on the user's response.
@@ -1090,7 +1090,7 @@ Prompt message: When would you like to book the room? Please enter a date or dur
 
 When the user enters their response, the Datetime card will extract the date or duration value and save it in the **bookingDate** workflow variable as an object. You can then use this variable in other parts of your workflow to decide when to book the room or provide available dates for the user to choose from.
 
-You can check the user's preferred booking date against your available dates to ensure the room is available for booking on that day. If the room is not available, you can offer other available dates or suggest another hotel that is available on the preferred date.
+You can check the user's preferred booking date against your available dates to ensure the room is available for booking on that day. If the room isn't available, you can offer other available dates or suggest another hotel that's available on the preferred date.
 
 #### Formatting Date
 
@@ -1135,7 +1135,7 @@ The **Wait for User Input** type is used to pause the flow of a conversation unt
 
 ## File Upload
 
-The **File Upload** type allows users to upload a file through the chatbot interface. Once the file is uploaded, the bot captures the URL of the uploaded file as a string variable.
+The **File Upload** type allows users to upload a file through the bot interface. Once the file is uploaded, the bot captures the URL of the uploaded file as a string variable.
 
 #### Configuration Steps:
 
@@ -1256,7 +1256,7 @@ Let's say you have a card that asks the user to choose between **Food** and **Dr
 
 Now, let's change the example to have the **Number of retries** set to 2 and the **Retry message** set to **Sorry, I didn't understand that, try to choose from the choices**, and the **Add transition to handle failure** flag turned on. If the user says, **I want Cars**, the bot will respond with **Sorry, I didn't understand that. Try to choose from the choices**, and show the choices again.
 
-If the user provides another message that is not related to the choices, the bot will retry again, up to a maximum of 2 retries. If the user still fails to provide the required information after the maximum retries, the bot will redirect the user directly to the failure transition, where you can have a message like **Sorry, I didn't understand that**.
+If the user provides another message that isn't related to the choices, the bot will retry again, up to a maximum of two retries. If the user still fails to provide the required information after the maximum retries, the bot will redirect the user directly to the failure transition, where you can have a message like **Sorry, I didn't understand that**.
 
 ## Validation
 
@@ -1295,7 +1295,7 @@ function validate(input: string): boolean
 }
 ```
 
-This code first tries to parse the user's input as a number. If the input is not a valid number, the code returns **false**. Otherwise, it checks if the age is between 18 and 100 and returns **true** if it is.
+This code first tries to parse the user's input as a number. If the input isn't a valid number, the code returns **false**. Otherwise, it checks if the age is between 18 and 100 and returns **true** if it is.
 
 **Example 2:**
 
@@ -1318,13 +1318,13 @@ The **Extract from History** setting allows the bot to extract values from previ
 
 **Number of messages from history to extract from**
 
-This property determines how many messages in the conversation history the bot will try to extract the value from. A value of **0** means that the bot will not look back in the conversation history and will only use the user's most recent message. A value of **1** means that the bot will extract the value from the user's previous message, and so on.
+This property determines how many messages in the conversation history the bot will try to extract the value from. A value of **0** means that the bot won't look back in the conversation history and will only use the user's most recent message. A value of **2** means that the bot will extract the value from the user's previous two messages.
 
 **Example:**
 
 Let's say you have a Capture Information card that asks the user for their favorite color. If the user has already mentioned their favorite color earlier in the conversation, you can use the **Extract from History** feature to extract the value from their previous message.
 
-If you set the **Number of messages from history to extract from** to **1**, the bot will extract the value from the user's previous message. If you set it to **2**, the bot will extract the value from the message before that, and so on.
+If you set the **Number of messages from history to extract from** to **1**, the bot will extract the value from the user's previous message. If you set it to **2**, the bot will extract the value from the message before that too.
 
 For example, if the user said **My favorite color is blue** earlier in the conversation and you set the **Number of messages from history to extract from** to **1**, the bot will extract **blue** as the user's favorite color without asking the user again. This can save time and improve the user experience by avoiding repetitive questions.
 
@@ -1340,7 +1340,7 @@ With this option turned on, users can cancel the Capture Information card at any
 
 **Confirm before cancelling**
 
-If you turn on this option, users will be asked to confirm whether they want to cancel the Capture Information card before it is cancelled.
+If you turn on this option, users will be asked to confirm whether they want to cancel the Capture Information card before it's cancelled.
 
 **Confirm cancel message**
 
@@ -1352,7 +1352,7 @@ Suppose you have a Capture Information card that asks the user for their name an
 
 **Example 2:**
 
-If you turn on the **Confirm before cancelling** option, the bot will ask the user if they are sure they want to cancel the Capture Information card before it is cancelled. If the user confirms the cancellation, the bot will send a message that you can customise using the **Confirm cancel message** option.
+If you turn on the **Confirm before cancelling** option, the bot will ask the user if they're sure they want to cancel the Capture Information card before it's cancelled. If the user confirms the cancellation, the bot will send a message that you can customise using the **Confirm cancel message** option.
 
 ## Choices
 
@@ -1376,7 +1376,7 @@ You could add fixed options or add variables to each choice to make them dynamic
 <Warning>
 Limit
 
-If you add more than 5 choices, they will be rendered as a Dropdown/List instead of buttons. This number may vary by channel.\{' '} The choices labels should not be longer than 20 characters otherwise they will get cut in some channels.
+If you add more than 5 choices, they will be rendered as a Dropdown/List instead of buttons. This number may vary by channel.\{' '} The choices labels shouldn't be longer than 20 characters otherwise they will get cut in some channels.
 </Warning>
 
 <Note>
@@ -1413,7 +1413,7 @@ Combining these two flags can help improve the user experience with the bot by a
 
 # Prompt Chaining
 
-Prompt Chaining allows you to extract multiple values from a single user message using multiple Capture Information cards in sequence. If a value was not found, the respective Capture Information card will ask for its value.
+Prompt Chaining allows you to extract multiple values from a single user message using multiple Capture Information cards in sequence. If a value wasn't found, the respective Capture Information card will ask for its value.
 
 **Chaining Multiple Prompts**
 
@@ -1427,7 +1427,7 @@ To chain multiple Capture Information cards together, you need to follow these s
 6. Add the next Capture Information card to the flow.
 7. Repeat steps 1-6 for each additional Capture Information card you want to add, making sure to use a different variable name for each one.
 
-Once the user enters a value, it will automatically extract the requested information from the user's message using each Capture Information card in sequence. If a value is not found for a particular Capture Information card, it will ask the user for the value before proceeding to the next node/card.
+Once the user enters a value, it will automatically extract the requested information from the user's message using each Capture Information card in sequence. If a value isn't found for a particular Capture Information card, it will ask the user for the value before proceeding to the next node/card.
 
 You can then use the extracted variables in other parts of your flow by referencing the specific variable names using the following syntax: **`{{workflow.variableName}}`**.
 
@@ -1462,7 +1462,7 @@ Prompt message: Please enter your phone number
 Extract from history: 1
 ```
 
-When the user sends a message, the flow will begin extracting the requested information from the user's message using each Capture Information card in sequence. If a value is not found for a particular Capture Information card, it will ask the user for the value before proceeding to the next card.
+When the user sends a message, the flow will begin extracting the requested information from the user's message using each Capture Information card in sequence. If a value isn't found for a particular Capture Information card, it will ask the user for the value before proceeding to the next card.
 
 You can then use the extracted variables in other parts of your flow, such as sending a confirmation message to the user with their captured information:
 

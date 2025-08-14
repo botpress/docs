@@ -29,7 +29,7 @@ export const Definition = ({ term, id, children: definition, plural }) => {
 
 export const DefinitionReference = ({ id, children, plural: isPlural, capitalize }) => {
   if (!globalThis.definitions.has(id)) {
-    throw new Error(`Definition with id "${id}" not found. Please ensure it is defined in the DefinitionList component.`)
+    throw new Error(`Definition with id "${id}" not found. Please ensure it's defined in the DefinitionList component.`)
   }
 
   const { term, plural, definition } = globalThis.definitions.get(id)

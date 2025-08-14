@@ -25,13 +25,13 @@ function App() {
 ## Parameters
 
 <ResponseField name="clientId" type="string">
-  Your Botpress project Client ID. Required to initialize the client and establish communication with the backend.
+  Your Botpress project Client ID. Required to initialize the client and establish communication with the server.
 </ResponseField>
 
 ## Returned Values
 
 <ResponseField name="client" type="WebchatClient">
-  The underlying client instance. Can be used to manually send events, fetch data, or interact with the backend.
+  The underlying client instance. Can be used to manually send events, fetch data, or interact with the server.
 </ResponseField>
 <ResponseField name="clientState" type="'connecting' | 'connected' | 'error' | 'disconnected'">
   Represents the current connection state of the client.
@@ -81,8 +81,8 @@ const user:
   An array of messages for the active conversation. Includes user and bot messages.
 </ResponseField>
 <ResponseField name="isFetchingMessages" type="boolean">
-  Indicates whether messages are currently being fetched from the backend.
+  Indicates whether messages are currently being fetched from the server.
 </ResponseField>
 <ResponseField name="isTyping" type="boolean">
-  Reflects whether the bot is currently "typing," as indicated by typing events from the backend.
+  Reflects whether the bot is currently "typing," as indicated by typing events from the server.
 </ResponseField>

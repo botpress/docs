@@ -98,7 +98,7 @@ async function loadConversations(paginationToken) {
 
 ## Getting all conversations
 
-Use a loop to fetch all conversations at once using the above logic. This is not recommended for bots with a large number of conversations as it may take a long time to complete and may cause timeouts. The use of a library like\
+Use a loop to fetch all conversations at once using the above logic. This isn't recommended for bots with a large number of conversations as it may take a long time to complete and may cause timeouts. The use of a library like\
 [p-retry](https://www.npmjs.com/package/p-retry) to retry requests automatically is recommended.
 
 ```js
@@ -126,7 +126,7 @@ do {
 
 Once you have gone through the list of conversations and found out the id of the desired conversation to export, you can then use the API to list the actual messages.
 
-In the example below we are using the [Botpress Client library](https://www.npmjs.com/package/@botpress/client) and assume the client is set up already:
+In the example below we're using the [Botpress Client library](https://www.npmjs.com/package/@botpress/client) and assume the client is set up already:
 
 ```js
 const conversationId = 'the desired conversation id here'
@@ -207,7 +207,7 @@ In this example the bot sends a Multiple Choice card, then the user answers by c
 
 # 4. Formatting the Messages list
 
-Now that you have the list of messages of a conversation it's time to format it so it becomes readable. We are going to use a custom function for that:
+Now that you have the list of messages of a conversation it's time to format it so it becomes readable. We're going to use a custom function for that:
 
 ```ts
 function formatMessage(message) {
@@ -251,5 +251,5 @@ at 24/10/2023, 5:21:09 PM
 <Note>
 Note
 
-You can customize the `formatMessage` function to have different formatting or to return more information of the messages.  Now use the `history` variable however you like - send it via email, add it to a Google Sheets document, send it to Botpress to do further processing, etc.
+You can customize the `formatMessage` function to have different formatting or to return more information of the messages. Now use the `history` variable however you like - send it via email, add it to a Google Sheets document, send it to Botpress to do further processing, etc.
 </Note>
