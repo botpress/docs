@@ -21,13 +21,26 @@ To listen any of the events on this page, just copy and paste the code snippet i
 
 </Info>
 
+## Webchat is initialized
+
+This event fires when Webchat has finished loading and is ready to be opened:
+
+``` javascript index.js {3}
+window.botpress.on('webchat:initialized', () => {
+	console.log('Webchat has been initialized.');
+    // Insert your code here
+});
+```
+
+This occurs when `window.botpress.init` (the second [inject script](/webchat/get-started/quick-start#)) finishes its execution.
+
 ## Webchat is ready
 
-This event fires when Webchat is initialized and ready:
+This event fires after Webchat has been opened for the first time and is ready to receive messages:
 
 ``` javascript index.js {3}
 window.botpress.on('webchat:ready', () => {
-	console.log('Webchat is ready.');
+	console.log('Webchat has been opened and is ready to receive messages.');
     // Insert your code here
 });
 ```
