@@ -94,7 +94,7 @@ make check-writing
 
 > [!NOTE]
 >
-> You can also download the [official Vale extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode). However, this extension highlights Vale errors across the entire documentation project—not just files you've changed. Because of this, we haven't included it in the repository's recommend extensions.
+> If you need Vale to ignore a certain flag within the context you're writing about, you can use [comment-based configuration](https://vale.sh/docs/formats/markdown#comments) to disable rules within a given section.
 
 ### Check links
 

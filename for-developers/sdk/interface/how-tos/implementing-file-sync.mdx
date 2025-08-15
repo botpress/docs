@@ -81,8 +81,9 @@ Once you have the <DefinitionReference id="files-readonly"/> version, you can ad
   <Step title="Open the package.json file">
     Open your <DefinitionReference id="integration"/>'s `package.json` file.
   </Step>
-  <Step title="Add the bpDependencies section">
+  <Step title="Add the dependencies section">
     If there is no `bpDependencies` section in your <DefinitionReference id="integration"/>'s `package.json` file, create one:
+
     ```json package.json {2}
     {
       "bpDependencies": {}
@@ -91,6 +92,7 @@ Once you have the <DefinitionReference id="files-readonly"/> version, you can ad
   </Step>
   <Step title="Add the interface as a dependency">
     In the `bpDependencies` section, add the <DefinitionReference id="files-readonly"/> as a dependency. For example, for version `0.2.0`, you would add the following:
+
     ```json package.json {3}
     {
       "bpDependencies": {

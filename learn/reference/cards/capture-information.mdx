@@ -28,6 +28,7 @@ The Prompt Field also includes validation messages and code validation, which he
         **Description & Extracted Information**
       </th>
     </tr>
+
   </thead>
 
   <tbody>
@@ -272,6 +273,7 @@ The Prompt Field also includes validation messages and code validation, which he
         Variable Type: Date
       </td>
     </tr>
+
   </tbody>
 </table>
 
@@ -285,6 +287,7 @@ The **Single Choice** is a type of input field that presents the user with a lis
 Tip
 
 If the user enters text instead of clicking a button, the AI will check the text for any matching button labels. If it finds a match, it will handle the input as though the user had clicked that button.
+
 </Tip>
 
 An example of Single Choice would be a survey question with multiple options, where the user selects one answer from the list.
@@ -926,52 +929,52 @@ The following volume formats are available for conversion:
 
 <table>
   <thead>
-  <tr>
-    <th>
-      Cubic millimeters (mm<sup>3</sup>)
-    </th>
-    <th>
-      Cubic centimeters (cm<sup>3</sup>)
-    </th>
-    <th>Milliliters (ml)</th>
-    <th>Centiliters (cl)</th>
-  </tr>
+    <tr>
+      <th>
+        Cubic millimeters (mm<sup>3</sup>)
+      </th>
+      <th>
+        Cubic centimeters (cm<sup>3</sup>)
+      </th>
+      <th>Milliliters (ml)</th>
+      <th>Centiliters (cl)</th>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Deciliters (dl)</td>
-    <td>Liters (l)</td>
-    <td>Kiloliters (kl)</td>
-    <td>
-      Cubic meters (m<sup>3</sup>)
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Cubic kilometers (km<sup>3</sup>)
-    </td>
-    <td>Teaspoons (tsp)</td>
-    <td>Tablespoons (Tbs)</td>
-    <td>
-      Cubic inches (in<sup>3</sup>)
-    </td>
-  </tr>
-  <tr>
-    <td>Fluid ounces (fl-oz)</td>
-    <td>Cups (cup)</td>
-    <td>Pints (pnt)</td>
-    <td>Quarts (qt)</td>
-  </tr>
-  <tr>
-    <td>Gallons (gal)</td>
-    <td>
-      Cubic feet (ft<sup>3</sup>)
-    </td>
-    <td>
-      Cubic yards (yd<sup>3</sup>)
-    </td>
-    <td></td>
-  </tr>
+    <tr>
+      <td>Deciliters (dl)</td>
+      <td>Liters (l)</td>
+      <td>Kiloliters (kl)</td>
+      <td>
+        Cubic meters (m<sup>3</sup>)
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Cubic kilometers (km<sup>3</sup>)
+      </td>
+      <td>Teaspoons (tsp)</td>
+      <td>Tablespoons (Tbs)</td>
+      <td>
+        Cubic inches (in<sup>3</sup>)
+      </td>
+    </tr>
+    <tr>
+      <td>Fluid ounces (fl-oz)</td>
+      <td>Cups (cup)</td>
+      <td>Pints (pnt)</td>
+      <td>Quarts (qt)</td>
+    </tr>
+    <tr>
+      <td>Gallons (gal)</td>
+      <td>
+        Cubic feet (ft<sup>3</sup>)
+      </td>
+      <td>
+        Cubic yards (yd<sup>3</sup>)
+      </td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 
@@ -1066,13 +1069,13 @@ Hello {{workflow.userName.first}}, welcome to our website!
 
 This will display a personalised greeting to the user with their first name.
 
-## DateTime
+## Datetime
 
-The **DateTime** capture information type in Botpress. This type of capture information extracts a date or duration value from the user's input and saves it in a variable of type **Object**. The extracted information can include values like **next week,** **in a month,** **after two months,** **in 15 days,** **2 working days,** or any other date or duration value.
+The **Datetime** capture information type in Botpress. This type of capture information extracts a date or duration value from the user's input and saves it in a variable of type **Object**. The extracted information can include values like **next week,** **in a month,** **after two months,** **in 15 days,** **2 working days,** or any other date or duration value.
 
-**Steps to use DateTime Field**
+**Steps to use Datetime Field**
 
-1. Pick the **DateTime** Capture Information Card from the Cards.
+1. Pick the **Datetime** Capture Information Card from the Cards.
 2. (Optional) - Add a question to ask. (for example: when would you like to book an appointment?)
 3. Store the output in a variable.
 
@@ -1140,14 +1143,14 @@ The **File Upload** type allows users to upload a file through the bot interface
 #### Configuration Steps:
 
 1. **Enable File Upload in Webchat Settings**:
-   * Navigate to the **Webchat** settings in Botpress Studio.
-   * Under the **General** tab, find the option labeled **Allow user file upload**.
-   * Toggle the setting to **Enabled**.
+   - Navigate to the **Webchat** settings in Botpress Studio.
+   - Under the **General** tab, find the option labeled **Allow user file upload**.
+   - Toggle the setting to **Enabled**.
 
 2. **Set Up the Capture Information Card**:
-   * In the **Capture Information** card, select **File** as the **Type of value to extract**.
-   * Define the **Question to ask the user**, such as "Please upload the file you want to share."
-   * Specify the variable in **Store result in** where the file URL will be stored (e.g., `workflow.filePath`).
+   - In the **Capture Information** card, select **File** as the **Type of value to extract**.
+   - Define the **Question to ask the user**, such as "Please upload the file you want to share."
+   - Specify the variable in **Store result in** where the file URL will be stored (e.g., `workflow.filePath`).
 
 #### Example:
 
@@ -1204,9 +1207,9 @@ Once the card is used, it will automatically extract the information that matche
 
 Botpress offers three options for fuzzy matching:
 
-* **Strict**: No errors allowed.
-* **Medium**: Tolerates up to one error in words of four characters or more.
-* **Loose**: Tolerates up to two errors in words of four characters or more.
+- **Strict**: No errors allowed.
+- **Medium**: Tolerates up to one error in words of four characters or more.
+- **Loose**: Tolerates up to two errors in words of four characters or more.
 
 This means that even if the user makes a typo or a slight error, the system can still match the input with an entry in the entity list.
 
@@ -1361,7 +1364,7 @@ The **Choices** setting is used to offer a list of options to the user as a resp
 You could add fixed options or add variables to each choice to make them dynamic. You can also render the list of choices dynamically by toggling the SuperText input and adding an array variable with the following format:
 
 ```js
-[
+;[
   {
     label: 'French',
     value: 'fr',
@@ -1377,12 +1380,14 @@ You could add fixed options or add variables to each choice to make them dynamic
 Limit
 
 If you add more than 5 choices, they will be rendered as a Dropdown/List instead of buttons. This number may vary by channel.\{' '} The choices labels shouldn't be longer than 20 characters otherwise they will get cut in some channels.
+
 </Warning>
 
 <Note>
 Note
 
 Choices are only available for **Single Choice**, **Multiple Choice**, **Boolean**, **Confirmation** and **Raw Input**Capture cards.
+
 </Note>
 
 **Example**

@@ -15,8 +15,8 @@ import { DefinitionList, Definition, DefinitionReference } from '/snippets/defin
 ## Terminology
 
 Throughout this document, we will use the following terms:
-
 <DefinitionList>
+
   <Definition term="integration" id="integration">
     The code that connects Botpress to an external service.
   </Definition>
@@ -46,6 +46,7 @@ Throughout this document, we will use the following terms:
   <Definition term="entity" id="entity">
     In the context of the HITL interface and plugin, an entity can be provided in order to support extra parameters in the `startHitl` action. This is useful to provide extra information about the HITL session, such as a ticket priority or customer identification number.
   </Definition>
+
 </DefinitionList>
 
 ## External service requirements
@@ -77,16 +78,19 @@ Once you have the <DefinitionReference id="hitl-interface"/> version, you can ad
   <Step title="Open the package.json file">
     Open your <DefinitionReference id="integration"/>'s `package.json` file.
   </Step>
-  <Step title="Add the bpDependencies section">
+  <Step title="Add the dependencies section">
     If there is no `bpDependencies` section in your <DefinitionReference id="integration"/>'s `package.json` file, create one:
+
     ```json package.json {2}
     {
       "bpDependencies": {}
     }
     ```
+
   </Step>
   <Step title="Add the interface as a dependency">
     In the `bpDependencies` section, add the <DefinitionReference id="hitl-interface"/> as a dependency. For example, for version `2.0.0`, you would add the following:
+
     ```json package.json {3}
     {
       "bpDependencies": {
@@ -94,6 +98,7 @@ Once you have the <DefinitionReference id="hitl-interface"/> version, you can ad
       }
     }
     ```
+
     <Warning>
     It's very important to follow this syntax: <br/>
     `"<interface-name>": "interface:<interface-name>@<version>"`.

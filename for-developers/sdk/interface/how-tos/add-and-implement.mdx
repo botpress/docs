@@ -31,7 +31,7 @@ Once you have the interface name and version, you can add it as a dependency to 
   <Step title="Open the package.json file">
     Open your integration's `package.json` file.
   </Step>
-  <Step title="Add the bpDependencies section">
+  <Step title="Add the dependencies section">
 
     If there is no `bpDependencies` section in your integration's `package.json` file, create one:
     ```json
@@ -43,6 +43,7 @@ Once you have the interface name and version, you can add it as a dependency to 
   </Step>
   <Step title="Add the interface as a dependency">
     In the `bpDependencies` section, add the interface name and version as a dependency. For example, with an interface named `creatable` and version `0.0.1`, you would add the following:
+
     ```json
     {
       "bpDependencies": {
@@ -50,10 +51,12 @@ Once you have the interface name and version, you can add it as a dependency to 
       }
     }
     ```
+
     <Warning>
     It's very important to follow this syntax: <br/>
     `"<interface-name>": "interface:<interface-name>@<version>"`.
     </Warning>
+
   </Step>
   <Step title="Save the package.json file">
     Save the `package.json` file.
@@ -123,7 +126,12 @@ Now that the interface is installed, you must add it your integration definition
 Since each interface has its own specific requirements, you should refer to the interface documentation for more information.
 
 <CardGroup Cols={2}>
-  <Card icon={<HitlIcon/>} horizontal title="Human in the loop" href="/for-developers/sdk/interface/how-tos/implementing-hitl">
-  How to implement Human in the loop
+  <Card
+    icon={<HitlIcon />}
+    horizontal
+    title="Human in the loop"
+    href="/for-developers/sdk/interface/how-tos/implementing-hitl"
+  >
+    How to implement Human in the loop
   </Card>
 </CardGroup>
