@@ -99,14 +99,14 @@ The maximum size for a Webhook payload is {webhookPayloadSize}.
 
 ## Additional Information
 
-* You can create filters to manage when the trigger will be actually activated and also create alternative flows by using Expressions that consider the request data.
+* You can create filters to manage when the trigger will be actually activated and also create alternative Workflows by using Expressions that consider the request data.
 * For example, you can add a filter that checks if the request path is new-comment (`event.payload.path === '/new-comment'`), in which case the conversation will only start if the request is made to `https://your-webhook.url/new-comment`
-* You could also add Expression cards that transition to different nodes or workflows based on the data. For example, the `event.payload.body.category === 'Business'` condition could transition to a different flow that handles business articles.
+* You could also add Expression cards that transition to different nodes or Workflows based on the data. For example, the `event.payload.body.category === 'Business'` condition could transition to a different Workflow that handles business articles.
 
 <Note>
 Note
 
-Remember that the contents of the `event.payload` property received via Webhook will be replaced as soon as the bot or the user sends a new message. So you should save important information in workflow variables if you want to use it later in the conversation.
+Remember that the contents of the `event.payload` property received via Webhook will be replaced as soon as the bot or the user sends a new message. So you should save important information in Workflow variables if you want to use it later in the conversation.
 </Note>
 
 * You can also add `/user` or any other path to the WebhookURL to record events specific to this URL.

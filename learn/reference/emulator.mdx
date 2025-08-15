@@ -39,7 +39,7 @@ The `Start as new user` button erases the history and state from the old convers
 
 ## Simulate timeout event
 
-The `Simulate timeout event` button triggers the [Timeout flow](/learn/reference/workflows#timeout) so you can check how the bot behaves when the conversation expires. It's available at the top right corner of the emulator behind the 3 dots.
+The `Simulate timeout event` button triggers the [Timeout Workflow](/learn/reference/Workflows#timeout) so you can check how the bot behaves when the conversation expires. It's available at the top right corner of the emulator behind the 3 dots.
 
 # In-line Logs
 
@@ -48,9 +48,9 @@ The Emulator shows the status of the conversation and the different steps that a
 ## Bot-events
 
 * Conversation started: The user has started the conversation by sending a message or a [Trigger](/learn/get-started/dashboard/bot/events) Event has been triggered.
-* Conversation ended: The conversation flowed to an End node and has gone through the [Conversation End workflow](/learn/reference/workflows#conversation-end), or it has ended by not having possible transitions.
-* Error occurred: An irrecoverable error has occurred and the conversation has flowed to the [Error](/learn/reference/workflows#error) . The error message is visible by hovering the status.
-* Waiting for user input: The bot is waiting for the user to send a message in order to proceed with the conversation flow.
+* Conversation ended: The conversation flowed to an End node and has gone through the [Conversation End Workflow](/learn/reference/Workflows#conversation-end), or it has ended by not having possible transitions.
+* Error occurred: An irrecoverable error has occurred and the conversation has flowed to the [Error](/learn/reference/Workflows#error) . The error message is visible by hovering the status.
+* Waiting for user input: The bot is waiting for the user to send a message in order to proceed with the conversation.
 
 ## Card-processing results
 
@@ -71,10 +71,12 @@ The Emulator shows the status of the conversation and the different steps that a
 * AI Task Running: The bot is running an AI Task. This involves making a request to the selected LLM model, getting a response and then processing it.
 * AI Task Completed: The bot has finished running the AI Task. It's mentioned how many milliseconds it took to run.
 
+{/* vale Botpress.workflows = NO */}
 ### Flow Logic
+{/* vale Botpress.workflows = YES */}
 
-* Entered Workflow - The conversation has flowed to a different workflow. The workflow name is mentioned.
-* Transitioned: The conversation has flowed to another workflow or node. It's mentioned the name of the workflow and the node it transitioned to. Clicking it will lead you to the exact node.
+* Entered Workflow - The conversation has flowed to a different Workflow. The Workflow name is mentioned.
+* Transitioned: The conversation has flowed to another Workflow or node. It's mentioned the name of the Workflow and the node it transitioned to. Clicking it will lead you to the exact node.
 * Restarting from node: The conversation is being restarted from a specific node by user request. It's mentioned the name of the node it's restarting from.
 
 ### Capture Information

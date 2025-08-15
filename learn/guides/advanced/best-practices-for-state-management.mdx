@@ -1,7 +1,7 @@
 ---
 title: State Management
 description: >-
-  Manage the 128 KB state size limit in Botpress by optimizing workflows,
+  Manage the 128 KB state size limit in Botpress by optimizing Workflows,
   clearing unused variables, and minimizing large data usage.
 ---
 
@@ -13,7 +13,7 @@ Efficient state management is crucial for optimizing bot performance in Botpress
 
 ## Understanding State Size Limits
 
-Botpress enforces a **state size limit of 128 KB** to maintain optimal performance. Poorly managed state variables, especially in nested workflows, can lead to:
+Botpress enforces a **state size limit of 128 KB** to maintain optimal performance. Poorly managed state variables, especially in nested Workflows, can lead to:
 
 * **State bloat**: Accumulation of unnecessary or oversized variables.
 
@@ -27,7 +27,7 @@ Botpress enforces a **state size limit of 128 KB** to maintain optimal performan
 
 ### Workflow Structure and State Retention
 
-How workflows are designed impacts the state management. Consider two scenarios:
+How Workflows are designed impacts the state management. Consider two scenarios:
 
 ### Scenario 1: Proper Workflow Exit
 
@@ -59,7 +59,7 @@ Workflow 1 → Workflow 2 → Workflow 3 → **End**
 
 ### 1. Design Workflows with Proper Exits
 
-Ensure that each workflow completes before initiating the next. This prevents unused variables from lingering in the state.
+Ensure that each Workflow completes before initiating the next. This prevents unused variables from lingering in the state.
 
 **Best Practice Workflow Design:**
 
@@ -69,7 +69,7 @@ Workflow 2 → End
 
 ### 2. Manually Clear Unused Variables
 
-In scenarios where restructuring workflows is impractical, manually clear state variables to manage size effectively.
+In scenarios where restructuring Workflows is impractical, manually clear state variables to manage size effectively.
 
 **Implementation Tips:**
 
@@ -77,13 +77,13 @@ In scenarios where restructuring workflows is impractical, manually clear state 
 
 ### 3. Minimize Use of Large Variables in Main Workflow
 
-Avoid storing large data structures (e.g., arrays, objects) in the main workflow (`wf-main`). Instead, limit variables to essentials for transitions or core logic.
+Avoid storing large data structures (e.g., arrays, objects) in the main Workflow (`wf-main`). Instead, limit variables to essentials for transitions or core logic.
 
 **Best Practices:**
 
-* Move non-essential or large variables to sub-workflows.
+* Move non-essential or large variables to sub-Workflows.
 
-* Use modular workflows for better management.
+* Use modular Workflows for better management.
 
 ### 4. Monitor and Audit State Size
 
@@ -93,31 +93,31 @@ Regularly inspect and optimize state size to identify potential issues early.
 
 * Use Botpress debugging tools to examine `variable_values`.
 
-* Audit workflow designs periodically to ensure compliance with best practices.
+* Audit Workflow designs periodically to ensure compliance with best practices.
 
 ***
 
 ## Optimizing Nested Workflow Designs
 
-Nested workflows can be efficient but require careful handling to avoid state retention issues. Follow these strategies:
+Nested Workflows can be efficient but require careful handling to avoid state retention issues. Follow these strategies:
 
-1. **Plan Transitions Carefully**: Design clear entry and exit points for each workflow.
+1. **Plan Transitions Carefully**: Design clear entry and exit points for each Workflow.
 
-2. **Use Modular Sub-Workflows**: Break workflows into smaller, task-specific components.
+2. **Use Modular Sub-Workflows**: Break Workflows into smaller, task-specific components.
 
-3. **Limit Parent Variable Retention**: Clear parent workflow variables when transitioning to nested workflows.
+3. **Limit Parent Variable Retention**: Clear parent Workflow variables when transitioning to nested Workflows.
 
 ***
 
 ## Conclusion
 
-Adhering to these state management best practices ensures your bot performs optimally, avoids the **128 KB state size limit**, and maintains clean and efficient workflows:
+Adhering to these state management best practices ensures your bot performs optimally, avoids the **128 KB state size limit**, and maintains clean and efficient Workflows:
 
-1. Design workflows with proper exits.
+1. Design Workflows with proper exits.
 
 2. Manually clear unused variables when needed.
 
-3. Minimize use of large variables in the main workflow.
+3. Minimize use of large variables in the main Workflow.
 
 4. Regularly monitor and audit state size.
 

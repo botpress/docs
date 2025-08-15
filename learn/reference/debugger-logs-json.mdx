@@ -25,7 +25,7 @@ Logging in Botpress is similar to logging in JavaScript. You can use the `consol
 
 ### Logging User Information
 
-If you're interested in understanding what user data is being processed, you might want to log their first name. This could help you trace if the correct user data is being accessed and used in your workflow.
+If you're interested in understanding what user data is being processed, you might want to log their first name. This could help you trace if the correct user data is being accessed and used in your Workflow.
 
 **Example use-case**: Understanding which user's data is being processed especially if your bot offers personalized experiences.
 
@@ -35,9 +35,9 @@ console.log("User's First Name:", user.firstName);
 
 ### Logging Workflow Data
 
-You might want to know which phone number is being used in a specific workflow. By logging this, you can ensure that the correct numbers are being pulled from your database or user input.
+You might want to know which phone number is being used in a specific Workflow. By logging this, you can ensure that the correct numbers are being pulled from your database or user input.
 
-**Example use-case**: Debugging workflows that might involve sending SMS messages or making phone calls. Ensuring that the correct phone numbers are used can be critical.
+**Example use-case**: Debugging Workflows that might involve sending SMS messages or making phone calls. Ensuring that the correct phone numbers are used can be critical.
 
 ```javascript
 console.log("Workflow Phone Number:", workflow.phoneNumber);
@@ -71,7 +71,7 @@ To check the [Production Logs](/learn/get-started/dashboard/bot/logs) (or logs f
 
 In a bot conversation, each session has an associated state which is created at the beginning of the conversation just before the Entry Node is processed. The state persists throughout the conversation and is used to keep track of information related to the ongoing interaction with the user.
 
-The state is global to the conversation, which means that if the conversation spans multiple flows, all the flows will share the same state. This allows information to be passed between flows and ensures that the bot has a consistent view of the conversation history.
+The state is global to the conversation, which means that if the conversation spans multiple Workflows, all the Workflows will share the same state. This allows information to be passed between Workflows and ensures that the bot has a consistent view of the conversation history.
 
 The state can be used to store variables, such as the user's name, preferences, or history of interactions, that are needed throughout the conversation. It can also be used to keep track of the bot's progress through the conversation, such as which questions have been asked and which tasks have been completed.
 
