@@ -87,9 +87,9 @@ await axios.post(webhookUrl, data, header)
 Webhook requests make available four properties that you can read in your bot:
 
 * `event.payload.body`: The body of the request - it's usually a JSON object
-* `event.payload.query`: A JSON object containing the URL params of the request
+* `event.payload.query`: A JSON object containing the URL parameters of the request
   * For example if you make a request to `https://your-webhook.url/?param1=hello&param2=world` the query object will look like this: `{ param1: 'hello', param2: 'world' }`
-  * Then you can access the params using this notation: `event.payload.query.param1`
+  * Then you can access the parameters using this notation: `event.payload.query.param1`
 * `event.payload.method`: The HTTP method of the request - usually `POST`
 * `event.payload.path`: The path of the request - usually `/`
 
@@ -100,7 +100,7 @@ The maximum size for a Webhook payload is {webhookPayloadSize}.
 ## Additional Information
 
 * You can create filters to manage when the trigger will be actually activated and also create alternative flows by using Expressions that consider the request data.
-* For example, you can add a filter that checks if the request path is new-comment (`event.payload.path === '/new-comment'`), in which case the conversation will only start if the request is made to this url - `https://your-webhook.url/new-comment`
+* For example, you can add a filter that checks if the request path is new-comment (`event.payload.path === '/new-comment'`), in which case the conversation will only start if the request is made to `https://your-webhook.url/new-comment`
 * You could also add Expression cards that transition to different nodes or workflows based on the data. For example, the `event.payload.body.category === 'Business'` condition could transition to a different flow that handles business articles.
 
 <Note>

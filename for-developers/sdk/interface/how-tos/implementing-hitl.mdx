@@ -15,8 +15,8 @@ import { DefinitionList, Definition, DefinitionReference } from '/snippets/defin
 ## Terminology
 
 Throughout this document, we will use the following terms:
-
 <DefinitionList>
+
   <Definition term="integration" id="integration">
     The code that connects Botpress to an external service.
   </Definition>
@@ -33,7 +33,9 @@ Throughout this document, we will use the following terms:
     A representation of an end user within the external service. This is typically created when a HITL session is started.
   </Definition>
   <Definition term="HITL session" id="hitl-session">
+
     A conversation between an end user and a human agent. This is typically represented as a _ticket_ in the external service.
+
   </Definition>
   <Definition term="HITL interface" id="hitl-interface">
     The interface that defines the contract for implementing HITL functionality in your integration. This interface specifies the actions, events, and channels that your integration must implement to support HITL.
@@ -44,6 +46,7 @@ Throughout this document, we will use the following terms:
   <Definition term="entity" id="entity">
     In the context of the HITL interface and plugin, an entity can be provided in order to support extra parameters in the `startHitl` action. This is useful to provide extra information about the HITL session, such as a ticket priority or customer identification number.
   </Definition>
+
 </DefinitionList>
 
 ## External service requirements
@@ -75,16 +78,19 @@ Once you have the <DefinitionReference id="hitl-interface"/> version, you can ad
   <Step title="Open the package.json file">
     Open your <DefinitionReference id="integration"/>'s `package.json` file.
   </Step>
-  <Step title="Add the bpDependencies section">
+  <Step title="Add the dependencies section">
     If there is no `bpDependencies` section in your <DefinitionReference id="integration"/>'s `package.json` file, create one:
+
     ```json package.json {2}
     {
       "bpDependencies": {}
     }
     ```
+
   </Step>
   <Step title="Add the interface as a dependency">
     In the `bpDependencies` section, add the <DefinitionReference id="hitl-interface"/> as a dependency. For example, for version `2.0.0`, you would add the following:
+
     ```json package.json {3}
     {
       "bpDependencies": {
@@ -92,6 +98,7 @@ Once you have the <DefinitionReference id="hitl-interface"/> version, you can ad
       }
     }
     ```
+
     <Warning>
     It's very important to follow this syntax: <br/>
     `"<interface-name>": "interface:<interface-name>@<version>"`.
@@ -153,6 +160,7 @@ Now that the <DefinitionReference id="hitl-interface"/> is installed, you must a
   </Step>
   <Step title="Add an empty entity">
     In your `new IntegrationDefinition()` statement, add an empty entity:
+
     ```typescript integration.definition.ts {2-6}
     export default new sdk.IntegrationDefinition({
       entities: {
@@ -162,12 +170,14 @@ Now that the <DefinitionReference id="hitl-interface"/> is installed, you must a
       },
     })
     ```
+
     <Note>
-      The name of the entity isn't important, but it's recommended to use a name that matches the terminology of the <DefinitionReference id="external-service"/>. For example, if the <DefinitionReference id="external-service"/> uses the term _ticket_ to refer to a <DefinitionReference id="hitl-session"/>, you could name the entity `ticket` or `hitlTicket`.
+      The name of the entity isn't important, but it's recommended to use a name that matches the terminology of the <DefinitionReference id="external-service"/>. For example, if the <DefinitionReference id="external-service"/> uses the term "ticket" to refer to a <DefinitionReference id="hitl-session"/>, you could name the entity `ticket` or `hitlTicket`.
     </Note>
   </Step>
   <Step title="Extend your definition">
     Use the `.extend()` function at the end of your `new IntegrationDefinition()` statement:
+
     ```typescript integration.definition.ts {8-12}
     export default new sdk.IntegrationDefinition({
       entities: {
@@ -182,6 +192,7 @@ Now that the <DefinitionReference id="hitl-interface"/> is installed, you must a
         },
       }))
     ```
+
     The exact syntax of `.extend()` will be explained in the next section.
   </Step>
 </Steps>
@@ -218,7 +229,9 @@ If you want to rename these actions, you can do so in the configuration object. 
 ```
 
 <Tip>
+
 For example, if you're using a _help desk_ system like Zendesk, Jira Service Desk, or Freshdesk for HITL functionality, you might rename `startHitl` to `createTicket` and `stopHitl` to `closeTicket`. These systems use tickets to represent help requests, so renaming actions to match their terminology makes your <DefinitionReference id="integration"/> clearer and easier to understand.
+
 </Tip>
 
 #### Renaming events
@@ -362,13 +375,17 @@ This action should implement the following logic:
     Create a Botpress conversation using the Botpress client by calling the `client.getOrCreateConversation()` method.
   </Step>
   <Step title="Create the HITL session">
+
     On the <DefinitionReference id="external-service"/>, create the <DefinitionReference id="hitl-session"/>. This is typically represented as a _ticket_ in the <DefinitionReference id="external-service"/>.
+
   </Step>
   <Step title="Map the Botpress conversation to the HITL session">
     Update the Botpress conversation to map it to the <DefinitionReference id="hitl-session"/>. This is typically achieved by setting a `ticketId` tag on the Botpress conversation.
   </Step>
   <Step title="Map the HITL session to the Botpress conversation">
+
     Update the <DefinitionReference id="hitl-session"/> on the <DefinitionReference id="external-service"/> to map it to the Botpress conversation. Please refer to the <DefinitionReference id="external-service"/>'s documentation to know how to set extra metadata for the <DefinitionReference id="hitl-session"/> (typically a _ticket_). The <DefinitionReference id="integration"/> must be able at any time to query the <DefinitionReference id="external-service"/> in order to retrieve the Botpress conversation ID from the <DefinitionReference id="hitl-session"/>.
+
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the plugin by returning an object containing the Botpress conversation's ID.
@@ -431,6 +448,7 @@ export default new bp.Integration({
 The input parameters of the `startHitl` action contain a `messageHistory` parameter. This parameter contains the conversation history that should be relayed to the <DefinitionReference id="external-service"/> to provide the <DefinitionReference id="human-agent"/> with context about the conversation. This parameter is an array of every message that was sent in the conversation prior to the <DefinitionReference id="hitl-session"/> being started.
 
 <Expandable title="TypeScript schema for the messageHistory parameter">
+
 ```typescript
 type MessageHistory = Array<
   | TextMessage
@@ -641,6 +659,7 @@ interface MarkdownMessage {
   };
 }
 ```
+
 </Expandable>
 
 If you decide to relay the conversation history to the <DefinitionReference id="external-service"/>, you can do so by iterating over the `messageHistory` array and sending each message to the <DefinitionReference id="external-service"/> using its API or SDK. However, doing so might cause a significant number of notifications being sent to the <DefinitionReference id="external-service"/>. To alleviate this, you can choose to send only the last few messages in the conversation history, or to concatenate the messages into a single message. For example you could combine messages like this:
@@ -709,7 +728,9 @@ This action should implement the following logic:
     From the Botpress conversation's tags, retrieve the <DefinitionReference id="hitl-session"/>'s ID.
   </Step>
   <Step title="Close the HITL session">
+
     On the <DefinitionReference id="external-service"/>, close the <DefinitionReference id="hitl-session"/>. This is typically involves _resolving_ or _closing_ a _ticket_ in the <DefinitionReference id="external-service"/>.
+
   </Step>
   <Step title="Yield control back to the plugin">
     Yield control back to the plugin by returning an empty object.
@@ -770,7 +791,9 @@ This channel handler should implement the following logic:
     - If the payload doesn't contain a `userId` parameter, the message has been sent by the bot. Retrieve the <DefinitionReference id="external-user"/>'s ID from the tags of the attached Botpress user.
   </Step>
   <Step title="Send the message to the HITL session">
+
     Using the <DefinitionReference id="external-service"/>'s API or SDK, send the message to the <DefinitionReference id="hitl-session"/>. This is typically a _comment_ in a _ticket_.
+
   </Step>
 </Steps>
 

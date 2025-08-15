@@ -4,9 +4,9 @@ title: "Getting Started"
 
 import tablesApiPayloadSize from "/snippets/api-payload-limits.mdx"
 
-The Tables API allows you to manage your tables, which store structured data and offer various features. You can use tables to store user data, automatically label data, and extract information from content. 
+The Tables API allows you to manage your tables, which store structured data and offer various features. You can use tables to store user data, automatically label data, and extract information from content.
 
-All the endpoints of the Tables API are located behind the `tables` base path (api.botpress.cloud/v1/tables/).
+All the endpoints of the Tables API are located behind the `tables` base path (`api.botpress.cloud/v1/tables/`).
 
 ## Using cURL
 
@@ -24,6 +24,7 @@ curl -H "Authorization: bearer $token" -H "x-bot-id: $bot_id" https://api.botpre
 The official TypeScript client is available as an NPM package. You can install it using any of the following command:
 
 <CodeGroup>
+
 ```bash npm
 npm install @botpress/client
 ```
@@ -35,6 +36,7 @@ pnpm install @botpress/client
 ```bash yarn
 yarn add @botpress/client
 ```
+
 </CodeGroup>
 
 Once installed, you can import the client and use it in your TypeScript code:

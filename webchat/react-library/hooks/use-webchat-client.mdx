@@ -7,8 +7,6 @@ The `useWebchat` hook provides access to the Botpress Webchat integration instan
 - Listen to real-time events
 - Manage conversation lifecycle, user info, and messages
 
-`useWebchat` is the primary entry point for integrating the Webchat experience into custom UIs or applications.
-
 ## Usage
 
 ```tsx App.tsx
@@ -42,14 +40,14 @@ function App() {
 
 | Events                | Description                                                                   |
 | --------------------- | ----------------------------------------------------------------------------- |
-| **conversation**      | Triggered when a new conversation is started.                                 |
-| **message**           | Triggered when a new message is received.                                     |
-| **messageSent**       | Triggered when a message is sent.                                             |
-| **error**             | Triggered when an error occurs.                                               |
-| **webchatVisibility** | Triggered when the Webchat visibility changes. ('show' or 'hide' or 'toggle') |
-| **webchatConfig**     | Triggered when the Webchat configuration changes.                             |
-| **customEvent**       | Triggered when a custom event is received.                                    |
-| **isTyping**          | Triggered when the bot is typing.                                             |
+| `conversation`      | Triggered when a new conversation is started.                                 |
+| `message`           | Triggered when a new message is received.                                     |
+| `messageSent`       | Triggered when a message is sent.                                             |
+| `error`             | Triggered when an error occurs.                                               |
+| `webchatVisibility` | Triggered when the Webchat visibility changes. ('show' or 'hide' or 'toggle') |
+| `webchatConfig`     | Triggered when the Webchat configuration changes.                             |
+| `customEvent`       | Triggered when a custom event is received.                                    |
+| `isTyping`          | Triggered when the bot is typing.                                             |
 
 </ResponseField>
 <ResponseField name="user" type="User">
