@@ -10,11 +10,11 @@ metadata:
 next:
   description: ''
 ---
-The Execute Code card allows you to run custom code (in JavaScript) in the context of the current workflow. This code can also be generated automatically using AI. This is useful for making API calls, performing calculations, or any other custom logic you may need.
+The Execute Code card allows you to run custom code (in JavaScript) in the context of the current Workflow. This code can also be generated automatically using AI. This is useful for making API calls, performing calculations, or any other custom logic you may need.
 
 > 👍 Generative AI
 >
-> Using this natural language feature you can instruct AI to generate the different pieces of code your bot needs to run, and it's contextual, considers your variables and your conversation flow.
+> Using this natural language feature you can instruct AI to generate the different pieces of code your bot needs to run, and it's contextual, considers your variables and your conversation's context.
 
 <br />
 
@@ -36,7 +36,7 @@ The below packages are already imported and available for use in the Execute Cod
 For example, if you want to make an API call, you can write the following:
 
 ```
-  Make an API Call to weatherAPI and store the result in a workflow variable
+  Make an API Call to weatherAPI and store the result in a Workflow variable
 ```
 
 3. Check if the Code satisfies your needs and **Accept** or **Undo** the changes.
@@ -64,7 +64,7 @@ Generated Output:
 const startDate = luxon.fromISO(workflow.startDate) // convert the startDate string to a luxon DateTime object
 const endDate = luxon.fromISO(workflow.endDate) // convert the endDate string to a luxon DateTime object
 const diffInDays = endDate.diff(startDate, 'days').toObject().days // find the difference between the two dates in days
-// store the difference in days in the workflow variable 'dateDiff' as requested
+// store the difference in days in the Workflow variable 'dateDiff' as requested
 workflow.dateDiff = diffInDays
 ```
 
@@ -109,7 +109,7 @@ Step 1: Take your existing code from another programming language. This could be
 Step 2: Paste the code snippet you have into ChatGPT and add this instruction below it.
 
 ```text
-Convert the code above to deno. Save the variable results to the workflow object (global object available in the code block). Use axios for http requests and use it directly without the "async" keyword. For date management use the luxon library. For string manipulation use the lodash library. All of these libraries are already imported.
+Convert the code above to deno. Save the variable results to the Workflow object (global object available in the code block). Use axios for http requests and use it directly without the "async" keyword. For date management use the luxon library. For string manipulation use the lodash library. All of these libraries are already imported.
 ```
 
 Step 3: Paste the result of ChatGPT into the Execute Code card.

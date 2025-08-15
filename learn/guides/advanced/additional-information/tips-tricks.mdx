@@ -47,7 +47,7 @@ if (currentHour >= 0 && currentHour < 12) {
 workflow.timelyGreeting = timelyGreeting
 ```
 
-This code will set the variable `timelyGreeting` to the appropriate greeting based on the current time. Make sure to create this variable in your workflow.
+This code will set the variable `timelyGreeting` to the appropriate greeting based on the current time. Make sure to create this variable in your Workflow.
 
 # Using External APIs in Botpress
 
@@ -59,7 +59,7 @@ The API calls will be performed using the Botpress built-in Axios client, and th
 
 The Bored API's motto is : Let's find you something to do! We will be using Bored API as an example of how to call APIs to fetch information.
 
-1. (Optional) Create a workflow variable to store the information retrieved from the API. In this example, we will create a variable named `participantType`.
+1. (Optional) Create a Workflow variable to store the information retrieved from the API. In this example, we will create a variable named `participantType`.
 2. Pick the **Execute Code** Card and disable the Generative AI by clicking on the ✨ button.
 3. Paste the following code in the Execute Code Card:
 
@@ -133,9 +133,9 @@ For more information: [https://docs.sendgrid.com/for-developers/sending-email/ap
 
 If you are using Botpress and want to integrate the ChatGPT API to generate AI-powered responses for your bot, follow these simple steps:
 
-Step 1: Create a variable in your Botpress workflow to store the ChatGPT API's response.
+Step 1: Create a variable in your Botpress Workflow to store the ChatGPT API's response.
 
-Step 2: Add the **Execute Code** card to your Botpress flow and paste the code below:
+Step 2: Add the **Execute Code** card to your Botpress Workflow and paste the code below:
 
 ```typescript
 const apiKey = '<OpenAI's APIKey>';

@@ -11,7 +11,10 @@ Schemas are useful for:
 * **Data Validation**: Preventing errors by ensuring that data adheres to the expected format.
 * **Consistency**: Enforcing a consistent structure for data across different components.
 * **Error Reduction**: Reducing the likelihood of runtime errors caused by unexpected or malformed data.
+
+{/* vale Botpress.workflows = NO */}
 * **Ease of Maintenance**: Making it easier to understand and manage data flow within your Botpress application.
+{/* vale Botpress.workflows = YES */}
 
 # Creating and Using Schemas
 
@@ -56,7 +59,7 @@ zui.object({
 ```
 
 2. Create a Variable of the user schema type and name it `UserInformation`.
-3. \[optionally] you can use these variables as inputs for workflows, allowing the user to fill in the schema as though it were a form.
+3. \[optionally] you can use these variables as inputs for Workflows, allowing the user to fill in the schema as though it were a form.
 
 ## Usage in AI Task
 
@@ -163,9 +166,9 @@ Trying it out is very easy!
 
 1. Open Botpress Studio
 2. Create and save the schema with `discriminatedUnion` fields
-3. Create a variable in a workflow other than main, set its type to the schema's saved name.
-4. Click on the input node for the workflow, then toggle the variable as an input.
-5. Go to another workflow and add a card that points to the one with the schema input.
+3. Create a variable in a Workflow other than main, set its type to the schema's saved name.
+4. Click on the input node for the Workflow, then toggle the variable as an input.
+5. Go to another Workflow and add a card that points to the one with the schema input.
 6. You'll now be able to able to see your input tree in all it's glory!
 
 ### Summary
