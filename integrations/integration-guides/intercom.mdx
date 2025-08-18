@@ -5,16 +5,16 @@ title: Intercom
 
 <img src="./assets/intercom.png" />
 
-# Introduction
+## Introduction
 
 Intercom is a Conversational Relationship Platform (CRP) that helps businesses build better customer relationships through personalized, messenger-based experiences across the customer journey. By integrating it with Botpress you can leverage AI to automate your customer support and sales processes.
 
-# Prerequisites
+## Prerequisites
 
 * An [Intercom account](https://www.intercom.com/)
 * Administrator or Developer access to a Intercom workspace
 
-# Setting up the Intercom integration in Botpress
+## Setting up the Intercom integration in Botpress
 
 1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
 2. Find and open the Intercom integration then click on the "Install to Bot" button, now go back to your bot settings.
@@ -26,7 +26,7 @@ The Intercom integration has the following settings:
 * **Access Token**: The access token for the Intercom app
 * **Admin ID**: The admin id for the Intercom app
 
-# Setting up Intercom
+## Setting up Intercom
 
 <Info>
 Info
@@ -38,7 +38,7 @@ To do that, open the Settings of a production workspace, go to the General setti
 After verifying that the integration works, you will need to repeat the steps below using the production workspace! Don't create the app again, just go to the app settings (Test and publish > Your workspaces) and install it to the production workspace.
 </Info>
 
-## Creating an App
+### Creating an App
 
 In order to communicate with Botpress, you need to create a developer app in Intercom.
 
@@ -46,14 +46,14 @@ In order to communicate with Botpress, you need to create a developer app in Int
 2. Click "New App", give it a name like `Botpress connector`, then select the desired workspace and click "Create App"
 3. You will be redirected to the app's Authentication settings page. Copy the Access Token and paste it in the Botpress integration settings.
 
-## Getting the Admin ID
+### Getting the Admin ID
 
 1. Open Intercom and hover over your avatar in the bottom left corner, then click your avatar again to see your profile
 2. Copy the last number in the URL (as shown below); this is your Admin ID. Paste it in the Botpress integration settings
 
 <img src="./assets/intercom-url.png" />
 
-## Setting up the Webhook
+### Setting up the Webhook
 
 1. Copy the Webhook URL provided in the Botpress integration settings
 2. Go back to the Intercom app settings and open the "Webhooks" tab
@@ -61,7 +61,7 @@ In order to communicate with Botpress, you need to create a developer app in Int
 4. Click the "Select a topic" dropdown under the "Topics" section, a list is going to show up
 5. Search for `user` and click the options `conversation.user.created` and `conversation.user.replied`. Now, exit the list. A "Topic" section should appear with the selected topics. Click "Save" to finalize the webhook configuration.
 
-## Adding a Default conversation Assignee
+### Adding a Default conversation Assignee
 
 1. Go back to the Intercom app settings and open the "Inbox" tab
 2. Click "Inbox settings" then "Workload management"
@@ -69,23 +69,21 @@ In order to communicate with Botpress, you need to create a developer app in Int
 
 [For more information](https://www.intercom.com/help/en/articles/6561699-assign-conversations-to-teammates-and-teams)
 
-## Finalizing the configuration
+### Finalizing the configuration
 
 Now you just need to **Enable** the integration in the Botpress settings and click "Save configuration".
 
 That's it, you may now start chatting with your bot on Intercom!
 
-## Extra
+## Additional options
 
-### Get User Email:
+### Get User Email
 
-#### Access the user’s email from the event object:
+1. Access the user’s email from the event object:
 
 `event.tags.user['intercom:email']`
 
-#### Fetch User Profile Information:
-
-Using the user email, you can retrieve detailed profile information from Intercom:
+2. Using the user email, you can retrieve detailed profile information from Intercom:
 
 ```ts
 const email = event.tags.user['intercom:email'];
@@ -107,7 +105,7 @@ await axios.post('https://api.intercom.io/contacts/search', {
   });
 ```
 
-#### Unassign a Conversation:
+##### Unassign a Conversation:
 
 To unassign a conversation in Intercom (make it "unassigned"):
 

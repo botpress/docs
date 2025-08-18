@@ -6,7 +6,7 @@ A Transition is like a "decision point" in a conversation with a bot, where the 
 
 The transition statement is what tells the bot which response or question to provide based on what the user has said or done.
 
-# Expression
+## Expression
 
 An Expression transition is a conditional statement that tells the bot which node should be processed next if the condition is met. It uses generative AI to generate the conditions using plain text.
 
@@ -20,7 +20,7 @@ You can use a combination of these checks to create complex conditions that will
 You can use generative AI to generate your conditions using plain text. In order to achieve what you exactly want, here are some examples that should guide you, but you aren't limited to it:
 </Note>
 
-## Always transition to another node
+### Always transition to another node
 
 There are two ways to make sure that a transition always triggers:
 
@@ -28,7 +28,7 @@ The recommended approach is to click and drag starting from the circle on the bo
 
 You can also add an Expression card by creating an `Expression Transition` with the label "Always" and by pressing `Enter`. The code generator will insert `true` in the expression input. Anything below this `Transition` in the `Node` will never run.
 
-# Intent
+## Intent
 
 An Intent transition allows you to create an inline intent (or node-specific intent). Only if this intent is elected will the condition be met.
 

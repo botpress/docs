@@ -16,19 +16,19 @@ Note
 If you are looking to simply understand a response in the emulator, you can use the inspect button to get information about the Autonomous nodes thinking. But for other use cases, Botpress allows you to create a JavaScript hook that allows you do something with the data programmatically.
 </Note>
 
-# Using LLMz hooks
+## Using LLMz hooks
 
 Sometimes you want to do something with that information in your production bots, perhaps for analytics, perhaps for figuring out issues. LLMz hooks allow you to do that. You can use them to monitor and analyze responses from LLMz-powered Autonomous Nodes, especially when they retrieve information from the Knowledge Base (KB), and you can send the information to a Botpress Table, or to your preferred analytics tool.
 
 You can follow the [Botpress guide](/learn/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks) for setting up streaming analytics for messages, but if you'd like to get information on LLMz logic, you can follow these steps to adjust for this.
 
-## Step 1: Setting Up Your Analytics Tool
+### Step 1: Setting Up Your Analytics Tool
 
 Start by configuring your analytics tool to capture data from your Botpress bot. Refer to your tool’s documentation to obtain any necessary API keys or project identifiers.
 
 Likewise, if you'd like to use Botpress Analytics, or Botpress Tables, you can also do so.
 
-## Step 2: Configuring the "After LLMz Execution" Hook
+### Step 2: Configuring the "After LLMz Execution" Hook
 
 The **After LLMz Execution** hook can be set up to collect data whenever an Autonomous Node retrieves and responds with information from the Knowledge Base. This hook is triggered each time the node generates a response, enabling you to capture KB interactions.
 
@@ -88,7 +88,7 @@ if (event?.kb?.results?.length) {
 }
 ```
 
-## The `execution` Object
+### The `execution` Object
 
 The `execution` object provides detailed information about the actions taken by the Autonomous Node, specifically capturing each iteration and its outcome. This includes messages sent, code executed, signals received, and more. Here’s an in-depth look at its structure and contents:
 

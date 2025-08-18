@@ -4,7 +4,7 @@ title: Tips & Tricks
 
 <img src="./assets/getting-started-tips-tricks.png" />
 
-# Using Markdown in Botpress
+## Using Markdown in Botpress
 
 Markdown is a lightweight markup language that you can use to add formatting elements to plain text documents. It's a simple way to add formatting to your text. You can use Markdown in Botpress to format your text in the following ways:
 
@@ -27,7 +27,7 @@ Info
 Markdown is supported only in Webchat Integration
 </Info>
 
-# Timely Greeting
+## Timely Greeting
 
 Pick an Execute Code card and enter the prompt as "Timely Greeting". It will generate the following code:
 
@@ -49,13 +49,13 @@ workflow.timelyGreeting = timelyGreeting
 
 This code will set the variable `timelyGreeting` to the appropriate greeting based on the current time. Make sure to create this variable in your Workflow.
 
-# Using External APIs in Botpress
+## Using External APIs in Botpress
 
 These are guides on using the Execute Code Card in Botpress to access external APIs to read and update data.
 
 The API calls will be performed using the Botpress built-in Axios client, and the code will run in the Execute Code Card.
 
-## Example - [The Bored API](https://www.boredapi.com/)
+### Example - [The Bored API](https://www.boredapi.com/)
 
 The Bored API's motto is : Let's find you something to do! We will be using Bored API as an example of how to call APIs to fetch information.
 
@@ -82,7 +82,7 @@ Response:
     }
 ```
 
-## Send Emails using [SendGrid API](https://sendgrid.com/)
+### Send Emails using [SendGrid API](https://sendgrid.com/)
 
 You can choose any other provider, like Gmail, Microsoft, etc. But you will need to change the code based on the provider you want to integrate with.
 
@@ -129,7 +129,7 @@ const response = await axios.post(
 After successfully integrating the SendGrid API into Botpress, it's time to test it.\
 For more information: [https://docs.sendgrid.com/for-developers/sending-email/api-getting-started](https://docs.sendgrid.com/for-developers/sending-email/api-getting-started)
 
-## Use ChatGPT API in Execute Code
+### Use ChatGPT API in Execute Code
 
 If you are using Botpress and want to integrate the ChatGPT API to generate AI-powered responses for your bot, follow these simple steps:
 
