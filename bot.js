@@ -37,6 +37,14 @@ function loadWebchat() {
       },
       clientId: '44246de9-1d1b-462c-8ef3-1ce39e65d89a',
   })
+  url = new URL(window.location.href)
+  if (url.hash === "#ask" ) window.botpress.open()
+
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash === "#ask") {
+      window.botpress.open()
+    }
+  })
 };
 
 function askAi() {
