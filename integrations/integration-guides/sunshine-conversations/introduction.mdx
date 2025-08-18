@@ -6,12 +6,12 @@ sidebarTitle: Introduction
 
 <img src="./assets/sunshine-conversations.png" />
 
-# Prerequisites
+## Prerequisites
 
 * A [Smooch app](https://app.smooch.io) with a channel configured
 * A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/learn/get-started/quick-start)
 
-# Setting up the Sunshine Conversations integration in Botpress
+## Setup in Botpress
 
 1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
 2. Find and open the Sunshine Conversations integration then click on the "Install to Bot" button, now go back to your bot settings.
@@ -25,25 +25,25 @@ The Sunshine Conversations integration has the following settings:
 * **Key Secret**: The Key Secret of your bot in Azure
 * **Webhook Secret**: The Webhook Secret of your bot in Azure
 
-# Setting up Sunshine Conversations
+## Setup in Sunshine Conversations
 
-## Smooch App
+### Smooch App
 
 1. On the Smooch [home page](https://app.smooch.io/), click on **Create new app.**
 2. Enter a name for your app and click **Create App**
 3. Connect a channel to your app (Telegram, WhatsApp, or any other listed channel)
 4. You should see a channel in the **Overview** section of your app
 
-# Configuration
+## Configuration
 
-## App ID
+### App ID
 
 The smooch channel needs the app id to identify the smooch app when making API calls
 
 1. Go to the **Settings** section of your app
 2. You should see an **App ID** section if you scroll down. Copy paste this value to the **App ID** channel configuration
 
-## Key ID and Key Secret
+### Key ID and Key Secret
 
 The key id and secret are needed to authenticate API calls to Smooch
 
@@ -51,7 +51,7 @@ The key id and secret are needed to authenticate API calls to Smooch
 2. Copy paste the id (the one that starts with `app_`) in the **Key ID** channel configuration
 3. Copy paste the secret in the **Key Secret** configuration
 
-## Webhook Secret
+### Webhook Secret
 
 The webhook secret is needed to validate webhooks requests. You get a webhook secret for each webhook integration you create
 
@@ -64,7 +64,7 @@ The webhook secret is needed to validate webhooks requests. You get a webhook se
 7. Click **Create Webhook**. You will see the webhook you created in the table, and the secret in the last column
 8. Copy paste the webhook secret in the **Webhook Secret** channel configuration
 
-## Save Configuration
+### Save Configuration
 
 Channel configuration is complete, you can now click **Save**
 

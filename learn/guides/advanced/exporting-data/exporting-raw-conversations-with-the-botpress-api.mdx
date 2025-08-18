@@ -16,9 +16,9 @@ Note
 You can find your personal access token in your [Admin Dashboard](https://app.botpress.cloud/). You can find your bot ID in the URL of your bot's dashboard, it's the letters and numbers right after `chatbots/`
 </Note>
 
-# 1. Getting the Conversations list from the API
+## 1. Getting the Conversations list from the API
 
-## Using Axios
+### Using Axios
 
 Send a `GET` request to `https://api.botpress.cloud/v1/chat/conversations` adding the following headers: `Authorization: Bearer <your-personal-access-token>` and `x-bot-id: <your-bot-id>`.
 
@@ -47,7 +47,7 @@ const getConversations = await axios.get(
 allConversations.push(...getConversations.data.conversations)
 ```
 
-## Using the Botpress Client library
+### Using the Botpress Client library
 
 The same logic to get conversations but using the [Botpress Client library](https://www.npmjs.com/package/@botpress/client) in a Node.js application:
 
@@ -74,11 +74,11 @@ Info
 The API returns a maximum of 20 conversations per request. You will need to use the `nextToken` property to fetch the next batch of conversations. The `nextToken` property is returned in the `meta` object of the response.
 </Info>
 
-# 2. Getting all Conversations from the API
+## 2. Getting all Conversations from the API
 
 Now that you know the methods of getting the first conversations from the API, let's see how to get them. You can get them gradually or all at once, but you need to use the [pagination](/api-reference/pagination) token regardless.
 
-## Getting conversations gradually
+### Getting conversations gradually
 
 Create a function that will fetch the next batch of conversations when called. You could use a button to trigger it or trigger it automatically with infinite scroll. Pass the `nextToken` property retrieved from the first request as a parameter to the function, then update it on subsequent calls.
 
@@ -96,7 +96,7 @@ async function loadConversations(paginationToken) {
 }
 ```
 
-## Getting all conversations
+### Getting all conversations
 
 Use a loop to fetch all conversations at once using the above logic. This isn't recommended for bots with a large number of conversations as it may take a long time to complete and may cause timeouts. The use of a library like\
 [p-retry](https://www.npmjs.com/package/p-retry) to retry requests automatically is recommended.
@@ -122,7 +122,7 @@ do {
 } while (paginationToken)
 ```
 
-# 3. Getting the Messages list
+## 3. Getting the Messages list
 
 Once you have gone through the list of conversations and found out the id of the desired conversation to export, you can then use the API to list the actual messages.
 
@@ -205,7 +205,7 @@ Note
 In this example the bot sends a Multiple Choice card, then the user answers by clicking one of the options, and then the bot sends an Image card. Notice how the message payload changes according to the message type, so be mindful of that when reading the `payload` property.
 </Note>
 
-# 4. Formatting the Messages list
+## 4. Formatting the Messages list
 
 Now that you have the list of messages of a conversation it's time to format it so it becomes readable. We're going to use a custom function for that:
 

@@ -32,15 +32,15 @@ You can create up to **10 tables** with **20 columns** and **10,000 rows** in th
   </div>
 </Warning>
 
-# Creating a Table
+## Creating a Table
 
 To add a new table, go to the explorer menu and select `Add Table`. You can then give your table a name and add fields to it. Each field has a name and a type. The type determines the kind of data that can be stored in the field. For example, a field with the type `String` can store any text value, while a field with the type `Number` can only store numeric values.
 
-## Making Fields Searchable
+### Making Fields Searchable
 
 You can make a field searchable by checking the `Searchable` checkbox. This will allow you to search for records based on the values in the field. For example, if you have a field called `Name` and you make it searchable, you can search for records based on the name of the person. This is available for fields of type `String`, `Object`, `Array` and [custom schemas](/learn/reference/schema).
 
-# Types of Fields (Columns)
+## Types of Fields (Columns)
 
 There are several types of fields you can add to a table. Each field type has a specific purpose and can only store certain types of data. These are the field types you can choose from: `String`, `Number`, `Boolean`, `Date`, `Object`, `Array` and [custom schemas](/learn/reference/schema).
 
@@ -51,17 +51,17 @@ The number of columns has a hard limit of **20 columns** per table.
 
 </Warning>
 
-# Filtering Records
+## Filtering Records
 
 Table filters are a powerful feature that allows you to refine and display only the records that meet certain criteria. Filters can be based on specific conditions, such as date ranges, text matches, and numerical comparisons.
 
-## Logical Operators
+### Logical Operators
 
 - **AND**: Use the AND operator when you want all conditions to be true for a record to be displayed. For example, filtering by `createdAt` AND `status` will only show records that match both conditions.
 
 - **OR**: Use the OR operator to display records that match any one of multiple conditions. For example, filtering by `createdAt` OR `updatedAt` will show records that match either one of the conditions.
 
-## Types of Rules
+### Types of Rules
 
 Rules define the individual conditions applied to each column of data.
 
@@ -76,11 +76,11 @@ Rules define the individual conditions applied to each column of data.
 - `is null`: Shows records where the field is empty.
 - `is not null`: Shows records where the field isn't empty.
 
-## Rule Groups
+### Rule Groups
 
 - **Group**: A group is a collection of rules combined by a logical operator (AND/OR). You can nest groups to create complex filters.
 
-## Creating a Filter
+### Creating a Filter
 
 1. Click on the `Filter` button to expand the filter menu.
 2. Select a logical operator (AND/OR) from the dropdown.
@@ -91,33 +91,33 @@ Rules define the individual conditions applied to each column of data.
 7. To create a nested group of conditions, click the `+ Group` button.
 8. Apply the filter by clicking the `Apply filter` button.
 
-## Manually Editing Filters
+### Manually Editing Filters
 
 Click on **Edit Manually** to view and edit the filter in JSON format. You can then copy this JSON filter and use it in your table operations via code.
 
-# Operations on Tables - via the Interface
+## Operations on Tables - via the Interface
 
-## Add records to a table
+### Add records to a table
 
 Once you've created a table, you can add records to it. To do this, click on the table in the explorer menu. You'll then see a list of all the records in the table. Click on the `Add Record` button to add a new record. You can then enter the values for each field in the record.
 
-## Update records in a table
+### Update records in a table
 
 Double click on a table cell or press click it and press `Enter` to see an input that allows you to change the cell value. Once you are done, press `Enter` again or click away to save the new value.
 
-## Delete records from a table
+### Delete records from a table
 
 `Right Click` on the Record and select `Delete Record` to delete a record from a table.
 
-# Operations on Tables - via Cards
+## Operations on Tables - via Cards
 
 Check out the [Table Cards documentation](/learn/reference/cards/execute-code#table-cards) to learn more about operations with cards.
 
-# Operations on Tables - via Botpress Client
+## Operations on Tables - via Botpress Client
 
 You can also interact with tables using the Botpress Client. Here are some of the functions you can use to interact with tables:
 
-## List tables
+### List tables
 
 To list all the tables in the bot, use the `listTables` function. This function will return an array of all the tables in the bot.
 
@@ -130,7 +130,7 @@ try {
 }
 ```
 
-## Create Table Rows
+### Create Table Rows
 
 Execute the following query to create one or multiple rows. The response will include the inserted rows, along with any encountered errors or warnings during the operation (e.g., unrecognized fields)
 
@@ -145,7 +145,7 @@ const { rows, errors, warnings } = await client.createTableRows({
 })
 ```
 
-## Find & Filter Table Rows
+### Find & Filter Table Rows
 
 To find and filter rows in a table, use the `findTableRows` function. You can specify the limit (number of records to return) and the offset (number of rows to start from).
 
@@ -183,7 +183,7 @@ const { rows, limit, offset, count } = await client.findTableRows({
 })
 ```
 
-## Projection & Aggregation
+### Projection & Aggregation
 
 Employ the group property for projections and aggregations. The following example demonstrates returning a single row with requested data.
 
@@ -427,7 +427,7 @@ const result = rows.map((row) => {
 })
 ```
 
-## Update Table Rows
+### Update Table Rows
 
 This operation updates rows based solely on their numeric IDs.
 
@@ -443,7 +443,7 @@ const { rows, errors, warnings } = await client.updateTableRows({
 })
 ```
 
-## Delete Table Rows
+### Delete Table Rows
 
 Rows can be deleted from a table in three distinct manners, each mutually exclusive.
 
@@ -463,7 +463,7 @@ const { deletedRows } = await client.deleteTableRows({
 })
 ```
 
-## Upsert Table Rows
+### Upsert Table Rows
 
 The upsert operation is a combination of insert or update, allowing you to insert new rows or update existing ones. The operation is based on the row's `keyColumn`.
 
@@ -482,7 +482,7 @@ const { rows, inserted, updated, errors, warnings } = await client.upsertTableRo
 })
 ```
 
-## Create Table
+### Create Table
 
 To create a table, simply provide a name and a schema. The naming convention follows the same rules as those applied within the studio. Initially, the schema can be empty and populated or modified later. The schema accepts either an example object, from which it will infer the structure, or a directly provided JSON schema.
 
@@ -518,11 +518,11 @@ const { table } = await client.createTable({
 })
 ```
 
-## Update Table
+### Update Table
 
 You can update a table's name, schema, or both. Providing only one of these attributes is also permissible. Should you alter the type of an existing column, be advised that all its entries will default to NULL.
 
-### Adding a new field
+#### Adding a new field
 
 ```javascript
 const { table } = await client.updateTable({
@@ -535,7 +535,7 @@ const { table } = await client.updateTable({
 })
 ```
 
-### Removing an existing field:
+#### Removing an existing field:
 
 ```javascript
 const { table } = await client.updateTable({
@@ -546,7 +546,7 @@ const { table } = await client.updateTable({
 })
 ```
 
-### Renaming the table
+#### Renaming the table
 
 A table name must end with "Table".
 
@@ -554,7 +554,7 @@ A table name must end with "Table".
 await client.updateTable({ table: 'Data1Table', name: 'myNewTable' })
 ```
 
-### Rename Table Column
+#### Rename Table Column
 
 To rename a table column, specify both the current and new names. The column's data type and attributes will remain unchanged.
 
@@ -566,7 +566,7 @@ const { table } = await client.renameTableColumn({
 })
 ```
 
-## Get Table
+### Get Table
 
 To retrieve a table's schema, use the `getTable` function. This will return the table definition, along with the total number of rows, number of stale rows and number of indexing rows.
 
@@ -574,7 +574,7 @@ To retrieve a table's schema, use the `getTable` function. This will return the 
 const { table, indexing, rows, stale } = await client.getTable({ table: 'Data1Table' })
 ```
 
-## Delete Table
+### Delete Table
 
 To delete a table, use the `deleteTable` function. This will permanently remove the table and all its records.
 
@@ -582,11 +582,11 @@ To delete a table, use the `deleteTable` function. This will permanently remove 
 const { table } = await client.deleteTable({ table: 'Data1Table' })
 ```
 
-# Operations on Tables - via Code
+## Operations on Tables - via Code
 
 <img src="./assets/table-code-operations.png" />
 
-## Create record
+### Create record
 
 To create a new record in a table, use the `createRecord` function. You can specify the values for each field in the record. This function can be particularly useful when you need to store new information, such as a new user's details or a newly completed transaction.
 
@@ -597,7 +597,7 @@ To create a new record in a table, use the `createRecord` function. You can spec
 await Data1Table.createRecord({ Age: 25, Name: 'Tom', Occupation: 'Student' })
 ```
 
-## Create records
+### Create records
 
 To create multiple records in a table, use the `createRecords` function. You can specify the values for each field in the record. Useful for creating multiple records at once.
 
@@ -611,7 +611,7 @@ await Data1Table.createRecords([
 ])
 ```
 
-## Delete record
+### Delete record
 
 To delete a record in a table, use the `deleteRecord` function. You need to specify the record ID of the record you want to delete.
 
@@ -622,7 +622,7 @@ To delete a record in a table, use the `deleteRecord` function. You need to spec
 await Data1Table.deleteRecord(7)
 ```
 
-## Delete records
+### Delete records
 
 To delete multiple records in a table, use the `deleteRecords` function. You need to specify the record IDs of the records you want to delete in an array.
 
@@ -633,11 +633,11 @@ To delete multiple records in a table, use the `deleteRecords` function. You nee
 await Data1Table.deleteRecords([7, 8, 9])
 ```
 
-## Find records
+### Find records
 
 To find records in a table, use the `findRecords` function. You can add filters, just query everything or search using semantic search (like a Google Search!).
 
-### Basic usage and pagination
+#### Basic usage and pagination
 
 To retrieve data from a table in Botpress, you can use the `findRecords` function. This function allows you to specify the limit (number of records to return) and the offset (number of rows to start from).
 
@@ -668,7 +668,7 @@ workflow.hasNextPage = secondPage.length > 0 // This flag can be consumed in you
 
 You can apply a similar approach to determine if there are previous pages as well.
 
-### Searching fields with natural language
+#### Searching fields with natural language
 
 To perform a traditional search, use the search parameter when calling the DataTable1.findRecords() function in Botpress. Here is an example:
 
@@ -678,13 +678,13 @@ workflow.records = await DataTable1.findRecords({ search: 'red velvet chairs' })
 
 You can pass variables like event.preview to the search parameter to search for user input or any other variable. This allows you to pre-process the user's input before performing the search.
 
-### Filtering results
+#### Filtering results
 
 You can filter results using filters. Similar to MongoDB, this code provides methods to filter results. The filtering mechanism can be divided into two main categories: Primitive and Logical.
 
 Don't want to deal with code? Skip to the [next section](#using-ai-to-generate-filters) for AI generated filters.
 
-### **Primitive Filter**
+#### **Primitive Filter**
 
 Primitive filters are easy and simple to use, allowing you to match the exact values you are looking for. Here are some of the primitives you can use:
 
@@ -768,7 +768,7 @@ Primitive filters are easy and simple to use, allowing you to match the exact va
   { "name": { "$regex": "[a-z]", "$options": 'c' } } // case-sensitive
   ```
 
-### **Logical Filter**
+#### **Logical Filter**
 
 Logical operators allow you to connect more filtering clauses.
 
@@ -814,7 +814,7 @@ If you have a column of type object, you can also use operators on nested paths:
 }
 ```
 
-### Using AI to generate filters
+#### Using AI to generate filters
 
 Thankfully, Botpress comes with artificial intelligence (AI) capabilities when it comes to filtering records. This means you can provide a human-like query, and the AI will intelligently decipher it and create the right filters for your query.
 
@@ -830,7 +830,7 @@ const leads = await LeadsTable.findRecords({
 
 The query is written inside the backticks (\`) that come after \`filter: AI\`. The AI expects a query string, and that's why backticks are used.
 
-### Re-using filters (selectors)
+#### Re-using filters (selectors)
 
 Selectors are filters that you can re-use. They don't have to be written again and again.
 
@@ -848,7 +848,7 @@ const data = await Data1Table.findRecords({ selectorName: 'adults' })
 workflow.adults = data
 ```
 
-### Difference between search and AI filters
+#### Difference between search and AI filters
 
 A standard `Search` in Botpress is employed to identify specific strings like a user's name. It gives precision-based results by matching specific sets of characters.
 
@@ -856,7 +856,7 @@ On the other hand, an `AI Filter` broadens the scope and is used primarily for f
 
 Although the AI Filter isn't primarily designed for exact string hunting, it's flexible enough to allow it. For instance, you could use it to filter results for `Canada` as a country.
 
-## Get record
+### Get record
 
 You can use the `getRecord` function to retrieve a specific record from a table based on a unique identifier. For example, you might use the `getRecord` function to retrieve a user's profile information based on their unique user ID.
 
@@ -868,7 +868,7 @@ const data = await Data1Table.getRecord(1)
 workflow.User = data
 ```
 
-## Update record
+### Update record
 
 You can use the `updateRecord` function to modify a specific record in a table. This will be useful when you need to update a specific field in the record. For example, you might use this function to update a user's profile information or to update the status of a transaction.
 
@@ -877,7 +877,7 @@ You can use the `updateRecord` function to modify a specific record in a table. 
 await Data1Table.updateRecord(8, { Age: 45 })
 ```
 
-## Upsert record
+### Upsert record
 
 The `upsertRecords` function allows you to update or create records in a table in a single operation. It's useful for any situation where you need to update or insert data into a table without having to worry about whether the rows already exist.
 
@@ -893,7 +893,7 @@ await CustomersTable.upsertRecords('id', [
 
 This code will upsert the records into the CustomersTable. If the records with IDs 1 and 2 already exist in the table, the function will update the existing rows with the new name and address values. If the records with IDs 1 and 2 don't already exist in the table, the function will insert new rows into the table with the new name and address values.
 
-# Computed Columns
+## Computed Columns
 
 Columns can be marked as "Computed" which allows the <Tooltip tip="Happy bot building!">bot builder</Tooltip> to observe changes in tables and generate computed values. This includes leveraging AI, as well as running code. This can be useful for a wide variety of use cases such as CRM enrichment, sentiment analysis, classification.
 
@@ -901,7 +901,7 @@ To use computed columns, simply create a column and toggle the **Computed** fiel
 
 <img src="./assets/computed-column-switch.png" />
 
-## Selecting the basis of computation
+### Selecting the basis of computation
 
 To compute columns, you must select what information you will base your computed columns on. To do so, click the **Dependencies** field and select all column names that you will use.
 
@@ -909,7 +909,7 @@ To compute columns, you must select what information you will base your computed
 
 In the above example, we selected a column called **number**.
 
-## AI-based computed columns
+### AI-based computed columns
 
 You can perform AI text generation tasks by filling the prompt and including rows like this \{\{propertyName}}.
 
@@ -919,7 +919,7 @@ Come up with the title for a story like the three little pigs for the number {{n
 
 In the above example, for the number 3, you might get "The Three Clever Squirrels" as a value in the cell.
 
-## Code-based computed columns
+### Code-based computed columns
 
 To run arbitrary code, select the **Execute code** tab. Then, click **Edit Code**.
 
@@ -950,7 +950,7 @@ return fibonacci(row.number)
 
 There is currently an execution timeout of two minutes these.
 
-## Updating computed values
+### Updating computed values
 
 To ensure computed values are always kept up to date, we recommend **Auto-compute** be toggled on.
 
@@ -962,13 +962,13 @@ If you don't have **Auto-compute** enabled, a grey icon will appear next to stal
 
 To update the stale data, simply re-activate **Auto-compute**.
 
-# Importing and Exporting
+## Importing and Exporting
 
-## Import a Table
+### Import a Table
 
 You can import a table from a CSV file. Click on the `Import Table` button above the table and select the CSV file you want to import. Botpress will automatically detect the column names and types from the CSV file and create the table structure for you.
 
-## Export a Table
+### Export a Table
 
 Click on the `Export Table` button to export the table. This will download the table as a CSV file to your computer.
 

@@ -11,13 +11,13 @@ Note
 To visualize the actual user experience, use the Share button to have a hosted easily shareable version of the [Web Chat](/webchat/get-started/introduction) (this is the production bot already, conversations will be saved) or ideally test the bot in the channel you intend to deploy it on. Conversations in the Emulator won't be saved and the [bot invocations](/learn/get-started/dashboard/workspace/usage) won't be counted against your usage quota, but AI operations will.
 </Note>
 
-# Shortcuts
+## Shortcuts
 
-## Accessing the Emulator
+### Accessing the Emulator
 
 Press `cmd/ctrl + e` to toggle the Emulator open or closed.
 
-## Resend the Same Messages
+### Resend the Same Messages
 
 Pressing ↑ or ↓ on your keyboard in the text input allows you to navigate and resend previously sent messages quickly.
 
@@ -27,32 +27,30 @@ Info
 The last 20 messages sent are persistently stored in your browser storage.
 </Info>
 
-# Options
+## Options
 
-## New Conversation
+### New Conversation
 
 The `New Conversation` button erases the history and state from the old conversation and start a new conversation with the same user information. It's available at the top right corner of the emulator.
 
-## Start as a new user
+### Start as a new user
 
 The `Start as new user` button erases the history and state from the old conversation and start a new conversation with different user information. It's available at the top right corner of the emulator behind the 3 dots.
 
-## Simulate timeout event
+### Simulate timeout event
 
 The `Simulate timeout event` button triggers the [Timeout Workflow](/learn/reference/workflows#timeout) so you can check how the bot behaves when the conversation expires. It's available at the top right corner of the emulator behind the 3 dots.
 
-# In-line Logs
+## In-line Logs
 
 The Emulator shows the status of the conversation and the different steps that are being or have been executed under the hood to get the bot's response. They're a simpler version of the [Event Debugger](/learn/reference/debugger-logs-json)'s summary. Bot events, and card-processing results are shown this way, only in the emulator.
 
-## Bot-events
+### Bot events
 
 * Conversation started: The user has started the conversation by sending a message or a [Trigger](/learn/get-started/dashboard/bot/events) Event has been triggered.
 * Conversation ended: The conversation flowed to an End node and has gone through the [Conversation End Workflow](/learn/reference/workflows#conversation-end), or it has ended by not having possible transitions.
 * Error occurred: An irrecoverable error has occurred and the conversation has flowed to the [Error](/learn/reference/workflows#error) . The error message is visible by hovering the status.
 * Waiting for user input: The bot is waiting for the user to send a message in order to proceed with the conversation.
-
-## Card-processing results
 
 ### Knowledge Base
 

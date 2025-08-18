@@ -16,9 +16,9 @@ Schemas are useful for:
 * **Ease of Maintenance**: Making it easier to understand and manage data flow within your Botpress application.
 {/* vale Botpress.workflows = YES */}
 
-# Creating and Using Schemas
+## Creating and Using Schemas
 
-## JSON Schema Basics
+### JSON Schema Basics
 
 Botpress uses JSON Schema, a standard for describing the structure and validation constraints of JSON documents.
 
@@ -29,17 +29,17 @@ A JSON Schema can define:
 * **Enum Values**: Specific allowed values for a field.
 * **Nested Structures**: Complex data structures with multiple levels.
 
-## Creating a schema
+### Creating a schema
 
 You can create a new schema by navigating to the Schema menu in the left-hand menu. You can also create a new schema when adding a new variable through the Variables menu.
 
-## Using schemas
+### Using schemas
 
 You can use schemas instead of selecting a variable type like String or Number. This means that the variable will contain the information in the structure you've defined in your schema.
 
 For example, you might use a variable to contain information about your end user. This variable can use a schema to contain information like email, age, name, and home address, all contained in a single variable and structured by your schema.
 
-# Testing Schemas
+## Testing Schemas
 
 Here's a simple demo schema you can create to familiarize yourself with them.
 
@@ -61,7 +61,7 @@ zui.object({
 2. Create a Variable of the user schema type and name it `UserInformation`.
 3. \[optionally] you can use these variables as inputs for Workflows, allowing the user to fill in the schema as though it were a form.
 
-## Usage in AI Task
+### Usage in AI Task
 
 * Task Instructions:
 
@@ -82,7 +82,7 @@ where history and magic intertwined.
 
 <br />
 
-# Conditionally Show Inputs - Input trees
+## Conditionally Show Inputs - Input trees
 
 We'll show you how to use discriminated unions in Zod to conditionally include fields in an object schema. We'll go through two examples:
 
@@ -95,7 +95,7 @@ We'll show you how to use discriminated unions in Zod to conditionally include f
 
 <img src="./assets/input-type-text-advance.png" />
 
-### Example 1: Changing the Type of a Variable
+#### Example 1: Changing the Type of a Variable
 
 In this example, we'll create a schema that allows a variable (`value`) to be either a string or a number, depending on the user's choice.
 
@@ -116,7 +116,7 @@ z.object({
 });
 ```
 
-#### How It Works
+##### How It Works
 
 * **`inputType`**: Acts as the discriminator that determines the type of the `value` field.
 * **Discriminated Union**:
@@ -125,7 +125,7 @@ z.object({
 
 This approach is useful when you want to change the type of a variable based on a user's selection.
 
-### Example 2: Conditionally Showing Extra Settings
+#### Example 2: Conditionally Showing Extra Settings
 
 This example demonstrates how to include an extra field when an "Advanced Setting" toggle is turned on.
 
@@ -151,7 +151,7 @@ z.object({
 });
 ```
 
-#### How It Works
+##### How It Works
 
 * **`advancedSetting`**: Acts as the discriminator that determines whether to include the `extraSetting` field.
 * **Discriminated Union**:
@@ -160,7 +160,7 @@ z.object({
 
 This pattern is useful when you want to include additional settings only when an "Advanced Setting" option is enabled.
 
-### Trying it out
+#### Trying it out
 
 Trying it out is very easy!
 
@@ -171,7 +171,7 @@ Trying it out is very easy!
 5. Go to another Workflow and add a card that points to the one with the schema input.
 6. You'll now be able to able to see your input tree in all it's glory!
 
-### Summary
+#### Summary
 
 * **Discriminated Unions** in Zod allow you to conditionally change the shape of an object.
 * They're useful for:
