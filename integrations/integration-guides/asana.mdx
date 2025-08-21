@@ -34,50 +34,292 @@ Note
 The Asana API rate limits are applicable. Also, note that certain advanced Asana features tied to paid plans may not be accessible.
 </Note>
 
-## Capabilities
-
 With the Asana Integration, you can interact with Asana directly from your Botpress bot. The integration introduces various actions, including task creation, task updates, task comment addition, and more, making the task and user management processes more efficient.
 
-### Cards
+## Cards
 
-Here's a breakdown of the Cards / functions provided by Asana Integration and their input fields. You need to make sure the integration is enabled before being able to add them.
+The following [Cards](/learn/reference/cards/introduction) are available with the Asana integration:
 
-#### Create task
+### Create task
 
-This function is used to create a new task in Asana. The input fields include:
+Creates a new task in Asana.
 
-* **name**: The name of the task.
-* **notes**: The description of the task (optional).
-* **assignee**: The ID of the user who will be assigned to the task or "me" to assign to the current user (optional).
-* **projects**: The project IDs should be strings separated by commas (optional).
-* **parent**: The ID of the parent task (optional).
-* **start\_on**: The start date of the task in `YYYY-MM-DD` format (optional).
-* **due\_on**: The due date of the task without a specific time in `YYYY-MM-DD` format (optional).
+**Input fields**:
 
-You can store the output of this to a variable to access the permalink.
+<Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the new task.
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    The description of the task.
+  </ResponseField>
+  <ResponseField
+    name="assignee"
+    type="string"
+    required
+    default="me"
+  >
+    The ID of the user who will be assigned to the task.
 
-#### Update task
+    Enter `me` to assign to the current user.
+  </ResponseField>
+  <ResponseField
+    name="projects"
+    type="string"
+  >
+    The IDs of projects associated with the task. Each ID should be separated by a comma.
+  </ResponseField>
+  <ResponseField
+    name="parent"
+    type="string"
+  >
+    The ID of the parent task.
+  </ResponseField>
+  <ResponseField
+    name="start_on"
+    type="string"
+  >
+    The start date of the task in `YYYY-MM-DD` format.
+  </ResponseField>
+  <ResponseField
+    name="due_on"
+    type="string"
+  >
+    The due date of the task in `YYYY-MM-DD` format (optional).
+  </ResponseField>
+</Expandable>
 
-This function is used to update an existing task in Asana. The input fields include:
+**Output**:
 
-* **Task ID**: The ID of the task to update.
-* **name**: The name of the task (optional).
-* **assignee**: The ID of the user who will be assigned to the task or "me" to assign to the current user (optional).
-* **completed**: If the task is completed, enter "true" (without quotes); otherwise, it will keep its previous status (optional).
+<Expandable title="output">
+  <ResponseField
+    name="permalink_url"
+    type="string"
+  >
+    The permalink URL of the task.
+  </ResponseField>
+</Expandable>
 
-#### Find user
+### Update task
 
-This function is used to find a user, and all their associated metadata in Asana. The input field is:
+Updates an existing task in Asana.
 
-* **User Email**: You should use the email of the user here.
+**Input fields**:
 
-#### Add comment to task
+<Expandable title="input fields">
+  <ResponseField
+    pre={["Name"]}
+    name="name"
+    type="string"
+  >
+    The name of the task.
+  </ResponseField>
+  <ResponseField
+    pre={["Notes"]}
+    name="notes"
+    type="string"
+  >
+    The description of the task.
+  </ResponseField>
+  <ResponseField
+    pre={["Assignee"]}
+    name="assignee"
+    type="string"
+  >
+    The ID of the user to assign to the task. Enter `me` to assign to the current user.
+  </ResponseField>
+  <ResponseField
+    pre={["Start On"]}
+    name="start_on"
+    type="string"
+  >
+    The start date of the task in `YYYY-MM-DD` format.
+  </ResponseField>
+  <ResponseField
+    pre={["Due On"]}
+    name="due_on"
+    type="string"
+  >
+    The due date of the task in `YYYY-MM-DD` format.
+  </ResponseField>
+  <ResponseField
+    pre={["Task ID"]}
+    name="taskId"
+    type="string"
+    required
+  >
+    The ID of the task to update.
+  </ResponseField>
+  <ResponseField
+    pre={["Completed"]}
+    name="completed"
+    type="string"
+  >
+    If you want to mark the task as completed, enter `true`. Otherwise, the task will keep its previous status.
+  </ResponseField>
+</Expandable>
 
-This function is used to add a comment to a task in Asana. The input fields include:
+**Output**:
 
-* **Task ID**: The ID of the task to comment.
-* **comment**: The content of the comment to be added.
+<Expandable title="output">
+  <ResponseField
+    name="permalink_url"
+    type="string"
+  >
+    The permalink URL of the updated task.
+  </ResponseField>
+</Expandable>
 
-***
+### Find user
 
-With Asana Integration, your Botpress bot becomes a powerful project management tool that can interact with Asana directly. This facilitates efficient task and user management processes, saving you time and improving your productivity. Whether you're creating a task, updating an existing one, finding a user, or adding a comment to a task, Botpress Asana Integration makes it all possible right from your bot interface.
+Finds an Asana user and their associated metadata.
+
+**Input fields**:
+
+<Expandable title="input fields">
+  <ResponseField
+    pre={["User Email"]}
+    name="userEmail"
+    type="string"
+  >
+    The email address of the user to find.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="gid"
+    type="string"
+  >
+
+    The found user's [global ID (GID)](https://developers.asana.com/docs/faq#what-does-gid-mean).
+
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    The found user's email address.
+  </ResponseField>
+  <ResponseField
+    name="photo"
+    type="object | null"
+  >
+    The found user's profile photo.
+    <Expandable>
+      <ResponseField
+        name="image_21x21"
+        type="string"
+        required
+      >
+        The image URL in 21x21 resolution.
+      </ResponseField>
+      <ResponseField
+        name="image_36x36"
+        type="string"
+        required
+      >
+        The image URL in 60x60 resolution.
+      </ResponseField>
+      <ResponseField
+        name="image_60x60"
+        type="string"
+        required
+      >
+        The image URL in 60x60 resolution.
+      </ResponseField>
+      <ResponseField
+        name="image_128x128"
+        type="string"
+        required
+      >
+        The image URL in 128x128 resolution.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="resource_type"
+    type="string"
+  >
+    The type of the resource within Asana's data model.
+  </ResponseField>
+  <ResponseField
+    name="workspaces"
+    type="object[]"
+  >
+    An array of the found user's workspaces.
+    <Expandable>
+      <ResponseField
+        name="gid"
+        type="string"
+        required
+      >
+
+        The workspace's [global ID (GID)](https://developers.asana.com/docs/faq#what-does-gid-mean).
+
+      </ResponseField>
+      <ResponseField
+        name="name"
+        type="string"
+        required
+      >
+        The name of the workspace.
+      </ResponseField>
+      <ResponseField
+        name="resource_type"
+        type="string"
+        required
+      >
+
+        The type of the resource within Asana's data model.
+
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Add comment to task
+
+Adds a comment to a task in Asana.
+
+**Input fields**:
+
+<Expandable>
+  <ResponseField
+    pre={["Task ID"]}
+    name="taskId"
+    type="string"
+    required
+  >
+    The ID of the task to comment on.
+  </ResponseField>
+  <ResponseField
+    pre={["Comment"]}
+    name="comment"
+    type="string"
+    required
+  >
+    The content of the comment.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    The text of the added comment.
+  </ResponseField>
+</Expandable>
