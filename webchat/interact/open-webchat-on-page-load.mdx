@@ -1,0 +1,86 @@
+---
+title: Automatically open Webchat on page load
+---
+
+You can automatically open Webchat when a user visits your website.
+
+<Info>
+
+You will need:
+
+- A website with an [embedded bot](/webchat/get-started/quick-start)
+- Basic familiarity with JavaScript
+
+</Info>
+
+## On any visit to your website
+
+To open Webchat every time a user visits your website, add the following script to your website's source code:
+
+```javascript index.js
+window.botpress.on('webchat:initialized', (event) => {
+  setTimeout(() => {
+    window.botpress.open()
+  }, 500)
+})
+```
+
+This waits until [Webchat has been initialized](/webchat/interact/listen-to-events#webchat-is-initialized), then [opens the Webchat window](/webchat/interact/open-close-webchat#open-webchat).
+
+## On visits with a specific link
+
+You can also use a URL hash (#) to create a custom link that opens Webchat automatically on your website. For example:
+
+- [`botpress.com/docs`](https://botpress.com/docs): Opens the Botpress documentation
+- [`botpress.com/docs#ask`](https://botpress.com/docs#ask): Opens the Botpress documentation, then opens Webchat
+
+To create the link, add the following script to your website's source code:
+
+```javascript index.js
+window.botpress.on('webchat:initialized', (event) => {
+  setTimeout(() => {
+    if (window.location.hash === '#ask') {
+      window.botpress.open()
+    }
+  }, 500)
+
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#ask') {
+      window.botpress.open()
+    }
+  })
+})
+```
+
+This waits until [Webchat has been initialized](/webchat/interact/listen-to-events#webchat-is-initialized), then [opens the Webchat window](/webchat/interact/open-close-webchat#open-webchat) if the URL contains the `#ask` hash. You can change the hash itself to anything you like.
+
+## Limitation when manually initializing Webchat
+
+If you're manually initializing Webchat, make sure you execute either of the code snippets above before you call `window.botpress.init`:
+
+```javascript index.js
+// First, execute this:
+window.botpress.init({
+  botId: 'xxxxxxxxxxxxxxxxxxxxxx',
+  configuration: {
+    website: {},
+    email: {},
+    phone: {},
+    termsOfService: {},
+    privacyPolicy: {},
+    variant: 'soft',
+    themeMode: 'light',
+    fontFamily: 'inter',
+  },
+  clientId: 'xxxxxxxxxxxxxxxxxxxxxx',
+})
+
+// Then, execute this:
+window.botpress.on('webchat:initialized', (event) => {
+  setTimeout(() => {
+    window.botpress.open()
+  }, 500)
+})
+```
+
+Otherwise, the event listener will miss the initialization event, and Webchat won't open.
