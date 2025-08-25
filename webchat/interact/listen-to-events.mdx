@@ -9,9 +9,9 @@ You can listen to Webchat events within your website's source code. This is usef
 - Adjust UI elements depending on Webchat's status
 - Handle Webchat errors on your website
 
-<Tip>
-To listen any of the events on this page, just copy and paste the code snippet into your source code. Then, you can add whatever code you want—it'll execute whenever the event fires.
-</Tip>
+## With embedded Webchat
+
+If you added Webchat to your website [using the embed code](/webchat/get-started/quick-start), just copy and paste any code snippet below into your source code. Then, you can add whatever code you want—it'll execute whenever the event fires.
 
 <Info>
     You will need:
@@ -21,7 +21,7 @@ To listen any of the events on this page, just copy and paste the code snippet i
 
 </Info>
 
-## Webchat is initialized
+### Webchat is initialized
 
 This event fires when Webchat has finished loading and is ready to be opened:
 
@@ -32,9 +32,9 @@ window.botpress.on('webchat:initialized', () => {
 });
 ```
 
-This occurs when `window.botpress.init` (the second [inject script](/webchat/get-started/quick-start#)) finishes its execution.
+This occurs when `window.botpress.init` (the function in the second [inject script](/webchat/get-started/quick-start)) finishes its execution.
 
-## Webchat is ready
+### Webchat is ready
 
 This event fires after Webchat has been opened for the first time and is ready to receive messages:
 
@@ -45,7 +45,7 @@ window.botpress.on('webchat:ready', () => {
 });
 ```
 
-## Webchat opens
+### Webchat opens
 
 This event fires when the Webchat window is opened:
 
@@ -56,7 +56,7 @@ window.botpress.on('webchat:opened', () => {
 });
 ```
 
-## Webchat closes
+### Webchat closes
 
 This event fires when the Webchat window is closed:
 
@@ -67,7 +67,7 @@ window.botpress.on('webchat:closed', () => {
 });
 ```
 
-## New conversation starts
+### New conversation starts
 
 This event fires when a new conversation starts in Webchat:
 
@@ -78,18 +78,18 @@ window.botpress.on('conversation', (conversationId) => {
 });
 ```
 
-## Message is sent
+### Message is sent
 
 This event fires when either the user or the bot sends a message:
 
 ``` javascript index.js {3}
 window.botpress.on('message', (message) => {
-	console.log('Message received: ', message);
+	console.log('New message: ', message);
     // Insert your code here
 });
 ```
 
-## Error occurs
+### Error occurs
 
 This event fires when the bot raises an error:
 
@@ -100,7 +100,7 @@ window.botpress.on('error', (error) => {
 });
 ```
 
-## Custom event
+### Custom event
 
 This event fires when the bot triggers a custom event:
 
@@ -109,4 +109,141 @@ window.botpress.on('customEvent', (event) => {
     console.log('Custom event triggered: ', event);
 	// Insert your code here
 });
+```
+
+## With the Webchat React library
+
+<Info>
+  You will need:
+
+  - A working React app that [implements Webchat](/webchat/react-library/get-started#step-2%3A-build-a-component)
+</Info>
+
+If you're using the [Webchat React library](/webchat/react-library/get-started), you can use the [`useWebchat`](/webchat/react-library/hooks/use-webchat-client) hook's returned `on` value to listen to events. Just add the following code at the top level of your Webchat implementation:
+
+```jsx useWebchat
+const { on } = useWebchat({
+  clientId: '$CLIENT_ID$'
+  // Insert your Client ID here
+})
+```
+
+Then, paste any of the code snippets below to listen to events. You can add whatever code you want—it’ll execute whenever the event fires.
+
+<Warning>
+  The `useWebchat` hook is incompatible with the batteries-included [`<Webchat>` component](/webchat/react-library/components/webchat)—using them together will cause issues and unexpected behaviour.
+
+  If you need to use the hook, make sure you're [manually building Webchat](/webchat/react-library/get-started#option-2%3A-build-webchat-manually).
+</Warning>
+
+### New conversation starts
+
+This event fires when a new conversation starts in Webchat:
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('conversation', (conversationId) => {
+    console.log('New conversation started:', conversationId)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
+```
+
+### Message is sent
+
+This event fires when either the user or the bot sends a message:
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('message', (message) => {
+    console.log('New message:', message)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
+```
+
+### Error occurs
+
+This event fires when the bot raises an error:
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('error', (error) => {
+    console.log('Error:', error)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
+```
+
+### Webchat visibility changes
+
+This event fires when you change Webchat's visibility using a [Webchat Card](/learn/reference/cards/webchat):
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('webchatVisibility', (webchatVisibility) => {
+    console.log('Webchat visibility changed:', webchatVisibility)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
+```
+
+### Configuration changes
+
+This event fires when you change Webchat's configuration using the [Configure Webchat](/learn/reference/cards/webchat#configure-webchat) Card:
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('webchatConfig', (webchatConfig) => {
+    console.log('Webchat configuration changed:', webchatConfig)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
+```
+
+### Custom event
+
+This event fires when the bot triggers a custom event:
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('customEvent', (event) => {
+    console.log('Custom event triggered:', event)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
+```
+
+### Bot is typing
+
+This event fires when the bot starts/stops typing:
+
+```jsx highlight={4}
+useEffect(() => {
+  const unsubscribe = on('isTyping', (status) => {
+    console.log('Bot is typing:', status)
+    // Insert your code here
+  })
+  return () => {
+    unsubscribe?.()
+  }
+}, [on])
 ```
