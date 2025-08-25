@@ -2,10 +2,17 @@
 title: useWebchat
 ---
 
-The `useWebchat` hook provides access to the Botpress Webchat integration instance and related state. It allows you to:
-- Interact with the bot
+The `useWebchat` hook provides access to the Webchat client and its state. It allows you to:
+
+- Interact with your bot
 - Listen to real-time events
 - Manage conversation lifecycle, user info, and messages
+
+<Warning>
+  The `useWebchat` hook is incompatible with the batteries-included [`<Webchat>` component](/webchat/react-library/components/webchat)—using them together will cause issues and unexpected behaviour.
+
+  If you need to use the hook, make sure you're [manually building Webchat](/webchat/react-library/get-started#option-2%3A-build-webchat-manually).
+</Warning>
 
 ## Usage
 
@@ -41,8 +48,7 @@ function App() {
 | Events                | Description                                                                   |
 | --------------------- | ----------------------------------------------------------------------------- |
 | `conversation`      | Triggered when a new conversation is started.                                 |
-| `message`           | Triggered when a new message is received.                                     |
-| `messageSent`       | Triggered when a message is sent.                                             |
+| `message`           | Triggered when a new message is sent or received.                                     |
 | `error`             | Triggered when an error occurs.                                               |
 | `webchatVisibility` | Triggered when the Webchat visibility changes. ('show' or 'hide' or 'toggle') |
 | `webchatConfig`     | Triggered when the Webchat configuration changes.                             |

@@ -59,6 +59,12 @@ The `Webchat` component is a batteries-included implementation of the Webchat wi
     The `Webchat` component doesn't use the configuration set in your bot's [Dashboard](/learn/get-started/dashboard/bot/webchat). Instead, configure it using the [configuration](#configuration) prop.
 </Note>
 
+<Warning>
+  The `<Webchat>` component is incompatible with the [`useWebchat` hook](/webchat/react-library/hooks/use-webchat-client)—using them together will cause issues and unexpected behaviour.
+
+  If you need to use the hook, make sure you're [manually building Webchat](/webchat/react-library/get-started#option-2%3A-build-webchat-manually).
+</Warning>
+
 ## Props
 
 <ResponseField
