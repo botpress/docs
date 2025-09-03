@@ -1,0 +1,447 @@
+---
+title: Display notification bubble
+---
+
+import Example from '/snippets/webchat/examples/notif-bubble.mdx'
+
+<Panel>
+  <Tabs>
+    <Tab title="Example">
+      <Example/>
+    </Tab>
+    <Tab title="Code">
+      <CodeGroup>
+
+      ```html index.html
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Webchat Notification Bubble</title>
+
+          <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+          <script src="https://files.bpcontent.cloud/xxxx/xx/xx/xx/xxxxxxxxxxxxx-xxxxxxxx.js" defer></script>
+          <script src="index.js" defer></script>
+
+          <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+
+        <!-- Notification Bubble -->
+        <div id="msgDiv" class="cb tri-right btm-right" role="button" tabindex="0" aria-live="polite" aria-label="Notification" style="display:none">
+          <span id="msgText"></span>
+            <button class="close-chip" type="button" aria-label="Dismiss">×</button>
+        </div>
+
+        </body>
+      </html>
+      ```
+
+      ```js index.js
+      function openNotification() {
+          if (window.botpress) {
+              window.botpress.open();
+          } else {
+              alert('Botpress integration not available.');
+          }
+      }
+
+      (function () {
+          const msgDiv = document.getElementById('msgDiv');
+          const msgText = document.getElementById('msgText');
+          const closeBtn = msgDiv?.querySelector('.close-chip');
+
+          function showBubble(text) {
+              if (!msgDiv || !msgText) return;
+
+              // Display the notification bubble
+              msgText.textContent = text || '';
+              msgDiv.style.display = 'block';
+
+              // Avoid stacking handlers on repeated events
+              msgDiv.onclick = () => openNotification();
+
+              // Keyboard access
+              msgDiv.focus();
+              msgDiv.onkeydown = (e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openNotification();
+                  }
+              };
+
+              // Hide the notification bubble if Webchat is opened
+              window.botpress.on('webchat:opened', () => {
+                  if (msgDiv) msgDiv.style.display = 'none';
+              });
+
+              // Optional auto-hide after a period
+              setTimeout(() => (msgDiv.style.display = 'none'), 15000);
+          }
+
+          // Close/dismiss without action
+          if (closeBtn) {
+              closeBtn.addEventListener('click', (e) => {
+                  e.stopPropagation();
+                  msgDiv.style.display = 'none';
+              });
+          }
+
+          // Extract payload from event
+          function extractPayload(raw) {
+              let data = raw;
+
+              // If the data is a string
+              if (typeof data === 'string') {
+                  try { data = JSON.parse(data); } catch { /* ignore */ }
+              }
+
+              // Handle both strings and objects as event types
+              if (data && typeof data.event === 'string') {
+                  try { data = JSON.parse(data.event); } catch { data = { eventType: data.eventType, ...data }; }
+              } else if (data && typeof data.event === 'object') {
+                  data = data.event;
+              }
+
+              return data || {};
+          }
+
+          if (window.botpress?.on) {
+
+              // Listen for custom events from the bot
+              window.botpress.on('customEvent', (payload) => {
+                  const webchat = document.querySelector('iframe[title="Botpress"]');
+                  const data = extractPayload(payload);
+
+                  // Show the notification bubble if the Webchat window is closed
+                  if (data?.eventType === 'notification' && webchat && webchat.classList.contains('bpClose')) {
+                      showBubble(data.message);
+                  }
+              });
+          }
+      })();
+      ```
+
+      ```css styles.css
+      :root {
+        /* Change these to match your page's brand */
+        --bubble-bg: #ccddfa;   /* background */
+        --bubble-fg: #173569;   /* text */
+      }
+
+      .cb {
+        position: fixed;
+        right: 24px;
+        bottom: 102px;
+        z-index: 9999;
+
+        display: none; /* shown by JS */
+        background: var(--bubble-bg);
+        color: var(--bubble-fg);
+        border-radius: 16px;
+        padding: 14px 42px 14px 16px;
+        max-width: 340px;
+        line-height: 1.35;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
+        cursor: pointer;
+
+        font-family: Roboto, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+        font-size: 15px;
+        transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+        animation: bubble-in .28s cubic-bezier(.2, .8, .2, 1) both;
+      }
+
+      .cb:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+      }
+
+      .cb:focus {
+        outline: none;
+      }
+
+      /* Chat tail */
+      .tri-right.btm-right::after {
+        content: "";
+        position: absolute;
+        right: 22px;
+        bottom: -8px;
+        width: 16px;
+        height: 16px;
+        background: var(--bubble-bg);
+        transform: rotate(45deg);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
+        border-bottom-right-radius: 4px;
+      }
+
+      /* Close chip (optional, inside the bubble) */
+      .cb .close-chip {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .18);
+        color: var(--bubble-fg);
+        border: 0;
+        cursor: pointer;
+        line-height: 1;
+        font-size: 16px;
+      }
+
+      .cb .close-chip:hover {
+        background: rgba(255, 255, 255, .28);
+      }
+
+      @keyframes bubble-in {
+        from { transform: translateY(10px) scale(.98); opacity: 0; }
+        to   { transform: translateY(0)   scale(1);   opacity: 1; }
+      }
+      ```
+
+      </CodeGroup>
+    </Tab>
+  </Tabs>
+</Panel>
+
+You can make your website display a notification bubble when your bot sends a new message.
+
+The notification bubble displays the content of the bot's latest message if the Webchat window is closed. You can:
+
+- Open the notification (by clicking it or with a keyboard shortcut)
+- Dismiss the notification (by clicking the `x` button)
+- Open Webchat as usual (which dismisses the notification automatically)
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - Familiarity with HTML, CSS and JavaScript
+</Info>
+
+<Warning>
+  Since Webchat uses [Markdown](https://www.markdownguide.org/) for rich text in messages, some messages may not render properly in the notification bubble without further processing.
+</Warning>
+
+## Step 1: Add a Hook to your bot
+
+1. In the Studio, navigate to the <Icon icon="anchor"/> [Hooks](/learn/reference/hooks) section.
+2. Select **Create Hook** and set its type to [Before Outgoing](/learn/reference/hooks#before-outgoing).
+3. Paste the following code into the Hook:
+
+```js
+await actions.webchat.customEvent({
+  conversationId: event.conversationId,
+  event: JSON.stringify({
+    eventType: 'notification',
+    message: outgoingEvent.preview,
+  })
+})
+```
+
+This Hook notifies your website every time your bot sends a new message—that way, your website can display a notification bubble.
+
+## Step 2: Configure your website
+
+Now, you can configure your website to display the notification bubble.
+
+### Add the bubble HTML element
+
+First, add the bubble element somewhere in your website's HTML:
+
+```html
+<!-- Notification Bubble -->
+<div id="msgDiv" class="cb tri-right btm-right" role="button" tabindex="0" aria-live="polite" aria-label="Notification" style="display:none">
+  <span id="msgText"></span>
+  <button class="close-chip" type="button" aria-label="Dismiss">×</button>
+</div>
+```
+
+### Add JavaScript
+
+Then, add the following snippet to your website's JavaScript:
+
+```js expandable
+function openNotification() {
+    if (window.botpress) {
+        window.botpress.open();
+    } else {
+        alert('Botpress integration not available.');
+    }
+}
+
+(function () {
+    const msgDiv = document.getElementById('msgDiv');
+    const msgText = document.getElementById('msgText');
+    const closeBtn = msgDiv?.querySelector('.close-chip');
+
+    function showBubble(text) {
+        if (!msgDiv || !msgText) return;
+
+        // Display the notification bubble
+        msgText.textContent = text || '';
+        msgDiv.style.display = 'block';
+
+        // Avoid stacking handlers on repeated events
+        msgDiv.onclick = () => openNotification();
+
+        // Keyboard access
+        msgDiv.focus();
+        msgDiv.onkeydown = (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openNotification();
+            }
+        };
+
+        // Hide the notification bubble if Webchat is opened
+        window.botpress.on('webchat:opened', () => {
+            if (msgDiv) msgDiv.style.display = 'none';
+        });
+
+        // Optional auto-hide after a period
+        setTimeout(() => (msgDiv.style.display = 'none'), 15000);
+    }
+
+    // Close/dismiss without action
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            msgDiv.style.display = 'none';
+        });
+    }
+
+    // Extract payload from event
+    function extractPayload(raw) {
+        let data = raw;
+
+        // If the data is a string
+        if (typeof data === 'string') {
+            try { data = JSON.parse(data); } catch { /* ignore */ }
+        }
+
+        // Handle both strings and objects as event types
+        if (data && typeof data.event === 'string') {
+            try { data = JSON.parse(data.event); } catch { data = { eventType: data.eventType, ...data }; }
+        } else if (data && typeof data.event === 'object') {
+            data = data.event;
+        }
+
+        return data || {};
+    }
+
+    if (window.botpress?.on) {
+
+        // Listen for custom events from the bot
+        window.botpress.on('customEvent', (payload) => {
+            const webchat = document.querySelector('iframe[title="Botpress"]');
+            const data = extractPayload(payload);
+
+            // Show the notification bubble if the Webchat window is closed
+            if (data?.eventType === 'notification' && webchat && webchat.classList.contains('bpClose')) {
+                showBubble(data.message);
+            }
+        });
+    }
+})();
+```
+
+This handles the behaviour of the notification bubble. For example:
+
+- Displays the message received from the event's payload
+- Remains visible for 15 seconds before automatically closing
+- Can be selected by clicking or pressing <kbd>Enter</kbd> / <kbd>Space</kbd>
+
+<Tip>
+  You can configure the behaviour to suit your needs by modifying the code snippet.
+</Tip>
+
+### Add CSS
+
+Finally, add this CSS snippet to your website's stylesheet:
+
+```css expandable
+:root {
+  /* Change these to match your page's brand */
+  --bubble-bg: #ccddfa;   /* background */
+  --bubble-fg: #173569;   /* text */
+}
+
+.cb {
+  position: fixed;
+  right: 24px;
+  bottom: 102px;
+  z-index: 9999;
+
+  display: none; /* shown by JS */
+  background: var(--bubble-bg);
+  color: var(--bubble-fg);
+  border-radius: 16px;
+  padding: 14px 42px 14px 16px;
+  max-width: 340px;
+  line-height: 1.35;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
+  cursor: pointer;
+
+  font-family: Roboto, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-size: 15px;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  animation: bubble-in .28s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.cb:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+}
+
+.cb:focus {
+  outline: none;
+}
+
+/* Chat tail */
+.tri-right.btm-right::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: -8px;
+  width: 16px;
+  height: 16px;
+  background: var(--bubble-bg);
+  transform: rotate(45deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .18);
+  border-bottom-right-radius: 4px;
+}
+
+/* Close chip (optional, inside the bubble) */
+.cb .close-chip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .18);
+  color: var(--bubble-fg);
+  border: 0;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.cb .close-chip:hover {
+  background: rgba(255, 255, 255, .28);
+}
+
+@keyframes bubble-in {
+  from { transform: translateY(10px) scale(.98); opacity: 0; }
+  to   { transform: translateY(0)   scale(1);   opacity: 1; }
+}
+```
+
+You can modify the styling as needed.
+
+<Check>
+  Now, your website will display a notification bubble when your bot sends a new message.
+</Check>
