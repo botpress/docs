@@ -1,3 +1,7 @@
+import { integrationVersions } from '/snippets/integrations/versions.mdx'
+
+*Version: {integrationVersions.gmail}*
+
 The Gmail integration allows your bot to chat with users via your Gmail address.
 
 <Danger>
@@ -82,7 +86,7 @@ Due to the sensitive nature of email communication, the Gmail integration requir
         6. Under **Authorized redirect URIs**, enter `https://botpress.com`.
         7. Select **Add URI**, then **Create**.
         8. Copy the **Client ID** and **Client secret** for use in the next steps.
-        
+
         <Note>
         The client ID is the string that ends with `.apps.googleusercontent.com`.
         </Note>
@@ -113,7 +117,7 @@ Due to the sensitive nature of email communication, the Gmail integration requir
         5. Uncheck the **Add default subscription** checkbox. Leave the other options unchanged.
         7. Select **Create** to create the topic.
         8. Copy the **Topic name** for use in the next steps.
-        
+
         <Note>
         The topic name is the string that starts with `projects/`.
         </Note>
@@ -137,7 +141,7 @@ Due to the sensitive nature of email communication, the Gmail integration requir
         ### Step 8. Generate a shared secret
 
         1. Generate an alphanumeric string to use as a shared secret for signing Pub/Sub push events. We recommend using a string with at least 32 characters.
-        
+
         <Tip>
         You can use an [online password generator](https://bitwarden.com/password-generator/) to create a secure string.
         </Tip>
@@ -156,14 +160,14 @@ Due to the sensitive nature of email communication, the Gmail integration requir
 
         <Tip>
         For example, if:
-        
+
         - Your integration's webhook URL is: `https://webhook.botpress.cloud/57fcfb04-51fd-4381-909a-10e6ae53d310`
         - Your shared secret is `Ut5hzrxs7uV87mzCAKL3ztrzesWWBiNa`
-        
+
         You would enter:
-        
+
         `https://webhook.botpress.cloud/57fcfb04-51fd-4381-909a-10e6ae53d310?shared_secret=Ut5hzrxs7uV87mzCAKL3ztrzesWWBiNa`
-        
+
         in the **Endpoint URL** field.
         </Tip>
 
