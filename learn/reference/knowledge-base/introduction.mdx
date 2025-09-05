@@ -1,260 +1,232 @@
 ---
-title: Knowledge Base
-description: Centralized repository of your agent's available information, files, and data.
-sidebarTitle: Introduction
+title: Knowledge Bases
+sidebarTitle: Overview
 ---
 
-The Botpress Knowledge Base is a powerful tool that allows users to manage and access organizational knowledge in one central location.
+<Icon icon="book-open"/> Knowledge Bases are **sources of information you provide to your bot**.
 
-It has been designed to replace the traditional Q\&A system and enable users to upload various sources of information, including PDFs, Text Document, and website URLs.
+<Frame>
+  <img
+    alt="Knowledge Base"
+    className="block dark:hidden"
+    src="./assets/knowledge-base.png"
+  />
+  <img
+    alt="Knowledge Base"
+    className="hidden dark:block"
+    src="./assets/knowledge-base-dark.png"
+  />
+</Frame>
 
-## Enabling the Knowledge Base Agent
+You can use a Knowledge Base to make your bot reference a specific source when answering a user. For example, you might want to:
 
-You need to enable the Knowledge Base Agent to use the Knowledge Base feature in Botpress.
+- Provide your bot with specialized information (like company policies, pricing charts, or troubleshooting steps)
+- Scope your bot's responses to specific topics
+- Let your bot reference data from [tables](/learn/reference/tables) in its responses
 
-Click on the **Agent** Tab in the Explorer on the left panel of the studio. You will find the [**Knowledge Base**](/learn/reference/agents/knowledge-agent) Agent in the list of available agents. Click on the **Enable** button to enable the Knowledge Base Agent.
+---
 
-## Creating a Knowledge Base
+## Create a Knowledge Base
 
-To create a Knowledge Base, click on the **Add Knowledge Base** Icon in the Explorer on the left panel of the studio. You can create folders and organize your knowledge bases as per your preferences.
+To create a Knowledge Base:
 
-## Description
+1. Navigate to the <Icon icon="book-open"/> **Knowledge Base** menu in the studio.
+2. Select **New Knowledge Base**.
 
-When you create a Knowledge Base in Botpress, it's important to provide a brief description that explains what the Knowledge Base is about and what kind of information it contains.
+---
 
-This helps the system understand what type of questions to expect and gives it a better chance of finding the right answers for your users.
+## Add sources
 
-### How to write the description
+Once you've created a Knowledge Base, you can [add sources to it](/learn/reference/knowledge-base/add-sources):
 
-Let's say you work at a company that sells different types of home appliances, such as refrigerators, washing machines, and ovens. You can create a Knowledge Base in Botpress to help your customer support team quickly find information and answers to common questions about these products.
+<CardGroup cols={3}>
+  <Card
+    title="Websites"
+    icon="app-window"
+    href="/learn/reference/knowledge-base/add-sources#websites"
+    horizontal
+  />
+  <Card
+    title="Documents"
+    icon="file-text"
+    href="/learn/reference/knowledge-base/add-sources#documents"
+    horizontal
+  />
+  <Card
+    title="Tables"
+    icon="table"
+    href="/learn/reference/knowledge-base/add-sources#tables"
+    horizontal
+  />
+  <Card
+    title="Search the web"
+    icon="search"
+    href="/learn/reference/knowledge-base/add-sources#search-the-web"
+    horizontal
+  />
+  <Card
+    title="Rich text"
+    icon="type"
+    href="/learn/reference/knowledge-base/add-sources#rich-text"
+    horizontal
+  />
+  <Card
+    title="Integrations"
+    icon="boxes"
+    href="/learn/reference/knowledge-base/add-sources#sources-from-integrations"
+    horizontal
+  />
+</CardGroup>
 
-When creating the Knowledge Base, you would provide a brief description that outlines the purpose and scope of the Knowledge Base.
+Your bot will reference these sources when searching for an answer to a user's question.
 
-For example,\
-**"This Knowledge Base provides information and support for our home appliances product line, including troubleshooting tips, user manuals, and frequently asked questions."**
+---
 
-This description helps the NLU engine understand the focus of the Knowledge Base and identify the relevant sources of information to answer customer queries, such as **"How do I clean the filter in my washing machine?"** or **"What should I do if my oven isn't heating up properly?"**
+## Search a Knowledge Base
 
-## Knowledge Sources
+Your bot searches Knowledge Bases differently depending on whether it's executing an [Autonomous Node](/learn/reference/nodes/autonomous-node) or a [Standard Node](/learn/reference/nodes/introduction#standard-nodes):
 
-### 1. Documents
+### Using an Autonomous Node
 
-The **Documents** KB Source allows users to upload various file formats, including **PDFs**, **HTML** files, **TXT** files, **DOC** files, and **DOCX** files. This feature enables users to create a comprehensive Knowledge Base by incorporating different types of documents, such as manuals, guides, reports, and more.
+<Tip>
+  Since your bot only references Knowledge Bases when they're needed, they're useful for de-cluttering your [Autonomous Node's prompt](/learn/reference/nodes/autonomous-node#be-specific).
+</Tip>
 
-Let's consider a scenario where a company deals with medical equipment. The organization's support team frequently encounters inquiries about the usage and maintenance of their products. To address this, they decide to utilize the Documents Knowledge Source in Botpress to provide customers with easy access to relevant information.
+The default Autonomous Node in a bot's [Main Workflow](/learn/reference/workflows) contains a **Search Knowledge** Card that searches all Knowledge Bases by default. This means that a newly created AI agent is already equipped to search your Knowledge Bases.
 
-Using this feature, the team uploads a range of files related to their medical equipment, such as **PDF manuals**, **HTML guides**, and **TXT documents** containing troubleshooting steps. They organize these documents into appropriate categories, such as **"Product Manuals"**, **"Troubleshooting Guides"**, and **"Usage Instructions"**, ensuring that customers can find the information they need quickly.
+You can scope which Knowledge Bases the Autonomous Node searches using the Search Knowledge Card's configuration menu:
 
-For instance, if a user searches for **"How to calibrate the XYZ device,"** Botpress will search through the uploaded documents, and return the relevant instructions from the Knowledge Base.
-
-### Supported File Formats
-
-* **PDF documents** are commonly used for manuals, guides, and other types of documentation. With Botpress, you can upload PDFs to your Knowledge Base, making it easy for employees to search for and access the information they need.
-* **HTML documents** are used for web pages and other online content. By uploading HTML documents to Botpress, you can make this web content accessible to employees who may not have internet access.
-* **TXT files** are Text Document documents, similar to the ones supported by the Text Document Knowledge Base. However, TXT files can contain more complex formatting, such as tables and images. By uploading TXT files to Botpress, you can make this type of content searchable and easily accessible.
-* **DOC** and **DOCX** files are commonly used for word processing documents, such as memos and reports. By uploading these files to Botpress, you can make them searchable and easily accessible to employees.
+1. Open the drop-down menu under **Included Knowledge Bases**.
+2. Select whichever Knowledge Bases you want to include in searches.
 
 <Note>
-File Limits
-
-You can upload documents to the Knowledge Base with a size limit of **50MB** per document. The total number of documents you can upload depends on your plan's vector storage quota and any additional add-ons.
+Depending on your needs, you can also add multiple Search Knowledge Cards to your Autonomous Node. For more information, check out the guide on [searching multiple Knowledge Bases](#search-multiple-knowledge-bases).
 </Note>
 
-### 2. Website
+### Using a Standard Node
 
-The **Web Pages** KB Source allows users to upload website s to their Knowledge Base. This feature enables users to create a comprehensive Knowledge Base by incorporating different types of web content, such as articles, blog posts, and online forums.
+Since Standard Nodes don't use AI to generate responses, they don't consult your Knowledge Bases by default. To make your bot search your Knowledge Bases within a Standard Node, you can use:
 
-#### Add from URLs
+- A [Capture Information Card](/learn/reference/cards/capture-information#raw-input)
+- A **Query Knowledge Bases** Card
 
-To add a web page to your Knowledge Base, you can simply enter the URLs (one URL per line, max 350 character / URL) in the **Add from URLs** field. Botpress will automatically retrieve the content from the web page and add it to your Knowledge Base.
-
-#### Add from Site Map
-
-You can also add multiple web pages to your Knowledge Base by entering the **Site Map URL**. This file contains a list of URLs that you want to add to your Knowledge Base. Botpress will automatically retrieve the content from these web pages and add them to your Knowledge Base.
-
-### 3. Search The Web
-
-When using the Web Search Knowledge Base Source, you have the ability to specify the websites to include or exclude from your search. This allows you to customize the search to meet your specific requirements. Here are three options you can consider:
-
-#### On which websites should we search on?
-
-* **Search on specific websites**: You can provide a list of website domains that you want the Botpress NLU engine to include in its search. For example, if you want to focus on retrieving information from trusted sources within your organization, you can include domains and subdirectories like "yourcompany.com" or "internalknowledgebase.com/specific-section". This ensures that the search is targeted to specific websites relevant to your Knowledge Base.
-* **Search the entire web**: If you select this option, the Botpress NLU engine will conduct searches across the entire web. This is useful when you want to gather information from a wide range of sources, including external websites and online communities. It enables you to access a broader set of information that may be helpful to your Knowledge Base.
-* **Exclude specific websites from the search**: Sometimes, you may want to exclude certain websites from the search results. This option allows you to specify a list of website domains that should be excluded from the search. For example, if you want to filter out unreliable sources or competitor websites, you can exclude their domains from the search. This ensures that the search focuses on credible and relevant information.
-
-#### Filter search results by time period
-
-When utilizing the Web Search Knowledge Base Source, you can further enhance your search capabilities by filtering search results based on a specific time period. This feature allows you to narrow down the results to obtain the most relevant and up-to-date information for your Knowledge Base.
-
-To enhance your web search capabilities and filter search results by time period, you can utilize the following options:
-
-* **Don't filter based on time**: Selecting this option ensures that the search results aren't filtered based on a specific time period. It includes all available information without any time restrictions.
-* **Pages discovered in the last 24 hours**: By choosing this option, the search results will focus on web pages that have been discovered or indexed within the past 24 hours. This allows you to access the most recent information available on the web.
-* **Pages discovered in the last 7 days**: Selecting this option narrows down the search results to web pages that have been discovered or indexed within the past 7 days. It helps you stay updated with recent developments and information.
-* **Pages discovered in the last 30 days**: This option filters the search results to include web pages that have been discovered or indexed within the past 30 days. It provides a slightly broader time range for retrieving recent information.
-
-By utilizing these options, you can tailor the time period for your web search and ensure that the search results align with your Knowledge Base requirements. Whether you prefer real-time updates or a broader range of recent information, these options help you refine your search results accordingly.
-
-### 4. Text Document
-
-The Text Document KB Source allows users to create/add plain textual information, such as FAQs, guides, and manuals. This Knowledge Base replaces Botpress's old Q\&A system and is designed to provide users with quick access to information on various topics.
-
-Here's an example of how the Text Document Knowledge Base could be used in a company that sells different types of home appliances, such as **refrigerators**, **washing machines**, and **ovens**:
-
-Let's say that the customer support team at this company receives a lot of questions about how to troubleshoot common problems with their products. The team decides to create a Knowledge Base in Botpress to provide quick and easy access to this information.
-
-Using the Text Document Knowledge Base, the team creates a series of Text Document documents that contain troubleshooting tips for each type of product. They organize these documents by title (e.g., "Refrigerators," "Washing Machines," "Ovens") and add description for common issues (e.g., "Not cooling," "Won't spin," "Not heating up").
-
-So, when users search for a specific problem like **My refrigerator isn't cooling**, Botpress's Natural Language Understanding (NLU) functionality will retrieve the relevant response from the Text Document Knowledge Base, providing users with the necessary troubleshooting information.
-
-### 5. Tables: Organized Information
-
-You can connect your tables of data to a knowledge base, allowing users to directly search for information. This can be especially invaluable for vast datasets, as it provides a straightforward and user-friendly method to retrieve data.
-
-**Benefits**
-
-By integrating tables into your knowledge base, end-users can readily ask for and receive information straight from your table data. As a <Tooltip tip="Happy bot building!">bot builder</Tooltip>, you will appreciate the ease with which this can be implemented on Botpress.
-
-**Requirements**
-
-Prior to proceeding, ensure you have the following:
-
-1. A table of data
-2. Knowledge Agent should be enabled
-3. Mark at least one column in your data table with a `Searchable` property.
-4. Have a Knowledge Base with a source set to `Table`, and select the table that will be utilized for this feature.
-
-The `Searchable` property can be enabled either during the creation of a column or later on by right-clicking the column, selecting "Edit", and toggling on `Searchable`.
-
-**Usage Example**
-
-If you have a table of organized data, users can ask questions like:
-
-* "How many X are there?"
-* "What is the Y of X?"
-* "Show me X that have Y."
-* "How X is Y?"
-
-For instance, if you're running a chair e-shop, users can get product information by asking:
-
-* "How many chairs are there?"
-* "What is the price of your red velvet chair?"
-* "Show me products priced at $20."
-
-**Manual Answer Option**
-
-If you prefer to review and curate answers before they get sent, you can toggle on the "Answer Manually" option in the Knowledge Agent.
-
-**Limitations**
-
-Keep in mind that the feature may not provide accurate counts for "How many \[products / items / rows]"-type questions. Internally, the Knowledge Base runs a search before delivering answers, and since not all results are returned, the actual counts might be off.
-
-### Storage Quota
-
-The Knowledge Base feature in Botpress is designed to provide users with quick access to information on various topics. However, the amount of information that can be stored in the Knowledge Base is limited by the storage quota.
-
-The storage quota is the maximum amount of data that can be stored in the Knowledge Base.
+<Warning>
+  Both of these Cards require the [Knowledge Agent](/learn/reference/agents/knowledge-agent) to work properly—make sure it's enabled.
+</Warning>
 
 <Note>
-Limit
-
-All bots have a limit of **5000** vectors - which is the equivalent to approximately 200 blog articles or 1000 PDF pages.
+  By default, neither of these Cards send their response to the user directly—instead, you can access the response by referencing `turn.KnowledgeAgent.answer`, then send it to the user manually.
 </Note>
 
-## Enabling/Disabling KB on Capture Information cards
+---
 
-In Botpress, you have the ability to enable or disable the Knowledge Base feature for specific Capture Information cards - it's enabled by default.
+## Search multiple Knowledge Bases
 
-To enable the Knowledge Base on a Capture Information Card:
+If you're using an [Autonomous Node](/learn/reference/nodes/autonomous-node), you have two options for searching multiple Knowledge Bases:
 
-1. Locate the Capture Information Card.
-2. In the Inspector panel, look for the option called **Knowledge Base**.
-3. In the "Search all KBs" field, you can choose either specific KBs to search in, or you can choose "Disable Search"
+### Search all Knowledge Bases simultaneously
 
-By enabling this option, you allow the Knowledge Base to provide answers during the interaction when the user is asked for a response. If the user's input is relevant to the information stored in the Knowledge Base, Botpress's Natural Language Understanding (NLU) will retrieve the corresponding answer from the Knowledge Base and display it to the user. The conversation then proceeds to the next step of capturing information.\
-This feature helps to enhance the user experience by providing quick and accurate answers sourced from the Knowledge Base when appropriate.
+If you need your bot to search all selected Knowledge Bases for every user query, you can use a single Search Knowledge Card:
 
-If you disable the Knowledge Base feature on the Capture Info action in Botpress, the system **won't** utilize the Knowledge Base to provide answers during the interaction.
+1. [Add a Search Knowledge Card](/learn/reference/cards/introduction#add-a-card) to your Autonomous Node (if it doesn't already contain one).
+2. Select the Card to open its configuration menu.
+2. Open the drop-down menu under **Included Knowledge Bases**.
+3. Select whichever Knowledge Bases you want to include in searches.
 
-Disabling the Knowledge Base means that when users are prompted for a response and their input matches a query that could be answered using the Knowledge Base, Botpress's NLU won't retrieve answers from the Knowledge Base. Instead, the conversation will continue without incorporating information from the Knowledge Base.
+With this configuration, the Autonomous Node performs a search on all the selected Knowledge Bases simultaneously, then orders the results by score. This is useful if:
 
-By disabling the Knowledge Base, you essentially exclude it as a potential source of information for those specific cards. This may be useful if you want to handle user responses differently or if you prefer to rely on other mechanisms to provide answers or capture information in those particular cards.
+- You have multiple Knowledge Bases that can answer similar questions
+- You need to combine the answers from different Knowledge Bases in the same message
 
-Let's consider an example of a bot for a travel agency. The bot is designed to capture information from users regarding their travel preferences and provide relevant recommendations. The bot uses the Capture Info action in certain cards to gather specific details from users.
+<Warning>
+  Generally, searching all Knowledge Bases simultaneously consumes more LLM tokens and has higher latency than  [picking which Knowledge Bases to search based on context](#pick-knowledge-bases-to-search-based-on-the-query).
+</Warning>
 
-### Example 1: Enabling the Knowledge Base
+### Pick Knowledge Bases to search based on the query
 
-```
-Node: Capture Destination
-Action: Capture Info
-Scenario: The user is asked to provide their desired travel destination.
-Included Knowledge Bases: Search all KBs
+If you need your bot to search certain Knowledge Bases in certain circumstances, you can use multiple Search Knowledge Cards:
 
-User Input: "I want to go to Paris."
+1. [Add multiple Search Knowledge Cards](/learn/reference/cards/introduction#add-a-card) to your Autonomous Node.
+2. Configure each Card's **Included Knowledge Bases** depending on your needs.
 
-Response: The bot's Natural Language Understanding (NLU) recognizes that the user's input is relevant to the Knowledge Base. It retrieves information from the Knowledge Base related to travel destinations and displays an appropriate answer: "Paris is known for its romantic atmosphere, iconic landmarks such as the Eiffel Tower, and vibrant cultural scene."
-```
+With this configuration, the Autonomous Node views each Search Knowledge Card as a different tool, and picks one to search based on the user's query. This is useful if you have distinct Knowledge Bases that you need to query in different circumstances, and want to avoid overlap between them.
 
-The conversation then proceeds to the next step of capturing additional information, such as travel dates or budget.
+<Warning>
+  For this configuration to work, you need to specify instructions in each Search Knowledge Card's **Instructions** field. Otherwise, the Autonomous Node won't be able to tell the two Cards apart, and will pick one randomly.
 
-### Example 2: Disabling the Knowledge Base
+  For example, you could add these instructions for questions about company policies:
 
-```
-Node: Capture Transportation
-Action: Capture Info
-Scenario: The user is asked to specify their preferred mode of transportation for travel.
-Included Knowledge Bases: Disable Search
+  <Frame>
+    <img
+      alt="Example instructions for company policy search"
+      className="block dark:hidden"
+      src="./assets/example-instructions-policy.png"
+    />
+    <img
+      alt="Example instructions for company policy search"
+      className="hidden dark:block"
+      src="./assets/example-instructions-policy-dark.png"
+    />
+  </Frame>
 
-User Input: "I prefer to travel by train."
+  And these instructions for questions about pricing:
 
-Response: Since the Knowledge Base feature is disabled for this card, the bot's NLU doesn't consult the Knowledge Base. It simply captures the user's response without incorporating any information from the Knowledge Base.
-```
+  <Frame>
+    <img
+      alt="Example instructions for pricing search"
+      className="block dark:hidden"
+      src="./assets/example-instructions-pricing.png"
+    />
+    <img
+      alt="Example instructions for pricing search"
+      className="hidden dark:block"
+      src="./assets/example-instructions-pricing-dark.png"
+    />
+  </Frame>
 
-The conversation continues to the next step based on the specific logic or action defined for that card, without utilizing the Knowledge Base to provide answers or additional information.
+</Warning>
 
-In both examples, enabling or disabling the Knowledge Base on the Capture Info action determines whether the bot incorporates Knowledge Base information into the conversation or relies solely on other mechanisms to handle user responses.
+---
 
-## Removing the references
+## Handle no answer found
 
-To disable autogenerated references, utilize the **Execute Code** card with the following code:
+If your Workflow has an Autonomous Node, your bot will generate an appropriate response when it doesn't find an answer in the Knowledge Base. However, you can also program a custom response:
+
+1. In your Autonomous Node, add a [Transition](/learn/reference/cards/flow-logic#transition) Card.
+2. In the Card's **Condition** field, paste the following:
 
 ```javascript
-workflow.kbAnswerWithoutRef = event.preview.split("References:")[0].
+{{!event.state.agentVariables.KnowledgeAgent.turn.answer}}
+```
+3. Add the following to your Autonomous Node's prompt:
+
+```markdown
+Transition when no answer is found in the Knowledge Base.
 ```
 
-Then, input `@kbAnswerWithoutRef` into your text or capture card. Make sure to create the variable `kbAnswerWithoutRef` in your Workflow.
+Now, your bot will activate the Transition Card whenever it doesn't find an answer in the Knowledge Base. You can handle the transition however you want—for example, with a Node that sends a custom error message.
 
-## Scoping the Knowledge Base by Folders
+---
 
-You can scope the Knowledge Base by folders to limit the search to specific folders. This allows you to focus on a particular area of interest and retrieve relevant information from the Knowledge Base.
+## Storage limit
 
-~~Learn more about [Scoping the Knowledge Base with Folders]()~~
+Information you store in Knowledge Bases counts towards your [Vector DB Storage](/learn/get-started/dashboard/workspace/usage#vector-db-storage), which depends on your [Botpress plan/add-ons](https://botpress.com/pricing).
 
-## Handle No Answer in KB
+---
 
-If no answer is found in the KB, you want to add a default message to handle that case. You can add a transition/expression card and add the following:
+## Troubleshooting
 
-```javascript
-!event.state.agentVariables.KnowledgeAgent.turn.answer
-```
+If your bot isn't returning the expected results, you can try troubleshooting it in a few different ways:
 
-This will make the bot check if there is a value in the "answer" field; if not, then this transition/expression card will be fired.\
-Connect this card to a node with the message you want to show.
+### Check logs
 
-## Debugging
+Your bot's [logs](/learn/reference/debugger-logs-json#logs) display:
 
-If your bot isn't returning the expected results you can try debugging it in a few different ways:
+- The exact query that was sent to the Knowledge Base
+- The results (including source name, content preview, amount of tokens used by the content, row metadata if the source is a table) if there are any matches
 
-### 1. Check the [Logs](/learn/reference/debugger-logs-json#logs)
+Using that information, you can try refining what's sent to the Knowledge Base (or the sources themselves).
 
-The logs will show you the exact query that was sent to the Knowledge Base and the results (including source name, content preview, amount of tokens used by the content, row metadata if the source is a table) if there are any matches.
+### Inspect responses
 
-With that information you can try refining what's sent to the Knowledge Base or the content itself.
-
-### 2. Check the [Emulator](/learn/reference/emulator) answers
-
-Automatic answers from the Knowledge Base - answers that the bot displays without the need of a Text card - contain citations in their body.
-
-By hovering a citation you can see the source name (or its type if unnamed), the page, document or table name, the exact page number (for documents) or the row number (for tables), and a preview of the content.
-
-With that information you can try refining the Knowledge Base content or the associated metadata (names and descriptions).
+If you're using an Autonomous Node to search Knowledge Bases, you can use the [Inspect](/learn/reference/nodes/autonomous-node#check-the-inspect-window) window to analyze your bot's process when searching Knowledge Bases.
