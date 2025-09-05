@@ -45,43 +45,37 @@ Once you've created a Knowledge Base, you can [add sources to it](/learn/referen
     icon="app-window"
     href="/learn/reference/knowledge-base/add-sources#websites"
     horizontal
-  >
-  </Card>
+  />
   <Card
     title="Documents"
     icon="file-text"
     href="/learn/reference/knowledge-base/add-sources#documents"
     horizontal
-  >
-  </Card>
+  />
   <Card
     title="Tables"
     icon="table"
     href="/learn/reference/knowledge-base/add-sources#tables"
     horizontal
-  >
-  </Card>
+  />
   <Card
     title="Search the web"
     icon="search"
     href="/learn/reference/knowledge-base/add-sources#search-the-web"
     horizontal
-  >
-  </Card>
+  />
   <Card
     title="Rich text"
     icon="type"
     href="/learn/reference/knowledge-base/add-sources#rich-text"
     horizontal
-  >
-  </Card>
+  />
   <Card
     title="Integrations"
     icon="boxes"
     href="/learn/reference/knowledge-base/add-sources#sources-from-integrations"
     horizontal
-  >
-  </Card>
+  />
 </CardGroup>
 
 Your bot will reference these sources when searching for an answer to a user's question.
@@ -94,6 +88,10 @@ Your bot searches Knowledge Bases differently depending on whether it's executin
 
 ### Using an Autonomous Node
 
+<Tip>
+  Since your bot only references Knowledge Bases when they're needed, they're useful for de-cluttering your [Autonomous Node's prompt](/learn/reference/nodes/autonomous-node#be-specific).
+</Tip>
+
 The default Autonomous Node in a bot's [Main Workflow](/learn/reference/workflows) contains a **Search Knowledge** Card that searches all Knowledge Bases by default. This means that a newly created AI agent is already equipped to search your Knowledge Bases.
 
 You can scope which Knowledge Bases the Autonomous Node searches using the Search Knowledge Card's configuration menu:
@@ -101,9 +99,9 @@ You can scope which Knowledge Bases the Autonomous Node searches using the Searc
 1. Open the drop-down menu under **Included Knowledge Bases**.
 2. Select whichever Knowledge Bases you want to include in searches.
 
-<Tip>
-  Since your bot only references Knowledge Bases when they're needed, they're useful for de-cluttering your [Autonomous Node's prompt](/learn/reference/nodes/autonomous-node#be-specific).
-</Tip>
+<Note>
+Depending on your needs, you can also add multiple Search Knowledge Cards to your Autonomous Node. For more information, check out the guide on [searching multiple Knowledge Bases](#search-multiple-knowledge-bases).
+</Note>
 
 ### Using a Standard Node
 
@@ -119,6 +117,74 @@ Since Standard Nodes don't use AI to generate responses, they don't consult your
 <Note>
   By default, neither of these Cards send their response to the user directly—instead, you can access the response by referencing `turn.KnowledgeAgent.answer`, then send it to the user manually.
 </Note>
+
+---
+
+## Search multiple Knowledge Bases
+
+If you're using an [Autonomous Node](/learn/reference/nodes/autonomous-node), you have two options for searching multiple Knowledge Bases:
+
+### Search all Knowledge Bases simultaneously
+
+If you need your bot to search all selected Knowledge Bases for every user query, you can use a single Search Knowledge Card:
+
+1. [Add a Search Knowledge Card](/learn/reference/cards/introduction#add-a-card) to your Autonomous Node (if it doesn't already contain one).
+2. Select the Card to open its configuration menu.
+2. Open the drop-down menu under **Included Knowledge Bases**.
+3. Select whichever Knowledge Bases you want to include in searches.
+
+With this configuration, the Autonomous Node performs a search on all the selected Knowledge Bases simultaneously, then orders the results by score. This is useful if:
+
+- You have multiple Knowledge Bases that can answer similar questions
+- You need to combine the answers from different Knowledge Bases in the same message
+
+<Warning>
+  Generally, searching all Knowledge Bases simultaneously consumes more LLM tokens and has higher latency than  [picking which Knowledge Bases to search based on context](#pick-knowledge-bases-to-search-based-on-the-query).
+</Warning>
+
+### Pick Knowledge Bases to search based on the query
+
+If you need your bot to search certain Knowledge Bases in certain circumstances, you can use multiple Search Knowledge Cards:
+
+1. [Add multiple Search Knowledge Cards](/learn/reference/cards/introduction#add-a-card) to your Autonomous Node.
+2. Configure each Card's **Included Knowledge Bases** depending on your needs.
+
+With this configuration, the Autonomous Node views each Search Knowledge Card as a different tool, and picks one to search based on the user's query. This is useful if you have distinct Knowledge Bases that you need to query in different circumstances, and want to avoid overlap between them.
+
+<Warning>
+  For this configuration to work, you need to specify instructions in each Search Knowledge Card's **Instructions** field. Otherwise, the Autonomous Node won't be able to tell the two Cards apart, and will pick one randomly.
+
+  For example, you could add these instructions for questions about company policies:
+
+  <Frame>
+    <img
+      alt="Example instructions for company policy search"
+      className="block dark:hidden"
+      src="./assets/example-instructions-policy.png"
+    />
+    <img
+      alt="Example instructions for company policy search"
+      className="hidden dark:block"
+      src="./assets/example-instructions-policy-dark.png"
+    />
+  </Frame>
+
+  And these instructions for questions about pricing:
+
+  <Frame>
+    <img
+      alt="Example instructions for pricing search"
+      className="block dark:hidden"
+      src="./assets/example-instructions-pricing.png"
+    />
+    <img
+      alt="Example instructions for pricing search"
+      className="hidden dark:block"
+      src="./assets/example-instructions-pricing-dark.png"
+    />
+  </Frame>
+
+</Warning>
 
 ---
 
