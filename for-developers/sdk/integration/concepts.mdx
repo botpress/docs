@@ -9,9 +9,130 @@ This guide is a breakdown of the concepts introduced in the [Get Started](./gett
 
 ## Configuration
 
-Integrations can define a configuration schema. This dictates the structure of data that bot developers must provide when installing the integration. This schema is used to display the form you bot developers see when installing the integration in the Studio.
+Integrations can define a configuration schema. This dictates the structure of data that bot developers must provide when installing the integration. This schema is used to display the form bot developers see when installing the integration in the Studio. For example, you can define a schema that:
 
-Integration can also provide multiple configuration schemas to support different use cases or environments. This allows bot developers to select the appropriate configuration method based on their needs.
+- Requires users to supply their own API key (or other secrets)
+- Provides additional configuration options for the integration
+
+<Accordion title="Example: Linear">
+
+  Here's how the official [Linear](https://botpress.com/integrations/linear) integration [defines its configuration schema](https://github.com/botpress/botpress/blob/840e7e65901d0234353ad6890b0ad49a734b4de5/integrations/linear/definitions/index.ts#L19-L32):
+
+  ```ts
+  export const configurations = {
+    apiKey: {
+      title: 'API Key',
+      description: 'Configure Linear with an API Key.',
+      schema: z.object({
+        apiKey: z.string().title('API Key').describe('The API key for Linear'),
+        webhookSigningSecret: z
+          .string()
+          .secret()
+          .title('Webhook Signing Secret')
+          .describe('The secret key for verifying incoming Linear webhook events'),
+      }),
+    },
+  } as const satisfies IntegrationDefinitionProps['configurations']
+  ```
+
+  And how the configuration schema is rendered in Botpress Studio:
+
+  <Frame>
+    <img
+      alt="Configuration schema"
+      className="block dark:hidden"
+      src="./assets/config-linear.png"
+    />
+    <img
+      alt="Configuration schema"
+      className="hidden dark:block"
+      src="./assets/config-linear-dark.png"
+    />
+  </Frame>
+</Accordion>
+
+### Provide multiple schemas
+
+Integrations can also provide multiple configuration schemas to support different use cases or environments. This allows bot developers to select the appropriate configuration method based on their needs.
+
+<Accordion title="Example: GitHub">
+
+For example, here's how the official [GitHub](https://botpress.com/integrations/github) integration [defines its configuration schemas](https://github.com/botpress/botpress/blob/840e7e65901d0234353ad6890b0ad49a734b4de5/integrations/github/src/definitions/index.ts#L28-L65):
+
+```ts expandable
+export const configurations = {
+  manualApp: {
+    title: 'Manual configuration',
+    description: 'Configure manually with your own GitHub App',
+    schema: z.object({
+      githubAppId: z
+        .string()
+        .min(1)
+        .title('GitHub App ID')
+        .describe('Can be found in the GitHub App settings. OAuth apps are not supported.'),
+      githubAppPrivateKey: multiLineString
+        .min(1)
+        .secret()
+        .title('GitHub App Private Key')
+        .describe('The raw contents of the RSA private key. Can be downloaded from the GitHub App settings.')
+        .placeholder('-----BEGIN RSA PRIVATE KEY-----\n\n...\n\n-----END RSA PRIVATE KEY-----'),
+      githubAppInstallationId: z
+        .number()
+        .positive()
+        .title('GitHub App Installation ID')
+        .describe('Please refer to the integration documentation for details on how to obtain this.'),
+      ...webhookSecret,
+    }),
+  },
+  manualPAT: {
+    title: 'Manual configuration',
+    description: 'Configure manually with a Personal Access Token',
+    schema: z.object({
+      personalAccessToken: z
+        .string()
+        .min(1)
+        .secret()
+        .title('Personal Access Token')
+        .describe('An organization-level GitHub Personal Access Token with the necessary permissions.'),
+      ...webhookSecret,
+    }),
+  },
+} as const satisfies sdk.IntegrationDefinitionProps['configurations']
+```
+
+And how they're rendered in Botpress Studio:
+
+<Tabs>
+  <Tab title="First schema">
+    <Frame>
+      <img
+        alt="First schema"
+        className="block dark:hidden"
+        src="./assets/config-github-1.png"
+      />
+      <img
+        alt="First schema"
+        className="hidden dark:block"
+        src="./assets/config-github-1-dark.png"
+      />
+    </Frame>
+  </Tab>
+  <Tab title="Second schema">
+    <Frame>
+      <img
+        alt="Second schema"
+        className="block dark:hidden"
+        src="./assets/config-github-2.png"
+      />
+      <img
+        alt="Second schema"
+        className="hidden dark:block"
+        src="./assets/config-github-2-dark.png"
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+</Accordion>
 
 ## Events
 
