@@ -52,11 +52,9 @@ jobs:
             (This PR was automatically created using a workflow)
           branch: update-integration-versions
           delete-branch: true
-          base: main
+          base: master
           labels: |
             automated
-            integrations
-            version-update
 
       - name: Output results
         run: |
