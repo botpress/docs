@@ -1,0 +1,63 @@
+name: Update Integration Versions
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check-integration-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check for version updates
+        id: check_versions
+        env:
+          BOTPRESS_TOKEN: ${{ secrets.BOTPRESS_TOKEN }}
+          BOTPRESS_WORKSPACE_ID: ${{ secrets.BOTPRESS_WORKSPACE_ID }}
+        run: |
+          node .github/scripts/check-version-updates.js
+
+      - name: Create Pull Request
+        if: steps.check_versions.outputs.has_updates == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GH_PAT }}
+          commit-message: 'chore: update integration versions'
+          title: 'chore: update integration versions'
+          body: |
+           Weekly integration version/ID update based on the latest data from the Botpress Admin API.
+            
+            ${{ steps.check_versions.outputs.changes_summary }}
+            
+            (This PR was automatically created using a workflow)
+          branch: update-integration-versions
+          delete-branch: true
+          base: main
+          labels: |
+            automated
+            integrations
+            version-update
+
+      - name: Output results
+        run: |
+          echo "Version check completed"
+          echo "Has updates: ${{ steps.check_versions.outputs.has_updates }}"
+          if [ "${{ steps.check_versions.outputs.has_updates }}" == "true" ]; then
+            echo "Updated integrations: ${{ steps.check_versions.outputs.updated_integrations }}"
+          else
+            echo "No version updates found"
+          fi
