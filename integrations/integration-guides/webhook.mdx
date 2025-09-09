@@ -1,125 +1,262 @@
 ---
 title: Webhook
+description: Integrate Botpress with other services using a webhook.
 ---
 
 {/* vale off */}
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
-
-<OpenInHub integration={integrationVersions.webhook}/>
-
-
 import webhookPayloadSize from "/snippets/api-payload-limits.mdx"
-
-<img src="./assets/webhook.png" />
-
-Webhooks provide a powerful way to integrate Botpress with other services. This guide will walk you through how to set up a webhook in Botpress to allow your bot to receive external updates in real-time.
-
-## Prerequisites
-
-* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/learn/get-started/quick-start)
-
-## Setting up the Webhook integration in Botpress
-
-1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
-2. Find and open the Webhook integration then click on the "Install to Bot" button, now go back to your bot.
-
-The Webhook integration will have the following settings:
-
-* **Enabled**: Whether Botpress will communicate with the Webhook.
-* **Webhook URL**: The URL that you will use to send data to your bot.
-* **Secret**: A secret password that you can use to secure your webhook. It can be any string you want, but make it random and hard to guess.
-
-That's it! Now the Webhook integration is operational and ready for use within your bot.
-
-## Sending data to your Webhook from JavaScript
-
-You can make requests to your webhook from any environment that supports HTTP requests, such as a Node.js app, a React app, a JavaScript script running in the browser, a Zapier zap, a curl script, etc.
-
-This code example uses the Axios library to make a POST request to the Webhook URL, in a simulated Node.js app.
-
-```js
-import axios from 'axios'
 
 {/* vale on */}
 
-const webhookUrl = 'https://your-webhook.url'
+<OpenInHub integration={integrationVersions.webhook}/>
+
+Install this integration to generate a personalized [webhook](https://docs.webhook.site/index.html) that allows your bot to receive external updates.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+</Info>
+
+### Install the integration
+
+1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+2. Search for the **Webhook** integration, then select **Install Integration**.
+3. Copy the generated webhook URL.
+
+### Configure the integration
+
+The integration has the following configuration options:
+
+- **Secret** (Optional): A secret that must be sent with the request as a header called `x-bp-secret`. Leave empty to allow all requests without a secret.
+- **Allowed Origins**: List of allowed origins for CORS. Leaving this field empty blocks all requests originating from a browser and only allows requests from a server.
+
+## Send data to your webhook
+
+You can make requests to your webhook from any environment that supports HTTP requests:
+<CodeGroup>
+
+```javascript JavaScript
+import axios from 'axios'
+
+const webhookUrl = 'https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 const data = {
-  article: {
-    id: '123',
-    content: 'Hello Webhooks!',
-  },
-  category: 'Business',
+  "example": "example"
 }
 const headers = {
   'Content-Type': 'application/json',
-  // this is optional
-  // `x-bp-secret`: 'your-secret'
+  'x-bp-secret': 'your-secret' // Optional
 }
-await axios.post(webhookUrl, data, header)
-
-// You should get a 200 OK response
-// Webhooks don't return any data in the response body
+await axios.post(webhookUrl, data, { headers })
 ```
 
-## Sending data to your Webhook from a HTTP client (for testing)
+```bash cURL
+curl -X POST \
+  https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+  -H 'Content-Type: application/json' \
+  -H 'x-bp-secret: your-secret' \
+  -d '{
+    "example": "example"
+  }'
+```
 
-1. Open a HTTP client like Postman or Insomnia and create a new request
-2. Set the request type to `POST`
-3. Set the URL to the Webhook URL you got from the integration page in the Botpress Dashboard.
-4. Set the `Content-Type` header to `application/json`
-5. (Optional) Set the `x-bp-secret` header to the secret token you set in the Botpress Hub
-6. [Example] Set the body to the following JSON:
+```python Python
+import requests
+import json
 
-```json
-{
-  "article": {
-    "id": "123",
-    "content": "Hello Webhooks!"
-  },
-  "category": "Business"
+webhook_url = 'https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+data = {
+    "example": "example"
+}
+headers = {
+    'Content-Type': 'application/json',
+    'x-bp-secret': 'your-secret'  # Optional
+}
+
+response = requests.post(webhook_url, data=json.dumps(data), headers=headers)
+```
+
+```php PHP
+<?php
+$webhookUrl = 'https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+$data = json_encode([
+    "example" => "example"
+]);
+
+$headers = [
+    'Content-Type: application/json',
+    'x-bp-secret: your-secret'  // Optional
+];
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $webhookUrl);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($ch);
+curl_close($ch);
+?>
+```
+
+```go Go
+package main
+
+import (
+    "bytes"
+    "encoding/json"
+    "net/http"
+)
+
+func main() {
+    webhookUrl := "https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+    data := map[string]interface{}{
+        "example": "example",
+    }
+
+    jsonData, _ := json.Marshal(data)
+
+    req, _ := http.NewRequest("POST", webhookUrl, bytes.NewBuffer(jsonData))
+    req.Header.Set("Content-Type", "application/json")
+    req.Header.Set("x-bp-secret", "your-secret") // Optional
+
+    client := &http.Client{}
+    resp, _ := client.Do(req)
+    defer resp.Body.Close()
 }
 ```
 
-7. Send the request and you should see a `200 OK` success response.
+```java Java
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
-## Using the Webhook Event data in your bot
+public class WebhookExample {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        String webhookUrl = "https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+        String jsonData = "{\"example\": \"example\"}";
 
-1. Go to the Botpress Studio and right-click the editor to add a Trigger node, that triggers on `Webhook Event`.
-   * This is where the conversation will start when the webhook received data, instead of following the regular path of beginning with the `Start` node.
-2. Connect the Trigger node to the rest of you conversation.
-3. Click on `Discover Events` button to see the events that were received. You can choose an event and save it as an example to trigger the conversation for testing.
-4. You can access the data from the request using the `event.payload` variable.
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(webhookUrl))
+            .header("Content-Type", "application/json")
+            .header("x-bp-secret", "your-secret") // Optional
+            .POST(HttpRequest.BodyPublishers.ofString(jsonData))
+            .build();
 
-## Webhook Event Payload
+        HttpResponse<String> response = client.send(request,
+            HttpResponse.BodyHandlers.ofString());
+    }
+}
+```
 
-Webhook requests make available four properties that you can read in your bot:
+```ruby Ruby
+require 'net/http'
+require 'uri'
+require 'json'
 
-* `event.payload.body`: The body of the request - it's usually a JSON object
-* `event.payload.query`: A JSON object containing the URL parameters of the request
-  * For example if you make a request to `https://your-webhook.url/?param1=hello&param2=world` the query object will look like this: `{ param1: 'hello', param2: 'world' }`
-  * Then you can access the parameters using this notation: `event.payload.query.param1`
-* `event.payload.method`: The HTTP method of the request - usually `POST`
-* `event.payload.path`: The path of the request - usually `/`
+webhook_url = 'https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+data = {
+  example: 'example'
+}
+
+uri = URI(webhook_url)
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+
+request = Net::HTTP::Post.new(uri)
+request['Content-Type'] = 'application/json'
+request['x-bp-secret'] = 'your-secret'  # Optional
+request.body = data.to_json
+
+response = http.request(request)
+```
+
+</CodeGroup>
+
+<Note>
+Webhooks don't return any data in the response body.
+</Note>
+
+## Use webhook data in Studio
+
+<Tip>
+  You can [test the webhook in the Studio's emulator](/learn/reference/triggers#test-a-trigger) to make sure you're handling requests properly.
+</Tip>
+
+To read data from a webhook request in the Studio:
+
+1. In Botpress Studio, add the **Webhook Event** [Trigger](/learn/reference/triggers) to the Workflow you want to use the request's data in.
+2. Connect any Nodes you want to the Trigger—they'll execute whenever the webhook receives an request.
+3. Now, you can [read the event's payload](/learn/guides/advanced/event-properties) to access information about the webhook request:
+
+### Read the payload
+
+Here's the structure of a webhook event's payload:
+
+<ResponseField
+  name="event.payload"
+  type="object"
+>
+  Information about the webhook request.
+
+  <Expandable>
+    <ResponseField
+      name="body"
+      type="object"
+    >
+      The body of the request—usually a JSON object. This contains the actual data sent to the webhook.
+    </ResponseField>
+    <ResponseField
+      name="query"
+      type="object"
+    >
+      Any query parameters sent with the request. For example, if the request was made to this URL:
+
+      `https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx?param=value`
+
+      the `query` property would look like this:
+
+      ```json
+      "query": {
+        "param": "value",
+      }
+      ```
+    </ResponseField>
+    <ResponseField
+      name="headers"
+      type="object"
+    >
+      The headers sent with the request.
+    </ResponseField>
+    <ResponseField
+      name="path"
+      type="string"
+    >
+      The path of the request. For example, if the request was made to this URL:
+
+      `https://webhook.botpress.cloud/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/api/webhook/data`
+
+      the `path` property would look like this:
+
+      ```json
+      "path": "/api/webhook/data"
+      ```
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+The contents of `event.payload` are overwritten as soon as the bot or the user sends a new message. If you need to access a webhook request's data later, consider storing it in a [variable](/learn/reference/variables/overview).
 
 ### Payload size limit
 
 The maximum size for a Webhook payload is {webhookPayloadSize}.
-
-## Additional Information
-
-* You can create filters to manage when the trigger will be actually activated and also create alternative Workflows by using Expressions that consider the request data.
-* For example, you can add a filter that checks if the request path is new-comment (`event.payload.path === '/new-comment'`), in which case the conversation will only start if the request is made to `https://your-webhook.url/new-comment`
-* You could also add Expression cards that transition to different nodes or Workflows based on the data. For example, the `event.payload.body.category === 'Business'` condition could transition to a different Workflow that handles business articles.
-
-<Note>
-Note
-
-Remember that the contents of the `event.payload` property received via Webhook will be replaced as soon as the bot or the user sends a new message. So you should save important information in Workflow variables if you want to use it later in the conversation.
-</Note>
-
-* You can also add `/user` or any other path to the WebhookURL to record events specific to this URL.
-* You can then add a filter to the Webhook Event to only receive events from this URL.
-  * For example, if you want to receive only the events that have a `type` equal to `text` and a `user.id` equal to `user-id`, you can use the following filter:
-  * `event.payload.body.type === 'text' && event.payload.body.user.id === 'user-id'`
