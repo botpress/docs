@@ -4,8 +4,18 @@ sidebarTitle: Setup
 description: Add a bot to Slack using the official integration.
 ---
 
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+
+<OpenInHub integration={integrationVersions.slack}/>
+
+
 import JsonManifest from "/snippets/integrations/slack-manifest-json.mdx"
 import YamlManifest from "/snippets/integrations/slack-manifest-yaml.mdx"
+
+{/* vale on */}
 
 The official Slack integration allows members of your Slack workspace to chat with your bot via a Slack app.
 
