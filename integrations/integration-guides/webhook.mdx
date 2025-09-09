@@ -2,6 +2,14 @@
 title: Webhook
 ---
 
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+
+<OpenInHub integration={integrationVersions.webhook}/>
+
+
 import webhookPayloadSize from "/snippets/api-payload-limits.mdx"
 
 <img src="./assets/webhook.png" />
@@ -33,6 +41,8 @@ This code example uses the Axios library to make a POST request to the Webhook U
 
 ```js
 import axios from 'axios'
+
+{/* vale on */}
 
 const webhookUrl = 'https://your-webhook.url'
 const data = {
