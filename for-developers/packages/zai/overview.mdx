@@ -13,9 +13,15 @@ Zai is built on [Zod schemas](https://zod.dev/) and the Botpress API. We recomme
 
 <Note>
 
-  For a full list of available methods, check out the [reference section](/for-developers/packages/zai/reference).
+For a full list of available methods, check out the [reference section](/for-developers/packages/zai/reference).
 
 </Note>
+
+<Tip>
+
+Zai is imported by default in the [Execute Code cards](https://botpress.com/docs/learn/guides/advanced/use-code#execute-code-cards), [Actions](/learn/guides/advanced/use-code#actions), and [Hooks](learn/guides/advanced/use-code#hooks)
+
+</Tip>
 
 ## Installation
 
@@ -68,7 +74,7 @@ Here are some examples of how you can use Zai:
 Use the [`extract`](/for-developers/packages/zai/reference#extract) method to get structured data from a plain piece of text:
 
 ```ts
-const text = "Blueberries are 3.99$ and are in stock."
+const text = 'Blueberries are 3.99$ and are in stock.'
 const product = await zai.extract(
   text,
   z.object({
@@ -93,11 +99,7 @@ const { value, explanation } = await result.result()
 Use the [`filter`](/for-developers/packages/zai/reference#filter) method to filter elements of an array based on a condition:
 
 ```ts
-const comments = [
-  "Great product, I love it!",
-  "This is terrible spam content",
-  "Very helpful review, thank you"
-]
+const comments = ['Great product, I love it!', 'This is terrible spam content', 'Very helpful review, thank you']
 const cleanComments = await zai.filter(comments, 'is not spam or inappropriate')
 // Returns: ["Great product, I love it!", "Very helpful review, thank you"]
 ```
@@ -111,7 +113,7 @@ const email = "Congratulations! You've won $1,000,000! Click here now!"
 const result = await zai.label(email, {
   spam: 'is this email spam?',
   urgent: 'does this email require immediate attention?',
-  promotional: 'is this email promotional content?'
+  promotional: 'is this email promotional content?',
 })
 // Returns: { spam: true, urgent: false, promotional: true }
 ```
@@ -121,11 +123,8 @@ const result = await zai.label(email, {
 Use the [`rewrite`](/for-developers/packages/zai/reference#rewrite) method to transform text based on specific instructions:
 
 ```ts
-const original = "The meeting is scheduled for tomorrow at 3pm."
-const rewritten = await zai.rewrite(
-  original,
-  'Make this sound more professional and formal'
-)
+const original = 'The meeting is scheduled for tomorrow at 3pm.'
+const rewritten = await zai.rewrite(original, 'Make this sound more professional and formal')
 // Returns: "The meeting has been scheduled for tomorrow at 3:00 PM."
 ```
 
@@ -134,10 +133,10 @@ const rewritten = await zai.rewrite(
 Use the [`summarize`](/for-developers/packages/zai/reference#summarize) method to create concise summaries of lengthy text:
 
 ```ts
-const longArticle = "..." // Long article content
+const longArticle = '...' // Long article content
 const summary = await zai.summarize(longArticle, {
   length: 100, // tokens
-  prompt: 'key findings and main conclusions'
+  prompt: 'key findings and main conclusions',
 })
 // Returns: A concise summary focusing on key findings
 ```
@@ -147,10 +146,8 @@ const summary = await zai.summarize(longArticle, {
 Use the [`text`](/for-developers/packages/zai/reference#text) method to generate content based on prompts:
 
 ```ts
-const blogPost = await zai.text(
-  'Write a brief introduction about the benefits of AI in customer service',
-  { length: 200 }
-)
+const blogPost = await zai.text('Write a brief introduction about the benefits of AI in customer service', {
+  length: 200,
+})
 // Returns: Generated text about AI benefits in customer service
 ```
-
