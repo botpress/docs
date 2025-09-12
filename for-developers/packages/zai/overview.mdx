@@ -9,7 +9,7 @@ Zai is an LLM utility library that provides a clean, type-safe API for common AI
 - Verify a Boolean condition within a piece of content
 - Generate or summarize text
 
-Zai is built on [Zod schemas](https://zod.dev/) and the Botpress API. We recommend using it with the [Botpress SDK](/for-developers/sdk/overview) to help process LLM inputs and outputs.
+We recommend using Zai with the [Botpress SDK](/for-developers/sdk/overview) to help process LLM inputs and outputs.
 
 <Note>
 
@@ -19,13 +19,13 @@ Zai is built on [Zod schemas](https://zod.dev/) and the Botpress API. We recomme
 
 <Tip>
 
-  Zai is imported by default in the [Execute Code cards](https://botpress.com/docs/learn/guides/advanced/use-code#execute-code-cards), [Actions](/learn/guides/advanced/use-code#actions), and [Hooks](learn/guides/advanced/use-code#hooks)
+  Zai is imported by default in [Execute Code Cards](https://botpress.com/docs/learn/guides/advanced/use-code#execute-code-cards), [Actions](/learn/guides/advanced/use-code#actions), and [Hooks](learn/guides/advanced/use-code#hooks).
 
 </Tip>
 
 ## Installation
 
-To install Zai, run the following command in your terminal:
+To install Zai for local development, run the following command in your terminal:
 
 <CodeGroup>
 
@@ -43,7 +43,10 @@ yarn add @botpress/zai @botpress/client @bpinternal/zui
 
 </CodeGroup>
 
-This also installs the [official Botpress client](https://www.npmjs.com/package/@botpress/client) and the [internal Zui library](https://www.npmjs.com/package/@bpinternal/zui), which are necessary to use Zai.
+This also installs:
+
+- The [official Botpress client](https://www.npmjs.com/package/@botpress/client), which is necessary to create a Zai instance
+- The [internal Zui library](https://www.npmjs.com/package/@bpinternal/zui), which helps create Zod schemas for many of Zai's methods
 
 ## Quick start
 
@@ -57,13 +60,17 @@ import { z } from '@bpinternal/zui'
 const client = new Client({ botId: 'YOUR_BOT_ID', token: 'YOUR_TOKEN' })
 ```
 
-Then, create a new `Zai` object and pass in the `Client`:
+Then, create a new `Zai` instance and pass in the `Client`:
 
 ```ts
 const zai = new Zai({ client })
 ```
 
-Now, you can use Zai's methods to process LLM outputs.
+<Note>
+
+  If you're using Zai [within Botpress Studio](/learn/guides/advanced/use-code), you don't need to create a new `Zai` instance—it's already available globally as `zai`.
+
+</Note>
 
 ## Usage examples
 
