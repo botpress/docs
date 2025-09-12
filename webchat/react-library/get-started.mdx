@@ -239,3 +239,24 @@ export default App
 <Check>
   You just built your first Webchat component!
 </Check>
+
+## Step 3: Configure Webchat
+
+The `Webchat` component doesn't use the configuration set in your bot's [Dashboard](/webchat/get-started/configure-your-webchat). Instead, follow the steps below to add custom configuration and styles:
+
+### If you're using the `Webchat` component
+
+If you use the batteries-included `Webchat` component, use the [`configuration`](/webchat/react-library/components/webchat#param-configuration) prop to style Webchat.
+
+You can also use any [custom CSS you set in the Dashboard](/webchat/get-started/configure-your-webchat#) by manually passing their URL into the [`additionalStylsheetUrl`](#additionalStylsheetUrl) prop. To get the stylesheet URL:
+
+1. Navigate to your bot's Dashboard.
+2. In the left sidebar, navigate to **Files**.
+3. Select `webchatAdditionalStyles.css`.
+4. Copy the `url`.
+
+### If you're manually building Webchat
+
+If you're manually building Webchat using the component library, use the [`StylesheetProvider`](/webchat/react-library/components/stylesheet-provider) component to style your implementation.
+
+Each component also has various props that you can use for other configuration options—for example, the [`Header`](webchat/react-library/components/header#param-configuration) component's [`configuration`](webchat/react-library/components/header#param-configuration) prop.
