@@ -1,0 +1,156 @@
+---
+title: Overview of Zai
+sidebarTitle: Overview
+---
+
+Zai is an LLM utility library that provides a clean, type-safe API for common AI operations. For example, you can use Zai's methods to programmatically:
+
+- Extract structured data from an unstructured prompt
+- Verify a Boolean condition within a piece of content
+- Generate or summarize text
+
+Zai is built on [Zod schemas](https://zod.dev/) and the Botpress API. We recommend using it with the [Botpress SDK](/for-developers/sdk/overview) to help process LLM inputs and outputs.
+
+<Note>
+
+  For a full list of available methods, check out the [reference section](/for-developers/packages/zai/reference).
+
+</Note>
+
+## Installation
+
+To install Zai, run the following command in your terminal:
+
+<CodeGroup>
+
+```bash npm
+npm install @botpress/zai @botpress/client @bpinternal/zui
+```
+
+```bash pnpm
+pnpm install @botpress/zai @botpress/client @bpinternal/zui
+```
+
+```bash yarn
+yarn add @botpress/zai @botpress/client @bpinternal/zui
+```
+
+</CodeGroup>
+
+This also installs the [official Botpress client](https://www.npmjs.com/package/@botpress/client) and the [internal Zui library](https://www.npmjs.com/package/@bpinternal/zui), which are necessary to use Zai.
+
+## Quick start
+
+To get started, import the libraries and create a new `Client` object using your Bot ID and Personal Access Token (PAT):
+
+```ts
+import { Client } from '@botpress/client'
+import { Zai } from '@botpress/zai'
+import { z } from '@bpinternal/zui'
+
+const client = new Client({ botId: 'YOUR_BOT_ID', token: 'YOUR_TOKEN' })
+```
+
+Then, create a new `Zai` object and pass in the `Client`:
+
+```ts
+const zai = new Zai({ client })
+```
+
+Now, you can use Zai's methods to process LLM outputs.
+
+## Usage examples
+
+Here are some examples of how you can use Zai:
+
+### Get structured data from text
+
+Use the [`extract`](/for-developers/packages/zai/reference#extract) method to get structured data from a plain piece of text:
+
+```ts
+const text = "Blueberries are 3.99$ and are in stock."
+const product = await zai.extract(
+  text,
+  z.object({
+    name: z.string(), // Returns "blueberries"
+    price: z.number(), // Returns 3.99
+    inStock: z.boolean(), // Returns true
+  })
+)
+```
+
+### Verify a condition
+
+Use the [`check`](/for-developers/packages/zai/reference#check) method to verify a condition against some input:
+
+```ts
+const result = await zai.check(email, 'is spam')
+const { value, explanation } = await result.result()
+```
+
+### Filter an array
+
+Use the [`filter`](/for-developers/packages/zai/reference#filter) method to filter elements of an array based on a condition:
+
+```ts
+const comments = [
+  "Great product, I love it!",
+  "This is terrible spam content",
+  "Very helpful review, thank you"
+]
+const cleanComments = await zai.filter(comments, 'is not spam or inappropriate')
+// Returns: ["Great product, I love it!", "Very helpful review, thank you"]
+```
+
+### Label content with categories
+
+Use the [`label`](/for-developers/packages/zai/reference#label) method to categorize content with predefined labels:
+
+```ts
+const email = "Congratulations! You've won $1,000,000! Click here now!"
+const result = await zai.label(email, {
+  spam: 'is this email spam?',
+  urgent: 'does this email require immediate attention?',
+  promotional: 'is this email promotional content?'
+})
+// Returns: { spam: true, urgent: false, promotional: true }
+```
+
+### Rewrite text according to instructions
+
+Use the [`rewrite`](/for-developers/packages/zai/reference#rewrite) method to transform text based on specific instructions:
+
+```ts
+const original = "The meeting is scheduled for tomorrow at 3pm."
+const rewritten = await zai.rewrite(
+  original,
+  'Make this sound more professional and formal'
+)
+// Returns: "The meeting has been scheduled for tomorrow at 3:00 PM."
+```
+
+### Summarize long content
+
+Use the [`summarize`](/for-developers/packages/zai/reference#summarize) method to create concise summaries of lengthy text:
+
+```ts
+const longArticle = "..." // Long article content
+const summary = await zai.summarize(longArticle, {
+  length: 100, // tokens
+  prompt: 'key findings and main conclusions'
+})
+// Returns: A concise summary focusing on key findings
+```
+
+### Generate text from prompts
+
+Use the [`text`](/for-developers/packages/zai/reference#text) method to generate content based on prompts:
+
+```ts
+const blogPost = await zai.text(
+  'Write a brief introduction about the benefits of AI in customer service',
+  { length: 200 }
+)
+// Returns: Generated text about AI benefits in customer service
+```
+

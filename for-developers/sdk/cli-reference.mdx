@@ -1,0 +1,679 @@
+---
+title: CLI reference
+description: All commands and flags available with the Botpress CLI.
+---
+
+{/* TODO: automate this reference */}
+
+{/* vale off */}
+
+## Global flags
+
+These flags are available for all commands:
+
+| Flag | Alias | Description |
+|------|-------|-------------|
+| `--verbose` | `-v` | Enable verbose logging |
+| `--confirm` | `-y` | Confirm all prompts |
+| `--json` | | Output raw JSON to stdout (useful for piping) |
+| `--botpress-home` | | Path to Botpress home directory |
+| `--profile` | `-p` | CLI profile from $BP_BOTPRESS_HOME/profiles.json |
+
+## Commands
+
+### `login`
+
+Login to Botpress Cloud.
+
+**Usage:**
+```bash
+bp login
+bp login --token your-token --workspace-id your-workspace-id
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--token` | Personal Access Token | |
+| `--workspace-id` | Workspace ID | |
+| `--api-url` | Botpress server URL | https://api.botpress.cloud |
+
+---
+
+### `logout`
+
+Logout of Botpress Cloud.
+
+**Usage:**
+```bash
+bp logout
+```
+
+---
+
+### `init`
+
+Initialize a new project.
+
+**Usage:**
+```bash
+bp init
+bp init --type bot --name my-bot
+bp init --type integration --template webhook-message
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+| `--type` | Project type: `bot`, `integration`, or `plugin` | |
+| `--template` | Template to use | |
+| `--name` | Name of the project | |
+
+---
+
+### `generate`
+
+Generate typings for intellisense. Alias: `gen`
+
+**Usage:**
+```bash
+bp generate
+bp gen --work-dir ./my-project
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+
+---
+
+### `build`
+
+Generate typings and bundle a project.
+
+**Usage:**
+```bash
+bp build
+bp build --work-dir ./my-project --minify false
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+| `--source-map` | Generate sourcemaps | false |
+| `--minify` | Minify the bundled code | true |
+
+---
+
+### `bundle`
+
+Bundle a Botpress project.
+
+**Usage:**
+```bash
+bp bundle
+bp bundle --work-dir ./my-project --source-map
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+| `--source-map` | Generate sourcemaps | false |
+| `--minify` | Minify the bundled code | true |
+
+---
+
+### `serve`
+
+Serve your project locally.
+
+**Usage:**
+```bash
+bp serve
+bp serve --port 8080 --secrets SECRET1=value1 SECRET2=value2
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+| `--port` | Port to use | |
+| `--secrets` | Values for integration secrets (array) | |
+
+---
+
+### `dev`
+
+Run your project in dev mode.
+
+**Usage:**
+```bash
+bp dev
+bp dev --port 3000 --secrets API_KEY=secret123
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--secrets` | Values for integration secrets (array) | |
+| `--source-map` | Generate sourcemaps | false |
+| `--minify` | Minify the bundled code | true |
+| `--port` | Port to use | |
+| `--tunnel-url` | Tunnel HTTP URL to use | |
+
+---
+
+### `deploy`
+
+Deploy your project to the cloud.
+
+**Usage:**
+```bash
+bp deploy
+bp deploy --bot-id my-bot-id --visibility public
+bp deploy --create-new-bot --no-build
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--secrets` | Values for integration secrets (array) | |
+| `--bot-id` | Bot ID to deploy (only for bots) | |
+| `--no-build` | Skip the build step | false |
+| `--dry-run` | Ask API not to perform actual operation | false |
+| `--create-new-bot` | Create new bot when deploying (only for bots) | false |
+| `--source-map` | Generate sourcemaps | false |
+| `--minify` | Minify the bundled code | true |
+| `--visibility` | Project visibility: `public`, `private`, or `unlisted` | private |
+| `--allow-deprecated` | Allow deprecated features | false |
+
+---
+
+### `add`
+
+Install a package (integration or interface).
+
+**Usage:**
+```bash
+bp add teams@0.2.0
+bp add llm --package-type interface
+bp add knowledge --use-dev
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `packageRef` | Package ID or name with optional version (e.g., teams@0.2.0) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--package-type` | Package type: `integration`, `interface`, or `plugin` | |
+| `--install-path` | Path where to install the package | |
+| `--use-dev` | Use dev version if found | false |
+
+---
+
+### `read`
+
+Read and parse an integration definition.
+
+**Usage:**
+```bash
+bp read
+bp read --work-dir ./my-integration
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+
+---
+
+### `lint`
+
+Lint an integration definition (experimental).
+
+**Usage:**
+```bash
+bp lint
+bp lint --work-dir ./my-integration
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--work-dir` | Path to the project | current directory |
+
+---
+
+### `chat`
+
+Chat with a bot directly from CLI (experimental).
+
+**Usage:**
+```bash
+bp chat my-bot-id
+bp chat my-bot-id --chat-api-url https://chat.example.com
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `botId` | Bot ID to chat with |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--chat-api-url` | Chat server URL | |
+
+---
+
+### `bots`
+
+Bot related commands.
+
+#### `create`
+
+Create a new bot. Alias: `new`
+
+**Usage:**
+```bash
+bp bots create --name my-bot
+bp bots new --name my-bot --if-not-exists
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--name` | Name of the bot to create | |
+| `--if-not-exists` | Do not create if bot with same name exists | false |
+
+---
+
+#### `list`
+
+List bots. Alias: `ls`
+
+**Usage:**
+```bash
+bp bots list
+bp bots ls --dev
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--dev` | List only dev bots | false |
+
+---
+
+#### `get`
+
+Get bot details.
+
+**Usage:**
+```bash
+bp bots get my-bot-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `botRef` | Bot ID (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+#### `delete`
+
+Delete a bot. Alias: `rm`
+
+**Usage:**
+```bash
+bp bots delete my-bot-id
+bp bots rm my-bot-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `botRef` | Bot ID (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+### `integrations`
+
+Integration related commands.
+
+#### `list`
+
+List integrations. Alias: `ls`
+
+**Usage:**
+```bash
+bp integrations list
+bp integrations ls --name teams --dev
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--name` | Name filter | |
+| `--version-number` | Version filter | |
+| `--dev` | List only dev integrations | false |
+
+---
+
+#### `get`
+
+Get integration details.
+
+**Usage:**
+```bash
+bp integrations get teams@0.2.0
+bp integrations get my-integration-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `integrationRef` | Integration ID or name with optional version (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+#### `delete`
+
+Delete an integration. Alias: `rm`
+
+**Usage:**
+```bash
+bp integrations delete teams@0.2.0
+bp integrations rm my-integration-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `integrationRef` | Integration ID or name with optional version (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+### `interfaces`
+
+Interface related commands.
+
+#### `list`
+
+List interfaces. Alias: `ls`
+
+**Usage:**
+```bash
+bp interfaces list
+bp interfaces ls
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+#### `get`
+
+Get interface details.
+
+**Usage:**
+```bash
+bp interfaces get llm@5.1.0
+bp interfaces get my-interface-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `interfaceRef` | Interface ID or name with version (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+#### `delete`
+
+Delete an interface. Alias: `rm`
+
+**Usage:**
+```bash
+bp interfaces delete llm@5.1.0
+bp interfaces rm my-interface-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `interfaceRef` | Interface ID or name with version (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+### `plugins`
+
+Plugin related commands.
+
+#### `list`
+
+List plugins. Alias: `ls`
+
+**Usage:**
+```bash
+bp plugins list
+bp plugins ls --name knowledge
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+| `--name` | Name filter | |
+| `--version-number` | Version filter | |
+
+---
+
+#### `get`
+
+Get plugin details.
+
+**Usage:**
+```bash
+bp plugins get knowledge@0.0.1
+bp plugins get my-plugin-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `pluginRef` | Plugin ID or name with version (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+#### `delete`
+
+Delete a plugin. Alias: `rm`
+
+**Usage:**
+```bash
+bp plugins delete knowledge@0.0.1
+bp plugins rm my-plugin-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `pluginRef` | Plugin ID or name with version (required) |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--api-url` | Botpress server URL | |
+| `--workspace-id` | Workspace ID | |
+| `--token` | Personal Access Token | |
+
+---
+
+### `profiles`
+
+CLI profile management commands.
+
+#### `list`
+
+List all available profiles. Alias: `ls`
+
+**Usage:**
+```bash
+bp profiles list
+bp profiles ls
+```
+
+---
+
+#### `active`
+
+Get the profile properties you are currently using.
+
+**Usage:**
+```bash
+bp profiles active
+```
+
+---
+
+#### `use`
+
+Set the current profile.
+
+**Usage:**
+```bash
+bp profiles use my-profile
+bp profiles use production
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `profileToUse` | Profile name from $BP_BOTPRESS_HOME/profiles.json |
+
+{/* vale on */}
