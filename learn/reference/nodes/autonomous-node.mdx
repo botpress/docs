@@ -58,6 +58,19 @@ You can add Cards to your Autonomous Node to expand its capabilities. The LLM po
 
 You can refer to Cards using natural language in your instructions—however, your bot may generate better responses if you [refer to them using code](#refer-to-tools-directly).
 
+### Give access to variables
+
+By default, Autonomous Nodes can't read or update [variables](/learn/reference/variables/overview). If you need to give an Autonomous Node access to a variable:
+
+1. Select the Autonomous Node to open its configuration menu.
+2. Under **Variables access**, select **+ Add variable(s)**.
+3. Select any variable to let the Autonomous Node read it.
+4. If you also want to give the Autonomous Node write access to the variable, check **Allow write access**.
+
+<Tip>
+  If you don't see the option to **+ Add variable(s)**, make sure you've [created at least one variable](/learn/reference/variables/overview#create-a-variable).
+</Tip>
+
 ---
 
 ## Prompting tips
