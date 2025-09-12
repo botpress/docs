@@ -1,0 +1,952 @@
+---
+title: Zai reference
+sidebarTitle: Reference
+description: Complete reference for the Zai package.
+---
+
+## `Zai` class
+
+The package exports one class: `Zai`. This class gives you access to the library's methods.
+
+To create a new `Zai` instance using your Botpress client:
+
+```ts
+const client = new Client({ botId: 'YOUR_BOT_ID', token: 'YOUR_TOKEN' })
+const zai = new Zai({ client })
+```
+
+**Parameters**
+
+<ResponseField
+  name="options"
+  type="ZaiConfig"
+  required
+>
+  <Expandable>
+    <ResponseField
+      name="client"
+      type="Client"
+      required
+    >
+
+      A `Client` object created using the [official Botpress client](https://www.npmjs.com/package/@botpress/client).
+
+    </ResponseField>
+    <ResponseField
+      name="userId"
+      type="string"
+    >
+      The ID of the user consuming the API. If not provided, requests will be made without user attribution.
+    </ResponseField>
+    <ResponseField
+      name="modelId"
+      type="string"
+      default="best"
+    >
+      The ID of the LLM you want to use.
+
+      Available options:
+
+      - `best`: The best available model
+      - `fast`: The fastest available model
+      - Custom model ID in format `provider:model-name`. For example: `openai:gpt-4`
+    </ResponseField>
+    <ResponseField
+      name="activeLearning"
+      type="ActiveLearning"
+    >
+      <Expandable>
+        <ResponseField
+          name="enable"
+          type="boolean"
+          required
+          default={false}
+        >
+          Enables active learning.
+        </ResponseField>
+        <ResponseField
+          name="tableName"
+          type="string"
+          required
+          default="ActiveLearningTable"
+        >
+          Name of the table to store active learning tasks in.
+        </ResponseField>
+        <ResponseField
+          name="taskId"
+          type="string"
+          default="default"
+        >
+          The ID of the task.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField
+      name="namespace"
+      type="string"
+      default='zai'
+    >
+      Namespace for organizing tasks and data.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Methods
+
+Here's a reference for all methods available with the `Zai` object.
+
+<Note>
+  All of the methods below return a `Promise` object. If you just await the result, this will resolve to the simplest form of the result. However, the `Promise` object also has [its own methods](#response-methods) for accessing the result, event handling, and request control.
+</Note>
+
+### `check()`
+
+Checks whether a condition is true or false for the given input.
+
+```ts
+const result = await zai.check(input, condition, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"
+  type="unknown"
+  required
+>
+  The input data to check the condition against.
+</ResponseField>
+
+<ResponseField
+  name="condition"
+  type="string"
+  required
+>
+  The condition to check against the input.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="CheckOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="examples"
+      type="Array<Example>"
+      default="[]"
+    >
+      Examples to check the condition against.
+
+      <Expandable>
+        <ResponseField name="input" type="unknown" required>
+          The input for the example.
+        </ResponseField>
+        <ResponseField name="check" type="boolean" required>
+          Whether the condition is true for this example.
+        </ResponseField>
+        <ResponseField name="reason" type="string">
+          The reason for the decision.
+        </ResponseField>
+        <ResponseField name="condition" type="string">
+          The condition for this specific example.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<CheckResult, boolean>">
+  <Expandable>
+    <ResponseField name="value" type="boolean">
+      Whether the condition is true or not.
+    </ResponseField>
+    <ResponseField name="explanation" type="string">
+      The explanation of the decision.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `extract()`
+
+Extracts one or many elements from an arbitrary input using a schema.
+
+```ts
+const result = await zai.extract(input, schema, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"
+  type="unknown"
+  required
+>
+  The input data to extract elements from.
+</ResponseField>
+
+<ResponseField
+  name="schema"
+  type="ZodSchema"
+  required
+>
+  The Zod schema defining the structure of the data to extract.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="ExtractOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="instructions"
+      type="string"
+    >
+      Instructions to guide the user on how to extract the data.
+    </ResponseField>
+    <ResponseField
+      name="chunkLength"
+      type="number"
+      default="16000"
+    >
+      The maximum number of tokens per chunk (100-100,000).
+    </ResponseField>
+    <ResponseField
+      name="strict"
+      type="boolean"
+      default="true"
+    >
+      Whether to strictly follow the schema or not.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<T>">
+  The extracted data matching the provided schema.
+</ResponseField>
+
+---
+
+### `filter()`
+
+Filters elements of an array against a condition.
+
+```ts
+const result = await zai.filter(input, condition, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"
+  type="Array<T>"
+  required
+>
+  The array of elements to filter.
+</ResponseField>
+
+<ResponseField
+  name="condition"
+  type="string"
+  required
+>
+  The condition to filter elements against.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="FilterOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="tokensPerItem"
+      type="number"
+      default="250"
+    >
+      The maximum number of tokens per item (1-100,000).
+    </ResponseField>
+    <ResponseField
+      name="examples"
+      type="Array<FilterExample>"
+      default="[]"
+    >
+      Examples to filter the condition against.
+
+      <Expandable>
+        <ResponseField name="input" type="unknown" required>
+          The input for the example.
+        </ResponseField>
+        <ResponseField name="filter" type="boolean" required>
+          Whether this item should be filtered (kept).
+        </ResponseField>
+        <ResponseField name="reason" type="string">
+          The reason for the filtering decision.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<Array<T>>">
+  The filtered array containing only elements that match the condition.
+</ResponseField>
+
+---
+
+### `label()`
+
+Tags the provided input with a list of predefined labels.
+
+```ts
+const result = await zai.label(input, labels, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"
+  type="unknown"
+  required
+>
+  The input data to label.
+</ResponseField>
+
+<ResponseField
+  name="labels"
+  type="Record<string, string>"
+  required
+>
+  A mapping of label keys to their descriptions/questions.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="LabelOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="examples"
+      type="Array<LabelExample>"
+      default="[]"
+    >
+      Examples to help make labeling decisions.
+
+      <Expandable>
+        <ResponseField name="input" type="unknown" required>
+          The input for the example.
+        </ResponseField>
+        <ResponseField name="labels" type="Record<string, LabelResult>" required>
+          The labels for this example.
+
+          <Expandable>
+            <ResponseField name="label" type="'ABSOLUTELY_NOT' | 'PROBABLY_NOT' | 'AMBIGUOUS' | 'PROBABLY_YES' | 'ABSOLUTELY_YES'" required>
+              The confidence level for this label.
+            </ResponseField>
+            <ResponseField name="explanation" type="string">
+              The explanation for this label decision.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField
+      name="instructions"
+      type="string"
+    >
+      Instructions to guide the labeling process.
+    </ResponseField>
+    <ResponseField
+      name="chunkLength"
+      type="number"
+      default="16000"
+    >
+      The maximum number of tokens per chunk (100-100,000).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<LabelResults, BooleanLabels>">
+  <Expandable>
+    <ResponseField name="[labelKey]" type="LabelResult">
+      For each label key provided:
+
+      <Expandable>
+        <ResponseField name="explanation" type="string">
+          The explanation for this label decision.
+        </ResponseField>
+        <ResponseField name="value" type="boolean">
+          Whether this label applies to the input.
+        </ResponseField>
+        <ResponseField name="confidence" type="number">
+          The confidence level (0-1) for this decision.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `rewrite()`
+
+Rewrites a string according to the provided prompt.
+
+```ts
+const result = await zai.rewrite(original, prompt, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="original"
+  type="string"
+  required
+>
+  The original text to rewrite.
+</ResponseField>
+
+<ResponseField
+  name="prompt"
+  type="string"
+  required
+>
+  The prompt describing how to rewrite the text.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="RewriteOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="examples"
+      type="Array<RewriteExample>"
+      default="[]"
+    >
+      Examples to guide the rewriting.
+
+      <Expandable>
+        <ResponseField name="input" type="string" required>
+          The input text for the example.
+        </ResponseField>
+        <ResponseField name="output" type="string" required>
+          The expected output for the example.
+        </ResponseField>
+        <ResponseField name="instructions" type="string">
+          Specific instructions for this example.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField
+      name="length"
+      type="number"
+    >
+      The maximum number of tokens to generate (10-16,000).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<string>">
+  The rewritten text according to the prompt.
+</ResponseField>
+
+---
+
+### `summarize()`
+
+Summarizes a text of any length to a summary of the desired length.
+
+```ts
+const result = await zai.summarize(original, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="original"
+  type="string"
+  required
+>
+  The original text to summarize.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="SummarizeOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="prompt"
+      type="string"
+      default="New information, concepts and ideas that are deemed important"
+    >
+      What should the text be summarized to?
+    </ResponseField>
+    <ResponseField
+      name="format"
+      type="string"
+      default="A normal text with multiple sentences and paragraphs..."
+    >
+      How to format the summary text.
+    </ResponseField>
+    <ResponseField
+      name="length"
+      type="number"
+      default="250"
+    >
+      The length of the summary in tokens (10-100,000).
+    </ResponseField>
+    <ResponseField
+      name="intermediateFactor"
+      type="number"
+      default="4"
+    >
+      How many times longer (than final length) are the intermediate summaries generated (1-10).
+    </ResponseField>
+    <ResponseField
+      name="maxIterations"
+      type="number"
+      default="100"
+    >
+      The maximum number of iterations to perform.
+    </ResponseField>
+    <ResponseField
+      name="sliding"
+      type="SlidingOptions"
+      default="{ window: 50000, overlap: 250 }"
+    >
+      Sliding window options.
+
+      <Expandable>
+        <ResponseField name="window" type="number">
+          The window size for sliding window processing (10-100,000).
+        </ResponseField>
+        <ResponseField name="overlap" type="number">
+          The overlap size between windows (0-100,000).
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<string>">
+  The summarized text according to the specified options.
+</ResponseField>
+
+---
+
+### `text()`
+
+Generates a text of the desired length according to the prompt.
+
+```ts
+const result = await zai.text(prompt, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="prompt"
+  type="string"
+  required
+>
+  The prompt describing what text to generate.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="TextOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="length"
+      type="number"
+    >
+      The maximum number of tokens to generate (1-100,000).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<string>">
+  The generated text according to the prompt.
+</ResponseField>
+
+---
+
+### `with()`
+
+Creates a new Zai instance with modified configuration options.
+
+```ts
+const newZai = zai.with(options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="options"
+  type="Partial<ZaiConfig>"
+  required
+>
+  Configuration options to override. Can include any of the `ZaiConfig` properties: `client`, `userId`, `modelId`, `activeLearning`, or `namespace`.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Zai" type="Zai">
+  A new Zai instance with the updated configuration.
+</ResponseField>
+
+---
+
+### `learn()`
+
+Creates a new Zai instance with active learning enabled for the specified task ID.
+
+```ts
+const learningZai = zai.learn(taskId)
+```
+
+**Parameters**
+
+<ResponseField
+  name="taskId"
+  type="string"
+  required
+>
+  The ID of the task for active learning. This will be used to organize and retrieve examples for improving future responses.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Zai" type="Zai">
+  A new Zai instance with active learning enabled for the specified task.
+</ResponseField>
+
+## Response methods
+
+All Zai operations return a `Response` object that implements Promise-like behavior while providing additional functionality for event handling and request control.
+
+You can call any of the following methods on the `Response` object:
+
+### `result()`
+
+Returns the complete result including output, usage statistics, and elapsed time.
+
+```ts
+const { output, usage, elapsed } = await response.result()
+```
+
+**Returns**
+
+<ResponseField name="Promise" type="Promise<ResultData>">
+  <Expandable>
+    <ResponseField name="output" type="T">
+      The actual result of the operation.
+    </ResponseField>
+    <ResponseField name="usage" type="Usage">
+      Usage statistics for the operation.
+
+      <Expandable>
+        <ResponseField name="requests" type="RequestStats">
+          Request-related statistics.
+
+          <Expandable>
+            <ResponseField name="requests" type="number">
+              Total number of requests made.
+            </ResponseField>
+            <ResponseField name="errors" type="number">
+              Number of requests that resulted in errors.
+            </ResponseField>
+            <ResponseField name="responses" type="number">
+              Number of successful responses received.
+            </ResponseField>
+            <ResponseField name="cached" type="number">
+              Number of cached responses used.
+            </ResponseField>
+            <ResponseField name="percentage" type="number">
+              Completion percentage of requests.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name="cost" type="CostStats">
+          Cost-related statistics.
+
+          <Expandable>
+            <ResponseField name="input" type="number">
+              Cost for input tokens.
+            </ResponseField>
+            <ResponseField name="output" type="number">
+              Cost for output tokens.
+            </ResponseField>
+            <ResponseField name="total" type="number">
+              Total cost for the operation.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name="tokens" type="TokenStats">
+          Token usage statistics.
+
+          <Expandable>
+            <ResponseField name="input" type="number">
+              Number of input tokens used.
+            </ResponseField>
+            <ResponseField name="output" type="number">
+              Number of output tokens generated.
+            </ResponseField>
+            <ResponseField name="total" type="number">
+              Total number of tokens processed.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="elapsed" type="number">
+      Time elapsed in milliseconds for the operation.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `on()`
+
+Registers an event listener for the specified event type.
+
+```ts
+response.on('progress', (usage) => {
+  console.log('Request progress:', usage)
+})
+```
+
+**Parameters**
+
+<ResponseField
+  name="type"
+  type="'progress' | 'complete' | 'error'"
+  required
+>
+  The event type to listen for:
+  - `progress`: Emitted during request processing with usage statistics
+  - `complete`: Emitted when the operation completes successfully
+  - `error`: Emitted when an error occurs
+</ResponseField>
+
+<ResponseField
+  name="listener"
+  type="(event: EventData) => void"
+  required
+>
+  The callback function to execute when the event is emitted.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response">
+  The same Response instance for method chaining.
+</ResponseField>
+
+---
+
+### `off()`
+
+Removes an event listener for the specified event type.
+
+```ts
+const listener = (usage) => console.log(usage)
+response.on('progress', listener)
+response.off('progress', listener)
+```
+
+**Parameters**
+
+<ResponseField
+  name="type"
+  type="'progress' | 'complete' | 'error'"
+  required
+>
+  The event type to remove the listener from.
+</ResponseField>
+
+<ResponseField
+  name="listener"
+  type="(event: EventData) => void"
+  required
+>
+  The specific listener function to remove.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response">
+  The same Response instance for method chaining.
+</ResponseField>
+
+---
+
+### `once()`
+
+Registers an event listener that will be called only once.
+
+```ts
+response.once('complete', (result) => {
+  console.log('Operation completed:', result)
+})
+```
+
+**Parameters**
+
+<ResponseField
+  name="type"
+  type="'progress' | 'complete' | 'error'"
+  required
+>
+  The event type to listen for.
+</ResponseField>
+
+<ResponseField
+  name="listener"
+  type="(event: EventData) => void"
+  required
+>
+  The callback function to execute when the event is emitted.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response">
+  The same Response instance for method chaining.
+</ResponseField>
+
+---
+
+### `bindSignal()`
+
+Binds an AbortSignal to the response for cancellation control.
+
+```ts
+const controller = new AbortController()
+response.bindSignal(controller.signal)
+
+// Cancel the operation
+controller.abort('User cancelled')
+```
+
+**Parameters**
+
+<ResponseField
+  name="signal"
+  type="AbortSignal"
+  required
+>
+  The AbortSignal to bind to this response.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response">
+  The same Response instance for method chaining.
+</ResponseField>
+
+---
+
+### `abort()`
+
+Aborts the ongoing operation.
+
+```ts
+response.abort('Operation cancelled by user')
+```
+
+**Parameters**
+
+<ResponseField
+  name="reason"
+  type="string | Error"
+>
+  Optional reason for the abortion.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="void" type="void">
+  No return value.
+</ResponseField>
+
+---
+
+### `then()`
+
+Attaches callbacks for the resolution and/or rejection of the response.
+
+```ts
+response
+  .then(result => console.log('Success:', result))
+  .catch(error => console.error('Error:', error))
+```
+
+**Parameters**
+
+<ResponseField
+  name="onfulfilled"
+  type="(value: T) => TResult1 | PromiseLike<TResult1>"
+>
+  Callback to execute when the response resolves successfully.
+</ResponseField>
+
+<ResponseField
+  name="onrejected"
+  type="(reason: any) => TResult2 | PromiseLike<TResult2>"
+>
+  Callback to execute when the response rejects.
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="PromiseLike" type="PromiseLike<TResult1 | TResult2>">
+  A promise-like object for further chaining.
+</ResponseField>
+
+---
+
+### `catch()`
+
+Attaches a callback for handling rejection of the response.
+
+```ts
+response.catch(error => {
+  console.error('Operation failed:', error)
+})
+```
+
+**Parameters**
+
+{/* vale off */}
+<ResponseField
+  name="onrejected"
+  type="(reason: any) => TResult | PromiseLike<TResult>"
+>
+  Callback to execute when the response rejects.
+</ResponseField>
+{/* vale on */}
+
+**Returns**
+
+<ResponseField name="PromiseLike" type="PromiseLike<T | TResult>">
+  A promise-like object for further chaining.
+</ResponseField>

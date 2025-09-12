@@ -1,12 +1,10 @@
 ---
-title: "SDK Overview"
+title: Overview
 ---
-
-## Overview
 
 The Botpress SDK provides a robust and lightweight foundation for developing components within Botpress.
 
-## Key Components
+## Key components
 
 The SDK facilitates the development of four primary component types:
 
@@ -27,7 +25,7 @@ Integrations connect bots to external services and platforms, enabling communica
 - Trigger events in your bots based on actions in external services
 
 <CardGroup Cols={2}>
-    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/integration/introduction">
+    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/integration/getting-started">
         Learn more about integrations
     </Card>
     <Card title="Getting started" horizontal icon="play" href="/for-developers/sdk/integration/getting-started">
@@ -69,14 +67,9 @@ Just like bots built in Studio, bots-as-code can:
 - Define custom events, primarily for scheduling purposes (to trigger self-execution at specified times or intervals)
 - Subscribe to events from integrations and interfaces to execute business logic
 
-<CardGroup Cols={2}>
-    <Card title="Read more" horizontal icon="book" href="/for-developers/sdk/bot/introduction">
-        Learn more about bots-as-code
-    </Card>
-    <Card title="Getting started" horizontal icon="play" href="/for-developers/sdk/bot/getting-started">
-        Create your first bot-as-code
-    </Card>
-</CardGroup>
+<Card title="Getting started" horizontal icon="play" href="/for-developers/sdk/bots-as-code">
+    Create your first bot-as-code
+</Card>
 
 ### Plugins
 
@@ -84,7 +77,7 @@ Plugins are reusable pieces of bots; modular, reusable components that extend bo
 
 Currently, only the Botpress team can create plugins, similar to how interfaces are managed. While community-created plugins aren't supported yet, this may change in future releases. In the meantime, users can install official Botpress plugins directly from Studio—for example, the **HITL Plugin**, which enables your bot to work with integrations that implement the `hitl` interface.
 
-## The HITL System
+## The HITL system
 
 In Botpress, **HITL** (Human-in-the-Loop) may refer to an integration, an interface, or a plugin. The HITL system as a whole is a combination of these components working together to provide a human-in-the-loop experience.
 
