@@ -96,7 +96,7 @@ const zai = new Zai({ client })
 Here's a reference for all methods available with the `Zai` object.
 
 <Note>
-  All of the methods below return a `Promise` object. If you just await the result, this will resolve to the simplest form of the result. However, the `Promise` object also has [its own methods](#response-methods) for accessing the result, event handling, and request control.
+  All of the methods below return a `Response` object. If you just await the method's result, it will return simplest form of the result. However, the `Response` object also has [its own methods](#response-methods) for accessing the result, event handling, and request control.
 </Note>
 
 ### `check()`
@@ -640,7 +640,7 @@ const learningZai = zai.learn(taskId)
 
 ## Response methods
 
-All Zai operations return a `Response` object that implements Promise-like behavior while providing additional functionality for event handling and request control.
+All Zai operations return a `Response` object that implements promise-like behavior while providing additional functionality for event handling and request control.
 
 You can call any of the following methods on the `Response` object:
 
