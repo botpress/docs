@@ -45,12 +45,16 @@ function loadWebchat() {
       window.botpress.open()
     }
   })
+
+  window.botpress.on('webchat:ready', () => {
+    console.log('Webchat has been opened and is ready to receive messages.');
+    window.botpress.sendMessage("hi");
+  });
 };
 
 function askAi() {
   if (window.botpress) {
     window.botpress.open()
-    const user = window.botpress.getUser()
   }
 }
 
