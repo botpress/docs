@@ -1,0 +1,55 @@
+---
+title: Send a message from user
+---
+
+You can programmatically send a message to your bot on the user's behalf using JavaScript.
+
+<Info>
+    You will need:
+
+    - A website with an [embedded bot](/webchat/get-started/quick-start)
+    - Familiarity with JavaScript
+
+</Info>
+
+## Send a message on the user's behalf
+
+To send a message on a user's behalf, use the `sendMessage` method wrapped in an event listener:
+
+```js
+window.botpress.on('webchat:ready', () => {
+  const message = "Hi there!"; // Replace with your own message
+  window.botpress.sendMessage(message);
+});
+```
+
+This snippet:
+
+1. Waits until [Webchat is open and ready to receive messages](/webchat/interact/listen-to-events#webchat-is-ready)
+2. Sends the message on behalf of the user
+
+<Note>
+  The message won't send until the user has voluntarily opened the Webchat window.
+</Note>
+
+## Start the conversation on the user's behalf
+
+To proactively open Webchat and start a conversation on the user's behalf when they visit your website:
+
+```js
+window.botpress.on('webchat:initialized', (event) => {
+    window.botpress.open()
+})
+
+window.botpress.on('webchat:ready', () => {
+    const message = "Hi there!"; // Replace with your own message
+    window.botpress.sendMessage(message);
+});
+```
+
+This snippet:
+
+1. Waits until [Webchat is initialized](/webchat/interact/listen-to-events#webchat-is-initialized)
+2. [Opens Webchat](/webchat/interact/open-close-webchat#open-webchat)
+3. Waits until [Webchat is ready to receive messages](/webchat/interact/listen-to-events#webchat-is-ready)
+4. Sends the message on behalf on the user's behalf
