@@ -50,6 +50,7 @@ function loadWebchat() {
 function askAi() {
   if (window.botpress) {
     window.botpress.open()
+    const user = window.botpress.getUser()
   }
 }
 
