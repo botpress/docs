@@ -21,7 +21,7 @@ Sending user data to your bot allows it to:
 
 ## Update user data
 
-Use the `window.botpress.updateUser` method to update user data after your website has initialized Webchat:
+Use the [`window.botpress.updateUser`](/webchat/interact/reference#updateuser) method to update user data after your website has initialized Webchat:
 
 ```js
 window.botpress.updateUser({
@@ -41,7 +41,7 @@ window.botpress.updateUser({
 
 You may want to provide some user data while initializing Webchat on your website. This allows your bot to deliver a more personalized conversation experience from the start.
 
-To provide user data as soon as Webchat is ready, listen for Webchat's initialization event and call `updateUser` as soon as it fires:
+To provide user data as soon as Webchat is ready, listen for Webchat's initialization event and call [`window.botpress.updateUser`](/webchat/interact/reference#updateuser) as soon as it fires:
 
 ```js {3-9}
 window.botpress.on('webchat:initialized', () => {
@@ -81,7 +81,7 @@ In the **User ID** field, enter `{{ event.userId }}`. You can store the user dat
 
 ### On your website
 
-Use the `getUser` method to access the current user data programmatically:
+Use the [`window.botpress.getUser`](/webchat/interact/reference#getuser) method to access the current user data programmatically:
 
 ```js
 async function getBotpressUser() {
