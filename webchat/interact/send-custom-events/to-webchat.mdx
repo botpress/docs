@@ -22,7 +22,8 @@ If you added Webchat to your website [using the embed code](/webchat/get-started
 
 <Steps>
     <Step title="Send an event to Webchat">
-        First, set up an **event** to send Webchat from your website's source code.
+
+        First, set up an event to send Webchat from your website's source code. Use the [`window.botpress.sendEvent`](/webchat/interact/reference#sendevent) method:
 
         ``` javascript index.js
         const customPayload = {
