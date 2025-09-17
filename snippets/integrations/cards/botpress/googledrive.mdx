@@ -1,0 +1,795 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create File
+
+<span>{"Create an empty file in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+    required
+  >
+    <span>{"The media type of the file"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+    required
+  >
+    <span>{"The media type of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="number"
+    required
+  >
+    <span>{"The size in bytes of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file in RFC 3339 format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="path"
+    type="array"
+    required
+  >
+    <span>{"An array of the path's components sorted by level (root to leaf)"}</span>
+  </ResponseField>
+</Expandable>
+
+### Delete File
+
+<span>{"Deletes a file in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Download file data
+
+<span>{"Download data from a file in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file whose content will be downloaded"}</span>
+  </ResponseField>
+  <ResponseField
+    name="index"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates if the file is to be indexed or not"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="bpFileId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress file ID corresponding to the file that was uploaded from Google Drive to the Files API"}</span>
+  </ResponseField>
+</Expandable>
+
+### List items in folder
+
+<span>{"List the files and folders in a folder"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="folderId"
+    type="string"
+  >
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="filters"
+    type="object"
+  >
+    <span>{"Optional search filters"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="itemType"
+    type="enum: file, folder"
+  >
+    <span>{"The entity type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxSizeInBytes"
+    type="number"
+  >
+    <span>{"Filter the items by maximum size (in bytes)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="modifiedAfter"
+    type="string (date-time)"
+  >
+    <span>{"Filter the items modified after the given date"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to get the next page of items. Leave empty to get the first page."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"The files and folders in the folder"}</span>
+
+    <Expandable title="file properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="folder properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the folder is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    <span>{"The absolute path of the folder. Leave empty if not available."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to get the next page of items."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Transfer file to Botpress
+
+<span>{"Transfer a file from an external service to Botpress"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="file"
+    type="object"
+    required
+  >
+    <span>{"The file to transfer"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="fileKey"
+    type="string"
+    required
+  >
+    <span>{"The file key to use in Botpress"}</span>
+  </ResponseField>
+  <ResponseField
+    name="shouldIndex"
+    type="boolean"
+  >
+    <span>{"Whether to index the file in vector storage"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="botpressFileId"
+    type="string"
+    required
+  >
+    <span>{"The file ID of the uploaded file on Botpress"}</span>
+  </ResponseField>
+</Expandable>
+
+### List Files
+
+<span>{"List files in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to use to get the next page of results"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"The list of items listed in Google Drive. Results may be paginated. If set, use nextToken to get additional results"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+    required
+  >
+    <span>{"The media type of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="number"
+    required
+  >
+    <span>{"The size in bytes of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file in RFC 3339 format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="path"
+    type="array"
+    required
+  >
+    <span>{"An array of the path's components sorted by level (root to leaf)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to pass as input to the next call of the list action to list additional items"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List folders
+
+<span>{"List folders in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to use to get the next page of results"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"The list of items listed in Google Drive. Results may be paginated. If set, use nextToken to get additional results"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="path"
+    type="array"
+    required
+  >
+    <span>{"An array of the path's components sorted by level (root to leaf)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to pass as input to the next call of the list action to list additional items"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Read File
+
+<span>{"Read a file's metadata in a Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+    required
+  >
+    <span>{"The media type of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="number"
+    required
+  >
+    <span>{"The size in bytes of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file in RFC 3339 format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="path"
+    type="array"
+    required
+  >
+    <span>{"An array of the path's components sorted by level (root to leaf)"}</span>
+  </ResponseField>
+</Expandable>
+
+### Sync Channels
+
+<span>{"Sync channels for file change subscriptions"}</span>
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+This Card has no output.
+
+### Update File
+
+<span>{"Update a file's metadata in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Google Drive file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The ID of the file that is the parent of this file. If not set, 'My Drive' is the parent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+    required
+  >
+    <span>{"The media type of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="number"
+    required
+  >
+    <span>{"The size in bytes of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file in RFC 3339 format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="path"
+    type="array"
+    required
+  >
+    <span>{"An array of the path's components sorted by level (root to leaf)"}</span>
+  </ResponseField>
+</Expandable>
+
+### Upload file data
+
+<span>{"Upload data to a file in Google Drive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The URL used to access the file whose content will be uploaded to Google Drive"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+  >
+    <span>{"Media type of the uploaded content. This will override any previously set media type"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+
+{/* vale on */}

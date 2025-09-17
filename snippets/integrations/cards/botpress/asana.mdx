@@ -1,0 +1,251 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Add Comment to Task
+
+<span>{"Add Comment to Task, by task ID"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="taskId"
+    type="string"
+    required
+  >
+    <span>{"Task ID to comment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="comment"
+    type="string"
+    required
+  >
+    <span>{"Content of the comment to be added"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create Task
+
+<span>{"Create Task"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the task (e.g. \"My Test Task\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    <span>{"The description of the task (Optional) (e.g. \"This is my other task created using the Asana API\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignee"
+    type="string"
+  >
+    <span>{"The ID of the user who will be assigned to the task or \"me\" to assign to the current user (Optional) (e.g. \"1215207682932839\") (Default: \"me\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projects"
+    type="string"
+  >
+    <span>{"The project IDs should be strings separated by commas (Optional) (e.g. \"1205199808673678, 1215207282932839\")."}</span>
+  </ResponseField>
+  <ResponseField
+    name="parent"
+    type="string"
+  >
+    <span>{"The ID of the parent task (Optional) (e.g. \"1205206556256028\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="start_on"
+    type="string"
+  >
+    <span>{"The start date of the task in YYYY-MM-DD format (Optional) (e.g. \"2023-08-13\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="due_on"
+    type="string"
+  >
+    <span>{"The due date of the task without a specific time in YYYY-MM-DD format (Optional) (e.g. \"2023-08-15\")"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="permalink_url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Find User
+
+<span>{"Find User by userId"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="userEmail"
+    type="string"
+    required
+  >
+    <span>{"User Email (e.g. \"mrsomebody@example.com\")"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="gid"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="photo"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="resource_type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workspaces"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="gid"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="resource_type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Update Task
+
+<span>{"Update Task by taskId"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the task (Optional) (e.g. \"My Test Task\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    <span>{"The description of the task (Optional) (e.g. \"This is my other task created using the Asana API\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignee"
+    type="string"
+  >
+    <span>{"The ID of the user who will be assigned to the task or \"me\" to assign to the current user (Optional) (e.g. \"1215207682932839\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="start_on"
+    type="string"
+  >
+    <span>{"The start date of the task in YYYY-MM-DD format (Optional) (e.g. \"2023-08-13\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="due_on"
+    type="string"
+  >
+    <span>{"The due date of the task without a specific time in YYYY-MM-DD format (Optional) (e.g. \"2023-08-15\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="taskId"
+    type="string"
+    required
+  >
+    <span>{"Task ID to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="completed"
+    type="string"
+  >
+    <span>{"If the task is completed, enter \"true\" (without quotes), otherwise it will keep its previous status. (Optional)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="permalink_url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

@@ -1,0 +1,219 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Get Products
+
+<span>{"Get products from the Magento instance"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="searchCriteria"
+    type="string"
+  >
+    <span>{"The search criteria to use for the request"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="result"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="search_criteria"
+    type="object"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="total_count"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Stock Item
+
+<span>{"Get stock information for a product by SKU"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="sku"
+    type="string"
+    required
+  >
+    <span>{"The SKU of the product to get stock information for"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="qty"
+    type="number"
+  >
+    <span>{"The quantity in stock"}</span>
+  </ResponseField>
+  <ResponseField
+    name="is_in_stock"
+    type="boolean"
+  >
+    <span>{"Whether the item is in stock"}</span>
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    <span>{"Error message if request failed"}</span>
+  </ResponseField>
+</Expandable>
+
+### Sync Products to Botpress Table
+
+<span>{"Sync products from Magento to a Botpress table. Creates the table automatically if it doesn't exist with standard product columns."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="table_name"
+    type="string"
+    required
+  >
+    <span>{"Name of the Botpress table to sync products to (will be created automatically if it doesn't exist)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_attributes"
+    type="string"
+  >
+    <span>{"Comma-separated list of custom product attributes to sync (e.g., \"color,tent_outer_material,tent_type\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filters_json"
+    type="string"
+  >
+    <span>{"JSON array of filter objects, e.g. [{\"field\": \"price\", \"condition\": \"gt\", \"value\": \"100\"}]"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_currentPage"
+    type="number"
+  >
+    <span>{"Current page number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_totalCount"
+    type="number"
+  >
+    <span>{"Total number of products"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_tableId"
+    type="string"
+  >
+    <span>{"ID of the Botpress table"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_runId"
+    type="string"
+  >
+    <span>{"Sync run ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_customAttributeCodes"
+    type="array"
+  >
+    <span>{"Custom attribute codes"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_attributeMappings"
+    type="string"
+  >
+    <span>{"Attribute mappings as a JSON string"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_filterCriteria"
+    type="string"
+  >
+    <span>{"Filter criteria string"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_currentPageProductIndex"
+    type="number"
+  >
+    <span>{"Current product index within the page"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the sync was successful"}</span>
+  </ResponseField>
+  <ResponseField
+    name="synced_count"
+    type="number"
+    required
+  >
+    <span>{"Number of products synced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="total_count"
+    type="number"
+    required
+  >
+    <span>{"Total number of products found"}</span>
+  </ResponseField>
+  <ResponseField
+    name="table_name"
+    type="string"
+    required
+  >
+    <span>{"Name of the table products were synced to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"Status of the sync"}</span>
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    <span>{"Error message if sync failed"}</span>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

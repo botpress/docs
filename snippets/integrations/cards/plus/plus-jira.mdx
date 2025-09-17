@@ -1,0 +1,474 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Add Comment To Issue
+
+<span>{"Add comment to issue in Jira"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"The Key for Issue (e.g. TASK-185)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"Message content in text format"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Find User
+
+<span>{"Find user by Account ID"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="accountId"
+    type="string"
+    required
+  >
+    <span>{"Account ID (e.g. 5b10a2844c20165700ede21g or 747474:a1b2c3d4-e5f6-7890-a1b2-c3d4e5f67890)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="self"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="key"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="accountType"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="emailAddress"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatarUrls"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="16x16"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="24x24"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="32x32"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="48x48"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="active"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="timeZone"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groups"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="size"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="items"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="self"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pagingCallback"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="callback"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="max-results"
+    type="number"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="applicationRoles"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="size"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="items"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="key"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groups"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groupDetails"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="defaultGroups"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="defaultGroupsDetails"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="selectedByDefault"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="defined"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="numberOfSeats"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="remainingSeats"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="userCount"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="userCountDescription"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="hasUnlimitedSeats"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="platform"
+    type="boolean"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pagingCallback"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="callback"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="max-results"
+    type="number"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="expand"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### New Issue
+
+<span>{"Create a new issue in Jira"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="summary"
+    type="string"
+    required
+  >
+    <span>{"The summary of the issue, providing a brief description (e.g. My Issue)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The detailed description of the issue (Optional) (e.g. This is an example issue for demonstration purposes)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+    required
+  >
+    <span>{"The type of the issue (e.g. \"Bug\", \"Task\", \"Subtask\", \"Story\" or \"Epic\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+    required
+  >
+    <span>{"The key of the project to which the issue belongs (e.g. TEST)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"The key of the parent issue, if this issue is a sub-task (Optional) (e.g. TEST-1)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"The ID of the user to whom the issue is assigned (Optional) (e.g. 5b10ac8d82e05b22cc7d4ef5)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Issue
+
+<span>{"Update a issue in Jira"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the issue, providing a brief description (e.g. My Issue)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The detailed description of the issue (Optional) (e.g. This is an example issue for demonstration purposes)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+    required
+  >
+    <span>{"The type of the issue (e.g. \"Bug\", \"Task\", \"Subtask\", \"Story\" or \"Epic\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+  >
+    <span>{"The key of the project to which the issue belongs (e.g. TEST)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"The key of the parent issue, if this issue is a sub-task (Optional) (e.g. TEST-1)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"The ID of the user to whom the issue is assigned (Optional) (e.g. 5b10ac8d82e05b22cc7d4ef5)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"The Key for Issue (e.g. TASK-185)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

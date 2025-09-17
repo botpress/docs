@@ -1,0 +1,1836 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Add Customer Profile to Campaign
+
+<span>{"Adds a Customer's Profile to a Campaign"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The email address of the customer (e.g. example@example.com)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the customer (e.g. John)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the customer (e.g. Doe)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    <span>{"The company of the customer (e.g. Acme Inc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="birthday"
+    type="string"
+  >
+    <span>{"The birthday of the customer (e.g. 01/01/2000)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"The language of the customer (e.g. en)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"The first line of the address of the customer (e.g. 123 St Marie.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"The second line of the address of the customer (e.g. Apt. 4B)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"The city of the customer (e.g. Anytown)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="string"
+  >
+    <span>{"The state or province of the customer (e.g. CA)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"The zip or postal code of the customer (e.g. 12345)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"The country of the customer (e.g. USA)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the customer (e.g. 555-1234)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Mailchimp campaign (e.g. f6g7h8i9j0)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email_address"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="list_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Add Customer Profile to List/Audience
+
+<span>{"Add Customer's Profile to a List/Audience"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The email address of the customer (e.g. example@example.com)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the customer (e.g. John)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the customer (e.g. Doe)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    <span>{"The company of the customer (e.g. Acme Inc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="birthday"
+    type="string"
+  >
+    <span>{"The birthday of the customer (e.g. 01/01/2000)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"The language of the customer (e.g. en)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"The first line of the address of the customer (e.g. 123 St Marie.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"The second line of the address of the customer (e.g. Apt. 4B)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"The city of the customer (e.g. Anytown)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="string"
+  >
+    <span>{"The state or province of the customer (e.g. CA)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"The zip or postal code of the customer (e.g. 12345)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"The country of the customer (e.g. USA)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the customer (e.g. 555-1234)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Mailchimp list or audience (e.g. a1b2c3d4e5)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email_address"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="list_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get All Campaigns
+
+<span>{"Get all available campaigns"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="count"
+    type="number"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="campaigns"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="web_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="parent_campaign_id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="create_time"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="archive_url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="long_archive_url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="emails_sent"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="send_time"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content_type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="needs_block_refresh"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="resendable"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="recipients"
+    type="object"
+  >
+    <span>{"Recipients information"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="list_id"
+    type="string"
+    required
+  >
+    <span>{"ID of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="list_is_active"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether the list is active"}</span>
+  </ResponseField>
+  <ResponseField
+    name="list_name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="segment_text"
+    type="string"
+    required
+  >
+    <span>{"Text description of the segment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="recipient_count"
+    type="number"
+    required
+  >
+    <span>{"Count of recipients"}</span>
+  </ResponseField>
+  <ResponseField
+    name="segment_opts"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="saved_segment_id"
+    type="number"
+  >
+    <span>{"ID of the saved segment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="prebuilt_segment_id"
+    type="string"
+  >
+    <span>{"ID of the prebuilt segment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="match"
+    type="string"
+  >
+    <span>{"Match condition"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conditions"
+    type="array"
+  >
+    <span>{"Array of conditions"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="settings"
+    type="object"
+    required
+  >
+    <span>{"Settings for the campaign"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="subject_line"
+    type="string"
+    required
+  >
+    <span>{"Subject line of the campaign"}</span>
+  </ResponseField>
+  <ResponseField
+    name="preview_text"
+    type="string"
+    required
+  >
+    <span>{"Preview text of the campaign"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"Title of the campaign"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from_name"
+    type="string"
+    required
+  >
+    <span>{"Sender's name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reply_to"
+    type="string"
+    required
+  >
+    <span>{"Reply-to email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="use_conversation"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether to use conversation view"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to_name"
+    type="string"
+    required
+  >
+    <span>{"Recipient's name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="folder_id"
+    type="string"
+    required
+  >
+    <span>{"ID of the folder"}</span>
+  </ResponseField>
+  <ResponseField
+    name="authenticate"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether authentication is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="auto_footer"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether auto-footer is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inline_css"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether inline CSS is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="auto_tweet"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether auto-tweet is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="auto_fb_post"
+    type="array"
+  >
+    <span>{"Array of Facebook post strings"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fb_comments"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether Facebook comments are enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timewarp"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether timewarp is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="template_id"
+    type="number"
+    required
+  >
+    <span>{"ID of the template"}</span>
+  </ResponseField>
+  <ResponseField
+    name="drag_and_drop"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether drag-and-drop is enabled"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="variate_settings"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="winning_combination_id"
+    type="string"
+    required
+  >
+    <span>{"ID of the winning combination"}</span>
+  </ResponseField>
+  <ResponseField
+    name="winning_campaign_id"
+    type="string"
+    required
+  >
+    <span>{"ID of the winning campaign"}</span>
+  </ResponseField>
+  <ResponseField
+    name="winner_criteria"
+    type="string"
+    required
+  >
+    <span>{"Criteria for choosing the winner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="wait_time"
+    type="number"
+    required
+  >
+    <span>{"Wait time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="test_size"
+    type="number"
+    required
+  >
+    <span>{"Size of the test"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject_lines"
+    type="array"
+    required
+  >
+    <span>{"Array of subject lines"}</span>
+  </ResponseField>
+  <ResponseField
+    name="send_times"
+    type="array"
+    required
+  >
+    <span>{"Array of send times"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from_names"
+    type="array"
+    required
+  >
+    <span>{"Array of sender names"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reply_to_addresses"
+    type="array"
+    required
+  >
+    <span>{"Array of reply-to email addresses"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contents"
+    type="array"
+    required
+  >
+    <span>{"Array of content strings"}</span>
+  </ResponseField>
+  <ResponseField
+    name="combinations"
+    type="array"
+    required
+  >
+    <span>{"Array of combinations"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"ID of the combination"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject_line"
+    type="number"
+    required
+  >
+    <span>{"Subject line"}</span>
+  </ResponseField>
+  <ResponseField
+    name="send_time"
+    type="number"
+    required
+  >
+    <span>{"Send time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from_name"
+    type="number"
+    required
+  >
+    <span>{"Sender's name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reply_to"
+    type="number"
+    required
+  >
+    <span>{"Reply-to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content_description"
+    type="number"
+    required
+  >
+    <span>{"Content description"}</span>
+  </ResponseField>
+  <ResponseField
+    name="recipients"
+    type="number"
+    required
+  >
+    <span>{"Recipients"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tracking"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="opens"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether opens tracking is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="html_clicks"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether HTML clicks tracking is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text_clicks"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether text clicks tracking is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="goal_tracking"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether goal tracking is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="ecomm360"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether Ecomm360 is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="google_analytics"
+    type="string"
+    required
+  >
+    <span>{"Google Analytics tracking code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="clicktale"
+    type="string"
+    required
+  >
+    <span>{"Clicktale tracking code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="salesforce"
+    type="object"
+  >
+    <span>{"Salesforce tracking options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="campaign"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether Salesforce campaign tracking is enabled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether Salesforce notes tracking is enabled"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="capsule"
+    type="object"
+  >
+    <span>{"Capsule tracking options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="notes"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether Capsule notes tracking is enabled"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="rss_opts"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="feed_url"
+    type="string"
+    required
+  >
+    <span>{"URL of the RSS feed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="frequency"
+    type="string"
+    required
+  >
+    <span>{"Frequency of sending (e.g., \"daily\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="schedule"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="hour"
+    type="number"
+    required
+  >
+    <span>{"Hour of the day for sending"}</span>
+  </ResponseField>
+  <ResponseField
+    name="daily_send"
+    type="object"
+    required
+  >
+    <span>{"Daily send options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="sunday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="monday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tuesday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="wednesday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="thursday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="friday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="saturday"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="weekly_send_day"
+    type="string"
+    required
+  >
+    <span>{"Day of the week for weekly sending"}</span>
+  </ResponseField>
+  <ResponseField
+    name="monthly_send_date"
+    type="number"
+    required
+  >
+    <span>{"Date of the month for monthly sending"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="last_sent"
+    type="string"
+    required
+  >
+    <span>{"Last time the RSS feed was sent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="constrain_rss_img"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether to constrain RSS images"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="ab_split_opts"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="split_test"
+    type="string"
+    required
+  >
+    <span>{"Type of split test (e.g., \"subject\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pick_winner"
+    type="string"
+    required
+  >
+    <span>{"Criteria for picking the winner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="wait_units"
+    type="string"
+    required
+  >
+    <span>{"Units for waiting (e.g., \"hours\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="wait_time"
+    type="number"
+    required
+  >
+    <span>{"Wait time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="split_size"
+    type="number"
+    required
+  >
+    <span>{"Size of the split"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from_name_a"
+    type="string"
+    required
+  >
+    <span>{"Sender's name for variation A"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from_name_b"
+    type="string"
+    required
+  >
+    <span>{"Sender's name for variation B"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reply_email_a"
+    type="string"
+    required
+  >
+    <span>{"Reply-to email address for variation A"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reply_email_b"
+    type="string"
+    required
+  >
+    <span>{"Reply-to email address for variation B"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject_a"
+    type="string"
+    required
+  >
+    <span>{"Subject line for variation A"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject_b"
+    type="string"
+    required
+  >
+    <span>{"Subject line for variation B"}</span>
+  </ResponseField>
+  <ResponseField
+    name="send_time_a"
+    type="string"
+    required
+  >
+    <span>{"Send time for variation A"}</span>
+  </ResponseField>
+  <ResponseField
+    name="send_time_b"
+    type="string"
+    required
+  >
+    <span>{"Send time for variation B"}</span>
+  </ResponseField>
+  <ResponseField
+    name="send_time_winner"
+    type="string"
+    required
+  >
+    <span>{"Send time for the winner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="social_card"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="image_url"
+    type="string"
+    required
+  >
+    <span>{"URL of the social card image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    <span>{"Description of the social card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"Title of the social card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="report_summary"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="opens"
+    type="number"
+    required
+  >
+    <span>{"Total opens"}</span>
+  </ResponseField>
+  <ResponseField
+    name="unique_opens"
+    type="number"
+    required
+  >
+    <span>{"Unique opens"}</span>
+  </ResponseField>
+  <ResponseField
+    name="open_rate"
+    type="number"
+    required
+  >
+    <span>{"Open rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="clicks"
+    type="number"
+    required
+  >
+    <span>{"Total clicks"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subscriber_clicks"
+    type="number"
+    required
+  >
+    <span>{"Subscriber clicks"}</span>
+  </ResponseField>
+  <ResponseField
+    name="click_rate"
+    type="number"
+    required
+  >
+    <span>{"Click rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="ecommerce"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="total_orders"
+    type="number"
+    required
+  >
+    <span>{"Total ecommerce orders"}</span>
+  </ResponseField>
+  <ResponseField
+    name="total_spent"
+    type="number"
+    required
+  >
+    <span>{"Total amount spent in ecommerce"}</span>
+  </ResponseField>
+  <ResponseField
+    name="total_revenue"
+    type="number"
+    required
+  >
+    <span>{"Total ecommerce revenue"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="delivery_status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="rel"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="href"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="targetSchema"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="schema"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="total_items"
+    type="number"
+    required
+  >
+    <span>{"Total number of items"}</span>
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="rel"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="href"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="targetSchema"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="schema"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get All Email Lists/Audiences
+
+<span>{"Get all available email lists/audiences"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="count"
+    type="number"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lists"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="web_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="contact"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="company"
+    type="string"
+    required
+  >
+    <span>{"Company name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address1"
+    type="string"
+    required
+  >
+    <span>{"Address line 1"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+    required
+  >
+    <span>{"Address line 2"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+    required
+  >
+    <span>{"City"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="string"
+    required
+  >
+    <span>{"State"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+    required
+  >
+    <span>{"ZIP code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+    required
+  >
+    <span>{"Country"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+    required
+  >
+    <span>{"Phone number"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="permission_reminder"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="use_archive_bar"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="campaign_defaults"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="from_name"
+    type="string"
+    required
+  >
+    <span>{"Default sender name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from_email"
+    type="string (email)"
+    required
+  >
+    <span>{"Default sender email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Default email subject"}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    <span>{"Default email language"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="notify_on_subscribe"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notify_on_unsubscribe"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="date_created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="list_rating"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email_type_option"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="subscribe_url_short"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="subscribe_url_long"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="beamer_address"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="visibility"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="double_optin"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="has_welcome"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="marketing_permissions"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="modules"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stats"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="member_count"
+    type="number"
+    required
+  >
+    <span>{"Member count"}</span>
+  </ResponseField>
+  <ResponseField
+    name="unsubscribe_count"
+    type="number"
+    required
+  >
+    <span>{"Unsubscribe count"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cleaned_count"
+    type="number"
+    required
+  >
+    <span>{"Cleaned count"}</span>
+  </ResponseField>
+  <ResponseField
+    name="member_count_since_send"
+    type="number"
+    required
+  >
+    <span>{"Member count since last send"}</span>
+  </ResponseField>
+  <ResponseField
+    name="unsubscribe_count_since_send"
+    type="number"
+    required
+  >
+    <span>{"Unsubscribe count since last send"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cleaned_count_since_send"
+    type="number"
+    required
+  >
+    <span>{"Cleaned count since last send"}</span>
+  </ResponseField>
+  <ResponseField
+    name="campaign_count"
+    type="number"
+    required
+  >
+    <span>{"Campaign count"}</span>
+  </ResponseField>
+  <ResponseField
+    name="campaign_last_sent"
+    type="string"
+    required
+  >
+    <span>{"Last campaign sent date"}</span>
+  </ResponseField>
+  <ResponseField
+    name="merge_field_count"
+    type="number"
+    required
+  >
+    <span>{"Merge field count"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avg_sub_rate"
+    type="number"
+    required
+  >
+    <span>{"Average subscription rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avg_unsub_rate"
+    type="number"
+    required
+  >
+    <span>{"Average unsubscribe rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="target_sub_rate"
+    type="number"
+    required
+  >
+    <span>{"Target subscription rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="open_rate"
+    type="number"
+    required
+  >
+    <span>{"Open rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="click_rate"
+    type="number"
+    required
+  >
+    <span>{"Click rate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="last_sub_date"
+    type="string"
+    required
+  >
+    <span>{"Last subscription date"}</span>
+  </ResponseField>
+  <ResponseField
+    name="last_unsub_date"
+    type="string"
+    required
+  >
+    <span>{"Last unsubscribe date"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="rel"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="href"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="targetSchema"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="schema"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="constraints"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="may_create"
+    type="boolean"
+    required
+  >
+    <span>{"May create flag"}</span>
+  </ResponseField>
+  <ResponseField
+    name="max_instances"
+    type="number"
+    required
+  >
+    <span>{"Maximum instances allowed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="current_total_instances"
+    type="number"
+    required
+  >
+    <span>{"Current total instances"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="rel"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="href"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="targetSchema"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="schema"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Mass Mailing of the Campaign
+
+<span>{"Mass Mailing of the Campaign by its IDs"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="campaignIds"
+    type="string"
+    required
+  >
+    <span>{"The Campaign IDs (Can be either a string with comma-separated IDs)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum: pending, preprocessing, started, finalizing, finished"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="total_operations"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="rel"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="href"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="targetSchema"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="schema"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

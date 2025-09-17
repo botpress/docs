@@ -1,0 +1,715 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Page
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The title of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum: current, draft, archived, historical, trashed, any, deleted"
+  >
+    <span>{"The status of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="spaceId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the space the page is in."}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string,null"
+    required
+  >
+    <span>{"ID of the parent page, or null if there is no parent page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentType"
+    type="string"
+    required
+  >
+    <span>{"Content type of the parent, or null if there is no parent."}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number,null"
+    required
+  >
+    <span>{"Position of child page within the given parent page tree."}</span>
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+  >
+    <span>{"The account ID of the user who created this page originally."}</span>
+  </ResponseField>
+  <ResponseField
+    name="ownerId"
+    type="string,null"
+  >
+    <span>{"The account ID of the user who owns this page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastOwnerId"
+    type="string,null"
+  >
+    <span>{"The account ID of the user who last edited this page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"Date and time when the page was created. In format 'YYYY-MM-DDTHH:mm:ss.sssZ'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="atlas_doc_format"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"The content of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="representation"
+    type="string"
+    required
+  >
+    <span>{"The representation of the content."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="version"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"The creation date of the version."}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"Represents the version number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+    required
+  >
+    <span>{"The account ID of the user who created this version."}</span>
+  </ResponseField>
+  <ResponseField
+    name="minorEdit"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether this version is a minor edit or not."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="webui"
+    type="string"
+  >
+    <span>{"Web UI link of the content."}</span>
+  </ResponseField>
+  <ResponseField
+    name="editui"
+    type="string"
+  >
+    <span>{"Edit UI link of the content."}</span>
+  </ResponseField>
+  <ResponseField
+    name="tinyui"
+    type="string"
+  >
+    <span>{"Web UI link of the content."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Delete Page
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### List items in folder
+
+<span>{"List the files and folders in a folder"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="folderId"
+    type="string"
+  >
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="filters"
+    type="object"
+  >
+    <span>{"Optional search filters"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="itemType"
+    type="enum: file, folder"
+  >
+    <span>{"The entity type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxSizeInBytes"
+    type="number"
+  >
+    <span>{"Filter the items by maximum size (in bytes)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="modifiedAfter"
+    type="string (date-time)"
+  >
+    <span>{"Filter the items modified after the given date"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to get the next page of items. Leave empty to get the first page."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"The files and folders in the folder"}</span>
+
+    <Expandable title="file properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="folder properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the folder is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    <span>{"The absolute path of the folder. Leave empty if not available."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token to get the next page of items."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Transfer file to Botpress
+
+<span>{"Transfer a file from an external service to Botpress"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="file"
+    type="object"
+    required
+  >
+    <span>{"The file to transfer"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="fileKey"
+    type="string"
+    required
+  >
+    <span>{"The file key to use in Botpress"}</span>
+  </ResponseField>
+  <ResponseField
+    name="shouldIndex"
+    type="boolean"
+  >
+    <span>{"Whether to index the file in vector storage"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="botpressFileId"
+    type="string"
+    required
+  >
+    <span>{"The file ID of the uploaded file on Botpress"}</span>
+  </ResponseField>
+</Expandable>
+
+### Get Page
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Page
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The title of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum: current, draft, archived, historical, trashed, any, deleted"
+  >
+    <span>{"The status of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="spaceId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the space the page is in."}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string,null"
+    required
+  >
+    <span>{"ID of the parent page, or null if there is no parent page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentType"
+    type="string"
+    required
+  >
+    <span>{"Content type of the parent, or null if there is no parent."}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number,null"
+    required
+  >
+    <span>{"Position of child page within the given parent page tree."}</span>
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+  >
+    <span>{"The account ID of the user who created this page originally."}</span>
+  </ResponseField>
+  <ResponseField
+    name="ownerId"
+    type="string,null"
+  >
+    <span>{"The account ID of the user who owns this page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastOwnerId"
+    type="string,null"
+  >
+    <span>{"The account ID of the user who last edited this page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"Date and time when the page was created. In format 'YYYY-MM-DDTHH:mm:ss.sssZ'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="atlas_doc_format"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"The content of the page."}</span>
+  </ResponseField>
+  <ResponseField
+    name="representation"
+    type="string"
+    required
+  >
+    <span>{"The representation of the content."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="version"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"The creation date of the version."}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"Represents the version number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+    required
+  >
+    <span>{"The account ID of the user who created this version."}</span>
+  </ResponseField>
+  <ResponseField
+    name="minorEdit"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates whether this version is a minor edit or not."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="_links"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="webui"
+    type="string"
+  >
+    <span>{"Web UI link of the content."}</span>
+  </ResponseField>
+  <ResponseField
+    name="editui"
+    type="string"
+  >
+    <span>{"Edit UI link of the content."}</span>
+  </ResponseField>
+  <ResponseField
+    name="tinyui"
+    type="string"
+  >
+    <span>{"Web UI link of the content."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

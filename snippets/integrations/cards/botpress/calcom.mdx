@@ -1,0 +1,224 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Book an Event
+
+<span>{"Books an event for a user"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="eventTypeId"
+    type="number"
+    required
+  >
+    <span>{"The ID of the event type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="start"
+    type="string"
+    required
+  >
+    <span>{"Start time in ISO 8601 format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the user booking the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the user booking the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timeZone"
+    type="string"
+    required
+  >
+    <span>{"Time zone in IANA format, e.g., America/New_York"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"The ID of the conversation"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates if the booking was successful"}</span>
+  </ResponseField>
+</Expandable>
+
+### Generate a link
+
+<span>{"Generates a link to a calendar"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the user to send the link to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTypeId"
+    type="number"
+    required
+  >
+    <span>{"The ID of the event type"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The generated scheduling link"}</span>
+  </ResponseField>
+</Expandable>
+
+### Get Available Time Slots
+
+<span>{"Fetches available time slots for a specific event type within a date range ( default to next 7 days if not provided )"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="eventTypeId"
+    type="number"
+    required
+  >
+    <span>{"The ID of the event type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"Start date in YYYY-MM-DD format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"End date in YYYY-MM-DD format"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="slots"
+    type="object"
+    required
+  >
+    <span>{"Available time slots grouped by date"}</span>
+  </ResponseField>
+</Expandable>
+
+### Get Event Types
+
+<span>{"Fetches all event types from Cal.com"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    <span>{"The username of the Cal.com account"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="eventTypes"
+    type="array"
+    required
+  >
+    <span>{"A list of event types associated with the Cal.com account"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"The unique identifier of the event type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lengthInMinutes"
+    type="number"
+    required
+  >
+    <span>{"The duration of the event type in minutes"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the event type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    <span>{"The slug of the event type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    <span>{"A brief description of the event type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lengthInMinutesOptions"
+    type="array"
+    required
+  >
+    <span>{"Available duration options for the event type"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

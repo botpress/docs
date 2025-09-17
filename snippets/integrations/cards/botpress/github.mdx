@@ -1,0 +1,71 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Find Target
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="channel"
+    type="enum: pullRequest, issue"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="repo"
+    type="string"
+    required
+  >
+    <span>{"The repository name"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="targets"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="object"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="channel"
+    type="enum: pullRequest, issue"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

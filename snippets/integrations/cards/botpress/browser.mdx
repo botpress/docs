@@ -1,0 +1,404 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Browse Pages
+
+<span>{"Extract the full content & the metadata of the specified pages as markdown."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="urls"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="waitFor"
+    type="number"
+  >
+    <span>{"Time to wait before extracting the content (in milliseconds). Set this value higher for dynamic pages."}</span>
+  </ResponseField>
+  <ResponseField
+    name="timeout"
+    type="number"
+  >
+    <span>{"Timeout for the request (in milliseconds)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxAge"
+    type="number"
+  >
+    <span>{"Maximum age of the cached page content (in seconds)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="results"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="favicon"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Capture Screenshot
+
+<span>{"Capture a screenshot of the specified page."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="javascriptToInject"
+    type="string"
+  >
+    <span>{"JavaScript code to inject into the page before taking the screenshot"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cssToInject"
+    type="string"
+  >
+    <span>{"CSS code to inject into the page before taking the screenshot"}</span>
+  </ResponseField>
+  <ResponseField
+    name="width"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="height"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fullPage"
+    type="boolean"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="imageUrl"
+    type="string"
+    required
+  >
+    <span>{"URL to the captured screenshot"}</span>
+  </ResponseField>
+  <ResponseField
+    name="htmlUrl"
+    type="string"
+  >
+    <span>{"URL to the HTML page of the screenshot"}</span>
+  </ResponseField>
+</Expandable>
+
+### Discover Website URLs
+
+<span>{"Discovers the URLs of a website by finding links using sitemaps, robots.txt, and crawling."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The URL of the website to discover URLs from. Can be a domain like example.com or a full URL like sub.example.com/page"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlyHttps"
+    type="boolean"
+  >
+    <span>{"Whether to only include HTTPS pages"}</span>
+  </ResponseField>
+  <ResponseField
+    name="count"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="include"
+    type="array"
+  >
+    <span>{"List of glob patterns to include URLs from the discovery"}</span>
+  </ResponseField>
+  <ResponseField
+    name="exclude"
+    type="array"
+  >
+    <span>{"List of glob patterns to exclude URLs from the discovery. All URLs matching these patterns will be excluded from the results, even if they are included in the \"include\" patterns."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="urls"
+    type="array"
+    required
+  >
+    <span>{"List of discovered URLs"}</span>
+  </ResponseField>
+  <ResponseField
+    name="excluded"
+    type="number"
+    required
+  >
+    <span>{"Number of URLs excluded due to robots.txt or filter"}</span>
+  </ResponseField>
+  <ResponseField
+    name="stopReason"
+    type="enum: urls_limit_reached, end_of_results, time_limit_reached"
+    required
+  >
+    <span>{"Reason for stopping the URLs discovery. "}</span>
+  </ResponseField>
+</Expandable>
+
+### Get Website Logo
+
+<span>{"Get the logo of the specified website."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="domain"
+    type="string"
+    required
+  >
+    <span>{"The domain of the website to get the logo from (eg. \"example.com\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="greyscale"
+    type="boolean"
+  >
+    <span>{"Whether to return the logo in grayscale (black & white)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="enum: 64, 128, 256, 512"
+  >
+    <span>{"Size of the logo to return (64, 128 or 256, 512 pixels)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="logoUrl"
+    type="string"
+    required
+  >
+    <span>{"URL to the website logo"}</span>
+  </ResponseField>
+</Expandable>
+
+### Web Search
+
+<span>{"Search information on the web. You need to browse to that page to get the full content of the page."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"What are we searching for?"}</span>
+  </ResponseField>
+  <ResponseField
+    name="includeSites"
+    type="array"
+  >
+    <span>{"Include only these domains in the search (max 20)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="excludeSites"
+    type="array"
+  >
+    <span>{"Exclude these domains from the search (max 20)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="count"
+    type="number"
+  >
+    <span>{"Number of search results to return (default: 10)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="freshness"
+    type="enum: Day, Week, Month"
+  >
+    <span>{"Only consider results from the last day, week or month"}</span>
+  </ResponseField>
+  <ResponseField
+    name="browsePages"
+    type="boolean"
+  >
+    <span>{"Whether to browse to the pages to get the full content"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="results"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Title of the page"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the page"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snippet"
+    type="string"
+    required
+  >
+    <span>{"A short summary of the page"}</span>
+  </ResponseField>
+  <ResponseField
+    name="links"
+    type="array"
+  >
+    <span>{"Useful links on the page"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="page"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="favicon"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

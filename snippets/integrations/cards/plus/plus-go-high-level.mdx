@@ -1,0 +1,836 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Appointment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the appointment to create."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the contact to create, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create Opportunity
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the opportunity to create, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Delete Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="contactId"
+    type="string"
+    required
+  >
+    <span>{"ID of the contact to delete"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Delete Event
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"ID of the event to delete"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Delete Opportunity
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="opportunityId"
+    type="string"
+    required
+  >
+    <span>{"ID of the opportunity to delete"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get Appointment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="appointmentId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the appointment to retrieve"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get Calendar Events
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"The order list params (e.g., location ID, start time, end time)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="contactId"
+    type="string"
+    required
+  >
+    <span>{"ID of the contact to retrieve"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get Contacts By Business Id
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="businessId"
+    type="string"
+    required
+  >
+    <span>{"ID of the business whose contacts are to be retrieved"}</span>
+  </ResponseField>
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    <span>{"Optional query parameters as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get Opportunity
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="opportunityId"
+    type="string"
+    required
+  >
+    <span>{"ID of the opportunity to retrieve"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get Order By ID
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="orderId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the order to retrieve"}</span>
+  </ResponseField>
+  <ResponseField
+    name="altId"
+    type="string"
+    required
+  >
+    <span>{"The ID related to the order (e.g., location ID)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="altType"
+    type="string"
+    required
+  >
+    <span>{"The type of the alternate ID (e.g., location)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### List Orders
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"The order list params (e.g., location ID)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Make API Call
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="endpoint"
+    type="string"
+    required
+  >
+    <span>{"The API endpoint to call"}</span>
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="string"
+    required
+  >
+    <span>{"The HTTP method to use ['GET', 'POST', 'PUT', 'DELETE']"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    <span>{"The data to send with the request as a string JSON object."}</span>
+  </ResponseField>
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    <span>{"The params to send with the request as a string JSON object if required."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Appointment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="appointmentId"
+    type="string"
+    required
+  >
+    <span>{"ID of the appointment to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Updated properties of the appointment, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="contactId"
+    type="string"
+    required
+  >
+    <span>{"ID of the contact to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the contact to update, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Opportunity
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="opportunityId"
+    type="string"
+    required
+  >
+    <span>{"ID of the opportunity to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the opportunity to update, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Opportunity Status
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="opportunityId"
+    type="string"
+    required
+  >
+    <span>{"ID of the opportunity to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"New status of the opportunity"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Upsert Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the contact to upsert, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Upsert Opportunity
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="string"
+    required
+  >
+    <span>{"Properties of the opportunity to upsert, as a string JSON object."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}
