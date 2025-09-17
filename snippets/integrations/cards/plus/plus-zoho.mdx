@@ -1,0 +1,748 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Appointment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    The raw JSON string containing the appointment details
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Details of the created appointment
+  </ResponseField>
+</Expandable>
+
+### Delete Appointment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="appointmentId"
+    type="string"
+    required
+  >
+    The unique ID of the appointment to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Response from Zoho confirming the appointment deletion
+  </ResponseField>
+</Expandable>
+
+### Delete Record
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module where the record exists
+  </ResponseField>
+  <ResponseField
+    name="recordId"
+    type="string"
+    required
+  >
+    The unique ID of the record to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Response from Zoho confirming the record deletion
+  </ResponseField>
+</Expandable>
+
+### Get Appointment By ID
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="appointmentId"
+    type="string"
+    required
+  >
+    The unique ID of the appointment to retrieve
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    The retrieved appointment data from Zoho CRM
+  </ResponseField>
+</Expandable>
+
+### Get Appointments
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    Optional query parameters as a JSON string (e.g., date range, filters)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    List of retrieved appointments
+  </ResponseField>
+</Expandable>
+
+### Get File
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="fileId"
+    type="string"
+    required
+  >
+    The encrypted ID of the file to retrieve
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    The retrieved file data from Zoho
+  </ResponseField>
+</Expandable>
+
+### Get Organization Details
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Details of the organization retrieved from Zoho CRM
+  </ResponseField>
+</Expandable>
+
+### Get Record By ID
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module to retrieve the record from (e.g., Leads, Contacts, Deals)
+  </ResponseField>
+  <ResponseField
+    name="recordId"
+    type="string"
+    required
+  >
+    The unique ID of the record to retrieve
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    The retrieved record data from Zoho CRM
+  </ResponseField>
+</Expandable>
+
+### Get Records
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module to retrieve records from (e.g., Leads, Contacts, Deals)
+  </ResponseField>
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    Optional query parameters as a JSON string (e.g., pagination, sorting)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    List of retrieved records
+  </ResponseField>
+</Expandable>
+
+### Get Users
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    Optional query parameters as a JSON string for filtering users (e.g., role, status)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    List of users retrieved from Zoho CRM
+  </ResponseField>
+</Expandable>
+
+### Insert Record
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module to insert the records into (e.g., Leads, Contacts, Deals)
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    The raw JSON string containing the records to insert
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Details of the inserted records
+  </ResponseField>
+</Expandable>
+
+### Make API Call
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="endpoint"
+    type="string"
+    required
+  >
+    The API endpoint to call
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="string"
+    required
+  >
+    The HTTP method to use ['GET', 'POST', 'PUT', 'DELETE']
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    The data to send with the request as a string JSON object.
+  </ResponseField>
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    The params to send with the request as a string JSON object if required.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Search Records
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module to search within
+  </ResponseField>
+  <ResponseField
+    name="criteria"
+    type="string"
+    required
+  >
+    The search criteria using Zoho CRM query syntax
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    List of records matching the search criteria
+  </ResponseField>
+</Expandable>
+
+### Send Mail
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module to send mail to
+  </ResponseField>
+  <ResponseField
+    name="recordId"
+    type="string"
+    required
+  >
+    The unique ID of the record to attach the file to
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    The raw JSON string containing email details including recipient, subject, and body
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Response from Zoho after sending the email
+  </ResponseField>
+</Expandable>
+
+### Update Appointment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="appointmentId"
+    type="string"
+    required
+  >
+    The unique ID of the appointment to update
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    The raw JSON string containing the updated appointment details
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Details of the updated appointment
+  </ResponseField>
+</Expandable>
+
+### Update Record
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="module"
+    type="string"
+    required
+  >
+    The Zoho CRM module where the record exists
+  </ResponseField>
+  <ResponseField
+    name="recordId"
+    type="string"
+    required
+  >
+    The unique ID of the record to update
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    The raw JSON string containing the updated data
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Details of the updated record
+  </ResponseField>
+</Expandable>
+
+### Upload File
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="fileUrl"
+    type="string"
+    required
+  >
+    The url of the file being uploaded.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    Details of the uploaded file, including its Zoho file ID.
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

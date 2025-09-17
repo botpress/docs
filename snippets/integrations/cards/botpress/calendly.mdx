@@ -1,0 +1,56 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Schedule Calendly Event
+
+Generates a link for scheduling an event in Calendly
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The ID of the conversation
+  </ResponseField>
+  <ResponseField
+    name="eventTypeUrl"
+    type="string"
+    required
+  >
+    The URL of the event type
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="bookingUrl"
+    type="string (uri)"
+    required
+  >
+    A link that brings the user to the event scheduling form
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="string (uri)"
+    required
+  >
+    A link to the resource that owns this scheduling link
+  </ResponseField>
+  <ResponseField
+    name="ownerType"
+    type="string"
+    required
+  >
+    The type of the resource that owns this scheduling link
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

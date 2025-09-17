@@ -1,0 +1,711 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Customer
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    The email of the customer
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the customer
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    The phone number of the customer
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    A description for the customer
+  </ResponseField>
+  <ResponseField
+    name="paymentMethodId"
+    type="string"
+  >
+    The ID of the payment method to attach to the customer
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    The address of the customer
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="customer"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="delinquent"
+    type="boolean,null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Or Retrieve Customer
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    The email of the customer
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the customer
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    The phone number of the customer
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    A description for the customer
+  </ResponseField>
+  <ResponseField
+    name="paymentMethodId"
+    type="string"
+  >
+    The ID of the payment method to attach to the customer
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    The address of the customer
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="customer"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="delinquent"
+    type="boolean,null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customers"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="delinquent"
+    type="boolean,null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Payment Link
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="productName"
+    type="string"
+    required
+  >
+    The name of the product to be sold
+  </ResponseField>
+  <ResponseField
+    name="unit_amount"
+    type="number"
+  >
+    The unit price in cents (minimum 50 cents for USD)
+  </ResponseField>
+  <ResponseField
+    name="currency"
+    type="string"
+  >
+    The currency in which the price will be expressed
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+  >
+    The quantity of the product being purchased
+  </ResponseField>
+  <ResponseField
+    name="adjustableQuantity"
+    type="boolean"
+  >
+    Whether or not the quantity can be adjusted
+  </ResponseField>
+  <ResponseField
+    name="adjustableQuantityMaximum"
+    type="number"
+  >
+    The maximum quantity the customer can purchase, up to 999
+  </ResponseField>
+  <ResponseField
+    name="adjustableQuantityMinimum"
+    type="number"
+  >
+    The minimum quantity the customer can purchase
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create Subscription Payment Link
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="productName"
+    type="string"
+    required
+  >
+    The name of the subscription product
+  </ResponseField>
+  <ResponseField
+    name="unit_amount"
+    type="number"
+  >
+    The unit price in cents
+  </ResponseField>
+  <ResponseField
+    name="currency"
+    type="string"
+  >
+    The currency in which the price is expressed
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+  >
+    The quantity of the subscription being purchased
+  </ResponseField>
+  <ResponseField
+    name="adjustableQuantity"
+    type="boolean"
+  >
+    Whether or not the quantity can be adjusted
+  </ResponseField>
+  <ResponseField
+    name="adjustableQuantityMaximum"
+    type="number"
+  >
+    The maximum quantity the customer can purchase, up to 999
+  </ResponseField>
+  <ResponseField
+    name="adjustableQuantityMinimum"
+    type="number"
+  >
+    The minimum quantity the customer can purchase
+  </ResponseField>
+  <ResponseField
+    name="chargingInterval"
+    type="string"
+  >
+    The interval at which the customer will be charged
+  </ResponseField>
+  <ResponseField
+    name="trial_period_days"
+    type="number"
+  >
+    The number of free trial days for the subscription
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    A description of the subscription product
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Deactivate Payment Link
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The payment link ID to deactivate
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="active"
+    type="boolean"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Find Payment Link
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    The URL of the payment link
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### List Customers By Email
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    The e-mail of the customer to search for
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="customers"
+    type="object"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### List Payment Links
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="paymentLinks"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Product Prices
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="products"
+    type="object"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Retrieve Customer By ID
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the customer to retrieve
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="number"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Search Customers By Fields
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    Search by query on customer emails
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    Search by query on customer name
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    Search by query on customer phone number
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="customers"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="delinquent"
+    type="boolean,null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

@@ -1,0 +1,911 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create external user
+
+Create an end user in the external service and in Botpress
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Display name of the end user
+  </ResponseField>
+  <ResponseField
+    name="pictureUrl"
+    type="string"
+  >
+    URL of the end user's avatar
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    Email address of the end user
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    ID of the Botpress user representing the end user
+  </ResponseField>
+</Expandable>
+
+### Start new HITL session
+
+Create a new HITL session in the external service and in Botpress
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    ID of the Botpress user representing the end user
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    Title of the HITL session. This corresponds to a ticket title in systems that use tickets.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Description of the HITL session. This corresponds to a ticket description in systems that use tickets.
+  </ResponseField>
+  <ResponseField
+    name="hitlSession"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="messageHistory"
+    type="array"
+    required
+  >
+    History of all messages in the conversation up to this point. Should be displayed to the human agent in the external service.
+
+    <Expandable title="text properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="image properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="audio properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="audioUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="video properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="videoUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="file properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="fileUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="location properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="latitude"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="carousel properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="subtitle"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="actions"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="action"
+    type="enum: postback, url, say"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="card properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="subtitle"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="actions"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="action"
+    type="enum: postback, url, say"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="dropdown properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="choice properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="bloc properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="text properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="markdown properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="markdown"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="image properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="audio properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="audioUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="video properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="videoUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="file properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="fileUrl"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="location properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="latitude"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="markdown properties">
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="markdown"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    ID of the Botpress conversation representing the HITL session
+  </ResponseField>
+</Expandable>
+
+### Stop HITL session
+
+Stop an existing HITL session in the external service
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    ID of the Botpress conversation representing the HITL session
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+
+{/* vale on */}

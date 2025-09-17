@@ -1,0 +1,122 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Get or create user
+
+Get or create a user in the Vonage channel
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the user
+  </ResponseField>
+  <ResponseField
+    name="pictureUrl"
+    type="string"
+  >
+    The URL of the user profile picture
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    The email of the user
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="channel"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    The Botpress ID of the created user
+  </ResponseField>
+</Expandable>
+
+### Start proactive conversation
+
+Start a proactive conversation given a user
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="channel"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The Botpress ID of the created conversation
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

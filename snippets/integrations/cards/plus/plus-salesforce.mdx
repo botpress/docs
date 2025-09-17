@@ -1,0 +1,669 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Case
+
+Create a Salesforce Case
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Subject"
+    type="string"
+    required
+  >
+    The subject of the case
+  </ResponseField>
+  <ResponseField
+    name="Description"
+    type="string"
+    required
+  >
+    The description of the case
+  </ResponseField>
+  <ResponseField
+    name="Status"
+    type="string"
+  >
+    The status of the case
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create Contact
+
+Create a Salesforce Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="FirstName"
+    type="string"
+    required
+  >
+    The first name of the contact (e.g. John)
+  </ResponseField>
+  <ResponseField
+    name="LastName"
+    type="string"
+    required
+  >
+    The last name of the contact (e.g. Doe)
+  </ResponseField>
+  <ResponseField
+    name="Email"
+    type="string (email)"
+    required
+  >
+    The email address of the contact (e.g. john.doe@example.com)
+  </ResponseField>
+  <ResponseField
+    name="Phone"
+    type="string"
+  >
+    The phone number of the contact (Optional) (e.g. +1-555-1234)
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    Custom fields (JSON)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create Lead
+
+Create a Salesforce Lead
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="FirstName"
+    type="string"
+    required
+  >
+    The first name of the lead (e.g. John)
+  </ResponseField>
+  <ResponseField
+    name="LastName"
+    type="string"
+    required
+  >
+    The last name of the lead (e.g. Doe)
+  </ResponseField>
+  <ResponseField
+    name="Email"
+    type="string (email)"
+    required
+  >
+    The email address of the lead
+  </ResponseField>
+  <ResponseField
+    name="Company"
+    type="string"
+    required
+  >
+    The company of the lead (e.g. Acme Inc.)
+  </ResponseField>
+  <ResponseField
+    name="Phone"
+    type="string"
+  >
+    The phone number of the lead
+  </ResponseField>
+  <ResponseField
+    name="Title"
+    type="string"
+  >
+    The title of the lead
+  </ResponseField>
+  <ResponseField
+    name="Description"
+    type="string"
+  >
+    The title of the lead
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Make API Request
+
+Make a request to Salesforce API
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="method"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="path"
+    type="string"
+    required
+  >
+    yourinstance.salesforce.com/services/data/v54.0/PATH
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="string"
+  >
+    Headers in JSON format
+  </ResponseField>
+  <ResponseField
+    name="params"
+    type="string"
+  >
+    Params in JSON format
+  </ResponseField>
+  <ResponseField
+    name="requestBody"
+    type="string"
+  >
+    Request body in JSON format
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Search Cases
+
+Search Salesforce Cases
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Id"
+    type="string"
+  >
+    The ID of the case
+  </ResponseField>
+  <ResponseField
+    name="Subject"
+    type="string"
+  >
+    The subject of the case
+  </ResponseField>
+  <ResponseField
+    name="Description"
+    type="string"
+  >
+    The description of the case
+  </ResponseField>
+  <ResponseField
+    name="Status"
+    type="string"
+  >
+    The status of the case
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="records"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Search Contacts
+
+Search Salesforce Contacts
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Id"
+    type="string"
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="Name"
+    type="string"
+  >
+    The first name of the contact (e.g. John)
+  </ResponseField>
+  <ResponseField
+    name="Email"
+    type="string (email)"
+  >
+    The email address of the contact (e.g. john.doe@example.com)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="records"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Search Leads
+
+Search Salesforce Leads
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Id"
+    type="string"
+  >
+    The ID of the lead (e.g., leadId1)
+  </ResponseField>
+  <ResponseField
+    name="Name"
+    type="string"
+  >
+    The name of the lead (e.g., John Doe)
+  </ResponseField>
+  <ResponseField
+    name="Email"
+    type="string (email)"
+  >
+    The email address of the lead (e.g., john.doe@example.com)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="records"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Case
+
+Update a Salesforce Case
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Id"
+    type="string"
+    required
+  >
+    The ID of the case
+  </ResponseField>
+  <ResponseField
+    name="Subject"
+    type="string"
+  >
+    The subject of the case
+  </ResponseField>
+  <ResponseField
+    name="Description"
+    type="string"
+  >
+    The description of the case
+  </ResponseField>
+  <ResponseField
+    name="Status"
+    type="string"
+  >
+    The status of the case
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Contact
+
+Update a Salesforce Contact
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Id"
+    type="string"
+    required
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="FirstName"
+    type="string"
+  >
+    The first name of the contact (e.g. John)
+  </ResponseField>
+  <ResponseField
+    name="LastName"
+    type="string"
+  >
+    The last name of the contact (e.g. Doe)
+  </ResponseField>
+  <ResponseField
+    name="Email"
+    type="string (email)"
+  >
+    The email address of the contact (e.g. john.doe@example.com)
+  </ResponseField>
+  <ResponseField
+    name="Phone"
+    type="string"
+  >
+    The phone number of the contact (Optional) (e.g. +1-555-1234)
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    Custom fields (JSON)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Lead
+
+Update a Salesforce Lead
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="Id"
+    type="string"
+    required
+  >
+    The ID of the lead
+  </ResponseField>
+  <ResponseField
+    name="FirstName"
+    type="string"
+  >
+    The first name of the lead (e.g. John)
+  </ResponseField>
+  <ResponseField
+    name="LastName"
+    type="string"
+  >
+    The last name of the lead (e.g. Doe)
+  </ResponseField>
+  <ResponseField
+    name="Email"
+    type="string (email)"
+  >
+    The email address of the lead
+  </ResponseField>
+  <ResponseField
+    name="Company"
+    type="string"
+  >
+    The company of the lead (e.g. Acme Inc.)
+  </ResponseField>
+  <ResponseField
+    name="Phone"
+    type="string"
+  >
+    The phone number of the lead
+  </ResponseField>
+  <ResponseField
+    name="Title"
+    type="string"
+  >
+    The title of the lead
+  </ResponseField>
+  <ResponseField
+    name="Description"
+    type="string"
+  >
+    The title of the lead
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

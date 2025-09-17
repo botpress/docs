@@ -1,0 +1,653 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Generate Content
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="model"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="enum: accounts/fireworks/models/deepseek-r1-0528, accounts/fireworks/models/deepseek-v3-0324, accounts/fireworks/models/llama4-maverick-instruct-basic, accounts/fireworks/models/llama4-scout-instruct-basic, accounts/fireworks/models/llama-v3p3-70b-instruct, accounts/fireworks/models/deepseek-r1, accounts/fireworks/models/deepseek-r1-basic, accounts/fireworks/models/deepseek-v3, accounts/fireworks/models/llama-v3p1-405b-instruct, accounts/fireworks/models/llama-v3p1-70b-instruct, accounts/fireworks/models/llama-v3p1-8b-instruct, accounts/fireworks/models/mixtral-8x22b-instruct, accounts/fireworks/models/mixtral-8x7b-instruct, accounts/fireworks/models/mythomax-l2-13b, accounts/fireworks/models/gemma2-9b-it, accounts/fireworks/models/gpt-oss-20b, accounts/fireworks/models/gpt-oss-120b"
+    required
+  >
+    Model to use for content generation
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="reasoningEffort"
+    type="enum: low, medium, high, dynamic, none"
+  >
+    Reasoning effort level to use for models that support reasoning. Specifying "none" will indicate the LLM to not use reasoning (for models that support optional reasoning). A "dynamic" effort will indicate the provider to automatically determine the reasoning effort (if supported by the provider). If not provided the model will not use reasoning for models with optional reasoning or use the default reasoning effort specified by the provider for reasoning-only models.
+Note: A higher reasoning effort will incur in higher output token charges from the LLM provider.
+  </ResponseField>
+  <ResponseField
+    name="systemPrompt"
+    type="string"
+  >
+    Optional system prompt to guide the model
+  </ResponseField>
+  <ResponseField
+    name="messages"
+    type="array"
+    required
+  >
+    Array of messages for the model to process
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="role"
+    type="enum: user, assistant"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum: text, tool_calls, tool_result, multipart"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="toolCalls"
+    type="array"
+  >
+    Required if `type` is "tool_calls"
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="function"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="arguments"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="toolResultCallId"
+    type="string"
+  >
+    Required if `type` is "tool_result"
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="responseFormat"
+    type="enum: text, json_object"
+  >
+    Response format expected from the model. If "json_object" is chosen, you must instruct the model to generate JSON either via the system prompt or a user message.
+  </ResponseField>
+  <ResponseField
+    name="maxTokens"
+    type="number"
+  >
+    Maximum number of tokens allowed in the generated response
+  </ResponseField>
+  <ResponseField
+    name="temperature"
+    type="number"
+  >
+    Sampling temperature for the model. Higher values result in more random outputs.
+  </ResponseField>
+  <ResponseField
+    name="topP"
+    type="number"
+  >
+    Top-p sampling parameter. Limits sampling to the smallest set of tokens with a cumulative probability above the threshold.
+  </ResponseField>
+  <ResponseField
+    name="stopSequences"
+    type="array"
+  >
+    Sequences where the model should stop generating further tokens.
+  </ResponseField>
+  <ResponseField
+    name="tools"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="function"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Function name
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="argumentsSchema"
+    type="object"
+  >
+    JSON schema of the function arguments
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="toolChoice"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="enum: auto, specific, any, none, "
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="functionName"
+    type="string"
+  >
+    Required if `type` is "specific"
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="debug"
+    type="boolean"
+  >
+    Set to `true` to output debug information to the bot logs
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="promptSource"
+    type="string"
+  >
+    Source of the prompt, e.g. agent/:id/:version cards/ai-generate, cards/ai-task, nodes/autonomous, etc.
+  </ResponseField>
+  <ResponseField
+    name="promptCategory"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="integrationName"
+    type="string"
+  >
+    Name of the integration that originally received the message that initiated this action
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    Response ID from LLM provider
+  </ResponseField>
+  <ResponseField
+    name="provider"
+    type="string"
+    required
+  >
+    LLM provider name
+  </ResponseField>
+  <ResponseField
+    name="model"
+    type="string"
+    required
+  >
+    Model name
+  </ResponseField>
+  <ResponseField
+    name="choices"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="enum: text, tool_calls, tool_result, multipart"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="toolCalls"
+    type="array"
+  >
+    Required if `type` is "tool_calls"
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="function"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="arguments"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="toolResultCallId"
+    type="string"
+  >
+    Required if `type` is "tool_result"
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="role"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="index"
+    type="integer"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stopReason"
+    type="enum: stop, max_tokens, tool_calls, content_filter, other"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="usage"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="inputTokens"
+    type="integer"
+    required
+  >
+    Number of input tokens used by the model
+  </ResponseField>
+  <ResponseField
+    name="inputCost"
+    type="number"
+    required
+  >
+    Cost of the input tokens received by the model, in U.S. dollars
+  </ResponseField>
+  <ResponseField
+    name="outputTokens"
+    type="integer"
+    required
+  >
+    Number of output tokens used by the model
+  </ResponseField>
+  <ResponseField
+    name="outputCost"
+    type="number"
+    required
+  >
+    Cost of the output tokens generated by the model, in U.S. dollars
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="botpress"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="cost"
+    type="number"
+    required
+  >
+    Total cost of the content generation, in U.S. dollars
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Language Models
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="models"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### List Speech To Text Models
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="models"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Transcribe Audio
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="model"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="fileUrl"
+    type="string (uri)"
+    required
+  >
+    URL of the audio file to transcribe. The URL should return a content-type header in order to detect the audio format. Supported audio formats supported are: mp3, mp4, mpeg, mpga, m4a, wav, webm
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    The language of the input audio (optional). Supplying the input language in ISO-639-1 format will improve accuracy and latency.
+  </ResponseField>
+  <ResponseField
+    name="prompt"
+    type="string"
+  >
+    An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.
+  </ResponseField>
+  <ResponseField
+    name="temperature"
+    type="number"
+  >
+    The sampling temperature (optional), between 0 and 1. Defaults to 0 (automatic). Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    Detected language of the audio
+  </ResponseField>
+  <ResponseField
+    name="duration"
+    type="number"
+    required
+  >
+    Duration of the audio file, in seconds
+  </ResponseField>
+  <ResponseField
+    name="segments"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    Text content of the segment.
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    Unique identifier of the segment
+  </ResponseField>
+  <ResponseField
+    name="seek"
+    type="number"
+    required
+  >
+    Seek offset of the segment
+  </ResponseField>
+  <ResponseField
+    name="start"
+    type="number"
+    required
+  >
+    Start time of the segment in seconds.
+  </ResponseField>
+  <ResponseField
+    name="end"
+    type="number"
+    required
+  >
+    End time of the segment in seconds.
+  </ResponseField>
+  <ResponseField
+    name="tokens"
+    type="array"
+    required
+  >
+    Array of token IDs for the text content.
+  </ResponseField>
+  <ResponseField
+    name="temperature"
+    type="number"
+    required
+  >
+    Temperature parameter used for generating the segment.
+  </ResponseField>
+  <ResponseField
+    name="avg_logprob"
+    type="number"
+    required
+  >
+    Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
+  </ResponseField>
+  <ResponseField
+    name="compression_ratio"
+    type="number"
+    required
+  >
+    Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+  </ResponseField>
+  <ResponseField
+    name="no_speech_prob"
+    type="number"
+    required
+  >
+    Probability of no speech in the segment. If the value is higher than 1.0 and the avg_logprob is below -1, consider this segment silent.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="model"
+    type="string"
+    required
+  >
+    Model name used
+  </ResponseField>
+  <ResponseField
+    name="cost"
+    type="number"
+    required
+  >
+    Total cost of the transcription, in U.S. dollars (DEPRECATED)
+  </ResponseField>
+  <ResponseField
+    name="botpress"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="cost"
+    type="number"
+    required
+  >
+    Total cost of the transcription, in U.S. dollars
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

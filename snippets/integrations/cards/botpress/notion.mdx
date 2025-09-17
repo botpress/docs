@@ -1,0 +1,411 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Add Comment to Discussion
+
+Add a comment to a discussion in Notion
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="discussionId"
+    type="string"
+    required
+  >
+    The ID of the discussion to add the comment to. Can be found in the URL of the discussion
+  </ResponseField>
+  <ResponseField
+    name="commentBody"
+    type="string"
+    required
+  >
+    Must be plain text
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Add Comment to Page
+
+Add a comment to a page in Notion
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="pageId"
+    type="string"
+    required
+  >
+    The ID of the page to add the comment to. Can be found in the URL of the page
+  </ResponseField>
+  <ResponseField
+    name="commentBody"
+    type="string"
+    required
+  >
+    Must be plain text
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Create Page in Database
+
+Add a new page to a database in Notion
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="databaseId"
+    type="string"
+    required
+  >
+    The ID of the database to add the page to. Can be found in the URL of the database
+  </ResponseField>
+  <ResponseField
+    name="pageProperties"
+    type="object"
+    required
+  >
+    The values of the page's properties. Must match the parent database's properties
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Delete Block
+
+Delete a block in Notion
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="blockId"
+    type="string"
+    required
+  >
+    The ID of the block to delete. Can be found in the URL of the block
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### List items in folder
+
+List the files and folders in a folder
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="folderId"
+    type="string"
+  >
+    The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+  </ResponseField>
+  <ResponseField
+    name="filters"
+    type="object"
+  >
+    Optional search filters
+
+    <Expandable>
+  <ResponseField
+    name="itemType"
+    type="enum: file, folder"
+  >
+    The entity type
+  </ResponseField>
+  <ResponseField
+    name="maxSizeInBytes"
+    type="number"
+  >
+    Filter the items by maximum size (in bytes)
+  </ResponseField>
+  <ResponseField
+    name="modifiedAfter"
+    type="string (date-time)"
+  >
+    Filter the items modified after the given date
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    The token to get the next page of items. Leave empty to get the first page.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    The files and folders in the folder
+
+    <Expandable title="file properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API."
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    The parent folder ID. Leave empty if the file is in the root folder.
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    The absolute path of the file. Leave empty if not available.
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    The file size in bytes, if available
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    The last modified date of the file, if available
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    The hash of the file content, or version/revision number, if available
+  </ResponseField>
+    </Expandable>
+
+    <Expandable title="folder properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API."
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    The parent folder ID. Leave empty if the folder is in the root folder.
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    The absolute path of the folder. Leave empty if not available.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    The token to get the next page of items.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Transfer file to Botpress
+
+Transfer a file from an external service to Botpress
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="file"
+    type="object"
+    required
+  >
+    The file to transfer
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API."
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    The parent folder ID. Leave empty if the file is in the root folder.
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+  >
+    The absolute path of the file. Leave empty if not available.
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    The file size in bytes, if available
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    The last modified date of the file, if available
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    The hash of the file content, or version/revision number, if available
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="fileKey"
+    type="string"
+    required
+  >
+    The file key to use in Botpress
+  </ResponseField>
+  <ResponseField
+    name="shouldIndex"
+    type="boolean"
+  >
+    Whether to index the file in vector storage
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="botpressFileId"
+    type="string"
+    required
+  >
+    The file ID of the uploaded file on Botpress
+  </ResponseField>
+</Expandable>
+
+### Get Database
+
+Get a database from Notion
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="databaseId"
+    type="string"
+    required
+  >
+    The ID of the database to fetch. Can be found in the URL of the database
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="object"
+    type="string"
+    required
+  >
+    A stringified representation of the database
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    Schema of properties for the database as they appear in Notion
+  </ResponseField>
+  <ResponseField
+    name="structure"
+    type="string"
+    required
+  >
+    A stringified representation of the database structure
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

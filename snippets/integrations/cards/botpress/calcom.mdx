@@ -1,0 +1,224 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Book an Event
+
+Books an event for a user
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="eventTypeId"
+    type="number"
+    required
+  >
+    The ID of the event type
+  </ResponseField>
+  <ResponseField
+    name="start"
+    type="string"
+    required
+  >
+    Start time in ISO 8601 format
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    The email of the user booking the event
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the user booking the event
+  </ResponseField>
+  <ResponseField
+    name="timeZone"
+    type="string"
+    required
+  >
+    Time zone in IANA format, e.g., America/New_York
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    The ID of the conversation
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    Indicates if the booking was successful
+  </ResponseField>
+</Expandable>
+
+### Generate a link
+
+Generates a link to a calendar
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The ID of the conversation
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    The email of the user to send the link to
+  </ResponseField>
+  <ResponseField
+    name="eventTypeId"
+    type="number"
+    required
+  >
+    The ID of the event type
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    The generated scheduling link
+  </ResponseField>
+</Expandable>
+
+### Get Available Time Slots
+
+Fetches available time slots for a specific event type within a date range ( default to next 7 days if not provided )
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="eventTypeId"
+    type="number"
+    required
+  >
+    The ID of the event type
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    Start date in YYYY-MM-DD format
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    End date in YYYY-MM-DD format
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="slots"
+    type="object"
+    required
+  >
+    Available time slots grouped by date
+  </ResponseField>
+</Expandable>
+
+### Get Event Types
+
+Fetches all event types from Cal.com
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    The username of the Cal.com account
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="eventTypes"
+    type="array"
+    required
+  >
+    A list of event types associated with the Cal.com account
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    The unique identifier of the event type
+  </ResponseField>
+  <ResponseField
+    name="lengthInMinutes"
+    type="number"
+    required
+  >
+    The duration of the event type in minutes
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    The title of the event type
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    The slug of the event type
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    A brief description of the event type
+  </ResponseField>
+  <ResponseField
+    name="lengthInMinutesOptions"
+    type="array"
+    required
+  >
+    Available duration options for the event type
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

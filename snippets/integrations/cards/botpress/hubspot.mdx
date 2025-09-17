@@ -1,0 +1,1393 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Contact
+
+Create a contact in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    The email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    The phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="string"
+  >
+    The ID or email of the owner of the contact
+  </ResponseField>
+  <ResponseField
+    name="companies"
+    type="array"
+  >
+    The companies to which the contact is associated
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="idOrNameOrDomain"
+    type="string"
+    required
+  >
+    The ID, name or domain of the company
+  </ResponseField>
+  <ResponseField
+    name="primary"
+    type="boolean"
+  >
+    Whether the contact is the primary contact for the company
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tickets"
+    type="array"
+  >
+    The tickets to which the contact is associated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    Additional properties of the contact
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="contact"
+    type="object"
+    required
+  >
+    The created contact
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    The email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+    required
+  >
+    The phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    The date and time the contact was created
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    The date and time the contact was last updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the contact
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Deal
+
+Create a deal in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the deal
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties of the deal
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="deal"
+    type="object"
+    required
+  >
+    The created deal
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the deal
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the deal
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the deal
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the deal was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the deal
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Lead
+
+Create a lead in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the lead
+  </ResponseField>
+  <ResponseField
+    name="contact"
+    type="string"
+    required
+  >
+    The contact to associate the lead with. Can be an email address or contact ID
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties of the lead
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    The created lead
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the lead
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the lead
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the lead
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the lead was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the lead
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Ticket
+
+Create a ticket in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    Short summary of ticket
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string"
+  >
+    Main reason customer reached out for help
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Description of the ticket
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string"
+  >
+    The level of attention needed on the ticket
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+  >
+    The original source of the ticket
+  </ResponseField>
+  <ResponseField
+    name="pipeline"
+    type="string"
+    required
+  >
+    The pipeline that contains this ticket. Can be a name or internal ID
+  </ResponseField>
+  <ResponseField
+    name="pipelineStage"
+    type="string"
+    required
+  >
+    The pipeline stage that contains this ticket. Can be a name or internal ID
+  </ResponseField>
+  <ResponseField
+    name="ticketOwner"
+    type="string"
+  >
+    User the ticket is assigned to. Can be an email address or user ID
+  </ResponseField>
+  <ResponseField
+    name="requester"
+    type="string"
+  >
+    The ticket requester. Can be an email address or contact ID
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    The company associated with the ticket. Can be a name, domain, or company ID
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    Additional ticket properties
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    The created ticket
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the ticket
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    Short summary of ticket
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string"
+    required
+  >
+    Main reason customer reached out for help
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    Description of the ticket
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string"
+    required
+  >
+    The level of attention needed on the ticket
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    The original source of the ticket
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the ticket
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Delete Contact
+
+Delete a contact in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="contactId"
+    type="string"
+    required
+  >
+    The ID of the contact to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Delete Deal
+
+Delete a deal in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="dealId"
+    type="string"
+    required
+  >
+    The ID of the deal to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Delete Lead
+
+Delete a lead in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="leadId"
+    type="string"
+    required
+  >
+    The ID of the lead to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Get Contact
+
+Get a contact from Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="contactIdOrEmail"
+    type="string"
+    required
+  >
+    The ID or email of the contact to get
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="contact"
+    type="object"
+    required
+  >
+    The fetched contact
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    The email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+    required
+  >
+    The phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    The date and time the contact was created
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    The date and time the contact was last updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the contact
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Deal
+
+Get a deal from Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="dealId"
+    type="string"
+    required
+  >
+    The ID of the deal to get
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="deal"
+    type="object"
+    required
+  >
+    The fetched deal
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the deal
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the deal
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the deal
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the deal was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the deal
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Lead
+
+Get a lead from Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="leadId"
+    type="string"
+    required
+  >
+    The ID of the lead to get
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    The fetched lead
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the lead
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the lead
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the lead
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the lead was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the lead
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Contacts
+
+List contacts in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    Metadata containing pagination information
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    The token to get the next page of contacts
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="contacts"
+    type="array"
+    required
+  >
+    The contacts found
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    The email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+    required
+  >
+    The phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    The date and time the contact was created
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    The date and time the contact was last updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the contact
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    Metadata containing pagination information
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    The token to get the next page of contacts
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Search Contact
+
+Search for a contact in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    The email of the contact to search for
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    The phone number of the contact to search for
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="contact"
+    type="object"
+    required
+  >
+    The contact found
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    The email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+    required
+  >
+    The phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    The date and time the contact was created
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    The date and time the contact was last updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the contact
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Search Deal
+
+Search for a deal in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the deal to search for
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="deal"
+    type="object"
+    required
+  >
+    The deal found
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the deal
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the deal
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the deal
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the deal was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the deal
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Search Lead
+
+Search for a lead in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the lead to search for
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties to include in the response
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    The lead found
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the lead
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the lead
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the lead
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the lead was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the lead
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Update Contact
+
+Update a contact in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="contactIdOrEmail"
+    type="string"
+    required
+  >
+    The ID or email of the contact to update
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    The new email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    The new phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    Additional properties of the contact
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The new value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="contact"
+    type="object"
+    required
+  >
+    The updated contact
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the contact
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    The email of the contact
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    The phone number of the contact
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    The date and time the contact was created
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    The date and time the contact was last updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the contact
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Update Deal
+
+Update a deal in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="dealId"
+    type="string"
+    required
+  >
+    The ID of the deal to update
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the deal
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties of the deal
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="deal"
+    type="object"
+    required
+  >
+    The updated deal
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the deal
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the deal
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the deal
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the deal was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the deal
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Update Lead
+
+Update a lead in Hubspot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="leadId"
+    type="string"
+    required
+  >
+    The ID of the lead to update
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the lead
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+  >
+    The properties of the lead
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    The name of the property
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    The value of the property
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    The updated lead
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    The ID of the lead
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the lead
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    Creation date of the lead
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    Last time the lead was updated
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    The properties of the lead
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

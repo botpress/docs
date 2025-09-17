@@ -1,0 +1,106 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Send Transactional Email
+
+Send a transactional email to a client
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    The email address of the recipient.
+  </ResponseField>
+  <ResponseField
+    name="transactionalId"
+    type="string"
+    required
+  >
+    The ID of the transactional email to send.
+  </ResponseField>
+  <ResponseField
+    name="dataVariables"
+    type="array"
+    required
+  >
+    An object containing data as defined by the data variables added to the transactional email template.
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="key"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="addToAudience"
+    type="boolean"
+  >
+    If true, a contact will be created in your audience using the email value (if a matching contact doesn’t already exist).
+  </ResponseField>
+  <ResponseField
+    name="idempotencyKey"
+    type="string"
+  >
+    Optionally send an idempotency key to avoid duplicate requests. The value should be a string of up to 100 characters and should be unique for each request. We recommend using V4 UUIDs or some other method with enough guaranteed entropy to avoid collisions during a 24 hour window. The endpoint will return a 409 Conflict response if the idempotency key has been used in the previous 24 hours.
+  </ResponseField>
+  <ResponseField
+    name="fileIds"
+    type="array"
+  >
+    The Botpress client-generated IDs of the files to be attached to the email. They must have already been uploaded to your bot via the Files API. The name of the file will be used as the filename of the attachment. Use this for a list of templates the user can choose from.
+  </ResponseField>
+  <ResponseField
+    name="fileData"
+    type="array"
+  >
+    The name, base64-encoded data, and MIME content type of custom files to be attached to the email.
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="filename"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="contentType"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+
+{/* vale on */}

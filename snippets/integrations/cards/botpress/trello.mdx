@@ -1,0 +1,1647 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Add card comment
+
+Add a new comment to a card
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card to which a comment will be added
+  </ResponseField>
+  <ResponseField
+    name="commentBody"
+    type="string"
+    required
+  >
+    The body text of the comment
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    Output message
+  </ResponseField>
+  <ResponseField
+    name="newCommentId"
+    type="string"
+    required
+  >
+    Unique identifier of the newly created comment
+  </ResponseField>
+</Expandable>
+
+### Board List
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Board Member List
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Board Member Read
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Board Read
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Card Create
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verticalPosition"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isClosed"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="memberIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Card Delete
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Card List
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Card Member List
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Card Member Read
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Card Read
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Card Update
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verticalPosition"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isClosed"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="memberIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Create new card
+
+Create a card and add it to a list
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    ID of the list in which to insert the new card
+  </ResponseField>
+  <ResponseField
+    name="cardName"
+    type="string"
+    required
+  >
+    Name of the new card
+  </ResponseField>
+  <ResponseField
+    name="cardBody"
+    type="string"
+  >
+    Body text of the new card
+  </ResponseField>
+  <ResponseField
+    name="members"
+    type="array"
+  >
+    Members to add to the card (Optional). This should be a list of member IDs.
+  </ResponseField>
+  <ResponseField
+    name="labels"
+    type="array"
+  >
+    Labels to add to the card (Optional). This should be a list of label IDs.
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    The due date of the card in ISO 8601 format (Optional).
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    Output message
+  </ResponseField>
+  <ResponseField
+    name="newCardId"
+    type="string"
+    required
+  >
+    Unique identifier of the new card
+  </ResponseField>
+</Expandable>
+
+### Get all board members
+
+Get all members of a board
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardId"
+    type="string"
+    required
+  >
+    Unique identifier of the board
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="members"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fullName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get all boards
+
+Get all boards managed by the authenticated user
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="boards"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get all card members
+
+Get all members of a card
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="members"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fullName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get board by ID
+
+Get a board by its unique identifier
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardId"
+    type="string"
+    required
+  >
+    Unique identifier of the board
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="board"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get members by name
+
+Find all members whose display name match this name
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardId"
+    type="string"
+    required
+  >
+    Unique identifier of the board
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    Display name of the member
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="members"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fullName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get boards by name
+
+Find all boards whose display name match this name
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardName"
+    type="string"
+    required
+  >
+    Display name of the board
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="boards"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get card by ID
+
+Get a card by its unique identifier
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verticalPosition"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isClosed"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="memberIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Find cards by name name
+
+Find all lists whose display name match this name
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    Unique identifier of the list
+  </ResponseField>
+  <ResponseField
+    name="cardName"
+    type="string"
+    required
+  >
+    Display name of the card
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="cards"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verticalPosition"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isClosed"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="memberIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get cards in list
+
+Get all cards in a list
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    Unique identifier of the list
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="cards"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verticalPosition"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isClosed"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="memberIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get list by ID
+
+Get a list by its unique identifier
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="listId"
+    type="string"
+    required
+  >
+    Unique identifier of the list
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="list"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get lists by name
+
+Find all lists whose display name match this name
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardId"
+    type="string"
+    required
+  >
+    Unique identifier of the board
+  </ResponseField>
+  <ResponseField
+    name="listName"
+    type="string"
+    required
+  >
+    Display name of the list
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lists"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get lists in board
+
+Get all lists in a board
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardId"
+    type="string"
+    required
+  >
+    Unique identifier of the board
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lists"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get member by ID or username
+
+Get a member by their unique identifier or username
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="memberIdOrUsername"
+    type="string"
+    required
+  >
+    ID or username of the member to get
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="member"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fullName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List List
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="meta"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Read
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Move card down
+
+Move a card n spaces down
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card
+  </ResponseField>
+  <ResponseField
+    name="moveDownByNSpaces"
+    type="number"
+  >
+    Number of spaces by which to move the card down
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    Output message
+  </ResponseField>
+</Expandable>
+
+### Move card to another list
+
+Move a card to another list within the same board
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card
+  </ResponseField>
+  <ResponseField
+    name="newListId"
+    type="string"
+    required
+  >
+    Unique identifier of the list in which the card will be moved
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    Output message
+  </ResponseField>
+</Expandable>
+
+### Move card up
+
+Move a card n spaces up
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card
+  </ResponseField>
+  <ResponseField
+    name="moveUpByNSpaces"
+    type="number"
+  >
+    Number of spaces by which to move the card up
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    Output message
+  </ResponseField>
+</Expandable>
+
+### Update card
+
+Update the details of a card
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    Unique identifier of the card
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    The name of the card (Optional) (e.g. "My Test Card"). Leave empty to keep the current name.
+  </ResponseField>
+  <ResponseField
+    name="bodyText"
+    type="string"
+  >
+    Body text of the new card (Optional). Leave empty to keep the current body.
+  </ResponseField>
+  <ResponseField
+    name="closedState"
+    type="enum: open, archived"
+  >
+    Whether the card should be archived (Optional). Enter "open", "archived" (without quotes), or leave empty to keep the previous status.
+  </ResponseField>
+  <ResponseField
+    name="completeState"
+    type="enum: complete, incomplete"
+  >
+    Whether the card should be marked as complete (Optional). Enter "complete", "incomplete" (without quotes), or leave empty to keep the previous status.
+  </ResponseField>
+  <ResponseField
+    name="membersToAdd"
+    type="array"
+  >
+    Members to add to the card (Optional). This should be a list of member IDs. Leave empty to keep the current members.
+  </ResponseField>
+  <ResponseField
+    name="membersToRemove"
+    type="array"
+  >
+    Members to remove from the card (Optional). This should be a list of member IDs. Leave empty to keep the current members.
+  </ResponseField>
+  <ResponseField
+    name="labelsToAdd"
+    type="array"
+  >
+    Labels to add to the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels.
+  </ResponseField>
+  <ResponseField
+    name="labelsToRemove"
+    type="array"
+  >
+    Labels to remove from the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels.
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string (date-time)"
+  >
+    The due date of the card in ISO 8601 format (Optional). Leave empty to keep the current due date.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    Output message
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

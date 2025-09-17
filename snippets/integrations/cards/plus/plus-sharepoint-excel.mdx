@@ -1,0 +1,65 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Sync Excel File
+
+Download an Excel file from SharePoint and sync it to a Botpress table
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="sharepointFileUrl"
+    type="string"
+    required
+  >
+    Full URL to the Excel file in SharePoint
+  </ResponseField>
+  <ResponseField
+    name="sheetTableMapping"
+    type="string"
+    required
+  >
+    Map sheets to tables. Format: 'Sheet1:table1,Sheet2:table2' or JSON: '{"Sheet1":"table1","Sheet2":"table2"}'
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="processedSheets"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="sheetName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tableName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="rowCount"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

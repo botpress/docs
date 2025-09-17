@@ -1,0 +1,404 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Browse Pages
+
+Extract the full content & the metadata of the specified pages as markdown.
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="urls"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="waitFor"
+    type="number"
+  >
+    Time to wait before extracting the content (in milliseconds). Set this value higher for dynamic pages.
+  </ResponseField>
+  <ResponseField
+    name="timeout"
+    type="number"
+  >
+    Timeout for the request (in milliseconds)
+  </ResponseField>
+  <ResponseField
+    name="maxAge"
+    type="number"
+  >
+    Maximum age of the cached page content (in seconds)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="results"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="favicon"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Capture Screenshot
+
+Capture a screenshot of the specified page.
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="javascriptToInject"
+    type="string"
+  >
+    JavaScript code to inject into the page before taking the screenshot
+  </ResponseField>
+  <ResponseField
+    name="cssToInject"
+    type="string"
+  >
+    CSS code to inject into the page before taking the screenshot
+  </ResponseField>
+  <ResponseField
+    name="width"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="height"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fullPage"
+    type="boolean"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="imageUrl"
+    type="string"
+    required
+  >
+    URL to the captured screenshot
+  </ResponseField>
+  <ResponseField
+    name="htmlUrl"
+    type="string"
+  >
+    URL to the HTML page of the screenshot
+  </ResponseField>
+</Expandable>
+
+### Discover Website URLs
+
+Discovers the URLs of a website by finding links using sitemaps, robots.txt, and crawling.
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    The URL of the website to discover URLs from. Can be a domain like example.com or a full URL like sub.example.com/page
+  </ResponseField>
+  <ResponseField
+    name="onlyHttps"
+    type="boolean"
+  >
+    Whether to only include HTTPS pages
+  </ResponseField>
+  <ResponseField
+    name="count"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="include"
+    type="array"
+  >
+    List of glob patterns to include URLs from the discovery
+  </ResponseField>
+  <ResponseField
+    name="exclude"
+    type="array"
+  >
+    List of glob patterns to exclude URLs from the discovery. All URLs matching these patterns will be excluded from the results, even if they are included in the "include" patterns.
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="urls"
+    type="array"
+    required
+  >
+    List of discovered URLs
+  </ResponseField>
+  <ResponseField
+    name="excluded"
+    type="number"
+    required
+  >
+    Number of URLs excluded due to robots.txt or filter
+  </ResponseField>
+  <ResponseField
+    name="stopReason"
+    type="enum: urls_limit_reached, end_of_results, time_limit_reached"
+    required
+  >
+    Reason for stopping the URLs discovery. 
+  </ResponseField>
+</Expandable>
+
+### Get Website Logo
+
+Get the logo of the specified website.
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="domain"
+    type="string"
+    required
+  >
+    The domain of the website to get the logo from (eg. "example.com")
+  </ResponseField>
+  <ResponseField
+    name="greyscale"
+    type="boolean"
+  >
+    Whether to return the logo in grayscale (black & white)
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="enum: 64, 128, 256, 512"
+  >
+    Size of the logo to return (64, 128 or 256, 512 pixels)
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="logoUrl"
+    type="string"
+    required
+  >
+    URL to the website logo
+  </ResponseField>
+</Expandable>
+
+### Web Search
+
+Search information on the web. You need to browse to that page to get the full content of the page.
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    What are we searching for?
+  </ResponseField>
+  <ResponseField
+    name="includeSites"
+    type="array"
+  >
+    Include only these domains in the search (max 20)
+  </ResponseField>
+  <ResponseField
+    name="excludeSites"
+    type="array"
+  >
+    Exclude these domains from the search (max 20)
+  </ResponseField>
+  <ResponseField
+    name="count"
+    type="number"
+  >
+    Number of search results to return (default: 10)
+  </ResponseField>
+  <ResponseField
+    name="freshness"
+    type="enum: Day, Week, Month"
+  >
+    Only consider results from the last day, week or month
+  </ResponseField>
+  <ResponseField
+    name="browsePages"
+    type="boolean"
+  >
+    Whether to browse to the pages to get the full content
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="results"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Title of the page
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    URL of the page
+  </ResponseField>
+  <ResponseField
+    name="snippet"
+    type="string"
+    required
+  >
+    A short summary of the page
+  </ResponseField>
+  <ResponseField
+    name="links"
+    type="array"
+  >
+    Useful links on the page
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="page"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="favicon"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

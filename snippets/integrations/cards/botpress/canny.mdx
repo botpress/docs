@@ -1,0 +1,1038 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Comment
+
+Create a new comment on a post
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="authorId"
+    type="string"
+  >
+    The author Id (defaults to Botpress user if not provided)
+  </ResponseField>
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    The post Id
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    Comment text
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    Parent comment Id for replies
+  </ResponseField>
+  <ResponseField
+    name="imageURLs"
+    type="array"
+  >
+    Image URLs
+  </ResponseField>
+  <ResponseField
+    name="internal"
+    type="boolean"
+  >
+    Whether this is an internal comment
+  </ResponseField>
+  <ResponseField
+    name="shouldNotifyVoters"
+    type="boolean"
+  >
+    Notify voters
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    Created timestamp
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="commentId"
+    type="string"
+    required
+  >
+    The ID of the created comment
+  </ResponseField>
+</Expandable>
+
+### Create or Update User
+
+Create a new user or update an existing one in Canny
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    User display name (required, 1-50 characters)
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    Your internal user Id
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    User email address
+  </ResponseField>
+  <ResponseField
+    name="avatarURL"
+    type="string"
+  >
+    User avatar URL
+  </ResponseField>
+  <ResponseField
+    name="alias"
+    type="string"
+  >
+    User alias
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+  >
+    User creation timestamp
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="object"
+  >
+    Custom fields
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    The created or updated user object
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatarURL"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isAdmin"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Post
+
+Create a new post in Canny
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="authorId"
+    type="string"
+  >
+    The author Id (defaults to Botpress user if not provided)
+  </ResponseField>
+  <ResponseField
+    name="boardId"
+    type="string"
+    required
+  >
+    The board Id
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    Post title
+  </ResponseField>
+  <ResponseField
+    name="details"
+    type="string"
+    required
+  >
+    Post details
+  </ResponseField>
+  <ResponseField
+    name="byId"
+    type="string"
+  >
+    Admin Id who created the post
+  </ResponseField>
+  <ResponseField
+    name="categoryId"
+    type="string"
+  >
+    Category Id
+  </ResponseField>
+  <ResponseField
+    name="ownerId"
+    type="string"
+  >
+    Owner Id
+  </ResponseField>
+  <ResponseField
+    name="imageURLs"
+    type="array"
+  >
+    Image URLs
+  </ResponseField>
+  <ResponseField
+    name="eta"
+    type="string"
+  >
+    ETA (MM/YYYY)
+  </ResponseField>
+  <ResponseField
+    name="etaPublic"
+    type="boolean"
+  >
+    Make ETA public
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="object"
+  >
+    Custom fields
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    The ID of the created post
+  </ResponseField>
+</Expandable>
+
+### Delete Comment
+
+Delete a comment
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="commentId"
+    type="string"
+    required
+  >
+    The comment Id to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Delete Post
+
+Delete a post
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    The post Id to delete
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Get Comment
+
+Retrieve a comment by ID
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="commentId"
+    type="string"
+    required
+  >
+    The comment Id
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="comment"
+    type="object"
+    required
+  >
+    The retrieved comment object
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorEmail"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postTitle"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="internal"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="likeCount"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Post
+
+Retrieve a post by ID
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    The post Id
+  </ResponseField>
+  <ResponseField
+    name="boardId"
+    type="string"
+  >
+    The board Id
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="post"
+    type="object"
+    required
+  >
+    The retrieved post object
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="details"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorName"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorEmail"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="boardName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="score"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="commentCount"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Boards
+
+List all boards in your Canny workspace
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    Number of boards to fetch
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="number"
+  >
+    Token for pagination - skip this many boards
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="boards"
+    type="array"
+    required
+  >
+    Array of boards
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postCount"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="number"
+  >
+    Token for next page if more boards available
+  </ResponseField>
+</Expandable>
+
+### List Comments
+
+List comments with optional filters
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="postId"
+    type="string"
+  >
+    Filter comments by post Id
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+  >
+    Filter comments by author Id
+  </ResponseField>
+  <ResponseField
+    name="boardId"
+    type="string"
+  >
+    Filter comments by board Id
+  </ResponseField>
+  <ResponseField
+    name="companyId"
+    type="string"
+  >
+    Filter comments by company Id
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    Number of comments to return
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="number"
+  >
+    Token for pagination - skip this many comments
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="comments"
+    type="array"
+    required
+  >
+    Array of comments
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorEmail"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postTitle"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="internal"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="likeCount"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="number"
+  >
+    Token for next page if more comments available
+  </ResponseField>
+</Expandable>
+
+### List Posts
+
+List posts with optional filters
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="boardId"
+    type="string"
+  >
+    Filter posts by board Id
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+  >
+    Filter posts by author Id
+  </ResponseField>
+  <ResponseField
+    name="companyId"
+    type="string"
+  >
+    Filter posts by company Id
+  </ResponseField>
+  <ResponseField
+    name="tagIds"
+    type="array"
+  >
+    Filter posts by tag Ids
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    Number of posts to return
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="number"
+  >
+    Token for pagination - skip this many posts
+  </ResponseField>
+  <ResponseField
+    name="search"
+    type="string"
+  >
+    Search term to filter posts
+  </ResponseField>
+  <ResponseField
+    name="sort"
+    type="enum: newest, oldest, relevance, score, statusChanged, trending"
+  >
+    Sort order for posts
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+  >
+    Filter posts by status
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="posts"
+    type="array"
+    required
+  >
+    Array of posts
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="details"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorName"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="authorEmail"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="boardName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="score"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="commentCount"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="number"
+  >
+    Token for next page if more posts available
+  </ResponseField>
+</Expandable>
+
+### List Users
+
+List all users in your Canny workspace with pagination
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    Number of users to fetch (1-100, defaults to 10)
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    Token for pagination from previous request
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="users"
+    type="array"
+    required
+  >
+    Array of users
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatarURL"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isAdmin"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    Token for next page if more users available
+  </ResponseField>
+</Expandable>
+
+### Update Post
+
+Update an existing post
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="postId"
+    type="string"
+    required
+  >
+    The post Id
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    Updated post title
+  </ResponseField>
+  <ResponseField
+    name="details"
+    type="string"
+  >
+    Updated post details
+  </ResponseField>
+  <ResponseField
+    name="eta"
+    type="string"
+  >
+    Updated ETA (MM/YYYY)
+  </ResponseField>
+  <ResponseField
+    name="etaPublic"
+    type="boolean"
+  >
+    Make ETA public
+  </ResponseField>
+  <ResponseField
+    name="imageURLs"
+    type="array"
+  >
+    Updated image URLs
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="object"
+  >
+    Updated custom fields
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+
+{/* vale on */}

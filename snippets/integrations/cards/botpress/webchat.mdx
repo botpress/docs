@@ -1,0 +1,269 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Configure Webchat
+
+Update the webchat configuration during a conversation
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The conversation id of the webchat instance. Usually {{event.conversationId}}
+  </ResponseField>
+  <ResponseField
+    name="config"
+    type="string"
+    required
+  >
+    A JSON string representing the new configuration. You can use {{JSON.stringify(workflow.someVariable)}} to convert an object to JSON
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Send Custom Event
+
+Initiate this action to dispatch a custom event to the webchat. Please ensure to appropriately handle this event within your webpage's code. Usage: 
+
+window.botpressWebChat.onEvent(event => {}, ['TRIGGER'])
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The conversation id of the webchat instance. Usually {{event.conversationId}}
+  </ResponseField>
+  <ResponseField
+    name="event"
+    type="string"
+    required
+  >
+    An event as JSON to send to the webchat instance
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Get or Create a User
+
+Proactively create a user from a bot
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pictureUrl"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    Some unique identifier for the user
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The ID of the conversation in which to add the user
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Get User Data
+
+Get the user's information that was provided when the webchat is initialized.
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    The ID of the user. Usually you can access it using {{event.userId}}
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="userData"
+    type="object"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Hide Webchat
+
+Hide the webchat widget
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The conversation id of the webchat instance. Usually {{event.conversationId}}
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Show Webchat
+
+Show the webchat widget
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The conversation id of the webchat instance. Usually {{event.conversationId}}
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Start Typing Indicator
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="timeout"
+    type="number"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Stop Typing Indicator
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Toggle Webchat
+
+Toggle the visibility of the webchat widget
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    The conversation id of the webchat instance. Usually {{event.conversationId}}
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+
+{/* vale on */}

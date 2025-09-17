@@ -1,0 +1,1079 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Collection
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionInfo"
+    type="object"
+    required
+  >
+    Informations of the collection to create.
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="singularName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="collectionDetails"
+    type="object"
+    required
+  >
+    Details of the new collection
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="singularName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isRequired"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum: Color, DateTime, Email, ExtFileRef, File, Image, Link, Multimage, MultiReference, Number, Option, Phone, PlainText, Reference, RichText, Switch, VideoLink"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isEditable"
+    type="boolean,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="helpText"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="validation"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create Collection item(s)
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="isLiveItems"
+    type="boolean"
+  >
+    checkbox to decide if the list is for live items or not
+  </ResponseField>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    Items to add to the collection
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    Unique identifier for the Item
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    The field data of your Webflow item
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Name of the Item
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    URL structure of the Item in your site. Note: Updates to an item slug will break all links referencing the old slug.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string"
+  >
+    Identifier for the locale of the CMS item
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to archived
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to draft
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    Details of the items created
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    Unique identifier for the Item
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    The field data of your Webflow item
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Name of the Item
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    URL structure of the Item in your site. Note: Updates to an item slug will break all links referencing the old slug.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string"
+  >
+    Identifier for the locale of the CMS item
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to archived
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to draft
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string,null"
+    required
+  >
+    The date the item was last published
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    The date the item was last updated
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    The date the item was created
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Delete Collection
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Delete Item(s)
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="itemIDs"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    Unique identifier for the Item
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Get Collection Details
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="collectionDetails"
+    type="object"
+    required
+  >
+    Details of the collection
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="singularName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isRequired"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum: Color, DateTime, Email, ExtFileRef, File, Image, Link, Multimage, MultiReference, Number, Option, Phone, PlainText, Reference, RichText, Switch, VideoLink"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isEditable"
+    type="boolean,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="helpText"
+    type="string,null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="validation"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Collection Item
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="isLiveItems"
+    type="boolean"
+  >
+    checkbox to decide if the list is for live items or not
+  </ResponseField>
+  <ResponseField
+    name="itemID"
+    type="string"
+    required
+  >
+    The ID of your Webflow item
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="itemDetails"
+    type="object"
+    required
+  >
+    Details of the item
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    Unique identifier for the Item
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    The field data of your Webflow item
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Name of the Item
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    URL structure of the Item in your site. Note: Updates to an item slug will break all links referencing the old slug.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string"
+  >
+    Identifier for the locale of the CMS item
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to archived
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to draft
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string,null"
+    required
+  >
+    The date the item was last published
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    The date the item was last updated
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    The date the item was created
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Collections
+
+**Input**:
+
+This Card has no input fields.
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="collections"
+    type="array"
+    required
+  >
+    Array of collections
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="singularName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List Collection Items
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="pagination"
+    type="object"
+  >
+    Pagination parameters
+
+    <Expandable>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    The number of items to return
+  </ResponseField>
+  <ResponseField
+    name="offset"
+    type="number"
+  >
+    The number of items to skip
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="isLiveItems"
+    type="boolean"
+  >
+    checkbox to decide if the list is for live items or not
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    Array of items
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    Unique identifier for the Item
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    The field data of your Webflow item
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Name of the Item
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    URL structure of the Item in your site. Note: Updates to an item slug will break all links referencing the old slug.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string"
+  >
+    Identifier for the locale of the CMS item
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to archived
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to draft
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string,null"
+    required
+  >
+    The date the item was last published
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    The date the item was last updated
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    The date the item was created
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pagination"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    The number of items to return
+  </ResponseField>
+  <ResponseField
+    name="offset"
+    type="number"
+  >
+    The number of items to skip
+  </ResponseField>
+  <ResponseField
+    name="total"
+    type="number"
+  >
+    Total number of items in the collection
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Publish Item(s)
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="itemIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="publishedItemIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="errors"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Unpublish Live Item(s)
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="itemIds"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Update Item(s)
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="collectionID"
+    type="string"
+    required
+  >
+    The ID of your Webflow collection
+  </ResponseField>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    Array of items to update
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    Unique identifier for the Item
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    The field data of your Webflow item
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Name of the Item
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    URL structure of the Item in your site. Note: Updates to an item slug will break all links referencing the old slug.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string"
+  >
+    Identifier for the locale of the CMS item
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to archived
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to draft
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="isLiveItems"
+    type="boolean"
+  >
+    checkbox to decide if the list is for live items or not
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    Array of updated collection items
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    Unique identifier for the Item
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    The field data of your Webflow item
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Name of the Item
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    URL structure of the Item in your site. Note: Updates to an item slug will break all links referencing the old slug.
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string"
+  >
+    Identifier for the locale of the CMS item
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to archived
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    Boolean determining if the Item is set to draft
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string,null"
+    required
+  >
+    The date the item was last published
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    The date the item was last updated
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    The date the item was created
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}
