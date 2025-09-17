@@ -1,48 +1,49 @@
-const fs = require('fs');
-const fsPromises = require('fs').promises;
-const path = require('path');
+import { admin } from '@botpress/client'
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const fsPromises = fs.promises;
+
+const token = process.env.BOTPRESS_TOKEN
+const workspaceID = process.env.BOTPRESS_WORKSPACE_ID
+
+const client = new admin.Client({
+  token,
+  workspaceID,
+})
 
 async function getIntegrations() {
-    const bearerToken = process.env.BOTPRESS_TOKEN;
-    const workspaceId = process.env.BOTPRESS_WORKSPACE_ID;
-    
-    if (!bearerToken) {
+    if (!token) {
         throw new Error('BOTPRESS_TOKEN environment variable is required');
     }
     
-    if (!workspaceId) {
+    if (!workspaceID) {
         throw new Error('BOTPRESS_WORKSPACE_ID environment variable is required');
     }
-
-    const options = {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${bearerToken}`,
-            'x-workspace-id': workspaceId
-        },
-        body: undefined
-    };
 
     let allIntegrations = [];
     let nextToken = null;
     let pageCount = 0;
+    let options = {
+        version: "latest",
+        sortBy: "name",
+        limit: 1000
+    }
 
     try {
         do {
             pageCount++;
             console.log(`Fetching integrations page ${pageCount}${nextToken ? ` (token: ${nextToken.substring(0, 20)}...)` : ''}`);
             
-            let url = 'https://api.botpress.cloud/v1/admin/hub/integrations?sortBy=name&limit=1000&version=latest';
             if (nextToken) {
-                url += `&nextToken=${encodeURIComponent(nextToken)}`;
+                options = {
+                    ...options,
+                    nextToken: nextToken
+                }
             }
 
-            const response = await fetch(url, options);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
+            const data = await client.listPublicIntegrations(options)
             
             if (data.integrations && Array.isArray(data.integrations)) {
                 allIntegrations = allIntegrations.concat(data.integrations);
@@ -55,9 +56,7 @@ async function getIntegrations() {
 
         console.log(`Completed pagination. Total integrations retrieved: ${allIntegrations.length}`);
         
-        return {
-            integrations: allIntegrations
-        };
+        return allIntegrations;
     } catch (error) {
         console.error('Error fetching integrations:', error);
         throw error;
@@ -65,12 +64,15 @@ async function getIntegrations() {
 }
 
 function filterIntegrations(data) {
-    if (!data || !data.integrations) {
+    if (!data) {
         return {};
     }
     
-    const filtered = data.integrations
-        .filter(integration => integration.ownerWorkspace?.handle === 'botpress')
+    const filtered = data
+        .filter(integration => 
+            integration.ownerWorkspace?.handle === 'botpress' || 
+            integration.ownerWorkspace?.handle === 'plus'
+        )
         .reduce((acc, integration) => {
             acc[integration.name] = {
                 'version': integration.version,
@@ -133,7 +135,7 @@ function compareVersions(current, latest) {
 
 async function updateVersionsFile(latestVersions) {
     const content = `export const integrationVersions = ${JSON.stringify(latestVersions, null, 2)}`;
-    const filePath = './snippets/integrations/versions.mdx';
+    const filePath = './versions.mdx';
     
     await fsPromises.writeFile(filePath, content, 'utf8');
     console.log(`Updated versions file: ${filePath}`);
@@ -152,33 +154,6 @@ async function setGitHubOutput(name, value) {
     }
 }
 
-function formatChangesSummary(updates, newIntegrations) {
-    let summary = '';
-    
-    if (updates.length > 0) {
-        summary += `**Integration Updates (${updates.length}):**\n`;
-        updates.forEach(update => {
-            const changes = [];
-            if (update.versionChanged) {
-                changes.push(`${update.currentVersion} -> ${update.latestVersion}`);
-            }
-            if (update.idChanged) {
-                changes.push(`${update.currentId} -> ${update.latestId}`);
-            }
-            summary += `- ${update.name}: ${changes.join(', ')}\n`;
-        });
-    }
-    
-    if (newIntegrations.length > 0) {
-        if (summary) summary += '\n';
-        summary += `**New Integrations (${newIntegrations.length}):**\n`;
-        newIntegrations.forEach(integration => {
-            summary += `- ${integration.name}: ${integration.version} (${integration.id})\n`;
-        });
-    }
-    
-    return summary.trim();
-}
 
 async function main() {
     try {
@@ -199,18 +174,7 @@ async function main() {
             
             await updateVersionsFile(latestVersions);
             
-            const changesSummary = formatChangesSummary(updates, newIntegrations);
-            const updatedIntegrationsList = [
-                ...updates.map(u => u.name),
-                ...newIntegrations.map(i => i.name)
-            ].join(', ');
-            
             await setGitHubOutput('has_updates', 'true');
-            await setGitHubOutput('changes_summary', changesSummary);
-            await setGitHubOutput('updated_integrations', updatedIntegrationsList);
-            
-            console.log('Changes Summary:');
-            console.log(changesSummary);
         } else {
             console.log('No integration updates found');
             await setGitHubOutput('has_updates', 'false');
@@ -224,6 +188,6 @@ async function main() {
     }
 }
 
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
     main();
 }
