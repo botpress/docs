@@ -1,0 +1,49 @@
+---
+title: Update Webchat configuration
+---
+
+You can update your [Webchat's configuration](/webchat/get-started/configure-your-webchat) dynamically using JavaScript. This is useful if you want to update Webchat's style or settings after it's already loaded on your website.
+
+<Info>
+    You will need:
+
+    - A website with an [embedded bot](/webchat/get-started/quick-start)
+    - Familiarity with JavaScript
+</Info>
+
+## Update configuration
+
+To update Webchat's configuration, you can call the [`window.botpress.config`](/webchat/interact/reference#config) method after Webchat has been initialized:
+
+```js
+window.botpress.config(
+  {
+    configuration: {},
+  }
+);
+```
+
+Include any [`configuration`](/webchat/interact/reference#param-configuration) object you'd like to apply the new configuration.
+
+<Tip>
+  You don't need to provide the entire `configuration` object every time—just the values that you want to update. Any fields you don't include will default to the most recent configuration.
+</Tip>
+
+## Switch to dark theme
+
+Here's an example that updates Webchat's theme to dark mode as soon as Webchat loads:
+
+```js
+const webchatConfig = {
+    "themeMode": "dark",
+};
+
+window.botpress.on('webchat:initialized', () => {
+    window.botpress.config({ configuration: webchatConfig });
+});
+```
+
+The above snippet:
+
+1. Waits until [Webchat is initialized](/webchat/interact/listen-to-events#webchat-is-initalized)
+2. Updates the [`themeMode`](/webchat/interact/reference#param-theme-mode) configuration to `dark`
