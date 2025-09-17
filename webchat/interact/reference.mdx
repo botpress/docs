@@ -306,7 +306,7 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
           name="color"
           type="string"
         >
-          Primary color theme for the webchat interface as a HEX code.
+          Primary color theme for the Webchat interface as a HEX code.
         </ResponseField>
         <ResponseField
           name="themeMode"
@@ -329,8 +329,13 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
         <ResponseField
           name="showPoweredBy"
           type="boolean"
+          deprecated
         >
           Whether to show "Powered by Botpress" branding.
+
+          <Warning>
+            This setting is deprecated and no longer supported. Use the [`footer`](#param-footer) field instead.
+          </Warning>
         </ResponseField>
         <ResponseField
           name="feedbackEnabled"
@@ -348,13 +353,13 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
           name="radius"
           type="number"
         >
-          Border radius for the webchat interface. Must be between 0.5 and 4.
+          Border radius for the Webchat interface. Must be between 0.5 and 4.
         </ResponseField>
         <ResponseField
           name="fontFamily"
           type="string"
         >
-          Custom font family for the webchat interface. Can be one of the default fonts:
+          Custom font family for the Webchat interface. Can be one of the default fonts:
 
           `"inter" | "rubik" | "ibm plex sans" | "fira code"`
 
@@ -368,13 +373,13 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
           name="additionalStylesheet"
           type="string"
         >
-          Custom CSS styles to apply to the webchat interface.
+          Custom CSS styles to apply to the Webchat interface.
         </ResponseField>
         <ResponseField
           name="additionalStylesheetUrl"
           type="string"
         >
-          URL to an external stylesheet to load for the webchat interface.
+          URL to an external stylesheet to load for the Webchat interface.
         </ResponseField>
         <ResponseField
           name="storageLocation"
@@ -386,7 +391,12 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
           name="footer"
           type="string"
         >
-          Custom footer content for the webchat interface.
+          Custom footer content for the Webchat interface. Set to an empty string to remove the footer.
+
+          <Tip>
+          You can use Markdown to create links and stylize the footer text.
+          </Tip>
+
         </ResponseField>
         <ResponseField
           name="headerVariant"
