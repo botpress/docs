@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Create external user
 
-Create an end user in the external service and in Botpress
+<span>{"Create an end user in the external service and in Botpress"}</span>
 
 **Input**:
 
@@ -15,19 +15,19 @@ Create an end user in the external service and in Botpress
     type="string"
     required
   >
-    Display name of the end user
+    <span>{"Display name of the end user"}</span>
   </ResponseField>
   <ResponseField
     name="pictureUrl"
     type="string"
   >
-    URL of the end user's avatar
+    <span>{"URL of the end user's avatar"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    Email address of the end user
+    <span>{"Email address of the end user"}</span>
   </ResponseField>
 </Expandable>
 
@@ -39,13 +39,13 @@ Create an end user in the external service and in Botpress
     type="string"
     required
   >
-    ID of the Botpress user representing the end user
+    <span>{"ID of the Botpress user representing the end user"}</span>
   </ResponseField>
 </Expandable>
 
 ### Start new HITL session
 
-Create a new HITL session in the external service and in Botpress
+<span>{"Create a new HITL session in the external service and in Botpress"}</span>
 
 **Input**:
 
@@ -55,19 +55,19 @@ Create a new HITL session in the external service and in Botpress
     type="string"
     required
   >
-    ID of the Botpress user representing the end user
+    <span>{"ID of the Botpress user representing the end user"}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
   >
-    Title of the HITL session. This corresponds to a ticket title in systems that use tickets.
+    <span>{"Title of the HITL session. This corresponds to a ticket title in systems that use tickets."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the HITL session. This corresponds to a ticket description in systems that use tickets.
+    <span>{"Description of the HITL session. This corresponds to a ticket description in systems that use tickets."}</span>
   </ResponseField>
   <ResponseField
     name="hitlSession"
@@ -80,7 +80,7 @@ Create a new HITL session in the external service and in Botpress
     name="priority"
     type="enum: Low, Medium, High, Urgent"
   >
-    Priority of the conversation. Leave empty for default priority.
+    <span>{"Priority of the conversation. Leave empty for default priority."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -89,7 +89,7 @@ Create a new HITL session in the external service and in Botpress
     type="array"
     required
   >
-    History of all messages in the conversation up to this point. Should be displayed to the human agent in the external service.
+    <span>{"History of all messages in the conversation up to this point. Should be displayed to the human agent in the external service."}</span>
 
     <Expandable title="text properties">
   <ResponseField
@@ -892,13 +892,13 @@ Create a new HITL session in the external service and in Botpress
     type="string"
     required
   >
-    ID of the Botpress conversation representing the HITL session
+    <span>{"ID of the Botpress conversation representing the HITL session"}</span>
   </ResponseField>
 </Expandable>
 
 ### Stop HITL session
 
-Stop an existing HITL session in the external service
+<span>{"Stop an existing HITL session in the external service"}</span>
 
 **Input**:
 
@@ -908,7 +908,7 @@ Stop an existing HITL session in the external service
     type="string"
     required
   >
-    ID of the Botpress conversation representing the HITL session
+    <span>{"ID of the Botpress conversation representing the HITL session"}</span>
   </ResponseField>
 </Expandable>
 

@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Create Event
 
-Creates a new event in the calendar.
+<span>{"Creates a new event in the calendar."}</span>
 
 **Input**:
 
@@ -15,69 +15,69 @@ Creates a new event in the calendar.
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
 </Expandable>
 
@@ -89,96 +89,96 @@ Creates a new event in the calendar.
     type="string"
     required
   >
-    Opaque identifier of the event.
+    <span>{"Opaque identifier of the event."}</span>
   </ResponseField>
   <ResponseField
     name="summary"
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="eventType"
     type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
     required
   >
-    Specific type of the event. This cannot be modified after the event is created.
+    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="htmlLink"
     type="string"
     required
   >
-    URL of the event page in the Google Calendar Web UI.
+    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
 </Expandable>
 
 ### Delete Event
 
-Deletes an event from the calendar.
+<span>{"Deletes an event from the calendar."}</span>
 
 **Input**:
 
@@ -188,7 +188,7 @@ Deletes an event from the calendar.
     type="string"
     required
   >
-    The ID of the calendar event to delete.
+    <span>{"The ID of the calendar event to delete."}</span>
   </ResponseField>
 </Expandable>
 
@@ -214,90 +214,90 @@ This Card has no output.
     type="string"
     required
   >
-    Opaque identifier of the event.
+    <span>{"Opaque identifier of the event."}</span>
   </ResponseField>
   <ResponseField
     name="summary"
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="eventType"
     type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
     required
   >
-    Specific type of the event. This cannot be modified after the event is created.
+    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="htmlLink"
     type="string"
     required
   >
-    URL of the event page in the Google Calendar Web UI.
+    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -425,90 +425,90 @@ This Card has no output.
     type="string"
     required
   >
-    Opaque identifier of the event.
+    <span>{"Opaque identifier of the event."}</span>
   </ResponseField>
   <ResponseField
     name="summary"
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="eventType"
     type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
     required
   >
-    Specific type of the event. This cannot be modified after the event is created.
+    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="htmlLink"
     type="string"
     required
   >
-    URL of the event page in the Google Calendar Web UI.
+    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -528,7 +528,7 @@ This Card has no output.
 
 ### List Events
 
-Retrieves events from the calendar.
+<span>{"Retrieves events from the calendar."}</span>
 
 **Input**:
 
@@ -537,19 +537,19 @@ Retrieves events from the calendar.
     name="count"
     type="number"
   >
-    The maximum number of events to return. Defaults to 100.
+    <span>{"The maximum number of events to return. Defaults to 100."}</span>
   </ResponseField>
   <ResponseField
     name="pageToken"
     type="string"
   >
-    Token specifying which result page to return.
+    <span>{"Token specifying which result page to return."}</span>
   </ResponseField>
   <ResponseField
     name="timeMin"
     type="string"
   >
-    Only return events occurring on or after this date. Must be in RFC3339 format. Defaults to now if not specified.
+    <span>{"Only return events occurring on or after this date. Must be in RFC3339 format. Defaults to now if not specified."}</span>
   </ResponseField>
 </Expandable>
 
@@ -561,7 +561,7 @@ Retrieves events from the calendar.
     type="array"
     required
   >
-    The list of calendar events.
+    <span>{"The list of calendar events."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -569,90 +569,90 @@ Retrieves events from the calendar.
     type="string"
     required
   >
-    Opaque identifier of the event.
+    <span>{"Opaque identifier of the event."}</span>
   </ResponseField>
   <ResponseField
     name="summary"
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="eventType"
     type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
     required
   >
-    Specific type of the event. This cannot be modified after the event is created.
+    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="htmlLink"
     type="string"
     required
   >
-    URL of the event page in the Google Calendar Web UI.
+    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -660,13 +660,13 @@ Retrieves events from the calendar.
     name="nextPageToken"
     type="string"
   >
-    Token used to access the next page of this result. Omitted if no further results are available.
+    <span>{"Token used to access the next page of this result. Omitted if no further results are available."}</span>
   </ResponseField>
 </Expandable>
 
 ### Update Event
 
-Updates an existing event in the calendar. Omitted properties are left unchanged.
+<span>{"Updates an existing event in the calendar. Omitted properties are left unchanged."}</span>
 
 **Input**:
 
@@ -676,76 +676,76 @@ Updates an existing event in the calendar. Omitted properties are left unchanged
     type="string"
     required
   >
-    The ID of the calendar event to update.
+    <span>{"The ID of the calendar event to update."}</span>
   </ResponseField>
   <ResponseField
     name="summary"
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
 </Expandable>
 
@@ -757,90 +757,90 @@ Updates an existing event in the calendar. Omitted properties are left unchanged
     type="string"
     required
   >
-    Opaque identifier of the event.
+    <span>{"Opaque identifier of the event."}</span>
   </ResponseField>
   <ResponseField
     name="summary"
     type="string"
     required
   >
-    Title of the event.
+    <span>{"Title of the event."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the event. Can contain HTML. Optional.
+    <span>{"Description of the event. Can contain HTML. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="location"
     type="string"
   >
-    Geographic location of the event as free-form text. Optional. (e.g., "Meeting Room").
+    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
   </ResponseField>
   <ResponseField
     name="startDateTime"
     type="string"
     required
   >
-    The start date and time in RFC3339 format (e.g., "2023-12-31T10:00:00.000Z").
+    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="endDateTime"
     type="string"
     required
   >
-    The end date and time in RFC3339 format (e.g., "2023-12-31T12:00:00.000Z").
+    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
   </ResponseField>
   <ResponseField
     name="colorId"
     type="string"
   >
-    The color ID of the event. Optional.
+    <span>{"The color ID of the event. Optional."}</span>
   </ResponseField>
   <ResponseField
     name="eventType"
     type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
     required
   >
-    Specific type of the event. This cannot be modified after the event is created.
+    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
   >
-    Whether attendees other than the organizer can invite others to the event. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
   >
-    Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True.
+    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="htmlLink"
     type="string"
     required
   >
-    URL of the event page in the Google Calendar Web UI.
+    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
   </ResponseField>
   <ResponseField
     name="recurrence"
     type="array"
   >
-    List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events.
+    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum: confirmed, tentative, cancelled"
   >
-    Status of the event. Optional. The default value is "confirmed".
+    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="enum: default, public, private, confidential"
   >
-    Visibility of the event. Optional. The default value is "default".
+    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
   </ResponseField>
 </Expandable>
 

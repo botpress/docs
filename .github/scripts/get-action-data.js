@@ -127,6 +127,12 @@ function capitalize(str) {
         .charAt(0).toUpperCase() + str.replace(/([a-z])([A-Z])/g, '$1 $2').slice(1)
 }
 
+function preserveEscaping(text) {
+    if (!text) return '';
+    const escapedText = JSON.stringify(text)
+    return `<span>{${escapedText}}</span>`;
+}
+
 function generateResponseField(name, field, required = []) {
     const isRequired = required.includes(name)
     const title = field['x-zui']?.title || name
@@ -142,7 +148,7 @@ function generateResponseField(name, field, required = []) {
     }
     
     const requiredProp = isRequired ? '\n    required' : ''
-    const description = field.description || ''
+    const description = preserveEscaping(field.description || '')
     
     let fieldContent = `  <ResponseField
     name="${name}"
@@ -229,7 +235,7 @@ function generateExpandableSection(schema, title) {
 
 function generateActionSection(actionName, actionData) {
     const title = actionData.title || capitalize(actionName)
-    const description = actionData.description || ''
+    const description = preserveEscaping(actionData.description || '')
     
     // Generate input section
     const inputSection = actionData.input?.schema?.properties && Object.keys(actionData.input.schema.properties).length > 0

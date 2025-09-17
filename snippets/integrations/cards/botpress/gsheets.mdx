@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Add Sheet
 
-Adds a new sheet to the spreadsheet.
+<span>{"Adds a new sheet to the spreadsheet."}</span>
 
 **Input**:
 
@@ -15,7 +15,7 @@ Adds a new sheet to the spreadsheet.
     type="string"
     required
   >
-    The title of the new sheet to add to the spreadsheet.
+    <span>{"The title of the new sheet to add to the spreadsheet."}</span>
   </ResponseField>
 </Expandable>
 
@@ -27,14 +27,14 @@ Adds a new sheet to the spreadsheet.
     type="string"
     required
   >
-    The spreadsheet ID of the new sheet.
+    <span>{"The spreadsheet ID of the new sheet."}</span>
   </ResponseField>
   <ResponseField
     name="newSheet"
     type="object"
     required
   >
-    The new sheet that was added to the spreadsheet.
+    <span>{"The new sheet that was added to the spreadsheet."}</span>
 
     <Expandable>
   <ResponseField
@@ -42,28 +42,28 @@ Adds a new sheet to the spreadsheet.
     type="number"
     required
   >
-    The ID of the new sheet.
+    <span>{"The ID of the new sheet."}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
     required
   >
-    The title of the new sheet.
+    <span>{"The title of the new sheet."}</span>
   </ResponseField>
   <ResponseField
     name="index"
     type="number"
     required
   >
-    The index of the new sheet within the spreadsheet.
+    <span>{"The index of the new sheet within the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="isHidden"
     type="boolean"
     required
   >
-    Whether the new sheet is hidden.
+    <span>{"Whether the new sheet is hidden."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -71,7 +71,7 @@ Adds a new sheet to the spreadsheet.
 
 ### Append Values
 
-Appends values to the spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table.
+<span>{"Appends values to the spreadsheet. The input range is used to search for existing data and find a \"table\" within that range. Values will be appended to the next row of the table, starting with the first column of the table."}</span>
 
 **Input**:
 
@@ -81,20 +81,20 @@ Appends values to the spreadsheet. The input range is used to search for existin
     type="string"
     required
   >
-    The A1 notation of a range to search for a logical table of data. Values are appended after the last row of the table. (e.g. "Sheet1!A1:B2")
+    <span>{"The A1 notation of a range to search for a logical table of data. Values are appended after the last row of the table. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
   <ResponseField
     name="majorDimension"
     type="enum: ROWS, COLUMNS"
   >
-    If it equals "ROWS", then the values are inserted as rows. If it equals "COLUMNS", then the values are inserted as columns.
+    <span>{"If it equals \"ROWS\", then the values are inserted as rows. If it equals \"COLUMNS\", then the values are inserted as columns."}</span>
   </ResponseField>
   <ResponseField
     name="values"
     type="array"
     required
   >
-    The values to write to the range. This is an array of arrays, where each inner array represents a major dimension (a row or column) of data. (e.g. [["a", "b"], ["c", "d"]])
+    <span>{"The values to write to the range. This is an array of arrays, where each inner array represents a major dimension (a row or column) of data. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
   </ResponseField>
 </Expandable>
 
@@ -106,21 +106,21 @@ Appends values to the spreadsheet. The input range is used to search for existin
     type="string"
     required
   >
-    The spreadsheet the updates were applied to.
+    <span>{"The spreadsheet the updates were applied to."}</span>
   </ResponseField>
   <ResponseField
     name="tableRange"
     type="string"
     required
   >
-    The range (in A1 notation) of the table that values are being appended to (before the values were appended). Empty if no table was found.
+    <span>{"The range (in A1 notation) of the table that values are being appended to (before the values were appended). Empty if no table was found."}</span>
   </ResponseField>
   <ResponseField
     name="updates"
     type="object"
     required
   >
-    The updates that were applied to the spreadsheet.
+    <span>{"The updates that were applied to the spreadsheet."}</span>
 
     <Expandable>
   <ResponseField
@@ -128,35 +128,35 @@ Appends values to the spreadsheet. The input range is used to search for existin
     type="string"
     required
   >
-    The spreadsheet the updates were applied to.
+    <span>{"The spreadsheet the updates were applied to."}</span>
   </ResponseField>
   <ResponseField
     name="updatedRange"
     type="string"
     required
   >
-    The range (in A1 notation) that updates were applied to.
+    <span>{"The range (in A1 notation) that updates were applied to."}</span>
   </ResponseField>
   <ResponseField
     name="updatedRows"
     type="number"
     required
   >
-    The number of rows where at least one cell in the row was updated.
+    <span>{"The number of rows where at least one cell in the row was updated."}</span>
   </ResponseField>
   <ResponseField
     name="updatedColumns"
     type="number"
     required
   >
-    The number of columns where at least one cell in the column was updated.
+    <span>{"The number of columns where at least one cell in the column was updated."}</span>
   </ResponseField>
   <ResponseField
     name="updatedCells"
     type="number"
     required
   >
-    The number of cells updated.
+    <span>{"The number of cells updated."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -164,7 +164,7 @@ Appends values to the spreadsheet. The input range is used to search for existin
 
 ### Clear Values
 
-Clears values from a spreadsheet. Only values are cleared; all other properties of the cell (such as formatting, data validation, etc..) are kept.
+<span>{"Clears values from a spreadsheet. Only values are cleared; all other properties of the cell (such as formatting, data validation, etc..) are kept."}</span>
 
 **Input**:
 
@@ -174,7 +174,7 @@ Clears values from a spreadsheet. Only values are cleared; all other properties 
     type="string"
     required
   >
-    The A1 notation of the range to clear. (e.g. "Sheet1!A1:B2")
+    <span>{"The A1 notation of the range to clear. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
 </Expandable>
 
@@ -186,20 +186,20 @@ Clears values from a spreadsheet. Only values are cleared; all other properties 
     type="string"
     required
   >
-    The spreadsheet the updates were applied to.
+    <span>{"The spreadsheet the updates were applied to."}</span>
   </ResponseField>
   <ResponseField
     name="clearedRange"
     type="string"
     required
   >
-    The range (in A1 notation) that was cleared.
+    <span>{"The range (in A1 notation) that was cleared."}</span>
   </ResponseField>
 </Expandable>
 
 ### Create Named Range in Sheet
 
-Creates a named range in a sheet.
+<span>{"Creates a named range in a sheet."}</span>
 
 **Input**:
 
@@ -209,21 +209,21 @@ Creates a named range in a sheet.
     type="number"
     required
   >
-    The ID of the sheet to create the named range in.
+    <span>{"The ID of the sheet to create the named range in."}</span>
   </ResponseField>
   <ResponseField
     name="rangeName"
     type="string"
     required
   >
-    The name of the named range.
+    <span>{"The name of the named range."}</span>
   </ResponseField>
   <ResponseField
     name="rangeA1"
     type="string"
     required
   >
-    The A1 notation of the range to associate with the named range. (e.g. "Sheet1!A1:B2")
+    <span>{"The A1 notation of the range to associate with the named range. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
 </Expandable>
 
@@ -235,13 +235,13 @@ Creates a named range in a sheet.
     type="string"
     required
   >
-    The ID of the new named range.
+    <span>{"The ID of the new named range."}</span>
   </ResponseField>
 </Expandable>
 
 ### Delete Sheet
 
-Deletes a sheet from the spreadsheet.
+<span>{"Deletes a sheet from the spreadsheet."}</span>
 
 **Input**:
 
@@ -251,7 +251,7 @@ Deletes a sheet from the spreadsheet.
     type="number"
     required
   >
-    The ID of the sheet to delete.
+    <span>{"The ID of the sheet to delete."}</span>
   </ResponseField>
 </Expandable>
 
@@ -261,7 +261,7 @@ This Card has no output.
 
 ### Get All Sheets in Spreadsheet
 
-Returns all sheets in the spreadsheet.
+<span>{"Returns all sheets in the spreadsheet."}</span>
 
 **Input**:
 
@@ -275,7 +275,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    The sheets present in the spreadsheet.
+    <span>{"The sheets present in the spreadsheet."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -283,42 +283,42 @@ This Card has no input fields.
     type="number"
     required
   >
-    The ID of the sheet.
+    <span>{"The ID of the sheet."}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
     required
   >
-    The name of the sheet.
+    <span>{"The name of the sheet."}</span>
   </ResponseField>
   <ResponseField
     name="index"
     type="number"
     required
   >
-    The index of the sheet within the spreadsheet.
+    <span>{"The index of the sheet within the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="isHidden"
     type="boolean"
     required
   >
-    Whether the sheet is hidden.
+    <span>{"Whether the sheet is hidden."}</span>
   </ResponseField>
   <ResponseField
     name="hasProtectedRanges"
     type="boolean"
     required
   >
-    Whether the sheet has protected ranges.
+    <span>{"Whether the sheet has protected ranges."}</span>
   </ResponseField>
   <ResponseField
     name="isFullyProtected"
     type="boolean"
     required
   >
-    Whether the entire sheet is protected.
+    <span>{"Whether the entire sheet is protected."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -326,7 +326,7 @@ This Card has no input fields.
 
 ### Get Info of a SpreadSheet
 
-Returns the properties and metadata of the specified spreadsheet.
+<span>{"Returns the properties and metadata of the specified spreadsheet."}</span>
 
 **Input**:
 
@@ -336,7 +336,7 @@ Returns the properties and metadata of the specified spreadsheet.
     type="array"
     required
   >
-    The fields to include in the response when retrieving spreadsheet properties and metadata. This is a list of field names. (eg. spreadsheetId, properties.title, sheets.properties.sheetId, sheets.properties.title)
+    <span>{"The fields to include in the response when retrieving spreadsheet properties and metadata. This is a list of field names. (eg. spreadsheetId, properties.title, sheets.properties.sheetId, sheets.properties.title)"}</span>
   </ResponseField>
 </Expandable>
 
@@ -347,55 +347,55 @@ Returns the properties and metadata of the specified spreadsheet.
     name="spreadsheetId"
     type="string,null"
   >
-    The spreadsheet ID.
+    <span>{"The spreadsheet ID."}</span>
   </ResponseField>
   <ResponseField
     name="spreadsheetUrl"
     type="string,null"
   >
-    The URL of the spreadsheet.
+    <span>{"The URL of the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="dataSources"
     type="array"
   >
-    The data sources connected to the spreadsheet.
+    <span>{"The data sources connected to the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="dataSourceSchedules"
     type="array"
   >
-    The schedules of the data sources.
+    <span>{"The schedules of the data sources."}</span>
   </ResponseField>
   <ResponseField
     name="developerMetadata"
     type="array"
   >
-    The developer metadata associated with the spreadsheet.
+    <span>{"The developer metadata associated with the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="namedRanges"
     type="array"
   >
-    The named ranges defined in the spreadsheet.
+    <span>{"The named ranges defined in the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="string"
   >
-    The properties of the spreadsheet.
+    <span>{"The properties of the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="sheets"
     type="array"
   >
-    The sheets present in the spreadsheet.
+    <span>{"The sheets present in the spreadsheet."}</span>
   </ResponseField>
 </Expandable>
 
 ### Get Named Ranges
 
-Returns all named ranges in the spreadsheet.
+<span>{"Returns all named ranges in the spreadsheet."}</span>
 
 **Input**:
 
@@ -409,7 +409,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    The named ranges defined in the spreadsheet.
+    <span>{"The named ranges defined in the spreadsheet."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -417,28 +417,28 @@ This Card has no input fields.
     type="string"
     required
   >
-    The ID of the named range.
+    <span>{"The ID of the named range."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the named range.
+    <span>{"The name of the named range."}</span>
   </ResponseField>
   <ResponseField
     name="range"
     type="string"
     required
   >
-    The range of the named range in A1 notation. (e.g. "A1:B2")
+    <span>{"The range of the named range in A1 notation. (e.g. \"A1:B2\")"}</span>
   </ResponseField>
   <ResponseField
     name="sheetId"
     type="number"
     required
   >
-    The ID of the sheet the named range applies to.
+    <span>{"The ID of the sheet the named range applies to."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -446,7 +446,7 @@ This Card has no input fields.
 
 ### Get Protected Ranges
 
-Returns all protected ranges in the spreadsheet.
+<span>{"Returns all protected ranges in the spreadsheet."}</span>
 
 **Input**:
 
@@ -460,7 +460,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    The protected ranges defined in the spreadsheet.
+    <span>{"The protected ranges defined in the spreadsheet."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -468,49 +468,49 @@ This Card has no input fields.
     type="number"
     required
   >
-    The ID of the protected range.
+    <span>{"The ID of the protected range."}</span>
   </ResponseField>
   <ResponseField
     name="namedRangeId"
     type="string"
     required
   >
-    The ID of the named range, if the protected range is backed by a named range.
+    <span>{"The ID of the named range, if the protected range is backed by a named range."}</span>
   </ResponseField>
   <ResponseField
     name="range"
     type="string"
     required
   >
-    The range of the protected range in A1 notation. (e.g. "A1:B2")
+    <span>{"The range of the protected range in A1 notation. (e.g. \"A1:B2\")"}</span>
   </ResponseField>
   <ResponseField
     name="sheetId"
     type="number"
     required
   >
-    The ID of the sheet the protected range applies to.
+    <span>{"The ID of the sheet the protected range applies to."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    The description of the protected range.
+    <span>{"The description of the protected range."}</span>
   </ResponseField>
   <ResponseField
     name="warningOnly"
     type="boolean"
     required
   >
-    Whether the protection displays a warning but still allows editing.
+    <span>{"Whether the protection displays a warning but still allows editing."}</span>
   </ResponseField>
   <ResponseField
     name="requestingUserCanEdit"
     type="boolean"
     required
   >
-    Whether the user adding the protection can edit the protected range.
+    <span>{"Whether the user adding the protection can edit the protected range."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -518,7 +518,7 @@ This Card has no input fields.
 
 ### Get Values
 
-Returns the values of a range in the spreadsheet.
+<span>{"Returns the values of a range in the spreadsheet."}</span>
 
 **Input**:
 
@@ -528,13 +528,13 @@ Returns the values of a range in the spreadsheet.
     type="string"
     required
   >
-    The A1 notation of the range to retrieve. (e.g. "Sheet1!A1:B2")
+    <span>{"The A1 notation of the range to retrieve. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
   <ResponseField
     name="majorDimension"
     type="enum: ROWS, COLUMNS"
   >
-    If it equals "ROWS", then the values are returned as rows. If it equals "COLUMNS", then the values are returned as columns.
+    <span>{"If it equals \"ROWS\", then the values are returned as rows. If it equals \"COLUMNS\", then the values are returned as columns."}</span>
   </ResponseField>
 </Expandable>
 
@@ -546,26 +546,26 @@ Returns the values of a range in the spreadsheet.
     type="string"
     required
   >
-    The range the values cover, in A1 notation. This range indicates the entire requested range, even though the values will exclude trailing rows and columns. (e.g. "Sheet1!A1:B2")
+    <span>{"The range the values cover, in A1 notation. This range indicates the entire requested range, even though the values will exclude trailing rows and columns. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
   <ResponseField
     name="majorDimension"
     type="enum: ROWS, COLUMNS"
   >
-    If it equals "ROWS", then the values are returned in rows. If it equals "COLUMNS", then the values are returned in columns.
+    <span>{"If it equals \"ROWS\", then the values are returned in rows. If it equals \"COLUMNS\", then the values are returned in columns."}</span>
   </ResponseField>
   <ResponseField
     name="values"
     type="array"
     required
   >
-    The data that was read. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension (a row or column). Each item in the inner array corresponds with one cell. (e.g. [["a", "b"], ["c", "d"]])
+    <span>{"The data that was read. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension (a row or column). Each item in the inner array corresponds with one cell. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
   </ResponseField>
 </Expandable>
 
 ### Move Sheet Horizontally
 
-Moves a sheet to a new index in the spreadsheet.
+<span>{"Moves a sheet to a new index in the spreadsheet."}</span>
 
 **Input**:
 
@@ -575,14 +575,14 @@ Moves a sheet to a new index in the spreadsheet.
     type="number"
     required
   >
-    The ID of the sheet to move.
+    <span>{"The ID of the sheet to move."}</span>
   </ResponseField>
   <ResponseField
     name="newIndex"
     type="number"
     required
   >
-    The new index of the sheet within the spreadsheet.
+    <span>{"The new index of the sheet within the spreadsheet."}</span>
   </ResponseField>
 </Expandable>
 
@@ -592,7 +592,7 @@ This Card has no output.
 
 ### Protect Named Range
 
-Creates a protected range from a named range, preventing modification.
+<span>{"Creates a protected range from a named range, preventing modification."}</span>
 
 **Input**:
 
@@ -602,19 +602,19 @@ Creates a protected range from a named range, preventing modification.
     type="string"
     required
   >
-    The ID of the named range to protect.
+    <span>{"The ID of the named range to protect."}</span>
   </ResponseField>
   <ResponseField
     name="warningOnly"
     type="boolean"
   >
-    Whether the protection displays a warning but still allows editing.
+    <span>{"Whether the protection displays a warning but still allows editing."}</span>
   </ResponseField>
   <ResponseField
     name="requestingUserCanEdit"
     type="boolean"
   >
-    Whether the user adding the protection can edit the protected range.
+    <span>{"Whether the user adding the protection can edit the protected range."}</span>
   </ResponseField>
 </Expandable>
 
@@ -626,13 +626,13 @@ Creates a protected range from a named range, preventing modification.
     type="number"
     required
   >
-    The ID of the new protected range.
+    <span>{"The ID of the new protected range."}</span>
   </ResponseField>
 </Expandable>
 
 ### Rename Sheet
 
-Renames a sheet in the spreadsheet.
+<span>{"Renames a sheet in the spreadsheet."}</span>
 
 **Input**:
 
@@ -642,14 +642,14 @@ Renames a sheet in the spreadsheet.
     type="number"
     required
   >
-    The ID of the sheet to rename.
+    <span>{"The ID of the sheet to rename."}</span>
   </ResponseField>
   <ResponseField
     name="newTitle"
     type="string"
     required
   >
-    The new title of the sheet.
+    <span>{"The new title of the sheet."}</span>
   </ResponseField>
 </Expandable>
 
@@ -659,7 +659,7 @@ This Card has no output.
 
 ### Set Sheet Visibility
 
-Sets the visibility of a sheet in the spreadsheet.
+<span>{"Sets the visibility of a sheet in the spreadsheet."}</span>
 
 **Input**:
 
@@ -669,14 +669,14 @@ Sets the visibility of a sheet in the spreadsheet.
     type="number"
     required
   >
-    The ID of the sheet to set visibility.
+    <span>{"The ID of the sheet to set visibility."}</span>
   </ResponseField>
   <ResponseField
     name="isHidden"
     type="boolean"
     required
   >
-    Whether the sheet is hidden.
+    <span>{"Whether the sheet is hidden."}</span>
   </ResponseField>
 </Expandable>
 
@@ -686,7 +686,7 @@ This Card has no output.
 
 ### Unprotect Range
 
-Removes protection from a protected range in the spreadsheet.
+<span>{"Removes protection from a protected range in the spreadsheet."}</span>
 
 **Input**:
 
@@ -696,7 +696,7 @@ Removes protection from a protected range in the spreadsheet.
     type="number"
     required
   >
-    The ID of the protected range to unprotect.
+    <span>{"The ID of the protected range to unprotect."}</span>
   </ResponseField>
 </Expandable>
 
@@ -706,7 +706,7 @@ This Card has no output.
 
 ### Update Values
 
-Sets values in a range in the spreadsheet.
+<span>{"Sets values in a range in the spreadsheet."}</span>
 
 **Input**:
 
@@ -716,20 +716,20 @@ Sets values in a range in the spreadsheet.
     type="string"
     required
   >
-    The A1 notation of the range to update. (e.g. "Sheet1!A1:B2")
+    <span>{"The A1 notation of the range to update. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
   <ResponseField
     name="majorDimension"
     type="enum: ROWS, COLUMNS"
   >
-    If it equals "ROWS", then the values are inserted as rows. If it equals "COLUMNS", then the values are inserted as columns.
+    <span>{"If it equals \"ROWS\", then the values are inserted as rows. If it equals \"COLUMNS\", then the values are inserted as columns."}</span>
   </ResponseField>
   <ResponseField
     name="values"
     type="array"
     required
   >
-    The values to write to the range. This is an array of arrays, where each inner array represents a major dimension (a row or column) of data. (e.g. [["a", "b"], ["c", "d"]])
+    <span>{"The values to write to the range. This is an array of arrays, where each inner array represents a major dimension (a row or column) of data. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
   </ResponseField>
 </Expandable>
 
@@ -741,35 +741,35 @@ Sets values in a range in the spreadsheet.
     type="string"
     required
   >
-    The spreadsheet the updates were applied to.
+    <span>{"The spreadsheet the updates were applied to."}</span>
   </ResponseField>
   <ResponseField
     name="updatedRange"
     type="string"
     required
   >
-    The range (in A1 notation) that updates were applied to.
+    <span>{"The range (in A1 notation) that updates were applied to."}</span>
   </ResponseField>
   <ResponseField
     name="updatedRows"
     type="number"
     required
   >
-    The number of rows where at least one cell in the row was updated.
+    <span>{"The number of rows where at least one cell in the row was updated."}</span>
   </ResponseField>
   <ResponseField
     name="updatedColumns"
     type="number"
     required
   >
-    The number of columns where at least one cell in the column was updated.
+    <span>{"The number of columns where at least one cell in the column was updated."}</span>
   </ResponseField>
   <ResponseField
     name="updatedCells"
     type="number"
     required
   >
-    The number of cells updated.
+    <span>{"The number of cells updated."}</span>
   </ResponseField>
 </Expandable>
 

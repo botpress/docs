@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Create a post
 
-Create a post on feature base
+<span>{"Create a post on feature base"}</span>
 
 **Input**:
 
@@ -15,56 +15,56 @@ Create a post on feature base
     type="string"
     required
   >
-    The title of the submission. It must be at least 2 characters long.
+    <span>{"The title of the submission. It must be at least 2 characters long."}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="string"
     required
   >
-    The board (a.k.a category) of the submission.
+    <span>{"The board (a.k.a category) of the submission."}</span>
   </ResponseField>
   <ResponseField
     name="content"
     type="string"
   >
-    The content of the submission. Can be an empty string.
+    <span>{"The content of the submission. Can be an empty string."}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    The email of the user submitting the post. Will create a new user if the email is not associated with an existing user.
+    <span>{"The email of the user submitting the post. Will create a new user if the email is not associated with an existing user."}</span>
   </ResponseField>
   <ResponseField
     name="authorName"
     type="string"
   >
-    Used when you provide an email. If the email is not associated with an existing user, a new user will be created with this name.
+    <span>{"Used when you provide an email. If the email is not associated with an existing user, a new user will be created with this name."}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
   >
-    The tags associated with the submission. Needs to be an array of tag names.
+    <span>{"The tags associated with the submission. Needs to be an array of tag names."}</span>
   </ResponseField>
   <ResponseField
     name="commentsAllowed"
     type="boolean"
   >
-    Flag indicating whether comments are allowed on the submission.
+    <span>{"Flag indicating whether comments are allowed on the submission."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
   >
-    The status of the submission.
+    <span>{"The status of the submission."}</span>
   </ResponseField>
   <ResponseField
     name="date"
     type="string (date-time)"
   >
-    Set the post creation date.
+    <span>{"Set the post creation date."}</span>
   </ResponseField>
 </Expandable>
 
@@ -76,7 +76,7 @@ Create a post on feature base
     type="object"
     required
   >
-    Represent the created post.
+    <span>{"Represent the created post."}</span>
 
     <Expandable>
   <ResponseField
@@ -92,7 +92,7 @@ Create a post on feature base
 
 ### Delete post
 
-Delete a post
+<span>{"Delete a post"}</span>
 
 **Input**:
 
@@ -102,7 +102,7 @@ Delete a post
     type="string"
     required
   >
-    The id of the submission.
+    <span>{"The id of the submission."}</span>
   </ResponseField>
 </Expandable>
 
@@ -112,7 +112,7 @@ This Card has no output.
 
 ### Get a board
 
-Get a board by ID
+<span>{"Get a board by ID"}</span>
 
 **Input**:
 
@@ -121,7 +121,7 @@ Get a board by ID
     name="id"
     type="string"
   >
-    The unique identifier of the board to retrieve.
+    <span>{"The unique identifier of the board to retrieve."}</span>
   </ResponseField>
 </Expandable>
 
@@ -133,78 +133,78 @@ Get a board by ID
     type="string"
     required
   >
-    The unique identifier of the board.
+    <span>{"The unique identifier of the board."}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="string"
     required
   >
-    The name of the board/category. Example: "Feature Requests"
+    <span>{"The name of the board/category. Example: \"Feature Requests\""}</span>
   </ResponseField>
   <ResponseField
     name="private"
     type="boolean"
   >
-    Flag indicating whether this board is private.
+    <span>{"Flag indicating whether this board is private."}</span>
   </ResponseField>
   <ResponseField
     name="segmentIds"
     type="array"
     required
   >
-    An array of segment IDs associated with this board.
+    <span>{"An array of segment IDs associated with this board."}</span>
   </ResponseField>
   <ResponseField
     name="roles"
     type="array"
     required
   >
-    An array of roles that have access to this board.
+    <span>{"An array of roles that have access to this board."}</span>
   </ResponseField>
   <ResponseField
     name="hiddenFromRoles"
     type="array"
     required
   >
-    An array of roles that cannot see this board.
+    <span>{"An array of roles that cannot see this board."}</span>
   </ResponseField>
   <ResponseField
     name="disablePostCreation"
     type="boolean"
   >
-    Flag indicating whether post creation is disabled for this board.
+    <span>{"Flag indicating whether post creation is disabled for this board."}</span>
   </ResponseField>
   <ResponseField
     name="disableFollowUpQuestions"
     type="boolean"
   >
-    Flag indicating whether follow-up questions are disabled for this board.
+    <span>{"Flag indicating whether follow-up questions are disabled for this board."}</span>
   </ResponseField>
   <ResponseField
     name="customInputFields"
     type="array"
     required
   >
-    An array of custom input fields ids that apply to this board.
+    <span>{"An array of custom input fields ids that apply to this board."}</span>
   </ResponseField>
   <ResponseField
     name="defaultAuthorOnly"
     type="boolean"
   >
-    Flag indicating whether posts in this board are visible to the author only by default.
+    <span>{"Flag indicating whether posts in this board are visible to the author only by default."}</span>
   </ResponseField>
   <ResponseField
     name="defaultCompanyOnly"
     type="boolean"
   >
-    Flag indicating whether posts in this board are visible to the company only by default.
+    <span>{"Flag indicating whether posts in this board are visible to the company only by default."}</span>
   </ResponseField>
 </Expandable>
 
 ### Get Comments
 
-Get a comments thread
+<span>{"Get a comments thread"}</span>
 
 **Input**:
 
@@ -213,55 +213,55 @@ Get a comments thread
     name="submissionId"
     type="string"
   >
-    The id of the submission to get comments for.
+    <span>{"The id of the submission to get comments for."}</span>
   </ResponseField>
   <ResponseField
     name="changelogId"
     type="string"
   >
-    The id of the changelog to get comments for. Accepts both ObjectId and slug. Example: "65f5f3c037fc63b7d43d0f16" or "my-changelog-slug"
+    <span>{"The id of the changelog to get comments for. Accepts both ObjectId and slug. Example: \"65f5f3c037fc63b7d43d0f16\" or \"my-changelog-slug\""}</span>
   </ResponseField>
   <ResponseField
     name="privacy"
     type="enum: public, private, all"
   >
-    Filter comments by privacy setting. Allowed values: "public", "private", "all"
+    <span>{"Filter comments by privacy setting. Allowed values: \"public\", \"private\", \"all\""}</span>
   </ResponseField>
   <ResponseField
     name="inReview"
     type="boolean"
   >
-    Filter comments by whether they are in review. Set to true to get only comments that are in review.
+    <span>{"Filter comments by whether they are in review. Set to true to get only comments that are in review."}</span>
   </ResponseField>
   <ResponseField
     name="commentThreadId"
     type="string"
   >
-    Given a specific comment id, this will return all comments in the thread with the root comment being the comment with the given id.
+    <span>{"Given a specific comment id, this will return all comments in the thread with the root comment being the comment with the given id."}</span>
   </ResponseField>
   <ResponseField
     name="limit"
     type="number"
   >
-    Number of results per page. Default is 10.
+    <span>{"Number of results per page. Default is 10."}</span>
   </ResponseField>
   <ResponseField
     name="page"
     type="number"
   >
-    Page number. Default is 1.
+    <span>{"Page number. Default is 1."}</span>
   </ResponseField>
   <ResponseField
     name="sortBy"
     type="enum: best, top, new, old"
   >
-    Sort order of the results.
+    <span>{"Sort order of the results."}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    Page number. Starts at 1
+    <span>{"Page number. Starts at 1"}</span>
   </ResponseField>
 </Expandable>
 
@@ -273,7 +273,7 @@ Get a comments thread
     type="array"
     required
   >
-    A list of comments.
+    <span>{"A list of comments."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -403,7 +403,7 @@ Get a comments thread
 
 ### List boards
 
-List all boards
+<span>{"List all boards"}</span>
 
 **Input**:
 
@@ -417,7 +417,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    An array of boards.
+    <span>{"An array of boards."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -425,72 +425,72 @@ This Card has no input fields.
     type="string"
     required
   >
-    The unique identifier of the board.
+    <span>{"The unique identifier of the board."}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="string"
     required
   >
-    The name of the board/category. Example: "Feature Requests"
+    <span>{"The name of the board/category. Example: \"Feature Requests\""}</span>
   </ResponseField>
   <ResponseField
     name="private"
     type="boolean"
   >
-    Flag indicating whether this board is private.
+    <span>{"Flag indicating whether this board is private."}</span>
   </ResponseField>
   <ResponseField
     name="segmentIds"
     type="array"
     required
   >
-    An array of segment IDs associated with this board.
+    <span>{"An array of segment IDs associated with this board."}</span>
   </ResponseField>
   <ResponseField
     name="roles"
     type="array"
     required
   >
-    An array of roles that have access to this board.
+    <span>{"An array of roles that have access to this board."}</span>
   </ResponseField>
   <ResponseField
     name="hiddenFromRoles"
     type="array"
     required
   >
-    An array of roles that cannot see this board.
+    <span>{"An array of roles that cannot see this board."}</span>
   </ResponseField>
   <ResponseField
     name="disablePostCreation"
     type="boolean"
   >
-    Flag indicating whether post creation is disabled for this board.
+    <span>{"Flag indicating whether post creation is disabled for this board."}</span>
   </ResponseField>
   <ResponseField
     name="disableFollowUpQuestions"
     type="boolean"
   >
-    Flag indicating whether follow-up questions are disabled for this board.
+    <span>{"Flag indicating whether follow-up questions are disabled for this board."}</span>
   </ResponseField>
   <ResponseField
     name="customInputFields"
     type="array"
     required
   >
-    An array of custom input fields ids that apply to this board.
+    <span>{"An array of custom input fields ids that apply to this board."}</span>
   </ResponseField>
   <ResponseField
     name="defaultAuthorOnly"
     type="boolean"
   >
-    Flag indicating whether posts in this board are visible to the author only by default.
+    <span>{"Flag indicating whether posts in this board are visible to the author only by default."}</span>
   </ResponseField>
   <ResponseField
     name="defaultCompanyOnly"
     type="boolean"
   >
-    Flag indicating whether posts in this board are visible to the company only by default.
+    <span>{"Flag indicating whether posts in this board are visible to the company only by default."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -498,7 +498,7 @@ This Card has no input fields.
 
 ### List posts
 
-List all posts
+<span>{"List all posts"}</span>
 
 **Input**:
 
@@ -507,61 +507,61 @@ List all posts
     name="id"
     type="string"
   >
-    Find submission by it's id.
+    <span>{"Find submission by it's id."}</span>
   </ResponseField>
   <ResponseField
     name="q"
     type="string"
   >
-    Search for posts by title or content.
+    <span>{"Search for posts by title or content."}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="array"
   >
-    Filter posts by providing an array of category(board) names.
+    <span>{"Filter posts by providing an array of category(board) names."}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="array"
   >
-    Filter posts by status ids.
+    <span>{"Filter posts by status ids."}</span>
   </ResponseField>
   <ResponseField
     name="sortBy"
     type="string"
   >
-    Sort posts by a specific attribute.
+    <span>{"Sort posts by a specific attribute."}</span>
   </ResponseField>
   <ResponseField
     name="startDate"
     type="string (date-time)"
   >
-    Get posts created after a specific date.
+    <span>{"Get posts created after a specific date."}</span>
   </ResponseField>
   <ResponseField
     name="endDate"
     type="string (date-time)"
   >
-    Get posts created before a specific date.
+    <span>{"Get posts created before a specific date."}</span>
   </ResponseField>
   <ResponseField
     name="limit"
     type="number"
   >
-    Number of results per page
+    <span>{"Number of results per page"}</span>
   </ResponseField>
   <ResponseField
     name="page"
     type="number"
   >
-    Page number. Starts at 1
+    <span>{"Page number. Starts at 1"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    Page number. Starts at 1
+    <span>{"Page number. Starts at 1"}</span>
   </ResponseField>
 </Expandable>
 
@@ -572,14 +572,14 @@ List all posts
     name="nextToken"
     type="string"
   >
-    Use the token to fetch the next page of posts.
+    <span>{"Use the token to fetch the next page of posts."}</span>
   </ResponseField>
   <ResponseField
     name="results"
     type="array"
     required
   >
-    An array of posts.
+    <span>{"An array of posts."}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -647,7 +647,7 @@ List all posts
 
 ### Update post
 
-Update a post
+<span>{"Update a post"}</span>
 
 **Input**:
 
@@ -657,61 +657,61 @@ Update a post
     type="string"
     required
   >
-    The id of the submission.
+    <span>{"The id of the submission."}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
   >
-    The title of the post. Example: "Add dark mode support"
+    <span>{"The title of the post. Example: \"Add dark mode support\""}</span>
   </ResponseField>
   <ResponseField
     name="content"
     type="string"
   >
-    The HTML content of the post. Example: "<p>It would be great to have dark mode support for better viewing at night.</p>"
+    <span>{"The HTML content of the post. Example: \"<p>It would be great to have dark mode support for better viewing at night.</p>\""}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
   >
-    The status of the submission. Example: "In Progress"
+    <span>{"The status of the submission. Example: \"In Progress\""}</span>
   </ResponseField>
   <ResponseField
     name="commentsAllowed"
     type="boolean"
   >
-    Flag indicating whether comments are allowed on the submission. Example: true
+    <span>{"Flag indicating whether comments are allowed on the submission. Example: true"}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="string"
   >
-    The category of the submission. Example: "💡 Feature Request"
+    <span>{"The category of the submission. Example: \"💡 Feature Request\""}</span>
   </ResponseField>
   <ResponseField
     name="sendStatusUpdateEmail"
     type="boolean"
   >
-    Flag indicating whether to send a status update email to the upvoters. Default: false
+    <span>{"Flag indicating whether to send a status update email to the upvoters. Default: false"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
   >
-    The tags of the submission. Example: ["tag1", "tag2"]
+    <span>{"The tags of the submission. Example: [\"tag1\", \"tag2\"]"}</span>
   </ResponseField>
   <ResponseField
     name="inReview"
     type="boolean"
   >
-    Flag indicating whether the submission is in review. In review posts are not visible to users.
+    <span>{"Flag indicating whether the submission is in review. In review posts are not visible to users."}</span>
   </ResponseField>
   <ResponseField
     name="date"
     type="string (date-time)"
   >
-    The post creation date.
+    <span>{"The post creation date."}</span>
   </ResponseField>
 </Expandable>
 

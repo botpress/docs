@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Add card comment
 
-Add a new comment to a card
+<span>{"Add a new comment to a card"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Add a new comment to a card
     type="string"
     required
   >
-    Unique identifier of the card to which a comment will be added
+    <span>{"Unique identifier of the card to which a comment will be added"}</span>
   </ResponseField>
   <ResponseField
     name="commentBody"
     type="string"
     required
   >
-    The body text of the comment
+    <span>{"The body text of the comment"}</span>
   </ResponseField>
 </Expandable>
 
@@ -34,14 +34,14 @@ Add a new comment to a card
     type="string"
     required
   >
-    Output message
+    <span>{"Output message"}</span>
   </ResponseField>
   <ResponseField
     name="newCommentId"
     type="string"
     required
   >
-    Unique identifier of the newly created comment
+    <span>{"Unique identifier of the newly created comment"}</span>
   </ResponseField>
 </Expandable>
 
@@ -536,7 +536,7 @@ This Card has no output.
 
 ### Create new card
 
-Create a card and add it to a list
+<span>{"Create a card and add it to a list"}</span>
 
 **Input**:
 
@@ -546,38 +546,38 @@ Create a card and add it to a list
     type="string"
     required
   >
-    ID of the list in which to insert the new card
+    <span>{"ID of the list in which to insert the new card"}</span>
   </ResponseField>
   <ResponseField
     name="cardName"
     type="string"
     required
   >
-    Name of the new card
+    <span>{"Name of the new card"}</span>
   </ResponseField>
   <ResponseField
     name="cardBody"
     type="string"
   >
-    Body text of the new card
+    <span>{"Body text of the new card"}</span>
   </ResponseField>
   <ResponseField
     name="members"
     type="array"
   >
-    Members to add to the card (Optional). This should be a list of member IDs.
+    <span>{"Members to add to the card (Optional). This should be a list of member IDs."}</span>
   </ResponseField>
   <ResponseField
     name="labels"
     type="array"
   >
-    Labels to add to the card (Optional). This should be a list of label IDs.
+    <span>{"Labels to add to the card (Optional). This should be a list of label IDs."}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    The due date of the card in ISO 8601 format (Optional).
+    <span>{"The due date of the card in ISO 8601 format (Optional)."}</span>
   </ResponseField>
 </Expandable>
 
@@ -589,20 +589,20 @@ Create a card and add it to a list
     type="string"
     required
   >
-    Output message
+    <span>{"Output message"}</span>
   </ResponseField>
   <ResponseField
     name="newCardId"
     type="string"
     required
   >
-    Unique identifier of the new card
+    <span>{"Unique identifier of the new card"}</span>
   </ResponseField>
 </Expandable>
 
 ### Get all board members
 
-Get all members of a board
+<span>{"Get all members of a board"}</span>
 
 **Input**:
 
@@ -612,7 +612,7 @@ Get all members of a board
     type="string"
     required
   >
-    Unique identifier of the board
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
 </Expandable>
 
@@ -654,7 +654,7 @@ Get all members of a board
 
 ### Get all boards
 
-Get all boards managed by the authenticated user
+<span>{"Get all boards managed by the authenticated user"}</span>
 
 **Input**:
 
@@ -691,7 +691,7 @@ This Card has no input fields.
 
 ### Get all card members
 
-Get all members of a card
+<span>{"Get all members of a card"}</span>
 
 **Input**:
 
@@ -701,7 +701,7 @@ Get all members of a card
     type="string"
     required
   >
-    Unique identifier of the card
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
 </Expandable>
 
@@ -743,7 +743,7 @@ Get all members of a card
 
 ### Get board by ID
 
-Get a board by its unique identifier
+<span>{"Get a board by its unique identifier"}</span>
 
 **Input**:
 
@@ -753,7 +753,7 @@ Get a board by its unique identifier
     type="string"
     required
   >
-    Unique identifier of the board
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
 </Expandable>
 
@@ -788,7 +788,7 @@ Get a board by its unique identifier
 
 ### Get members by name
 
-Find all members whose display name match this name
+<span>{"Find all members whose display name match this name"}</span>
 
 **Input**:
 
@@ -798,14 +798,14 @@ Find all members whose display name match this name
     type="string"
     required
   >
-    Unique identifier of the board
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    Display name of the member
+    <span>{"Display name of the member"}</span>
   </ResponseField>
 </Expandable>
 
@@ -847,7 +847,7 @@ Find all members whose display name match this name
 
 ### Get boards by name
 
-Find all boards whose display name match this name
+<span>{"Find all boards whose display name match this name"}</span>
 
 **Input**:
 
@@ -857,7 +857,7 @@ Find all boards whose display name match this name
     type="string"
     required
   >
-    Display name of the board
+    <span>{"Display name of the board"}</span>
   </ResponseField>
 </Expandable>
 
@@ -892,7 +892,7 @@ Find all boards whose display name match this name
 
 ### Get card by ID
 
-Get a card by its unique identifier
+<span>{"Get a card by its unique identifier"}</span>
 
 **Input**:
 
@@ -902,7 +902,7 @@ Get a card by its unique identifier
     type="string"
     required
   >
-    Unique identifier of the card
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
 </Expandable>
 
@@ -992,7 +992,7 @@ Get a card by its unique identifier
 
 ### Find cards by name name
 
-Find all lists whose display name match this name
+<span>{"Find all lists whose display name match this name"}</span>
 
 **Input**:
 
@@ -1002,14 +1002,14 @@ Find all lists whose display name match this name
     type="string"
     required
   >
-    Unique identifier of the list
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
   <ResponseField
     name="cardName"
     type="string"
     required
   >
-    Display name of the card
+    <span>{"Display name of the card"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1099,7 +1099,7 @@ Find all lists whose display name match this name
 
 ### Get cards in list
 
-Get all cards in a list
+<span>{"Get all cards in a list"}</span>
 
 **Input**:
 
@@ -1109,7 +1109,7 @@ Get all cards in a list
     type="string"
     required
   >
-    Unique identifier of the list
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1199,7 +1199,7 @@ Get all cards in a list
 
 ### Get list by ID
 
-Get a list by its unique identifier
+<span>{"Get a list by its unique identifier"}</span>
 
 **Input**:
 
@@ -1209,7 +1209,7 @@ Get a list by its unique identifier
     type="string"
     required
   >
-    Unique identifier of the list
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1244,7 +1244,7 @@ Get a list by its unique identifier
 
 ### Get lists by name
 
-Find all lists whose display name match this name
+<span>{"Find all lists whose display name match this name"}</span>
 
 **Input**:
 
@@ -1254,14 +1254,14 @@ Find all lists whose display name match this name
     type="string"
     required
   >
-    Unique identifier of the board
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
   <ResponseField
     name="listName"
     type="string"
     required
   >
-    Display name of the list
+    <span>{"Display name of the list"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1296,7 +1296,7 @@ Find all lists whose display name match this name
 
 ### Get lists in board
 
-Get all lists in a board
+<span>{"Get all lists in a board"}</span>
 
 **Input**:
 
@@ -1306,7 +1306,7 @@ Get all lists in a board
     type="string"
     required
   >
-    Unique identifier of the board
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1341,7 +1341,7 @@ Get all lists in a board
 
 ### Get member by ID or username
 
-Get a member by their unique identifier or username
+<span>{"Get a member by their unique identifier or username"}</span>
 
 **Input**:
 
@@ -1351,7 +1351,7 @@ Get a member by their unique identifier or username
     type="string"
     required
   >
-    ID or username of the member to get
+    <span>{"ID or username of the member to get"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1460,7 +1460,7 @@ Get a member by their unique identifier or username
 
 ### Move card down
 
-Move a card n spaces down
+<span>{"Move a card n spaces down"}</span>
 
 **Input**:
 
@@ -1470,13 +1470,13 @@ Move a card n spaces down
     type="string"
     required
   >
-    Unique identifier of the card
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="moveDownByNSpaces"
     type="number"
   >
-    Number of spaces by which to move the card down
+    <span>{"Number of spaces by which to move the card down"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1488,13 +1488,13 @@ Move a card n spaces down
     type="string"
     required
   >
-    Output message
+    <span>{"Output message"}</span>
   </ResponseField>
 </Expandable>
 
 ### Move card to another list
 
-Move a card to another list within the same board
+<span>{"Move a card to another list within the same board"}</span>
 
 **Input**:
 
@@ -1504,14 +1504,14 @@ Move a card to another list within the same board
     type="string"
     required
   >
-    Unique identifier of the card
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="newListId"
     type="string"
     required
   >
-    Unique identifier of the list in which the card will be moved
+    <span>{"Unique identifier of the list in which the card will be moved"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1523,13 +1523,13 @@ Move a card to another list within the same board
     type="string"
     required
   >
-    Output message
+    <span>{"Output message"}</span>
   </ResponseField>
 </Expandable>
 
 ### Move card up
 
-Move a card n spaces up
+<span>{"Move a card n spaces up"}</span>
 
 **Input**:
 
@@ -1539,13 +1539,13 @@ Move a card n spaces up
     type="string"
     required
   >
-    Unique identifier of the card
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="moveUpByNSpaces"
     type="number"
   >
-    Number of spaces by which to move the card up
+    <span>{"Number of spaces by which to move the card up"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1557,13 +1557,13 @@ Move a card n spaces up
     type="string"
     required
   >
-    Output message
+    <span>{"Output message"}</span>
   </ResponseField>
 </Expandable>
 
 ### Update card
 
-Update the details of a card
+<span>{"Update the details of a card"}</span>
 
 **Input**:
 
@@ -1573,61 +1573,61 @@ Update the details of a card
     type="string"
     required
   >
-    Unique identifier of the card
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    The name of the card (Optional) (e.g. "My Test Card"). Leave empty to keep the current name.
+    <span>{"The name of the card (Optional) (e.g. \"My Test Card\"). Leave empty to keep the current name."}</span>
   </ResponseField>
   <ResponseField
     name="bodyText"
     type="string"
   >
-    Body text of the new card (Optional). Leave empty to keep the current body.
+    <span>{"Body text of the new card (Optional). Leave empty to keep the current body."}</span>
   </ResponseField>
   <ResponseField
     name="closedState"
     type="enum: open, archived"
   >
-    Whether the card should be archived (Optional). Enter "open", "archived" (without quotes), or leave empty to keep the previous status.
+    <span>{"Whether the card should be archived (Optional). Enter \"open\", \"archived\" (without quotes), or leave empty to keep the previous status."}</span>
   </ResponseField>
   <ResponseField
     name="completeState"
     type="enum: complete, incomplete"
   >
-    Whether the card should be marked as complete (Optional). Enter "complete", "incomplete" (without quotes), or leave empty to keep the previous status.
+    <span>{"Whether the card should be marked as complete (Optional). Enter \"complete\", \"incomplete\" (without quotes), or leave empty to keep the previous status."}</span>
   </ResponseField>
   <ResponseField
     name="membersToAdd"
     type="array"
   >
-    Members to add to the card (Optional). This should be a list of member IDs. Leave empty to keep the current members.
+    <span>{"Members to add to the card (Optional). This should be a list of member IDs. Leave empty to keep the current members."}</span>
   </ResponseField>
   <ResponseField
     name="membersToRemove"
     type="array"
   >
-    Members to remove from the card (Optional). This should be a list of member IDs. Leave empty to keep the current members.
+    <span>{"Members to remove from the card (Optional). This should be a list of member IDs. Leave empty to keep the current members."}</span>
   </ResponseField>
   <ResponseField
     name="labelsToAdd"
     type="array"
   >
-    Labels to add to the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels.
+    <span>{"Labels to add to the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels."}</span>
   </ResponseField>
   <ResponseField
     name="labelsToRemove"
     type="array"
   >
-    Labels to remove from the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels.
+    <span>{"Labels to remove from the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels."}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    The due date of the card in ISO 8601 format (Optional). Leave empty to keep the current due date.
+    <span>{"The due date of the card in ISO 8601 format (Optional). Leave empty to keep the current due date."}</span>
   </ResponseField>
 </Expandable>
 
@@ -1639,7 +1639,7 @@ Update the details of a card
     type="string"
     required
   >
-    Output message
+    <span>{"Output message"}</span>
   </ResponseField>
 </Expandable>
 

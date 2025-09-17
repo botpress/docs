@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Add Reaction
 
-Add a reaction to a message
+<span>{"Add a reaction to a message"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Add a reaction to a message
     type="string"
     required
   >
-    The name of the reaction to add, ex: thumbsup
+    <span>{"The name of the reaction to add, ex: thumbsup"}</span>
   </ResponseField>
   <ResponseField
     name="messageId"
     type="string"
     required
   >
-    The ID of the message, ex: {{event.messageId}}
+    <span>{"The ID of the message, ex: {{event.messageId}}"}</span>
   </ResponseField>
 </Expandable>
 
@@ -32,7 +32,7 @@ This Card has no output.
 
 ### Find Target
 
-Find a target in Slack (ex: a channel, a user to send a dm, etc)
+<span>{"Find a target in Slack (ex: a channel, a user to send a dm, etc)"}</span>
 
 **Input**:
 
@@ -42,14 +42,14 @@ Find a target in Slack (ex: a channel, a user to send a dm, etc)
     type="string"
     required
   >
-    What to search for, ex name of a channel, a user, etc.
+    <span>{"What to search for, ex name of a channel, a user, etc."}</span>
   </ResponseField>
   <ResponseField
     name="channel"
     type="enum: dm, channel"
     required
   >
-    Which channel to look into, ex: dm, channel
+    <span>{"Which channel to look into, ex: dm, channel"}</span>
   </ResponseField>
 </Expandable>
 
@@ -61,7 +61,7 @@ Find a target in Slack (ex: a channel, a user to send a dm, etc)
     type="array"
     required
   >
-    The matching targets
+    <span>{"The matching targets"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -69,21 +69,21 @@ Find a target in Slack (ex: a channel, a user to send a dm, etc)
     type="string"
     required
   >
-    The display name of the target
+    <span>{"The display name of the target"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="object"
     required
   >
-    The tags of the target
+    <span>{"The tags of the target"}</span>
   </ResponseField>
   <ResponseField
     name="channel"
     type="enum: dm, channel"
     required
   >
-    The type of channel of the target
+    <span>{"The type of channel of the target"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -91,7 +91,7 @@ Find a target in Slack (ex: a channel, a user to send a dm, etc)
 
 ### Get User Profile
 
-Get information about a user
+<span>{"Get information about a user"}</span>
 
 **Input**:
 
@@ -101,7 +101,7 @@ Get information about a user
     type="string"
     required
   >
-    The ID of the user to retrieve information about
+    <span>{"The ID of the user to retrieve information about"}</span>
   </ResponseField>
 </Expandable>
 
@@ -112,31 +112,31 @@ Get information about a user
     name="firstName"
     type="string"
   >
-    The first name of the user
+    <span>{"The first name of the user"}</span>
   </ResponseField>
   <ResponseField
     name="lastName"
     type="string"
   >
-    The last name of the user
+    <span>{"The last name of the user"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    The email of the user
+    <span>{"The email of the user"}</span>
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
   >
-    The display name of the user
+    <span>{"The display name of the user"}</span>
   </ResponseField>
 </Expandable>
 
 ### Retrieve Message
 
-Retrieve a message from Slack
+<span>{"Retrieve a message from Slack"}</span>
 
 **Input**:
 
@@ -146,14 +146,14 @@ Retrieve a message from Slack
     type="string"
     required
   >
-    The timestamp of the message to retrieve
+    <span>{"The timestamp of the message to retrieve"}</span>
   </ResponseField>
   <ResponseField
     name="channel"
     type="string"
     required
   >
-    The channel of the message to retrieve
+    <span>{"The channel of the message to retrieve"}</span>
   </ResponseField>
 </Expandable>
 
@@ -165,34 +165,34 @@ Retrieve a message from Slack
     type="string"
     required
   >
-    The type of the message
+    <span>{"The type of the message"}</span>
   </ResponseField>
   <ResponseField
     name="user"
     type="string"
     required
   >
-    The user who sent the message
+    <span>{"The user who sent the message"}</span>
   </ResponseField>
   <ResponseField
     name="ts"
     type="string"
     required
   >
-    The timestamp of the message
+    <span>{"The timestamp of the message"}</span>
   </ResponseField>
   <ResponseField
     name="text"
     type="string"
     required
   >
-    The text of the message
+    <span>{"The text of the message"}</span>
   </ResponseField>
 </Expandable>
 
 ### Start DM Conversation
 
-Initiate a conversation with a user in a DM
+<span>{"Initiate a conversation with a user in a DM"}</span>
 
 **Input**:
 
@@ -202,7 +202,7 @@ Initiate a conversation with a user in a DM
     type="string"
     required
   >
-    The ID of the user to initiate the conversation with
+    <span>{"The ID of the user to initiate the conversation with"}</span>
   </ResponseField>
 </Expandable>
 
@@ -214,14 +214,14 @@ Initiate a conversation with a user in a DM
     type="string"
     required
   >
-    The ID of the user
+    <span>{"The ID of the user"}</span>
   </ResponseField>
   <ResponseField
     name="conversationId"
     type="string"
     required
   >
-    The ID of the new conversation
+    <span>{"The ID of the new conversation"}</span>
   </ResponseField>
 </Expandable>
 
@@ -242,13 +242,13 @@ Initiate a conversation with a user in a DM
     type="string"
     required
   >
-    The message ID to which the typing indicator should be attached
+    <span>{"The message ID to which the typing indicator should be attached"}</span>
   </ResponseField>
   <ResponseField
     name="timeout"
     type="number"
   >
-    The timeout in milliseconds after which the typing indicator should stop
+    <span>{"The timeout in milliseconds after which the typing indicator should stop"}</span>
   </ResponseField>
 </Expandable>
 
@@ -273,7 +273,7 @@ This Card has no output.
     type="string"
     required
   >
-    The message ID from which the typing indicator should be removed
+    <span>{"The message ID from which the typing indicator should be removed"}</span>
   </ResponseField>
 </Expandable>
 
@@ -283,7 +283,7 @@ This Card has no output.
 
 ### Sync Members
 
-Sync Slack workspace members to Botpress users. This action keeps track of the last sync timestamp and will only sync updated members since the last sync.
+<span>{"Sync Slack workspace members to Botpress users. This action keeps track of the last sync timestamp and will only sync updated members since the last sync."}</span>
 
 **Input**:
 
@@ -297,13 +297,13 @@ This Card has no input fields.
     type="number"
     required
   >
-    The number of members synced
+    <span>{"The number of members synced"}</span>
   </ResponseField>
 </Expandable>
 
 ### Update Channel Topic
 
-Update the topic of a channel
+<span>{"Update the topic of a channel"}</span>
 
 **Input**:
 
@@ -313,14 +313,14 @@ Update the topic of a channel
     type="string"
     required
   >
-    The new topic of the channel
+    <span>{"The new topic of the channel"}</span>
   </ResponseField>
   <ResponseField
     name="channelId"
     type="string"
     required
   >
-    The channel id of the target channel
+    <span>{"The channel id of the target channel"}</span>
   </ResponseField>
 </Expandable>
 

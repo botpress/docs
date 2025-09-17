@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Create Contact
 
-Create a contact in Hubspot
+<span>{"Create a contact in Hubspot"}</span>
 
 **Input**:
 
@@ -14,25 +14,25 @@ Create a contact in Hubspot
     name="email"
     type="string"
   >
-    The email of the contact
+    <span>{"The email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
   >
-    The phone number of the contact
+    <span>{"The phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="owner"
     type="string"
   >
-    The ID or email of the owner of the contact
+    <span>{"The ID or email of the owner of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="companies"
     type="array"
   >
-    The companies to which the contact is associated
+    <span>{"The companies to which the contact is associated"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -40,13 +40,13 @@ Create a contact in Hubspot
     type="string"
     required
   >
-    The ID, name or domain of the company
+    <span>{"The ID, name or domain of the company"}</span>
   </ResponseField>
   <ResponseField
     name="primary"
     type="boolean"
   >
-    Whether the contact is the primary contact for the company
+    <span>{"Whether the contact is the primary contact for the company"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -54,13 +54,13 @@ Create a contact in Hubspot
     name="tickets"
     type="array"
   >
-    The tickets to which the contact is associated
+    <span>{"The tickets to which the contact is associated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    Additional properties of the contact
+    <span>{"Additional properties of the contact"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -68,14 +68,14 @@ Create a contact in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The value of the property
+    <span>{"The value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -89,7 +89,7 @@ Create a contact in Hubspot
     type="object"
     required
   >
-    The created contact
+    <span>{"The created contact"}</span>
 
     <Expandable>
   <ResponseField
@@ -97,42 +97,42 @@ Create a contact in Hubspot
     type="string"
     required
   >
-    The ID of the contact
+    <span>{"The ID of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    The email of the contact
+    <span>{"The email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
     required
   >
-    The phone number of the contact
+    <span>{"The phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    The date and time the contact was created
+    <span>{"The date and time the contact was created"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    The date and time the contact was last updated
+    <span>{"The date and time the contact was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the contact
+    <span>{"The properties of the contact"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -140,7 +140,7 @@ Create a contact in Hubspot
 
 ### Create Deal
 
-Create a deal in Hubspot
+<span>{"Create a deal in Hubspot"}</span>
 
 **Input**:
 
@@ -150,13 +150,13 @@ Create a deal in Hubspot
     type="string"
     required
   >
-    The name of the deal
+    <span>{"The name of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties of the deal
+    <span>{"The properties of the deal"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -164,14 +164,14 @@ Create a deal in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The value of the property
+    <span>{"The value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -185,7 +185,7 @@ Create a deal in Hubspot
     type="object"
     required
   >
-    The created deal
+    <span>{"The created deal"}</span>
 
     <Expandable>
   <ResponseField
@@ -193,35 +193,35 @@ Create a deal in Hubspot
     type="string"
     required
   >
-    The ID of the deal
+    <span>{"The ID of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the deal
+    <span>{"The name of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the deal
+    <span>{"Creation date of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the deal was updated
+    <span>{"Last time the deal was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the deal
+    <span>{"The properties of the deal"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -229,7 +229,7 @@ Create a deal in Hubspot
 
 ### Create Lead
 
-Create a lead in Hubspot
+<span>{"Create a lead in Hubspot"}</span>
 
 **Input**:
 
@@ -239,20 +239,20 @@ Create a lead in Hubspot
     type="string"
     required
   >
-    The name of the lead
+    <span>{"The name of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="contact"
     type="string"
     required
   >
-    The contact to associate the lead with. Can be an email address or contact ID
+    <span>{"The contact to associate the lead with. Can be an email address or contact ID"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties of the lead
+    <span>{"The properties of the lead"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -260,14 +260,14 @@ Create a lead in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The value of the property
+    <span>{"The value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -281,7 +281,7 @@ Create a lead in Hubspot
     type="object"
     required
   >
-    The created lead
+    <span>{"The created lead"}</span>
 
     <Expandable>
   <ResponseField
@@ -289,35 +289,35 @@ Create a lead in Hubspot
     type="string"
     required
   >
-    The ID of the lead
+    <span>{"The ID of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the lead
+    <span>{"The name of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the lead
+    <span>{"Creation date of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the lead was updated
+    <span>{"Last time the lead was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the lead
+    <span>{"The properties of the lead"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -325,7 +325,7 @@ Create a lead in Hubspot
 
 ### Create Ticket
 
-Create a ticket in Hubspot
+<span>{"Create a ticket in Hubspot"}</span>
 
 **Input**:
 
@@ -335,69 +335,69 @@ Create a ticket in Hubspot
     type="string"
     required
   >
-    Short summary of ticket
+    <span>{"Short summary of ticket"}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="string"
   >
-    Main reason customer reached out for help
+    <span>{"Main reason customer reached out for help"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the ticket
+    <span>{"Description of the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="priority"
     type="string"
   >
-    The level of attention needed on the ticket
+    <span>{"The level of attention needed on the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="source"
     type="string"
   >
-    The original source of the ticket
+    <span>{"The original source of the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="pipeline"
     type="string"
     required
   >
-    The pipeline that contains this ticket. Can be a name or internal ID
+    <span>{"The pipeline that contains this ticket. Can be a name or internal ID"}</span>
   </ResponseField>
   <ResponseField
     name="pipelineStage"
     type="string"
     required
   >
-    The pipeline stage that contains this ticket. Can be a name or internal ID
+    <span>{"The pipeline stage that contains this ticket. Can be a name or internal ID"}</span>
   </ResponseField>
   <ResponseField
     name="ticketOwner"
     type="string"
   >
-    User the ticket is assigned to. Can be an email address or user ID
+    <span>{"User the ticket is assigned to. Can be an email address or user ID"}</span>
   </ResponseField>
   <ResponseField
     name="requester"
     type="string"
   >
-    The ticket requester. Can be an email address or contact ID
+    <span>{"The ticket requester. Can be an email address or contact ID"}</span>
   </ResponseField>
   <ResponseField
     name="company"
     type="string"
   >
-    The company associated with the ticket. Can be a name, domain, or company ID
+    <span>{"The company associated with the ticket. Can be a name, domain, or company ID"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    Additional ticket properties
+    <span>{"Additional ticket properties"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -405,14 +405,14 @@ Create a ticket in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The value of the property
+    <span>{"The value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -426,7 +426,7 @@ Create a ticket in Hubspot
     type="object"
     required
   >
-    The created ticket
+    <span>{"The created ticket"}</span>
 
     <Expandable>
   <ResponseField
@@ -434,49 +434,49 @@ Create a ticket in Hubspot
     type="string"
     required
   >
-    The ID of the ticket
+    <span>{"The ID of the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="subject"
     type="string"
     required
   >
-    Short summary of ticket
+    <span>{"Short summary of ticket"}</span>
   </ResponseField>
   <ResponseField
     name="category"
     type="string"
     required
   >
-    Main reason customer reached out for help
+    <span>{"Main reason customer reached out for help"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    Description of the ticket
+    <span>{"Description of the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="priority"
     type="string"
     required
   >
-    The level of attention needed on the ticket
+    <span>{"The level of attention needed on the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="source"
     type="string"
     required
   >
-    The original source of the ticket
+    <span>{"The original source of the ticket"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the ticket
+    <span>{"The properties of the ticket"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -484,7 +484,7 @@ Create a ticket in Hubspot
 
 ### Delete Contact
 
-Delete a contact in Hubspot
+<span>{"Delete a contact in Hubspot"}</span>
 
 **Input**:
 
@@ -494,7 +494,7 @@ Delete a contact in Hubspot
     type="string"
     required
   >
-    The ID of the contact to delete
+    <span>{"The ID of the contact to delete"}</span>
   </ResponseField>
 </Expandable>
 
@@ -504,7 +504,7 @@ This Card has no output.
 
 ### Delete Deal
 
-Delete a deal in Hubspot
+<span>{"Delete a deal in Hubspot"}</span>
 
 **Input**:
 
@@ -514,7 +514,7 @@ Delete a deal in Hubspot
     type="string"
     required
   >
-    The ID of the deal to delete
+    <span>{"The ID of the deal to delete"}</span>
   </ResponseField>
 </Expandable>
 
@@ -524,7 +524,7 @@ This Card has no output.
 
 ### Delete Lead
 
-Delete a lead in Hubspot
+<span>{"Delete a lead in Hubspot"}</span>
 
 **Input**:
 
@@ -534,7 +534,7 @@ Delete a lead in Hubspot
     type="string"
     required
   >
-    The ID of the lead to delete
+    <span>{"The ID of the lead to delete"}</span>
   </ResponseField>
 </Expandable>
 
@@ -544,7 +544,7 @@ This Card has no output.
 
 ### Get Contact
 
-Get a contact from Hubspot
+<span>{"Get a contact from Hubspot"}</span>
 
 **Input**:
 
@@ -554,13 +554,13 @@ Get a contact from Hubspot
     type="string"
     required
   >
-    The ID or email of the contact to get
+    <span>{"The ID or email of the contact to get"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
 </Expandable>
 
@@ -572,7 +572,7 @@ Get a contact from Hubspot
     type="object"
     required
   >
-    The fetched contact
+    <span>{"The fetched contact"}</span>
 
     <Expandable>
   <ResponseField
@@ -580,42 +580,42 @@ Get a contact from Hubspot
     type="string"
     required
   >
-    The ID of the contact
+    <span>{"The ID of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    The email of the contact
+    <span>{"The email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
     required
   >
-    The phone number of the contact
+    <span>{"The phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    The date and time the contact was created
+    <span>{"The date and time the contact was created"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    The date and time the contact was last updated
+    <span>{"The date and time the contact was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the contact
+    <span>{"The properties of the contact"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -623,7 +623,7 @@ Get a contact from Hubspot
 
 ### Get Deal
 
-Get a deal from Hubspot
+<span>{"Get a deal from Hubspot"}</span>
 
 **Input**:
 
@@ -633,13 +633,13 @@ Get a deal from Hubspot
     type="string"
     required
   >
-    The ID of the deal to get
+    <span>{"The ID of the deal to get"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
 </Expandable>
 
@@ -651,7 +651,7 @@ Get a deal from Hubspot
     type="object"
     required
   >
-    The fetched deal
+    <span>{"The fetched deal"}</span>
 
     <Expandable>
   <ResponseField
@@ -659,35 +659,35 @@ Get a deal from Hubspot
     type="string"
     required
   >
-    The ID of the deal
+    <span>{"The ID of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the deal
+    <span>{"The name of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the deal
+    <span>{"Creation date of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the deal was updated
+    <span>{"Last time the deal was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the deal
+    <span>{"The properties of the deal"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -695,7 +695,7 @@ Get a deal from Hubspot
 
 ### Get Lead
 
-Get a lead from Hubspot
+<span>{"Get a lead from Hubspot"}</span>
 
 **Input**:
 
@@ -705,13 +705,13 @@ Get a lead from Hubspot
     type="string"
     required
   >
-    The ID of the lead to get
+    <span>{"The ID of the lead to get"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
 </Expandable>
 
@@ -723,7 +723,7 @@ Get a lead from Hubspot
     type="object"
     required
   >
-    The fetched lead
+    <span>{"The fetched lead"}</span>
 
     <Expandable>
   <ResponseField
@@ -731,35 +731,35 @@ Get a lead from Hubspot
     type="string"
     required
   >
-    The ID of the lead
+    <span>{"The ID of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the lead
+    <span>{"The name of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the lead
+    <span>{"Creation date of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the lead was updated
+    <span>{"Last time the lead was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the lead
+    <span>{"The properties of the lead"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -767,7 +767,7 @@ Get a lead from Hubspot
 
 ### List Contacts
 
-List contacts in Hubspot
+<span>{"List contacts in Hubspot"}</span>
 
 **Input**:
 
@@ -776,21 +776,21 @@ List contacts in Hubspot
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
   <ResponseField
     name="meta"
     type="object"
     required
   >
-    Metadata containing pagination information
+    <span>{"Metadata containing pagination information"}</span>
 
     <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    The token to get the next page of contacts
+    <span>{"The token to get the next page of contacts"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -804,7 +804,7 @@ List contacts in Hubspot
     type="array"
     required
   >
-    The contacts found
+    <span>{"The contacts found"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -812,42 +812,42 @@ List contacts in Hubspot
     type="string"
     required
   >
-    The ID of the contact
+    <span>{"The ID of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    The email of the contact
+    <span>{"The email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
     required
   >
-    The phone number of the contact
+    <span>{"The phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    The date and time the contact was created
+    <span>{"The date and time the contact was created"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    The date and time the contact was last updated
+    <span>{"The date and time the contact was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the contact
+    <span>{"The properties of the contact"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -856,14 +856,14 @@ List contacts in Hubspot
     type="object"
     required
   >
-    Metadata containing pagination information
+    <span>{"Metadata containing pagination information"}</span>
 
     <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    The token to get the next page of contacts
+    <span>{"The token to get the next page of contacts"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -871,7 +871,7 @@ List contacts in Hubspot
 
 ### Search Contact
 
-Search for a contact in Hubspot
+<span>{"Search for a contact in Hubspot"}</span>
 
 **Input**:
 
@@ -880,19 +880,19 @@ Search for a contact in Hubspot
     name="email"
     type="string"
   >
-    The email of the contact to search for
+    <span>{"The email of the contact to search for"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
   >
-    The phone number of the contact to search for
+    <span>{"The phone number of the contact to search for"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
 </Expandable>
 
@@ -904,7 +904,7 @@ Search for a contact in Hubspot
     type="object"
     required
   >
-    The contact found
+    <span>{"The contact found"}</span>
 
     <Expandable>
   <ResponseField
@@ -912,42 +912,42 @@ Search for a contact in Hubspot
     type="string"
     required
   >
-    The ID of the contact
+    <span>{"The ID of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    The email of the contact
+    <span>{"The email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
     required
   >
-    The phone number of the contact
+    <span>{"The phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    The date and time the contact was created
+    <span>{"The date and time the contact was created"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    The date and time the contact was last updated
+    <span>{"The date and time the contact was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the contact
+    <span>{"The properties of the contact"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -955,7 +955,7 @@ Search for a contact in Hubspot
 
 ### Search Deal
 
-Search for a deal in Hubspot
+<span>{"Search for a deal in Hubspot"}</span>
 
 **Input**:
 
@@ -964,13 +964,13 @@ Search for a deal in Hubspot
     name="name"
     type="string"
   >
-    The name of the deal to search for
+    <span>{"The name of the deal to search for"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
 </Expandable>
 
@@ -982,7 +982,7 @@ Search for a deal in Hubspot
     type="object"
     required
   >
-    The deal found
+    <span>{"The deal found"}</span>
 
     <Expandable>
   <ResponseField
@@ -990,35 +990,35 @@ Search for a deal in Hubspot
     type="string"
     required
   >
-    The ID of the deal
+    <span>{"The ID of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the deal
+    <span>{"The name of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the deal
+    <span>{"Creation date of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the deal was updated
+    <span>{"Last time the deal was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the deal
+    <span>{"The properties of the deal"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1026,7 +1026,7 @@ Search for a deal in Hubspot
 
 ### Search Lead
 
-Search for a lead in Hubspot
+<span>{"Search for a lead in Hubspot"}</span>
 
 **Input**:
 
@@ -1035,13 +1035,13 @@ Search for a lead in Hubspot
     name="name"
     type="string"
   >
-    The name of the lead to search for
+    <span>{"The name of the lead to search for"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties to include in the response
+    <span>{"The properties to include in the response"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1053,7 +1053,7 @@ Search for a lead in Hubspot
     type="object"
     required
   >
-    The lead found
+    <span>{"The lead found"}</span>
 
     <Expandable>
   <ResponseField
@@ -1061,35 +1061,35 @@ Search for a lead in Hubspot
     type="string"
     required
   >
-    The ID of the lead
+    <span>{"The ID of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the lead
+    <span>{"The name of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the lead
+    <span>{"Creation date of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the lead was updated
+    <span>{"Last time the lead was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the lead
+    <span>{"The properties of the lead"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1097,7 +1097,7 @@ Search for a lead in Hubspot
 
 ### Update Contact
 
-Update a contact in Hubspot
+<span>{"Update a contact in Hubspot"}</span>
 
 **Input**:
 
@@ -1107,25 +1107,25 @@ Update a contact in Hubspot
     type="string"
     required
   >
-    The ID or email of the contact to update
+    <span>{"The ID or email of the contact to update"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    The new email of the contact
+    <span>{"The new email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
   >
-    The new phone number of the contact
+    <span>{"The new phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    Additional properties of the contact
+    <span>{"Additional properties of the contact"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1133,14 +1133,14 @@ Update a contact in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The new value of the property
+    <span>{"The new value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1154,7 +1154,7 @@ Update a contact in Hubspot
     type="object"
     required
   >
-    The updated contact
+    <span>{"The updated contact"}</span>
 
     <Expandable>
   <ResponseField
@@ -1162,40 +1162,40 @@ Update a contact in Hubspot
     type="string"
     required
   >
-    The ID of the contact
+    <span>{"The ID of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    The email of the contact
+    <span>{"The email of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string"
   >
-    The phone number of the contact
+    <span>{"The phone number of the contact"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    The date and time the contact was created
+    <span>{"The date and time the contact was created"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    The date and time the contact was last updated
+    <span>{"The date and time the contact was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the contact
+    <span>{"The properties of the contact"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1203,7 +1203,7 @@ Update a contact in Hubspot
 
 ### Update Deal
 
-Update a deal in Hubspot
+<span>{"Update a deal in Hubspot"}</span>
 
 **Input**:
 
@@ -1213,19 +1213,19 @@ Update a deal in Hubspot
     type="string"
     required
   >
-    The ID of the deal to update
+    <span>{"The ID of the deal to update"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    The name of the deal
+    <span>{"The name of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties of the deal
+    <span>{"The properties of the deal"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1233,14 +1233,14 @@ Update a deal in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The value of the property
+    <span>{"The value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1254,7 +1254,7 @@ Update a deal in Hubspot
     type="object"
     required
   >
-    The updated deal
+    <span>{"The updated deal"}</span>
 
     <Expandable>
   <ResponseField
@@ -1262,34 +1262,34 @@ Update a deal in Hubspot
     type="string"
     required
   >
-    The ID of the deal
+    <span>{"The ID of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    The name of the deal
+    <span>{"The name of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the deal
+    <span>{"Creation date of the deal"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the deal was updated
+    <span>{"Last time the deal was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the deal
+    <span>{"The properties of the deal"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1297,7 +1297,7 @@ Update a deal in Hubspot
 
 ### Update Lead
 
-Update a lead in Hubspot
+<span>{"Update a lead in Hubspot"}</span>
 
 **Input**:
 
@@ -1307,19 +1307,19 @@ Update a lead in Hubspot
     type="string"
     required
   >
-    The ID of the lead to update
+    <span>{"The ID of the lead to update"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    The name of the lead
+    <span>{"The name of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="array"
   >
-    The properties of the lead
+    <span>{"The properties of the lead"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1327,14 +1327,14 @@ Update a lead in Hubspot
     type="string"
     required
   >
-    The name of the property
+    <span>{"The name of the property"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    The value of the property
+    <span>{"The value of the property"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1348,7 +1348,7 @@ Update a lead in Hubspot
     type="object"
     required
   >
-    The updated lead
+    <span>{"The updated lead"}</span>
 
     <Expandable>
   <ResponseField
@@ -1356,34 +1356,34 @@ Update a lead in Hubspot
     type="string"
     required
   >
-    The ID of the lead
+    <span>{"The ID of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    The name of the lead
+    <span>{"The name of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    Creation date of the lead
+    <span>{"Creation date of the lead"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    Last time the lead was updated
+    <span>{"Last time the lead was updated"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    The properties of the lead
+    <span>{"The properties of the lead"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

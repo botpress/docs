@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Browse Pages
 
-Extract the full content & the metadata of the specified pages as markdown.
+<span>{"Extract the full content & the metadata of the specified pages as markdown."}</span>
 
 **Input**:
 
@@ -21,19 +21,19 @@ Extract the full content & the metadata of the specified pages as markdown.
     name="waitFor"
     type="number"
   >
-    Time to wait before extracting the content (in milliseconds). Set this value higher for dynamic pages.
+    <span>{"Time to wait before extracting the content (in milliseconds). Set this value higher for dynamic pages."}</span>
   </ResponseField>
   <ResponseField
     name="timeout"
     type="number"
   >
-    Timeout for the request (in milliseconds)
+    <span>{"Timeout for the request (in milliseconds)"}</span>
   </ResponseField>
   <ResponseField
     name="maxAge"
     type="number"
   >
-    Maximum age of the cached page content (in seconds)
+    <span>{"Maximum age of the cached page content (in seconds)"}</span>
   </ResponseField>
 </Expandable>
 
@@ -86,7 +86,7 @@ Extract the full content & the metadata of the specified pages as markdown.
 
 ### Capture Screenshot
 
-Capture a screenshot of the specified page.
+<span>{"Capture a screenshot of the specified page."}</span>
 
 **Input**:
 
@@ -102,13 +102,13 @@ Capture a screenshot of the specified page.
     name="javascriptToInject"
     type="string"
   >
-    JavaScript code to inject into the page before taking the screenshot
+    <span>{"JavaScript code to inject into the page before taking the screenshot"}</span>
   </ResponseField>
   <ResponseField
     name="cssToInject"
     type="string"
   >
-    CSS code to inject into the page before taking the screenshot
+    <span>{"CSS code to inject into the page before taking the screenshot"}</span>
   </ResponseField>
   <ResponseField
     name="width"
@@ -138,19 +138,19 @@ Capture a screenshot of the specified page.
     type="string"
     required
   >
-    URL to the captured screenshot
+    <span>{"URL to the captured screenshot"}</span>
   </ResponseField>
   <ResponseField
     name="htmlUrl"
     type="string"
   >
-    URL to the HTML page of the screenshot
+    <span>{"URL to the HTML page of the screenshot"}</span>
   </ResponseField>
 </Expandable>
 
 ### Discover Website URLs
 
-Discovers the URLs of a website by finding links using sitemaps, robots.txt, and crawling.
+<span>{"Discovers the URLs of a website by finding links using sitemaps, robots.txt, and crawling."}</span>
 
 **Input**:
 
@@ -160,13 +160,13 @@ Discovers the URLs of a website by finding links using sitemaps, robots.txt, and
     type="string"
     required
   >
-    The URL of the website to discover URLs from. Can be a domain like example.com or a full URL like sub.example.com/page
+    <span>{"The URL of the website to discover URLs from. Can be a domain like example.com or a full URL like sub.example.com/page"}</span>
   </ResponseField>
   <ResponseField
     name="onlyHttps"
     type="boolean"
   >
-    Whether to only include HTTPS pages
+    <span>{"Whether to only include HTTPS pages"}</span>
   </ResponseField>
   <ResponseField
     name="count"
@@ -178,13 +178,13 @@ Discovers the URLs of a website by finding links using sitemaps, robots.txt, and
     name="include"
     type="array"
   >
-    List of glob patterns to include URLs from the discovery
+    <span>{"List of glob patterns to include URLs from the discovery"}</span>
   </ResponseField>
   <ResponseField
     name="exclude"
     type="array"
   >
-    List of glob patterns to exclude URLs from the discovery. All URLs matching these patterns will be excluded from the results, even if they are included in the "include" patterns.
+    <span>{"List of glob patterns to exclude URLs from the discovery. All URLs matching these patterns will be excluded from the results, even if they are included in the \"include\" patterns."}</span>
   </ResponseField>
 </Expandable>
 
@@ -196,27 +196,27 @@ Discovers the URLs of a website by finding links using sitemaps, robots.txt, and
     type="array"
     required
   >
-    List of discovered URLs
+    <span>{"List of discovered URLs"}</span>
   </ResponseField>
   <ResponseField
     name="excluded"
     type="number"
     required
   >
-    Number of URLs excluded due to robots.txt or filter
+    <span>{"Number of URLs excluded due to robots.txt or filter"}</span>
   </ResponseField>
   <ResponseField
     name="stopReason"
     type="enum: urls_limit_reached, end_of_results, time_limit_reached"
     required
   >
-    Reason for stopping the URLs discovery. 
+    <span>{"Reason for stopping the URLs discovery. "}</span>
   </ResponseField>
 </Expandable>
 
 ### Get Website Logo
 
-Get the logo of the specified website.
+<span>{"Get the logo of the specified website."}</span>
 
 **Input**:
 
@@ -226,19 +226,19 @@ Get the logo of the specified website.
     type="string"
     required
   >
-    The domain of the website to get the logo from (eg. "example.com")
+    <span>{"The domain of the website to get the logo from (eg. \"example.com\")"}</span>
   </ResponseField>
   <ResponseField
     name="greyscale"
     type="boolean"
   >
-    Whether to return the logo in grayscale (black & white)
+    <span>{"Whether to return the logo in grayscale (black & white)"}</span>
   </ResponseField>
   <ResponseField
     name="size"
     type="enum: 64, 128, 256, 512"
   >
-    Size of the logo to return (64, 128 or 256, 512 pixels)
+    <span>{"Size of the logo to return (64, 128 or 256, 512 pixels)"}</span>
   </ResponseField>
 </Expandable>
 
@@ -250,13 +250,13 @@ Get the logo of the specified website.
     type="string"
     required
   >
-    URL to the website logo
+    <span>{"URL to the website logo"}</span>
   </ResponseField>
 </Expandable>
 
 ### Web Search
 
-Search information on the web. You need to browse to that page to get the full content of the page.
+<span>{"Search information on the web. You need to browse to that page to get the full content of the page."}</span>
 
 **Input**:
 
@@ -266,37 +266,37 @@ Search information on the web. You need to browse to that page to get the full c
     type="string"
     required
   >
-    What are we searching for?
+    <span>{"What are we searching for?"}</span>
   </ResponseField>
   <ResponseField
     name="includeSites"
     type="array"
   >
-    Include only these domains in the search (max 20)
+    <span>{"Include only these domains in the search (max 20)"}</span>
   </ResponseField>
   <ResponseField
     name="excludeSites"
     type="array"
   >
-    Exclude these domains from the search (max 20)
+    <span>{"Exclude these domains from the search (max 20)"}</span>
   </ResponseField>
   <ResponseField
     name="count"
     type="number"
   >
-    Number of search results to return (default: 10)
+    <span>{"Number of search results to return (default: 10)"}</span>
   </ResponseField>
   <ResponseField
     name="freshness"
     type="enum: Day, Week, Month"
   >
-    Only consider results from the last day, week or month
+    <span>{"Only consider results from the last day, week or month"}</span>
   </ResponseField>
   <ResponseField
     name="browsePages"
     type="boolean"
   >
-    Whether to browse to the pages to get the full content
+    <span>{"Whether to browse to the pages to get the full content"}</span>
   </ResponseField>
 </Expandable>
 
@@ -316,27 +316,27 @@ Search information on the web. You need to browse to that page to get the full c
     type="string"
     required
   >
-    Title of the page
+    <span>{"Title of the page"}</span>
   </ResponseField>
   <ResponseField
     name="url"
     type="string"
     required
   >
-    URL of the page
+    <span>{"URL of the page"}</span>
   </ResponseField>
   <ResponseField
     name="snippet"
     type="string"
     required
   >
-    A short summary of the page
+    <span>{"A short summary of the page"}</span>
   </ResponseField>
   <ResponseField
     name="links"
     type="array"
   >
-    Useful links on the page
+    <span>{"Useful links on the page"}</span>
 
     <Expandable title="array item properties">
   <ResponseField

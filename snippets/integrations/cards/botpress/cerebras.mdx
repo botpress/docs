@@ -20,7 +20,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     type="enum: gpt-oss-120b, qwen-3-32b, llama-4-scout-17b-16e-instruct, llama3.1-8b, llama3.3-70b"
     required
   >
-    Model to use for content generation
+    <span>{"Model to use for content generation"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -28,21 +28,20 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     name="reasoningEffort"
     type="enum: low, medium, high, dynamic, none"
   >
-    Reasoning effort level to use for models that support reasoning. Specifying "none" will indicate the LLM to not use reasoning (for models that support optional reasoning). A "dynamic" effort will indicate the provider to automatically determine the reasoning effort (if supported by the provider). If not provided the model will not use reasoning for models with optional reasoning or use the default reasoning effort specified by the provider for reasoning-only models.
-Note: A higher reasoning effort will incur in higher output token charges from the LLM provider.
+    <span>{"Reasoning effort level to use for models that support reasoning. Specifying \"none\" will indicate the LLM to not use reasoning (for models that support optional reasoning). A \"dynamic\" effort will indicate the provider to automatically determine the reasoning effort (if supported by the provider). If not provided the model will not use reasoning for models with optional reasoning or use the default reasoning effort specified by the provider for reasoning-only models.\nNote: A higher reasoning effort will incur in higher output token charges from the LLM provider."}</span>
   </ResponseField>
   <ResponseField
     name="systemPrompt"
     type="string"
   >
-    Optional system prompt to guide the model
+    <span>{"Optional system prompt to guide the model"}</span>
   </ResponseField>
   <ResponseField
     name="messages"
     type="array"
     required
   >
-    Array of messages for the model to process
+    <span>{"Array of messages for the model to process"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -62,7 +61,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="toolCalls"
     type="array"
   >
-    Required if `type` is "tool_calls"
+    <span>{"Required if `type` is \"tool_calls\""}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -109,7 +108,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="toolResultCallId"
     type="string"
   >
-    Required if `type` is "tool_result"
+    <span>{"Required if `type` is \"tool_result\""}</span>
   </ResponseField>
   <ResponseField
     name="content"
@@ -124,31 +123,31 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="responseFormat"
     type="enum: text, json_object"
   >
-    Response format expected from the model. If "json_object" is chosen, you must instruct the model to generate JSON either via the system prompt or a user message.
+    <span>{"Response format expected from the model. If \"json_object\" is chosen, you must instruct the model to generate JSON either via the system prompt or a user message."}</span>
   </ResponseField>
   <ResponseField
     name="maxTokens"
     type="number"
   >
-    Maximum number of tokens allowed in the generated response
+    <span>{"Maximum number of tokens allowed in the generated response"}</span>
   </ResponseField>
   <ResponseField
     name="temperature"
     type="number"
   >
-    Sampling temperature for the model. Higher values result in more random outputs.
+    <span>{"Sampling temperature for the model. Higher values result in more random outputs."}</span>
   </ResponseField>
   <ResponseField
     name="topP"
     type="number"
   >
-    Top-p sampling parameter. Limits sampling to the smallest set of tokens with a cumulative probability above the threshold.
+    <span>{"Top-p sampling parameter. Limits sampling to the smallest set of tokens with a cumulative probability above the threshold."}</span>
   </ResponseField>
   <ResponseField
     name="stopSequences"
     type="array"
   >
-    Sequences where the model should stop generating further tokens.
+    <span>{"Sequences where the model should stop generating further tokens."}</span>
   </ResponseField>
   <ResponseField
     name="tools"
@@ -177,7 +176,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     type="string"
     required
   >
-    Function name
+    <span>{"Function name"}</span>
   </ResponseField>
   <ResponseField
     name="description"
@@ -189,7 +188,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="argumentsSchema"
     type="object"
   >
-    JSON schema of the function arguments
+    <span>{"JSON schema of the function arguments"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -212,7 +211,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="functionName"
     type="string"
   >
-    Required if `type` is "specific"
+    <span>{"Required if `type` is \"specific\""}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -226,7 +225,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="debug"
     type="boolean"
   >
-    Set to `true` to output debug information to the bot logs
+    <span>{"Set to `true` to output debug information to the bot logs"}</span>
   </ResponseField>
   <ResponseField
     name="meta"
@@ -239,7 +238,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="promptSource"
     type="string"
   >
-    Source of the prompt, e.g. agent/:id/:version cards/ai-generate, cards/ai-task, nodes/autonomous, etc.
+    <span>{"Source of the prompt, e.g. agent/:id/:version cards/ai-generate, cards/ai-task, nodes/autonomous, etc."}</span>
   </ResponseField>
   <ResponseField
     name="promptCategory"
@@ -251,7 +250,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="integrationName"
     type="string"
   >
-    Name of the integration that originally received the message that initiated this action
+    <span>{"Name of the integration that originally received the message that initiated this action"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -265,21 +264,21 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     type="string"
     required
   >
-    Response ID from LLM provider
+    <span>{"Response ID from LLM provider"}</span>
   </ResponseField>
   <ResponseField
     name="provider"
     type="string"
     required
   >
-    LLM provider name
+    <span>{"LLM provider name"}</span>
   </ResponseField>
   <ResponseField
     name="model"
     type="string"
     required
   >
-    Model name
+    <span>{"Model name"}</span>
   </ResponseField>
   <ResponseField
     name="choices"
@@ -299,7 +298,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="toolCalls"
     type="array"
   >
-    Required if `type` is "tool_calls"
+    <span>{"Required if `type` is \"tool_calls\""}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -346,7 +345,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     name="toolResultCallId"
     type="string"
   >
-    Required if `type` is "tool_result"
+    <span>{"Required if `type` is \"tool_result\""}</span>
   </ResponseField>
   <ResponseField
     name="content"
@@ -391,28 +390,28 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     type="integer"
     required
   >
-    Number of input tokens used by the model
+    <span>{"Number of input tokens used by the model"}</span>
   </ResponseField>
   <ResponseField
     name="inputCost"
     type="number"
     required
   >
-    Cost of the input tokens received by the model, in U.S. dollars
+    <span>{"Cost of the input tokens received by the model, in U.S. dollars"}</span>
   </ResponseField>
   <ResponseField
     name="outputTokens"
     type="integer"
     required
   >
-    Number of output tokens used by the model
+    <span>{"Number of output tokens used by the model"}</span>
   </ResponseField>
   <ResponseField
     name="outputCost"
     type="number"
     required
   >
-    Cost of the output tokens generated by the model, in U.S. dollars
+    <span>{"Cost of the output tokens generated by the model, in U.S. dollars"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -429,7 +428,7 @@ Note: A higher reasoning effort will incur in higher output token charges from t
     type="number"
     required
   >
-    Total cost of the content generation, in U.S. dollars
+    <span>{"Total cost of the content generation, in U.S. dollars"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

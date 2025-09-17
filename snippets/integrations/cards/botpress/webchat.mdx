@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Configure Webchat
 
-Update the webchat configuration during a conversation
+<span>{"Update the webchat configuration during a conversation"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Update the webchat configuration during a conversation
     type="string"
     required
   >
-    The conversation id of the webchat instance. Usually {{event.conversationId}}
+    <span>{"The conversation id of the webchat instance. Usually {{event.conversationId}}"}</span>
   </ResponseField>
   <ResponseField
     name="config"
     type="string"
     required
   >
-    A JSON string representing the new configuration. You can use {{JSON.stringify(workflow.someVariable)}} to convert an object to JSON
+    <span>{"A JSON string representing the new configuration. You can use {{JSON.stringify(workflow.someVariable)}} to convert an object to JSON"}</span>
   </ResponseField>
 </Expandable>
 
@@ -32,9 +32,7 @@ This Card has no output.
 
 ### Send Custom Event
 
-Initiate this action to dispatch a custom event to the webchat. Please ensure to appropriately handle this event within your webpage's code. Usage: 
-
-window.botpressWebChat.onEvent(event => {}, ['TRIGGER'])
+<span>{"Initiate this action to dispatch a custom event to the webchat. Please ensure to appropriately handle this event within your webpage's code. Usage: \n\nwindow.botpressWebChat.onEvent(event => {}, ['TRIGGER'])"}</span>
 
 **Input**:
 
@@ -44,14 +42,14 @@ window.botpressWebChat.onEvent(event => {}, ['TRIGGER'])
     type="string"
     required
   >
-    The conversation id of the webchat instance. Usually {{event.conversationId}}
+    <span>{"The conversation id of the webchat instance. Usually {{event.conversationId}}"}</span>
   </ResponseField>
   <ResponseField
     name="event"
     type="string"
     required
   >
-    An event as JSON to send to the webchat instance
+    <span>{"An event as JSON to send to the webchat instance"}</span>
   </ResponseField>
 </Expandable>
 
@@ -61,7 +59,7 @@ This Card has no output.
 
 ### Get or Create a User
 
-Proactively create a user from a bot
+<span>{"Proactively create a user from a bot"}</span>
 
 **Input**:
 
@@ -97,14 +95,14 @@ Proactively create a user from a bot
     type="string"
     required
   >
-    Some unique identifier for the user
+    <span>{"Some unique identifier for the user"}</span>
   </ResponseField>
   <ResponseField
     name="conversationId"
     type="string"
     required
   >
-    The ID of the conversation in which to add the user
+    <span>{"The ID of the conversation in which to add the user"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -124,7 +122,7 @@ Proactively create a user from a bot
 
 ### Get User Data
 
-Get the user's information that was provided when the webchat is initialized.
+<span>{"Get the user's information that was provided when the webchat is initialized."}</span>
 
 **Input**:
 
@@ -134,7 +132,7 @@ Get the user's information that was provided when the webchat is initialized.
     type="string"
     required
   >
-    The ID of the user. Usually you can access it using {{event.userId}}
+    <span>{"The ID of the user. Usually you can access it using {{event.userId}}"}</span>
   </ResponseField>
 </Expandable>
 
@@ -151,7 +149,7 @@ Get the user's information that was provided when the webchat is initialized.
 
 ### Hide Webchat
 
-Hide the webchat widget
+<span>{"Hide the webchat widget"}</span>
 
 **Input**:
 
@@ -161,7 +159,7 @@ Hide the webchat widget
     type="string"
     required
   >
-    The conversation id of the webchat instance. Usually {{event.conversationId}}
+    <span>{"The conversation id of the webchat instance. Usually {{event.conversationId}}"}</span>
   </ResponseField>
 </Expandable>
 
@@ -171,7 +169,7 @@ This Card has no output.
 
 ### Show Webchat
 
-Show the webchat widget
+<span>{"Show the webchat widget"}</span>
 
 **Input**:
 
@@ -181,7 +179,7 @@ Show the webchat widget
     type="string"
     required
   >
-    The conversation id of the webchat instance. Usually {{event.conversationId}}
+    <span>{"The conversation id of the webchat instance. Usually {{event.conversationId}}"}</span>
   </ResponseField>
 </Expandable>
 
@@ -247,7 +245,7 @@ This Card has no output.
 
 ### Toggle Webchat
 
-Toggle the visibility of the webchat widget
+<span>{"Toggle the visibility of the webchat widget"}</span>
 
 **Input**:
 
@@ -257,7 +255,7 @@ Toggle the visibility of the webchat widget
     type="string"
     required
   >
-    The conversation id of the webchat instance. Usually {{event.conversationId}}
+    <span>{"The conversation id of the webchat instance. Usually {{event.conversationId}}"}</span>
   </ResponseField>
 </Expandable>
 

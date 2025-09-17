@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Get emails
 
-Get the email with specified id from the inbox
+<span>{"Get the email with specified id from the inbox"}</span>
 
 **Input**:
 
@@ -46,7 +46,7 @@ Get the email with specified id from the inbox
     name="date"
     type="string"
   >
-    ISO datetime
+    <span>{"ISO datetime"}</span>
   </ResponseField>
   <ResponseField
     name="sender"
@@ -71,7 +71,7 @@ Get the email with specified id from the inbox
 
 ### List emails
 
-List all emails in the inbox
+<span>{"List all emails in the inbox"}</span>
 
 **Input**:
 
@@ -80,7 +80,7 @@ List all emails in the inbox
     name="nextToken"
     type="string"
   >
-    The page number in the inbox. Starts at 0
+    <span>{"The page number in the inbox. Starts at 0"}</span>
   </ResponseField>
 </Expandable>
 
@@ -119,7 +119,7 @@ List all emails in the inbox
     name="date"
     type="string"
   >
-    ISO datetime
+    <span>{"ISO datetime"}</span>
   </ResponseField>
   <ResponseField
     name="sender"
@@ -146,7 +146,7 @@ List all emails in the inbox
 
 ### Send Email
 
-Send an email using SMTP
+<span>{"Send an email using SMTP"}</span>
 
 **Input**:
 
@@ -156,31 +156,31 @@ Send an email using SMTP
     type="string"
     required
   >
-    The email address of the recipient
+    <span>{"The email address of the recipient"}</span>
   </ResponseField>
   <ResponseField
     name="subject"
     type="string"
   >
-    The subject of the outgoing email
+    <span>{"The subject of the outgoing email"}</span>
   </ResponseField>
   <ResponseField
     name="text"
     type="string"
   >
-    The text contained in the body of the email
+    <span>{"The text contained in the body of the email"}</span>
   </ResponseField>
   <ResponseField
     name="inReplyTo"
     type="string"
   >
-    The id of the email you want to reply to
+    <span>{"The id of the email you want to reply to"}</span>
   </ResponseField>
   <ResponseField
     name="replyTo"
     type="string"
   >
-    The email address to which replies should be sent. This allows recipients to reply to a different address than the sender
+    <span>{"The email address to which replies should be sent. This allows recipients to reply to a different address than the sender"}</span>
   </ResponseField>
 </Expandable>
 
@@ -190,7 +190,7 @@ This Card has no output.
 
 ### Sync Emails
 
-Sends unseen emails as new messages. Call periodically to allow your bot to receive new emails.
+<span>{"Sends unseen emails as new messages. Call periodically to allow your bot to receive new emails."}</span>
 
 **Input**:
 

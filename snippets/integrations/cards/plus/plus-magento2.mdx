@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Get Products
 
-Get products from the Magento instance
+<span>{"Get products from the Magento instance"}</span>
 
 **Input**:
 
@@ -14,7 +14,7 @@ Get products from the Magento instance
     name="searchCriteria"
     type="string"
   >
-    The search criteria to use for the request
+    <span>{"The search criteria to use for the request"}</span>
   </ResponseField>
 </Expandable>
 
@@ -56,7 +56,7 @@ Get products from the Magento instance
 
 ### Get Stock Item
 
-Get stock information for a product by SKU
+<span>{"Get stock information for a product by SKU"}</span>
 
 **Input**:
 
@@ -66,7 +66,7 @@ Get stock information for a product by SKU
     type="string"
     required
   >
-    The SKU of the product to get stock information for
+    <span>{"The SKU of the product to get stock information for"}</span>
   </ResponseField>
 </Expandable>
 
@@ -77,25 +77,25 @@ Get stock information for a product by SKU
     name="qty"
     type="number"
   >
-    The quantity in stock
+    <span>{"The quantity in stock"}</span>
   </ResponseField>
   <ResponseField
     name="is_in_stock"
     type="boolean"
   >
-    Whether the item is in stock
+    <span>{"Whether the item is in stock"}</span>
   </ResponseField>
   <ResponseField
     name="error"
     type="string"
   >
-    Error message if request failed
+    <span>{"Error message if request failed"}</span>
   </ResponseField>
 </Expandable>
 
 ### Sync Products to Botpress Table
 
-Sync products from Magento to a Botpress table. Creates the table automatically if it doesn't exist with standard product columns.
+<span>{"Sync products from Magento to a Botpress table. Creates the table automatically if it doesn't exist with standard product columns."}</span>
 
 **Input**:
 
@@ -105,67 +105,67 @@ Sync products from Magento to a Botpress table. Creates the table automatically 
     type="string"
     required
   >
-    Name of the Botpress table to sync products to (will be created automatically if it doesn't exist)
+    <span>{"Name of the Botpress table to sync products to (will be created automatically if it doesn't exist)"}</span>
   </ResponseField>
   <ResponseField
     name="custom_attributes"
     type="string"
   >
-    Comma-separated list of custom product attributes to sync (e.g., "color,tent_outer_material,tent_type")
+    <span>{"Comma-separated list of custom product attributes to sync (e.g., \"color,tent_outer_material,tent_type\")"}</span>
   </ResponseField>
   <ResponseField
     name="filters_json"
     type="string"
   >
-    JSON array of filter objects, e.g. [{"field": "price", "condition": "gt", "value": "100"}]
+    <span>{"JSON array of filter objects, e.g. [{\"field\": \"price\", \"condition\": \"gt\", \"value\": \"100\"}]"}</span>
   </ResponseField>
   <ResponseField
     name="_currentPage"
     type="number"
   >
-    Current page number
+    <span>{"Current page number"}</span>
   </ResponseField>
   <ResponseField
     name="_totalCount"
     type="number"
   >
-    Total number of products
+    <span>{"Total number of products"}</span>
   </ResponseField>
   <ResponseField
     name="_tableId"
     type="string"
   >
-    ID of the Botpress table
+    <span>{"ID of the Botpress table"}</span>
   </ResponseField>
   <ResponseField
     name="_runId"
     type="string"
   >
-    Sync run ID
+    <span>{"Sync run ID"}</span>
   </ResponseField>
   <ResponseField
     name="_customAttributeCodes"
     type="array"
   >
-    Custom attribute codes
+    <span>{"Custom attribute codes"}</span>
   </ResponseField>
   <ResponseField
     name="_attributeMappings"
     type="string"
   >
-    Attribute mappings as a JSON string
+    <span>{"Attribute mappings as a JSON string"}</span>
   </ResponseField>
   <ResponseField
     name="_filterCriteria"
     type="string"
   >
-    Filter criteria string
+    <span>{"Filter criteria string"}</span>
   </ResponseField>
   <ResponseField
     name="_currentPageProductIndex"
     type="number"
   >
-    Current product index within the page
+    <span>{"Current product index within the page"}</span>
   </ResponseField>
 </Expandable>
 
@@ -177,41 +177,41 @@ Sync products from Magento to a Botpress table. Creates the table automatically 
     type="boolean"
     required
   >
-    Whether the sync was successful
+    <span>{"Whether the sync was successful"}</span>
   </ResponseField>
   <ResponseField
     name="synced_count"
     type="number"
     required
   >
-    Number of products synced
+    <span>{"Number of products synced"}</span>
   </ResponseField>
   <ResponseField
     name="total_count"
     type="number"
     required
   >
-    Total number of products found
+    <span>{"Total number of products found"}</span>
   </ResponseField>
   <ResponseField
     name="table_name"
     type="string"
     required
   >
-    Name of the table products were synced to
+    <span>{"Name of the table products were synced to"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
     required
   >
-    Status of the sync
+    <span>{"Status of the sync"}</span>
   </ResponseField>
   <ResponseField
     name="error"
     type="string"
   >
-    Error message if sync failed
+    <span>{"Error message if sync failed"}</span>
   </ResponseField>
 </Expandable>
 

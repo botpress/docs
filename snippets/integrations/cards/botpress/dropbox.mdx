@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Copy Item
 
-Copy a file or folder to a new location in dropbox
+<span>{"Copy a file or folder to a new location in dropbox"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Copy a file or folder to a new location in dropbox
     type="string"
     required
   >
-    The item's source path
+    <span>{"The item's source path"}</span>
   </ResponseField>
   <ResponseField
     name="toPath"
     type="string"
     required
   >
-    The item's destination path
+    <span>{"The item's destination path"}</span>
   </ResponseField>
 </Expandable>
 
@@ -34,13 +34,13 @@ Copy a file or folder to a new location in dropbox
     type="string"
     required
   >
-    The newly-created item
+    <span>{"The newly-created item"}</span>
   </ResponseField>
 </Expandable>
 
 ### Upload File
 
-Upload a file to dropbox
+<span>{"Upload a file to dropbox"}</span>
 
 **Input**:
 
@@ -50,14 +50,14 @@ Upload a file to dropbox
     type="string"
     required
   >
-    The file's contents
+    <span>{"The file's contents"}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
     required
   >
-    The file's path, including the file name and extension
+    <span>{"The file's path, including the file name and extension"}</span>
   </ResponseField>
 </Expandable>
 
@@ -69,7 +69,7 @@ Upload a file to dropbox
     type="object"
     required
   >
-    The newly-uploaded file
+    <span>{"The newly-uploaded file"}</span>
 
     <Expandable>
   <ResponseField
@@ -77,89 +77,89 @@ Upload a file to dropbox
     type="string"
     required
   >
-    Unique identifier of the item.
+    <span>{"Unique identifier of the item."}</span>
   </ResponseField>
   <ResponseField
     name="itemType"
     type="string"
     required
   >
-    The type of the item.
+    <span>{"The type of the item."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the item, including extension.
+    <span>{"The name of the item, including extension."}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
     required
   >
-    The path to the item in the user's Dropbox.
+    <span>{"The path to the item in the user's Dropbox."}</span>
   </ResponseField>
   <ResponseField
     name="webUrl"
     type="string"
   >
-    The URL to view the item on the Dropbox website.
+    <span>{"The URL to view the item on the Dropbox website."}</span>
   </ResponseField>
   <ResponseField
     name="isDeleted"
     type="boolean"
     required
   >
-    Whether the item has been deleted.
+    <span>{"Whether the item has been deleted."}</span>
   </ResponseField>
   <ResponseField
     name="isShared"
     type="boolean"
     required
   >
-    Whether the item is shared with other users.
+    <span>{"Whether the item is shared with other users."}</span>
   </ResponseField>
   <ResponseField
     name="revision"
     type="string"
     required
   >
-    The file's revision
+    <span>{"The file's revision"}</span>
   </ResponseField>
   <ResponseField
     name="size"
     type="number"
     required
   >
-    The file's size in bytes
+    <span>{"The file's size in bytes"}</span>
   </ResponseField>
   <ResponseField
     name="fileHash"
     type="string"
     required
   >
-    The file's validation hash
+    <span>{"The file's validation hash"}</span>
   </ResponseField>
   <ResponseField
     name="isDownloadable"
     type="boolean"
     required
   >
-    Whether the file is downloadable
+    <span>{"Whether the file is downloadable"}</span>
   </ResponseField>
   <ResponseField
     name="symlinkTarget"
     type="string"
   >
-    The target of the symlink, if the file is a symlink
+    <span>{"The target of the symlink, if the file is a symlink"}</span>
   </ResponseField>
   <ResponseField
     name="modifiedAt"
     type="string"
     required
   >
-    The date and time the file was last modified, formatted as an ISO 8601 timestamp.
+    <span>{"The date and time the file was last modified, formatted as an ISO 8601 timestamp."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -167,7 +167,7 @@ Upload a file to dropbox
 
 ### Create Folder
 
-Create a folder in dropbox
+<span>{"Create a folder in dropbox"}</span>
 
 **Input**:
 
@@ -177,7 +177,7 @@ Create a folder in dropbox
     type="string"
     required
   >
-    The folder's path
+    <span>{"The folder's path"}</span>
   </ResponseField>
 </Expandable>
 
@@ -189,7 +189,7 @@ Create a folder in dropbox
     type="object"
     required
   >
-    The newly-created folder
+    <span>{"The newly-created folder"}</span>
 
     <Expandable>
   <ResponseField
@@ -197,48 +197,48 @@ Create a folder in dropbox
     type="string"
     required
   >
-    Unique identifier of the item.
+    <span>{"Unique identifier of the item."}</span>
   </ResponseField>
   <ResponseField
     name="itemType"
     type="string"
     required
   >
-    The type of the item.
+    <span>{"The type of the item."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the item, including extension.
+    <span>{"The name of the item, including extension."}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
     required
   >
-    The path to the item in the user's Dropbox.
+    <span>{"The path to the item in the user's Dropbox."}</span>
   </ResponseField>
   <ResponseField
     name="webUrl"
     type="string"
   >
-    The URL to view the item on the Dropbox website.
+    <span>{"The URL to view the item on the Dropbox website."}</span>
   </ResponseField>
   <ResponseField
     name="isDeleted"
     type="boolean"
     required
   >
-    Whether the item has been deleted.
+    <span>{"Whether the item has been deleted."}</span>
   </ResponseField>
   <ResponseField
     name="isShared"
     type="boolean"
     required
   >
-    Whether the item is shared with other users.
+    <span>{"Whether the item is shared with other users."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -246,7 +246,7 @@ Create a folder in dropbox
 
 ### Delete Item
 
-Deletes a file or folder from dropbox
+<span>{"Deletes a file or folder from dropbox"}</span>
 
 **Input**:
 
@@ -256,7 +256,7 @@ Deletes a file or folder from dropbox
     type="string"
     required
   >
-    The path of the item to delete
+    <span>{"The path of the item to delete"}</span>
   </ResponseField>
 </Expandable>
 
@@ -266,7 +266,7 @@ This Card has no output.
 
 ### Download File
 
-Download a file from dropbox
+<span>{"Download a file from dropbox"}</span>
 
 **Input**:
 
@@ -276,7 +276,7 @@ Download a file from dropbox
     type="string"
     required
   >
-    The file's path on Dropbox
+    <span>{"The file's path on Dropbox"}</span>
   </ResponseField>
 </Expandable>
 
@@ -288,13 +288,13 @@ Download a file from dropbox
     type="string"
     required
   >
-    The url to download the file from
+    <span>{"The url to download the file from"}</span>
   </ResponseField>
 </Expandable>
 
 ### Download Folder
 
-Download a folder from dropbox
+<span>{"Download a folder from dropbox"}</span>
 
 **Input**:
 
@@ -304,7 +304,7 @@ Download a folder from dropbox
     type="string"
     required
   >
-    The folder's path on Dropbox
+    <span>{"The folder's path on Dropbox"}</span>
   </ResponseField>
 </Expandable>
 
@@ -316,13 +316,13 @@ Download a folder from dropbox
     type="string"
     required
   >
-    The url to download the folder from, compressed as a zip archive.
+    <span>{"The url to download the folder from, compressed as a zip archive."}</span>
   </ResponseField>
 </Expandable>
 
 ### List items in folder
 
-List the files and folders in a folder
+<span>{"List the files and folders in a folder"}</span>
 
 **Input**:
 
@@ -331,32 +331,32 @@ List the files and folders in a folder
     name="folderId"
     type="string"
   >
-    The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="filters"
     type="object"
   >
-    Optional search filters
+    <span>{"Optional search filters"}</span>
 
     <Expandable>
   <ResponseField
     name="itemType"
     type="enum: file, folder"
   >
-    The entity type
+    <span>{"The entity type"}</span>
   </ResponseField>
   <ResponseField
     name="maxSizeInBytes"
     type="number"
   >
-    Filter the items by maximum size (in bytes)
+    <span>{"Filter the items by maximum size (in bytes)"}</span>
   </ResponseField>
   <ResponseField
     name="modifiedAfter"
     type="string (date-time)"
   >
-    Filter the items modified after the given date
+    <span>{"Filter the items modified after the given date"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -364,7 +364,7 @@ List the files and folders in a folder
     name="nextToken"
     type="string"
   >
-    The token to get the next page of items. Leave empty to get the first page.
+    <span>{"The token to get the next page of items. Leave empty to get the first page."}</span>
   </ResponseField>
 </Expandable>
 
@@ -376,7 +376,7 @@ List the files and folders in a folder
     type="array"
     required
   >
-    The files and folders in the folder
+    <span>{"The files and folders in the folder"}</span>
 
     <Expandable title="file properties">
   <ResponseField
@@ -384,7 +384,7 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="type"
@@ -398,37 +398,37 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API."
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    The parent folder ID. Leave empty if the file is in the root folder.
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
   </ResponseField>
   <ResponseField
     name="absolutePath"
     type="string"
   >
-    The absolute path of the file. Leave empty if not available.
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
   </ResponseField>
   <ResponseField
     name="sizeInBytes"
     type="number"
   >
-    The file size in bytes, if available
+    <span>{"The file size in bytes, if available"}</span>
   </ResponseField>
   <ResponseField
     name="lastModifiedDate"
     type="string (date-time)"
   >
-    The last modified date of the file, if available
+    <span>{"The last modified date of the file, if available"}</span>
   </ResponseField>
   <ResponseField
     name="contentHash"
     type="string"
   >
-    The hash of the file content, or version/revision number, if available
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
   </ResponseField>
     </Expandable>
 
@@ -438,7 +438,7 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="type"
@@ -452,19 +452,19 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API."
+    <span>{"The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API.\""}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    The parent folder ID. Leave empty if the folder is in the root folder.
+    <span>{"The parent folder ID. Leave empty if the folder is in the root folder."}</span>
   </ResponseField>
   <ResponseField
     name="absolutePath"
     type="string"
   >
-    The absolute path of the folder. Leave empty if not available.
+    <span>{"The absolute path of the folder. Leave empty if not available."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -480,7 +480,7 @@ List the files and folders in a folder
     name="nextToken"
     type="string"
   >
-    The token to get the next page of items.
+    <span>{"The token to get the next page of items."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -488,7 +488,7 @@ List the files and folders in a folder
 
 ### Transfer file to Botpress
 
-Transfer a file from an external service to Botpress
+<span>{"Transfer a file from an external service to Botpress"}</span>
 
 **Input**:
 
@@ -498,7 +498,7 @@ Transfer a file from an external service to Botpress
     type="object"
     required
   >
-    The file to transfer
+    <span>{"The file to transfer"}</span>
 
     <Expandable>
   <ResponseField
@@ -506,7 +506,7 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="type"
@@ -520,37 +520,37 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API."
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    The parent folder ID. Leave empty if the file is in the root folder.
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
   </ResponseField>
   <ResponseField
     name="absolutePath"
     type="string"
   >
-    The absolute path of the file. Leave empty if not available.
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
   </ResponseField>
   <ResponseField
     name="sizeInBytes"
     type="number"
   >
-    The file size in bytes, if available
+    <span>{"The file size in bytes, if available"}</span>
   </ResponseField>
   <ResponseField
     name="lastModifiedDate"
     type="string (date-time)"
   >
-    The last modified date of the file, if available
+    <span>{"The last modified date of the file, if available"}</span>
   </ResponseField>
   <ResponseField
     name="contentHash"
     type="string"
   >
-    The hash of the file content, or version/revision number, if available
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -559,13 +559,13 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file key to use in Botpress
+    <span>{"The file key to use in Botpress"}</span>
   </ResponseField>
   <ResponseField
     name="shouldIndex"
     type="boolean"
   >
-    Whether to index the file in vector storage
+    <span>{"Whether to index the file in vector storage"}</span>
   </ResponseField>
 </Expandable>
 
@@ -577,13 +577,13 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file ID of the uploaded file on Botpress
+    <span>{"The file ID of the uploaded file on Botpress"}</span>
   </ResponseField>
 </Expandable>
 
 ### List items in a folder
 
-List files and folders in dropbox within a directory
+<span>{"List files and folders in dropbox within a directory"}</span>
 
 **Input**:
 
@@ -592,19 +592,19 @@ List files and folders in dropbox within a directory
     name="path"
     type="string"
   >
-    The folder's path. Leave empty to list the contents of the root folder
+    <span>{"The folder's path. Leave empty to list the contents of the root folder"}</span>
   </ResponseField>
   <ResponseField
     name="recursive"
     type="boolean"
   >
-    Whether to recursively visit subfolders
+    <span>{"Whether to recursively visit subfolders"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    The cursor to continue the pagination
+    <span>{"The cursor to continue the pagination"}</span>
   </ResponseField>
 </Expandable>
 
@@ -616,7 +616,7 @@ List files and folders in dropbox within a directory
     type="array"
     required
   >
-    The list of files and folders in the folder
+    <span>{"The list of files and folders in the folder"}</span>
 
     <Expandable title="option 1 properties">
   <ResponseField
@@ -624,89 +624,89 @@ List files and folders in dropbox within a directory
     type="string"
     required
   >
-    Unique identifier of the item.
+    <span>{"Unique identifier of the item."}</span>
   </ResponseField>
   <ResponseField
     name="itemType"
     type="string"
     required
   >
-    The type of the item.
+    <span>{"The type of the item."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the item, including extension.
+    <span>{"The name of the item, including extension."}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
     required
   >
-    The path to the item in the user's Dropbox.
+    <span>{"The path to the item in the user's Dropbox."}</span>
   </ResponseField>
   <ResponseField
     name="webUrl"
     type="string"
   >
-    The URL to view the item on the Dropbox website.
+    <span>{"The URL to view the item on the Dropbox website."}</span>
   </ResponseField>
   <ResponseField
     name="isDeleted"
     type="boolean"
     required
   >
-    Whether the item has been deleted.
+    <span>{"Whether the item has been deleted."}</span>
   </ResponseField>
   <ResponseField
     name="isShared"
     type="boolean"
     required
   >
-    Whether the item is shared with other users.
+    <span>{"Whether the item is shared with other users."}</span>
   </ResponseField>
   <ResponseField
     name="revision"
     type="string"
     required
   >
-    The file's revision
+    <span>{"The file's revision"}</span>
   </ResponseField>
   <ResponseField
     name="size"
     type="number"
     required
   >
-    The file's size in bytes
+    <span>{"The file's size in bytes"}</span>
   </ResponseField>
   <ResponseField
     name="fileHash"
     type="string"
     required
   >
-    The file's validation hash
+    <span>{"The file's validation hash"}</span>
   </ResponseField>
   <ResponseField
     name="isDownloadable"
     type="boolean"
     required
   >
-    Whether the file is downloadable
+    <span>{"Whether the file is downloadable"}</span>
   </ResponseField>
   <ResponseField
     name="symlinkTarget"
     type="string"
   >
-    The target of the symlink, if the file is a symlink
+    <span>{"The target of the symlink, if the file is a symlink"}</span>
   </ResponseField>
   <ResponseField
     name="modifiedAt"
     type="string"
     required
   >
-    The date and time the file was last modified, formatted as an ISO 8601 timestamp.
+    <span>{"The date and time the file was last modified, formatted as an ISO 8601 timestamp."}</span>
   </ResponseField>
     </Expandable>
 
@@ -716,48 +716,48 @@ List files and folders in dropbox within a directory
     type="string"
     required
   >
-    Unique identifier of the item.
+    <span>{"Unique identifier of the item."}</span>
   </ResponseField>
   <ResponseField
     name="itemType"
     type="string"
     required
   >
-    The type of the item.
+    <span>{"The type of the item."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the item, including extension.
+    <span>{"The name of the item, including extension."}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
     required
   >
-    The path to the item in the user's Dropbox.
+    <span>{"The path to the item in the user's Dropbox."}</span>
   </ResponseField>
   <ResponseField
     name="webUrl"
     type="string"
   >
-    The URL to view the item on the Dropbox website.
+    <span>{"The URL to view the item on the Dropbox website."}</span>
   </ResponseField>
   <ResponseField
     name="isDeleted"
     type="boolean"
     required
   >
-    Whether the item has been deleted.
+    <span>{"Whether the item has been deleted."}</span>
   </ResponseField>
   <ResponseField
     name="isShared"
     type="boolean"
     required
   >
-    Whether the item is shared with other users.
+    <span>{"Whether the item is shared with other users."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -765,13 +765,13 @@ List files and folders in dropbox within a directory
     name="nextToken"
     type="string"
   >
-    The cursor to use for pagination. If the cursor is present, you may use it to fetch the next page of results. If it's not present, it means there are no more results
+    <span>{"The cursor to use for pagination. If the cursor is present, you may use it to fetch the next page of results. If it's not present, it means there are no more results"}</span>
   </ResponseField>
 </Expandable>
 
 ### Move Item
 
-Move a file or folder in dropbox
+<span>{"Move a file or folder in dropbox"}</span>
 
 **Input**:
 
@@ -781,14 +781,14 @@ Move a file or folder in dropbox
     type="string"
     required
   >
-    The item's source path
+    <span>{"The item's source path"}</span>
   </ResponseField>
   <ResponseField
     name="toPath"
     type="string"
     required
   >
-    The item's destination path
+    <span>{"The item's destination path"}</span>
   </ResponseField>
 </Expandable>
 
@@ -800,13 +800,13 @@ Move a file or folder in dropbox
     type="string"
     required
   >
-    The item that was moved
+    <span>{"The item that was moved"}</span>
   </ResponseField>
 </Expandable>
 
 ### Search Items
 
-Search for files and folders in dropbox
+<span>{"Search for files and folders in dropbox"}</span>
 
 **Input**:
 
@@ -816,43 +816,43 @@ Search for files and folders in dropbox
     type="string"
     required
   >
-    Keywords to search for
+    <span>{"Keywords to search for"}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
   >
-    The path to search in
+    <span>{"The path to search in"}</span>
   </ResponseField>
   <ResponseField
     name="orderBy"
     type="enum: relevance, last_modified_time"
   >
-    How to sort the results
+    <span>{"How to sort the results"}</span>
   </ResponseField>
   <ResponseField
     name="fileNameOnly"
     type="boolean"
   >
-    Whether to search only in file names
+    <span>{"Whether to search only in file names"}</span>
   </ResponseField>
   <ResponseField
     name="fileExtensions"
     type="array"
   >
-    The file extensions to search for
+    <span>{"The file extensions to search for"}</span>
   </ResponseField>
   <ResponseField
     name="fileCategories"
     type="array"
   >
-    The file categories to search for
+    <span>{"The file categories to search for"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    The cursor to continue the pagination
+    <span>{"The cursor to continue the pagination"}</span>
   </ResponseField>
 </Expandable>
 
@@ -864,7 +864,7 @@ Search for files and folders in dropbox
     type="array"
     required
   >
-    A list of matches for the query
+    <span>{"A list of matches for the query"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -872,13 +872,13 @@ Search for files and folders in dropbox
     type="string"
     required
   >
-    The matched item
+    <span>{"The matched item"}</span>
   </ResponseField>
   <ResponseField
     name="matchType"
     type="enum: filename, file_content, filename_and_content, image_content, metadata, other"
   >
-    The type of match
+    <span>{"The type of match"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -886,7 +886,7 @@ Search for files and folders in dropbox
     name="nextToken"
     type="string"
   >
-    The cursor to use for pagination. If the cursor is present, you may use it to fetch the next page of results. If it's not present, it means there are no more results
+    <span>{"The cursor to use for pagination. If the cursor is present, you may use it to fetch the next page of results. If it's not present, it means there are no more results"}</span>
   </ResponseField>
 </Expandable>
 

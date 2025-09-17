@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Add Comment to Discussion
 
-Add a comment to a discussion in Notion
+<span>{"Add a comment to a discussion in Notion"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Add a comment to a discussion in Notion
     type="string"
     required
   >
-    The ID of the discussion to add the comment to. Can be found in the URL of the discussion
+    <span>{"The ID of the discussion to add the comment to. Can be found in the URL of the discussion"}</span>
   </ResponseField>
   <ResponseField
     name="commentBody"
     type="string"
     required
   >
-    Must be plain text
+    <span>{"Must be plain text"}</span>
   </ResponseField>
 </Expandable>
 
@@ -32,7 +32,7 @@ This Card has no output.
 
 ### Add Comment to Page
 
-Add a comment to a page in Notion
+<span>{"Add a comment to a page in Notion"}</span>
 
 **Input**:
 
@@ -42,14 +42,14 @@ Add a comment to a page in Notion
     type="string"
     required
   >
-    The ID of the page to add the comment to. Can be found in the URL of the page
+    <span>{"The ID of the page to add the comment to. Can be found in the URL of the page"}</span>
   </ResponseField>
   <ResponseField
     name="commentBody"
     type="string"
     required
   >
-    Must be plain text
+    <span>{"Must be plain text"}</span>
   </ResponseField>
 </Expandable>
 
@@ -59,7 +59,7 @@ This Card has no output.
 
 ### Create Page in Database
 
-Add a new page to a database in Notion
+<span>{"Add a new page to a database in Notion"}</span>
 
 **Input**:
 
@@ -69,14 +69,14 @@ Add a new page to a database in Notion
     type="string"
     required
   >
-    The ID of the database to add the page to. Can be found in the URL of the database
+    <span>{"The ID of the database to add the page to. Can be found in the URL of the database"}</span>
   </ResponseField>
   <ResponseField
     name="pageProperties"
     type="object"
     required
   >
-    The values of the page's properties. Must match the parent database's properties
+    <span>{"The values of the page's properties. Must match the parent database's properties"}</span>
   </ResponseField>
 </Expandable>
 
@@ -86,7 +86,7 @@ This Card has no output.
 
 ### Delete Block
 
-Delete a block in Notion
+<span>{"Delete a block in Notion"}</span>
 
 **Input**:
 
@@ -96,7 +96,7 @@ Delete a block in Notion
     type="string"
     required
   >
-    The ID of the block to delete. Can be found in the URL of the block
+    <span>{"The ID of the block to delete. Can be found in the URL of the block"}</span>
   </ResponseField>
 </Expandable>
 
@@ -106,7 +106,7 @@ This Card has no output.
 
 ### List items in folder
 
-List the files and folders in a folder
+<span>{"List the files and folders in a folder"}</span>
 
 **Input**:
 
@@ -115,32 +115,32 @@ List the files and folders in a folder
     name="folderId"
     type="string"
   >
-    The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="filters"
     type="object"
   >
-    Optional search filters
+    <span>{"Optional search filters"}</span>
 
     <Expandable>
   <ResponseField
     name="itemType"
     type="enum: file, folder"
   >
-    The entity type
+    <span>{"The entity type"}</span>
   </ResponseField>
   <ResponseField
     name="maxSizeInBytes"
     type="number"
   >
-    Filter the items by maximum size (in bytes)
+    <span>{"Filter the items by maximum size (in bytes)"}</span>
   </ResponseField>
   <ResponseField
     name="modifiedAfter"
     type="string (date-time)"
   >
-    Filter the items modified after the given date
+    <span>{"Filter the items modified after the given date"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -148,7 +148,7 @@ List the files and folders in a folder
     name="nextToken"
     type="string"
   >
-    The token to get the next page of items. Leave empty to get the first page.
+    <span>{"The token to get the next page of items. Leave empty to get the first page."}</span>
   </ResponseField>
 </Expandable>
 
@@ -160,7 +160,7 @@ List the files and folders in a folder
     type="array"
     required
   >
-    The files and folders in the folder
+    <span>{"The files and folders in the folder"}</span>
 
     <Expandable title="file properties">
   <ResponseField
@@ -168,7 +168,7 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="type"
@@ -182,37 +182,37 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API."
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    The parent folder ID. Leave empty if the file is in the root folder.
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
   </ResponseField>
   <ResponseField
     name="absolutePath"
     type="string"
   >
-    The absolute path of the file. Leave empty if not available.
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
   </ResponseField>
   <ResponseField
     name="sizeInBytes"
     type="number"
   >
-    The file size in bytes, if available
+    <span>{"The file size in bytes, if available"}</span>
   </ResponseField>
   <ResponseField
     name="lastModifiedDate"
     type="string (date-time)"
   >
-    The last modified date of the file, if available
+    <span>{"The last modified date of the file, if available"}</span>
   </ResponseField>
   <ResponseField
     name="contentHash"
     type="string"
   >
-    The hash of the file content, or version/revision number, if available
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
   </ResponseField>
     </Expandable>
 
@@ -222,7 +222,7 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="type"
@@ -236,19 +236,19 @@ List the files and folders in a folder
     type="string"
     required
   >
-    The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API."
+    <span>{"The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API.\""}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    The parent folder ID. Leave empty if the folder is in the root folder.
+    <span>{"The parent folder ID. Leave empty if the folder is in the root folder."}</span>
   </ResponseField>
   <ResponseField
     name="absolutePath"
     type="string"
   >
-    The absolute path of the folder. Leave empty if not available.
+    <span>{"The absolute path of the folder. Leave empty if not available."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -264,7 +264,7 @@ List the files and folders in a folder
     name="nextToken"
     type="string"
   >
-    The token to get the next page of items.
+    <span>{"The token to get the next page of items."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -272,7 +272,7 @@ List the files and folders in a folder
 
 ### Transfer file to Botpress
 
-Transfer a file from an external service to Botpress
+<span>{"Transfer a file from an external service to Botpress"}</span>
 
 **Input**:
 
@@ -282,7 +282,7 @@ Transfer a file from an external service to Botpress
     type="object"
     required
   >
-    The file to transfer
+    <span>{"The file to transfer"}</span>
 
     <Expandable>
   <ResponseField
@@ -290,7 +290,7 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique.
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
   </ResponseField>
   <ResponseField
     name="type"
@@ -304,37 +304,37 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API."
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    The parent folder ID. Leave empty if the file is in the root folder.
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
   </ResponseField>
   <ResponseField
     name="absolutePath"
     type="string"
   >
-    The absolute path of the file. Leave empty if not available.
+    <span>{"The absolute path of the file. Leave empty if not available."}</span>
   </ResponseField>
   <ResponseField
     name="sizeInBytes"
     type="number"
   >
-    The file size in bytes, if available
+    <span>{"The file size in bytes, if available"}</span>
   </ResponseField>
   <ResponseField
     name="lastModifiedDate"
     type="string (date-time)"
   >
-    The last modified date of the file, if available
+    <span>{"The last modified date of the file, if available"}</span>
   </ResponseField>
   <ResponseField
     name="contentHash"
     type="string"
   >
-    The hash of the file content, or version/revision number, if available
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -343,13 +343,13 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file key to use in Botpress
+    <span>{"The file key to use in Botpress"}</span>
   </ResponseField>
   <ResponseField
     name="shouldIndex"
     type="boolean"
   >
-    Whether to index the file in vector storage
+    <span>{"Whether to index the file in vector storage"}</span>
   </ResponseField>
 </Expandable>
 
@@ -361,13 +361,13 @@ Transfer a file from an external service to Botpress
     type="string"
     required
   >
-    The file ID of the uploaded file on Botpress
+    <span>{"The file ID of the uploaded file on Botpress"}</span>
   </ResponseField>
 </Expandable>
 
 ### Get Database
 
-Get a database from Notion
+<span>{"Get a database from Notion"}</span>
 
 **Input**:
 
@@ -377,7 +377,7 @@ Get a database from Notion
     type="string"
     required
   >
-    The ID of the database to fetch. Can be found in the URL of the database
+    <span>{"The ID of the database to fetch. Can be found in the URL of the database"}</span>
   </ResponseField>
 </Expandable>
 
@@ -389,21 +389,21 @@ Get a database from Notion
     type="string"
     required
   >
-    A stringified representation of the database
+    <span>{"A stringified representation of the database"}</span>
   </ResponseField>
   <ResponseField
     name="properties"
     type="object"
     required
   >
-    Schema of properties for the database as they appear in Notion
+    <span>{"Schema of properties for the database as they appear in Notion"}</span>
   </ResponseField>
   <ResponseField
     name="structure"
     type="string"
     required
   >
-    A stringified representation of the database structure
+    <span>{"A stringified representation of the database structure"}</span>
   </ResponseField>
 </Expandable>
 

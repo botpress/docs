@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Change Task Priority
 
-Change the priority of a task
+<span>{"Change the priority of a task"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Change the priority of a task
     type="string"
     required
   >
-    The ID of the task
+    <span>{"The ID of the task"}</span>
   </ResponseField>
   <ResponseField
     name="priority"
     type="number"
     required
   >
-    Task priority from 1 (urgent) to 4 (lowest, default value).
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
   </ResponseField>
 </Expandable>
 
@@ -32,7 +32,7 @@ This Card has no output.
 
 ### Create New Task
 
-Create a new task
+<span>{"Create a new task"}</span>
 
 **Input**:
 
@@ -42,49 +42,49 @@ Create a new task
     type="string"
     required
   >
-    The text of the task. This value may contain markdown-formatted text and hyperlinks.
+    <span>{"The text of the task. This value may contain markdown-formatted text and hyperlinks."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    A description for the task. This value may contain markdown-formatted text and hyperlinks.
+    <span>{"A description for the task. This value may contain markdown-formatted text and hyperlinks."}</span>
   </ResponseField>
   <ResponseField
     name="projectId"
     type="string"
   >
-    The ID of the project.
+    <span>{"The ID of the project."}</span>
   </ResponseField>
   <ResponseField
     name="sectionId"
     type="string"
   >
-    The ID of the section.
+    <span>{"The ID of the section."}</span>
   </ResponseField>
   <ResponseField
     name="labelNames"
     type="array"
   >
-    The names of the labels to add to the task. If omitted, no label will be added.
+    <span>{"The names of the labels to add to the task. If omitted, no label will be added."}</span>
   </ResponseField>
   <ResponseField
     name="parentTaskId"
     type="string"
   >
-    The ID of the task
+    <span>{"The ID of the task"}</span>
   </ResponseField>
   <ResponseField
     name="priority"
     type="number"
   >
-    Task priority from 1 (urgent) to 4 (lowest, default value).
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string"
   >
-    The due date of the task. Must be in RFC3339 format in UTC. If omitted, the task will have no due date.
+    <span>{"The due date of the task. Must be in RFC3339 format in UTC. If omitted, the task will have no due date."}</span>
   </ResponseField>
 </Expandable>
 
@@ -96,13 +96,13 @@ Create a new task
     type="string"
     required
   >
-    The ID of the task
+    <span>{"The ID of the task"}</span>
   </ResponseField>
 </Expandable>
 
 ### Get All Projects
 
-Get all projects
+<span>{"Get all projects"}</span>
 
 **Input**:
 
@@ -116,7 +116,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    All projects that are available to the user
+    <span>{"All projects that are available to the user"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -124,76 +124,76 @@ This Card has no input fields.
     type="string"
     required
   >
-    The ID of the project.
+    <span>{"The ID of the project."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the project.
+    <span>{"The name of the project."}</span>
   </ResponseField>
   <ResponseField
     name="color"
     type="enum: berry_red, red, orange, yellow, olive_green, lime_green, green, mint_green, teal, sky_blue, light_blue, blue, grape, violet, lavender, magenta, salmon, charcoal, gunmetal, taupe"
     required
   >
-    The color of the project.
+    <span>{"The color of the project."}</span>
   </ResponseField>
   <ResponseField
     name="parentProjectId"
     type="string"
   >
-    The ID of the parent project. Omitted if the project has no parent project.
+    <span>{"The ID of the parent project. Omitted if the project has no parent project."}</span>
   </ResponseField>
   <ResponseField
     name="positionWithinParent"
     type="number"
     required
   >
-    Numerical index indicating project's order within its parent project (read-only). Will be 0 for inbox projects.
+    <span>{"Numerical index indicating project's order within its parent project (read-only). Will be 0 for inbox projects."}</span>
   </ResponseField>
   <ResponseField
     name="numberOfComments"
     type="number"
     required
   >
-    The number of comments on the project.
+    <span>{"The number of comments on the project."}</span>
   </ResponseField>
   <ResponseField
     name="isShared"
     type="boolean"
     required
   >
-    Whether the project is shared or not.
+    <span>{"Whether the project is shared or not."}</span>
   </ResponseField>
   <ResponseField
     name="isFavorite"
     type="boolean"
     required
   >
-    Whether the project is marked as favorite or not.
+    <span>{"Whether the project is marked as favorite or not."}</span>
   </ResponseField>
   <ResponseField
     name="isInboxProject"
     type="boolean"
     required
   >
-    Whether the project is the user's inbox.
+    <span>{"Whether the project is the user's inbox."}</span>
   </ResponseField>
   <ResponseField
     name="isTeamInbox"
     type="boolean"
     required
   >
-    Whether the project is a team inbox.
+    <span>{"Whether the project is a team inbox."}</span>
   </ResponseField>
   <ResponseField
     name="webUrl"
     type="string"
     required
   >
-    The URL of the project in the Todoist web app.
+    <span>{"The URL of the project in the Todoist web app."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -201,7 +201,7 @@ This Card has no input fields.
 
 ### Get All Sections
 
-Get all sections in a project
+<span>{"Get all sections in a project"}</span>
 
 **Input**:
 
@@ -210,7 +210,7 @@ Get all sections in a project
     name="projectId"
     type="string"
   >
-    The ID of the project.
+    <span>{"The ID of the project."}</span>
   </ResponseField>
 </Expandable>
 
@@ -222,7 +222,7 @@ Get all sections in a project
     type="array"
     required
   >
-    All sections in the project, or all sections in all projects if projectId is omitted
+    <span>{"All sections in the project, or all sections in all projects if projectId is omitted"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -230,27 +230,27 @@ Get all sections in a project
     type="string"
     required
   >
-    The ID of the section.
+    <span>{"The ID of the section."}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    The name of the section.
+    <span>{"The name of the section."}</span>
   </ResponseField>
   <ResponseField
     name="projectId"
     type="string"
   >
-    The ID of the project this section belongs to.
+    <span>{"The ID of the project this section belongs to."}</span>
   </ResponseField>
   <ResponseField
     name="positionWithinParent"
     type="number"
     required
   >
-    Numerical index indicating section's order within its parent project.
+    <span>{"Numerical index indicating section's order within its parent project."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -258,7 +258,7 @@ Get all sections in a project
 
 ### Get All Tasks
 
-Find tasks using optional filters
+<span>{"Find tasks using optional filters"}</span>
 
 **Input**:
 
@@ -267,19 +267,19 @@ Find tasks using optional filters
     name="projectId"
     type="string"
   >
-    The ID of the project.
+    <span>{"The ID of the project."}</span>
   </ResponseField>
   <ResponseField
     name="sectionId"
     type="string"
   >
-    The ID of the section.
+    <span>{"The ID of the section."}</span>
   </ResponseField>
   <ResponseField
     name="labelName"
     type="string"
   >
-    The name of the label.
+    <span>{"The name of the label."}</span>
   </ResponseField>
 </Expandable>
 
@@ -291,7 +291,7 @@ Find tasks using optional filters
     type="array"
     required
   >
-    All matching tasks
+    <span>{"All matching tasks"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -299,127 +299,127 @@ Find tasks using optional filters
     type="string"
     required
   >
-    The ID of the task
+    <span>{"The ID of the task"}</span>
   </ResponseField>
   <ResponseField
     name="projectId"
     type="string"
     required
   >
-    The ID of the project this task belongs to (read-only).
+    <span>{"The ID of the project this task belongs to (read-only)."}</span>
   </ResponseField>
   <ResponseField
     name="sectionId"
     type="string"
   >
-    The ID of the section this task belongs to (read-only). Omitted if the task is not in a section.
+    <span>{"The ID of the section this task belongs to (read-only). Omitted if the task is not in a section."}</span>
   </ResponseField>
   <ResponseField
     name="content"
     type="string"
     required
   >
-    The text of the task. This value may contain markdown-formatted text and hyperlinks.
+    <span>{"The text of the task. This value may contain markdown-formatted text and hyperlinks."}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    A description for the task. This value may contain markdown-formatted text and hyperlinks.
+    <span>{"A description for the task. This value may contain markdown-formatted text and hyperlinks."}</span>
   </ResponseField>
   <ResponseField
     name="isCompleted"
     type="boolean"
     required
   >
-    Whether the task is completed or not.
+    <span>{"Whether the task is completed or not."}</span>
   </ResponseField>
   <ResponseField
     name="labels"
     type="array"
     required
   >
-    The labels associated with the task. This is a list of names that may represent either personal or shared labels.
+    <span>{"The labels associated with the task. This is a list of names that may represent either personal or shared labels."}</span>
   </ResponseField>
   <ResponseField
     name="parentTaskId"
     type="string"
   >
-    The ID of the parent task (read-only). Omitted if the task has no parent task.
+    <span>{"The ID of the parent task (read-only). Omitted if the task has no parent task."}</span>
   </ResponseField>
   <ResponseField
     name="positionWithinParent"
     type="number"
     required
   >
-    Numerical index indicating task's order within its parent (task, or project for top-level tasks) (read-only).
+    <span>{"Numerical index indicating task's order within its parent (task, or project for top-level tasks) (read-only)."}</span>
   </ResponseField>
   <ResponseField
     name="priority"
     type="number"
     required
   >
-    Task priority from 1 (urgent) to 4 (lowest, default value).
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string"
   >
-    The due date of the task. Omitted if the task has no due date.
+    <span>{"The due date of the task. Omitted if the task has no due date."}</span>
   </ResponseField>
   <ResponseField
     name="isRecurringDueDate"
     type="boolean"
     required
   >
-    Whether the due date is recurring or not.
+    <span>{"Whether the due date is recurring or not."}</span>
   </ResponseField>
   <ResponseField
     name="webUrl"
     type="string"
     required
   >
-    URL to access this task in the Todoist web or mobile applications (read-only).
+    <span>{"URL to access this task in the Todoist web or mobile applications (read-only)."}</span>
   </ResponseField>
   <ResponseField
     name="numberOfComments"
     type="number"
     required
   >
-    The number of comments associated with the task (read-only).
+    <span>{"The number of comments associated with the task (read-only)."}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    The date when the task was created (read-only).
+    <span>{"The date when the task was created (read-only)."}</span>
   </ResponseField>
   <ResponseField
     name="createdBy"
     type="string"
     required
   >
-    The ID of the user who created the task (read-only).
+    <span>{"The ID of the user who created the task (read-only)."}</span>
   </ResponseField>
   <ResponseField
     name="assignee"
     type="string"
   >
-    The ID of the user to whom the task is assigned. Omitted if the task is not assigned.
+    <span>{"The ID of the user to whom the task is assigned. Omitted if the task is not assigned."}</span>
   </ResponseField>
   <ResponseField
     name="assigner"
     type="string"
   >
-    The ID of the user who assigned the task (read-only). Omitted if the task is not assigned.
+    <span>{"The ID of the user who assigned the task (read-only). Omitted if the task is not assigned."}</span>
   </ResponseField>
   <ResponseField
     name="duration"
     type="object"
   >
-    The duration of the task. Omitted if the task has no duration.
+    <span>{"The duration of the task. Omitted if the task has no duration."}</span>
 
     <Expandable>
   <ResponseField
@@ -427,14 +427,14 @@ Find tasks using optional filters
     type="number"
     required
   >
-    The amount of time.
+    <span>{"The amount of time."}</span>
   </ResponseField>
   <ResponseField
     name="unit"
     type="enum: minute, day"
     required
   >
-    The unit of time.
+    <span>{"The unit of time."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -444,7 +444,7 @@ Find tasks using optional filters
 
 ### Get Project ID
 
-Get the ID of the project
+<span>{"Get the ID of the project"}</span>
 
 **Input**:
 
@@ -454,7 +454,7 @@ Get the ID of the project
     type="string"
     required
   >
-    The name of the project.
+    <span>{"The name of the project."}</span>
   </ResponseField>
 </Expandable>
 
@@ -466,13 +466,13 @@ Get the ID of the project
     type="string,null"
     required
   >
-    The ID of the project.
+    <span>{"The ID of the project."}</span>
   </ResponseField>
 </Expandable>
 
 ### Get Task ID
 
-Get the ID of the first task matching the given name
+<span>{"Get the ID of the first task matching the given name"}</span>
 
 **Input**:
 
@@ -482,7 +482,7 @@ Get the ID of the first task matching the given name
     type="string"
     required
   >
-    The name of the task to search for
+    <span>{"The name of the task to search for"}</span>
   </ResponseField>
 </Expandable>
 
@@ -494,7 +494,7 @@ Get the ID of the first task matching the given name
     type="string,null"
     required
   >
-    The ID of the task
+    <span>{"The ID of the task"}</span>
   </ResponseField>
 </Expandable>
 

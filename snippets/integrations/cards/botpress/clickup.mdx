@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Create a task
 
-Create a new task in a list
+<span>{"Create a new task in a list"}</span>
 
 **Input**:
 
@@ -15,44 +15,44 @@ Create a new task in a list
     type="string"
     required
   >
-    ID of the list to create the task in
+    <span>{"ID of the list to create the task in"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    Name of the task to be created
+    <span>{"Name of the task to be created"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    Description of the task to be created
+    <span>{"Description of the task to be created"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
   >
-    Status of the task to be created
+    <span>{"Status of the task to be created"}</span>
   </ResponseField>
   <ResponseField
     name="assignees"
     type="array"
   >
-    IDs of the assignees of the task to be created
+    <span>{"IDs of the assignees of the task to be created"}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    Due date of the task to be created
+    <span>{"Due date of the task to be created"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
   >
-    Tags of the task to be created
+    <span>{"Tags of the task to be created"}</span>
   </ResponseField>
 </Expandable>
 
@@ -64,13 +64,13 @@ Create a new task in a list
     type="string"
     required
   >
-    Id of the task created
+    <span>{"Id of the task created"}</span>
   </ResponseField>
 </Expandable>
 
 ### Delete a task
 
-Delete a task
+<span>{"Delete a task"}</span>
 
 **Input**:
 
@@ -80,7 +80,7 @@ Delete a task
     type="string"
     required
   >
-    ID of the task to be deleted
+    <span>{"ID of the task to be deleted"}</span>
   </ResponseField>
 </Expandable>
 
@@ -90,7 +90,7 @@ This Card has no output.
 
 ### Get members of a list
 
-Get all the members of a list
+<span>{"Get all the members of a list"}</span>
 
 **Input**:
 
@@ -100,7 +100,7 @@ Get all the members of a list
     type="string"
     required
   >
-    ID of the list to get the members of
+    <span>{"ID of the list to get the members of"}</span>
   </ResponseField>
 </Expandable>
 
@@ -112,7 +112,7 @@ Get all the members of a list
     type="array"
     required
   >
-    Members of the list
+    <span>{"Members of the list"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -120,21 +120,21 @@ Get all the members of a list
     type="number"
     required
   >
-    ID of the member
+    <span>{"ID of the member"}</span>
   </ResponseField>
   <ResponseField
     name="username"
     type="string"
     required
   >
-    Username of the member
+    <span>{"Username of the member"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    Email of the member
+    <span>{"Email of the member"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -142,7 +142,7 @@ Get all the members of a list
 
 ### Update a task
 
-Update the details of a task
+<span>{"Update the details of a task"}</span>
 
 **Input**:
 
@@ -152,49 +152,49 @@ Update the details of a task
     type="string"
     required
   >
-    ID of the task to be updated
+    <span>{"ID of the task to be updated"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    New name of the task
+    <span>{"New name of the task"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
   >
-    New description of the task
+    <span>{"New description of the task"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
   >
-    New status of the task
+    <span>{"New status of the task"}</span>
   </ResponseField>
   <ResponseField
     name="archived"
     type="boolean"
   >
-    New archived status of the task
+    <span>{"New archived status of the task"}</span>
   </ResponseField>
   <ResponseField
     name="assigneesToAdd"
     type="array"
   >
-    Members to add to the task
+    <span>{"Members to add to the task"}</span>
   </ResponseField>
   <ResponseField
     name="assigneesToRemove"
     type="array"
   >
-    Members to remove from the task
+    <span>{"Members to remove from the task"}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    New due date of the task
+    <span>{"New due date of the task"}</span>
   </ResponseField>
 </Expandable>
 
@@ -206,7 +206,7 @@ Update the details of a task
     type="string"
     required
   >
-    Id of the task updated
+    <span>{"Id of the task updated"}</span>
   </ResponseField>
 </Expandable>
 

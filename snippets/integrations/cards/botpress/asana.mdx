@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Add Comment to Task
 
-Add Comment to Task, by task ID
+<span>{"Add Comment to Task, by task ID"}</span>
 
 **Input**:
 
@@ -15,14 +15,14 @@ Add Comment to Task, by task ID
     type="string"
     required
   >
-    Task ID to comment
+    <span>{"Task ID to comment"}</span>
   </ResponseField>
   <ResponseField
     name="comment"
     type="string"
     required
   >
-    Content of the comment to be added
+    <span>{"Content of the comment to be added"}</span>
   </ResponseField>
 </Expandable>
 
@@ -40,7 +40,7 @@ Add Comment to Task, by task ID
 
 ### Create Task
 
-Create Task
+<span>{"Create Task"}</span>
 
 **Input**:
 
@@ -50,43 +50,43 @@ Create Task
     type="string"
     required
   >
-    The name of the task (e.g. "My Test Task")
+    <span>{"The name of the task (e.g. \"My Test Task\")"}</span>
   </ResponseField>
   <ResponseField
     name="notes"
     type="string"
   >
-    The description of the task (Optional) (e.g. "This is my other task created using the Asana API")
+    <span>{"The description of the task (Optional) (e.g. \"This is my other task created using the Asana API\")"}</span>
   </ResponseField>
   <ResponseField
     name="assignee"
     type="string"
   >
-    The ID of the user who will be assigned to the task or "me" to assign to the current user (Optional) (e.g. "1215207682932839") (Default: "me")
+    <span>{"The ID of the user who will be assigned to the task or \"me\" to assign to the current user (Optional) (e.g. \"1215207682932839\") (Default: \"me\")"}</span>
   </ResponseField>
   <ResponseField
     name="projects"
     type="string"
   >
-    The project IDs should be strings separated by commas (Optional) (e.g. "1205199808673678, 1215207282932839").
+    <span>{"The project IDs should be strings separated by commas (Optional) (e.g. \"1205199808673678, 1215207282932839\")."}</span>
   </ResponseField>
   <ResponseField
     name="parent"
     type="string"
   >
-    The ID of the parent task (Optional) (e.g. "1205206556256028")
+    <span>{"The ID of the parent task (Optional) (e.g. \"1205206556256028\")"}</span>
   </ResponseField>
   <ResponseField
     name="start_on"
     type="string"
   >
-    The start date of the task in YYYY-MM-DD format (Optional) (e.g. "2023-08-13")
+    <span>{"The start date of the task in YYYY-MM-DD format (Optional) (e.g. \"2023-08-13\")"}</span>
   </ResponseField>
   <ResponseField
     name="due_on"
     type="string"
   >
-    The due date of the task without a specific time in YYYY-MM-DD format (Optional) (e.g. "2023-08-15")
+    <span>{"The due date of the task without a specific time in YYYY-MM-DD format (Optional) (e.g. \"2023-08-15\")"}</span>
   </ResponseField>
 </Expandable>
 
@@ -104,7 +104,7 @@ Create Task
 
 ### Find User
 
-Find User by userId
+<span>{"Find User by userId"}</span>
 
 **Input**:
 
@@ -114,7 +114,7 @@ Find User by userId
     type="string"
     required
   >
-    User Email (e.g. "mrsomebody@example.com")
+    <span>{"User Email (e.g. \"mrsomebody@example.com\")"}</span>
   </ResponseField>
 </Expandable>
 
@@ -185,7 +185,7 @@ Find User by userId
 
 ### Update Task
 
-Update Task by taskId
+<span>{"Update Task by taskId"}</span>
 
 **Input**:
 
@@ -194,44 +194,44 @@ Update Task by taskId
     name="name"
     type="string"
   >
-    The name of the task (Optional) (e.g. "My Test Task")
+    <span>{"The name of the task (Optional) (e.g. \"My Test Task\")"}</span>
   </ResponseField>
   <ResponseField
     name="notes"
     type="string"
   >
-    The description of the task (Optional) (e.g. "This is my other task created using the Asana API")
+    <span>{"The description of the task (Optional) (e.g. \"This is my other task created using the Asana API\")"}</span>
   </ResponseField>
   <ResponseField
     name="assignee"
     type="string"
   >
-    The ID of the user who will be assigned to the task or "me" to assign to the current user (Optional) (e.g. "1215207682932839")
+    <span>{"The ID of the user who will be assigned to the task or \"me\" to assign to the current user (Optional) (e.g. \"1215207682932839\")"}</span>
   </ResponseField>
   <ResponseField
     name="start_on"
     type="string"
   >
-    The start date of the task in YYYY-MM-DD format (Optional) (e.g. "2023-08-13")
+    <span>{"The start date of the task in YYYY-MM-DD format (Optional) (e.g. \"2023-08-13\")"}</span>
   </ResponseField>
   <ResponseField
     name="due_on"
     type="string"
   >
-    The due date of the task without a specific time in YYYY-MM-DD format (Optional) (e.g. "2023-08-15")
+    <span>{"The due date of the task without a specific time in YYYY-MM-DD format (Optional) (e.g. \"2023-08-15\")"}</span>
   </ResponseField>
   <ResponseField
     name="taskId"
     type="string"
     required
   >
-    Task ID to update
+    <span>{"Task ID to update"}</span>
   </ResponseField>
   <ResponseField
     name="completed"
     type="string"
   >
-    If the task is completed, enter "true" (without quotes), otherwise it will keep its previous status. (Optional)
+    <span>{"If the task is completed, enter \"true\" (without quotes), otherwise it will keep its previous status. (Optional)"}</span>
   </ResponseField>
 </Expandable>
 

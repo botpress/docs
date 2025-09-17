@@ -135,7 +135,7 @@ function compareVersions(current, latest) {
 
 async function updateVersionsFile(latestVersions) {
     const content = `export const integrationVersions = ${JSON.stringify(latestVersions, null, 2)}`;
-    const filePath = './versions.mdx';
+    const filePath = './snippets/integrations/versions.mdx';
     
     await fsPromises.writeFile(filePath, content, 'utf8');
     console.log(`Updated versions file: ${filePath}`);

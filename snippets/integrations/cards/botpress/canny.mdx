@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 
 ### Create Comment
 
-Create a new comment on a post
+<span>{"Create a new comment on a post"}</span>
 
 **Input**:
 
@@ -14,51 +14,51 @@ Create a new comment on a post
     name="authorId"
     type="string"
   >
-    The author Id (defaults to Botpress user if not provided)
+    <span>{"The author Id (defaults to Botpress user if not provided)"}</span>
   </ResponseField>
   <ResponseField
     name="postId"
     type="string"
     required
   >
-    The post Id
+    <span>{"The post Id"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    Comment text
+    <span>{"Comment text"}</span>
   </ResponseField>
   <ResponseField
     name="parentId"
     type="string"
   >
-    Parent comment Id for replies
+    <span>{"Parent comment Id for replies"}</span>
   </ResponseField>
   <ResponseField
     name="imageURLs"
     type="array"
   >
-    Image URLs
+    <span>{"Image URLs"}</span>
   </ResponseField>
   <ResponseField
     name="internal"
     type="boolean"
   >
-    Whether this is an internal comment
+    <span>{"Whether this is an internal comment"}</span>
   </ResponseField>
   <ResponseField
     name="shouldNotifyVoters"
     type="boolean"
   >
-    Notify voters
+    <span>{"Notify voters"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
   >
-    Created timestamp
+    <span>{"Created timestamp"}</span>
   </ResponseField>
 </Expandable>
 
@@ -70,13 +70,13 @@ Create a new comment on a post
     type="string"
     required
   >
-    The ID of the created comment
+    <span>{"The ID of the created comment"}</span>
   </ResponseField>
 </Expandable>
 
 ### Create or Update User
 
-Create a new user or update an existing one in Canny
+<span>{"Create a new user or update an existing one in Canny"}</span>
 
 **Input**:
 
@@ -86,43 +86,43 @@ Create a new user or update an existing one in Canny
     type="string"
     required
   >
-    User display name (required, 1-50 characters)
+    <span>{"User display name (required, 1-50 characters)"}</span>
   </ResponseField>
   <ResponseField
     name="userId"
     type="string"
   >
-    Your internal user Id
+    <span>{"Your internal user Id"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    User email address
+    <span>{"User email address"}</span>
   </ResponseField>
   <ResponseField
     name="avatarURL"
     type="string"
   >
-    User avatar URL
+    <span>{"User avatar URL"}</span>
   </ResponseField>
   <ResponseField
     name="alias"
     type="string"
   >
-    User alias
+    <span>{"User alias"}</span>
   </ResponseField>
   <ResponseField
     name="created"
     type="string"
   >
-    User creation timestamp
+    <span>{"User creation timestamp"}</span>
   </ResponseField>
   <ResponseField
     name="customFields"
     type="object"
   >
-    Custom fields
+    <span>{"Custom fields"}</span>
   </ResponseField>
 </Expandable>
 
@@ -134,7 +134,7 @@ Create a new user or update an existing one in Canny
     type="object"
     required
   >
-    The created or updated user object
+    <span>{"The created or updated user object"}</span>
 
     <Expandable>
   <ResponseField
@@ -191,7 +191,7 @@ Create a new user or update an existing one in Canny
 
 ### Create Post
 
-Create a new post in Canny
+<span>{"Create a new post in Canny"}</span>
 
 **Input**:
 
@@ -200,70 +200,70 @@ Create a new post in Canny
     name="authorId"
     type="string"
   >
-    The author Id (defaults to Botpress user if not provided)
+    <span>{"The author Id (defaults to Botpress user if not provided)"}</span>
   </ResponseField>
   <ResponseField
     name="boardId"
     type="string"
     required
   >
-    The board Id
+    <span>{"The board Id"}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
     required
   >
-    Post title
+    <span>{"Post title"}</span>
   </ResponseField>
   <ResponseField
     name="details"
     type="string"
     required
   >
-    Post details
+    <span>{"Post details"}</span>
   </ResponseField>
   <ResponseField
     name="byId"
     type="string"
   >
-    Admin Id who created the post
+    <span>{"Admin Id who created the post"}</span>
   </ResponseField>
   <ResponseField
     name="categoryId"
     type="string"
   >
-    Category Id
+    <span>{"Category Id"}</span>
   </ResponseField>
   <ResponseField
     name="ownerId"
     type="string"
   >
-    Owner Id
+    <span>{"Owner Id"}</span>
   </ResponseField>
   <ResponseField
     name="imageURLs"
     type="array"
   >
-    Image URLs
+    <span>{"Image URLs"}</span>
   </ResponseField>
   <ResponseField
     name="eta"
     type="string"
   >
-    ETA (MM/YYYY)
+    <span>{"ETA (MM/YYYY)"}</span>
   </ResponseField>
   <ResponseField
     name="etaPublic"
     type="boolean"
   >
-    Make ETA public
+    <span>{"Make ETA public"}</span>
   </ResponseField>
   <ResponseField
     name="customFields"
     type="object"
   >
-    Custom fields
+    <span>{"Custom fields"}</span>
   </ResponseField>
 </Expandable>
 
@@ -275,13 +275,13 @@ Create a new post in Canny
     type="string"
     required
   >
-    The ID of the created post
+    <span>{"The ID of the created post"}</span>
   </ResponseField>
 </Expandable>
 
 ### Delete Comment
 
-Delete a comment
+<span>{"Delete a comment"}</span>
 
 **Input**:
 
@@ -291,7 +291,7 @@ Delete a comment
     type="string"
     required
   >
-    The comment Id to delete
+    <span>{"The comment Id to delete"}</span>
   </ResponseField>
 </Expandable>
 
@@ -301,7 +301,7 @@ This Card has no output.
 
 ### Delete Post
 
-Delete a post
+<span>{"Delete a post"}</span>
 
 **Input**:
 
@@ -311,7 +311,7 @@ Delete a post
     type="string"
     required
   >
-    The post Id to delete
+    <span>{"The post Id to delete"}</span>
   </ResponseField>
 </Expandable>
 
@@ -321,7 +321,7 @@ This Card has no output.
 
 ### Get Comment
 
-Retrieve a comment by ID
+<span>{"Retrieve a comment by ID"}</span>
 
 **Input**:
 
@@ -331,7 +331,7 @@ Retrieve a comment by ID
     type="string"
     required
   >
-    The comment Id
+    <span>{"The comment Id"}</span>
   </ResponseField>
 </Expandable>
 
@@ -343,7 +343,7 @@ Retrieve a comment by ID
     type="object"
     required
   >
-    The retrieved comment object
+    <span>{"The retrieved comment object"}</span>
 
     <Expandable>
   <ResponseField
@@ -415,7 +415,7 @@ Retrieve a comment by ID
 
 ### Get Post
 
-Retrieve a post by ID
+<span>{"Retrieve a post by ID"}</span>
 
 **Input**:
 
@@ -425,13 +425,13 @@ Retrieve a post by ID
     type="string"
     required
   >
-    The post Id
+    <span>{"The post Id"}</span>
   </ResponseField>
   <ResponseField
     name="boardId"
     type="string"
   >
-    The board Id
+    <span>{"The board Id"}</span>
   </ResponseField>
 </Expandable>
 
@@ -443,7 +443,7 @@ Retrieve a post by ID
     type="object"
     required
   >
-    The retrieved post object
+    <span>{"The retrieved post object"}</span>
 
     <Expandable>
   <ResponseField
@@ -526,7 +526,7 @@ Retrieve a post by ID
 
 ### List Boards
 
-List all boards in your Canny workspace
+<span>{"List all boards in your Canny workspace"}</span>
 
 **Input**:
 
@@ -535,13 +535,13 @@ List all boards in your Canny workspace
     name="limit"
     type="number"
   >
-    Number of boards to fetch
+    <span>{"Number of boards to fetch"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="number"
   >
-    Token for pagination - skip this many boards
+    <span>{"Token for pagination - skip this many boards"}</span>
   </ResponseField>
 </Expandable>
 
@@ -553,7 +553,7 @@ List all boards in your Canny workspace
     type="array"
     required
   >
-    Array of boards
+    <span>{"Array of boards"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -597,13 +597,13 @@ List all boards in your Canny workspace
     name="nextToken"
     type="number"
   >
-    Token for next page if more boards available
+    <span>{"Token for next page if more boards available"}</span>
   </ResponseField>
 </Expandable>
 
 ### List Comments
 
-List comments with optional filters
+<span>{"List comments with optional filters"}</span>
 
 **Input**:
 
@@ -612,37 +612,37 @@ List comments with optional filters
     name="postId"
     type="string"
   >
-    Filter comments by post Id
+    <span>{"Filter comments by post Id"}</span>
   </ResponseField>
   <ResponseField
     name="authorId"
     type="string"
   >
-    Filter comments by author Id
+    <span>{"Filter comments by author Id"}</span>
   </ResponseField>
   <ResponseField
     name="boardId"
     type="string"
   >
-    Filter comments by board Id
+    <span>{"Filter comments by board Id"}</span>
   </ResponseField>
   <ResponseField
     name="companyId"
     type="string"
   >
-    Filter comments by company Id
+    <span>{"Filter comments by company Id"}</span>
   </ResponseField>
   <ResponseField
     name="limit"
     type="number"
   >
-    Number of comments to return
+    <span>{"Number of comments to return"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="number"
   >
-    Token for pagination - skip this many comments
+    <span>{"Token for pagination - skip this many comments"}</span>
   </ResponseField>
 </Expandable>
 
@@ -654,7 +654,7 @@ List comments with optional filters
     type="array"
     required
   >
-    Array of comments
+    <span>{"Array of comments"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -726,13 +726,13 @@ List comments with optional filters
     name="nextToken"
     type="number"
   >
-    Token for next page if more comments available
+    <span>{"Token for next page if more comments available"}</span>
   </ResponseField>
 </Expandable>
 
 ### List Posts
 
-List posts with optional filters
+<span>{"List posts with optional filters"}</span>
 
 **Input**:
 
@@ -741,55 +741,55 @@ List posts with optional filters
     name="boardId"
     type="string"
   >
-    Filter posts by board Id
+    <span>{"Filter posts by board Id"}</span>
   </ResponseField>
   <ResponseField
     name="authorId"
     type="string"
   >
-    Filter posts by author Id
+    <span>{"Filter posts by author Id"}</span>
   </ResponseField>
   <ResponseField
     name="companyId"
     type="string"
   >
-    Filter posts by company Id
+    <span>{"Filter posts by company Id"}</span>
   </ResponseField>
   <ResponseField
     name="tagIds"
     type="array"
   >
-    Filter posts by tag Ids
+    <span>{"Filter posts by tag Ids"}</span>
   </ResponseField>
   <ResponseField
     name="limit"
     type="number"
   >
-    Number of posts to return
+    <span>{"Number of posts to return"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="number"
   >
-    Token for pagination - skip this many posts
+    <span>{"Token for pagination - skip this many posts"}</span>
   </ResponseField>
   <ResponseField
     name="search"
     type="string"
   >
-    Search term to filter posts
+    <span>{"Search term to filter posts"}</span>
   </ResponseField>
   <ResponseField
     name="sort"
     type="enum: newest, oldest, relevance, score, statusChanged, trending"
   >
-    Sort order for posts
+    <span>{"Sort order for posts"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
   >
-    Filter posts by status
+    <span>{"Filter posts by status"}</span>
   </ResponseField>
 </Expandable>
 
@@ -801,7 +801,7 @@ List posts with optional filters
     type="array"
     required
   >
-    Array of posts
+    <span>{"Array of posts"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -884,13 +884,13 @@ List posts with optional filters
     name="nextToken"
     type="number"
   >
-    Token for next page if more posts available
+    <span>{"Token for next page if more posts available"}</span>
   </ResponseField>
 </Expandable>
 
 ### List Users
 
-List all users in your Canny workspace with pagination
+<span>{"List all users in your Canny workspace with pagination"}</span>
 
 **Input**:
 
@@ -899,13 +899,13 @@ List all users in your Canny workspace with pagination
     name="limit"
     type="number"
   >
-    Number of users to fetch (1-100, defaults to 10)
+    <span>{"Number of users to fetch (1-100, defaults to 10)"}</span>
   </ResponseField>
   <ResponseField
     name="nextToken"
     type="string"
   >
-    Token for pagination from previous request
+    <span>{"Token for pagination from previous request"}</span>
   </ResponseField>
 </Expandable>
 
@@ -917,7 +917,7 @@ List all users in your Canny workspace with pagination
     type="array"
     required
   >
-    Array of users
+    <span>{"Array of users"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -974,13 +974,13 @@ List all users in your Canny workspace with pagination
     name="nextToken"
     type="string"
   >
-    Token for next page if more users available
+    <span>{"Token for next page if more users available"}</span>
   </ResponseField>
 </Expandable>
 
 ### Update Post
 
-Update an existing post
+<span>{"Update an existing post"}</span>
 
 **Input**:
 
@@ -990,43 +990,43 @@ Update an existing post
     type="string"
     required
   >
-    The post Id
+    <span>{"The post Id"}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
   >
-    Updated post title
+    <span>{"Updated post title"}</span>
   </ResponseField>
   <ResponseField
     name="details"
     type="string"
   >
-    Updated post details
+    <span>{"Updated post details"}</span>
   </ResponseField>
   <ResponseField
     name="eta"
     type="string"
   >
-    Updated ETA (MM/YYYY)
+    <span>{"Updated ETA (MM/YYYY)"}</span>
   </ResponseField>
   <ResponseField
     name="etaPublic"
     type="boolean"
   >
-    Make ETA public
+    <span>{"Make ETA public"}</span>
   </ResponseField>
   <ResponseField
     name="imageURLs"
     type="array"
   >
-    Updated image URLs
+    <span>{"Updated image URLs"}</span>
   </ResponseField>
   <ResponseField
     name="customFields"
     type="object"
   >
-    Updated custom fields
+    <span>{"Updated custom fields"}</span>
   </ResponseField>
 </Expandable>
 
