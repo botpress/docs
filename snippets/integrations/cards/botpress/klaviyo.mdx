@@ -1,0 +1,812 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Create Profile
+
+<span>{"Create a profile in Klaviyo: either email or phone is required"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="string"
+  >
+    <span>{"The organization or company of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"The locale of the profile in the IETF BCP 47 language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object"
+  >
+    <span>{"Address information for the profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"First line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"Second line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string"
+  >
+    <span>{"State or region"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"Postal or ZIP code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customProperties"
+    type="string"
+  >
+    <span>{"Custom key-value pairs to store with the profile (JSON string)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="profile"
+    type="object"
+    required
+  >
+    <span>{"The created profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="string"
+  >
+    <span>{"The organization or company of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"The locale of the profile in the IETF BCP 47 language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object"
+  >
+    <span>{"Address information for the profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"First line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"Second line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string"
+  >
+    <span>{"State or region"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"Postal or ZIP code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customProperties"
+    type="object"
+  >
+    <span>{"Custom key-value pairs to store with the profile"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Profile
+
+<span>{"Get a profile in Klaviyo"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="profileId"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="profile"
+    type="object"
+    required
+  >
+    <span>{"The retrieved profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="string"
+  >
+    <span>{"The organization or company of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"The locale of the profile in the IETF BCP 47 language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object"
+  >
+    <span>{"Address information for the profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"First line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"Second line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string"
+  >
+    <span>{"State or region"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"Postal or ZIP code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customProperties"
+    type="object"
+  >
+    <span>{"Custom key-value pairs to store with the profile"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Profiles
+
+<span>{"Get profiles using filters in Klaviyo"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="filterField"
+    type="enum: id, email, phone_number, external_id, created, updated"
+    required
+  >
+    <span>{"The field to filter on"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filterOperator"
+    type="enum: equals, greater-than, less-than, greater-or-equal, less-or-equal, contains, starts-with, ends-with"
+    required
+  >
+    <span>{"The comparison operator to use"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filterValue"
+    type="string"
+    required
+  >
+    <span>{"The value to compare against"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pageSize"
+    type="integer"
+  >
+    <span>{"Number of profiles to return per page (1-100, default: 20)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sort"
+    type="enum: created, -created, email, -email, id, -id, subscriptions.email.marketing.list_suppressions.timestamp, -subscriptions.email.marketing.list_suppressions.timestamp, subscriptions.email.marketing.suppression.timestamp, -subscriptions.email.marketing.suppression.timestamp, updated, -updated"
+  >
+    <span>{"Sort profiles by field. Prefix with - for descending order"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="profiles"
+    type="array"
+    required
+  >
+    <span>{"Array of profiles matching the criteria"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="string"
+  >
+    <span>{"The organization or company of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"The locale of the profile in the IETF BCP 47 language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object"
+  >
+    <span>{"Address information for the profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"First line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"Second line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string"
+  >
+    <span>{"State or region"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"Postal or ZIP code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customProperties"
+    type="object"
+  >
+    <span>{"Custom key-value pairs to store with the profile"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Subscribe Profiles
+
+<span>{"Subscribe profiles asynchronously to a SMS and/or email marketing in Klaviyo"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="profileSubscriptions"
+    type="array"
+    required
+  >
+    <span>{"The list of profiles and Email/SMS consent to use to subscribe Email/SMS marketing"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailConsent"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the profile has consented to email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="smsConsent"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the profile has consented to SMS"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+  >
+    <span>{"An optional list id to add the subscribed profiles to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="historicalImport"
+    type="boolean"
+  >
+    <span>{"Whether to import historical profiles (true = existing subscribers with timestamp, false = new real-time opt-ins)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the job to subscribe the profiles has been successfully scheduled"}</span>
+  </ResponseField>
+</Expandable>
+
+### Update Profile
+
+<span>{"Update a profile in Klaviyo"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="profileId"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="string"
+  >
+    <span>{"The organization or company of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"The locale of the profile in the IETF BCP 47 language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object"
+  >
+    <span>{"Address information for the profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"First line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"Second line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string"
+  >
+    <span>{"State or region"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"Postal or ZIP code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customProperties"
+    type="string"
+  >
+    <span>{"Custom key-value pairs to store with the profile (JSON string)"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="profile"
+    type="object"
+    required
+  >
+    <span>{"The updated profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique (Klaviyo) identifier of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    <span>{"The email of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the profile (E.164 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="string"
+  >
+    <span>{"The organization or company of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title of the profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"The locale of the profile in the IETF BCP 47 language tag format like (ISO 639-1/2)-(ISO 3166 alpha-2)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object"
+  >
+    <span>{"Address information for the profile"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="address1"
+    type="string"
+  >
+    <span>{"First line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address2"
+    type="string"
+  >
+    <span>{"Second line of the address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string"
+  >
+    <span>{"State or region"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"Postal or ZIP code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customProperties"
+    type="object"
+  >
+    <span>{"Custom key-value pairs to store with the profile"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}
