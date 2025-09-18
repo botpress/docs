@@ -1,0 +1,82 @@
+---
+description: Add a bot to Klaviyo using the official integration.
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/klaviyo.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.klaviyo}/>
+
+The official Klaviyo integration allows your bot to interact with your Klaviyo account. You can use it to:
+
+- Create or update user profiles
+- Retrieve individual or bulk user profile data
+- Subscribe users to SMS/email marketing
+
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - A [Klaviyo account](https://www.klaviyo.com/sign-up)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+
+  First, install the integration to your bot:
+
+  1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+  2. Search for the **Klaviyo** integration, then select **Install Integration**.
+
+  In the **Configuration** menu, you should see one field: **API Key**. Leave it empty for now—you'll come back to it after creating your Klaviyo API key.
+
+  </Step>
+
+  <Step title="Create a Klaviyo private API key">
+
+  Next, create a private Klaviyo API key:
+
+  1. [Log in to your Klaviyo account](https://www.klaviyo.com/login).
+  2. Select your organization's name in the bottom-left corner.
+  3. Select **Settings**. Then, navigate to **API keys**.
+  4. Under **Private API Keys**, select **Create Private API Key**.
+  5. Enter a name for the API key.
+  6. Check **Full Access** for the following API scopes:
+      - **Profiles**
+      - **Subscriptions**
+  7. Select **Create** in the upper-right corner.
+  8. Copy the API key—it should start with `pk`.
+
+  </Step>
+
+  <Step title="Configure the integration in Botpress">
+
+  Now, you can finish setting up the integration in Botpress:
+
+  1. In the integration's **API Key** field, paste your Klaviyo API key.
+  2. Select **Save Configuration**.
+
+  </Step>
+</Steps>
+
+<Check>
+  Your Klaviyo integration is ready. You can use the integration's [Cards](#cards) to interact with your Klaviyo account.
+</Check>
+
+## Cards
+
+<Warning>
+  If you use any of the following Cards in an [Autonomous Node](/learn/reference/nodes/autonomous-node), keep in mind that your bot will fill in the Card's fields based on the user's responses. This can lead to unexpected behaviour for fields that have strict conventions.
+
+  For example, the [Update Profile](#update-profile) Card lets you update [custom properties](#param-custom-properties-2) associated with a profile. If the user isn't specific about that property's exact name, the bot may accidentally create a new property instead of updating an existing one.
+</Warning>
+
+<Cards />
