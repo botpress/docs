@@ -1,0 +1,272 @@
+---
+title: MailerLite
+description: Add a bot to MailerLite using the official integration.
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/mailerlite.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.mailerlite}/>
+
+The official MailerLite integration allows your bot to create, update, fetch, or delete your MailerLite subscribers.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - A [MailerLite account](https://www.mailerlite.com/signup)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+    2. Search for the **MailerLite** integration, then select **Install Integration**.
+
+    In the **Configuration** menu, you should see one field: **API Key**. Leave it empty for now—you'll come back to it after creating your MailerLite API key.
+  </Step>
+  <Step title="Create a MailerLite developer API key">
+    Next, create a MailerLite API key:
+
+    1. [Log in to your MailerLite account](https://accounts.mailerlite.com/?lang=en).
+    2. Select **Integrations** from the left navigation bar.
+    3. To the right of **API**, select **Use**.
+    4. Select **Generate new token**. Enter a name, then select **Create token**.
+    5. Copy the API  token.
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API Key** field, paste your MailerLite developer API key.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
+
+<Check>
+  Your MailerLite integration is ready. You can use the integration's [Cards](#cards) to interact with your MailerLite subscribers.
+</Check>
+
+## Cards
+
+<Cards />
+
+## Triggers
+
+The MailerLite integration includes the following [Triggers](/learn/reference/triggers):
+
+<Tip>
+  You can access data from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+### Subscriber Created
+
+A new subscriber has been created in MailerLite
+
+<ResponseField
+  name="payload"
+  type="object"
+>
+  <Expandable>
+    <ResponseField
+      name="id"
+      type="string"
+      required
+    >
+      Unique identifier for the subscriber
+    </ResponseField>
+    <ResponseField
+      name="email"
+      type="string"
+      required
+    >
+      Subscriber email address
+    </ResponseField>
+    <ResponseField
+      name="status"
+      type="string"
+      required
+    >
+      Current subscription status of the subscriber
+    </ResponseField>
+    <ResponseField
+      name="source"
+      type="string"
+      required
+    >
+      Source where the subscriber was acquired from
+    </ResponseField>
+    <ResponseField
+      name="sent"
+      type="number | null"
+      required
+    >
+      Number of emails sent to this subscriber
+    </ResponseField>
+    <ResponseField
+      name="opens_count"
+      type="number | null"
+      required
+    >
+      Number of emails opened by this subscriber
+    </ResponseField>
+    <ResponseField
+      name="clicks_count"
+      type="number | null"
+      required
+    >
+      Number of email clicks by this subscriber
+    </ResponseField>
+    <ResponseField
+      name="open_rate"
+      type="number"
+      required
+    >
+      Email open rate percentage for this subscriber
+    </ResponseField>
+    <ResponseField
+      name="click_rate"
+      type="number"
+      required
+    >
+      Email click rate percentage for this subscriber
+    </ResponseField>
+    <ResponseField
+      name="ip_address"
+      type="string | null"
+      required
+    >
+      IP address of the subscriber
+    </ResponseField>
+    <ResponseField
+      name="subscribed_at"
+      type="string"
+      required
+    >
+      Timestamp when the subscriber was subscribed
+    </ResponseField>
+    <ResponseField
+      name="unsubscribed_at"
+      type="string | null"
+      required
+    >
+      Timestamp when the subscriber was unsubscribed
+    </ResponseField>
+    <ResponseField
+      name="created_at"
+      type="string"
+      required
+    >
+      Timestamp when the subscriber was created
+    </ResponseField>
+    <ResponseField
+      name="updated_at"
+      type="string"
+      required
+    >
+      Timestamp when the subscriber was last updated
+    </ResponseField>
+    <ResponseField
+      name="fields"
+      type="object"
+      required
+    >
+      Custom fields associated with the subscriber
+      <Expandable>
+        <ResponseField
+          name="city"
+          type="string | null"
+        >
+          Subscriber's city
+        </ResponseField>
+        <ResponseField
+          name="company"
+          type="string | null"
+        >
+          Subscriber's company
+        </ResponseField>
+        <ResponseField
+          name="country"
+          type="string | null"
+        >
+          Subscriber's country
+        </ResponseField>
+        <ResponseField
+          name="last_name"
+          type="string | null"
+        >
+          Subscriber's last name
+        </ResponseField>
+        <ResponseField
+          name="name"
+          type="string | null"
+        >
+          Subscriber's first name
+        </ResponseField>
+        <ResponseField
+          name="phone"
+          type="string | null"
+        >
+          Subscriber's phone number
+        </ResponseField>
+        <ResponseField
+          name="state"
+          type="string | null"
+        >
+          Subscriber's state/province
+        </ResponseField>
+        <ResponseField
+          name="zip"
+          type="string | null"
+        >
+          Subscriber's zip/postal code
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField
+      name="groups"
+      type="array"
+      required
+    >
+      Groups the subscriber belongs to
+    </ResponseField>
+    <ResponseField
+      name="opted_in_at"
+      type="string | null"
+      required
+    >
+      Timestamp when the subscriber opted in
+    </ResponseField>
+    <ResponseField
+      name="optin_ip"
+      type="string | null"
+      required
+    >
+      IP address used during opt-in
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Troubleshooting
+
+If you run into errors when using the integration's Cards, check out your bot's [Logs](/learn/reference/debugger-logs-json#logs) and locate the error message:
+
+<AccordionGroup>
+  <Accordion
+    title="An unexpected error occurred"
+  >
+    Your developer API token may have been revoked. [Create a new one](#setup) and update your bot's configuration.
+  </Accordion>
+  <Accordion
+    title="Invalid JSON"
+  >
+    If you're passing data into the [Upsert Subscriber](#upsert-subscriber) Card's [`customFields`](#param-custom-fields) parameter, make sure it's a valid JSON string of key-value pairs..
+  </Accordion>
+</AccordionGroup>

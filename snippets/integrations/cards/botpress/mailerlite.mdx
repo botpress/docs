@@ -1,0 +1,504 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Delete Subscriber
+
+<span>{"Delete existing subscriber by subscriber id"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Id of the subscriber to remove"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Returns boolean depending on the return code of the action"}</span>
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    <span>{"Explains return status"}</span>
+  </ResponseField>
+</Expandable>
+
+### Fetch Subscriber
+
+<span>{"Search subscriber by id or by email"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"Subscriber id to search for"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"Subscriber email to search for"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="subscriber"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier for the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"Subscriber email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"Current subscription status of the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    <span>{"Source where the subscriber was acquired from"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sent"
+    type="number,null"
+    required
+  >
+    <span>{"Number of emails sent to this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="opens_count"
+    type="number,null"
+    required
+  >
+    <span>{"Number of emails opened by this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="clicks_count"
+    type="number,null"
+    required
+  >
+    <span>{"Number of email clicks by this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="open_rate"
+    type="number"
+    required
+  >
+    <span>{"Email open rate percentage for this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="click_rate"
+    type="number"
+    required
+  >
+    <span>{"Email click rate percentage for this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="ip_address"
+    type="string,null"
+    required
+  >
+    <span>{"IP address of the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subscribed_at"
+    type="string"
+    required
+  >
+    <span>{"Timestamp when the subscriber was subscribed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="unsubscribed_at"
+    type="string,null"
+    required
+  >
+    <span>{"Timestamp when the subscriber was unsubscribed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    <span>{"Timestamp when the subscriber was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    <span>{"Timestamp when the subscriber was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="object"
+    required
+  >
+    <span>{"Custom fields associated with the subscriber"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="city"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string,null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="groups"
+    type="array"
+  >
+    <span>{"Groups the subscriber belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="opted_in_at"
+    type="string,null"
+    required
+  >
+    <span>{"Timestamp when the subscriber opted in"}</span>
+  </ResponseField>
+  <ResponseField
+    name="optin_ip"
+    type="string,null"
+    required
+  >
+    <span>{"IP address used during opt-in"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Upsert Subscriber
+
+<span>{"Create or update existing subscriber with given fields, identified by their email or id"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"Email of the subscriber to create/upsert"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"First name of the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    <span>{"Last name of the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    <span>{"Company name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country"}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"Phone number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="string"
+  >
+    <span>{"State/Province"}</span>
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string"
+  >
+    <span>{"ZIP/Postal code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="string"
+  >
+    <span>{"JSON string containing key, value pairs of custom fields"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier for the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"Subscriber email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"Current subscription status of the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+    required
+  >
+    <span>{"Source where the subscriber was acquired from"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sent"
+    type="number,null"
+    required
+  >
+    <span>{"Number of emails sent to this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="opens_count"
+    type="number,null"
+    required
+  >
+    <span>{"Number of emails opened by this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="clicks_count"
+    type="number,null"
+    required
+  >
+    <span>{"Number of email clicks by this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="open_rate"
+    type="number"
+    required
+  >
+    <span>{"Email open rate percentage for this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="click_rate"
+    type="number"
+    required
+  >
+    <span>{"Email click rate percentage for this subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="ip_address"
+    type="string,null"
+    required
+  >
+    <span>{"IP address of the subscriber"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subscribed_at"
+    type="string"
+    required
+  >
+    <span>{"Timestamp when the subscriber was subscribed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="unsubscribed_at"
+    type="string,null"
+    required
+  >
+    <span>{"Timestamp when the subscriber was unsubscribed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    <span>{"Timestamp when the subscriber was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    <span>{"Timestamp when the subscriber was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="object"
+    required
+  >
+    <span>{"Custom fields associated with the subscriber"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="city"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="zip"
+    type="string,null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="groups"
+    type="array"
+  >
+    <span>{"Groups the subscriber belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="opted_in_at"
+    type="string,null"
+    required
+  >
+    <span>{"Timestamp when the subscriber opted in"}</span>
+  </ResponseField>
+  <ResponseField
+    name="optin_ip"
+    type="string,null"
+    required
+  >
+    <span>{"IP address used during opt-in"}</span>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}
