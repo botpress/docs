@@ -1,0 +1,100 @@
+---
+description: Add a bot to Pipedrive using the official integration.
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/pipedrive.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.pipedrive}/>
+
+The official Pipedrive integration allows your bot to create, update and search for Pipedrive contacts.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - A [Pipedrive account](https://www.pipedrive.com/en/register)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+    2. Search for the **Pipedrive** integration, then select **Install Integration**.
+
+    In the **Configuration** menu, you should see one field: **API Key**. Leave it empty for now—you'll come back to it after creating your Pipedrive API key.
+  </Step>
+  <Step title="Create a Pipedrive API key">
+    Next, create a Pipedrive API key:
+
+    1. [Log in to Pipedrive](https://app.pipedrive.com/auth/login).
+
+        <Warning>
+          The API key will inherit the permissions of whatever user you're logging in as. Because of this, we recommend using a dedicated Pipedrive user account for the API key.
+
+          This makes it easier to maintain the right permissions for the integration, or to rotate the key if it becomes compromised.
+        </Warning>
+
+    2. Open the **My Account** menu in the upper-right corner, then select **Personal preferences**.
+    3. Navigate to the **API** tab. You should see your personal API key—copy it.
+    <Tip>
+      If you don't have an API key, select **Generate new token**.
+    </Tip>
+
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API Key** field, paste your Pipedrive API key.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
+
+<Check>
+  Your Pipedrive integration is ready. You can use the integration's [Cards](#cards) to interact with your Pipedrive contacts.
+</Check>
+
+## Cards
+
+<Cards />
+
+## Troubleshooting
+
+If you run into errors when using the integration's Cards, check out your bot's [Logs](/learn/reference/debugger-logs-json#logs) and locate the error message:
+
+<AccordionGroup>
+  <Accordion
+    title="(Field) must be (data type)"
+  >
+    Usually this means:
+
+    - Not all the Card's required input fields were filled
+    - One of the fields contained invalid data
+
+    Double-check the input fields and try again. If you're letting your bot fill the input fields automatically based on context, make sure it's providing input that conforms to the Card's expected format.
+  </Accordion>
+  <Accordion
+    title="An unexpected error occurred"
+  >
+
+  This could mean a few things:
+
+    - Your Pipedrive API key may have been revoked. [Create a new one](#setup) and update your bot's configuration.
+    - Your API key may belong to a user that [doesn't have permission to perform the Card's action](https://support.pipedrive.com/en/article/permission-sets). We recommend creating a dedicated Pipedrive user account for the API key and ensuring it has the necessary permissions for the Cards you want to use.
+    - You may have exceeded Pipedrive's API rate limit. Wait and retry according to [Pipedrive's documentation](https://pipedrive.readme.io/docs/core-api-concepts-rate-limiting).
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+
+  You can also consult Pipedrive's [error code reference](https://pipedrive.readme.io/docs/error-codes-and-troubleshooting-for-messaging-app-extension#expected-error-codes-for-the-messaging-extensions-endpoints) for further troubleshooting.
+
+</Tip>
