@@ -1,0 +1,805 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+
+### Add Person
+
+<span>{"Add a person in Pipedrive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the person"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner_id"
+    type="number"
+  >
+    <span>{"The ID of the owner of the person"}</span>
+  </ResponseField>
+  <ResponseField
+    name="org_id"
+    type="number"
+  >
+    <span>{"The ID of the organization the person belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailValue"
+    type="string"
+  >
+    <span>{"Email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailPrimary"
+    type="boolean"
+  >
+    <span>{"Mark the email as primary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phoneValue"
+    type="string"
+  >
+    <span>{"Phone number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phonePrimary"
+    type="boolean"
+  >
+    <span>{"Mark the phone as primary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="visible_to"
+    type="number"
+  >
+    <span>{"The visibility of the person"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="owner_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="org_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="add_time"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="update_time"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="emails"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="primary"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="phones"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="primary"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="is_deleted"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="visible_to"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label_ids"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="picture_id"
+    type="number,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postal_address"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="street_number"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="route"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sublocality"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="locality"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="admin_area_level_1"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="admin_area_level_2"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postal_code"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="formatted_address"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="im"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="protocol"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="birthday"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job_title"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Find Person
+
+<span>{"Search for a person in Pipedrive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="term"
+    type="string"
+    required
+  >
+    <span>{"The search term to look for (minimum 2 characters)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="enum: custom_fields, email, notes, phone, name"
+  >
+    <span>{"Which fields to search in (custom_fields, email, notes, phone, name)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organization_id"
+    type="number"
+  >
+    <span>{"The ID of the organization to search in"}</span>
+  </ResponseField>
+  <ResponseField
+    name="exact_match"
+    type="boolean"
+  >
+    <span>{"Whether to search for exact matches only"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="result_score"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="item"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phones"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="emails"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="visible_to"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="organization"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="array"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="additional_data"
+    type="string"
+  >
+    
+  </ResponseField>
+</Expandable>
+
+### Update Person
+
+<span>{"Update a person in Pipedrive"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="person_id"
+    type="number"
+    required
+  >
+    <span>{"The ID of the person to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the person"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner_id"
+    type="number"
+  >
+    <span>{"The ID of the owner of the person"}</span>
+  </ResponseField>
+  <ResponseField
+    name="org_id"
+    type="number"
+  >
+    <span>{"The ID of the organization the person belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailValue"
+    type="string"
+  >
+    <span>{"Email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailPrimary"
+    type="boolean"
+  >
+    <span>{"Mark the email as primary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phoneValue"
+    type="string"
+  >
+    <span>{"Phone number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phonePrimary"
+    type="boolean"
+  >
+    <span>{"Mark the phone as primary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="visible_to"
+    type="number"
+  >
+    <span>{"The visibility of the person"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="owner_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="org_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="add_time"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="update_time"
+    type="string,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="emails"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="primary"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="phones"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="primary"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="is_deleted"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="visible_to"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label_ids"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="picture_id"
+    type="number,null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postal_address"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="street_number"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="route"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sublocality"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="locality"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="admin_area_level_1"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="admin_area_level_2"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="postal_code"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="formatted_address"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="im"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="protocol"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="birthday"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job_title"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}
