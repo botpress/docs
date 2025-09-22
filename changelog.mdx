@@ -4,6 +4,52 @@ description: 'The latest updates and improvements to Botpress.'
 mode: 'wide'
 ---
 
+<Update label="September 19, 2025">
+  ## Features & Enhancements
+
+  - Added option to rename rich text Knowledge Bases
+  - Improved UI for array input fields in Cards
+  - Added a safer check when deleting bots:
+
+    <Frame>
+      <img
+        alt="Confirm delete"
+        className="block dark:hidden"
+        src="./changelog-assets/2025-09-19/confirm-delete.png"
+      />
+      <img
+        alt="Confirm delete"
+        className="hidden dark:block"
+        src="./changelog-assets/2025-09-19/confirm-delete-dark.png"
+      />
+    </Frame>
+
+  - Added a search tab to workspace/bot selection dropdown
+
+  ## Integrations
+
+  - **Klaviyo**: Added [Klaviyo integration](/integrations/integration-guides/klaviyo)
+  - **Pipedrive**: Added [Pipedrive integration](/integrations/integration-guides/pipedrive)
+  - **MailerLite**: Added [MailerLite integration](/integrations/integration-guides/mailerlite)
+  - **Slack**: Added support for incoming Slack messages containing images, audio, files, and multiple files
+  - **Loops**: Added attachment support to the **Send Transactional Email** Card
+  - **SendGrid**: Fixed an issue with CC and BCC emails not being received
+  - **Linear**: Fixed an issue with the integration's event handling
+  - **WhatsApp**: Improved handling when the integration is rate limited by WhatsApp
+
+
+  ## Bug Fixes
+
+  - **UI fixes**:
+    - Fixed issue with Dashboard sidebar on mobile
+    - Fixed issue where the **Copy Share Link** wasn't clickable when viewing a Workflow in the Hub
+
+  - Fixed issue where the Capture Information Card wasn't working properly for files
+  - Fixed issue where shareable Webchat link would show error screen when error hadn’t occurred
+  - Fixed issue where negative feedback from Webchat wasn’t being displayed in Conversations tab
+
+</Update>
+
 <Update label="September 12, 2025">
   ## Features & Enhancements
 
