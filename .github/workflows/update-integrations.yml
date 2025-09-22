@@ -42,8 +42,8 @@ jobs:
         run: |
           node .github/scripts/check-version-updates.js
 
-      - name: Update integration Cards
-        id: update_cards
+      - name: Update integration Cards and Triggers
+        id: update_integrations
         env:
           BOTPRESS_TOKEN: ${{ secrets.BOTPRESS_TOKEN }}
           BOTPRESS_WORKSPACE_ID: ${{ secrets.BOTPRESS_WORKSPACE_ID }}
@@ -51,7 +51,7 @@ jobs:
           node .github/scripts/get-action-data.js
 
       - name: Create Pull Request
-        if: steps.check_versions.outputs.has_updates == 'true' || steps.update_cards.outputs.has_updates == 'true'
+        if: steps.check_versions.outputs.has_updates == 'true' || steps.update_integrations.outputs.has_updates == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ steps.generate-token.outputs.token }}
@@ -71,8 +71,10 @@ jobs:
         run: |
           echo "Integration update process completed"
           echo "Version updates: ${{ steps.check_versions.outputs.has_updates }}"
-          echo "Card updates: ${{ steps.update_cards.outputs.has_updates }}"
+          echo "Integration updates: ${{ steps.update_integrations.outputs.has_updates }}"
+          echo "Card updates: ${{ steps.update_integrations.outputs.has_card_updates }}"
+          echo "Trigger updates: ${{ steps.update_integrations.outputs.has_trigger_updates }}"
           
-          if [ "${{ steps.check_versions.outputs.has_updates }}" == "false" ] && [ "${{ steps.update_cards.outputs.has_updates }}" == "false" ]; then
+          if [ "${{ steps.check_versions.outputs.has_updates }}" == "false" ] && [ "${{ steps.update_integrations.outputs.has_updates }}" == "false" ]; then
             echo "No updates found"
           fi

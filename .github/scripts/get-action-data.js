@@ -37,8 +37,8 @@ function getFileHash(content) {
     return hash.toString();
 }
 
-async function getActions(bpIntegrations) {
-    let allActions = {}
+async function getIntegrationData(bpIntegrations) {
+    let allIntegrations = {}
 
     if (!bpIntegrations) {
         return {}
@@ -47,22 +47,32 @@ async function getActions(bpIntegrations) {
     for (const [name, integrationData] of Object.entries(bpIntegrations)) {
         const currentIntegration = await client.getPublicIntegrationById({id: integrationData.id})
         const currentActions = currentIntegration.integration.actions
+        const currentEvents = currentIntegration.integration.events
         
-        // Only include integrations that have actual actions
-        if (currentActions && Object.keys(currentActions).length > 0) {
-            allActions = {
-                ...allActions,
+        const hasActions = currentActions && Object.keys(currentActions).length > 0
+        const hasEvents = currentEvents && Object.keys(currentEvents).length > 0
+        
+        // Include integrations that have actions or events
+        if (hasActions || hasEvents) {
+            allIntegrations = {
+                ...allIntegrations,
                 [name]: {
-                    actions: currentActions,
+                    actions: currentActions || {},
+                    events: currentEvents || {},
                     workspace: integrationData.workspace
                 }
             }
+            
+            const features = []
+            if (hasActions) features.push(`${Object.keys(currentActions).length} Cards`)
+            if (hasEvents) features.push(`${Object.keys(currentEvents).length} Triggers`)
+            console.log(`✅ Found ${name} - ${features.join(', ')}`)
         } else {
-            console.log(`⏭️  Skipping ${name} - no Cards found`)
+            console.log(`⏭️  Skipping ${name} - no Cards or Triggers found`)
         }
     }
 
-    return allActions
+    return allIntegrations
 }
 
 function filterIntegrations(data) {
@@ -259,7 +269,50 @@ function generateActionSection(actionName, actionData) {
     return section
 }
 
-function generateActionDocumentation(integrationName, actions) {
+function generateTriggerSection(eventName, eventData) {
+    const title = eventData.title || capitalize(eventName)
+    const description = preserveEscaping(eventData.description || '')
+    
+    // Generate payload section
+    let payloadSection
+    if (eventData.schema?.properties && Object.keys(eventData.schema.properties).length > 0) {
+        const required = eventData.schema.required || []
+        const fields = Object.entries(eventData.schema.properties)
+            .map(([name, field]) => generateResponseField(name, field, required))
+            .join('\n')
+        
+        payloadSection = `  <ResponseField
+    name="payload"
+    type="object"
+  >
+    ${preserveEscaping(eventData.schema.description || 'The event payload data')}
+
+    <Expandable>
+${fields}
+    </Expandable>
+  </ResponseField>`
+    } else {
+        payloadSection = `  <ResponseField
+    name="payload"
+    type="object"
+  >
+    This Trigger has no payload.
+  </ResponseField>`
+    }
+    
+    // Build the section with optional description
+    let section = `### ${title}\n\n`
+    
+    if (description) {
+        section += `${description}\n\n`
+    }
+    
+    section += `${payloadSection}\n\n`
+    
+    return section
+}
+
+function generateCardDocumentation(integrationName, actions) {
     let mdxContent = `{/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
@@ -278,66 +331,140 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     return mdxContent
 }
 
-async function writeReferenceFiles(actions) {
+function generateTriggerDocumentation(integrationName, events) {
+    let mdxContent = `{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+`
+    
+    // Generate trigger sections
+    for (const [eventName, eventData] of Object.entries(events)) {
+        mdxContent += generateTriggerSection(eventName, eventData)
+    }
+    
+    // Add vale on comment at the end
+    mdxContent += '\n{/* vale on */}'
+    
+    return mdxContent
+}
+
+async function writeReferenceFiles(integrations) {
     // Get the directory of the current script
     const __filename = fileURLToPath(import.meta.url)
     const __dirname = dirname(__filename)
     
-    // Create the path to the cards directory
+    // Create the paths to the cards and triggers directories
     const cardsDir = join(__dirname, '../../snippets/integrations/cards')
+    const triggersDir = join(__dirname, '../../snippets/integrations/triggers')
     
-    const updatedIntegrations = []
-    const newIntegrations = []
+    const updatedCards = []
+    const newCards = []
+    const updatedTriggers = []
+    const newTriggers = []
     
-    for (const [integrationName, integrationData] of Object.entries(actions)) {
-        const { actions: integrationActions, workspace } = integrationData
-        
-        // Create workspace subdirectory
-        const workspaceDir = join(cardsDir, workspace)
-        if (!existsSync(workspaceDir)) {
-            mkdirSync(workspaceDir, { recursive: true })
-        }
+    for (const [integrationName, integrationData] of Object.entries(integrations)) {
+        const { actions: integrationActions, events: integrationEvents, workspace } = integrationData
         
         // Sanitize integration name for file system (replace slashes with hyphens)
         const sanitizedName = integrationName.replace(/\//g, '-')
         
-        // Generate new content
-        const refFilePath = join(workspaceDir, `${sanitizedName}.mdx`)
-        const newContent = generateActionDocumentation(integrationName, integrationActions)
-        
-        // Check if file exists and content has changed
-        const fileExisted = fileExists(refFilePath)
-        let hasChanged = true
-        
-        if (fileExisted) {
-            try {
-                const existingContent = readFileSync(refFilePath, 'utf8')
-                const existingHash = getFileHash(existingContent)
-                const newHash = getFileHash(newContent)
-                hasChanged = existingHash !== newHash
-            } catch (error) {
-                console.log(`⚠️  Could not read existing file ${refFilePath}, treating as new`)
-                hasChanged = true
+        // Handle Cards documentation
+        if (integrationActions && Object.keys(integrationActions).length > 0) {
+            // Create workspace subdirectory for cards
+            const cardsWorkspaceDir = join(cardsDir, workspace)
+            if (!existsSync(cardsWorkspaceDir)) {
+                mkdirSync(cardsWorkspaceDir, { recursive: true })
+            }
+            
+            // Generate new card content
+            const cardFilePath = join(cardsWorkspaceDir, `${sanitizedName}.mdx`)
+            const newCardContent = generateCardDocumentation(integrationName, integrationActions)
+            
+            // Check if file exists and content has changed
+            const cardFileExisted = fileExists(cardFilePath)
+            let cardHasChanged = true
+            
+            if (cardFileExisted) {
+                try {
+                    const existingContent = readFileSync(cardFilePath, 'utf8')
+                    const existingHash = getFileHash(existingContent)
+                    const newHash = getFileHash(newCardContent)
+                    cardHasChanged = existingHash !== newHash
+                } catch (error) {
+                    console.log(`⚠️  Could not read existing card file ${cardFilePath}, treating as new`)
+                    cardHasChanged = true
+                }
+            }
+            
+            if (cardHasChanged || !cardFileExisted) {
+                writeFileSync(cardFilePath, newCardContent, 'utf8')
+                
+                const actionCount = Object.keys(integrationActions).length
+                if (!cardFileExisted) {
+                    newCards.push(integrationName)
+                    console.log(`🆕 Created ${workspace}/${sanitizedName}.mdx with ${actionCount} cards`)
+                } else {
+                    updatedCards.push(integrationName)
+                    console.log(`✅ Updated ${workspace}/${sanitizedName}.mdx with ${actionCount} cards`)
+                }
+            } else {
+                console.log(`⏭️  No changes for cards ${workspace}/${sanitizedName}.mdx`)
             }
         }
         
-        if (hasChanged || !fileExisted) {
-            writeFileSync(refFilePath, newContent, 'utf8')
-            
-            const actionCount = Object.keys(integrationActions).length
-            if (!fileExisted) {
-                newIntegrations.push(integrationName)
-                console.log(`🆕 Created ${workspace}/${sanitizedName}.mdx with ${actionCount} cards`)
-            } else {
-                updatedIntegrations.push(integrationName)
-                console.log(`✅ Updated ${workspace}/${sanitizedName}.mdx with ${actionCount} cards`)
+        // Handle Triggers documentation
+        if (integrationEvents && Object.keys(integrationEvents).length > 0) {
+            // Create workspace subdirectory for triggers
+            const triggersWorkspaceDir = join(triggersDir, workspace)
+            if (!existsSync(triggersWorkspaceDir)) {
+                mkdirSync(triggersWorkspaceDir, { recursive: true })
             }
-        } else {
-            console.log(`⏭️  No changes for ${workspace}/${sanitizedName}.mdx`)
+            
+            // Generate new trigger content
+            const triggerFilePath = join(triggersWorkspaceDir, `${sanitizedName}.mdx`)
+            const newTriggerContent = generateTriggerDocumentation(integrationName, integrationEvents)
+            
+            // Check if file exists and content has changed
+            const triggerFileExisted = fileExists(triggerFilePath)
+            let triggerHasChanged = true
+            
+            if (triggerFileExisted) {
+                try {
+                    const existingContent = readFileSync(triggerFilePath, 'utf8')
+                    const existingHash = getFileHash(existingContent)
+                    const newHash = getFileHash(newTriggerContent)
+                    triggerHasChanged = existingHash !== newHash
+                } catch (error) {
+                    console.log(`⚠️  Could not read existing trigger file ${triggerFilePath}, treating as new`)
+                    triggerHasChanged = true
+                }
+            }
+            
+            if (triggerHasChanged || !triggerFileExisted) {
+                writeFileSync(triggerFilePath, newTriggerContent, 'utf8')
+                
+                const eventCount = Object.keys(integrationEvents).length
+                if (!triggerFileExisted) {
+                    newTriggers.push(integrationName)
+                    console.log(`🆕 Created ${workspace}/${sanitizedName}.mdx with ${eventCount} triggers`)
+                } else {
+                    updatedTriggers.push(integrationName)
+                    console.log(`✅ Updated ${workspace}/${sanitizedName}.mdx with ${eventCount} triggers`)
+                }
+            } else {
+                console.log(`⏭️  No changes for triggers ${workspace}/${sanitizedName}.mdx`)
+            }
         }
     }
     
-    return { updatedIntegrations, newIntegrations }
+    return { 
+        updatedCards, 
+        newCards, 
+        updatedTriggers, 
+        newTriggers 
+    }
 }
 
 async function main() {
@@ -348,39 +475,61 @@ async function main() {
         console.log('🔧 Filtering Botpress and Plus integrations...')
         const bpIntegrations = filterIntegrations(allIntegrations)
         
-        console.log('📥 Fetching Cards for all filtered integrations...')
-        const actions = await getActions(bpIntegrations)
+        console.log('📥 Fetching Cards and Triggers for all filtered integrations...')
+        const integrations = await getIntegrationData(bpIntegrations)
         
-        if (Object.keys(actions).length === 0) {
-            console.log('⚠️  No integrations with Cards found.')
+        if (Object.keys(integrations).length === 0) {
+            console.log('⚠️  No integrations with Cards or Triggers found.')
             await setGitHubOutput('has_updates', 'false')
+            await setGitHubOutput('has_card_updates', 'false')
+            await setGitHubOutput('has_trigger_updates', 'false')
             return
         }
         
         console.log('💾 Generating reference documentation files...')
-        const { updatedIntegrations, newIntegrations } = await writeReferenceFiles(actions)
+        const { updatedCards, newCards, updatedTriggers, newTriggers } = await writeReferenceFiles(integrations)
         
-        const totalUpdates = updatedIntegrations.length + newIntegrations.length
+        const totalCardUpdates = updatedCards.length + newCards.length
+        const totalTriggerUpdates = updatedTriggers.length + newTriggers.length
+        const totalUpdates = totalCardUpdates + totalTriggerUpdates
         const hasUpdates = totalUpdates > 0
+        const hasCardUpdates = totalCardUpdates > 0
+        const hasTriggerUpdates = totalTriggerUpdates > 0
         
         if (hasUpdates) {
             const changesSummary = [
-                updatedIntegrations.length > 0 ? `Updated: ${updatedIntegrations.join(', ')}` : '',
-                newIntegrations.length > 0 ? `New: ${newIntegrations.join(', ')}` : ''
+                updatedCards.length > 0 ? `Updated Cards: ${updatedCards.join(', ')}` : '',
+                newCards.length > 0 ? `New Cards: ${newCards.join(', ')}` : '',
+                updatedTriggers.length > 0 ? `Updated Triggers: ${updatedTriggers.join(', ')}` : '',
+                newTriggers.length > 0 ? `New Triggers: ${newTriggers.join(', ')}` : ''
             ].filter(Boolean).join('\n')
             
-            const allUpdatedIntegrations = [...updatedIntegrations, ...newIntegrations].join(', ')
+            const allUpdatedCards = [...updatedCards, ...newCards].join(', ')
+            const allUpdatedTriggers = [...updatedTriggers, ...newTriggers].join(', ')
+            const allUpdatedIntegrations = [...new Set([...updatedCards, ...newCards, ...updatedTriggers, ...newTriggers])].join(', ')
             
             await setGitHubOutput('has_updates', 'true')
+            await setGitHubOutput('has_card_updates', hasCardUpdates.toString())
+            await setGitHubOutput('has_trigger_updates', hasTriggerUpdates.toString())
             await setGitHubOutput('changes_summary', changesSummary)
             await setGitHubOutput('updated_integrations', allUpdatedIntegrations)
+            await setGitHubOutput('updated_cards', allUpdatedCards)
+            await setGitHubOutput('updated_triggers', allUpdatedTriggers)
             
-            console.log(`🎉 Successfully updated ${totalUpdates} integration card files!`)
+            console.log(`🎉 Successfully updated ${totalUpdates} integration documentation files!`)
+            if (hasCardUpdates) {
+                console.log(`   📄 Cards: ${totalCardUpdates} files updated`)
+            }
+            if (hasTriggerUpdates) {
+                console.log(`   ⚡ Triggers: ${totalTriggerUpdates} files updated`)
+            }
             console.log('Changes Summary:')
             console.log(changesSummary)
         } else {
             await setGitHubOutput('has_updates', 'false')
-            console.log('✨ All integration card files are up to date!')
+            await setGitHubOutput('has_card_updates', 'false')
+            await setGitHubOutput('has_trigger_updates', 'false')
+            console.log('✨ All integration documentation files are up to date!')
         }
         
     } catch (error) {
