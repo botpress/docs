@@ -31,6 +31,24 @@ This section lets you configure general information about your bot:
 - A custom footer for your bot (requires a [Plus plan](https://botpress.com/pricing))
 - A custom avatar for the Floating Action Button (FAB)
 
+### Settings
+
+This section lets you configure your bot's settings:
+
+- Enable/disable message feedback. When enabled, you can view feedback data in the [Analytics](/learn/get-started/dashboard/bot/analytics) tab
+- Enable/disable user file upload
+- Enable sound notifications for new messages. This requires Webchat v3.3+
+- Choose between local storage and session storage
+
+<Note>
+#### Session storage vs. Local storage
+
+Session storage creates a new user and conversation each time the page is re-opened. Local storage keeps them for your next visits.
+
+You can [learn more about local and session storage here](https://www.geeksforgeeks.org/javascript/difference-between-local-storage-session-storage-and-cookies/).
+
+</Note>
+
 ### Contact
 
 This section lets you configure optional contact information for your bot:
@@ -41,23 +59,6 @@ This section lets you configure optional contact information for your bot:
 - Terms of service
 - Privacy policy
 
-### Settings
-
-This section lets you configure your bot's settings:
-
-- Enable/disable message feedback. When enabled, you can view feedback data in the [Analytics](/learn/get-started/dashboard/bot/analytics) tab
-- Enable/disable user file upload
-- Choose between local storage and session storage
-
-<Note>
-  #### Session storage vs. Local storage
-
-Session storage creates a new user and conversation each time the page is re-opened. Local storage keeps them for your next visits.
-
-You can [learn more about local and session storage](https://www.geeksforgeeks.org/javascript/difference-between-local-storage-session-storage-and-cookies/).
-
-</Note>
-
 ## Style and appearance
 
 To style your bot using the built-in Webchat theme editor:
@@ -66,15 +67,10 @@ To style your bot using the built-in Webchat theme editor:
 2. In the left navigation bar, find the bot you want to style and select **Webchat**.
 3. Select the **Theme** tab to open the theme editor:
 
-<Frame>
-  <img alt="Appearance" className="block dark:hidden" src="./assets/appearance.png" />
-  <img alt="Appearance" className="hidden dark:block" src="./assets/appearance-dark.png" />
-</Frame>
-
 The following styling options are available:
 
+- Primary colour (defaults to `#3276EA`). Choose a recommended colour, or use the colour picker to specify a hex code.
 - Theme (defaults to **Light**)
-- Accent colour (defaults to `#3276EA`). Choose a recommended colour, or use the colour picker to specify a hex code.
 - Header theme (defaults to **Glass**)
 - Message theme (defaults to **Solid**)
 - Radius (defaults to fully rounded)
@@ -228,7 +224,7 @@ If you want to customize your bot's appearance further, you can modify the built
 
 Just add your styles to the **Styles** field.
 
-### Position Webchat on the Left
+### Position Webchat on the left
 
 By default, the Webchat FAB and the chat window appear on the right side of the screen. You can move them to the left by overriding the default CSS.
 
