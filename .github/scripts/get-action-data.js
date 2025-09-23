@@ -146,23 +146,63 @@ function preserveEscaping(text) {
 function generateResponseField(name, field, required = []) {
     const isRequired = required.includes(name)
     const title = field['x-zui']?.title || name
-    const fieldType = field.type || 'string'
     
-    // Handle special cases
-    let typeDisplay = fieldType
-    if (field.format) {
-        typeDisplay = `${fieldType} (${field.format})`
+    // Handle type display with multiple types and enums
+    let typeDisplay = 'string' // default
+    let enumOptions = null
+    
+    if (field.type) {
+        if (Array.isArray(field.type)) {
+            // Multiple types - join with " | "
+            typeDisplay = field.type.join(' | ')
+        } else {
+            typeDisplay = field.type
+        }
     }
+    
+    // Handle anyOf/oneOf for multiple types
+    if (field.anyOf || field.oneOf) {
+        const schemas = field.anyOf || field.oneOf
+        const types = schemas.map(schema => {
+            if (schema.type === 'null') return 'null'
+            return schema.type || 'string'
+        })
+        typeDisplay = types.join(' | ')
+    }
+    
+    // Handle format
+    if (field.format && !field.enum) {
+        typeDisplay = `${typeDisplay} (${field.format})`
+    }
+    
+    // Handle enums - use enum<type> format
     if (field.enum) {
-        typeDisplay = `enum: ${field.enum.join(', ')}`
+        const baseType = field.type || 'string'
+        typeDisplay = `enum<${baseType}>`
+        enumOptions = field.enum
     }
     
     const requiredProp = isRequired ? '\n    required' : ''
-    const description = preserveEscaping(field.description || '')
+    let defaultProp = ''
+    if (field.default !== undefined) {
+        if (typeof field.default === 'string') {
+            defaultProp = `\n    default="${field.default}"`
+        } else {
+            defaultProp = `\n    default={${JSON.stringify(field.default)}}`
+        }
+    }
+    let description = preserveEscaping(field.description || '')
+    
+    // Add enum options to description if present
+    if (enumOptions) {
+        const formattedOptions = enumOptions.map(option => `\`${option}\``).join(', ')
+        const enumText = `\n\nAvailable options: ${formattedOptions}`
+        description = description ? description + enumText : enumText.trim()
+    }
     
     let fieldContent = `  <ResponseField
     name="${name}"
-    type="${typeDisplay}"${requiredProp}
+    type="${typeDisplay}"${requiredProp}${defaultProp}
   >
     ${description}`
     
@@ -197,7 +237,7 @@ function generateResponseField(name, field, required = []) {
         // Handle anyOf/oneOf schemas (multiple possible item types)
         else if (field.items.anyOf || field.items.oneOf) {
             const schemas = field.items.anyOf || field.items.oneOf
-            let schemaContent = ''
+            let tabContent = ''
             
             schemas.forEach((schema, index) => {
                 if (schema.properties) {
@@ -207,16 +247,20 @@ function generateResponseField(name, field, required = []) {
                         .join('\n')
                     
                     if (schemaFields) {
-                        const schemaTitle = schema.properties.type?.const 
-                            ? `${schema.properties.type.const} properties`
-                            : `option ${index + 1} properties`
-                        schemaContent += `\n\n    <Expandable title="${schemaTitle}">\n${schemaFields}\n    </Expandable>`
+                        const tabTitle = schema.properties.type?.const 
+                            ? schema.properties.type.const
+                            : `Option ${index + 1}`
+                        tabContent += `\n    <Tab title="${tabTitle}">
+      <Expandable>
+${schemaFields}
+      </Expandable>
+    </Tab>`
                     }
                 }
             })
             
-            if (schemaContent) {
-                arrayItemContent = schemaContent
+            if (tabContent) {
+                arrayItemContent = `\n\n    <Tabs>${tabContent}\n    </Tabs>`
             }
         }
         
@@ -285,7 +329,7 @@ function generateTriggerSection(eventName, eventData) {
     name="payload"
     type="object"
   >
-    ${preserveEscaping(eventData.schema.description || 'The event payload data')}
+    ${preserveEscaping(eventData.schema.description || '')}
 
     <Expandable>
 ${fields}
@@ -316,7 +360,7 @@ function generateCardDocumentation(integrationName, actions) {
     let mdxContent = `{/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 `
     
@@ -336,6 +380,12 @@ function generateTriggerDocumentation(integrationName, events) {
 {/* vale off */}
 
 Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading \`event.payload\` after the Trigger fires.
+</Tip>
+
 
 `
     
