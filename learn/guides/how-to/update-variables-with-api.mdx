@@ -1,0 +1,125 @@
+---
+title: Update variables outside Studio
+---
+
+You can update your bot's [variables](/learn/reference/variables/overview) from outside Botpress Studio using the [Runtime API](/api-reference/runtime-api/getting-started).
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - At least one declared [variable](/learn/reference/variables/overview)
+  - [Authentication](/api-reference/authentication) for the Runtime API
+  - Familiarity with JavaScript
+</Info>
+
+## Step 1: Create a new schema
+
+First, create a new [schema](/learn/reference/schemas):
+
+1. In Studio, go to the **Schemas** tab in the lower left corner.
+2. Select **<Icon icon="circle-plus" /> New schema**.
+3. Erase everything in the schema definition, then paste the following snippet:
+
+```ts
+
+```
+
+4. Select **Save**.
+
+## Step 2: Create a new Action
+
+Then, create a new [Action](/learn/reference/actions) that uses your schema for its input:
+
+1. Go to the **<Icon icon="bolt" /> Actions** menu in the left sidebar.
+2. Select **New Action**.
+3. Set the action's **Input Schema** to the schema you created in [Step 1](#step-1%3A-create-a-new-schema).
+4. Paste the following code into the Action:
+
+```ts
+
+```
+
+This snippet updates the variable to whatever value you pass into the Action's input.
+
+## Step 3: Update the variable using the API
+
+Now, you can query the Runtime API's [`callAction`](/api-reference/runtime-api/openapi/callAction) endpoint to update the variable. You can make an HTTP request or use the [official Botpress client](/api-reference/runtime-api/getting-started#using-the-official-typescript-client):
+
+<Tabs>
+  <Tab title="Using an HTTP request">
+
+    <CodeGroup>
+
+    ```shell cURL
+    curl --request POST \
+      --url https://api.botpress.cloud/v1/chat/actions \
+      --header 'Authorization: Bearer <your-token>' \
+      --header 'Content-Type: application/json' \
+      --header 'x-bot-id: <api-key>' \
+      --data '{
+      "input": {
+        "newValue": "This is the new value of the variable"
+      }
+    }'
+    ```
+
+    ```python Python
+    import requests
+
+    url = "https://api.botpress.cloud/v1/chat/actions"
+
+    payload = { "input": { "newValue": "This is the new value of the variable" } }
+    headers = {
+        "Authorization": "Bearer <your-token>",
+        "x-bot-id": "<api-key>",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers)
+
+    print(response.json())
+    ```
+
+    ```js JavaScript
+    const url = 'https://api.botpress.cloud/v1/chat/actions';
+    const options = {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer <your-token>',
+        'x-bot-id': '<api-key>',
+        'Content-Type': 'application/json'
+      },
+      body: '{"input":{"newValue":"This is the new value of the variable"}}'
+    };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+    ```
+
+    ```php PHP
+
+    ```
+
+    ```go Go
+
+    ```
+
+    ```java Java
+
+    ```
+
+    </CodeGroup>
+
+  </Tab>
+  <Tab title="Using the Botpress Client">
+  ```ts
+
+  ```
+  </Tab>
+</Tabs>
