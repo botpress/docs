@@ -14,7 +14,13 @@ const client = new admin.Client({
 // GitHub Actions output functions
 async function setGitHubOutput(name, value) {
     if (process.env.GITHUB_OUTPUT) {
-        appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
+        // Handle multiline values using GitHub Actions delimiter format
+        if (value.includes('\n')) {
+            const delimiter = `EOF_${Math.random().toString(36).substring(2, 15)}`;
+            appendFileSync(process.env.GITHUB_OUTPUT, `${name}<<${delimiter}\n${value}\n${delimiter}\n`);
+        } else {
+            appendFileSync(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
+        }
     }
 }
 
