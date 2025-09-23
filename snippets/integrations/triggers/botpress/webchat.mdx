@@ -1,0 +1,83 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Conversation Started
+
+<span>{"This event occurs when a user activates the webchat widget, prompting the interface to appear."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Custom Trigger (advanced)
+
+<span>{"This event occurs when a payload is sent from the browser. That payload will be available in {{event.payload}}. Usage: \n\nwindow.botpressWebChat.sendPayload({ type: 'trigger', payload: {} })"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The webchat userId that triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The webchat conversationId that triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    required
+  >
+    <span>{"The payload to send with the event"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

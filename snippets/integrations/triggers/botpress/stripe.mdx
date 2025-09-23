@@ -1,0 +1,429 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Charge Failed
+
+<span>{"This event occurs when a charge fails in Stripe."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="charge.failed"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the failed charge"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Invoice Payment Failed
+
+<span>{"This event occurs when an invoice payment fails in Stripe."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="invoice.payment_failed"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the invoice whose payment failed"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Payment Intent Failed
+
+<span>{"This event occurs when a payment intent fails in Stripe."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="payment_intent.payment_failed"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the payment intent that failed"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Subscription Created
+
+<span>{"This event occurs when a subscription is created in Stripe. For example when the subscription is cancelled, but does not terminate immediately cancel_at_period_end goes to true."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="customer.subscription.created"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the created subscription"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Subscription Deleted
+
+<span>{"This event occurs when a subscription is canceled/deleted in Stripe."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="customer.subscription.deleted"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the deleted subscription"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Subscription Schedule Created
+
+<span>{"This event occurs when a subscription schedule is created in Stripe."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="subscription_schedule.created"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the created subscription schedule"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Subscription Schedule Updated
+
+<span>{"This event occurs when a subscription schedule is updated in Stripe."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="subscription_schedule.updated"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the updated subscription schedule"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Subscription Updated
+
+<span>{"This event occurs when a subscription is updated in Stripe. For example when the subscription is cancelled, but does not terminate immediately cancel_at_period_end goes to true."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="origin"
+    type="string"
+    required
+  >
+    <span>{"The origin of the event trigger"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Botpress User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The data to send with the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    default="customer.subscription.updated"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="object"
+    type="object"
+    required
+  >
+    <span>{"The object of the updated subscription"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

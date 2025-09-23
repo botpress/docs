@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Add Customer Profile to Campaign
 
@@ -269,6 +269,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="count"
     type="number"
+    default={100}
   >
     
   </ResponseField>
@@ -1165,7 +1166,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="delivery_status"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -1192,9 +1193,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+    type="enum<string>"
   >
-    
+    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1241,9 +1242,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+    type="enum<string>"
   >
-    
+    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1271,6 +1272,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="count"
     type="number"
+    default={100}
   >
     
   </ResponseField>
@@ -1661,9 +1663,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+    type="enum<string>"
   >
-    
+    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1734,9 +1736,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+    type="enum<string>"
   >
-    
+    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1781,9 +1783,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: pending, preprocessing, started, finalizing, finished"
+    type="enum<string>"
   >
-    
+    Available options: `pending`, `preprocessing`, `started`, `finalizing`, `finished`
   </ResponseField>
   <ResponseField
     name="total_operations"
@@ -1812,9 +1814,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+    type="enum<string>"
   >
-    
+    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
   </ResponseField>
   <ResponseField
     name="targetSchema"

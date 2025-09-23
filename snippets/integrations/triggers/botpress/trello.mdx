@@ -1,0 +1,2037 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Attachment added to card
+
+<span>{"Triggered when an attachment is added to a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="attachment"
+    type="object"
+    required
+  >
+    <span>{"Attachment that was added to the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string (uri)"
+  >
+    <span>{"URL of the attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="previewUrl"
+    type="string (uri)"
+  >
+    <span>{"URL of the attachment preview"}</span>
+  </ResponseField>
+  <ResponseField
+    name="previewUrl2x"
+    type="string (uri)"
+  >
+    <span>{"URL of the attachment preview in 2x"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Label added to card
+
+<span>{"Triggered when a label is added to a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was modified"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was modified"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="object"
+    required
+  >
+    <span>{"Label that was added to the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="string"
+    required
+  >
+    <span>{"Color of the label"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Member added to card
+
+<span>{"Triggered when a member is added to a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="member"
+    type="object"
+    required
+  >
+    <span>{"Member that was added to the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the member"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Full name of the member"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card Created
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card Deleted
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card Updated
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Comment added to card
+
+<span>{"Triggered when a comment is added to a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"Text of the comment"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card created
+
+<span>{"Triggered when a card is created"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Check item created
+
+<span>{"Triggered when a check item is added to a checklist of a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist where the item was added"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checkItem"
+    type="object"
+    required
+  >
+    <span>{"Check item that was added to the checklist"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="enum<string>"
+    required
+  >
+    <span>{"State of the check item"}</span>
+
+Available options: `complete`, `incomplete`
+  </ResponseField>
+  <ResponseField
+    name="textData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emoji"
+    type="object"
+    required
+  >
+    <span>{"Emoji of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string (date-time)"
+  >
+    <span>{"Due date of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Attachment deleted from card
+
+<span>{"Triggered when an attachment is deleted from a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="attachment"
+    type="object"
+    required
+  >
+    <span>{"Attachment that was deleted from the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the attachment"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card deleted
+
+<span>{"Triggered when a card is deleted"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was deleted"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was deleted"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was deleted"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Check item deleted
+
+<span>{"Triggered when a check item is removed from a checklist of a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist where the item was removed"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checkItem"
+    type="object"
+    required
+  >
+    <span>{"Check item that was removed from the checklist"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="enum<string>"
+    required
+  >
+    <span>{"State of the check item"}</span>
+
+Available options: `complete`, `incomplete`
+  </ResponseField>
+  <ResponseField
+    name="textData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emoji"
+    type="object"
+    required
+  >
+    <span>{"Emoji of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string (date-time)"
+  >
+    <span>{"Due date of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Comment deleted
+
+<span>{"Triggered when a comment is deleted"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="action"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the comment that was deleted"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Label removed from card
+
+<span>{"Triggered when a label is removed from a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was modified"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was modified"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="object"
+    required
+  >
+    <span>{"Label that was removed from the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="string"
+    required
+  >
+    <span>{"Color of the label"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Member removed from card
+
+<span>{"Triggered when a member is removed from a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="member"
+    type="object"
+    required
+  >
+    <span>{"Member that was removed from the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the member"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Full name of the member"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card updated
+
+<span>{"Triggered when a card is updated"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="idList"
+    type="string"
+  >
+    <span>{"Unique identifier of the list where the card is located"}</span>
+  </ResponseField>
+  <ResponseField
+    name="desc"
+    type="string"
+  >
+    <span>{"Description of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="idLabels"
+    type="array"
+  >
+    <span>{"Labels attached to the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pos"
+    type="number"
+  >
+    <span>{"Position of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="start"
+    type="string | null"
+  >
+    <span>{"Start date of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string | null"
+  >
+    <span>{"Due date of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dueReminder"
+    type="number | null | number"
+  >
+    <span>{"Due reminder of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dueComplete"
+    type="boolean"
+  >
+    <span>{"Whether the card is completed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closed"
+    type="boolean"
+  >
+    <span>{"Whether the card is archived"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="old"
+    type="object"
+    required
+  >
+    <span>{"Previous state of the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Previous name of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="desc"
+    type="string | null"
+  >
+    <span>{"Previous description of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="idList"
+    type="string"
+  >
+    <span>{"Previous list where the card was"}</span>
+  </ResponseField>
+  <ResponseField
+    name="idLabels"
+    type="array"
+  >
+    <span>{"Previous labels attached to the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pos"
+    type="number"
+  >
+    <span>{"Previous position of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="start"
+    type="string | null"
+  >
+    <span>{"Previous start date of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string | null"
+  >
+    <span>{"Previous due date of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dueReminder"
+    type="number | null | number"
+  >
+    <span>{"Previous due reminder of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dueComplete"
+    type="boolean"
+  >
+    <span>{"Previous completion state of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closed"
+    type="boolean"
+  >
+    <span>{"Previous archive state of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="listBefore"
+    type="object"
+  >
+    <span>{"Previous list where the card was located"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the previous list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the previous list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="listAfter"
+    type="object"
+  >
+    <span>{"New list where the card is now located"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the new list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the new list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Check item updated
+
+<span>{"Triggered when a check item is modified in a checklist of a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist where the item was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checkItem"
+    type="object"
+    required
+  >
+    <span>{"Check item that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="enum<string>"
+    required
+  >
+    <span>{"State of the check item"}</span>
+
+Available options: `complete`, `incomplete`
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string (date-time)"
+  >
+    <span>{"Due date of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="old"
+    type="object"
+    required
+  >
+    <span>{"Old check item data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Old name of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="enum<string>"
+    required
+  >
+    <span>{"Old state of the check item"}</span>
+
+Available options: `complete`, `incomplete`
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string (date-time)"
+  >
+    <span>{"Old due date of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Check item state updated on card
+
+<span>{"Triggered when the state of a check item is updated in a checklist of a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist where the item was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checkItem"
+    type="object"
+    required
+  >
+    <span>{"Check item that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the check item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="enum<string>"
+    required
+  >
+    <span>{"State of the check item"}</span>
+
+Available options: `complete`, `incomplete`
+  </ResponseField>
+  <ResponseField
+    name="textData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emoji"
+    type="object"
+    required
+  >
+    <span>{"Emoji of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="due"
+    type="string (date-time)"
+  >
+    <span>{"Due date of the check item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Comment updated
+
+<span>{"Triggered when a comment is updated"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="action"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the comment that was updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"New text of the comment"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="old"
+    type="object"
+    required
+  >
+    <span>{"Old comment data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"Old text of the comment"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Vote on card
+
+<span>{"Triggered when a vote is added to a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="board"
+    type="object"
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="voted"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the user voted on the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

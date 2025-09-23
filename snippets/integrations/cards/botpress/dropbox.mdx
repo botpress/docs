@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Copy Item
 
@@ -31,7 +31,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 <Expandable title="output">
   <ResponseField
     name="newItem"
-    type="string"
+    type="object | object"
     required
   >
     <span>{"The newly-created item"}</span>
@@ -342,9 +342,11 @@ This Card has no output.
     <Expandable>
   <ResponseField
     name="itemType"
-    type="enum: file, folder"
+    type="enum<string>"
   >
     <span>{"The entity type"}</span>
+
+Available options: `file`, `folder`
   </ResponseField>
   <ResponseField
     name="maxSizeInBytes"
@@ -378,7 +380,9 @@ This Card has no output.
   >
     <span>{"The files and folders in the folder"}</span>
 
-    <Expandable title="file properties">
+    <Tabs>
+    <Tab title="file">
+      <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -430,9 +434,10 @@ This Card has no output.
   >
     <span>{"The hash of the file content, or version/revision number, if available"}</span>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="folder properties">
+      </Expandable>
+    </Tab>
+    <Tab title="folder">
+      <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -466,7 +471,9 @@ This Card has no output.
   >
     <span>{"The absolute path of the folder. Leave empty if not available."}</span>
   </ResponseField>
-    </Expandable>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="meta"
@@ -597,6 +604,7 @@ This Card has no output.
   <ResponseField
     name="recursive"
     type="boolean"
+    default={false}
   >
     <span>{"Whether to recursively visit subfolders"}</span>
   </ResponseField>
@@ -618,7 +626,9 @@ This Card has no output.
   >
     <span>{"The list of files and folders in the folder"}</span>
 
-    <Expandable title="option 1 properties">
+    <Tabs>
+    <Tab title="Option 1">
+      <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -708,9 +718,10 @@ This Card has no output.
   >
     <span>{"The date and time the file was last modified, formatted as an ISO 8601 timestamp."}</span>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="option 2 properties">
+      </Expandable>
+    </Tab>
+    <Tab title="Option 2">
+      <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -759,7 +770,9 @@ This Card has no output.
   >
     <span>{"Whether the item is shared with other users."}</span>
   </ResponseField>
-    </Expandable>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="nextToken"
@@ -797,7 +810,7 @@ This Card has no output.
 <Expandable title="output">
   <ResponseField
     name="newItem"
-    type="string"
+    type="object | object"
     required
   >
     <span>{"The item that was moved"}</span>
@@ -826,13 +839,16 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="orderBy"
-    type="enum: relevance, last_modified_time"
+    type="enum<string>"
   >
     <span>{"How to sort the results"}</span>
+
+Available options: `relevance`, `last_modified_time`
   </ResponseField>
   <ResponseField
     name="fileNameOnly"
     type="boolean"
+    default={false}
   >
     <span>{"Whether to search only in file names"}</span>
   </ResponseField>
@@ -869,16 +885,18 @@ This Card has no output.
     <Expandable title="array item properties">
   <ResponseField
     name="item"
-    type="string"
+    type="object | object"
     required
   >
     <span>{"The matched item"}</span>
   </ResponseField>
   <ResponseField
     name="matchType"
-    type="enum: filename, file_content, filename_and_content, image_content, metadata, other"
+    type="enum<string>"
   >
     <span>{"The type of match"}</span>
+
+Available options: `filename`, `file_content`, `filename_and_content`, `image_content`, `metadata`, `other`
   </ResponseField>
     </Expandable>
   </ResponseField>

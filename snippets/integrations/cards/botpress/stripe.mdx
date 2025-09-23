@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Create Customer
 
@@ -66,33 +66,33 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="email"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="name"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="description"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="phone"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="address"
-    type="string"
+    type="object | null"
   >
     
   </ResponseField>
@@ -105,7 +105,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="delinquent"
-    type="boolean,null"
+    type="boolean | null"
   >
     
   </ResponseField>
@@ -176,33 +176,33 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="email"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="name"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="description"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="phone"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="address"
-    type="string"
+    type="object | null"
   >
     
   </ResponseField>
@@ -215,7 +215,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="delinquent"
-    type="boolean,null"
+    type="boolean | null"
   >
     
   </ResponseField>
@@ -237,33 +237,33 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="email"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="name"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="description"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="phone"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="address"
-    type="string"
+    type="object | null"
   >
     
   </ResponseField>
@@ -276,7 +276,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="delinquent"
-    type="boolean,null"
+    type="boolean | null"
   >
     
   </ResponseField>
@@ -299,36 +299,42 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="unit_amount"
     type="number"
+    default={50}
   >
     <span>{"The unit price in cents (minimum 50 cents for USD)"}</span>
   </ResponseField>
   <ResponseField
     name="currency"
     type="string"
+    default="usd"
   >
     <span>{"The currency in which the price will be expressed"}</span>
   </ResponseField>
   <ResponseField
     name="quantity"
     type="number"
+    default={1}
   >
     <span>{"The quantity of the product being purchased"}</span>
   </ResponseField>
   <ResponseField
     name="adjustableQuantity"
     type="boolean"
+    default={false}
   >
     <span>{"Whether or not the quantity can be adjusted"}</span>
   </ResponseField>
   <ResponseField
     name="adjustableQuantityMaximum"
     type="number"
+    default={99}
   >
     <span>{"The maximum quantity the customer can purchase, up to 999"}</span>
   </ResponseField>
   <ResponseField
     name="adjustableQuantityMinimum"
     type="number"
+    default={1}
   >
     <span>{"The minimum quantity the customer can purchase"}</span>
   </ResponseField>
@@ -366,42 +372,49 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="unit_amount"
     type="number"
+    default={0}
   >
     <span>{"The unit price in cents"}</span>
   </ResponseField>
   <ResponseField
     name="currency"
     type="string"
+    default="usd"
   >
     <span>{"The currency in which the price is expressed"}</span>
   </ResponseField>
   <ResponseField
     name="quantity"
     type="number"
+    default={1}
   >
     <span>{"The quantity of the subscription being purchased"}</span>
   </ResponseField>
   <ResponseField
     name="adjustableQuantity"
     type="boolean"
+    default={false}
   >
     <span>{"Whether or not the quantity can be adjusted"}</span>
   </ResponseField>
   <ResponseField
     name="adjustableQuantityMaximum"
     type="number"
+    default={99}
   >
     <span>{"The maximum quantity the customer can purchase, up to 999"}</span>
   </ResponseField>
   <ResponseField
     name="adjustableQuantityMinimum"
     type="number"
+    default={1}
   >
     <span>{"The minimum quantity the customer can purchase"}</span>
   </ResponseField>
   <ResponseField
     name="chargingInterval"
     type="string"
+    default="month"
   >
     <span>{"The interval at which the customer will be charged"}</span>
   </ResponseField>
@@ -598,13 +611,13 @@ This Card has no input fields.
   </ResponseField>
   <ResponseField
     name="email"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="description"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
@@ -660,33 +673,33 @@ This Card has no input fields.
   </ResponseField>
   <ResponseField
     name="email"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="name"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="description"
-    type="string,null"
+    type="string | null"
     required
   >
     
   </ResponseField>
   <ResponseField
     name="phone"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="address"
-    type="string"
+    type="object | null"
   >
     
   </ResponseField>
@@ -699,7 +712,7 @@ This Card has no input fields.
   </ResponseField>
   <ResponseField
     name="delinquent"
-    type="boolean,null"
+    type="boolean | null"
   >
     
   </ResponseField>

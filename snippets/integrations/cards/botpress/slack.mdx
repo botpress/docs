@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Add Reaction
 
@@ -46,10 +46,12 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="channel"
-    type="enum: dm, channel"
+    type="enum<string>"
     required
   >
     <span>{"Which channel to look into, ex: dm, channel"}</span>
+
+Available options: `dm`, `channel`
   </ResponseField>
 </Expandable>
 
@@ -80,10 +82,12 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="channel"
-    type="enum: dm, channel"
+    type="enum<string>"
     required
   >
     <span>{"The type of channel of the target"}</span>
+
+Available options: `dm`, `channel`
   </ResponseField>
     </Expandable>
   </ResponseField>

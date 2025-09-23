@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Generate Content
 
@@ -40,16 +40,17 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable title="array item properties">
   <ResponseField
     name="role"
-    type="enum: user, assistant"
+    type="enum<string>"
     required
   >
-    
+    Available options: `user`, `assistant`
   </ResponseField>
   <ResponseField
     name="type"
-    type="enum: text, tool_calls, tool_result, multipart"
+    type="enum<string>"
+    default="text"
   >
-    
+    Available options: `text`, `tool_calls`, `tool_result`, `multipart`
   </ResponseField>
   <ResponseField
     name="toolCalls"
@@ -67,10 +68,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="type"
-    type="enum: function"
+    type="enum<string>"
     required
   >
-    
+    Available options: `function`
   </ResponseField>
   <ResponseField
     name="function"
@@ -89,7 +90,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="arguments"
-    type="string"
+    type="object | null"
     required
   >
     <span>{"Some LLMs may generate invalid JSON for a tool call, so this will be `null` when it happens."}</span>
@@ -106,7 +107,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="content"
-    type="string"
+    type="string | null"
   >
     <span>{"Required unless `type` is \"tool_call\". If `type` is \"multipart\", this field must be an array of content objects. If `type` is \"tool_result\" then this field should be the result of the tool call (a plain string or a JSON-encoded array or object). If `type` is \"tool_call\" then the `toolCalls` field should be used instead."}</span>
   </ResponseField>
@@ -114,9 +115,11 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="responseFormat"
-    type="enum: text, json_object"
+    type="enum<string>"
   >
     <span>{"Response format expected from the model. If \"json_object\" is chosen, you must instruct the model to generate JSON either via the system prompt or a user message."}</span>
+
+Available options: `text`, `json_object`
   </ResponseField>
   <ResponseField
     name="maxTokens"
@@ -127,12 +130,14 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="temperature"
     type="number"
+    default={1}
   >
     <span>{"Sampling temperature for the model. Higher values result in more random outputs."}</span>
   </ResponseField>
   <ResponseField
     name="topP"
     type="number"
+    default={1}
   >
     <span>{"Top-p sampling parameter. Limits sampling to the smallest set of tokens with a cumulative probability above the threshold."}</span>
   </ResponseField>
@@ -196,9 +201,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable>
   <ResponseField
     name="type"
-    type="enum: auto, specific, any, none, "
+    type="enum<string>"
   >
-    
+    Available options: `auto`, `specific`, `any`, `none`, ``
   </ResponseField>
   <ResponseField
     name="functionName"
@@ -256,9 +261,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable title="array item properties">
   <ResponseField
     name="type"
-    type="enum: text, tool_calls, tool_result, multipart"
+    type="enum<string>"
+    default="text"
   >
-    
+    Available options: `text`, `tool_calls`, `tool_result`, `multipart`
   </ResponseField>
   <ResponseField
     name="toolCalls"
@@ -276,10 +282,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="type"
-    type="enum: function"
+    type="enum<string>"
     required
   >
-    
+    Available options: `function`
   </ResponseField>
   <ResponseField
     name="function"
@@ -298,7 +304,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="arguments"
-    type="string"
+    type="object | null"
     required
   >
     <span>{"Some LLMs may generate invalid JSON for a tool call, so this will be `null` when it happens."}</span>
@@ -315,7 +321,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="content"
-    type="string"
+    type="string | null"
   >
     <span>{"Required unless `type` is \"tool_call\". If `type` is \"multipart\", this field must be an array of content objects. If `type` is \"tool_result\" then this field should be the result of the tool call (a plain string or a JSON-encoded array or object). If `type` is \"tool_call\" then the `toolCalls` field should be used instead."}</span>
   </ResponseField>
@@ -335,10 +341,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="stopReason"
-    type="enum: stop, max_tokens, tool_calls, content_filter, other"
+    type="enum<string>"
     required
   >
-    
+    Available options: `stop`, `max_tokens`, `tool_calls`, `content_filter`, `other`
   </ResponseField>
     </Expandable>
   </ResponseField>

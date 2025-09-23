@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Create Profile
 
@@ -360,21 +360,25 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
 <Expandable title="input fields">
   <ResponseField
     name="filterField"
-    type="enum: id, email, phone_number, external_id, created, updated"
+    type="enum<string>"
     required
   >
     <span>{"The field to filter on"}</span>
+
+Available options: `id`, `email`, `phone_number`, `external_id`, `created`, `updated`
   </ResponseField>
   <ResponseField
     name="filterOperator"
-    type="enum: equals, greater-than, less-than, greater-or-equal, less-or-equal, contains, starts-with, ends-with"
+    type="enum<string>"
     required
   >
     <span>{"The comparison operator to use"}</span>
+
+Available options: `equals`, `greater-than`, `less-than`, `greater-or-equal`, `less-or-equal`, `contains`, `starts-with`, `ends-with`
   </ResponseField>
   <ResponseField
     name="filterValue"
-    type="string"
+    type="string | string"
     required
   >
     <span>{"The value to compare against"}</span>
@@ -387,9 +391,11 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="sort"
-    type="enum: created, -created, email, -email, id, -id, subscriptions.email.marketing.list_suppressions.timestamp, -subscriptions.email.marketing.list_suppressions.timestamp, subscriptions.email.marketing.suppression.timestamp, -subscriptions.email.marketing.suppression.timestamp, updated, -updated"
+    type="enum<string>"
   >
     <span>{"Sort profiles by field. Prefix with - for descending order"}</span>
+
+Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subscriptions.email.marketing.list_suppressions.timestamp`, `-subscriptions.email.marketing.list_suppressions.timestamp`, `subscriptions.email.marketing.suppression.timestamp`, `-subscriptions.email.marketing.suppression.timestamp`, `updated`, `-updated`
   </ResponseField>
 </Expandable>
 
@@ -567,6 +573,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="historicalImport"
     type="boolean"
+    default={false}
   >
     <span>{"Whether to import historical profiles (true = existing subscribers with timestamp, false = new real-time opt-ins)"}</span>
   </ResponseField>
