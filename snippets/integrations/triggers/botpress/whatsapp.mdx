@@ -1,0 +1,93 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Reaction Added
+
+<span>{"Triggered when a user adds a reaction to a message"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="reaction"
+    type="string"
+    required
+  >
+    <span>{"The reaction that was added"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"ID of the message that was reacted to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"ID of the user who added the reaction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"ID of the conversation"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Reaction Removed
+
+<span>{"Triggered when a user removes a reaction from a message"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="reaction"
+    type="string"
+    required
+  >
+    <span>{"The reaction that was removed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"ID of the message that was reacted to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"ID of the user who removed the reaction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"ID of the conversation"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

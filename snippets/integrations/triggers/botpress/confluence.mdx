@@ -1,0 +1,598 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Aggregate File Changes
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="modifiedItems"
+    type="object"
+    required
+  >
+    <span>{"The modified items"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="created"
+    type="array"
+    required
+  >
+    <span>{"The files created"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="updated"
+    type="array"
+    required
+  >
+    <span>{"The files updated"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="deleted"
+    type="array"
+    required
+  >
+    <span>{"The files and folders deleted"}</span>
+
+    <Tabs>
+    <Tab title="file">
+      <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="folder">
+      <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the folder is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the folder"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### File Created
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="file"
+    type="object"
+    required
+  >
+    <span>{"The created file"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### File Deleted
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="file"
+    type="object"
+    required
+  >
+    <span>{"The deleted file"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### File Updated
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="file"
+    type="object"
+    required
+  >
+    <span>{"The updated file"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The file's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The file's name. This will be displayed in the Botpress UI and be used as the file's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the file is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sizeInBytes"
+    type="number"
+  >
+    <span>{"The file size in bytes, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastModifiedDate"
+    type="string (date-time)"
+  >
+    <span>{"The last modified date of the file, if available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentHash"
+    type="string"
+  >
+    <span>{"The hash of the file content, or version/revision number, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Folder Deleted Recursive
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="folder"
+    type="object"
+    required
+  >
+    <span>{"The deleted folder"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The folder's ID. This could be a unique identifier from the external service, or a relative or absolute path, so long as it's unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The folder's name. This will be displayed in the Botpress UI and be used as the folder's name on Files API.\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"The parent folder ID. Leave empty if the folder is in the root folder."}</span>
+  </ResponseField>
+  <ResponseField
+    name="absolutePath"
+    type="string"
+    required
+  >
+    <span>{"The full path of the folder"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Page Created
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Page Deleted
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Page Updated
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

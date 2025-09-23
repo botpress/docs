@@ -1,0 +1,910 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Email bounced
+
+<span>{"An event that triggers when a sent email bounces. (e.g. Invalid Address, blocked, etc)"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+    required
+  >
+    <span>{"The reason this event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The Resend type for why the email bounced (e.g. \"Permanent\", \"Transient\", \"Undetermined\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subtype"
+    type="string"
+    required
+  >
+    <span>{"The Resend subtype for why the email bounced (e.g. \"General\", \"NoEmail\", \"MailboxFull\", etc.)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email link clicked
+
+<span>{"An event that triggers when a link in the email has been clicked on by the recipient. (Must have 'Click Tracking' enabled)\n\nNote: This may be subject to privacy regulations of the email recipient's country"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="clickedAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when a link in the email was clicked"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The destination URL of the link that was clicked"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email delivery delayed
+
+<span>{"An event that triggers when the Resend API fails a delivery attempt to the recipient's email server. (This will usually re-attempt a few times before stopping)"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email delivered
+
+<span>{"An event that triggers when the Resend API delivers an email to the recipient's email server. (This can also trigger alongside email bounces among other events)"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email failed to send
+
+<span>{"An event that triggers when the email could not be sent at all."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+    required
+  >
+    <span>{"The reason this event was triggered"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email marked as spam
+
+<span>{"An event that triggers when the sent email is marked as spam by the recipient."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email opened
+
+<span>{"An event that triggers when the email has been opened by the recipient. (Must have 'Open Tracking' enabled)\n\nNote: This may be subject to privacy regulations of the email recipient's country"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="openedAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the email was opened"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email sent
+
+<span>{"An event that triggers when the Resend API has processed and sent the email."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="emailId"
+    type="string"
+  >
+    <span>{"The ID for the sent email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"An ISO8601 datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="from"
+    type="string"
+    required
+  >
+    <span>{"The sender of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"The recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The blind carbon copy recipients of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="array"
+  >
+    <span>{"The headers of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"The tags of the email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

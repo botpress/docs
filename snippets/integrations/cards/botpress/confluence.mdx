@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Create Page
 
@@ -31,9 +31,11 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: current, draft, archived, historical, trashed, any, deleted"
+    type="enum<string>"
   >
     <span>{"The status of the page."}</span>
+
+Available options: `current`, `draft`, `archived`, `historical`, `trashed`, `any`, `deleted`
   </ResponseField>
   <ResponseField
     name="spaceId"
@@ -44,21 +46,21 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="parentId"
-    type="string,null"
+    type="string | null"
     required
   >
     <span>{"ID of the parent page, or null if there is no parent page."}</span>
   </ResponseField>
   <ResponseField
     name="parentType"
-    type="string"
+    type="string | null"
     required
   >
     <span>{"Content type of the parent, or null if there is no parent."}</span>
   </ResponseField>
   <ResponseField
     name="position"
-    type="number,null"
+    type="number | null"
     required
   >
     <span>{"Position of child page within the given parent page tree."}</span>
@@ -71,13 +73,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="ownerId"
-    type="string,null"
+    type="string | null"
   >
     <span>{"The account ID of the user who owns this page."}</span>
   </ResponseField>
   <ResponseField
     name="lastOwnerId"
-    type="string,null"
+    type="string | null"
   >
     <span>{"The account ID of the user who last edited this page."}</span>
   </ResponseField>
@@ -241,9 +243,11 @@ This Card has no output.
     <Expandable>
   <ResponseField
     name="itemType"
-    type="enum: file, folder"
+    type="enum<string>"
   >
     <span>{"The entity type"}</span>
+
+Available options: `file`, `folder`
   </ResponseField>
   <ResponseField
     name="maxSizeInBytes"
@@ -277,7 +281,9 @@ This Card has no output.
   >
     <span>{"The files and folders in the folder"}</span>
 
-    <Expandable title="file properties">
+    <Tabs>
+    <Tab title="file">
+      <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -329,9 +335,10 @@ This Card has no output.
   >
     <span>{"The hash of the file content, or version/revision number, if available"}</span>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="folder properties">
+      </Expandable>
+    </Tab>
+    <Tab title="folder">
+      <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -365,7 +372,9 @@ This Card has no output.
   >
     <span>{"The absolute path of the folder. Leave empty if not available."}</span>
   </ResponseField>
-    </Expandable>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="meta"
@@ -541,9 +550,11 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: current, draft, archived, historical, trashed, any, deleted"
+    type="enum<string>"
   >
     <span>{"The status of the page."}</span>
+
+Available options: `current`, `draft`, `archived`, `historical`, `trashed`, `any`, `deleted`
   </ResponseField>
   <ResponseField
     name="spaceId"
@@ -554,21 +565,21 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="parentId"
-    type="string,null"
+    type="string | null"
     required
   >
     <span>{"ID of the parent page, or null if there is no parent page."}</span>
   </ResponseField>
   <ResponseField
     name="parentType"
-    type="string"
+    type="string | null"
     required
   >
     <span>{"Content type of the parent, or null if there is no parent."}</span>
   </ResponseField>
   <ResponseField
     name="position"
-    type="number,null"
+    type="number | null"
     required
   >
     <span>{"Position of child page within the given parent page tree."}</span>
@@ -581,13 +592,13 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="ownerId"
-    type="string,null"
+    type="string | null"
   >
     <span>{"The account ID of the user who owns this page."}</span>
   </ResponseField>
   <ResponseField
     name="lastOwnerId"
-    type="string,null"
+    type="string | null"
   >
     <span>{"The account ID of the user who last edited this page."}</span>
   </ResponseField>

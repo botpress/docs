@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Browse Pages
 
@@ -20,18 +20,21 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="waitFor"
     type="number"
+    default={350}
   >
     <span>{"Time to wait before extracting the content (in milliseconds). Set this value higher for dynamic pages."}</span>
   </ResponseField>
   <ResponseField
     name="timeout"
     type="number"
+    default={30000}
   >
     <span>{"Timeout for the request (in milliseconds)"}</span>
   </ResponseField>
   <ResponseField
     name="maxAge"
     type="number"
+    default={604800}
   >
     <span>{"Maximum age of the cached page content (in seconds)"}</span>
   </ResponseField>
@@ -113,18 +116,21 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="width"
     type="number"
+    default={1080}
   >
     
   </ResponseField>
   <ResponseField
     name="height"
     type="number"
+    default={1920}
   >
     
   </ResponseField>
   <ResponseField
     name="fullPage"
     type="boolean"
+    default={true}
   >
     
   </ResponseField>
@@ -165,12 +171,14 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="onlyHttps"
     type="boolean"
+    default={true}
   >
     <span>{"Whether to only include HTTPS pages"}</span>
   </ResponseField>
   <ResponseField
     name="count"
     type="number"
+    default={5000}
   >
     
   </ResponseField>
@@ -207,10 +215,12 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="stopReason"
-    type="enum: urls_limit_reached, end_of_results, time_limit_reached"
+    type="enum<string>"
     required
   >
     <span>{"Reason for stopping the URLs discovery. "}</span>
+
+Available options: `urls_limit_reached`, `end_of_results`, `time_limit_reached`
   </ResponseField>
 </Expandable>
 
@@ -231,14 +241,18 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="greyscale"
     type="boolean"
+    default={false}
   >
     <span>{"Whether to return the logo in grayscale (black & white)"}</span>
   </ResponseField>
   <ResponseField
     name="size"
-    type="enum: 64, 128, 256, 512"
+    type="enum<string>"
+    default="128"
   >
     <span>{"Size of the logo to return (64, 128 or 256, 512 pixels)"}</span>
+
+Available options: `64`, `128`, `256`, `512`
   </ResponseField>
 </Expandable>
 
@@ -283,18 +297,22 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="count"
     type="number"
+    default={10}
   >
     <span>{"Number of search results to return (default: 10)"}</span>
   </ResponseField>
   <ResponseField
     name="freshness"
-    type="enum: Day, Week, Month"
+    type="enum<string>"
   >
     <span>{"Only consider results from the last day, week or month"}</span>
+
+Available options: `Day`, `Week`, `Month`
   </ResponseField>
   <ResponseField
     name="browsePages"
     type="boolean"
+    default={false}
   >
     <span>{"Whether to browse to the pages to get the full content"}</span>
   </ResponseField>

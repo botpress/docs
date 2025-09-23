@@ -1,0 +1,349 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Event Canceled
+
+<span>{"An event that triggers when an invitee cancels a scheduled event"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="scheduledEventUri"
+    type="string (uri)"
+    required
+  >
+    <span>{"The URI of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The name of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The start time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The end time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locationType"
+    type="string"
+    required
+  >
+    <span>{"The type of location for the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerName"
+    type="string"
+    required
+  >
+    <span>{"The name of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeName"
+    type="string"
+    required
+  >
+    <span>{"The name of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string | null"
+    required
+  >
+    <span>{"The conversation ID associated with the event, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Event No Show Created
+
+<span>{"An event that triggers when an invitee is marked as a no-show"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="scheduledEventUri"
+    type="string (uri)"
+    required
+  >
+    <span>{"The URI of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The name of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The start time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The end time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locationType"
+    type="string"
+    required
+  >
+    <span>{"The type of location for the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerName"
+    type="string"
+    required
+  >
+    <span>{"The name of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeName"
+    type="string"
+    required
+  >
+    <span>{"The name of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string | null"
+    required
+  >
+    <span>{"The conversation ID associated with the event, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Event No Show Deleted
+
+<span>{"An event that triggers when an invitee is unmarked as a no-show"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="scheduledEventUri"
+    type="string (uri)"
+    required
+  >
+    <span>{"The URI of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The name of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The start time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The end time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locationType"
+    type="string"
+    required
+  >
+    <span>{"The type of location for the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerName"
+    type="string"
+    required
+  >
+    <span>{"The name of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeName"
+    type="string"
+    required
+  >
+    <span>{"The name of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string | null"
+    required
+  >
+    <span>{"The conversation ID associated with the event, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Event Scheduled
+
+<span>{"An event that triggers when an invitee fills out and submits a scheduling form"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="scheduledEventUri"
+    type="string (uri)"
+    required
+  >
+    <span>{"The URI of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The name of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The start time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endTime"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The end time of the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locationType"
+    type="string"
+    required
+  >
+    <span>{"The type of location for the scheduled event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerName"
+    type="string"
+    required
+  >
+    <span>{"The name of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizerEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the event organizer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeName"
+    type="string"
+    required
+  >
+    <span>{"The name of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviteeEmail"
+    type="string (email)"
+    required
+  >
+    <span>{"The email of the invitee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string | null"
+    required
+  >
+    <span>{"The conversation ID associated with the event, if available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

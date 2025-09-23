@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Create a post
 
@@ -223,9 +223,11 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="privacy"
-    type="enum: public, private, all"
+    type="enum<string>"
   >
     <span>{"Filter comments by privacy setting. Allowed values: \"public\", \"private\", \"all\""}</span>
+
+Available options: `public`, `private`, `all`
   </ResponseField>
   <ResponseField
     name="inReview"
@@ -253,9 +255,11 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="sortBy"
-    type="enum: best, top, new, old"
+    type="enum<string>"
   >
     <span>{"Sort order of the results."}</span>
+
+Available options: `best`, `top`, `new`, `old`
   </ResponseField>
   <ResponseField
     name="nextToken"
@@ -387,7 +391,7 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="parentComment"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
