@@ -1,14 +1,21 @@
 ---
-title: Use different LLM models for Autonomous Nodes
+title: Use different LLM for Autonomous Nodes
 ---
 
-You can configure [Autonomous Nodes](/learn/reference/nodes/autonomous-node) to use a different LLM model than the default model specified in your [Bot Settings](/learn/reference/chatbot-settings#autonomous-language-model). This is useful if your bot needs a higher-performing model for certain tasks.
+<Warning>
+  You can now [override default LLMs directly in your Autonomous Node's settings](/learn/reference/nodes/autonomous-node#override-default-models).
+
+  This method is simpler and recommended for most use cases. The guide below remains available for advanced use cases.
+</Warning>
+
+You can configure [Autonomous Nodes](/learn/reference/nodes/autonomous-node) to use a different LLM than the default model specified in your [Bot Settings](/learn/reference/bot-settings#autonomous-language-model). This is useful if your bot needs a higher-performing model for certain tasks.
 
 <Info>
   You will need:
 
   - A [published bot](/learn/get-started/quick-start)
   - A [Workflow](/learn/reference/workflows) containing more than one Autonomous Node
+  - Familiarity with JavaScript
 </Info>
 
 ## Step 1: Find the Node, Workflow and model IDs
@@ -105,7 +112,7 @@ if (flowMatches && nodeMatches) {
   - Replace `yourModelChoice` with the [actual model ID](#model-id).
 
 <Check>
-  Now, this Autonomous Node will use a different model than the default model specified in your [Bot Settings](/learn/reference/chatbot-settings#autonomous-language-model).
+  Now, this Autonomous Node will use a different model than the default model specified in your [Bot Settings](/learn/reference/bot-settings#autonomous-language-model).
 </Check>
 
 ## Troubleshooting

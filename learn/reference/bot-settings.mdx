@@ -1,0 +1,72 @@
+---
+title: Bot Settings
+icon: settings
+---
+
+The **<Icon icon="settings"/> Bot Settings** menu lets you adjust general settings that apply to your bot.
+
+## General options
+
+### Bot name
+
+Use this field to set a name for your bot. This name will display to users, regardless of which channel your bot is deployed on.
+
+## Workflow options
+
+### Inactivity timeout
+
+This is the amount of time, in minutes, that your bot will wait for a response before ending the session. When the session ends, your bot will automatically trigger the [Timeout Workflow](/learn/reference/workflows#timeout). This clears the user's position in the Workflow and resets any Workflow variables.
+
+You can set this to 0 to prevent the bot from ever timing out. The maximum value is 1440 minutes, or 24 hours.
+
+### Node repetition limit
+
+This is the maximum amount of times a conversation can go through any specific Node. When the user reaches this node repetition limit, an error will be triggered.
+
+The maximum value is 10.
+
+### Use the Botpress Client
+
+This option lets you access the [official Botpress client for TypeScript](https://www.npmjs.com/package/@botpress/client) within Studio.
+
+When enabled, the `client` object is imported by default anywhere you can [use code in Studio](/learn/guides/advanced/use-code.).
+
+### Configuration variables
+
+Here, you can [define and manage configuration variables](/learn/reference/variables/scopes/configuration) for your bot.
+
+## LLM options
+
+In this section, you can configure which Large Language Model (LLM) your bot's [Autonomous Nodes](/learn/reference/nodes/autonomous-node) should use depending on its current task.
+
+<Tip>
+  You can [override these settings](/learn/reference/nodes/autonomous-node#override-default-models) for individual Autonomous Nodes.
+</Tip>
+
+### Default fast LLM
+
+This is the model your bot will use for quick and easy tasks, prioritizing speed and cost over performance.
+
+### Default best LLM
+
+This is the model your bot will use for complex tasks that need the highest-quality responses.
+
+### Autonomous language model
+
+This is the model that powers your bot's inference engine and generates responses.
+
+### RAG language model
+
+This is the model your bot will use for Retrieval-Augmented Generation (RAG) tasks, like answering questions based on [Knowledge Base](/learn/reference/knowledge-base/introduction) content.
+
+### Fallback LLM
+
+This is the model your bot will use when one of your preferred models is unavailable.
+
+### LLMz version
+
+This option lets you configure which version of Botpress' custom inference engine, LLMz, your bot uses.
+
+<Warning>
+We recommend always using latest stable version of LLMz. However, you may find that a bot built on previous versions of LLMz works best on those versions.
+</Warning>
