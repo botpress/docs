@@ -50,6 +50,8 @@ Select your Autonomous Node to open its configuration menu. Here's a breakdown o
 
   For a detailed guide to prompting, check out the [Prompting tips](#prompting-tips) section.
 
+- **Variables access**: This section lets you [give your Autonomous Node access to variables](#give-access-to-variables).
+
 - **Vision Agent**: This section configures whether your Autonomous Node uses the [Vision Agent](/learn/reference/agents/vision-agent) to extract text content from incoming images. Toggle **Extract from Incoming Images** to enable or disable this option.
 
 ### Add Cards
@@ -70,6 +72,16 @@ By default, Autonomous Nodes can't read or update [variables](/learn/reference/v
 <Tip>
   If you don't see the option to **+ Add variable(s)**, make sure you've [created at least one variable](/learn/reference/variables/overview#create-a-variable).
 </Tip>
+
+### Override default models
+
+By default, all Autonomous Nodes use the LLMs set in your [Bot Settings](/learn/reference/bot-settings#default-llms). However, you can override these models for individual Autonomous Nodes if needed:
+
+1. Select the Autonomous Node to open its configuration menu.
+2. Open **<Icon icon="chevron-right"/>Advanced settings**.
+3. Enable either:
+    - **Override default model**: Overrides the default LLM used for generating responses
+    - **Override default RAG model**: Overrides the default LLM used for Retrieval-Augmented Generation (RAG) tasks, like answering questions based on [Knowledge Base](/learn/reference/knowledge-base/introduction) content
 
 ---
 
@@ -298,4 +310,4 @@ A smaller LLM might result in parts of the prompt being truncated, specifically 
 
 Always make sure you are using the latest stable version of LLMz. This is the autonomous engine that directs the Autonomous Node to work. It also contains bug fixes, making the prompts more agnostic to variance between LLMs.
 
-You can check/change your LLMz version in your [Bot Settings](/learn/reference/chatbot-settings#llmz-version).
+You can check/change your LLMz version in your [Bot Settings](/learn/reference/bot-settings#llmz-version).
