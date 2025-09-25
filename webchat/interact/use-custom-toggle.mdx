@@ -1,0 +1,43 @@
+---
+title: Use custom toggle to open/close Webchat
+sidebarTitle: Use custom toggle
+---
+
+You can toggle Webchat open/closed using a custom HTML element. This hides the default chat bubble that usually loads with Webchat.
+
+<Info>
+  You will need:
+
+  - A website with an [embedded bot](/webchat/get-started/quick-start) using Webchat v3.3
+  - Basic familiarity with HTML
+</Info>
+
+<Note>
+  This option isn't available if you're [embedding Webchat in a specific element](/webchat/get-started/embed-in-element).
+</Note>
+
+<Steps titleSize="h2">
+  <Step title="Get your Webchat element ID">
+    First, get your Webchat element ID from the [Dashboard](/learn/get-started/dashboard/bot/webchat):
+
+    1. Select your bot from your Workspace.
+    2. Go to the **Webchat** section, then scroll to **Settings**.
+    3. Under **Button style**, select **Custom element**.
+    4. Copy the contents of the **Element ID** field.
+        <Tip>
+          You can also set a custom element ID in the field.
+        </Tip>
+    5. Scroll to the bottom of the page, then select **Save configuration**.
+  </Step>
+  <Step title="Add the element to your website">
+    Next, add an element to your website's HTML. Set the `id` attribute to the ID you copied earlier:
+
+    ```html
+    <button id="bp-toggle-chat">Toggle chat</button>
+    ```
+  </Step>
+</Steps>
+
+<Check>
+  Done! This element will now toggle the Webchat window.
+</Check>
