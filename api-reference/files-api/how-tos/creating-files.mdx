@@ -1,3 +1,7 @@
+---
+title: Create files
+---
+
 ## Creating a file
 
 All files are private by default and can only be accessed by the bot or integration that created them.
@@ -125,6 +129,90 @@ await fetch(response.file.uploadUrl, {
 // If you need to get a new URL, you can always use the `getFile` API endpoint.
 const downloadUrl = response.file.url
 ```
+
+## Add a file to a Knowledge Base
+
+To add a file to a [Knowledge Base](/learn/reference/knowledge-base/introduction):
+
+- Set the following tags when uploading a file:
+
+  ```ts
+  "tags": {
+    "source": "knowledge-base",
+    "kbId": <string> // Insert your Knowledge Base ID here
+    "title": <string> // Optional: Set a custom title for the file
+  },
+  ```
+- Make sure the `index` parameter is set to `true`. Otherwise, you won't be able to open the file in Studio.
+
+<Accordion
+  title="Example"
+>
+  <Tabs>
+    <Tab title="Botpress client">
+      Here's an example of how to upload a file to a Knowledge Base using the Botpress client's `uploadFile` method:
+
+      ```ts highlight={10-14}
+      import { Client } from '@botpress/client';
+
+      const client = new Client({
+        token: process.env.BOTPRESS_PAT,
+        botId: process.env.BOTPRESS_BOT_ID,
+      });
+
+      const response = await client.uploadFile({
+        "key": "filename.txt",
+        "index": true, // Set to true
+        "tags": {
+          "source": "knowledge-base",
+          "kbId": "kb_xxxxxxxxxxxxxxxxxxxxxxxxxx", // Your Knowledge Base ID
+          "title": "My file" // Optional title
+        },
+        "content": fileContent
+      });
+      ```
+    </Tab>
+    <Tab title="HTTP request">
+      Here's an example of how to upload a file to a Knowledge Base using the [`upsertFile`](/api-reference/files-api/openapi/upsertFile) endpoint:
+
+      ```ts highlight={17-21}
+      const token = process.env.BOTPRESS_PAT;
+      const botId = process.env.BOTPRESS_BOT_ID;
+
+      const fileContent = 'Your file content';
+      const buffer = Buffer.from(fileContent);
+
+      const url = 'https://api.botpress.cloud/v1/files';
+      const options = {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'x-bot-id': botId,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "key": "filename.txt",
+          "index": true, // Set to true
+          "tags": {
+            "source": "knowledge-base",
+            "kbId": "kb_xxxxxxxxxxxxxxxxxxxxxxxxxx", // Your Knowledge Base ID
+            "title": "My file", // Optional title
+          },
+          "size": buffer.byteLength,
+        })
+      };
+
+      const response = await fetch(url, options);
+      const data = await response.json();
+
+      await fetch(data.file.uploadUrl, {
+        method: 'PUT',
+        body: buffer,
+      });
+      ```
+    </Tab>
+  </Tabs>
+</Accordion>
 
 ## Creating a public file
 
