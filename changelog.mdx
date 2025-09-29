@@ -4,6 +4,64 @@ description: 'The latest updates and improvements to Botpress.'
 mode: 'wide'
 ---
 
+<Update label="September 26, 2025">
+  ## Features & Enhancements
+
+  ### Webchat
+
+  - Added the option to configure a [custom Webchat toggle](/webchat/interact/use-custom-toggle):
+
+  <Frame>
+    <img
+      alt="Custom Webchat toggle"
+      className="block dark:hidden"
+      src="./changelog-assets/2025-09-26/custom-toggle.gif"
+    />
+    <img
+      alt="Custom Webchat toggle"
+      className="hidden dark:block"
+      src="./changelog-assets/2025-09-26/custom-toggle-dark.gif"
+    />
+  </Frame>
+
+  - Added the option to [inject Webchat into a specific HTML element](/webchat/get-started/embed-in-element)
+  - Improved the Webchat customization UI
+
+  ### Autonomous Nodes
+
+  - Added the option to [set a specific LLM for Retrieval-Augmented Generation (RAG) tasks](/learn/reference/bot-settings#rag-language-model), like searching a Knowledge Base
+  - Added the option to [override your bot's default LLM settings](/learn/reference/nodes/autonomous-node#override-default-models) at the Node level
+
+  ### Studio
+
+  - Added the option to select another bot when Studio is already open in another tab:
+
+  <Frame>
+    <img
+      alt="Bot selector"
+      className="block dark:hidden"
+      src="./changelog-assets/2025-09-26/bot-select.png"
+    />
+    <img
+      alt="Bot selector"
+      className="hidden dark:block"
+      src="./changelog-assets/2025-09-26/bot-select-dark.png"
+    />
+  </Frame>
+
+  ## Integrations
+
+  - [Email Notifier](/integrations/integration-guides/plus-email-notifier): Added an integration for sending emails from a generic email address
+  - **Apollo**: Added [Apollo](/integrations/integration-guides/apollo) integration
+  - **Attio**: Added [Attio](https://attio.com/) integration
+  - **Slack**: Added support for tagged Slack users in incoming message payloads
+
+  ## Bug Fixes
+
+  - Fixed an issue where dynamically including Knowledge Bases in Autonomous Nodes (using a variable) wasn't working properly
+  - Fixed an issue with the Slack integration where quick replies would result in a 400 error
+</Update>
+
 <Update label="September 19, 2025">
   ## Features & Enhancements
 
