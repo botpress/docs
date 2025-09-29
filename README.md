@@ -12,6 +12,7 @@ To contribute, install the following software if you haven't already:
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [pnpm](https://pnpm.io/) package manager
 - [Vale](https://vale.sh/) for writing style checks (optional but recommended)
+- [Mintlify CLI](https://www.mintlify.com/docs) for the local development server
 
 ## Getting started
 
