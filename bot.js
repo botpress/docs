@@ -53,36 +53,9 @@ function askAi() {
   }
 }
 
-function listenforDarkMode() {
-  // Monitor changes to the html element's "dark" class
-const htmlElement = document.documentElement
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-      const hasDarkClass = htmlElement.classList.contains('dark')
-      
-      if (window.botpress) {
-        window.botpress.config({
-          configuration: {
-            "botName": "bab"
-          }
-        })
-      }
-    }
-  })
-})
-
-// Start observing the html element for class attribute changes
-observer.observe(htmlElement, {
-  attributes: true,
-  attributeFilter: ['class']
-})
-}
-
 webchatScript.onload = () => {
   if (window.botpress && typeof window.botpress.init === 'function') {
     loadWebchat()
-    listenforDarkMode()
   } else {
     console.error('Botpress init not available')
   }
