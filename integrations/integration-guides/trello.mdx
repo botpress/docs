@@ -6,6 +6,8 @@ title: Trello
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/trello.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/trello.mdx'
 
 {/* vale on */}
 
@@ -51,56 +53,15 @@ The Trello integration has the following settings:
 5. Make sure the integration is enabled then press the button "Save configuration".
 
 That's it! Now the Trello integration is operational and ready for use within your bot.
+
+---
+
 ## Cards
 
-### Create Card
+<Cards />
 
-This operation allows you to create cards programmatically in Trello. For example, this can be useful to register user feedback, add support tickets or create tasks.
+---
 
-* **Card Name**: The title of the card (e.g., "My Test Card").
-* **List ID**: The ID of the list to which the card will be added.
-* **Description** (Optional): Details or description of the card.
-* **Due Date** (Optional): The due date of the card in ISO format.
-* **Member IDs** (Optional): The IDs of the members, represented as strings separated by commas.
-* **Label IDs** (Optional): The IDs of the labels, represented as strings separated by commas.
+## Triggers
 
-You can save the new card information by selecting a variable to store the output in. The output will be an object with the following keys: `id` and `url`.
-
-### Update Card
-
-This operation allows you to update cards programmatically in Trello. For example, this can be useful to update the status of a support ticket or a task.
-
-* **Card ID**: The ID of the card to be updated.
-* **Card Name** (Optional): The updated name of the card.
-* **List ID** (Optional): The ID of the list to which the card is added.
-* **Closed** (Optional): Specify "true" to close the card and "false" to keep it open.
-* **Due Complete** (Optional): Specify "true" if the card is due complete and "false" if not.
-
-### Get Member
-
-* **Username or ID**: The Trello username or Trello ID to retrieve member data
-
-You can save the member information by selecting a variable to store the output in. The output will be an object with several keys like: `avatarUrl`, `bioData`, `fullName`, `email` and more. Check out this [documentation page](https://developer.atlassian.com/cloud/trello/rest/api-group-members/) to learn more about the Member object.
-
-### Get Board Members
-
-This operation allows you to get all the members of a board. For example, this can be useful to get the list of members of a project.
-
-* **Board ID**: The ID of the board to retrieve all its members.
-
-You can save the members information by selecting a variable to store the output in. The output will be an object with the key: `members`. The members property is an array of objects with the keys: `id`, `fullName`, and `username`.
-
-### Add Comment
-
-This operation allows you to add a comment to an existing card. For example, this can be useful to add a comment to a support ticket or a task.
-
-* **Card ID**: The ID of the card to which the comment will be added.
-* **Comment**: The content of the comment to be added.
-
-You can save the new comment information by selecting a variable to store the output in. The output will be an object with the key: `text`.
-
-<Note>
-Note
-
-This Trello Integration aims to extend the capabilities of your Botpress bot by aligning it with Trello's functionalities, providing a harmonized and interactive user experience. Explore, interact, and get creative with how you utilize this amalgamation to optimize task and project management.
-</Note>
+<Triggers />

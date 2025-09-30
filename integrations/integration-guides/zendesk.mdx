@@ -7,6 +7,8 @@ description: Integrate your bot with Zendesk using the official integration.
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/zendesk.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/zendesk.mdx'
 
 {/* vale on */}
 
@@ -84,169 +86,14 @@ Your Zendesk agent can continue the conversation on any messaging channel suppor
   Done! You can now create and manage support tickets directly from your bot.
 </Check>
 
+---
+
 ## Cards
 
-You can use the following Cards to interact with Zendesk in your Workflow:
+<Cards />
 
-### Get Ticket
-
-Retrieves details about a specific support ticket in Zendesk.
-
-* **Input**:
-  * `Ticket ID`: The ID of the ticket from the ticket URL. <br/>(e.g., `https://companyname.zendesk.com/agent/tickets/1` for `Ticket ID` `1`).
-* **Returns**: Real-time updates on the status and details of the ticket.
-
-```javascript
-// Return object example
-{
-  "ticket": {
-    "id": 4,
-    "subject": "Ticket Subject",
-    "description": "Ticket Description",
-    "priority": null,
-    "status": "open",
-    "tags": [],
-    "requesterId": 11183521570160,
-    "assigneeId": 11183526440284,
-    "createdAt": "2023-11-08T18:27:49Z",
-    "updatedAt": "2023-11-10T18:03:13Z"
-  }
-}
-```
-
-### Create Ticket
-
-Creates a new support ticket in Zendesk.
-
-* **Inputs**:
-  * `Ticket subject`: Title of the ticket.
-  * `Ticket comment`: Initial message for the support agent.
-  * `Requester name`: Name of the user needing support.
-  * `Requester email`: Email of the user needing support.
-* **Returns**: Confirmation of ticket creation with details.
-
-```javascript
-// Return object example
-{
-  "ticket": {
-    "id": 4,
-    "subject": "Ticket Subject",
-    "description": "Ticket Description",
-    "priority": null,
-    "status": "open",
-    "tags": [],
-    "requesterId": 11183511570160,
-    "assigneeId": 11183521440284,
-    "createdAt": "2023-11-08T18:27:49Z",
-    "updatedAt": "2023-11-10T18:03:13Z"
-  }
-}
-
-```
-
-### Close Ticket
-
-Closes the ticket of the provided Ticket ID in Zendesk.
-
-* **Input**:
-  * `Ticket ID`: The ID of the ticket from the ticket URL. <br/>(e.g., `https://companyname.zendesk.com/agent/tickets/1` for `Ticket ID` `1`).
-* **Optional**: `Closing Comment` for resolution summary or thanks.
-* **Returns**: Confirmation that the ticket is closed with optional comment.
-
-```javascript
-// Return object example
-{
-  "ticket": {
-    "id": 4,
-    "subject": "Ticket Subject",
-    "description": "Ticket Description",
-    "priority": null,
-    "status": "closed",
-    "tags": [],
-    "requesterId": 11183511570160,
-    "assigneeId": 11183521440284,
-    "createdAt": "2023-11-08T18:27:49Z",
-    "updatedAt": "2023-11-10T18:03:13Z"
-  }
-}
-
-```
-
-### Get Ticket Conversation
-
-Fetches the conversation ID of the provided Ticket ID in Zendesk.
-
-* **Input**:
-  * `Ticket ID`: The ID of the ticket from the ticket URL. <br/>(e.g., `https://companyname.zendesk.com/agent/tickets/1` for `Ticket ID` `1`).
-* **Returns**: Latest updates or responses from support agents on the ticket.
-
-```javascript
-// Return object example
-{
-  "conversationId": "5c9ea21d-3ce3-43fa-bd33-3fb7312f88b5",
-  "tags": {"zendesk:id": "4", "zendesk:requesterId": "11232621609372"}
-}
-
-```
-
-### Find Customer
-
-Finds a customer in Zendesk based on the provided search query.
-
-* **Input**:
-  * `Search Query`: You can search by name, email, or phone number of the customer.
-* **Returns**: A list of matching customers and their details.
-
-```javascript
-// Return object example
-{
-  "customers": [
-    {
-      "id": 11183521570160,
-      "name": "Customer Name",
-      "email": "Customer Email",
-      "phone": "Customer Phone",
-      "createdAt": "2023-11-08T18:27:49Z",
-      "updatedAt": "2023-11-10T18:03:13Z"
-    }
-  ]
-}
-
-```
-
-### List Agents
-
-Provides a list of available support agents in Zendesk.
-
-* **Input**:
-  * `Is Online`: Select this option to filter the list of agents by online status.
-* **Returns**: List of agents, optionally filtered by online status.
-
-```javascript
-// Return object example
-{
-  "agents": [
-    {
-      "id": 11183521570160,
-      "name": "Agent Name",
-      "email": "Agent Email",
-      "phone": "Agent Phone",
-      "createdAt": "2023-11-08T18:27:49Z",
-      "updatedAt": "2023-11-10T18:03:13Z"
-    }
-  ]
-}
-
-```
+---
 
 ## Triggers
 
-The Zendesk integration comes with a few built-in triggers:
-
-### HITL Assigned
-
-The **HITL Assigned** trigger fires when a ticket is assigned to an agent. You can use it to notify the agent that they have a new ticket to work on.
-
-### HITL Stopped
-
-The **HITL Stopped** trigger fires when a ticket is marked as solved. You can use it to notify the user that their issue has been resolved.
+<Triggers />
