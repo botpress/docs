@@ -1,6 +1,4 @@
 ---
-title: Slack Setup
-sidebarTitle: Setup
 description: Add a bot to Slack using the official integration.
 ---
 
@@ -8,6 +6,8 @@ description: Add a bot to Slack using the official integration.
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/slack.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/slack.mdx'
 
 <OpenInHub integration={integrationVersions.slack}/>
 
@@ -211,3 +211,45 @@ Slack uses a proprietary markup language, [mrkdwn](https://api.slack.com/referen
 - Botpress' AI inference engine can understand them
 
 However, any outgoing AI-generated messages your bot sends to the Slack integration will still be rendered in Markdown by default. This means **rich text messages from your bot may not be rendered properly in Slack** without additional processing.
+
+---
+
+## Cards
+
+<Cards />
+
+---
+
+## Triggers
+
+<Triggers />
+
+---
+
+## Tags
+
+You can read [event tags](/learn/guides/advanced/event-properties#param-tags) to get information about an active Slack conversation:
+
+### Slack conversation ID
+
+To get the Slack conversation ID:
+
+`event.tags.conversation["slack:id"]`
+
+### Slack thread ID
+
+To get the Slack conversation thread ID (if it's a thread):
+
+`event.tags.conversation["slack:thread"]`
+
+### Slack user ID
+
+To get the Slack user ID:
+
+`event.tags.user["slack:id"]`
+
+### Slack message ID
+
+To get the Slack message ID:
+
+`event.tags.message["slack:id"]`

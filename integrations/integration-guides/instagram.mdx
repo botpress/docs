@@ -6,6 +6,7 @@ description: Add your bot to Instagram using the official integration.
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/instagram.mdx'
 
 {/* vale on */}
 
@@ -170,16 +171,4 @@ The official Instagram integration allows your users to chat with your bot by me
 
 ## Cards
 
-The following [Cards](/learn/reference/cards/) are available with the Instagram integration:
-
-### Get Or Create Conversation DM
-
-This Card proactively starts a new conversation with a user (or sends a message to your existing conversation with them).
-
-Just fill in the **User ID** field with the Instagram ID of the account you want to start a conversation with.
-
-### Get Or Create User
-
-This Card manually gets or creates a Botpress user associated with an Instagram ID.
-
-Just fill in the **ID** field with the Instagram ID you want to associate with the Botpress user. You can also fill in the optional fields to provide a name, picture URL, and email address for the Botpress user.
+<Cards />

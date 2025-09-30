@@ -7,6 +7,7 @@ description: Integrate Botpress with other services using a webhook.
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Triggers from '/snippets/integrations/triggers/botpress/webhook.mdx'
 import webhookPayloadSize from "/snippets/api-payload-limits.mdx"
 
 {/* vale on */}
@@ -195,7 +196,7 @@ Webhooks don't return any data in the response body.
 
 To read data from a webhook request in the Studio:
 
-1. In Botpress Studio, add the **Webhook Event** [Trigger](/learn/reference/triggers) to the Workflow you want to use the request's data in.
+1. In Botpress Studio, add the [Event](#event) Trigger to the Workflow you want to use the request's data in.
 2. Connect any Nodes you want to the Trigger—they'll execute whenever the webhook receives an request.
 3. Now, you can [read the event's payload](/learn/guides/advanced/event-properties) to access information about the webhook request:
 
@@ -260,3 +261,9 @@ The contents of `event.payload` are overwritten as soon as the bot or the user s
 ### Payload size limit
 
 The maximum size for a Webhook payload is {webhookPayloadSize}.
+
+---
+
+## Triggers
+
+<Triggers />

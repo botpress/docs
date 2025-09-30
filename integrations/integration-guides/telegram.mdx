@@ -6,6 +6,7 @@ title: Telegram
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Telegram from '/snippets/integrations/cards/botpress/telegram.mdx'
 
 <OpenInHub integration={integrationVersions.telegram}/>
 
@@ -68,3 +69,9 @@ That's it, you may now start chatting with your bot on Telegram!
 
 * To get the Telegram message ID, you can read the following variable:\
   `{{ event.tags.message["telegram:id"] }}`.
+
+---
+
+## Cards
+
+<Telegram />
