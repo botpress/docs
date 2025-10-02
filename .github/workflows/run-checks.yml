@@ -33,3 +33,21 @@ jobs:
           vale_flags: --minAlertLevel=error
           fail_on_error: false
           token: ${{secrets.GITHUB_TOKEN}}
+  integrations:
+    name: Integration Versions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 8.6.2
+      - run: pnpm i --no-frozen-lockfile
+      - run: |
+          cd .github/scripts
+          npm install
+      - run: node .github/scripts/checks/check-integrations.js
+        env:
+          BOTPRESS_TOKEN: ${{ secrets.BOTPRESS_TOKEN }}
+          BOTPRESS_WORKSPACE_ID: ${{ secrets.BOTPRESS_WORKSPACE_ID }}

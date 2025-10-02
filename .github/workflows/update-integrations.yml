@@ -39,13 +39,13 @@ jobs:
           cd .github/scripts
           npm install
 
-      - name: Check for version updates
+      - name: Update integration versions
         id: check_versions
         env:
           BOTPRESS_TOKEN: ${{ secrets.BOTPRESS_TOKEN }}
           BOTPRESS_WORKSPACE_ID: ${{ secrets.BOTPRESS_WORKSPACE_ID }}
         run: |
-          node .github/scripts/check-version-updates.js
+          node .github/scripts/updates/update-integration-versions.js
 
       - name: Update integration Cards and Triggers
         id: update_integrations
@@ -53,7 +53,7 @@ jobs:
           BOTPRESS_TOKEN: ${{ secrets.BOTPRESS_TOKEN }}
           BOTPRESS_WORKSPACE_ID: ${{ secrets.BOTPRESS_WORKSPACE_ID }}
         run: |
-          node .github/scripts/get-action-data.js
+          node .github/scripts/updates/bulk-update.js
 
       - name: Create Pull Request
         if: steps.check_versions.outputs.has_updates == 'true' || steps.update_integrations.outputs.has_updates == 'true'
