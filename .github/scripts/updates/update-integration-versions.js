@@ -1,7 +1,5 @@
 import { admin } from '@botpress/client'
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const fsPromises = fs.promises;
 

@@ -2,7 +2,9 @@
   "name": "docs",
   "scripts": {
     "dev": "mintlify dev",
-    "check:links": "mintlify broken-links"
+    "check:links": "mintlify broken-links",
+    "check-integrations": "node .github/scripts/checks/check-integrations.js",
+    "update-integrations": "node .github/scripts/updates/update.js"
   },
   "dependencies": {
     "glob": "11.0.1",
