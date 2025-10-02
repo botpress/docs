@@ -9,6 +9,242 @@ You can access data returned from any of these Triggers by reading `event.payloa
 </Tip>
 
 
+### Message Template Components Update
+
+<span>{"Triggered when a template is edited"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    <span>{"The message_template_components_update webhook notifies you of changes to a template's components."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Template ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Template name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    <span>{"Template language and locale code."}</span>
+  </ResponseField>
+  <ResponseField
+    name="element"
+    type="string"
+    required
+  >
+    <span>{"Template body text."}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"Template Header Text."}</span>
+  </ResponseField>
+  <ResponseField
+    name="footer"
+    type="string"
+  >
+    <span>{"Template Footer Text."}</span>
+  </ResponseField>
+  <ResponseField
+    name="buttons"
+    type="array"
+  >
+    <span>{"Array of button objects, if present."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="button_type"
+    type="enum<string>"
+    required
+  >
+    <span>{"Button type."}</span>
+
+Available options: `CATALOG`, `COPY_CODE`, `EXTENSION`, `FLOW`, `MPM`, `ORDER_DETAILS`, `OTP`, `PHONE_NUMBER`, `POSTBACK`, `REMINDER`, `SEND_LOCATION`, `SPM`, `QUICK_REPLY`, `URL`, `VOICE_CALL`
+  </ResponseField>
+  <ResponseField
+    name="button_text"
+    type="string"
+    required
+  >
+    <span>{"Button label text."}</span>
+  </ResponseField>
+  <ResponseField
+    name="button_url"
+    type="string"
+  >
+    <span>{"Button URL."}</span>
+  </ResponseField>
+  <ResponseField
+    name="button_phone_number"
+    type="string"
+  >
+    <span>{"Button phone number."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Message Template Quality Update
+
+<span>{"Triggered when a template's quality score changes"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    <span>{"The message_template_quality_update webhook notifies you of changes to a template's quality score."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="previous_quality_score"
+    type="enum<string>"
+    required
+  >
+    <span>{"Previous template quality score."}</span>
+
+Available options: `GREEN`, `RED`, `YELLOW`, `UNKNOWN`
+  </ResponseField>
+  <ResponseField
+    name="new_quality_score"
+    type="enum<string>"
+    required
+  >
+    <span>{"New template quality score."}</span>
+
+Available options: `GREEN`, `RED`, `YELLOW`, `UNKNOWN`
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Template ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Template name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    <span>{"Template language and locale code."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Message Template Status Update
+
+<span>{"Triggered when a template is approved, rejected or disabled"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    <span>{"The message_template_status_update webhook notifies you of changes to the status of an existing template."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="event"
+    type="enum<string>"
+    required
+  >
+    <span>{"Template status event."}</span>
+
+Available options: `APPROVED`, `ARCHIVED`, `DELETED`, `DISABLED`, `FLAGGED`, `IN_APPEAL`, `LIMIT_EXCEEDED`, `LOCKED`, `PAUSED`, `PENDING`, `REINSTATED`, `PENDING_DELETION`, `REJECTED`
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Template ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Template name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    <span>{"Language and locale code."}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string | null"
+    required
+  >
+    <span>{"Template rejection reason, if rejected."}</span>
+  </ResponseField>
+  <ResponseField
+    name="disable_info"
+    type="object"
+  >
+    <span>{"only included if template disabled"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="disable_date"
+    type="number"
+    required
+  >
+    <span>{"Unix timestamp indicating when the template was disabled."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="other_info"
+    type="object"
+  >
+    <span>{"only included if template locked or unlocked"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="title"
+    type="enum<string>"
+    required
+  >
+    <span>{"Title of template pause or unpause event."}</span>
+
+Available options: `FIRST_PAUSE`, `SECOND_PAUSE`, `RATE_LIMITING_PAUSE`, `UNPAUSE`, `DISABLED`
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    <span>{"String describing why the template was locked or unlocked."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Reaction Added
 
 <span>{"Triggered when a user adds a reaction to a message"}</span>
@@ -85,6 +321,59 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
   >
     <span>{"ID of the conversation"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Template Category Update
+
+<span>{"Triggered when the category of a WhatsApp template is changed — whether manually or by an automated process, or when such a change is about to occur."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    <span>{"The template_category_update webhook notifies you of changes to template's category."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Template ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Template name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    <span>{"Template language and locale code."}</span>
+  </ResponseField>
+  <ResponseField
+    name="correct_category"
+    type="string"
+  >
+    <span>{"The category that the template will be recategorized as in 24 hours."}</span>
+  </ResponseField>
+  <ResponseField
+    name="previous_category"
+    type="string"
+  >
+    <span>{"The template's previous category."}</span>
+  </ResponseField>
+  <ResponseField
+    name="new_category"
+    type="string"
+  >
+    <span>{"The template's new category."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
