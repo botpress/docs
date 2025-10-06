@@ -1,0 +1,134 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Crawler Completed
+
+<span>{"Triggered when an Apify crawler run completes successfully"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="actorId"
+    type="string"
+    required
+  >
+    <span>{"ID of the triggering Actor"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actorTaskId"
+    type="string"
+  >
+    <span>{"If task was used, its ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actorRunId"
+    type="string"
+    required
+  >
+    <span>{"ID of the triggering Actor run"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventType"
+    type="string"
+    required
+  >
+    <span>{"Type of webhook event (e.g., ACTOR.RUN.SUCCEEDED)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    <span>{"Alias for actorRunId for easier access"}</span>
+  </ResponseField>
+  <ResponseField
+    name="itemsCount"
+    type="number"
+  >
+    <span>{"Number of items crawled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filesCreated"
+    type="number"
+  >
+    <span>{"Number of files created in Botpress"}</span>
+  </ResponseField>
+  <ResponseField
+    name="syncTargetPath"
+    type="string"
+  >
+    <span>{"Path where results were synced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+  >
+    <span>{"Whether there are more items to sync in subsequent batches"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Crawler Failed
+
+<span>{"Triggered when an Apify crawler run fails, times out, or is aborted"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="actorId"
+    type="string"
+    required
+  >
+    <span>{"ID of the triggering Actor"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actorRunId"
+    type="string"
+    required
+  >
+    <span>{"ID of the triggering Actor run"}</span>
+  </ResponseField>
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    <span>{"Alias for actorRunId for easier access"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventType"
+    type="string"
+    required
+  >
+    <span>{"Type of webhook event (e.g., ACTOR.RUN.FAILED, ACTOR.RUN.TIMED_OUT, ACTOR.RUN.ABORTED)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+    required
+  >
+    <span>{"Reason for failure (FAILED, TIMED_OUT, or ABORTED)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
