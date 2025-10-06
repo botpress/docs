@@ -4,6 +4,84 @@ description: 'The latest updates and improvements to Botpress.'
 mode: 'wide'
 ---
 
+<Update label="October 3, 2025">
+  ## Features & Enhancements
+
+  ### Login
+
+  - Refreshed [login page](https://sso.botpress.cloud/login):
+
+  <Frame>
+  ![New login page](./changelog-assets/2025-10-03/new-login.gif)
+  </Frame>
+
+  ### Onboarding
+
+  - Improved onboarding experience:
+
+    - Refreshed, more focused UI
+    - Added option to describe your bot's goal when selecting **Other**:
+
+  <Tabs>
+    <Tab title="Select goal">
+      <Frame>
+        <img
+          alt="Other use case"
+          className="block dark:hidden"
+          src="./changelog-assets/2025-10-03/other-use-case.png"
+        />
+        <img
+          alt="Other use case"
+          className="hidden dark:block"
+          src="./changelog-assets/2025-10-03/other-use-case-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="Describe goal">
+      <Frame>
+        <img
+          alt="Goal"
+          className="block dark:hidden"
+          src="./changelog-assets/2025-10-03/goal.png"
+        />
+        <img
+          alt="Goal"
+          className="hidden dark:block"
+          src="./changelog-assets/2025-10-03/goal-dark.png"
+        />
+      </Frame>
+    </Tab>
+  </Tabs>
+
+    - Tasks now run in the background while you're setting up your agent, making the onboarding experience much faster
+
+  ### Studio
+
+  - Added [Claude Sonnet 4.5](https://www.anthropic.com/news/claude-sonnet-4-5) to Studio
+
+  ## Integrations
+
+  - **Apify**: Added [Apify integration](/integrations/integration-guides/plus-apify) for advanced website crawling
+  - **WhatsApp**:
+    - Added [new Triggers](integrations/integration-guides/whatsapp/introduction#triggers) to for monitoring [message templates](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines/)
+    - Fixed an issue where Freshchat agents' messages weren't being displayed on WhatsApp
+  - **HubSpot**: Updated [Get Contact](/integrations/integration-guides/hubspot#get-contact) Card to retrieve all contact properties by default
+
+  ## Miscellaneous
+
+  <Warning>
+    ### Webchat v1 deprecation
+
+    We're deprecating Webchat v1 (and any old implementations tied to it). This means
+    any Webchat deployments on your website that use v1 will stop functioning. To avoid
+    service disruption, all users currently using v1 must migrate to Webchat v2 or higher
+    before **December 31, 2025**.
+
+    If you're currently a Webchat v1 user, you should have already received an email with instructions for upgrading. For any questions, don't hesitate to contact our support team.
+  </Warning>
+
+</Update>
+
 <Update label="September 26, 2025">
   ## Features & Enhancements
 
