@@ -1,0 +1,53 @@
+---
+title: Display proactive bubble
+---
+
+import Example from '/snippets/webchat/examples/proactive-bubble.mdx'
+
+<Panel>
+  <Example />
+</Panel>
+
+You can display a proactive message bubble that encourages users to open Webchat.
+
+<Tip>
+  The proactive bubble is just a Webchat UI element—it doesn't count towards any message quotas and isn't associated with any conversation.
+</Tip>
+
+<Info>
+  You will need:
+
+  - A [Plus plan](https://botpress.com/pricing) or higher
+  - A bot that uses a toggle (either the default chat bubble or a [custom toggle](/webchat/interact/use-custom-toggle)). The proactive bubble won't work if you're [embedding Webchat in an element](/webchat/get-started/embedding-webchat)
+  - A website with an [embedded bot](/webchat/get-started/quick-start)
+</Info>
+
+## Setup
+
+1. From your Dashboard, go to your bot's [Webchat configuration settings.](/webchat/get-started/configure-your-webchat)
+2. Under **Proactive Message Bubble**, select **Enable**.
+
+## Configuration
+
+After enabling the message bubble, you can configure it using the following settings:
+
+### Proactive message
+
+The proactive message to display to the user.
+
+Defaults to `Hi! 👋 Need help?`
+
+### Trigger type
+
+The event that triggers the proactive bubble:
+
+- **After Delay**: The message will appear after a fixed delay from page load
+- **After User Idle**: The message will appear after a fixed delay of user inactivity
+
+<Note>
+  If the user interacts with the proactive bubble, it won't re-appear again after the same delay.
+</Note>
+
+### Delay time
+
+The time (in seconds) before the proactive bubble appears.
