@@ -8,7 +8,7 @@ function loadWebchat() {
   window.botpress.init({
     "botId": "e3098b37-2e06-4351-859c-d79e06f39ca8",
     "configuration": {
-      "version": "v1",
+      "version": "v2",
       "composerPlaceholder": "Ask a question...",
       "botName": "Assistant",
       "botAvatar": "https://files.bpcontent.cloud/2025/06/16/20/20250616204038-BRUW6C2R.svg",
@@ -28,12 +28,17 @@ function loadWebchat() {
       "variant": "solid",
       "headerVariant": "glass",
       "themeMode": "light",
-      "fontFamily": "inter",
+      "fontFamily": "Inter",
       "radius": 3,
       "feedbackEnabled": true,
-      "footer": "[⚡️ by Botpress](https://botpress.com/)",
+      "footer": "[⚡️ by Botpress](https://botpress.com/?from=webchat)",
       "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/06/13/14/20250613145950-XC43YPI7.css",
-      "allowFileUpload": true
+      "allowFileUpload": true,
+      "soundEnabled": false,
+      "proactiveMessageEnabled": true,
+      "proactiveBubbleMessage": "Hi! 👋 Need help with the docs?",
+      "proactiveBubbleTriggerType": "afterDelay",
+      "proactiveBubbleDelayTime": 10
     },
     "clientId": "44246de9-1d1b-462c-8ef3-1ce39e65d89a"
   });
