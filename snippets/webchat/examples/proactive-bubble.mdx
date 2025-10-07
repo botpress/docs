@@ -1,0 +1,104 @@
+export const content = `
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+      <style>
+      .bpWebchat {
+        visibility: hidden !important;
+      }
+      </style>
+    </head>
+    <body>
+      <script>
+        window.botpress.init({
+          "botId": "1291df10-9dfe-4583-8480-755c3cdbbdc8",
+          "configuration": {
+            "version": "v2",
+            "website": {},
+            "email": {},
+            "phone": {},
+            "termsOfService": {},
+            "privacyPolicy": {},
+            "color": "#3276EA",
+            "variant": "solid",
+            "headerVariant": "glass",
+            "themeMode": "light",
+            "fontFamily": "inter",
+            "radius": 4,
+            "feedbackEnabled": false,
+            "footer": "[âš¡ by Botpress](https://botpress.com/?from=webchat)",
+            "soundEnabled": false,
+            "proactiveMessageEnabled": true,
+            "proactiveBubbleMessage": "Hi! 👋 Need help?",
+            "proactiveBubbleTriggerType": "afterDelay",
+            "proactiveBubbleDelayTime": 1
+          },
+          "clientId": "1a674b3a-fcb9-44c5-bd61-15c960fec528"
+        });
+      </script>
+      </body>
+    </html>
+`
+
+export const darkContent = `
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+      <style>
+      body {
+        background: #1a1a1a;
+      }
+
+      .bpWebchat {
+        visibility: hidden !important;
+      }
+      </style>
+    </head>
+    <body>
+      <script>
+        window.botpress.init({
+          "botId": "1291df10-9dfe-4583-8480-755c3cdbbdc8",
+          "configuration": {
+            "version": "v2",
+            "website": {},
+            "email": {},
+            "phone": {},
+            "termsOfService": {},
+            "privacyPolicy": {},
+            "color": "#3276EA",
+            "variant": "solid",
+            "headerVariant": "glass",
+            "themeMode": "dark",
+            "fontFamily": "inter",
+            "radius": 4,
+            "feedbackEnabled": false,
+            "footer": "[âš¡ by Botpress](https://botpress.com/?from=webchat)",
+            "soundEnabled": false,
+            "proactiveMessageEnabled": true,
+            "proactiveBubbleMessage": "Hi! 👋 Need help?",
+            "proactiveBubbleTriggerType": "afterDelay",
+            "proactiveBubbleDelayTime": 1
+          },
+          "clientId": "1a674b3a-fcb9-44c5-bd61-15c960fec528"
+        });
+      </script>
+      </body>
+    </html>
+`
+
+<iframe
+  srcDoc={content}
+  title='Proactive bubble'
+  className="w-full rounded-xl block dark:hidden"
+  height='200px'
+/>
+<iframe
+  srcDoc={darkContent}
+  title='Message notification'
+  className="w-full rounded-xl hidden dark:block"
+  height='200px'
+/>
