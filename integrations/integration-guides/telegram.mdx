@@ -42,7 +42,6 @@ The official Telegram integration allows users to chat with your bot by messagin
 
     In the **Configuration** menu, you should see one field:
 
-    - **API Token**
     - **Bot Token**
 
     Leave it empty for now—you'll come back to it after completing the setup in Telegram.
@@ -57,13 +56,13 @@ The official Telegram integration allows users to chat with your bot by messagin
   <Step title="Configure the integration in Botpress">
     Now, you can finish setting up the integration in Botpress:
 
-    1. In the integration's **Bot Token** field, paste your Apify API token.
+    1. In the integration's **Bot Token** field, paste your Telegram bot's access token.
     2. Select **Save Configuration**.
   </Step>
 </Steps>
 
 <Check>
-  Your Telegram integration is read—users can now chat with your Botpress bot by messaging your Telegram bot. You can use the integration's [Cards](#cards) to manage the bot's typing indicators.
+  Your Telegram integration is ready—users can now chat with your Botpress bot by messaging your Telegram bot. You can use the integration's [Cards](#cards) to manage the bot's typing indicators.
 </Check>
 
 ---
@@ -88,13 +87,13 @@ To get the Telegram conversation ID:
 
 To get the Telegram user ID:
 
-```
-{{ event.tags.user["telegram:id"] }}`
+```js
+{{ event.tags.user["telegram:id"] }}
 ```
 
 ### Telegram message ID
 
-To get the Telegram message ID,:
+To get the Telegram message ID:
 
 ```js
 {{ event.tags.message["telegram:id"] }}
