@@ -28,7 +28,14 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     name="body"
     type="string"
   >
-    <span>{"Email content - supports only plain text"}</span>
+    <span>{"Email content - supports plain text or HTML"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isHtml"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Set to true if body contains HTML content"}</span>
   </ResponseField>
 </Expandable>
 
