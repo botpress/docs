@@ -1,5 +1,6 @@
 ---
 title: Telegram
+description: Add your bot to Telegram using the official integration.
 icon: '/integrations/integration-guides/assets/icons/telegram.svg'
 ---
 
@@ -7,7 +8,7 @@ icon: '/integrations/integration-guides/assets/icons/telegram.svg'
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
-import Telegram from '/snippets/integrations/cards/botpress/telegram.mdx'
+import Cards from '/snippets/integrations/cards/botpress/telegram.mdx'
 
 <OpenInHub integration={integrationVersions.telegram}/>
 
@@ -16,63 +17,84 @@ import { YouTube } from '/snippets/youtube.mdx'
 
 {/* vale on */}
 
-<img src="./assets/telegram.png" />
+The official Telegram integration allows users to chat with your bot by messaging a Telegram bot.
 
-<br />
+## Setup
 
-<YouTube url="https://www.youtube.com/embed/w0-UGm4mu74?si=52rCwXFhJgGrX5Pi" />
+<Info>
+  You will need:
 
-## Prerequisites
+  - A [published bot](/learn/get-started/quick-start)
+  - A [Telegram account](https://web.telegram.org/a/)
+</Info>
 
-* A Telegram account and a Telegram bot
-* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/learn/get-started/quick-start)
+<Tip>
+  Visual learner? Check out our [Telegram guide on YouTube](https://www.youtube.com/watch?v=KIYGklgl4bI&t=554s).
+</Tip>
 
-## Create a Bot
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
 
-To create a bot on Telegram, use Telegram's BotFather. The BotFather will ask you for a name and username, then generate an authorization token for your new bot
+    1. In Botpress Studio, select **<Icon icon="boxes"/> Explore Hub** in the upper-right corner.
+    2. Search for the **Telegram** integration.
+    3. Select **Install Integration**.
 
-The name of your bot is displayed in contact details and elsewhere
+    In the **Configuration** menu, you should see one field:
 
-The Username is a short name to be used in mentions and t.me links. Usernames are 5-32 characters long and are case-insensitive but may only include Latin characters, numbers, and underscores. Your bot's username must end in `bot`, such as `tetris_bot` or `TetrisBot`
+    - **Bot Token**
 
-## Setup in Botpress
+    Leave it empty for now—you'll come back to it after completing the setup in Telegram.
+  </Step>
+  <Step title="Create a bot in Telegram">
+    To add your bot, you need to create a corresponding bot in Telegram. You can do this using Telegram's BotFather:
 
-1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
-2. Find and open the Telegram integration then click on the "Install to Bot" button, now go back to your bot settings.
+    1. Log in to [Telegram](https://web.telegram.org/a/).
+    2. Start a conversation with [BotFather](https://telegram.me/BotFather) and follow the prompts to create your bot.
+    3. Copy your bot's access token.
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
 
-The Telegram integration has the following settings:
+    1. In the integration's **Bot Token** field, paste your Telegram bot's access token.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
 
-* **Enabled**: Whether Botpress will communicate with Telegram
-* **Webhook URL**: The URL for receiving data in Botpress
-* **Bot Token**: The token of your Telegram bot
-
-## Setup in Telegram
-
-### Generate an Authorization Token
-
-When you create a Telegram bot, BotFather will automatically generate a token. The token is a string that's required to authorize the bot and send requests to the Bot API. Keep your token secure and store it safely; anyone can use it to control your bot
-
-If your existing token is compromised or you lost it for some reason, use the `/token` command to generate a new one
-
-### Bot Token
-
-Copy your Telegram bot token and paste it into the **Bot Token** channel configuration and click **Save**.
-
-That's it, you may now start chatting with your bot on Telegram!
-
-## Tips
-
-* To get the Telegram conversation ID, you can read the following variable:\
-  `{{ event.tags.conversation["telegram:id"] }}`.
-
-* To get the Telegram user ID, you can read the following variable:\
-  `{{ event.tags.user["telegram:id"] }}`.
-
-* To get the Telegram message ID, you can read the following variable:\
-  `{{ event.tags.message["telegram:id"] }}`.
+<Check>
+  Your Telegram integration is ready—users can now chat with your Botpress bot by messaging your Telegram bot. You can use the integration's [Cards](#cards) to manage the bot's typing indicators.
+</Check>
 
 ---
 
 ## Cards
 
-<Telegram />
+<Cards />
+
+## Tags
+
+You can read [event tags](/learn/guides/advanced/event-properties#param-tags) to get information about an active Telegram conversation:
+
+### Telegram conversation ID
+
+To get the Telegram conversation ID:
+
+```js
+{{ event.tags.conversation["telegram:id"] }}
+```
+
+### Telegram user ID
+
+To get the Telegram user ID:
+
+```js
+{{ event.tags.user["telegram:id"] }}
+```
+
+### Telegram message ID
+
+To get the Telegram message ID:
+
+```js
+{{ event.tags.message["telegram:id"] }}
+```
