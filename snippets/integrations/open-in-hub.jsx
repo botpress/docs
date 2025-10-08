@@ -6,7 +6,7 @@ export const OpenInHub = ({ integration }) => {
     return (
         <>
             <a
-                className="button"
+                className="button rounded-xl"
                 href={url}
             >
                 <span>
