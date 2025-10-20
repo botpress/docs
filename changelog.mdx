@@ -4,8 +4,24 @@ description: 'The latest updates and improvements to Botpress.'
 mode: 'wide'
 ---
 
+<Update label="October 17, 2025">
+  ## Features & Enhancements
+
+  - Redesigned the Studio's **Publish** button:
+  - Added support for [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) via the Anthropic integration
+
+  ## Bug Fixes
+
+  - Fixed an issue where clicking Tools in your bot's homescreen would cause a crash if your bot only contained standard Nodes
+  - Fixed an issue where duplicating a Workflow would incorrectly display "Integration not installed or disabled" even though the integration was installed
+  - Fixed an issue where imported bots would display ghost Knowledge Bases
+  - Fixed an issue where previously-created variables were unavailable to select in certain Cards' output
+  - Fixed an issue where the `event` object's state was inaccessible in Actions
+  - Fixed an issue where URLs with backslashes weren’t crawling properly
+</Update>
+
 <Update label="October 10, 2025">
-  ## Bug fixes
+  ## Bug Fixes
 
   - Fixed an issue where the **Copy to bot** option wasn't displaying all available bots after a certain number
   - Fixed a bug with storing a Card's output in a variable, where:
@@ -124,6 +140,7 @@ mode: 'wide'
   </Frame>
 
   - Added the option to [inject Webchat into a specific HTML element](/webchat/get-started/embed-in-element)
+  - Added the option to enable sound effects for Webchat
   - Improved the Webchat customization UI
 
   ### Autonomous Nodes
