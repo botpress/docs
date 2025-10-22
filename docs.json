@@ -459,17 +459,31 @@
       {
         "tab": "Tutorial",
         "pages": [
-          "/tutorial/introduction",
           {
             "group": "Basics of Botpress",
+            "tag": "NEW",
             "pages": [
-              "tutorial/basics/prompting",
-              "tutorial/basics/providing-knowledge",
+              {
+                "group": "Introduction",
+                "pages": [
+                  "tutorial/basics/introduction/introduction",
+                  "tutorial/basics/introduction/prompting",
+                  "tutorial/basics/introduction/adding-knowledge"
+                ]
+              },
               {
                 "group": "Custom logic",
                 "pages": [
                   "tutorial/basics/custom-logic/workflows",
-                  "tutorial/basics/custom-logic/sending-custom-messages"
+                  "tutorial/basics/custom-logic/creating-nodes",
+                  "tutorial/basics/custom-logic/adding-cards",
+                  "tutorial/basics/custom-logic/mix-ai-and-custom-logic"
+                ]
+              },
+              {
+                "group": "Storing information",
+                "pages": [
+                  "api-reference/introduction"
                 ]
               }
             ]
