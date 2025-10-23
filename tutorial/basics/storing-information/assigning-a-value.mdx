@@ -1,0 +1,77 @@
+import { GoodToKnow } from '/snippets/tutorial/good-to-know.mdx'
+
+A newly-created variable is like an empty box—you need put something inside it before you can use it. This is called *assigning a value* to your variable.
+
+Let's use our `firstName` variable to remember the user's first name. Go back to the Main Workflow and select your Autonomous Node. This opens its inspector:
+
+<Frame>
+  <img
+    alt="Autonomous Node inspector"
+    className="block dark:hidden"
+    src="./assets/inspector.png"
+  />
+  <img
+    alt="Autonomous Node inspector"
+    className="hidden dark:block"
+    src="./assets/inspector-dark.png"
+  />
+</Frame>
+
+## Giving access to variables
+
+By default, the Autonomous Node can't check what's in a variable or assign it a different value.
+
+Let's give it access. Select **+ Add variable(s)**, then select `workflow.firstName`. Then, check **Allow write access**, so your bot has permission to modify the variable.
+
+<Frame>
+  <img
+    alt="Variable access"
+    className="block dark:hidden"
+    src="./assets/variable-access.png"
+  />
+  <img
+    alt="Variable access"
+    className="hidden dark:block"
+    src="./assets/variable-access-dark.png"
+  />
+</Frame>
+
+## Modifying your prompt
+
+Next, modify the prompt so your bot knows how to work with the variable. Erase everything in the **Instructions** field, then paste the following:
+
+```txt wrap
+You are Teddy 🐶, the customer support bot for Teddy's Pet Shop.
+
+If the `firstName` variable has a value, use it to address the user by name. If not, prompt the user to enter their name, then assign it to `firstName`.
+```
+
+Now, switch back to the Emulator and start a conversation with your bot:
+
+<Frame>
+  <img
+    alt="Variable test"
+    className="block dark:hidden"
+    src="./assets/variable-test.png"
+  />
+  <img
+    alt="Variable test"
+    className="hidden dark:block"
+    src="./assets/variable-test-dark.png"
+  />
+</Frame>
+
+Nice! Our modified prompt worked. If you look back at the Variables section, you can see that the value updated:
+
+<Frame>
+  <img
+    alt="New value"
+    className="block dark:hidden"
+    src="./assets/new-value.png"
+  />
+  <img
+    alt="New value"
+    className="hidden dark:block"
+    src="./assets/new-value-dark.png"
+  />
+</Frame>

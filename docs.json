@@ -459,20 +459,22 @@
       {
         "tab": "Tutorial",
         "pages": [
+          "tutorial/basics/introduction/introduction",
           {
             "group": "Basics of Botpress",
-            "tag": "NEW",
+            "tag": "BETA",
             "pages": [
               {
-                "group": "Introduction",
+                "group": "First steps",
+                "expanded": true,
                 "pages": [
-                  "tutorial/basics/introduction/introduction",
                   "tutorial/basics/introduction/prompting",
                   "tutorial/basics/introduction/adding-knowledge"
                 ]
               },
               {
                 "group": "Custom logic",
+                "expanded": true,
                 "pages": [
                   "tutorial/basics/custom-logic/workflows",
                   "tutorial/basics/custom-logic/creating-nodes",
@@ -482,8 +484,11 @@
               },
               {
                 "group": "Storing information",
+                "expanded": true,
                 "pages": [
-                  "api-reference/introduction"
+                  "tutorial/basics/storing-information/variables",
+                  "tutorial/basics/storing-information/assigning-a-value",
+                  "tutorial/basics/storing-information/scoping-variables"
                 ]
               }
             ]
@@ -680,6 +685,12 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "pages": [
+          "changelog"
+        ]
       }
     ],
     "global": {
@@ -707,13 +718,7 @@
       "type": "button",
       "label": "Dashboard",
       "href": "https://app.botpress.cloud"
-    },
-    "links": [
-      {
-        "label": "Changelog",
-        "href": "https://botpress.com/docs/changelog"
-      }
-    ]
+    }
   },
   "footer": {
     "socials": {

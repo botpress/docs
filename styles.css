@@ -111,6 +111,11 @@
   --bg-desktop: url('https://i.ibb.co/5hWC1650/bg-desktop-dark.webp');
 }
 
+[data-nav-tag="BETA"] {
+  background-color: light-dark(rgb(255 251 235/.5), rgb(245 158 11/.1)) !important;
+  color: light-dark(rgb(120 53 15/var(--tw-text-opacity)), rgb(253 230 138/var(--tw-text-opacity))) !important;
+}
+
 @media (min-width: 768px) { .bpWebchat {
     /* box-shadow: none !important; */
     min-width: 450px;

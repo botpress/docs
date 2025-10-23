@@ -1,0 +1,22 @@
+Every variable has a *scope* that determines where and when your bot can access it. The variable we created in the previous lesson is a *Workflow* variable—meaning it's scoped the current Workflow.
+
+To get a better sense of what that means, try restarting the conversation. Select **<Icon icon="rotate-ccw"/>** in the Emulator, then send a message:
+
+<Frame>
+  <img
+    alt="New conversation"
+    className="block dark:hidden"
+    src="./assets/new-conversation.png"
+  />
+  <img
+    alt="New conversation"
+    className="hidden dark:block"
+    src="./assets/new-conversation-dark.png"
+  />
+</Frame>
+
+That's not ideal—the bot asked for our name again, even though we already told it in a previous conversation. This is because `firstName` is a *Workflow* variable—it only keeps the same value for the current Workflow.
+
+## Changing a variable's scope
+
+To make
