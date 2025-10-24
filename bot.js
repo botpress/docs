@@ -5,80 +5,42 @@ webchatScript.async = true
 webchatScript.defer = true
 
 function loadWebchat() {
-  // Find the chat assistant sheet element and prepare it
-  const chatAssistantSheet = document.getElementById('chat-assistant-sheet');
-  if (chatAssistantSheet) {
-    // Clear all child nodes
-    while (chatAssistantSheet.firstChild) {
-      chatAssistantSheet.removeChild(chatAssistantSheet.firstChild);
-    }
-    // Make it visible
-    Object.assign(chatAssistantSheet.style, {
-      display: 'block',
-      // padding: '15px',
-      visibility: 'visible',
-      position: 'relative',
-      borderRadius: '0.75em'
-    })
-    
-    // Also make its parent element visible
-    const parentElement = chatAssistantSheet.parentElement;
-    if (parentElement) {
-      Object.assign(parentElement.style, {
-        // display: 'block',
-        // visibility: 'visible',
-        // backgroundColor: 'transparent',
-        // width: '600px',
-        // maxWidth: '600px'
-      })
-    }
-
-    Object.assign(chatAssistantSheet.style, {
-      position: 'absolute',
-    })
-
-    // const hoverbud = document.createElement('div')
-    // Object.assign(hoverbud.style, {
-    //   width: '100%',
-    //   height: '100%',
-    //   top: '0',
-    //   left: '0',
-    //   right: '0',
-    //   bottom: '0',
-    //   position: 'absolute',
-    //   backgroundColor: 'transparent',
-    // })
-
-
-
-    // chatAssistantSheet.appendChild(hoverbud)
-  }
-
   window.botpress.init({
-    "botId": "fa748728-6cae-4abe-9f0f-333d555ec70f",
+    "botId": "e3098b37-2e06-4351-859c-d79e06f39ca8",
     "configuration": {
       "version": "v2",
+      "composerPlaceholder": "Ask a question...",
+      "botName": "Assistant",
+      "botAvatar": "https://files.bpcontent.cloud/2025/06/16/20/20250616204038-BRUW6C2R.svg",
+      "botDescription": "Ask AI a question about the documentation.",
       "website": {},
-      "email": {},
+      "email": {
+        "title": "",
+        "link": ""
+      },
       "phone": {},
-      "termsOfService": {},
+      "termsOfService": {
+        "title": "Terms of service",
+        "link": ""
+      },
       "privacyPolicy": {},
-      "color": "#3276EA",
+      "color": "#0588F0",
       "variant": "solid",
       "headerVariant": "glass",
       "themeMode": "light",
-      "fontFamily": "inter",
-      "radius": 2,
-      "feedbackEnabled": false,
+      "fontFamily": "Inter",
+      "radius": 3,
+      "feedbackEnabled": true,
       "footer": "[⚡️ by Botpress](https://botpress.com/?from=webchat)",
+      "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/06/13/14/20250613145950-XC43YPI7.css",
+      "allowFileUpload": true,
       "soundEnabled": false,
-      "embeddedChatId": "chat-assistant-sheet",
-      "proactiveMessageEnabled": false,
-      "proactiveBubbleMessage": "Hi! ðŸ‘‹ Need help?",
+      "proactiveMessageEnabled": true,
+      "proactiveBubbleMessage": "Hi! 👋 Need help with the docs?",
       "proactiveBubbleTriggerType": "afterDelay",
       "proactiveBubbleDelayTime": 10
     },
-    "clientId": "ac9f89ac-d610-4fd8-a824-2f7f223bbd4c"
+    "clientId": "44246de9-1d1b-462c-8ef3-1ce39e65d89a"
   });
   url = new URL(window.location.href)
   if (url.hash === "#ask" ) window.botpress.open()
@@ -92,7 +54,7 @@ function loadWebchat() {
 
 function askAi() {
   if (window.botpress) {
-    window.botpress.close()
+    window.botpress.open()
   }
 }
 
@@ -104,4 +66,4 @@ webchatScript.onload = () => {
   }
 }
 
-// document.body.appendChild(webchatScript)
+document.body.appendChild(webchatScript)

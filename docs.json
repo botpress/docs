@@ -109,55 +109,7 @@
                 ]
               },
               {
-                "group": "Guides",
-                "pages": [
-                  "/learn/guides/introduction",
-                  {
-                    "group": "How-to",
-                    "icon": "list-ordered",
-                    "pages": [
-                      "/learn/guides/how-to/translate",
-                      "/learn/guides/how-to/send-reminders",
-                      "/learn/guides/how-to/different-an-models",
-                      "/learn/guides/how-to/track-ai-spend-in-table"
-                    ]
-                  },
-                  {
-                    "group": "Advanced",
-                    "icon": "puzzle",
-                    "pages": [
-                      "/learn/guides/advanced/use-code",
-                      "/learn/guides/advanced/event-properties",
-                      "/learn/guides/advanced/best-practices-for-state-management",
-                      {
-                        "group": "Safety",
-                        "pages": [
-                          "/learn/guides/advanced/safety/introduction",
-                          "/learn/guides/advanced/safety/preventing-abuse",
-                          "/learn/guides/advanced/safety/brand-safety-framework"
-                        ]
-                      },
-                      {
-                        "group": "Exporting Data",
-                        "pages": [
-                          "/learn/guides/advanced/exporting-data/introduction",
-                          "/learn/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
-                          "/learn/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
-                          "/learn/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
-                          "/learn/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
-                          "/learn/guides/advanced/exporting-data/analyze-llmz-responses"
-                        ]
-                      },
-                      "/learn/guides/advanced/kitchen-sink-advanced-starter-template",
-                      "/learn/guides/advanced/tips-to-optimize-ai-cost",
-                      "/learn/guides/advanced/retention-period",
-                      "/learn/guides/advanced/v12"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Reference",
+                "group": "Concepts",
                 "pages": [
                   "/learn/reference/introduction",
                   "/learn/reference/home",
@@ -258,6 +210,54 @@
                       "/learn/reference/controls-and-settings/keyboard-shortcuts",
                       "/learn/reference/controls-and-settings/studio-commands",
                       "/learn/reference/controls-and-settings/studio-preferences"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "/learn/guides/introduction",
+                  {
+                    "group": "How-to",
+                    "icon": "list-ordered",
+                    "pages": [
+                      "/learn/guides/how-to/translate",
+                      "/learn/guides/how-to/send-reminders",
+                      "/learn/guides/how-to/different-an-models",
+                      "/learn/guides/how-to/track-ai-spend-in-table"
+                    ]
+                  },
+                  {
+                    "group": "Advanced",
+                    "icon": "puzzle",
+                    "pages": [
+                      "/learn/guides/advanced/use-code",
+                      "/learn/guides/advanced/event-properties",
+                      "/learn/guides/advanced/best-practices-for-state-management",
+                      {
+                        "group": "Safety",
+                        "pages": [
+                          "/learn/guides/advanced/safety/introduction",
+                          "/learn/guides/advanced/safety/preventing-abuse",
+                          "/learn/guides/advanced/safety/brand-safety-framework"
+                        ]
+                      },
+                      {
+                        "group": "Exporting Data",
+                        "pages": [
+                          "/learn/guides/advanced/exporting-data/introduction",
+                          "/learn/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
+                          "/learn/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
+                          "/learn/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
+                          "/learn/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
+                          "/learn/guides/advanced/exporting-data/analyze-llmz-responses"
+                        ]
+                      },
+                      "/learn/guides/advanced/kitchen-sink-advanced-starter-template",
+                      "/learn/guides/advanced/tips-to-optimize-ai-cost",
+                      "/learn/guides/advanced/retention-period",
+                      "/learn/guides/advanced/v12"
                     ]
                   }
                 ]
@@ -459,7 +459,7 @@
       {
         "tab": "Tutorial",
         "pages": [
-          "tutorial/basics/introduction/introduction",
+          "tutorial/introduction",
           {
             "group": "Basics of Botpress",
             "tag": "BETA",
@@ -468,8 +468,8 @@
                 "group": "First steps",
                 "expanded": true,
                 "pages": [
-                  "tutorial/basics/introduction/prompting",
-                  "tutorial/basics/introduction/adding-knowledge"
+                  "tutorial/basics/first-steps/prompting",
+                  "tutorial/basics/first-steps/adding-knowledge"
                 ]
               },
               {
@@ -479,7 +479,7 @@
                   "tutorial/basics/custom-logic/workflows",
                   "tutorial/basics/custom-logic/creating-nodes",
                   "tutorial/basics/custom-logic/adding-cards",
-                  "tutorial/basics/custom-logic/mix-ai-and-custom-logic"
+                  "tutorial/basics/custom-logic/using-custom-logic-with-ai"
                 ]
               },
               {
@@ -728,5 +728,11 @@
       "youtube": "https://www.youtube.com/botpress",
       "discord": "https://discord.com/invite/botpress"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/"
+    }
+  ]
 }
