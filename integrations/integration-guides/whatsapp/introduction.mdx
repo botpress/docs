@@ -140,6 +140,12 @@ You will need:
 
 ## Cards
 
+<Warning>
+  Some of the integration's Cards use [WhatsApp message templates](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/) to send messages to users.
+
+  In WhatsApp, these templates support both [named and positional parameters](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates/#parameter-formats). However, the integration currently only supports positional parameters. This means you'll get an error if you try to provide named parameters in a Card's `conversation.templateVariablesJson` field.
+</Warning>
+
 <Cards />
 
 ---
