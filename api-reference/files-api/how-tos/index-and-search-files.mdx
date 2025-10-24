@@ -52,7 +52,7 @@ const res = await client.searchFiles({
   limit: 30, // Default is 20, maximum is 50 results
 })
 
-const passages = res.data.passages
+const passages = res.passages
 
 for (const passage of passages) {
   // You can use passage.content here to retrieve the content (including surrounding context, if any) of each matching passage
