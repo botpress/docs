@@ -4,166 +4,106 @@ description: Build, test, and deploy your first AI agent.
 icon: rocket
 ---
 
+import { VisualLearner } from '/snippets/visual-learner.mdx'
 
-It's easy to build an AI agent on Botpress, regardless of your level of development experience.
+It's easy to build an AI agent on Botpress in just a few minutes, regardless of your level of development experience.
 
-By the end of this guide, you'll have a bot that will:
+By the end of this guide, you'll have a bot that:
 
-* Display a custom greeting
-* Use AI to respond to messages
-* Follow specific instructions
-* Have a unique, shareable link
+- Uses AI to respond to messages
+- Aligns with your branding
+- Has a unique, shareable link
 
-<Note>
-This guide is designed to teach a total beginner how to deploy their first bot. If you have more questions and want to get creative with bot-building, check out the [Guides section](/learn/guides/how-to) for detailed how-to guides.
+<VisualLearner>
+Visual learner? Check out our [platform walkthrough on YouTube](https://www.youtube.com/watch?v=41U-ofr7MxE).
+</VisualLearner>
 
-For detailed explanations of any of the concepts introduced on this page, check out our [Dashboard](/learn/get-started/dashboard/workspace/introduction) and [Studio](/learn/reference/introduction) guides.
-</Note>
+{/* <Tip>
+  This guide is designed to teach a total beginner how to deploy their first bot in just a few minutes. If you h
+
+
+  If you have more questions and want to get creative with bot-building, check out the [Guides section](/learn/guides/how-to) for detailed how-to guides.
+
+  For detailed explanations of any of the concepts introduced on this page, check out the [Dashboard](/learn/get-started/dashboard/workspace/introduction) and [Studio](/learn/reference/introduction) sections.
+</Tip> */}
 
 ## Step 1: Build your bot
 
-### Create a new bot
 
-1. Login to [Botpress](https://app.botpress.cloud).
-2. Select **+ New bot** and choose a name for the bot (or randomly generate one).
-3. Select **Open in** [Studio](/learn/reference/introduction).
-4. Start building!
+1. [Sign up for Botpress](https://sso.botpress.cloud/login).
+2. Select either **Start building** or **Build my agent**.
+3. Follow the on-screen instructions to configure your first bot. We'll take care of everything for you, and your AI agent will be ready to test and deploy within minutes.
 
-### Configure your bot's behaviour
+<Note>
+  If you'd prefer to set your bot up from scratch, hit **Skip** and head over to the [tutorial](/tutorial/introduction)—we'll show you how to start building with Botpress Studio.
+</Note>
 
-Let's add some custom behaviour to your bot.
+## Step 2: Fine-tune your bot (Optional)
 
-In Botpress, you configure your bot's behaviour using Workflows. A Workflow is a drag-and-drop canvas that represents the steps your bot follows during a conversation with a user.
+After completing the setup process, we'll show you a preview of your bot, trained on your sources and styled to match to your brand. Try chatting with your bot—you may want to keep it as-is!
 
-Each step in a Workflow is represented by a Node. Let's open the **Main** Workflow and take a look at its Nodes:
+If you need to fine-tune anything, check out the resources below:
 
-1. In Studio, select Workflow from the left navigation bar.
-2. Select your **Main** Workflow. It should look something like this:
+### Appearance and style
 
-<img src="./assets/studio-workflow.png" />
+The preview we show you is built using [Webchat](/webchat/get-started/introduction), Botpress' custom front-end. If you want to customize your bot's appearance and style, you can configure its Webchat settings:
 
-The **Main** Workflow contains the main logic for your bot—it executes as soon as a user starts a new conversation. By default, the **Main** Workflow contains:
+<Card
+  title="Edit appearance"
+  icon="paintbrush"
+  horizontal
+  href="/webchat/get-started/configure-your-webchat"
+>
+  Configure and style your bot
+</Card>
 
-* A `Start Node`
-* An `Autonomous Node`
-* An `End Node`
+### Behaviour
 
-Notice the path connecting the Start Node and the Autonomous Node:
+After completing the setup process, you might realize you need to fine-tune your bot's behaviour. Maybe you forgot to provide a certain knowledge source, or want to tweak its instructions.
 
-<img src="./assets/autonomous-node.png" />
+You can do this with [Botpress Studio](/learn/reference/introduction), our agent-building platform. Check out Studio concepts to learn more about them, or start from scratch with the tutorial:
 
-This is a transition. When someone starts a conversation with your bot, it first executes the Start Node, then transitions to the Autonomous Node.
+<CardGroup>
+<Card
+  title="Studio concepts"
+  icon="share-2"
+  horizontal
+  href="/learn/reference/introduction"
+>
+  Find information about concepts from Botpress Studio
+</Card>
 
-<Tip>
-Drag Nodes
-
-You can drag a Node to move it anywhere in your Workflow. Just select and hold the Node, then drag and release wherever you want to move it.
-
-Moving a Node doesn't affect your bot's behavior—it just helps keep your Workflow organized.
-</Tip>
-
-#### Display a custom greeting
-
-Let's create a new Node to add a custom greeting to your bot.
-
-First, we need to create a new `Standard Node`:
-
-1. Select and hold the **right edge** of the Start Node.
-2. Drag outwards to create a new transition.
-3. Release anywhere on the canvas. You'll see a list of Node types to choose from—select **Standard Node**.
-
-You just created a new Node! Notice that because you dragged out from the edge of the Start Node, it automatically transitioned to the new Node:
-
-<img src="./assets/start-node.png" />
-
-Next, let's add the greeting. To do this, we need to add a `Card` to the new Node:
-
-1. In the new Node, select **Add Card**. This opens the Cards menu.
-2. Select the **Text** Card.
-3. In the **Message to send** field, enter a custom greeting. For this guide, we'll enter "Hello! I'm Teddy, the helpful bot!":
-
-<img align="center" src="./assets/send-message-card.png" />
-
-Now your bot has a custom greeting! Before wrapping up, let's connect the new Node to the Autonomous Node:
-
-1. Select and hold the **right edge** of the new Node.
-2. Drag outwards to create a new transition.
-3. Release on the **left edge** of the Autonomous Node.
-
-This creates a transition from the new Node to the Autonomous Node, so your bot continues the conversation after displaying the greeting:
-
-<img src="./assets/transition-between-nodes.png" />
-
-#### Add custom instructions
-
-Now that your bot has a greeting, let's add some custom instructions for when it's interacting with a user. From the Autonomous Node, open the **Instructions** section.
-
-By default, this field contains a detailed list of natural language instructions for your bot. You can modify these, or start from scratch with your own instructions.
-
-For now, let's just tell your bot its name and give it a simple task. Erase everything in the **Instructions** section, and enter "Ask the user if they have any questions about dogs, then assist them".
-
-<img src="./assets/add-custom-instruction.png" />
-
-## Step 2: Test your bot
-
-Congratulations! You now have a bot with a custom greeting and instructions. Next, let's test it out to make sure it's working properly.
-
-### Chat with your bot
-
-You can chat with a preview of your bot using the Emulator on the right side of the Studio. To start a conversation, just select **Test your bot**, or type a message into the text field:
-
-<img src="./assets/emulator.png" />
-
-The bot followed your instructions! Notice that the Emulator provides an update whenever your bot transitions to a new Node, or whenever it's waiting for user input.
-
-Let's ask it a question about dogs:
-
-<img src="./assets/ask-question-emulator.png" />
-
-Great! Since the bot transitioned to the Autonomous Node, it was able to use an LLM (Large Language Model) to answer the question. You can keep chatting with the bot, and the Autonomous Node will generate AI responses based on the context of the conversation.
+<Card
+  title="Tutorial"
+  icon="chef-hat"
+  horizontal
+  href="/tutorial/introduction"
+>
+  Learn the basics of Botpress Studio by building a bot
+</Card>
+</CardGroup>
 
 ## Step 3: Deploy your bot
 
-Now that you've confirmed your bot is working properly, it's time to deploy it!
+When you're ready to deploy your bot, select one of the options below:
 
-### Preview and share your bot
-
-The easiest way to deploy your bot is with a `Webchat` preview. This generates a unique, shareable link for your bot, so your team can start testing it immediately.
-
-To deploy with Webchat preview:
-
-1. Select **Publish** in the upper-right corner. This updates the deployed bot to reflect our recent changes.
-2. Select **Share,** then **Preview Bot** (or copy the **Shareable link**).
-
-Your preview will open in a new tab. Try sending a message:
-
-<img src="./assets/webchat-preview.png" />
-
-Webchat preview displays your bot the way it appears to an actual user, regardless of where you've deployed it. This makes it great for quickly evaluating your user experience.
-
-<Check>
-Congratulations!
-
-You just built, tested and deployed your first bot with Botpress!
-</Check>
-
-## Next steps
-
-Now that you know the basics of Botpress, you can start getting creative:
-
-<Columns>
-<Card
-    title="Guides"
-    icon="lightbulb"
-    href="/learn/guides/how-to"
+<CardGroup>
+  <Card
+    title="Add to your website"
+    icon="message-square"
+    href="/webchat/get-started/introduction"
   >
-    Follow detailed how-to guides
+    Use Webchat to embed your bot on your website
   </Card>
   <Card
-    title="Reference"
-    icon="book"
-    href="/learn/get-started/dashboard"
+    title="Integrate with a channel"
+    icon="plug"
+    href="/integrations/get-started/introduction"
   >
-    Learn about the key concepts of Botpress
+    Integrate your bot with another channel or external service
   </Card>
-</Columns>
+</CardGroup>
+
+<Check>
+  You just built and deployed your first bot with Botpress!
+</Check>
