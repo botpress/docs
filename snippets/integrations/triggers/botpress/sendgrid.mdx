@@ -1,0 +1,298 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Email Bounced
+
+<span>{"An event that triggers when an email sent via the SendGrid API bounces. (e.g. Invalid Address, blocked, etc)"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"The ID for the webhook event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"The ID for the sent email message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"The reason this event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="classification"
+    type="string"
+    required
+  >
+    <span>{"The SendGrid classification for the bounce"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The SendGrid type for why the email bounced (e.g. \"bounce\", \"blocked\", etc.)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Link Clicked
+
+<span>{"An event that triggers when the SendGrid API detects that a link in the email has been clicked on by the recipient.(Must have 'Click Tracking' enabled)\n\nNote: This may be subject to privacy regulations of the email recipient's country"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"The ID for the webhook event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"The ID for the sent email message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"The reason this event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The designated recipient of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The destination URL of the link that was clicked"}</span>
+  </ResponseField>
+  <ResponseField
+    name="urlOffset"
+    type="number"
+    required
+  >
+    <span>{"A zero-based index, ordered by first appearance, of which link was clicked in an email when it shares a \"url\" with another link"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Deferred
+
+<span>{"An event that triggers when the SendGrid API fails a delivery attempt to the recipient's email server. (This will often re-attempt a few times before stopping)"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"The ID for the webhook event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"The ID for the sent email message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="attempt"
+    type="string"
+    required
+  >
+    <span>{"The delivery attempts that have been made for the sent email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Delivered
+
+<span>{"An event that triggers when the SendGrid API delivers a given email to the recipient's email server. (This can also trigger alongside email bounces among other events)"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"The ID for the webhook event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"The ID for the sent email message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The designated recipient of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Opened
+
+<span>{"An event that triggers when the SendGrid API detects that an email has been opened by the recipient. (Must have 'Open Tracking' enabled)\n\nNote: This may be subject to privacy regulations of the email recipient's country"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"The ID for the webhook event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"The ID for the sent email message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"The reason this event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The designated recipient of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Processed
+
+<span>{"An event that triggers when the SendGrid API has processed an outbound email."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"The ID for the webhook event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"The ID for the sent email message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sendAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"A UTC datetime representing when the email is scheduled to be sent at"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

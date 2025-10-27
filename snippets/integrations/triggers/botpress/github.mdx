@@ -1,0 +1,2405 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Issue opened
+
+<span>{"Triggered when an issue is opened"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="issue"
+    type="object"
+    required
+  >
+    <span>{"The issue that was opened"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the issue belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The body of the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"The issue number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labels"
+    type="array"
+    required
+  >
+    <span>{"The labels associated with the issue"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the label"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    <span>{"The author of the issue"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this author"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="assignees"
+    type="array"
+    required
+  >
+    <span>{"The assignees of the issue"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this assignee"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="eventSender"
+    type="object"
+    required
+  >
+    <span>{"The user who triggered the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"use issue.id instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueUrl"
+    type="string"
+    required
+  >
+    <span>{"use issue.url instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repoUrl"
+    type="string"
+    required
+  >
+    <span>{"use issue.repository.url instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"use issue.number instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"use issue.name instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string | null"
+    required
+  >
+    <span>{"use issue.body instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repositoryName"
+    type="string"
+    required
+  >
+    <span>{"use issue.repository.name instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repositoryOwner"
+    type="string"
+    required
+  >
+    <span>{"use issue.repository.owner.handle instead"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Pull Request merged
+
+<span>{"Triggered when a pull request is merged"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="pullRequest"
+    type="object"
+    required
+  >
+    <span>{"The pull request that was merged"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the pull request belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The body of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"The pull request number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labels"
+    type="array"
+    required
+  >
+    <span>{"The labels associated with the pull request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the label"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    <span>{"The author of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this author"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="assignees"
+    type="array"
+    required
+  >
+    <span>{"The assignees of the pull request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this assignee"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="target"
+    type="object"
+    required
+  >
+    <span>{"The target repository and branch of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="ref"
+    type="string"
+    required
+  >
+    <span>{"The name of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    <span>{"The display label of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the branch belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="object"
+    required
+  >
+    <span>{"The source repository and branch of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="ref"
+    type="string"
+    required
+  >
+    <span>{"The name of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    <span>{"The display label of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the branch belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="eventSender"
+    type="object"
+    required
+  >
+    <span>{"The user who triggered the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"use pullRequest.id instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"use pullRequest.name instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    <span>{"use pullRequest.body instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="baseBranch"
+    type="string"
+  >
+    <span>{"use pullRequest.source.ref instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"use pullRequest.author.id instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"use the conversation id associated with the event instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="targets"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="pullRequest"
+    type="string"
+  >
+    <span>{"use pullRequest.number instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issue"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="discussion"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Pull Request opened
+
+<span>{"Triggered when a pull request is opened"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="pullRequest"
+    type="object"
+    required
+  >
+    <span>{"The pull request that was opened"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the pull request belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The body of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"The pull request number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labels"
+    type="array"
+    required
+  >
+    <span>{"The labels associated with the pull request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the label"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    <span>{"The author of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this author"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="assignees"
+    type="array"
+    required
+  >
+    <span>{"The assignees of the pull request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this assignee"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="target"
+    type="object"
+    required
+  >
+    <span>{"The target repository and branch of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="ref"
+    type="string"
+    required
+  >
+    <span>{"The name of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    <span>{"The display label of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the branch belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="object"
+    required
+  >
+    <span>{"The source repository and branch of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="ref"
+    type="string"
+    required
+  >
+    <span>{"The name of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    <span>{"The display label of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the branch belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="eventSender"
+    type="object"
+    required
+  >
+    <span>{"The user who triggered the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"use pullRequest.id instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"use pullRequest.name instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    <span>{"use pullRequest.body instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="baseBranch"
+    type="string"
+  >
+    <span>{"use pullRequest.source.ref instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"use pullRequest.author.id instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"use the conversation id associated with the event instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="targets"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="pullRequest"
+    type="string"
+  >
+    <span>{"use pullRequest.number instead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issue"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="discussion"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Pull Request review submitted
+
+<span>{"Triggered when a review is submitted on a pull request"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="review"
+    type="object"
+    required
+  >
+    <span>{"The review that was submitted"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the pull request review"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the pull request review"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pullRequest"
+    type="object"
+    required
+  >
+    <span>{"The pull request being reviewed"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the pull request belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The body of the pull request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"The pull request number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labels"
+    type="array"
+    required
+  >
+    <span>{"The labels associated with the pull request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the label"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the label"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    <span>{"The author of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this author"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="assignees"
+    type="array"
+    required
+  >
+    <span>{"The assignees of the pull request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the assignee"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this assignee"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="target"
+    type="object"
+    required
+  >
+    <span>{"The target repository and branch of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="ref"
+    type="string"
+    required
+  >
+    <span>{"The name of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    <span>{"The display label of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the branch belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="object"
+    required
+  >
+    <span>{"The source repository and branch of the pull request"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="ref"
+    type="string"
+    required
+  >
+    <span>{"The name of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string"
+    required
+  >
+    <span>{"The display label of the branch"}</span>
+  </ResponseField>
+  <ResponseField
+    name="repository"
+    type="object"
+    required
+  >
+    <span>{"The repository the branch belongs to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository"}</span>
+  </ResponseField>
+  <ResponseField
+    name="owner"
+    type="object"
+    required
+  >
+    <span>{"The owner of the repository"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the repository owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this repository owner"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="commitId"
+    type="string"
+    required
+  >
+    <span>{"The commit ID of the review"}</span>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="enum<string>"
+    required
+  >
+    <span>{"The state of the review"}</span>
+
+Available options: `APPROVED`, `CHANGES_REQUESTED`, `COMMENTED`, `DISMISSED`
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    <span>{"The author of the review"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the review author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the review author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the review author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the review author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this review author"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The body of the review"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="eventSender"
+    type="object"
+    required
+  >
+    <span>{"The user who triggered the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique identifier of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nodeId"
+    type="string"
+    required
+  >
+    <span>{"Node ID for GraphQL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The handle of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressUser"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Botpress user corresponding to this user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

@@ -1,0 +1,252 @@
+---
+title: Microsoft Teams
+description: Add your bot to Teams using the official integration.
+icon: '/integrations/integration-guides/assets/icons/teams.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/teams.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.teams}/>
+
+The Microsoft Teams integration allows your bot to chat with members of your Teams workspace.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - A [Microsoft 365](https://www.office.com/) business account
+  - A [Microsoft Azure](https://azure.microsoft.com/en-ca) account that uses the same email address as your Microsoft 365 account
+</Info>
+
+### Step 1: Create an Azure app registration
+
+First, create an Azure app registration:
+
+1. Log in to your  [Azure portal](https://portal.azure.com/).
+2. Using the search bar, go to the [App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) page.
+3. Select **New registration** and fill in the required fields.
+
+  <Note>
+    In the **Supported account types** section, choose the account type that's most appropriate for your use case—we support both [single tenant](https://learn.microsoft.com/en-us/security/zero-trust/develop/identity-supported-account-types#accounts-in-this-organizational-directory-only---single-tenant) (app available for your organization only) and [multitenant](https://learn.microsoft.com/en-us/security/zero-trust/develop/identity-supported-account-types#accounts-in-any-organizational-directory-only---multitenant) (public app) accounts.
+  </Note>
+
+4. When you're done filling in the fields, select **Register**.
+
+### Step 2: Setup in Botpress
+
+Next, setup the integration in Botpress:
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+
+    1. In Botpress Studio, select **<Icon icon="boxes"/> Explore Hub** in the upper-right corner.
+    2. Search for the **Microsoft Teams** integration, then select **Install Integration**.
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    To configure the integration, you need to create a webhook endpoint for the Teams integration. To do this, fill in the integration's **Configuration** fields using information from your Azure app:
+
+    <AccordionGroup>
+      <Accordion
+        title="App ID"
+      >
+        In the **Overview** section of your Azure app, copy the **Application (client) ID**. Then, paste it in the **App ID** field in Botpress.
+      </Accordion>
+      <Accordion
+        title="App Password"
+      >
+        1. In your Azure app's left sidebar, go to **Manage > Certificates & secrets**.
+        2. Select **New client secret**.
+        3. Set a description and expiry date for your secret.
+        4. Copy the **Value** of the generated secret.
+        5. Paste it in the **App Password** field in Botpress.
+      </Accordion>
+      <Accordion
+        title="Tenant ID"
+      >
+        In the **Overview** section of your Azure app, copy the **Directory (tenant) ID**. Then, paste it in the **Tenant ID** field in Botpress.
+      </Accordion>
+    </AccordionGroup>
+
+    When you’ve filled in all the fields, select **Save Configuration**. This will automatically enable your integration.
+  </Step>
+  </Steps>
+
+### Step 3: Create a Microsoft bot
+
+  <Steps>
+  <Step title="Create a Microsoft bot">
+    Now, you need to create a Microsoft bot. This bot communicates with your Botpress webhook URL to chat with members of your Teams workspace.
+
+    1. In your Azure portal homepage, select **Create a resource**.
+    2. Search for **Azure Bot**, then select **Create**.
+    3. Scroll to the **Creation type** section, then select **Use existing app registration**.
+    4. Fill in the **App ID** and **App tenant ID** fields with the same app ID and tenant ID you used to configure the integration in Botpress.
+    5. Fill in the other required fields as necessary.
+    6. Select **Review + Create**, then **Create**.
+  </Step>
+  <Step title="Connect your Botpress webhook">
+    Now that you've created a Microsoft bot, you can use the integration's webhook to connect it to your Botpress bot:
+
+    1. Wait for the bot's deployment to complete, then select **Go to resource**.
+    2. In the left sidebar, go to **Settings > Configuration**.
+    3. Paste the Botpress webhook URL (starting with `https://webhook.botpress.cloud/`) into the **Messaging endpoint** field. You can find the webhook URL in the integration's configuration menu.
+    4. Select **Apply**.
+    5. In the left sidebar, go to **Settings > Channels**.
+    6. Scroll down and select **Microsoft Teams**.
+
+      <Tip>
+        Make sure you actually select the **Microsoft Teams** text, or the channel configuration menu won't open.
+      </Tip>
+
+    7. Agree to the terms of service, then select **Apply**.
+  </Step>
+  <Step title="Copy your Microsoft app ID">
+    While you're still in the **Settings > Configuration** menu, copy your **Microsoft App ID**—you'll need it for the next steps.
+  </Step>
+  </Steps>
+
+### Step 4: Create a Teams app
+
+Finally, create an app in your Teams developer portal:
+
+  <Steps>
+  <Step title="Setup in Teams developer portal">
+    First, create a new app:
+
+    1. Log in to the [Teams developer portal](https://dev.teams.microsoft.com/home)
+    2. Select **Create a new app** and enter a name for the app.
+    3. In the left sidebar, go to the **Basic information** section.
+    4. Fill in the required fields:
+
+        - **Short name**
+        - **Long name**
+        - **Short description**
+        - **Long description**
+        - **Developer or company name**
+        - **Website**
+        - **Privacy policy**
+
+    <Note>
+      This information will be shown to members of your Teams workspace that chat with your bot.
+    </Note>
+
+    5. In the **Application (client ID)** field, paste the  **Microsoft App ID** you copied earlier.
+    6. At the bottom of the screen, select **Save**.
+  </Step>
+  <Step title="Add Azure bot to Teams app">
+    Next, add your Azure bot to the app:
+
+    1. In the left sidebar, go to **App features** and select **Bot**.
+    2. Select **Enter a bot ID**, then paste the **Microsoft App ID** again.
+    3. Select the **Personal**, **Team** and **Group** chat scopes.
+    4. Select **Save**.
+  </Step>
+  <Step title="Configure app permissions">
+    In the left sidebar, go to **Permissions**. Select the following permissions for your app:
+
+    <AccordionGroup>
+      <Accordion
+        title="Team permissions"
+      >
+
+        Under **Application**:
+
+        - `ChannelMessage.Read.Group`
+        - `ChannelMessage.Send.Group`
+        - `TeamsActivity.Send.Group`
+      </Accordion>
+      <Accordion
+        title="Chat/meeting permissions"
+      >
+        Under **Application**:
+
+        - `ChatMessage.Read.Chat`
+        - `ChatMessage.Send.Chat`
+        - `ChatMessageReadReceipt.Read.Chat`
+        - `TeamsActivity.Send.Chat`
+        - `TeamsTab.ReadWrite.Chat`
+        - `TeamsTab.Read.Chat`
+
+        Under **Delegated**:
+
+        - `LiveShareSession.ReadWrite.Chat`
+      </Accordion>
+    </AccordionGroup>
+
+    When you're done, select **Save**.
+  </Step>
+  <Step title="Preview in Teams">
+    Now, the bot should be fully configured. To test it:
+
+    1. In the upper-right corner, select **Preview in Teams**.
+    2. Once the bot has opened in Teams, select **Add**.
+    3. After the bot is added, select **Open** to start chatting with it (or a channel to use it in).
+
+    <Note>
+      If you get a **Manifest parsing failed** error message, make sure you filled out all the required fields in your app's **Basic Information** section. The **Short description** and **Long description** fields are required, even though they're not marked as such.
+    </Note>
+  </Step>
+</Steps>
+
+<Note>
+  At this point, the bot is only available for you to test. To make it available for anyone in your organization, follow the steps below.
+</Note>
+
+### Step 5: Publish the bot to your organization
+
+Finally, you can publish your bot to make it available for anyone in your organization:
+
+1. Go back to your app's menu in the [Teams developer portal](https://dev.teams.microsoft.com/home).
+2. In the app's left sidebar, go to **Publish > Publish to org**.
+3. Select **Get started**.
+
+If you're an admin, your app will be approved automatically. Otherwise, your request to publish the app will need to be approved by an admin in the [Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps).
+
+<Check>
+  Your Teams integration is ready. Once the app has been approved, anyone in your Teams organization can [add it](https://support.microsoft.com/en-us/office/add-an-app-to-microsoft-teams-b2217706-f7ed-4e64-8e96-c413afd02f77) and chat with your bot.
+</Check>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion
+    title="Manifest parsing failed"
+  >
+    If you get a **Manifest parsing failed** error message when trying to [preview your bot in Teams](#create-a-teams-app), make sure you filled all the required fields in your app's **Basic Information** section.
+
+    <Warning>
+    The **Short description** and **Long description** fields are required, even though they're not marked as such.
+    </Warning>
+  </Accordion>
+  <Accordion
+    title="Can't preview app in Teams"
+  >
+    If you're unable to [preview your bot in Teams](#create-a-teams-app), make sure you've enabled the policy to allow uploading custom apps:
+
+    1. Log in to the [Teams admin center](https://admin.teams.microsoft.com).
+    2. In the left sidebar, go to **Teams apps > Setup policies**.
+    3. Select **Global (Org-wide default)**
+    4. Make sure **Upload custom apps** is turned on.
+    5. Select **Save**.
+
+    <Warning>
+      Changes to this policy might not take effect immediately. If you still can't access the preview in Teams even after updating, wait a while and try again.
+    </Warning>
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Cards
+
+<Cards />

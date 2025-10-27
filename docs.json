@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "Botpress",
   "colors": {
     "primary": "#0090FF",
@@ -28,68 +28,237 @@
   },
   "favicon": "/favicon.svg",
   "styling": {
-    "eyebrows": "breadcrumbs"
+    "eyebrows": "breadcrumbs",
+    "codeblocks": {
+      "theme": {
+        "light": "light-plus",
+        "dark": "dark-plus"
+      }
+    }
   },
   "icons": {
     "library": "lucide"
   },
   "interaction": {
       "drilldown": false
-    },
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Home",
-        "groups": [
+        "tab": "Docs",
+        "menu": [
           {
-            "group": " ",
-            "pages": ["home"]
-          }
-        ]
-      },
-      {
-        "tab": "Learn",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "/learn/get-started/introduction",
-              "/learn/get-started/quick-start",
+            "item": "Studio",
+            "groups": [
               {
-                "group": "Dashboard",
-                "icon": "panel-left",
+                "group": "Get Started",
                 "pages": [
+                  "/learn/get-started/introduction",
+                  "/learn/get-started/quick-start",
                   {
-                    "group": "Workspace",
+                    "group": "Dashboard",
+                    "icon": "panel-left",
                     "pages": [
-                      "/learn/get-started/dashboard/workspace/introduction",
-                      "/learn/get-started/dashboard/workspace/home",
-                      "/learn/get-started/dashboard/workspace/your-integrations",
-                      "/learn/get-started/dashboard/workspace/usage",
                       {
-                        "group": "Settings",
+                        "group": "Workspace",
                         "pages": [
-                          "/learn/get-started/dashboard/workspace/settings/introduction",
-                          "/learn/get-started/dashboard/workspace/settings/members",
-                          "/learn/get-started/dashboard/workspace/settings/audits"
+                          "/learn/get-started/dashboard/workspace/introduction",
+                          "/learn/get-started/dashboard/workspace/home",
+                          "/learn/get-started/dashboard/workspace/your-integrations",
+                          "/learn/get-started/dashboard/workspace/usage",
+                          {
+                            "group": "Settings",
+                            "pages": [
+                              "/learn/get-started/dashboard/workspace/settings/introduction",
+                              "/learn/get-started/dashboard/workspace/settings/members",
+                              "/learn/get-started/dashboard/workspace/settings/audits"
+                            ]
+                          },
+                          "/learn/get-started/dashboard/workspace/user-profile"
                         ]
                       },
-                      "/learn/get-started/dashboard/workspace/user-profile"
+                      {
+                        "group": "Bot",
+                        "pages": [
+                          "/learn/get-started/dashboard/bot/introduction",
+                          "/learn/get-started/dashboard/bot/overview",
+                          "/learn/get-started/dashboard/bot/integrations",
+                          "/learn/get-started/dashboard/bot/webchat",
+                          "/learn/get-started/dashboard/bot/logs",
+                          "/learn/get-started/dashboard/bot/conversations",
+                          "/learn/get-started/dashboard/bot/analytics",
+                          "/learn/get-started/dashboard/bot/events",
+                          "/learn/get-started/dashboard/bot/issues",
+                          "/learn/get-started/dashboard/bot/configuration-variables"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Concepts",
+                "pages": [
+                  "/learn/reference/introduction",
+                  "/learn/reference/home",
+                  {
+                    "group": "Nodes",
+                    "icon": "square-mouse-pointer",
+                    "pages": ["/learn/reference/nodes/introduction", "/learn/reference/nodes/autonomous-node"]
+                  },
+                  {
+                    "group": "Cards",
+                    "icon": "rows-3",
+                    "pages": [
+                      "/learn/reference/cards/introduction",
+                      "/learn/reference/cards/send-messages",
+                      "/learn/reference/cards/execute-code",
+                      "/learn/reference/cards/tables",
+                      "/learn/reference/cards/set-inactivity-timeout",
+                      "/learn/reference/cards/webchat",
+                      "/learn/reference/cards/flow-logic",
+                      {
+                        "group": "AI",
+                        "pages": [
+                          "/learn/reference/cards/ai/introduction",
+                          "/learn/reference/cards/ai/ai-task",
+                          "/learn/reference/cards/ai/ai-transition",
+                          "/learn/reference/cards/ai/ai-generate-text"
+                        ]
+                      },
+                      "/learn/reference/cards/capture-information",
+                      "/learn/reference/cards/fixed-schedule",
+                      "/learn/reference/cards/agents",
+                      "/learn/reference/cards/utilities"
+                    ]
+                  },
+                  "/learn/reference/workflows",
+                  {
+                    "group": "Knowledge Bases",
+                    "icon": "book-open",
+                    "pages": [
+                      "/learn/reference/knowledge-base/introduction",
+                      "/learn/reference/knowledge-base/add-sources",
+                      "/learn/reference/knowledge-base/knowledge-base-best-practices"
+                    ]
+                  },
+                  "/learn/reference/tables",
+                  "/learn/reference/actions",
+                  {
+                    "group": "Agents",
+                    "icon": "bot",
+                    "pages": [
+                      "/learn/reference/agents/introduction",
+                      "/learn/reference/agents/summary-agent",
+                      "/learn/reference/agents/personality-agent",
+                      "/learn/reference/agents/policy-agent",
+                      "/learn/reference/agents/translator-agent",
+                      "/learn/reference/agents/knowledge-agent",
+                      "/learn/reference/agents/hitl-agent",
+                      "/learn/reference/agents/vision-agent",
+                      "/learn/reference/agents/analytics-agent"
+                    ]
+                  },
+                  "/learn/reference/hooks",
+                  "/learn/reference/card-hub",
+                  "/learn/reference/integrations",
+                  "/learn/reference/schemas",
+                  "/learn/reference/versions",
+                  "/learn/reference/bot-settings",
+                  "/learn/reference/find",
+                  {
+                    "group": "Variables",
+                    "icon": "variable",
+                    "pages": [
+                      "/learn/reference/variables/overview",
+                      {
+                        "group": "Scopes",
+                        "pages": [
+                          "/learn/reference/variables/scopes/workflow",
+                          "/learn/reference/variables/scopes/user",
+                          "/learn/reference/variables/scopes/conversation",
+                          "/learn/reference/variables/scopes/bot",
+                          "/learn/reference/variables/scopes/configuration"
+                        ]
+                      },
+                      "/learn/reference/variables/built-in",
+                      "/learn/reference/variables/pass-between-workflows",
+                      "/learn/reference/variables/in-code"
+                    ]
+                  },
+                  "/learn/reference/triggers",
+                  "/learn/reference/debugger-logs-json",
+                  "/learn/reference/emulator",
+                  "/learn/reference/import-export-bots",
+                  "/learn/reference/copy-to-bot",
+                  {
+                    "group": "Controls and Settings",
+                    "icon": "wrench",
+                    "pages": [
+                      "/learn/reference/controls-and-settings/keyboard-shortcuts",
+                      "/learn/reference/controls-and-settings/studio-commands",
+                      "/learn/reference/controls-and-settings/studio-preferences"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Guides",
+                "pages": [
+                  "/learn/guides/introduction",
+                  {
+                    "group": "How-to",
+                    "icon": "list-ordered",
+                    "pages": [
+                      "/learn/guides/how-to/translate",
+                      "/learn/guides/how-to/send-reminders",
+                      "/learn/guides/how-to/different-an-models",
+                      "/learn/guides/how-to/track-ai-spend-in-table",
+                      "/learn/guides/how-to/update-variables-with-api"
                     ]
                   },
                   {
-                    "group": "Bot",
+                    "group": "Advanced",
+                    "icon": "puzzle",
                     "pages": [
-                      "/learn/get-started/dashboard/bot/introduction",
-                      "/learn/get-started/dashboard/bot/overview",
-                      "/learn/get-started/dashboard/bot/integrations",
-                      "/learn/get-started/dashboard/bot/webchat",
-                      "/learn/get-started/dashboard/bot/logs",
-                      "/learn/get-started/dashboard/bot/conversations",
-                      "/learn/get-started/dashboard/bot/analytics",
-                      "/learn/get-started/dashboard/bot/events",
-                      "/learn/get-started/dashboard/bot/issues",
-                      "/learn/get-started/dashboard/bot/configuration-variables"
+                      "/learn/guides/advanced/use-code",
+                      "/learn/guides/advanced/event-properties",
+                      "/learn/guides/advanced/best-practices-for-state-management",
+                      {
+                        "group": "Safety",
+                        "pages": [
+                          "/learn/guides/advanced/safety/introduction",
+                          "/learn/guides/advanced/safety/preventing-abuse",
+                          "/learn/guides/advanced/safety/brand-safety-framework"
+                        ]
+                      },
+                      {
+                        "group": "Exporting Data",
+                        "pages": [
+                          "/learn/guides/advanced/exporting-data/introduction",
+                          "/learn/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
+                          "/learn/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
+                          "/learn/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
+                          "/learn/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
+                          "/learn/guides/advanced/exporting-data/analyze-llmz-responses"
+                        ]
+                      },
+                      "/learn/guides/advanced/kitchen-sink-advanced-starter-template",
+                      "/learn/guides/advanced/tips-to-optimize-ai-cost",
+                      "/learn/guides/advanced/retention-period",
+                      "/learn/guides/advanced/v12"
                     ]
                   }
                 ]
@@ -97,345 +266,230 @@
             ]
           },
           {
-            "group": "Guides",
-            "pages": [
-              "/learn/guides/introduction",
+            "item": "Integrations",
+            "groups": [
               {
-                "group": "How-to",
-                "icon": "list-ordered",
+                "group": "Get Started",
+                "pages": ["/integrations/get-started/introduction", "/integrations/get-started/botpress-hub"]
+              },
+              {
+                "group": "Functional Integrations",
                 "pages": [
-                  "/learn/guides/how-to/translate",
-                  "/learn/guides/how-to/send-reminders",
-                  "/learn/guides/how-to/different-an-models",
-                  "/learn/guides/how-to/track-ai-spend-in-table",
-                  "/learn/guides/how-to/update-variables-with-api"
+                  "/integrations/functional-integrations/introduction",
+                  "/integrations/functional-integrations/knowledge-base-optimization",
+                  "/integrations/functional-integrations/conversation-analyzer",
+                  "/integrations/functional-integrations/improvement"
                 ]
               },
               {
-                "group": "Advanced",
-                "icon": "puzzle",
+                "group": "Integration Guides",
                 "pages": [
-                  "/learn/guides/advanced/use-code",
-                  "/learn/guides/advanced/event-properties",
-                  "/learn/guides/advanced/best-practices-for-state-management",
+                  "/integrations/integration-guides/plus-apify",
+                  "/integrations/integration-guides/apollo",
+                  "/integrations/integration-guides/attio",
+                  "/integrations/integration-guides/asana",
+                  "/integrations/integration-guides/chat",
+                  "/integrations/integration-guides/plus-email-notifier",
+                  "/integrations/integration-guides/gmail",
+                  "/integrations/integration-guides/plus-google-analytics",
+                  "/integrations/integration-guides/googlecalendar",
+                  "/integrations/integration-guides/gsheets",
+                  "/integrations/integration-guides/hitl",
+                  "/integrations/integration-guides/hubspot",
+                  "/integrations/integration-guides/instagram",
+                  "/integrations/integration-guides/intercom",
+                  "integrations/integration-guides/klaviyo",
+                  "/integrations/integration-guides/line",
+                  "/integrations/integration-guides/mailerlite",
+                  "/integrations/integration-guides/messenger",
+                  "/integrations/integration-guides/teams",
+                  "/integrations/integration-guides/notion",
+                  "/integrations/integration-guides/pipedrive",
+                  "/integrations/integration-guides/slack",
                   {
-                    "group": "Safety",
+                    "group": "Sunshine Conversation",
+                    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/sunco.svg",
                     "pages": [
-                      "/learn/guides/advanced/safety/introduction",
-                      "/learn/guides/advanced/safety/preventing-abuse",
-                      "/learn/guides/advanced/safety/brand-safety-framework"
+                      "/integrations/integration-guides/sunshine-conversations/introduction",
+                      "/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
                     ]
                   },
+                  "/integrations/integration-guides/telegram",
+                  "/integrations/integration-guides/trello",
+                  "/integrations/integration-guides/twilio",
+                  "/integrations/integration-guides/viber",
+                  "/integrations/integration-guides/vonage",
+                  "/integrations/integration-guides/webhook",
                   {
-                    "group": "Exporting Data",
+                    "group": "WhatsApp",
+                    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/whatsapp.svg",
                     "pages": [
-                      "/learn/guides/advanced/exporting-data/introduction",
-                      "/learn/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
-                      "/learn/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
-                      "/learn/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
-                      "/learn/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
-                      "/learn/guides/advanced/exporting-data/analyze-llmz-responses"
+                      "/integrations/integration-guides/whatsapp/introduction",
+                      {
+                        "group": "Mapping",
+                        "pages": [
+                          "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
+                          "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
+                        ]
+                      },
+                      "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
                     ]
                   },
-                  "/learn/guides/advanced/kitchen-sink-advanced-starter-template",
-                  "/learn/guides/advanced/tips-to-optimize-ai-cost",
-                  "/learn/guides/advanced/retention-period",
-                  "/learn/guides/advanced/v12"
+                  "/integrations/integration-guides/zapier",
+                  "/integrations/integration-guides/zendesk"
                 ]
               }
             ]
           },
           {
-            "group": "Reference",
-            "pages": [
-              "/learn/reference/introduction",
-              "/learn/reference/home",
+            "item": "Webchat",
+            "groups": [
               {
-                "group": "Nodes",
-                "icon": "square-mouse-pointer",
-                "pages": ["/learn/reference/nodes/introduction", "/learn/reference/nodes/autonomous-node"]
+                "group": "Get Started",
+                "pages": [
+                  "/webchat/get-started/introduction",
+                  "/webchat/get-started/quick-start",
+                  "/webchat/get-started/embed-in-element",
+                  "/webchat/get-started/configure-your-webchat"
+                ]
               },
               {
-                "group": "Cards",
-                "icon": "rows-3",
+                "group": "Interact with Webchat",
                 "pages": [
-                  "/learn/reference/cards/introduction",
-                  "/learn/reference/cards/send-messages",
-                  "/learn/reference/cards/execute-code",
-                  "/learn/reference/cards/tables",
-                  "/learn/reference/cards/webchat",
-                  "/learn/reference/cards/flow-logic",
+                  "/webchat/interact/open-close-webchat",
+                  "/webchat/interact/use-custom-toggle",
+                  "/webchat/interact/proactive-message-bubble",
+                  "/webchat/interact/open-webchat-on-page-load",
+                  "/webchat/interact/send-user-data",
+                  "/webchat/interact/listen-to-events",
+                  "/webchat/interact/start-trigger",
+                  "/webchat/interact/webchat-notification",
+                  "/webchat/interact/send-message",
                   {
-                    "group": "AI",
+                    "group": "Send custom events",
                     "pages": [
-                      "/learn/reference/cards/ai/introduction",
-                      "/learn/reference/cards/ai/ai-task",
-                      "/learn/reference/cards/ai/ai-transition",
-                      "/learn/reference/cards/ai/ai-generate-text"
+                      "/webchat/interact/send-custom-events/from-webchat",
+                      "/webchat/interact/send-custom-events/to-webchat"
                     ]
                   },
-                  "/learn/reference/cards/capture-information",
-                  "/learn/reference/cards/fixed-schedule",
-                  "/learn/reference/cards/agents",
-                  "/learn/reference/cards/utilities"
+                  "/webchat/interact/update-config",
+                  "/webchat/interact/error-handling",
+                  "/webchat/interact/reference"
                 ]
               },
-              "/learn/reference/workflows",
-              {
-                "group": "Knowledge Bases",
-                "icon": "book-open",
-                "pages": [
-                  "/learn/reference/knowledge-base/introduction",
-                  "/learn/reference/knowledge-base/add-sources",
-                  "/learn/reference/knowledge-base/knowledge-base-best-practices"
-                ]
-              },
-              "/learn/reference/tables",
-              "/learn/reference/actions",
-              {
-                "group": "Agents",
-                "icon": "bot",
-                "pages": [
-                  "/learn/reference/agents/introduction",
-                  "/learn/reference/agents/summary-agent",
-                  "/learn/reference/agents/personality-agent",
-                  "/learn/reference/agents/policy-agent",
-                  "/learn/reference/agents/translator-agent",
-                  "/learn/reference/agents/knowledge-agent",
-                  "/learn/reference/agents/hitl-agent",
-                  "/learn/reference/agents/vision-agent",
-                  "/learn/reference/agents/analytics-agent"
-                ]
-              },
-              "/learn/reference/library",
-              "/learn/reference/hooks",
-              "/learn/reference/card-hub",
-              "/learn/reference/integrations",
-              "/learn/reference/schemas",
-              "/learn/reference/versions",
-              "/learn/reference/chatbot-settings",
-              "/learn/reference/find",
-              {
-                "group": "Variables",
-                "icon": "variable",
-                "pages": [
-                  "/learn/reference/variables/overview",
-                  {
-                    "group": "Scopes",
-                    "pages": [
-                      "/learn/reference/variables/scopes/workflow",
-                      "/learn/reference/variables/scopes/user",
-                      "/learn/reference/variables/scopes/conversation",
-                      "/learn/reference/variables/scopes/bot",
-                      "/learn/reference/variables/scopes/configuration"
-                    ]
-                  },
-                  "/learn/reference/variables/built-in",
-                  "/learn/reference/variables/pass-between-workflows",
-                  "/learn/reference/variables/in-code"
-                ]
-              },
-              "/learn/reference/triggers",
-              "/learn/reference/debugger-logs-json",
-              "/learn/reference/emulator",
-              "/learn/reference/import-export-bots",
-              "/learn/reference/copy-to-bot",
-              {
-                "group": "Controls and Settings",
-                "icon": "wrench",
-                "pages": [
-                  "/learn/reference/controls-and-settings/keyboard-shortcuts",
-                  "/learn/reference/controls-and-settings/studio-commands",
-                  "/learn/reference/controls-and-settings/studio-preferences"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Integrations",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": ["/integrations/get-started/introduction", "/integrations/get-started/botpress-hub"]
-          },
-          {
-            "group": "Functional Integrations",
-            "pages": [
-              "/integrations/functional-integrations/introduction",
-              "/integrations/functional-integrations/knowledge-base-optimization",
-              "/integrations/functional-integrations/conversation-analyzer",
-              "/integrations/functional-integrations/improvement"
-            ]
-          },
-          {
-            "group": "Integration Guides",
-            "pages": [
-              "/integrations/integration-guides/asana",
-              "/integrations/integration-guides/chat",
-              "/integrations/integration-guides/gmail",
-              "/integrations/integration-guides/google-calendar",
-              "/integrations/integration-guides/google-sheet",
-              "/integrations/integration-guides/hitl",
-              "/integrations/integration-guides/hubspot",
-              "/integrations/integration-guides/instagram",
-              "/integrations/integration-guides/intercom",
-              "integrations/integration-guides/klaviyo",
-              "/integrations/integration-guides/line",
-              "/integrations/integration-guides/mailerlite",
-              "/integrations/integration-guides/messenger",
-              "/integrations/integration-guides/microsoft-teams",
-              "/integrations/integration-guides/notion",
-              "/integrations/integration-guides/pipedrive",
-              {
-                "group": "Slack",
-                "pages": [
-                  "/integrations/integration-guides/slack/setup",
-                  "/integrations/integration-guides/slack/cards",
-                  "/integrations/integration-guides/slack/triggers",
-                  "/integrations/integration-guides/slack/tags"
-                ]
-              },
-              {
-                "group": "Sunshine Conversation",
-                "pages": [
-                  "/integrations/integration-guides/sunshine-conversations/introduction",
-                  "/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
-                ]
-              },
-              "/integrations/integration-guides/telegram",
-              "/integrations/integration-guides/trello",
-              "/integrations/integration-guides/twilio",
-              "/integrations/integration-guides/viber",
-              "/integrations/integration-guides/vonage",
-              "/integrations/integration-guides/webhook",
-              {
-                "group": "WhatsApp",
-                "pages": [
-                  "/integrations/integration-guides/whatsapp/introduction",
-                  {
-                    "group": "Mapping",
-                    "pages": [
-                      "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
-                      "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
-                    ]
-                  },
-                  "/integrations/integration-guides/whatsapp/triggers",
-                  "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
-                ]
-              },
-              "/integrations/integration-guides/zapier",
-              "/integrations/integration-guides/zendesk"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Webchat",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "/webchat/get-started/introduction",
-              "/webchat/get-started/quick-start",
-              "/webchat/get-started/configure-your-webchat"
-            ]
-          },
-          {
-            "group": "Interact with Webchat",
-            "pages": [
-              "/webchat/interact/open-close-webchat",
-              "/webchat/interact/open-webchat-on-page-load",
-              "/webchat/interact/send-user-data",
-              "/webchat/interact/listen-to-events",
-              "/webchat/interact/start-trigger",
-              "/webchat/interact/webchat-notification",
-              "/webchat/interact/send-message",
-              {
-                "group": "Send custom events",
-                "pages": [
-                  "/webchat/interact/send-custom-events/from-webchat",
-                  "/webchat/interact/send-custom-events/to-webchat"
-                ]
-              },
-              "/webchat/interact/update-config",
-              "/webchat/interact/error-handling",
-              "/webchat/interact/reference"
-            ]
-          },
-          {
-            "group": "Integrations",
-            "pages": ["/webchat/integrations/wordpress", "/webchat/integrations/wix", "/webchat/integrations/webflow"]
-          },
-          {
-            "group": "React Library",
-            "pages": [
-              "/webchat/react-library/get-started",
-              {
-                "group": "Components",
-                "pages": [
-                  "/webchat/react-library/components/webchat",
-                  "/webchat/react-library/components/fab",
-                  "/webchat/react-library/components/container",
-                  "/webchat/react-library/components/header",
-                  "/webchat/react-library/components/message-list",
-                  "/webchat/react-library/components/composer",
-                  "/webchat/react-library/components/stylesheet-provider"
-                ]
-              },
-              {
-                "group": "Hooks",
-                "pages": ["/webchat/react-library/hooks/use-webchat-client"]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "For Developers",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": ["for-developers/introduction"]
-          },
-          {
-            "group": "SDK",
-            "pages": [
-              "for-developers/sdk/overview",
-              "for-developers/sdk/installation",
               {
                 "group": "Integrations",
-                "pages": [
-                  "for-developers/sdk/integration/getting-started",
-                  "for-developers/sdk/integration/messaging",
-                  "for-developers/sdk/integration/concepts",
-                  "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
-                  "for-developers/sdk/integration/enable-oauth",
-                  "for-developers/sdk/integration/use-your-own-llm"
-                ]
+                "pages": ["/webchat/integrations/wordpress", "/webchat/integrations/wix", "/webchat/integrations/webflow"]
               },
               {
-                "group": "Interfaces",
+                "group": "React Library",
                 "pages": [
-                  "for-developers/sdk/interface/introduction",
-                  "for-developers/sdk/interface/how-tos/add-and-implement",
-                  "for-developers/sdk/interface/how-tos/implementing-hitl",
-                  "for-developers/sdk/interface/how-tos/implementing-file-sync"
+                  "/webchat/react-library/get-started",
+                  {
+                    "group": "Components",
+                    "pages": [
+                      "/webchat/react-library/components/webchat",
+                      "/webchat/react-library/components/fab",
+                      "/webchat/react-library/components/container",
+                      "/webchat/react-library/components/header",
+                      "/webchat/react-library/components/message-list",
+                      "/webchat/react-library/components/composer",
+                      "/webchat/react-library/components/stylesheet-provider"
+                    ]
+                  },
+                  {
+                    "group": "Hooks",
+                    "pages": ["/webchat/react-library/hooks/use-webchat-client"]
+                  }
                 ]
-              },
-              "for-developers/sdk/bots-as-code",
-              "/for-developers/sdk/cli-reference"
+              }
             ]
           },
           {
-            "group": "Packages",
+            "item": "For developers",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": ["for-developers/introduction"]
+              },
+              {
+                "group": "SDK",
+                "pages": [
+                  "for-developers/sdk/overview",
+                  "for-developers/sdk/installation",
+                  {
+                    "group": "Integrations",
+                    "pages": [
+                      "for-developers/sdk/integration/getting-started",
+                      "for-developers/sdk/integration/messaging",
+                      "for-developers/sdk/integration/concepts",
+                      "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
+                      "for-developers/sdk/integration/enable-oauth",
+                      "for-developers/sdk/integration/use-your-own-llm"
+                    ]
+                  },
+                  {
+                    "group": "Interfaces",
+                    "pages": [
+                      "for-developers/sdk/interface/introduction",
+                      "for-developers/sdk/interface/how-tos/add-and-implement",
+                      "for-developers/sdk/interface/how-tos/implementing-hitl",
+                      "for-developers/sdk/interface/how-tos/implementing-file-sync"
+                    ]
+                  },
+                  "for-developers/sdk/bots-as-code",
+                  "/for-developers/sdk/cli-reference"
+                ]
+              },
+              {
+                "group": "Packages",
+                "pages": [
+                  {
+                    "group": "Zai",
+                    "pages": [
+                      "for-developers/packages/zai/overview",
+                      "for-developers/packages/zai/reference"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Tutorial",
+        "pages": [
+          "tutorial/introduction",
+          {
+            "group": "Basics of Botpress",
+            "tag": "BETA",
             "pages": [
               {
-                "group": "Zai",
+                "group": "First steps",
+                "expanded": true,
                 "pages": [
-                  "for-developers/packages/zai/overview",
-                  "for-developers/packages/zai/reference"
+                  "tutorial/basics/first-steps/prompting",
+                  "tutorial/basics/first-steps/adding-knowledge"
+                ]
+              },
+              {
+                "group": "Custom logic",
+                "expanded": true,
+                "pages": [
+                  "tutorial/basics/custom-logic/workflows",
+                  "tutorial/basics/custom-logic/creating-nodes",
+                  "tutorial/basics/custom-logic/adding-cards",
+                  "tutorial/basics/custom-logic/using-custom-logic-with-ai"
+                ]
+              },
+              {
+                "group": "Storing information",
+                "expanded": true,
+                "pages": [
+                  "tutorial/basics/storing-information/variables",
+                  "tutorial/basics/storing-information/assigning-a-value",
+                  "tutorial/basics/storing-information/scoping-variables"
                 ]
               }
             ]
@@ -632,6 +686,12 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "pages": [
+          "changelog"
+        ]
       }
     ],
     "global": {
@@ -652,20 +712,14 @@
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg",
-    "href": "https://botpress.com"
+    "href": "https://botpress.com/docs"
   },
   "navbar": {
     "primary": {
       "type": "button",
       "label": "Dashboard",
       "href": "https://app.botpress.cloud"
-    },
-    "links": [
-      {
-        "label": "Changelog",
-        "href": "https://botpress.com/docs/changelog"
-      }
-    ]
+    }
   },
   "footer": {
     "socials": {
@@ -675,5 +729,11 @@
       "youtube": "https://www.youtube.com/botpress",
       "discord": "https://discord.com/invite/botpress"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/"
+    }
+  ]
 }

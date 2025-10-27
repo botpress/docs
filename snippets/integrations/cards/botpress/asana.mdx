@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Add Comment to Task
 
@@ -61,6 +61,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="assignee"
     type="string"
+    default="me"
   >
     <span>{"The ID of the user who will be assigned to the task or \"me\" to assign to the current user (Optional) (e.g. \"1215207682932839\") (Default: \"me\")"}</span>
   </ResponseField>
@@ -141,7 +142,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="photo"
-    type="string"
+    type="object | null"
   >
     
   </ResponseField>

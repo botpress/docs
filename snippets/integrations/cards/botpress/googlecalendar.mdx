@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Create Event
 
@@ -52,12 +52,14 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -69,15 +71,21 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
 </Expandable>
 
@@ -132,20 +140,24 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="eventType"
-    type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
+    type="enum<string>"
     required
   >
     <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
+
+Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -164,15 +176,21 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
 </Expandable>
 
@@ -257,20 +275,24 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="eventType"
-    type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
+    type="enum<string>"
     required
   >
     <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
+
+Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -289,15 +311,21 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -468,20 +496,24 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="eventType"
-    type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
+    type="enum<string>"
     required
   >
     <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
+
+Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -500,15 +532,21 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -536,6 +574,7 @@ This Card has no output.
   <ResponseField
     name="count"
     type="number"
+    default={100}
   >
     <span>{"The maximum number of events to return. Defaults to 100."}</span>
   </ResponseField>
@@ -612,20 +651,24 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="eventType"
-    type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
+    type="enum<string>"
     required
   >
     <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
+
+Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -644,15 +687,21 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -720,12 +769,14 @@ This Card has no output.
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -737,15 +788,21 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
 </Expandable>
 
@@ -800,20 +857,24 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="eventType"
-    type="enum: default, birthday, focusTime, fromGmail, outOfOffice, workingLocation"
+    type="enum<string>"
     required
   >
     <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
+
+Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
   </ResponseField>
   <ResponseField
     name="guestsCanInviteOthers"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
   </ResponseField>
   <ResponseField
     name="guestsCanSeeOtherGuests"
     type="boolean"
+    default={true}
   >
     <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
   </ResponseField>
@@ -832,15 +893,21 @@ This Card has no output.
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum: confirmed, tentative, cancelled"
+    type="enum<string>"
+    default="confirmed"
   >
     <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
+
+Available options: `confirmed`, `tentative`, `cancelled`
   </ResponseField>
   <ResponseField
     name="visibility"
-    type="enum: default, public, private, confidential"
+    type="enum<string>"
+    default="default"
   >
     <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
+
+Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
 </Expandable>
 

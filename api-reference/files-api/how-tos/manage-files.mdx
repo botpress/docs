@@ -39,8 +39,8 @@ To list all the files of a bot you can use the [List Files](/api-reference/files
 <CodeGroup>
 
 ```ts Using the Botpress Client
-const res = await client.listFiles()
-const files = res.data.files
+const res = await client.listFiles({})
+const files = res.files
 ```
 
 ```ts Calling the API directly
@@ -102,13 +102,13 @@ The [List Files](/api-reference/files-api/how-tos/manage-files#listing-existing-
 For example:
 
 ```ts
-let res = await client.listFiles()
-const files = res.data.files
+let res = await client.listFiles({})
+const files = res.files
 
-// You can put this in a loop to retrieve all the files if needed.
-if (res.data.nextToken) {
-  res = await client.listFiles({ nextToken: res.data.nextToken })
-  files.push(...res.data.files)
+// You can put this in a loop to retrieve all the files if needed
+if (res.meta.nextToken) {
+  res = await client.listFiles({ nextToken: res.meta.nextToken })
+  files.push(...res.files)
 }
 ```
 
@@ -121,8 +121,8 @@ Here's an example of how to update the access policies and tags of a file using 
 <CodeGroup>
 
 ```ts Using the Botpress Client
-await client.updateFile({
-  id: 'YOUR_FILE_ID',
+const response = await client.updateFileMetadata({
+  id: 'file_01K86HD0D5T3HFCGBEKQJFNKAD',
   accessPolicies: ['integrations'], // This value will replace the existing access policies of the file.
   tags: {
     // This acts as a "patch" or partial update, so only the tags specified here will be updated, the rest will remain unchanged. If you need to delete an existing tag, you can set it to a `null` value.
@@ -132,6 +132,8 @@ await client.updateFile({
     // Any other tags not specified here will remain unchanged.
   },
 })
+
+const updatedFile = response.file
 ```
 
 ```ts Calling the API directly

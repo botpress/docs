@@ -1,7 +1,70 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Send Template Message
+
+<span>{"Sends a WhatsApp Message Template to a user in an existing conversation"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    <span>{"Details of the conversation"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="userPhone"
+    type="string"
+    required
+  >
+    <span>{"Phone number of the WhatsApp user to start a conversation with. Add the country code (e.g. +81 for japan)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateName"
+    type="string"
+    required
+  >
+    <span>{"Name of the WhatsApp Message Template to start the conversation with"}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateLanguage"
+    type="string"
+  >
+    <span>{"Language of the WhatsApp Message Template to start the conversation with. Defaults to \"en\" (English)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateVariablesJson"
+    type="string"
+  >
+    <span>{"JSON array representation of variable values to pass to the WhatsApp Message Template (if required by the template)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botPhoneNumberId"
+    type="string"
+  >
+    <span>{"Phone number ID to use as sender (uses the default phone number ID if not provided)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"ID of the conversation created"}</span>
+  </ResponseField>
+</Expandable>
 
 ### Start Conversation
 
@@ -15,7 +78,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     type="object"
     required
   >
-    
+    <span>{"Details of the conversation"}</span>
 
     <Expandable>
   <ResponseField
@@ -23,7 +86,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     type="string"
     required
   >
-    <span>{"Phone number of the WhatsApp user to start a conversation with"}</span>
+    <span>{"Phone number of the WhatsApp user to start a conversation with. Add the country code (e.g. +81 for japan)"}</span>
   </ResponseField>
   <ResponseField
     name="templateName"

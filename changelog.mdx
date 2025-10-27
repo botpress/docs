@@ -1,8 +1,196 @@
 ---
 title: 'Changelog'
 description: 'The latest updates and improvements to Botpress.'
-mode: 'wide'
+icon: newspaper
 ---
+
+<Update label="October 17, 2025">
+  ## Features & Enhancements
+
+  - Improved the UI for the Studio's **Publish** button:
+
+  <Frame>
+    <img
+      alt="Publish button"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-17/publish.png"
+    />
+    <img
+      alt="Publish button"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-17/publish-dark.png"
+    />
+  </Frame>
+
+  - Added support for [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) via the Anthropic integration
+
+  ## Bug Fixes
+
+  - Fixed an issue where clicking Tools in your bot's home screen would cause a crash if your bot only contained standard Nodes
+  - Fixed an issue where duplicating a Workflow would incorrectly display "Integration not installed or disabled" even though the integration was installed
+  - Fixed an issue where imported bots would display ghost Knowledge Bases
+  - Fixed an issue where previously-created variables were unavailable to select in certain Cards' output
+  - Fixed an issue where the `event` object's state was inaccessible in Actions
+  - Fixed an issue where URLs with backslashes weren’t crawling properly
+</Update>
+
+<Update label="October 10, 2025">
+  ## Bug Fixes
+
+  - Fixed an issue where the **Copy to bot** option wasn't displaying all available bots after a certain number
+  - Fixed a bug with storing a Card's output in a variable, where:
+    - Existing Workflow variables weren't visible in the output picker
+    - Creating a variable within the picker resulted in a duplicate variable if it had the same name as an existing variable
+  - Fixed an issue where the Set Activity Timeout Card wasn't working under certain circumstances
+  - Fixed an issue that was making the Webchat typing indicator appear and disappear irregularly while a bot prepared its reply
+  - Fixed an issue where file storage wasn't always being reduced even when file was deleted from bot
+
+  ## Features & Enhancements
+
+  - Conversations with the Botpress Help Desk now persist between the Dashboard and the Studio
+
+  ## Integrations
+
+  - **WhatsApp**: Added better support for international phone numbers
+
+</Update>
+
+<Update label="October 3, 2025">
+  ## Features & Enhancements
+
+  ### Login
+
+  - Refreshed [login page](https://sso.botpress.cloud/login):
+
+  <Frame>
+  ![New login page](./changelog-assets/2025-10-03/new-login.gif)
+  </Frame>
+
+  ### Onboarding
+
+  - Improved onboarding experience:
+
+    - Refreshed, more focused UI
+    - Added option to describe your bot's goal when selecting **Other**:
+
+  <Tabs>
+    <Tab title="Select goal">
+      <Frame>
+        <img
+          alt="Other use case"
+          className="block dark:hidden"
+          src="./changelog-assets/2025-10-03/other-use-case.png"
+        />
+        <img
+          alt="Other use case"
+          className="hidden dark:block"
+          src="./changelog-assets/2025-10-03/other-use-case-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="Describe goal">
+      <Frame>
+        <img
+          alt="Goal"
+          className="block dark:hidden"
+          src="./changelog-assets/2025-10-03/goal.png"
+        />
+        <img
+          alt="Goal"
+          className="hidden dark:block"
+          src="./changelog-assets/2025-10-03/goal-dark.png"
+        />
+      </Frame>
+    </Tab>
+  </Tabs>
+
+    - Tasks now run in the background while you're setting up your agent, making the onboarding experience much faster
+
+  ### Studio
+
+  - Added [Claude Sonnet 4.5](https://www.anthropic.com/news/claude-sonnet-4-5) to Studio
+
+  ## Integrations
+
+  - **Apify**: Added [Apify integration](/integrations/integration-guides/plus-apify) for advanced website crawling
+  - **WhatsApp**:
+    - Added [new Triggers](integrations/integration-guides/whatsapp/introduction#triggers) to for monitoring [message templates](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines/)
+    - Fixed an issue where Freshchat agents' messages weren't being displayed on WhatsApp
+  - **HubSpot**: Updated [Get Contact](/integrations/integration-guides/hubspot#get-contact) Card to retrieve all contact properties by default
+
+  ## Miscellaneous
+
+  <Warning>
+    ### Webchat v1 deprecation
+
+    We're deprecating Webchat v1 (and any old implementations tied to it). This means
+    any Webchat deployments on your website that use v1 will stop functioning. To avoid
+    service disruption, all users currently using v1 must migrate to Webchat v2 or higher
+    before **December 31, 2025**.
+
+    If you're currently a Webchat v1 user, you should have already received an email with instructions for upgrading. For any questions, don't hesitate to contact our support team.
+  </Warning>
+
+</Update>
+
+<Update label="September 26, 2025">
+  ## Features & Enhancements
+
+  ### Webchat
+
+  - Added the option to configure a [custom Webchat toggle](/webchat/interact/use-custom-toggle):
+
+  <Frame>
+    <img
+      alt="Custom Webchat toggle"
+      className="block dark:hidden"
+      src="./changelog-assets/2025-09-26/custom-toggle.gif"
+    />
+    <img
+      alt="Custom Webchat toggle"
+      className="hidden dark:block"
+      src="./changelog-assets/2025-09-26/custom-toggle-dark.gif"
+    />
+  </Frame>
+
+  - Added the option to [inject Webchat into a specific HTML element](/webchat/get-started/embed-in-element)
+  - Added the option to enable sound effects for Webchat
+  - Improved the Webchat customization UI
+
+  ### Autonomous Nodes
+
+  - Added the option to [set a specific LLM for Retrieval-Augmented Generation (RAG) tasks](/learn/reference/bot-settings#rag-language-model), like searching a Knowledge Base
+  - Added the option to [override your bot's default LLM settings](/learn/reference/nodes/autonomous-node#override-default-models) at the Node level
+
+  ### Studio
+
+  - Added the option to select another bot when Studio is already open in another tab:
+
+  <Frame>
+    <img
+      alt="Bot selector"
+      className="block dark:hidden"
+      src="./changelog-assets/2025-09-26/bot-select.png"
+    />
+    <img
+      alt="Bot selector"
+      className="hidden dark:block"
+      src="./changelog-assets/2025-09-26/bot-select-dark.png"
+    />
+  </Frame>
+
+  ## Integrations
+
+  - [Email Notifier](/integrations/integration-guides/plus-email-notifier): Added an integration for sending emails from a generic email address
+  - **Apollo**: Added [Apollo](/integrations/integration-guides/apollo) integration
+  - **Attio**: Added [Attio](https://attio.com/) integration
+  - **Slack**: Added support for tagged Slack users in incoming message payloads
+
+  ## Bug Fixes
+
+  - Fixed an issue where dynamically including Knowledge Bases in Autonomous Nodes (using a variable) wasn't working properly
+  - Fixed an issue with the Slack integration where quick replies would result in a 400 error
+</Update>
 
 <Update label="September 19, 2025">
   ## Features & Enhancements

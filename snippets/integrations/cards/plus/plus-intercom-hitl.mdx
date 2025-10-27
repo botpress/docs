@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Create User
 
@@ -78,10 +78,12 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   >
     <span>{"History of all messages in the conversation up to this point. Should be displayed to the human agent in the external service."}</span>
 
-    <Expandable title="text properties">
+    <Tabs>
+    <Tab title="text">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -110,12 +112,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="image properties">
+      </Expandable>
+    </Tab>
+    <Tab title="image">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -144,12 +147,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="audio properties">
+      </Expandable>
+    </Tab>
+    <Tab title="audio">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -178,12 +182,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="video properties">
+      </Expandable>
+    </Tab>
+    <Tab title="video">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -212,12 +217,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="file properties">
+      </Expandable>
+    </Tab>
+    <Tab title="file">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -252,12 +258,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="location properties">
+      </Expandable>
+    </Tab>
+    <Tab title="location">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -305,12 +312,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="carousel properties">
+      </Expandable>
+    </Tab>
+    <Tab title="carousel">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -367,10 +375,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable title="array item properties">
   <ResponseField
     name="action"
-    type="enum: postback, url, say"
+    type="enum<string>"
     required
   >
-    
+    Available options: `postback`, `url`, `say`
   </ResponseField>
   <ResponseField
     name="label"
@@ -392,12 +400,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="card properties">
+      </Expandable>
+    </Tab>
+    <Tab title="card">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -446,10 +455,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable title="array item properties">
   <ResponseField
     name="action"
-    type="enum: postback, url, say"
+    type="enum<string>"
     required
   >
-    
+    Available options: `postback`, `url`, `say`
   </ResponseField>
   <ResponseField
     name="label"
@@ -469,12 +478,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="dropdown properties">
+      </Expandable>
+    </Tab>
+    <Tab title="dropdown">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -527,12 +537,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="choice properties">
+      </Expandable>
+    </Tab>
+    <Tab title="choice">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -585,12 +596,13 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="bloc properties">
+      </Expandable>
+    </Tab>
+    <Tab title="bloc">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -617,7 +629,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   >
     
 
-    <Expandable title="text properties">
+    <Tabs>
+    <Tab title="text">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -642,9 +656,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="markdown properties">
+      </Expandable>
+    </Tab>
+    <Tab title="markdown">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -669,9 +684,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="image properties">
+      </Expandable>
+    </Tab>
+    <Tab title="image">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -696,9 +712,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="audio properties">
+      </Expandable>
+    </Tab>
+    <Tab title="audio">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -723,9 +740,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="video properties">
+      </Expandable>
+    </Tab>
+    <Tab title="video">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -750,9 +768,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="file properties">
+      </Expandable>
+    </Tab>
+    <Tab title="file">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -783,9 +802,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="location properties">
+      </Expandable>
+    </Tab>
+    <Tab title="location">
+      <Expandable>
   <ResponseField
     name="type"
     type="string"
@@ -829,16 +849,19 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-
-    <Expandable title="markdown properties">
+      </Expandable>
+    </Tab>
+    <Tab title="markdown">
+      <Expandable>
   <ResponseField
     name="source"
-    type="string"
+    type="object | object"
     required
   >
     
@@ -867,7 +890,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
 </Expandable>
 

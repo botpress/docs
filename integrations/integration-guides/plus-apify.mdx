@@ -1,0 +1,98 @@
+---
+title: Apify (Advanced Website Crawler)
+description: Add a bot to Apify using the official integration.
+icon: '/integrations/integration-guides/assets/icons/apify.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/plus/plus-apify.mdx'
+import Triggers from '/snippets/integrations/triggers/plus/plus-apify.mdx'
+
+<OpenInHub integration={integrationVersions["plus/apify"]}/>
+
+{/* vale on */}
+
+The official Apify integration connects your bot to Apify, an advanced website crawling platform. It allows your bot to manage your Apify crawler runs.
+
+This integration is useful if you need more powerful crawling than Studio's [default web crawler](/learn/reference/knowledge-base/add-sources#websites) provides.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - An [Apify account](https://console.apify.com/sign-up)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **<Icon icon="boxes"/> Explore Hub** in the upper-right corner.
+    2. Search for the **Apify** integration. In the Hub, it's listed as **Advanced Website Crawler**.
+    3. Select **Install Integration**.
+
+    In the **Configuration** menu, you should see two fields:
+
+    - **API Token**
+    - **Webhook Secret** (Optional)
+
+    Leave these empty for now—you'll come back to them after completing the setup in your Apify account.
+  </Step>
+  <Step title="Get your Apify API token">
+    Next, get your Apify API token:
+
+    1. [Log in to your Apify account](https://console.apify.com/sign-in).
+    2. Select **Settings** from the bottom-left corner.
+    3. Go to **API & Integrations**.
+    4. Under **Personal API tokens**, copy the API token—it should start with `apify_api_`.
+
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API Token** field, paste your Apify API token.
+    2. Select **Save Configuration**.
+
+      <Note>
+      If you just want to use the integration's [Cards](#cards), you're done—the integration is ready to use. However, if you also want to use the integration's [Triggers](#triggers) to listen for crawler events, follow the steps below.
+      </Note>
+
+    3. Copy the integration's webhook URL (starting with `https://webhook.botpress.cloud`).
+    4. Continue to the next step.
+  </Step>
+  <Step title="Configure your Apify webhook (Optional)">
+    Next, create a Webhook integration:
+
+    1. Go to the [Website Content Crawler](https://apify.com/apify/website-content-crawler) in the Apify Store.
+    2. Select **Try for Free**, then **Save & Start**. This opens the Actor's configuration page.
+    3. Select the **Integrations** tab (on the Actor's page, not the left sidebar).
+    4. Scroll down to **Generic integrations**, then select **HTTP webhook**.
+    5. Under **Start when**, select the following options:
+
+        - Run succeeded
+        - Run created
+        - Run failed
+        - Run timed out
+        - Run resurrected
+        - Run aborted
+    6. Paste your Botpress webhook URL into the **URL** field.
+    7. Select **Save**.
+  </Step>
+</Steps>
+
+<Check>
+  Your Apify integration is ready. You can use the integration's [Cards](#cards) and [Triggers](#triggers) to manage your Apify crawler runs.
+</Check>
+
+## Cards
+
+<Cards />
+
+## Triggers
+
+<Triggers />

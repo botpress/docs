@@ -1,0 +1,267 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Get Run Status
+
+<span>{"Check the status of a crawler run (useful for monitoring)"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    <span>{"The run ID to check status for"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Start Crawler Run
+
+<span>{"Start a crawler run asynchronously. Use with webhooks for production crawling. You can either use individual parameters for simple cases, or provide rawInputJsonOverride for full control."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="startUrls"
+    type="array"
+    required
+  >
+    <span>{"URLs to start crawling from"}</span>
+  </ResponseField>
+  <ResponseField
+    name="excludeUrlGlobs"
+    type="array"
+  >
+    <span>{"URL patterns to exclude from crawling"}</span>
+  </ResponseField>
+  <ResponseField
+    name="includeUrlGlobs"
+    type="array"
+  >
+    <span>{"URL patterns to include in crawling"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxCrawlPages"
+    type="number"
+    required
+  >
+    <span>{"Maximum number of pages to crawl"}</span>
+  </ResponseField>
+  <ResponseField
+    name="saveMarkdown"
+    type="boolean"
+    required
+  >
+    <span>{"Save content as Markdown format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="htmlTransformer"
+    type="enum<string>"
+    required
+  >
+    <span>{"HTML processing method"}</span>
+
+Available options: `readableTextIfPossible`, `readableText`, `extractus`, `none`
+  </ResponseField>
+  <ResponseField
+    name="removeElementsCssSelector"
+    type="string"
+  >
+    <span>{"CSS selectors for elements to remove"}</span>
+  </ResponseField>
+  <ResponseField
+    name="crawlerType"
+    type="enum<string>"
+    required
+  >
+    <span>{"Browser type for crawling"}</span>
+
+Available options: `playwright:adaptive`, `playwright:firefox`, `cheerio`, `jsdom`, `playwright:chrome`
+  </ResponseField>
+  <ResponseField
+    name="expandClickableElements"
+    type="boolean"
+    required
+  >
+    <span>{"Expand clickable elements for better content extraction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headers"
+    type="string"
+  >
+    <span>{"Custom HTTP headers for authentication/requests"}</span>
+  </ResponseField>
+  <ResponseField
+    name="rawInputJsonOverride"
+    type="string"
+  >
+    <span>{"JSON string to override any crawler parameters, please refer to https://console.apify.com/actors/<actor-id>/input and select JSON format for the available parameters"}</span>
+  </ResponseField>
+  <ResponseField
+    name="kbId"
+    type="string"
+    required
+  >
+    <span>{"Knowledge Base ID to save the crawled content to"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Sync Run Results
+
+<span>{"Get the results from a completed crawler run and sync to Botpress KB"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    <span>{"The run ID to get results for"}</span>
+  </ResponseField>
+  <ResponseField
+    name="kbId"
+    type="string"
+    required
+  >
+    <span>{"Knowledge Base ID to tag the crawled content with"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="runId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="datasetId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

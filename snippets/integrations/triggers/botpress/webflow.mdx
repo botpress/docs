@@ -1,0 +1,995 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Collection Item Created
+
+<span>{"Information about a new collection item"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workspaceId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="collectionId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Collection Item Deleted
+
+<span>{"Information about a deleted collection item"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workspaceId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="collectionId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Collection Item Published
+
+<span>{"Information about a collection item that was published"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workspaceId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="collectionId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Collection Item Unpublished
+
+<span>{"Information about a collection item that was removed from the live site"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workspaceId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="collectionId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Collection Item Updated
+
+<span>{"Information about an updated collection item"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workspaceId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="collectionId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fieldData"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lastPublished"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isDraft"
+    type="boolean"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="cmsLocaleId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### New Comment Thread
+
+<span>{"Information about a new comment thread or reply"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="threadId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="commentId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="localeId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="breakpoint"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isResolved"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="mentionedUsers"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Form Submission
+
+<span>{"Information about a form that was submitted"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="schema"
+    type="array"
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="fieldName"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="fieldType"
+    type="enum<string>"
+  >
+    Available options: `FormTextInput`, `FormTextarea`, `FormCheckboxInput`, `FormRadioInput`, `FormFileUploadInput`
+  </ResponseField>
+  <ResponseField
+    name="fieldElementId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="submittedAt"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="formId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="formElementId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Page Created
+
+<span>{"Information about a new pages"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageTitle"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="deletedOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="publishedPath"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Page Deleted
+
+<span>{"Information about a page that was deleted"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageTitle"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="deletedOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="publishedPath"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Page Metadata Updated
+
+<span>{"Information about a page's updated metadata and/or settings"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="siteId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="pageTitle"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="lastUpdated"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="deletedOn"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="publishedPath"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Site Publish
+
+<span>{"Information about a site that was published"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="domain"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="site"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="publishedOn"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="publishedBy"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

@@ -1,0 +1,96 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Send Email
+
+<span>{"Send an email via AWS SES"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="to"
+    type="array"
+    required
+  >
+    <span>{"Recipient email addresses"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Email subject"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+  >
+    <span>{"Email content - supports plain text or HTML"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isHtml"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Set to true if body contains HTML content"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="successful"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="failed"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

@@ -50,7 +50,6 @@
     text-align: center;
     border: 1px solid #0588f0;
     font-weight: 500;
-    border-radius: 100rem;
     padding: .5rem 1rem;
     font-size: 0.9rem;
     line-height: 130%;
@@ -67,7 +66,6 @@
     text-align: center;
     background-color: light-dark(#fcfcfc, #1a1a1a);
     border: 1px solid #626762;
-    border-radius: 100rem;
     padding: .5rem 1rem;
     font-size: 0.9rem;
     line-height: 130%;
@@ -113,6 +111,11 @@
   --bg-desktop: url('https://i.ibb.co/5hWC1650/bg-desktop-dark.webp');
 }
 
+[data-nav-tag="BETA"] {
+  background-color: light-dark(rgb(255 251 235/.5), rgb(245 158 11/.1)) !important;
+  color: light-dark(rgb(120 53 15/var(--tw-text-opacity)), rgb(253 230 138/var(--tw-text-opacity))) !important;
+}
+
 @media (min-width: 768px) { .bpWebchat {
     /* box-shadow: none !important; */
     min-width: 450px;
@@ -126,4 +129,12 @@
   width: auto !important;
   aspect-ratio: auto !important;
   pointer-events: none
+}
+.max-w-xl {
+  /* max-width: 750px; */
+  max-width: 40em;
+}
+
+img {
+  background-color: inherit !important;
 }

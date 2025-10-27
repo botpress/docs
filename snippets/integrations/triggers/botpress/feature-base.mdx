@@ -1,0 +1,834 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Post Created
+
+<span>{"A post was created on a board."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizationId"
+    type="string"
+    required
+  >
+    <span>{"Organization associated with the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"ID of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookId"
+    type="string"
+  >
+    <span>{"The ID of the webhook"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"Date when the event was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryStatus"
+    type="string"
+  >
+    <span>{"The status of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstSentAt"
+    type="string"
+  >
+    <span>{"First delivery time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryAttempts"
+    type="number"
+  >
+    <span>{"The number of times the event tried to be delivered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string"
+    required
+  >
+    <span>{"The topic of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"Event data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="profilePicture"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="postStatus"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="postCategory"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="category"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="date"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="categoryId"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Post Deleted
+
+<span>{"A post was deleted on a board."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizationId"
+    type="string"
+    required
+  >
+    <span>{"Organization associated with the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"ID of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookId"
+    type="string"
+  >
+    <span>{"The ID of the webhook"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"Date when the event was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryStatus"
+    type="string"
+  >
+    <span>{"The status of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstSentAt"
+    type="string"
+  >
+    <span>{"First delivery time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryAttempts"
+    type="number"
+  >
+    <span>{"The number of times the event tried to be delivered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string"
+    required
+  >
+    <span>{"The topic of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"Event data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="profilePicture"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="postStatus"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="postCategory"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="category"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="date"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="categoryId"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Post Updated
+
+<span>{"A post was updated on a board."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizationId"
+    type="string"
+    required
+  >
+    <span>{"Organization associated with the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"ID of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookId"
+    type="string"
+  >
+    <span>{"The ID of the webhook"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"Date when the event was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryStatus"
+    type="string"
+  >
+    <span>{"The status of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstSentAt"
+    type="string"
+  >
+    <span>{"First delivery time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryAttempts"
+    type="number"
+  >
+    <span>{"The number of times the event tried to be delivered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string"
+    required
+  >
+    <span>{"The topic of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"Event data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="profilePicture"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="postStatus"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="postCategory"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="category"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="date"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="categoryId"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="changes"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="field"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="oldValue"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="newValue"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Post voted
+
+<span>{"A post was voted on a board."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="organizationId"
+    type="string"
+    required
+  >
+    <span>{"Organization associated with the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"ID of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookId"
+    type="string"
+  >
+    <span>{"The ID of the webhook"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"Date when the event was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryStatus"
+    type="string"
+  >
+    <span>{"The status of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstSentAt"
+    type="string"
+  >
+    <span>{"First delivery time"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deliveryAttempts"
+    type="number"
+  >
+    <span>{"The number of times the event tried to be delivered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string"
+    required
+  >
+    <span>{"The topic of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"Event data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="item"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="action"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="submissionId"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="profilePicture"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

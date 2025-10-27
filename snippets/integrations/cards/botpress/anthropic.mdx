@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Generate Content
 
@@ -17,18 +17,22 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable>
   <ResponseField
     name="id"
-    type="enum: claude-sonnet-4-20250514, claude-sonnet-4-reasoning-20250514, claude-3-7-sonnet-20250219, claude-3-7-sonnet-reasoning-20250219, claude-3-5-haiku-20241022, claude-3-5-sonnet-20241022, claude-3-5-sonnet-20240620, claude-3-haiku-20240307"
+    type="enum<string>"
     required
   >
     <span>{"Model to use for content generation"}</span>
+
+Available options: `claude-haiku-4-5-20251001`, `claude-haiku-4-5-reasoning-20251001`, `claude-sonnet-4-5-20250929`, `claude-sonnet-4-5-reasoning-20250929`, `claude-sonnet-4-20250514`, `claude-sonnet-4-reasoning-20250514`, `claude-3-7-sonnet-20250219`, `claude-3-7-sonnet-reasoning-20250219`, `claude-3-5-haiku-20241022`, `claude-3-5-sonnet-20241022`, `claude-3-5-sonnet-20240620`, `claude-3-haiku-20240307`
   </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
     name="reasoningEffort"
-    type="enum: low, medium, high, dynamic, none"
+    type="enum<string>"
   >
     <span>{"Reasoning effort level to use for models that support reasoning. Specifying \"none\" will indicate the LLM to not use reasoning (for models that support optional reasoning). A \"dynamic\" effort will indicate the provider to automatically determine the reasoning effort (if supported by the provider). If not provided the model will not use reasoning for models with optional reasoning or use the default reasoning effort specified by the provider for reasoning-only models.\nNote: A higher reasoning effort will incur in higher output token charges from the LLM provider."}</span>
+
+Available options: `low`, `medium`, `high`, `dynamic`, `none`
   </ResponseField>
   <ResponseField
     name="systemPrompt"
@@ -46,16 +50,17 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable title="array item properties">
   <ResponseField
     name="role"
-    type="enum: user, assistant"
+    type="enum<string>"
     required
   >
-    
+    Available options: `user`, `assistant`
   </ResponseField>
   <ResponseField
     name="type"
-    type="enum: text, tool_calls, tool_result, multipart"
+    type="enum<string>"
+    default="text"
   >
-    
+    Available options: `text`, `tool_calls`, `tool_result`, `multipart`
   </ResponseField>
   <ResponseField
     name="toolCalls"
@@ -95,7 +100,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="arguments"
-    type="string"
+    type="object | null"
     required
   >
     
@@ -112,7 +117,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="content"
-    type="string"
+    type="string | null"
     required
   >
     
@@ -121,9 +126,11 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="responseFormat"
-    type="enum: text, json_object"
+    type="enum<string>"
   >
     <span>{"Response format expected from the model. If \"json_object\" is chosen, you must instruct the model to generate JSON either via the system prompt or a user message."}</span>
+
+Available options: `text`, `json_object`
   </ResponseField>
   <ResponseField
     name="maxTokens"
@@ -134,12 +141,14 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   <ResponseField
     name="temperature"
     type="number"
+    default={1}
   >
     <span>{"Sampling temperature for the model. Higher values result in more random outputs."}</span>
   </ResponseField>
   <ResponseField
     name="topP"
     type="number"
+    default={1}
   >
     <span>{"Top-p sampling parameter. Limits sampling to the smallest set of tokens with a cumulative probability above the threshold."}</span>
   </ResponseField>
@@ -203,9 +212,9 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable>
   <ResponseField
     name="type"
-    type="enum: auto, specific, any, none, "
+    type="enum<string>"
   >
-    
+    Available options: `auto`, `specific`, `any`, `none`, ``
   </ResponseField>
   <ResponseField
     name="functionName"
@@ -290,9 +299,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
     <Expandable title="array item properties">
   <ResponseField
     name="type"
-    type="enum: text, tool_calls, tool_result, multipart"
+    type="enum<string>"
+    default="text"
   >
-    
+    Available options: `text`, `tool_calls`, `tool_result`, `multipart`
   </ResponseField>
   <ResponseField
     name="toolCalls"
@@ -332,7 +342,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="arguments"
-    type="string"
+    type="object | null"
     required
   >
     
@@ -349,7 +359,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="content"
-    type="string"
+    type="string | null"
     required
   >
     
@@ -370,10 +380,10 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="stopReason"
-    type="enum: stop, max_tokens, tool_calls, content_filter, other"
+    type="enum<string>"
     required
   >
-    
+    Available options: `stop`, `max_tokens`, `tool_calls`, `content_filter`, `other`
   </ResponseField>
     </Expandable>
   </ResponseField>

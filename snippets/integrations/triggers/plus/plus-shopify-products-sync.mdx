@@ -1,0 +1,682 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Product Created
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="admin_graphql_api_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="body_html"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="product_type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="published_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="template_suffix"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="published_scope"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="admin_graphql_api_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="barcode"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="compare_at_price"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="inventory_policy"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="product_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sku"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="taxable"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="option1"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="option2"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="option3"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="image_id"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="inventory_item_id"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="inventory_quantity"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="old_inventory_quantity"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="images"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="image"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="media"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="variant_gids"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="admin_graphql_api_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="has_variants_that_requires_components"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Product Deleted
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Product Updated
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="admin_graphql_api_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="body_html"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="product_type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="published_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="template_suffix"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="published_scope"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="admin_graphql_api_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="barcode"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="compare_at_price"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="inventory_policy"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="product_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sku"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="taxable"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="option1"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="option2"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="option3"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="image_id"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="inventory_item_id"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="inventory_quantity"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="old_inventory_quantity"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="images"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="image"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="media"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="variant_gids"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="admin_graphql_api_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="has_variants_that_requires_components"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

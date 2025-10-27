@@ -12,6 +12,7 @@ To contribute, install the following software if you haven't already:
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [pnpm](https://pnpm.io/) package manager
 - [Vale](https://vale.sh/) for writing style checks (optional but recommended)
+- [Mintlify CLI](https://www.mintlify.com/docs) for the local development server
 
 ## Getting started
 
@@ -95,6 +96,36 @@ make check-writing
 > [!NOTE]
 >
 > If you need Vale to ignore a certain flag within the context you're writing about, you can use [comment-based configuration](https://vale.sh/docs/formats/markdown#comments) to disable rules within a given section.
+
+### Integrations
+
+All integration documentation can be found in `/integrations/integration-guides`. While configuration steps are hand-written, reference documentation for Cards and Triggers is automatically generated and updated on a weekly schedule.
+
+If you're working on documentation for an integration:
+
+1. Make sure its file name is the same as the integration's name.
+2. Define a `.env` file at the project's root with your Botpress Personal Access Token (PAT) as `BOTPRESS_TOKEN` and Botpress workspace ID as `BOTPRESS_WORKSPACE_ID`:
+3. Before pushing your changes, run:
+
+   ```zsh
+   pnpm run update-integrations
+   ```
+   
+   This will fetch the most up-to-date information for any integrations modified on the current branch.
+
+> [!TIP]
+>
+> You can also update a single integration:
+>
+> ```zsh
+> pnpm run update-integrations <integration-name> 
+> ```
+>
+> or update all integrations at once:
+>
+> ```zsh
+> pnpm run update-integrations --bulk
+> ```
 
 ### Check links
 

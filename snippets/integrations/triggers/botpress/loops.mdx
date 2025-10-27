@@ -1,0 +1,863 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Email Clicked
+
+<span>{"Sent when a link in a campaign or loop email is clicked. This event is not available for transactional emails because link clicks are not tracked in transactional emails."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign or loop"}</span>
+
+Available options: `campaign`, `loop`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Delivered
+
+<span>{"Sent when an email is delivered to its recipient."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign, loop, or transactional"}</span>
+
+Available options: `campaign`, `loop`, `transactional`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="transactionalId"
+    type="string"
+  >
+    <span>{"The ID of the transactional email. Only one of Campaign ID, Loop ID, or Transactional ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Hard Bounced
+
+<span>{"Sent when an email hard bounces. Hard bounces are persistent email delivery failures, for example a mailbox that doesn't exist. The email will not be delivered."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign, loop, or transactional"}</span>
+
+Available options: `campaign`, `loop`, `transactional`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="transactionalId"
+    type="string"
+  >
+    <span>{"The ID of the transactional email. Only one of Campaign ID, Loop ID, or Transactional ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Opened
+
+<span>{"Sent when a campaign or loop email is opened. This event is not available for transactional emails because email opens are not tracked for transactional emails."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign or loop"}</span>
+
+Available options: `campaign`, `loop`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Soft Bounced
+
+<span>{"Sent when an email soft bounces. Soft bounces are temporary email delivery failures, for example a connection timing out. Soft bounces are retried multiple times and some times the email is delivered."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign, loop, or transactional"}</span>
+
+Available options: `campaign`, `loop`, `transactional`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="transactionalId"
+    type="string"
+  >
+    <span>{"The ID of the transactional email. Only one of Campaign ID, Loop ID, or Transactional ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Spam Reported
+
+<span>{"Sent when a recipient reports your email as spam."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign, loop, or transactional"}</span>
+
+Available options: `campaign`, `loop`, `transactional`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="transactionalId"
+    type="string"
+  >
+    <span>{"The ID of the transactional email. Only one of Campaign ID, Loop ID, or Transactional ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Email Unsubscribed
+
+<span>{"Sent when a recipient unsubscribes via the unsubscribe link in an email. This event is not available for transactional emails because unsubscribe links are not included or required for transactional emails."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventName"
+    type="string"
+    required
+  >
+    <span>{"The type of event as defined by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="webhookSchemaVersion"
+    type="string"
+    required
+  >
+    <span>{"Will be 1.0.0 for all events"}</span>
+  </ResponseField>
+  <ResponseField
+    name="eventTime"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of the time the event occurred"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contactIdentity"
+    type="object"
+    required
+  >
+    <span>{"The identifiers of the contact. Includes the contact ID, email address, and user ID"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the contact assigned by Loops"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string | null"
+    required
+  >
+    <span>{"The unique user ID created by the contact. May be null"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="object"
+    required
+  >
+    <span>{"The details about an individual email sent to a recipient. Includes the email ID, the ID of the sent version, and the subject"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailMessageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent version of the email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"The subject of the sent version of the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="sourceType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of email that triggered the event. One of campaign or loop"}</span>
+
+Available options: `campaign`, `loop`
+  </ResponseField>
+  <ResponseField
+    name="campaignId"
+    type="string"
+  >
+    <span>{"The ID of the campaign email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+  <ResponseField
+    name="loopId"
+    type="string"
+  >
+    <span>{"The ID of the loop email. Only one of Campaign ID or Loop ID must exist."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

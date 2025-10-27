@@ -1,0 +1,107 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Article Published
+
+<span>{"Triggered when an article is published"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="articleId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="articleTitle"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Article Unpublished
+
+<span>{"Triggered when an article is unpublished"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="articleId"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Hitl Assigned
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"ID of the Botpress conversation representing the HITL session"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"ID of the Botpress user representing the human agent assigned to the HITL session"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Hitl Stopped
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"ID of the Botpress conversation representing the HITL session"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

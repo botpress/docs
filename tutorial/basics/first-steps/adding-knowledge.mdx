@@ -1,0 +1,43 @@
+Now that our bot has a custom prompt, let's try asking it a question:
+
+<Frame>
+  <img
+    alt="Question"
+    className="block dark:hidden"
+    src="./assets/question.png"
+  />
+  <img
+    alt="Question"
+    className="hidden dark:block"
+    src="./assets/question-dark.png"
+  />
+</Frame>
+
+That's not very helpful. The bot couldn't answer the question because we haven't given it the store's opening hours. Let's add them:
+
+1. Under **<Icon icon="book-open"/> Knowledge Bases**, select **Rich Text**.
+2. Select the newly created rich text file.
+
+This opens a blank text field. Copy and paste in the following text:
+
+```txt wrap
+Monday-Friday: 10:00 AM to 6:00 PM
+Saturday-Sunday: 11:00 AM to 3:00 PM
+```
+
+Now, let's try that same question again in the emulator:
+
+<Frame>
+  <img
+    alt="Question with Knowledge Base"
+    className="block dark:hidden"
+    src="./assets/question-with-kb.png"
+  />
+  <img
+    alt="Question with Knowledge Base"
+    className="hidden dark:block"
+    src="./assets/question-with-kb-dark.png"
+  />
+</Frame>
+
+Much better! The bot was able to answer the question correctly.

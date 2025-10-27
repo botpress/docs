@@ -1,0 +1,336 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Member Joined Channel
+
+<span>{"Triggered when a member joins a channel"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="botpressUserId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the user who joined the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressConversationId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the channel the user joined"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inviterBotpressUserId"
+    type="string"
+  >
+    <span>{"The Botpress ID of the user who invited the new member"}</span>
+  </ResponseField>
+  <ResponseField
+    name="targets"
+    type="object"
+    required
+  >
+    <span>{"Slack IDs of the user, channel and inviter"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="slackUserId"
+    type="string"
+    required
+  >
+    <span>{"The Slack ID of the user who joined the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="slackChannelId"
+    type="string"
+    required
+  >
+    <span>{"The Slack ID of the channel the user joined"}</span>
+  </ResponseField>
+  <ResponseField
+    name="slackInviterId"
+    type="string"
+  >
+    <span>{"The Slack ID of the user who invited the new member"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Member Joined Workspace
+
+<span>{"Triggered when a member joins the workspace"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the user who joined the workspace"}</span>
+  </ResponseField>
+  <ResponseField
+    name="target"
+    type="object"
+    required
+  >
+    <span>{"Slack user who joined the workspace"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The Slack ID of the user who joined the workspace"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userName"
+    type="string"
+    required
+  >
+    <span>{"The username of the user who joined the workspace"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userRealName"
+    type="string"
+    required
+  >
+    <span>{"The real name of the user who joined the workspace"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userDisplayName"
+    type="string"
+    required
+  >
+    <span>{"The display name of the user who joined the workspace"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Member Left Channel
+
+<span>{"Triggered when a member leaves a channel"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="botpressUserId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the user who left the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botpressConversationId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the channel the user left"}</span>
+  </ResponseField>
+  <ResponseField
+    name="targets"
+    type="object"
+    required
+  >
+    <span>{"Slack IDs of the user and channel"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="slackUserId"
+    type="string"
+    required
+  >
+    <span>{"The Slack ID of the user who left the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="slackChannelId"
+    type="string"
+    required
+  >
+    <span>{"The Slack ID of the channel the user left"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Reaction Added
+
+<span>{"Triggered when a reaction is added to a message"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="reaction"
+    type="string"
+    required
+  >
+    <span>{"The reaction that was added"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"The ID of the user who added the reaction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"The ID of the conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="targets"
+    type="object"
+    required
+  >
+    <span>{"The targets of the reaction"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="dm"
+    type="object"
+  >
+    <span>{"The DMs targeted by the reaction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="channel"
+    type="object"
+  >
+    <span>{"The channels targeted by the reaction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="thread"
+    type="object"
+  >
+    <span>{"The threads targeted by the reaction"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Reaction Removed
+
+<span>{"Triggered when a reaction is removed from a message"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="reaction"
+    type="string"
+    required
+  >
+    <span>{"The reaction that was removed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"The ID of the user who removed the reaction"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+  >
+    <span>{"The ID of the conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="targets"
+    type="object"
+    required
+  >
+    <span>{"The targets of the reaction"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="dm"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="channel"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="thread"
+    type="object"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Workflow Webhook
+
+<span>{"Triggered when the workflow webhook is triggered"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    <span>{"The value of the workflow webhook"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+  >
+    <span>{"The Slack ID of the user who triggered the workflow"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

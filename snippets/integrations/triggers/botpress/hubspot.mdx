@@ -1,0 +1,207 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Company Created
+
+<span>{"A new company has been created in Hubspot."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="companyId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the created company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the created company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+  >
+    <span>{"The domain of the created company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phoneNumber"
+    type="string"
+  >
+    <span>{"The phone number of the created company"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Company Deleted
+
+<span>{"A company has been deleted in Hubspot."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="companyId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the deleted company"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Contact Created
+
+<span>{"A new contact has been created in Hubspot."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="contactId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the created contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the created contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email of the created contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phoneNumber"
+    type="string"
+  >
+    <span>{"The phone number of the created contact"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Contact Deleted
+
+<span>{"A contact has been deleted in Hubspot."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="contactId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the deleted contact"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Ticket Created
+
+<span>{"A new ticket has been created in Hubspot."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the created ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+  >
+    <span>{"The subject of the created ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string"
+  >
+    <span>{"The priority of the created ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string"
+  >
+    <span>{"The category of the created ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pipeline"
+    type="string"
+    required
+  >
+    <span>{"The pipeline of the created ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string"
+    required
+  >
+    <span>{"The stage of the created ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Ticket Deleted
+
+<span>{"A ticket has been deleted in Hubspot."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the deleted ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

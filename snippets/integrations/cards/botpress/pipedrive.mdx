@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Add Person
 
@@ -109,19 +109,19 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="org_id"
-    type="number,null"
+    type="number | null"
   >
     
   </ResponseField>
   <ResponseField
     name="add_time"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="update_time"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
@@ -199,7 +199,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="picture_id"
-    type="number,null"
+    type="number | null"
   >
     
   </ResponseField>
@@ -325,9 +325,11 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="fields"
-    type="enum: custom_fields, email, notes, phone, name"
+    type="enum<string>"
   >
     <span>{"Which fields to search in (custom_fields, email, notes, phone, name)"}</span>
+
+Available options: `custom_fields`, `email`, `notes`, `phone`, `name`
   </ResponseField>
   <ResponseField
     name="organization_id"
@@ -601,19 +603,19 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="org_id"
-    type="number,null"
+    type="number | null"
   >
     
   </ResponseField>
   <ResponseField
     name="add_time"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
   <ResponseField
     name="update_time"
-    type="string,null"
+    type="string | null"
   >
     
   </ResponseField>
@@ -691,7 +693,7 @@ Here's a reference for all [Cards](/learn/reference/cards/) available with the i
   </ResponseField>
   <ResponseField
     name="picture_id"
-    type="number,null"
+    type="number | null"
   >
     
   </ResponseField>

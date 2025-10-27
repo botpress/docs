@@ -1,0 +1,138 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Task Added
+
+<span>{"A task has been added"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    <span>{"The text of the task. This value may contain markdown-formatted text and hyperlinks."}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    <span>{"A description for the task. This value may contain markdown-formatted text and hyperlinks."}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="number"
+    required
+  >
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Task Completed
+
+<span>{"A task has been completed"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="user_id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user who completed the task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+    required
+  >
+    <span>{"The text of the task. This value may contain markdown-formatted text and hyperlinks."}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    <span>{"A description for the task. This value may contain markdown-formatted text and hyperlinks."}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="number"
+    required
+  >
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Task Priority Changed
+
+<span>{"The priority of a task has been changed. The old priority is only available if the bot user is at the origin of the change"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="newPriority"
+    type="number"
+    required
+  >
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="oldPriority"
+    type="number"
+  >
+    <span>{"Task priority from 1 (urgent) to 4 (lowest, default value)."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
