@@ -28,7 +28,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 
 <Expandable title="output">
   <ResponseField
-    name="_rawJson"
+    name="fields"
     type="object"
     required
   >
@@ -39,7 +39,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The ID of the Record"}</span>
   </ResponseField>
 </Expandable>
 
@@ -169,6 +169,12 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
   >
     <span>{"The ID or Name of the table (e.g. tblFnqcm4zLVKn85A or articles)"}</span>
   </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The next page token (Optional)"}</span>
+  </ResponseField>
 </Expandable>
 
 **Output**:
@@ -183,7 +189,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 
     <Expandable title="array item properties">
   <ResponseField
-    name="_rawJson"
+    name="fields"
     type="object"
     required
   >
@@ -194,9 +200,15 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The ID of the Record"}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The next page token (Optional)"}</span>
   </ResponseField>
 </Expandable>
 
@@ -238,7 +250,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 
     <Expandable title="array item properties">
   <ResponseField
-    name="_rawJson"
+    name="fields"
     type="object"
     required
   >
@@ -249,7 +261,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The ID of the Record"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -293,7 +305,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 
 <Expandable title="output">
   <ResponseField
-    name="_rawJson"
+    name="fields"
     type="object"
     required
   >
@@ -304,7 +316,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The ID of the Record"}</span>
   </ResponseField>
 </Expandable>
 
