@@ -1,0 +1,213 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Employee Created
+
+<span>{"Triggers when a new employee is created in BambooHR."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier for the employee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string"
+    required
+  >
+    <span>{"Timestamp in ISO 8601 format."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Employee Deleted
+
+<span>{"Triggers when an employee is deleted from BambooHR. Terminating employees will trigger the \"Employee Updated\" event instead."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier for the employee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string"
+    required
+  >
+    <span>{"Timestamp in ISO 8601 format."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Employee Updated
+
+<span>{"Triggers when an existing employee is updated in BambooHR."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier for the employee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string"
+    required
+  >
+    <span>{"Timestamp in ISO 8601 format."}</span>
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="object"
+    required
+  >
+    <span>{"All fields subscribed to for the employee, including unchanged fields."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="firstName"
+    type="string"
+    required
+  >
+    <span>{"Employee's first name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+    required
+  >
+    <span>{"Employee's last name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="preferredName"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="jobTitle"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="department"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="division"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="mobilePhone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workPhone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workPhoneExtension"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="homePhone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="workEmail"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="homeEmail"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="hireDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="terminationDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | string"
+    required
+  >
+    <span>{"Employee's status."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="changedFields"
+    type="array"
+    required
+  >
+    <span>{"List of fields that were changed in this event."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

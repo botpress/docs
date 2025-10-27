@@ -1,0 +1,780 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Create Client
+
+<span>{"Create a new client"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    <span>{"The customer number/ID (alphanumeric). Must be unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_description"
+    type="string"
+  >
+    <span>{"Client description."}</span>
+  </ResponseField>
+  <ResponseField
+    name="latitude"
+    type="number"
+  >
+    <span>{"Customer location, latitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+  >
+    <span>{"Customer location, longitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="service_time"
+    type="number"
+  >
+    <span>{"Service time. Used by the routing algorithm."}</span>
+  </ResponseField>
+  <ResponseField
+    name="wt"
+    type="array"
+  >
+    <span>{"Opening and closing times of the establishment. Should contain exactly 2 numbers: [open, close] times in minutes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street"
+    type="string"
+  >
+    <span>{"Street where the client is located (exclude number)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street_nbr"
+    type="string"
+  >
+    <span>{"Street number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="neighborhood"
+    type="string"
+  >
+    <span>{"Neighborhood, e.g. 'Devoto'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City, e.g. 'CABA'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country, e.g. 'Argentina'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="string"
+  >
+    <span>{"JSON string containing fieldId:value pairs, e.g. {\"123\":\"Retail\"}"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type_id"
+    type="number"
+  >
+    <span>{"Client type identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+  <ResponseField
+    name="group_id"
+    type="number"
+  >
+    <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    <span>{"The customer number/ID (alphanumeric). Must be unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_name"
+    type="string"
+  >
+    <span>{"Client name, company name, or trade name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_description"
+    type="string"
+  >
+    <span>{"Client description."}</span>
+  </ResponseField>
+  <ResponseField
+    name="latitude"
+    type="number"
+  >
+    <span>{"Customer location, latitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+  >
+    <span>{"Customer location, longitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="service_time"
+    type="number"
+  >
+    <span>{"Service time. Used by the routing algorithm."}</span>
+  </ResponseField>
+  <ResponseField
+    name="wt"
+    type="array"
+  >
+    <span>{"Opening and closing times of the establishment. Should contain exactly 2 numbers: [open, close] times in minutes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street"
+    type="string"
+  >
+    <span>{"Street where the client is located (exclude number)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street_nbr"
+    type="string"
+  >
+    <span>{"Street number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="neighborhood"
+    type="string"
+  >
+    <span>{"Neighborhood, e.g. 'Devoto'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City, e.g. 'CABA'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country, e.g. 'Argentina'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="last_updated"
+    type="string"
+  >
+    <span>{"Last update timestamp (ISO 8601)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type_id"
+    type="number"
+  >
+    <span>{"Client type identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+  <ResponseField
+    name="group_id"
+    type="number"
+  >
+    <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get Client
+
+<span>{"Retrieves client from their uid_client"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    <span>{"The customer number/ID (alphanumeric). Must be unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_name"
+    type="string"
+  >
+    <span>{"Client name, company name, or trade name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_description"
+    type="string"
+  >
+    <span>{"Client description."}</span>
+  </ResponseField>
+  <ResponseField
+    name="latitude"
+    type="number"
+  >
+    <span>{"Customer location, latitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+  >
+    <span>{"Customer location, longitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="service_time"
+    type="number"
+  >
+    <span>{"Service time. Used by the routing algorithm."}</span>
+  </ResponseField>
+  <ResponseField
+    name="wt"
+    type="array"
+  >
+    <span>{"Opening and closing times of the establishment. Should contain exactly 2 numbers: [open, close] times in minutes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street"
+    type="string"
+  >
+    <span>{"Street where the client is located (exclude number)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street_nbr"
+    type="string"
+  >
+    <span>{"Street number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="neighborhood"
+    type="string"
+  >
+    <span>{"Neighborhood, e.g. 'Devoto'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City, e.g. 'CABA'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country, e.g. 'Argentina'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="last_updated"
+    type="string"
+  >
+    <span>{"Last update timestamp (ISO 8601)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type_id"
+    type="number"
+  >
+    <span>{"Client type identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+  <ResponseField
+    name="group_id"
+    type="number"
+  >
+    <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Submit Form
+
+<span>{"Submits form"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="df_data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="schema_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="formvalues"
+    type="string"
+    required
+  >
+    <span>{"JSON string containing widgetId:value pairs, e.g. {\"widget-1\":\"Yes\"}"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="_id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_by_user_name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_by_user_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="client"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="df_data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="schema_id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="results"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="last_updated"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="formvalues"
+    type="object"
+    required
+  >
+    <span>{"Key-value pairs of form field answers."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="color"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="deleted"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Update Client
+
+<span>{"Update client information"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="uid_client"
+    type="string"
+    required
+  >
+    <span>{"The customer number/ID (alphanumeric). Must be unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_name"
+    type="string"
+  >
+    <span>{"Client name, company name, or trade name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_description"
+    type="string"
+  >
+    <span>{"Client description."}</span>
+  </ResponseField>
+  <ResponseField
+    name="latitude"
+    type="number"
+  >
+    <span>{"Customer location, latitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+  >
+    <span>{"Customer location, longitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="service_time"
+    type="number"
+  >
+    <span>{"Service time. Used by the routing algorithm."}</span>
+  </ResponseField>
+  <ResponseField
+    name="wt"
+    type="array"
+  >
+    <span>{"Opening and closing times of the establishment. Should contain exactly 2 numbers: [open, close] times in minutes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street"
+    type="string"
+  >
+    <span>{"Street where the client is located (exclude number)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street_nbr"
+    type="string"
+  >
+    <span>{"Street number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="neighborhood"
+    type="string"
+  >
+    <span>{"Neighborhood, e.g. 'Devoto'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City, e.g. 'CABA'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country, e.g. 'Argentina'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="string"
+  >
+    <span>{"JSON string containing fieldId:value pairs, e.g. {\"123\":\"Retail\"}"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type_id"
+    type="number"
+  >
+    <span>{"Client type identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+  <ResponseField
+    name="group_id"
+    type="number"
+  >
+    <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="uid_client"
+    type="string"
+  >
+    <span>{"The customer number/ID (alphanumeric). Must be unique."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_name"
+    type="string"
+  >
+    <span>{"Client name, company name, or trade name."}</span>
+  </ResponseField>
+  <ResponseField
+    name="company_description"
+    type="string"
+  >
+    <span>{"Client description."}</span>
+  </ResponseField>
+  <ResponseField
+    name="latitude"
+    type="number"
+  >
+    <span>{"Customer location, latitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="longitude"
+    type="number"
+  >
+    <span>{"Customer location, longitude."}</span>
+  </ResponseField>
+  <ResponseField
+    name="service_time"
+    type="number"
+  >
+    <span>{"Service time. Used by the routing algorithm."}</span>
+  </ResponseField>
+  <ResponseField
+    name="wt"
+    type="array"
+  >
+    <span>{"Opening and closing times of the establishment. Should contain exactly 2 numbers: [open, close] times in minutes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street"
+    type="string"
+  >
+    <span>{"Street where the client is located (exclude number)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="street_nbr"
+    type="string"
+  >
+    <span>{"Street number."}</span>
+  </ResponseField>
+  <ResponseField
+    name="neighborhood"
+    type="string"
+  >
+    <span>{"Neighborhood, e.g. 'Devoto'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="city"
+    type="string"
+  >
+    <span>{"City, e.g. 'CABA'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="country"
+    type="string"
+  >
+    <span>{"Country, e.g. 'Argentina'."}</span>
+  </ResponseField>
+  <ResponseField
+    name="last_updated"
+    type="string"
+  >
+    <span>{"Last update timestamp (ISO 8601)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type_id"
+    type="number"
+  >
+    <span>{"Client type identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+  <ResponseField
+    name="group_id"
+    type="number"
+  >
+    <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

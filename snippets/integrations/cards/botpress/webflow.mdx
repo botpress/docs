@@ -5,6 +5,8 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 
 ### Create Collection
 
+<span>{"Create a new collection in your Webflow site."}</span>
+
 **Input**:
 
 <Expandable title="input fields">
@@ -20,39 +22,39 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"Unique identifier for a Collection"}</span>
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    
+    <span>{"Name given to the Collection"}</span>
   </ResponseField>
   <ResponseField
     name="singularName"
     type="string"
     required
   >
-    
+    <span>{"The name of one Item in Collection (e.g. \"Blog Post\" if the Collection is called \"Blog Posts\")"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string"
   >
-    
+    <span>{"Slug of Collection in Site URL structure"}</span>
   </ResponseField>
   <ResponseField
     name="createdOn"
     type="string"
   >
-    
+    <span>{"The date the collection was created"}</span>
   </ResponseField>
   <ResponseField
     name="lastUpdated"
     type="string"
   >
-    
+    <span>{"The date the collection was last updated"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -73,39 +75,39 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"Unique identifier for a Collection"}</span>
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    
+    <span>{"Name given to the Collection"}</span>
   </ResponseField>
   <ResponseField
     name="singularName"
     type="string"
     required
   >
-    
+    <span>{"The name of one Item in Collection (e.g. \"Blog Post\" if the Collection is called \"Blog Posts\")"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string"
   >
-    
+    <span>{"Slug of Collection in Site URL structure"}</span>
   </ResponseField>
   <ResponseField
     name="createdOn"
     type="string"
   >
-    
+    <span>{"The date the collection was created"}</span>
   </ResponseField>
   <ResponseField
     name="lastUpdated"
     type="string"
   >
-    
+    <span>{"The date the collection was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="fields"
@@ -120,55 +122,57 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier for a Field"}</span>
   </ResponseField>
   <ResponseField
     name="isRequired"
     type="boolean"
     required
   >
-    
+    <span>{"define whether a field is required in a collection"}</span>
   </ResponseField>
   <ResponseField
     name="type"
     type="enum<string>"
     required
   >
-    Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, `Link`, `Multimage`, `MultiReference`, `Number`, `Option`, `Phone`, `PlainText`, `Reference`, `RichText`, `Switch`, `VideoLink`
+    <span>{"Choose these appropriate field type for your collection data"}</span>
+
+Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, `Link`, `Multimage`, `MultiReference`, `Number`, `Option`, `Phone`, `PlainText`, `Reference`, `RichText`, `Switch`, `VideoLink`
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    
+    <span>{"The name of the Field"}</span>
   </ResponseField>
   <ResponseField
     name="isEditable"
     type="boolean | null"
     required
   >
-    
+    <span>{"Define whether the field is editable"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string | null"
     required
   >
-    
+    <span>{"Slug of Field in Site URL structure. Slugs should be all lowercase with no spaces. Any spaces will be converted to \"-\"."}</span>
   </ResponseField>
   <ResponseField
     name="helpText"
     type="string | null"
     required
   >
-    
+    <span>{"Additional text to help anyone filling out this field"}</span>
   </ResponseField>
   <ResponseField
     name="validation"
     type="string"
   >
-    
+    <span>{"The validation for the field"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -177,6 +181,8 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 </Expandable>
 
 ### Create Collection item(s)
+
+<span>{"Create one or multiple items in a Webflow collection"}</span>
 
 **Input**:
 
@@ -339,6 +345,8 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
 
 ### Delete Collection
 
+<span>{"Delete a specific collection from your Webflow site."}</span>
+
 **Input**:
 
 <Expandable title="input fields">
@@ -357,6 +365,8 @@ This Card has no output.
 
 ### Delete Item(s)
 
+<span>{"Delete one or more items from a collection"}</span>
+
 **Input**:
 
 <Expandable title="input fields">
@@ -372,7 +382,7 @@ This Card has no output.
     type="object"
     required
   >
-    
+    <span>{"Array of item IDs to delete"}</span>
 
     <Expandable>
   <ResponseField
@@ -402,6 +412,8 @@ This Card has no output.
 
 ### Get Collection Details
 
+<span>{"Retrieve detailed information about a specific collection in your Webflow site."}</span>
+
 **Input**:
 
 <Expandable title="input fields">
@@ -429,39 +441,39 @@ This Card has no output.
     name="id"
     type="string"
   >
-    
+    <span>{"Unique identifier for a Collection"}</span>
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    
+    <span>{"Name given to the Collection"}</span>
   </ResponseField>
   <ResponseField
     name="singularName"
     type="string"
     required
   >
-    
+    <span>{"The name of one Item in Collection (e.g. \"Blog Post\" if the Collection is called \"Blog Posts\")"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string"
   >
-    
+    <span>{"Slug of Collection in Site URL structure"}</span>
   </ResponseField>
   <ResponseField
     name="createdOn"
     type="string"
   >
-    
+    <span>{"The date the collection was created"}</span>
   </ResponseField>
   <ResponseField
     name="lastUpdated"
     type="string"
   >
-    
+    <span>{"The date the collection was last updated"}</span>
   </ResponseField>
   <ResponseField
     name="fields"
@@ -476,55 +488,57 @@ This Card has no output.
     type="string"
     required
   >
-    
+    <span>{"Unique identifier for a Field"}</span>
   </ResponseField>
   <ResponseField
     name="isRequired"
     type="boolean"
     required
   >
-    
+    <span>{"define whether a field is required in a collection"}</span>
   </ResponseField>
   <ResponseField
     name="type"
     type="enum<string>"
     required
   >
-    Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, `Link`, `Multimage`, `MultiReference`, `Number`, `Option`, `Phone`, `PlainText`, `Reference`, `RichText`, `Switch`, `VideoLink`
+    <span>{"Choose these appropriate field type for your collection data"}</span>
+
+Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, `Link`, `Multimage`, `MultiReference`, `Number`, `Option`, `Phone`, `PlainText`, `Reference`, `RichText`, `Switch`, `VideoLink`
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    
+    <span>{"The name of the Field"}</span>
   </ResponseField>
   <ResponseField
     name="isEditable"
     type="boolean | null"
     required
   >
-    
+    <span>{"Define whether the field is editable"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string | null"
     required
   >
-    
+    <span>{"Slug of Field in Site URL structure. Slugs should be all lowercase with no spaces. Any spaces will be converted to \"-\"."}</span>
   </ResponseField>
   <ResponseField
     name="helpText"
     type="string | null"
     required
   >
-    
+    <span>{"Additional text to help anyone filling out this field"}</span>
   </ResponseField>
   <ResponseField
     name="validation"
     type="string"
   >
-    
+    <span>{"The validation for the field"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -533,6 +547,8 @@ This Card has no output.
 </Expandable>
 
 ### Get Collection Item
+
+<span>{"Retrieve a specific item from a Webflow collection using its unique ID."}</span>
 
 **Input**:
 
@@ -644,6 +660,8 @@ This Card has no output.
 
 ### List Collections
 
+<span>{"Retrieve a list of all collections in your Webflow site."}</span>
+
 **Input**:
 
 This Card has no input fields.
@@ -663,45 +681,47 @@ This Card has no input fields.
     name="id"
     type="string"
   >
-    
+    <span>{"Unique identifier for a Collection"}</span>
   </ResponseField>
   <ResponseField
     name="displayName"
     type="string"
     required
   >
-    
+    <span>{"Name given to the Collection"}</span>
   </ResponseField>
   <ResponseField
     name="singularName"
     type="string"
     required
   >
-    
+    <span>{"The name of one Item in Collection (e.g. \"Blog Post\" if the Collection is called \"Blog Posts\")"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string"
   >
-    
+    <span>{"Slug of Collection in Site URL structure"}</span>
   </ResponseField>
   <ResponseField
     name="createdOn"
     type="string"
   >
-    
+    <span>{"The date the collection was created"}</span>
   </ResponseField>
   <ResponseField
     name="lastUpdated"
     type="string"
   >
-    
+    <span>{"The date the collection was last updated"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 </Expandable>
 
 ### List Collection Items
+
+<span>{"List items in a Webflow collection. By default, this lists draft items. To list live items, set the \"Is Live Items\" parameter to true."}</span>
 
 **Input**:
 
@@ -830,7 +850,7 @@ This Card has no input fields.
     type="object"
     required
   >
-    
+    <span>{"Pagination details"}</span>
 
     <Expandable>
   <ResponseField
@@ -859,6 +879,8 @@ This Card has no input fields.
 
 ### Publish Item(s)
 
+<span>{"Publish one or more items in a collection"}</span>
+
 **Input**:
 
 <Expandable title="input fields">
@@ -874,7 +896,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    
+    <span>{"Array of item IDs to publish"}</span>
   </ResponseField>
 </Expandable>
 
@@ -886,18 +908,20 @@ This Card has no input fields.
     type="array"
     required
   >
-    
+    <span>{"Array of published item IDs"}</span>
   </ResponseField>
   <ResponseField
     name="errors"
     type="array"
     required
   >
-    
+    <span>{"Array of errors encountered during publishing"}</span>
   </ResponseField>
 </Expandable>
 
 ### Unpublish Live Item(s)
+
+<span>{"Unpublish one or more live items in a collection"}</span>
 
 **Input**:
 
@@ -914,7 +938,7 @@ This Card has no input fields.
     type="array"
     required
   >
-    
+    <span>{"Array of item IDs to unpublish"}</span>
   </ResponseField>
 </Expandable>
 
@@ -923,6 +947,8 @@ This Card has no input fields.
 This Card has no output.
 
 ### Update Item(s)
+
+<span>{"Update one or more items in a collection"}</span>
 
 **Input**:
 
