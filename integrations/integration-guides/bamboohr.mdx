@@ -1,0 +1,75 @@
+---
+title: BambooHR
+description: Add a bot to BambooHR using the official integration.
+icon: '/integrations/integration-guides/assets/icons/bamboohr.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/bamboohr.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/bamboohr.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.bamboohr}/>
+
+The official BambooHR integration allows your bot to interact with your company's BambooHR employees.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](https://botpress.com/docs/learn/get-started/quickstart)
+  - A [BambooHR account](https://www.bamboohr.com/pl-pages/intl-en/bamboohr-software?s_kwcid=AL!18332!3!756232856072!e!!g!!bamboohr&utm_campaign=BAMB-DG-Search-BambooHR-Bamboo-INT-AdAi-2024EG&utm_medium=cpc&utm_source=google&utm_content=blank&utm_term=blank&CampaignID=22634976683&AdGroupID=180133835709&ClickID=EAIaIQobChMIlO26zKrFkAMVTHWeBx0o3TqgEAAYASAAEgL9yfD_BwE&MatchType=e&Keyword=bamboohr&Device=c&AdID=756232856072&Network=g&bt=756232856072&_bk=bamboohr&_bm=e&_bn=g&_bg=180133835709&gad_source=1&gad_campaignid=22634976683&gclid=EAIaIQobChMIlO26zKrFkAMVTHWeBx0o3TqgEAAYASAAEgL9yfD_BwE)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **<Icon icon="boxes" />Explore Hub** in the upper-right corner.
+    2. Search for the **BambooHR** integration, then select **Install Integration**.
+    3. In the drop-down menu, select **Configure manually with your BambooHR API Key**.
+    4. Fill the **BambooHR Subdomain** field with your company's subdomain (`https://mycompany.bamboohr.com`)
+    5. Leave the **API Key** field blank for now—you'll come back to it after getting your BambooHR API key.
+
+  </Step>
+  <Step title="Get your BambooHR API key">
+    Next, get your BambooHR API key:
+
+    1. [Log in to BambooHR](https://app.bamboohr.com/login/).
+    2. Select your avatar in the bottom-left corner, then select **API Keys**.
+    3. Select **+ Add New Key**.
+    4. Enter a name for the API key, then select **Generate Key**.
+    5. Copy the generated key.
+
+    <Note>
+      If you get an error when trying to access the API keys menu (or can't see the option to add a new key), make sure you have sufficient permissions in your company's BambooHR account.
+    </Note>
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API Key** field, paste your BambooHR API key.
+    2. Select **Save configuration**.
+  </Step>
+</Steps>
+
+<Check>
+  Your BambooHR integration is ready. You can use the integration's [Cards](#cards) and [Triggers](#triggers) to interact with your company's employees.
+</Check>
+
+
+---
+
+## Cards
+
+<Cards />
+
+## Triggers
+
+<Triggers />
+
