@@ -11,7 +11,7 @@ import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
 import Cards from '/snippets/integrations/cards/plus/plus-apify.mdx'
 import Triggers from '/snippets/integrations/triggers/plus/plus-apify.mdx'
 
-<OpenInHub integration={integrationVersions["plus/apify"]}/>
+<OpenInHub integration={integrationVersions['plus/apify']}/>
 
 {/* vale on */}
 
@@ -53,20 +53,15 @@ This integration is useful if you need more powerful crawling than Studio's [def
 
   </Step>
   <Step title="Configure the integration in Botpress">
-    Now, you can finish setting up the integration in Botpress:
+    Now, you can configure the integration in Botpress:
 
     1. In the integration's **API Token** field, paste your Apify API token.
     2. Select **Save Configuration**.
-
-      <Note>
-      If you just want to use the integration's [Cards](#cards), you're done—the integration is ready to use. However, if you also want to use the integration's [Triggers](#triggers) to listen for crawler events, follow the steps below.
-      </Note>
-
     3. Copy the integration's webhook URL (starting with `https://webhook.botpress.cloud`).
-    4. Continue to the next step.
+
   </Step>
-  <Step title="Configure your Apify webhook (Optional)">
-    Next, create a Webhook integration:
+  <Step title="Configure your Apify webhook">
+    Finally, create a Webhook integration:
 
     1. Go to the [Website Content Crawler](https://apify.com/apify/website-content-crawler) in the Apify Store.
     2. Select **Try for Free**, then **Save & Start**. This opens the Actor's configuration page.
@@ -82,6 +77,7 @@ This integration is useful if you need more powerful crawling than Studio's [def
         - Run aborted
     6. Paste your Botpress webhook URL into the **URL** field.
     7. Select **Save**.
+
   </Step>
 </Steps>
 
