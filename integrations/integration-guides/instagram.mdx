@@ -171,6 +171,38 @@ The official Instagram integration allows your users to chat with your bot by me
 
 ---
 
+## Starting conversations from comments
+
+The Instagram integration supports proactive conversations, allowing you to start direct message conversations from Instagram comments. When a user comments on your post, you can initiate a DM conversation that's associated with that specific comment.
+
+### How it works
+
+When sending messages through the integration, you can include a `commentId` field to associate the conversation with a specific Instagram comment. This enables:
+
+- Tracking conversations that originate from comments
+- Sending direct messages in response to post comments
+- Maintaining context about which comment started the conversation
+
+### Using comment IDs
+
+To start a conversation from a comment:
+
+1. Capture the comment ID from the `commentCreated` event (available in the event tags as `id`)
+2. Include the `commentId` when sending messages or creating conversations
+3. The integration will automatically track this association in the conversation tags
+
+The `commentId` is optional—if not provided, the conversation will work as a standard direct message.
+
+### Conversation tags
+
+When a conversation is started from a comment, the following tags are available:
+
+- `id`: The Instagram user ID of the conversation participant
+- `commentId`: The Instagram comment ID that started the conversation
+- `lastCommentId`: The most recent comment ID from which a message was sent
+
+---
+
 ## Cards
 
 <Cards />
