@@ -4,6 +4,114 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="October 31, 2025">
+  ## Features & Enhancements
+
+  ### New Actions experience
+
+  Overhauled the Actions experience and added ability generate Actions and Schemas using AI:
+
+  <Tabs>
+    <Tab title="Just write your prompt...">
+      <Frame>
+        <img
+          alt="Action prompt"
+          className="block dark:hidden"
+          src="/learn/reference/assets/action-prompt.png"
+        />
+        <img
+          alt="Action prompt"
+          className="hidden dark:block"
+          src="/learn/reference/assets/action-prompt-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="then use the generated Action.">
+      <Frame>
+        <img
+          alt="Generated action"
+          className="block dark:hidden"
+          src="/learn/reference/assets/generated-action.png"
+        />
+        <img
+          alt="Actions"
+          className="hidden dark:block"
+          src="/learn/reference/assets/generated-action-dark.png"
+        />
+      </Frame>
+    </Tab>
+  </Tabs>
+
+  ### Dashboard improvements
+
+  - Added the ability to manage Knowledge Bases from the Dashboard:
+
+  <Frame>
+    <img
+      alt="Dashboard Knowledge Bases"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-31/dashboard-kb.png"
+    />
+    <img
+      alt="Dashboard Knowledge Bases"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-31/dashboard-kb-dark.png"
+    />
+  </Frame>
+
+  - Redesigned agent overview page with better metrics, feature visibility, and a link to the bot's shareable preview:
+
+  <Frame>
+    <img
+      alt="New agent overview"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-31/new-overview.png"
+    />
+    <img
+      alt="New agent overview"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-31/new-overview-dark.png"
+    />
+  </Frame>
+
+  - Redesigned Conversations tab that shows you Conversation Insights, sentiment analysis and an AI summary:
+
+  <Frame>
+    <img
+      alt="New Conversations tab"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-31/new-conversations.png"
+    />
+    <img
+      alt="New Conversations tab"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-31/new-conversations-dark.png"
+    />
+  </Frame>
+
+  ## Integrations
+
+  - **Workable**: Added Workable integration
+  - **Mintlify**: Added [Mintlify](/integrations/integration-guides/mintlify) integration
+  - **WhatsApp**: Fixed an issue with parsing Mexican phone numbers
+  - **Freshchat**: Fixed an issue with handling empty events
+  - **HubSpot**: Fixed an issue where Cards that return search results would cause errors when no results were found
+  - **Instagram**: Added option for bot to reply to comments on posts
+  - **Twilio**:
+    - Added new Cards: **Start Conversation** and **Get or Create User**
+    - Added better Markdown support
+
+  ## Bug Fixes
+
+  - Fixed visual bug when loading variable picker in a Card's inspector
+  - Fixed a bug where user variables would reset with each new conversation in the Emulator
+  - Fixed an issue where sending multiple API requests to upsert rows using the Tables API was causing duplicate rows
+
+  ## Miscellaneous
+
+  - Added file metadata to the [`searchFiles`](/api-reference/files-api/openapi/searchFiles) endpoint's response
+</Update>
+
 <Update label="October 24, 2025">
   ## Integrations
 
