@@ -1,0 +1,71 @@
+---
+title: Workable
+description: Add a bot to Workable using the official integration.
+icon: '/integrations/integration-guides/assets/icons/workable.svg'
+tag: NEW
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/workable.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/workable.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.workable}/>
+
+The official Workable integration allows your bot to create and manage your Workable candidates.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - A [Workable account](https://id.workable.com/oidc/i/BtMboWMgw2NuejkYxadf_)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+    2. Search for the **Workable** integration, then select **Install Integration**.
+    3. Fill in the **Account subdomain** field with your company's subdomain (`https://mycompany.workable.com`)
+    4. Leave the **API access token** field empty for now—you'll come back to them after getting your Workable API key.
+  </Step>
+  <Step title="Get your Workable API key">
+    Next, get your Workable API key:
+
+    1. [Log in to your Workable dashboard](https://id.workable.com/oidc/i/BtMboWMgw2NuejkYxadf_).
+    2. Select your profile picture and go to **Settings**.
+    3. In the left navigation bar, go to **Integrations > Apps**.
+    4. Scroll to **API Access Tokens**, then select **Generate API token**.
+    5. Add the `r_candidates` and `w_candidates` scopes.
+    6. Copy the generated token.
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API access token** field, paste your Workable API key.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
+
+<Check>
+  Your integration is ready. You can use the integration's [Cards](#cards) and [Triggers](#triggers) to interact with your Workable candidates.
+</Check>
+
+---
+
+## Cards
+
+<Cards />
+
+---
+
+## Triggers
+
+<Triggers />
