@@ -1,0 +1,2751 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Create candidate in job
+
+<span>{"Create a candidate in the specified job"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Indicates if the candidate is sourced or applied"}</span>
+  </ResponseField>
+  <ResponseField
+    name="candidate"
+    type="object"
+    required
+  >
+    <span>{"The candidate to create"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="firstName"
+    type="string"
+    required
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+    required
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The candidate's email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string"
+  >
+    <span>{"The candidate's headline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    <span>{"The candidate's address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The candidate's phone number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string"
+  >
+    <span>{"The cover letter provided when the candidate applied"}</span>
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"A collection with education entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="degree"
+    type="string"
+  >
+    <span>{"The graduation degree"}</span>
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+    required
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string"
+  >
+    <span>{"The field of study"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"The date started"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"The date ended"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"A collection with experience entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"The date started"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"The date ended"}</span>
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    <span>{"The company name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean"
+  >
+    <span>{"Indicates if currently works there"}</span>
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string"
+  >
+    <span>{"The industry of the company"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string"
+  >
+    <span>{"Reason for disqualification, if applicable"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualifiedAt"
+    type="string"
+  >
+    <span>{"The timestamp the candidate was disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"A collection with social profiles of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    <span>{"The slug name of the social profile"}</span>
+
+Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`, `crunchbase`, `dandyid`, `delicious`, `deviantart`, `digg`, `doyoubuzz`, `dribble`, `dribbble`, `econsultancy`, `facebook`, `flavorsme`, `flickr`, `fullcontact`, `getglue`, `gist`, `github`, `goodreads`, `googleplus`, `gravatar`, `hackernews`, `hiim`, `klout`, `lanyrd`, `linkedin`, `myspace`, `ohloh`, `orkut`, `pinterest`, `quora`, `reddit`, `scribd`, `slideshare`, `stackexchange`, `stackoverflow`, `tumblr`, `twitter`, `typepad`, `vk`, `wordpress`, `xing`
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+  >
+    <span>{"The username of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+  >
+    <span>{"Where the candidate came from"}</span>
+  </ResponseField>
+  <ResponseField
+    name="recruiterKey"
+    type="string"
+  >
+    <span>{"The key corresponding to the recruiter who sourced the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string"
+  >
+    <span>{"Url to the candidate resume"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resume"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    <span>{"The base64 encoded data"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+  >
+    <span>{"A collection with answers provided"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="questionKey"
+    type="string"
+    required
+  >
+    <span>{"The question key"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+  >
+    <span>{"The candidate's response"}</span>
+  </ResponseField>
+  <ResponseField
+    name="checked"
+    type="boolean"
+  >
+    <span>{"The candidate's response"}</span>
+  </ResponseField>
+  <ResponseField
+    name="choices"
+    type="array"
+  >
+    <span>{"The IDs of the choice(s) selected"}</span>
+  </ResponseField>
+  <ResponseField
+    name="date"
+    type="string"
+  >
+    <span>{"The date in ISO 8601 format"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+  >
+    <span>{"The value may be an integer or a decimal number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fileUrl"
+    type="string"
+  >
+    <span>{"A url pointing to the candidate's answer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    <span>{"The candidate's answer encoded in base64"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="shortCode"
+    type="string"
+    required
+  >
+    <span>{"The shortcode of the job the candidate is applying to"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"The status of the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="candidate"
+    type="object"
+    required
+  >
+    <span>{"The candidate created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job"
+    type="object"
+  >
+    <span>{"The job details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualifiedAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="outboundMailbox"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="uploaderId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"A collection with education entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The education entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="degree"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"A collection with experience entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The experience entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+  >
+    <span>{"A collection with answers provided"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="question"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="body"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answer"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"A collection with social profiles of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    <span>{"The slug name of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="originatingCandidateId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create candidate in talent pool
+
+<span>{"Create a candidate in the talent pool"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Indicates if the candidate is sourced or applied"}</span>
+  </ResponseField>
+  <ResponseField
+    name="candidate"
+    type="object"
+    required
+  >
+    <span>{"The candidate to create"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="firstName"
+    type="string"
+    required
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+    required
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The candidate's email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string"
+  >
+    <span>{"The candidate's headline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    <span>{"The candidate's address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The candidate's phone number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string"
+  >
+    <span>{"The cover letter provided when the candidate applied"}</span>
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"A collection with education entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="degree"
+    type="string"
+  >
+    <span>{"The graduation degree"}</span>
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+    required
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string"
+  >
+    <span>{"The field of study"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"The date started"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"The date ended"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"A collection with experience entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"The date started"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"The date ended"}</span>
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    <span>{"The company name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean"
+  >
+    <span>{"Indicates if currently works there"}</span>
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string"
+  >
+    <span>{"The industry of the company"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string"
+  >
+    <span>{"Reason for disqualification, if applicable"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualifiedAt"
+    type="string"
+  >
+    <span>{"The timestamp the candidate was disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"A collection with social profiles of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    <span>{"The slug name of the social profile"}</span>
+
+Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`, `crunchbase`, `dandyid`, `delicious`, `deviantart`, `digg`, `doyoubuzz`, `dribble`, `dribbble`, `econsultancy`, `facebook`, `flavorsme`, `flickr`, `fullcontact`, `getglue`, `gist`, `github`, `goodreads`, `googleplus`, `gravatar`, `hackernews`, `hiim`, `klout`, `lanyrd`, `linkedin`, `myspace`, `ohloh`, `orkut`, `pinterest`, `quora`, `reddit`, `scribd`, `slideshare`, `stackexchange`, `stackoverflow`, `tumblr`, `twitter`, `typepad`, `vk`, `wordpress`, `xing`
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+  >
+    <span>{"The username of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+  >
+    <span>{"Where the candidate came from"}</span>
+  </ResponseField>
+  <ResponseField
+    name="recruiterKey"
+    type="string"
+  >
+    <span>{"The key corresponding to the recruiter who sourced the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string"
+  >
+    <span>{"Url to the candidate resume"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resume"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    <span>{"The base64 encoded data"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"The status of the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="candidate"
+    type="object"
+    required
+  >
+    <span>{"The candidate created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualifiedAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="outboundMailbox"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="uploaderId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"A collection with education entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The education entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="degree"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"A collection with experience entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The experience entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+  >
+    <span>{"A collection with answers provided"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="question"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="body"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answer"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"A collection with social profiles of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    <span>{"The slug name of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="originatingCandidateId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="talentPool"
+    type="object"
+    required
+  >
+    <span>{"The talent pool fields"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="talentPoolId"
+    type="number"
+    required
+  >
+    <span>{"The ID of the candidate in the talent pool"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Get candidate
+
+<span>{"Get a candidate by ID"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The candidate's ID"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="candidate"
+    type="object"
+  >
+    <span>{"The candidate found"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job"
+    type="object"
+  >
+    <span>{"The job details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualifiedAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="outboundMailbox"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="uploaderId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"A collection with education entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The education entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="degree"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"A collection with experience entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The experience entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+  >
+    <span>{"A collection with answers provided"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="question"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="body"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answer"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"A collection with social profiles of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    <span>{"The slug name of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="originatingCandidateId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### List candidates
+
+<span>{"List the candidates for a job"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email of the candidate to filter by"}</span>
+  </ResponseField>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string"
+  >
+    <span>{"The job's stage slug, can be retrieved from the '/stages' endpoint"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    <span>{"Specifies the number of candidates to try and retrieve per page"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Returns results with an ID greater than or equal to the specified ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAfter"
+    type="string"
+  >
+    <span>{"Returns results created after the specified timestamp"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAfter"
+    type="string"
+  >
+    <span>{"Returns results updated after the specified timestamp"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="candidates"
+    type="array"
+    required
+  >
+    <span>{"The array of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job"
+    type="object"
+  >
+    <span>{"The job details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"The token for the next page of results"}</span>
+  </ResponseField>
+</Expandable>
+
+### Update candidate
+
+<span>{"Update an existing candidate. Omitted fields will remain unchanged."}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The candidate to update's id"}</span>
+  </ResponseField>
+  <ResponseField
+    name="candidate"
+    type="object"
+    required
+  >
+    <span>{"The candidate to update"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The candidate's email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string"
+  >
+    <span>{"The candidate's headline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the candidate"}</span>
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string"
+  >
+    <span>{"The candidate's address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The candidate's phone number"}</span>
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string"
+  >
+    <span>{"The cover letter provided when the candidate applied"}</span>
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"Existing entries will be deleted if not included in the new array."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The education entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="degree"
+    type="string"
+  >
+    <span>{"The graduation degree"}</span>
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+    required
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string"
+  >
+    <span>{"The field of study"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"The date started"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"The date ended"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"Existing entries will be deleted if not included in the new array."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The experience entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"The summary of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"The date started"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"The date ended"}</span>
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    <span>{"The company name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string"
+  >
+    <span>{"The industry of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean"
+  >
+    <span>{"Indicates if currently works there"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"Existing profiles will be deleted if not included in the new array."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    <span>{"The slug name of the social profile"}</span>
+
+Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`, `crunchbase`, `dandyid`, `delicious`, `deviantart`, `digg`, `doyoubuzz`, `dribble`, `dribbble`, `econsultancy`, `facebook`, `flavorsme`, `flickr`, `fullcontact`, `getglue`, `gist`, `github`, `goodreads`, `googleplus`, `gravatar`, `hackernews`, `hiim`, `klout`, `lanyrd`, `linkedin`, `myspace`, `ohloh`, `orkut`, `pinterest`, `quora`, `reddit`, `scribd`, `slideshare`, `stackexchange`, `stackoverflow`, `tumblr`, `twitter`, `typepad`, `vk`, `wordpress`, `xing`
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The full name of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+  >
+    <span>{"The username of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string"
+  >
+    <span>{"Url to the candidate resume"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resume"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the file"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+    required
+  >
+    <span>{"The base64 encoded data"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="textingConsent"
+    type="enum<string>"
+  >
+    Available options: `forced`, `declined`
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"A url pointing to the candidate's image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="imageSource"
+    type="enum<string>"
+  >
+    <span>{"The source of the image (if not provided by the candidate)"}</span>
+
+Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`, `crunchbase`, `dandyid`, `delicious`, `deviantart`, `digg`, `doyoubuzz`, `dribble`, `dribbble`, `econsultancy`, `facebook`, `flavorsme`, `flickr`, `fullcontact`, `getglue`, `gist`, `github`, `goodreads`, `googleplus`, `gravatar`, `hackernews`, `hiim`, `klout`, `lanyrd`, `linkedin`, `myspace`, `ohloh`, `orkut`, `pinterest`, `quora`, `reddit`, `scribd`, `skype`, `slideshare`, `stackexchange`, `stackoverflow`, `tumblr`, `twitter`, `typepad`, `vk`, `wordpress`, `xing`
+  </ResponseField>
+  <ResponseField
+    name="image"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's image name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    <span>{"The candidate's image encodede in base64"}</span>
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="enum<string>"
+  >
+    <span>{"The image source"}</span>
+
+Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`, `crunchbase`, `dandyid`, `delicious`, `deviantart`, `digg`, `doyoubuzz`, `dribble`, `dribbble`, `econsultancy`, `facebook`, `flavorsme`, `flickr`, `fullcontact`, `getglue`, `gist`, `github`, `goodreads`, `googleplus`, `gravatar`, `hackernews`, `hiim`, `klout`, `lanyrd`, `linkedin`, `myspace`, `ohloh`, `orkut`, `pinterest`, `quora`, `reddit`, `scribd`, `skype`, `slideshare`, `stackexchange`, `stackoverflow`, `tumblr`, `twitter`, `typepad`, `vk`, `wordpress`, `xing`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="candidate"
+    type="object"
+    required
+  >
+    <span>{"The candidate updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job"
+    type="object"
+  >
+    <span>{"The job details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualifiedAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="outboundMailbox"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="uploaderId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="coverLetter"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="educationEntries"
+    type="array"
+  >
+    <span>{"A collection with education entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The education entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="degree"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="school"
+    type="string"
+  >
+    <span>{"The name of the school graduated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fieldOfStudy"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="experienceEntries"
+    type="array"
+  >
+    <span>{"A collection with experience entries"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The experience entry identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The title of the experience entry"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="current"
+    type="boolean | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="skills"
+    type="array"
+  >
+    <span>{"A collection of skills with names"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+  >
+    <span>{"A collection with answers provided"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="question"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="body"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="answer"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="resumeUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="socialProfiles"
+    type="array"
+  >
+    <span>{"A collection with social profiles of candidates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    <span>{"The slug name of the social profile"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    <span>{"Url to the candidate's social profile page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A collection of tags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="location"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="originatingCandidateId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}
