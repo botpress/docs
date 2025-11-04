@@ -1,0 +1,163 @@
+---
+title: Development workflow
+---
+
+This guide covers the typical development workflow when building agents with the ADK, from initial setup to deployment.
+
+## Development cycle
+
+### 1. Initialize a project
+
+Create a new agent project:
+
+```bash
+adk init my-agent
+cd my-agent
+```
+
+Choose a template:
+- `blank` - Empty project with basic structure
+- `hello-world` - Example project with webchat integration
+
+### 2. Start development server
+
+Run the development server:
+
+```bash
+adk dev
+```
+
+This command:
+- Authenticates with Botpress Cloud (if needed)
+- Generates TypeScript types for integrations
+- Builds your agent
+- Starts a local development server
+- Watches for file changes and rebuilds automatically
+
+The development server provides:
+- **Hot reloading** - Changes to your code automatically rebuild
+- **Type generation** - Integration types are regenerated when dependencies change
+- **Error reporting** - Build errors are displayed in the terminal
+
+### 3. Develop your agent
+
+Edit your agent code in the `src/` directory:
+
+```
+src/
+├── conversations/  # Edit conversation handlers
+├── workflows/      # Edit workflows
+├── actions/        # Edit actions
+├── tables/         # Edit table schemas
+├── triggers/       # Edit triggers
+└── knowledge/     # Edit knowledge sources
+```
+
+Changes are automatically detected and rebuilt.
+
+### 4. Test locally
+
+Test your agent using:
+- The development server's web interface
+- Integration-specific testing tools
+- The `adk chat` command for deployed bots
+
+### 5. Build for production
+
+Build your agent:
+
+```bash
+adk build
+```
+
+This creates an optimized build in `.botpress/dist/` ready for deployment.
+
+### 6. Deploy
+
+Deploy to Botpress Cloud:
+
+```bash
+adk deploy
+```
+
+Or deploy to a specific bot:
+
+```bash
+adk deploy --bot-id my-bot-id
+```
+
+## File watching
+
+The development server watches for changes to:
+- Source files in `src/`
+- `agent.config.ts`
+- `dependencies.json`
+- `package.json`
+
+When changes are detected:
+1. TypeScript types are regenerated (if dependencies changed)
+2. The agent is rebuilt
+3. The development server is restarted
+
+## Debugging
+
+### Source maps
+
+Source maps are enabled by default in development. They help debug TypeScript code by mapping compiled code back to source files.
+
+### Logging
+
+Use the logger in your handlers:
+
+```typescript
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute, context }) => {
+    context.logger.info("Processing message");
+    // ...
+  },
+});
+```
+
+### Type checking
+
+TypeScript provides compile-time type checking. Fix type errors before deploying:
+
+```bash
+# Check types without building
+npx tsc --noEmit
+```
+
+## Best practices
+
+### Version control
+
+Commit these files to version control:
+- `src/` - Your source code
+- `agent.config.ts` - Agent configuration
+- `dependencies.json` - Integration dependencies
+- `package.json` - Project dependencies
+- `tsconfig.json` - TypeScript configuration
+
+Don't commit:
+- `.botpress/` - Generated files (add to `.gitignore`)
+- `node_modules/` - Dependencies (add to `.gitignore`)
+
+### Organizing code
+
+- Keep conversations focused on specific channels or use cases
+- Extract reusable logic into actions
+- Use workflows for long-running or scheduled tasks
+- Group related files in subdirectories when needed
+
+### Testing
+
+Test your agent:
+- During development with the dev server
+- Before deploying with `adk build`
+- After deployment with `adk chat` or integration testing tools
+
+<Tip>
+Keep your development server running while coding. The hot reload feature makes iteration fast and feedback immediate.
+</Tip>
+

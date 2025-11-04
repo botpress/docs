@@ -1,0 +1,112 @@
+---
+title: Knowledge
+---
+
+Knowledge bases provide context to your agent's AI models. They enable your agent to answer questions based on documents, websites, or other data sources.
+
+## Creating a knowledge base
+
+Create a knowledge source in `src/knowledge/`:
+
+```typescript
+import { Knowledge, DataSource } from "@botpress/runtime";
+
+export default new Knowledge({
+  name: "documentation",
+  description: "Product documentation",
+  sources: [
+    // Add knowledge sources
+  ],
+});
+```
+
+## Data sources
+
+### Website source
+
+Index a website using a sitemap:
+
+```typescript
+import { DataSource } from "@botpress/runtime";
+
+const WebsiteSource = DataSource.Website.fromSitemap(
+  "https://example.com/sitemap.xml",
+  {
+    filter: ({ url }) => !url.includes("/admin"),
+  }
+);
+
+export default new Knowledge({
+  name: "website-docs",
+  sources: [WebsiteSource],
+});
+```
+
+### File source
+
+Index files from a directory:
+
+```typescript
+const FileSource = DataSource.Files.fromDirectory("./docs", {
+  extensions: [".md", ".txt"],
+});
+
+export default new Knowledge({
+  name: "local-docs",
+  sources: [FileSource],
+});
+```
+
+## Using knowledge in conversations
+
+Provide knowledge bases to your conversation handlers:
+
+```typescript
+import { WebsiteKB } from "../knowledge/website-docs";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      knowledge: [WebsiteKB],
+    });
+  },
+});
+```
+
+## Refreshing knowledge
+
+Refresh knowledge bases to update their content:
+
+```typescript
+// In a workflow
+export default new Workflow({
+  name: "refresh-knowledge",
+  schedule: "0 0 * * *", // Daily
+  handler: async () => {
+    await WebsiteKB.refresh();
+  },
+});
+```
+
+## Knowledge base options
+
+Configure knowledge base behavior:
+
+```typescript
+export default new Knowledge({
+  name: "documentation",
+  sources: [WebsiteSource],
+  options: {
+    chunkSize: 1000,      // Characters per chunk
+    chunkOverlap: 200,    // Overlap between chunks
+    maxChunks: 1000,      // Maximum chunks to index
+  },
+});
+```
+
+<Tip>
+Knowledge bases are automatically indexed and made available to your agent's AI models. Use them to provide context-specific information that helps your agent answer questions accurately.
+</Tip>
+

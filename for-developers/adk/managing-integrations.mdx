@@ -1,0 +1,142 @@
+---
+title: Managing integrations
+---
+
+Integrations connect your agent to external services and platforms. This guide covers how to add, configure, and manage integrations in your ADK project.
+
+## Adding integrations
+
+### Using the CLI
+
+Add an integration using the `adk add` command:
+
+```bash
+adk add webchat
+adk add slack@latest
+adk add my-workspace/custom-integration@1.0.0
+```
+
+This automatically:
+- Adds the integration to `dependencies.json`
+- Generates TypeScript types for the integration
+- Enables the integration by default
+
+### Manual configuration
+
+You can also manually edit `dependencies.json`:
+
+```json
+{
+  "integrations": {
+    "webchat": {
+      "version": "webchat@latest",
+      "enabled": true
+    },
+    "slack": {
+      "version": "slack@0.5.0",
+      "enabled": true
+    }
+  }
+}
+```
+
+After editing manually, run `adk dev` or `adk build` to regenerate types.
+
+## Integration versions
+
+Integration versions use the format `name@version`:
+
+- `webchat@latest` - Use the latest version
+- `slack@0.5.0` - Use a specific version
+- `my-workspace/custom@1.2.3` - Use an integration from a specific workspace
+
+<Tip>
+Use `@latest` for integrations you want to automatically receive updates for. Use specific versions for production deployments to ensure stability.
+</Tip>
+
+## Enabling and disabling
+
+Control which integrations are active:
+
+```json
+{
+  "integrations": {
+    "webchat": {
+      "version": "webchat@latest",
+      "enabled": true
+    },
+    "slack": {
+      "version": "slack@latest",
+      "enabled": false
+    }
+  }
+}
+```
+
+Disabled integrations are still included in your project but won't be active when your agent runs.
+
+## Using integration types
+
+Once an integration is added, TypeScript types are automatically generated. Use them in your code:
+
+```typescript
+import { WebchatIntegration } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "webchat",
+  handler: async ({ execute, message }) => {
+    // Type-safe access to webchat-specific features
+    await execute({
+      instructions: "You are a helpful assistant.",
+    });
+  },
+});
+```
+
+## Integration configuration
+
+Some integrations require configuration. Configure them in Botpress Studio or through the Botpress API after deployment.
+
+For local development, you can provide configuration through environment variables or the Botpress CLI.
+
+## Updating integrations
+
+To update an integration:
+
+1. Update the version in `dependencies.json`:
+   ```json
+   {
+     "integrations": {
+       "webchat": {
+         "version": "webchat@0.3.0"
+       }
+     }
+   }
+   ```
+
+2. Run `adk dev` or `adk build` to regenerate types
+
+3. Test your agent to ensure compatibility
+
+## Removing integrations
+
+Remove an integration by deleting it from `dependencies.json`:
+
+```json
+{
+  "integrations": {
+    "webchat": {
+      "version": "webchat@latest",
+      "enabled": true
+    }
+    // Removed slack integration
+  }
+}
+```
+
+Run `adk dev` or `adk build` to update generated types.
+
+<Tip>
+Always test your agent after adding, updating, or removing integrations to ensure everything works correctly.
+</Tip>
+

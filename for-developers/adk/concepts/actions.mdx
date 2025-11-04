@@ -1,0 +1,109 @@
+---
+title: Actions
+---
+
+Actions are callable functions that can be invoked by workflows, conversations, or other actions. They encapsulate reusable logic and can be called from anywhere in your agent.
+
+## Creating an action
+
+Create an action in `src/actions/`:
+
+```typescript
+import { Action } from "@botpress/runtime";
+
+export default new Action({
+  name: "send-email",
+  description: "Sends an email to a user",
+  input: {
+    to: "string",
+    subject: "string",
+    body: "string",
+  },
+  handler: async ({ input, context }) => {
+    // Send email logic
+    await sendEmail(input.to, input.subject, input.body);
+    return { success: true };
+  },
+});
+```
+
+## Action input and output
+
+Define input and output schemas using TypeScript types or Zod schemas:
+
+```typescript
+import { z } from "@botpress/runtime";
+
+export default new Action({
+  name: "calculate-total",
+  input: z.object({
+    items: z.array(z.object({
+      price: z.number(),
+      quantity: z.number(),
+    })),
+  }),
+  handler: async ({ input }) => {
+    const total = input.items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    return { total };
+  },
+});
+```
+
+## Calling actions
+
+Actions can be called from workflows or conversations:
+
+```typescript
+// From a workflow
+export default new Workflow({
+  name: "process-order",
+  handler: async ({ step, context }) => {
+    const result = await step("send-confirmation", async () => {
+      return await context.callAction("send-email", {
+        to: "user@example.com",
+        subject: "Order Confirmation",
+        body: "Your order has been processed.",
+      });
+    });
+  },
+});
+
+// From a conversation
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute, message, context }) => {
+    // Call action before executing agent
+    const result = await context.callAction("process-user-request", {
+      userId: message.userId,
+    });
+
+    await execute({
+      instructions: "You are a helpful assistant.",
+    });
+  },
+});
+```
+
+## Action context
+
+Actions receive a `context` object with:
+
+- `client` - Botpress client for API calls
+- `logger` - Logging utilities
+- `callAction` - Call other actions
+- `state` - Access to bot and user state
+
+## Best practices
+
+- Keep actions focused on a single responsibility
+- Use actions for reusable logic that's needed across multiple parts of your agent
+- Validate input data in the handler
+- Return structured output data
+
+<Tip>
+Actions are ideal for business logic that doesn't need to be part of the conversational flow. They can be tested independently and reused across different parts of your agent.
+</Tip>
+

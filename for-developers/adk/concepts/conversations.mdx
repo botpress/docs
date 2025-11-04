@@ -1,0 +1,147 @@
+Conversations are the primary way your agent handles user messages. Each conversation handler defines how your agent responds to messages from specific channels.
+
+## Creating a conversation
+
+Create a conversation handler in `src/conversations/`:
+
+```typescript
+import { Conversation } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute, message }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+    });
+  },
+});
+```
+
+## Channel matching
+
+The `channel` property determines which integration channels the `Conversation` handles:
+
+<CodeGroup>
+```ts All channels highlight={4}
+import { Conversation } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+    });
+  },
+});
+```
+
+```ts Specific channel highlight={4}
+import { Conversation } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+    });
+  },
+});
+```
+
+```ts Array of channels highlight={4-7}
+import { Conversation } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: [
+    "chat.channel",
+    "webchat.channel"
+  ],
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+    });
+  },
+});
+```
+</CodeGroup>
+
+## Conversation handler
+
+The handler function receives context about the incoming message and provides APIs to execute your agent's logic:
+
+```typescript highlight={5-13}
+import { Conversation } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute, message }) => {
+    // Access message content
+    const userMessage = message.text;
+
+    // Execute agent with instructions
+    await execute({
+      instructions: `You are a helpful assistant. The user said: ${userMessage}`,
+    });
+  },
+});
+```
+
+## Using knowledge bases
+
+Provide knowledge to your agent's AI model:
+
+```typescript highlight={2, 9}
+import { Conversation } from "@botpress/runtime";
+import { WebsiteKB } from "../knowledge/docs";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      knowledge: [WebsiteKB],
+    });
+  },
+});
+```
+
+## Using hooks
+
+Add hooks to customize behavior at different stages:
+
+```typescript highlight={8-15}
+import { Conversation } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      hooks: {
+        onBeforeTool: async (props) => {
+          // Custom logic before tool execution
+        },
+        onTrace: (props) => {
+          // Log or monitor trace events
+        },
+      },
+    });
+  },
+});
+```
+
+## Multiple conversations
+
+You can create multiple conversation handlers for different channels or use cases:
+
+```
+src/conversations/
+├── webchat.ts        # Webchat-specific handler
+├── slack.ts          # Slack-specific handler
+└── support.ts        # Support-focused handler
+```
+
+<Tip>
+Each conversation file should export a default `Conversation` instance. The ADK automatically discovers and registers all conversations in the `src/conversations/` directory.
+</Tip>
+

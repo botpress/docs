@@ -1,0 +1,194 @@
+---
+title: CLI reference
+description: All commands and flags available with the ADK CLI.
+---
+
+The ADK CLI provides commands for creating, developing, building, and deploying Botpress agents.
+
+## Global flags
+
+These flags are available for all commands:
+
+| Flag | Alias | Description |
+|------|-------|-------------|
+| `--verbose` | `-v` | Enable verbose logging |
+| `--help` | `-h` | Show help information |
+
+## Commands
+
+### `adk init`
+
+Initialize a new ADK agent project.
+
+**Usage:**
+```bash
+adk init my-agent
+adk init my-agent --template hello-world
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `project-name` | Name of the project directory to create |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--template` | Template to use: `blank` or `hello-world` | `blank` |
+| `--package-manager` | Package manager: `npm`, `pnpm`, `yarn`, or `bun` | `bun` |
+
+---
+
+### `adk dev`
+
+Start the development server with hot reloading.
+
+**Usage:**
+```bash
+adk dev
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--port` | Port for the development server | `3000` |
+| `--source-map` | Generate source maps for debugging | `true` |
+
+**Description:**
+
+The `dev` command:
+1. Generates TypeScript types for your integrations
+2. Builds your agent
+3. Starts a local development server
+4. Watches for file changes and automatically rebuilds
+
+You'll be prompted to authenticate with Botpress Cloud if you haven't already.
+
+---
+
+### `adk build`
+
+Build your agent for production.
+
+**Usage:**
+```bash
+adk build
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--source-map` | Generate source maps | `true` |
+
+**Description:**
+
+Compiles your agent and creates an optimized build in the `.botpress/dist` directory. The build includes:
+- Compiled TypeScript code
+- Bundled dependencies
+- Generated type definitions
+- Source maps (if enabled)
+
+---
+
+### `adk deploy`
+
+Deploy your agent to Botpress Cloud.
+
+**Usage:**
+```bash
+adk deploy
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--bot-id` | Bot ID to deploy to (creates new bot if not provided) | |
+| `--no-build` | Skip the build step | `false` |
+
+**Description:**
+
+Deploys your agent to your Botpress workspace. If no `--bot-id` is provided, a new bot will be created. The command will:
+1. Build your agent (unless `--no-build` is specified)
+2. Upload the built agent to Botpress Cloud
+3. Make your agent available for use
+
+---
+
+### `adk add`
+
+Add an integration to your agent project.
+
+**Usage:**
+```bash
+adk add webchat
+adk add slack@latest
+adk add my-workspace/custom-integration@1.0.0
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `integration` | Integration name with optional version (e.g., `webchat@latest` or `slack@1.2.0`) |
+
+**Description:**
+
+Adds an integration to your `dependencies.json` file and generates TypeScript types for it. The integration is automatically enabled by default.
+
+**Examples:**
+
+- `adk add webchat` - Add latest webchat integration
+- `adk add slack@0.5.0` - Add specific version of Slack integration
+- `adk add my-workspace/custom@latest` - Add integration from a specific workspace
+
+---
+
+### `adk chat`
+
+Chat with your deployed bot directly from the CLI.
+
+**Usage:**
+```bash
+adk chat my-bot-id
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `bot-id` | Bot ID to chat with |
+
+**Description:**
+
+Opens an interactive chat session with your deployed bot. Useful for testing your agent's responses.
+
+---
+
+## Project scripts
+
+The ADK also provides npm scripts that you can use in your `package.json`:
+
+```json
+{
+  "scripts": {
+    "dev": "adk dev",
+    "build": "adk build",
+    "deploy": "adk deploy"
+  }
+}
+```
+
+Run these with your package manager:
+
+```bash
+npm run dev
+bun run dev
+pnpm dev
+yarn dev
+```
+

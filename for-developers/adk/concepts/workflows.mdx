@@ -1,0 +1,96 @@
+---
+title: Workflows
+---
+
+Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike conversations that respond to user messages, workflows can run independently on a schedule or be triggered by events.
+
+## Creating a workflow
+
+Create a workflow in `src/workflows/`:
+
+```typescript
+import { Workflow } from "@botpress/runtime";
+
+export default new Workflow({
+  name: "my-workflow",
+  description: "A workflow that processes data",
+  handler: async ({ step }) => {
+    // Workflow logic
+  },
+});
+```
+
+## Scheduled workflows
+
+Workflows can run on a schedule using cron syntax:
+
+```typescript
+export default new Workflow({
+  name: "periodic-indexing",
+  description: "Indexes knowledge base every 6 hours",
+  schedule: "0 */6 * * *", // Every 6 hours
+  handler: async ({ context }) => {
+    // Refresh knowledge base
+    await WebsiteKB.refresh();
+  },
+});
+```
+
+## Workflow steps
+
+Use the `step` function to create checkpoints in long-running workflows:
+
+```typescript
+export default new Workflow({
+  name: "data-processing",
+  handler: async ({ step, context }) => {
+    // Step 1: Fetch data
+    const data = await step("fetch-data", async () => {
+      return await fetchDataFromAPI();
+    });
+
+    // Step 2: Process data
+    const processed = await step("process-data", async () => {
+      return processData(data);
+    });
+
+    // Step 3: Store results
+    await step("store-results", async () => {
+      await saveResults(processed);
+    });
+  },
+});
+```
+
+Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
+
+## Triggering workflows
+
+Workflows can be triggered by events or called from other parts of your agent:
+
+```typescript
+import { Workflow } from "@botpress/runtime";
+
+export default new Workflow({
+  name: "on-user-signup",
+  handler: async ({ step, context, event }) => {
+    // Handle user signup event
+    const userId = event.userId;
+    await sendWelcomeEmail(userId);
+  },
+});
+```
+
+## Workflow context
+
+The workflow handler receives a `context` object with access to:
+
+- `client` - Botpress client for API calls
+- `logger` - Logging utilities
+- `state` - Persistent workflow state
+- `event` - Triggering event (if triggered)
+
+<Tip>
+Use workflows for operations that may take a long time, need to be retried, or should run on a schedule. For simple message handling, use conversations instead.
+</Tip>
+

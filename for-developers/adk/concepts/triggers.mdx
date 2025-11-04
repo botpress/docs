@@ -1,0 +1,84 @@
+---
+title: Triggers
+---
+
+Triggers subscribe to events and execute handlers when those events occur. They enable your agent to respond to external events, scheduled tasks, or system events.
+
+## Creating a trigger
+
+Create a trigger in `src/triggers/`:
+
+```typescript
+import { Trigger } from "@botpress/runtime";
+
+export default new Trigger({
+  name: "on-user-signup",
+  description: "Handles user signup events",
+  handler: async ({ context, event }) => {
+    // Handle the event
+    const userId = event.userId;
+    await sendWelcomeMessage(userId);
+  },
+});
+```
+
+## Event subscriptions
+
+Subscribe to specific events from integrations:
+
+```typescript
+export default new Trigger({
+  name: "on-slack-message",
+  event: "slack.message.created",
+  handler: async ({ context, event }) => {
+    // Handle Slack message event
+    const message = event.payload;
+    // Process the message
+  },
+});
+```
+
+## Scheduled triggers
+
+Triggers can run on a schedule using cron syntax:
+
+```typescript
+export default new Trigger({
+  name: "daily-report",
+  schedule: "0 9 * * *", // Every day at 9 AM
+  handler: async ({ context }) => {
+    // Generate and send daily report
+    await generateDailyReport();
+  },
+});
+```
+
+## Trigger context
+
+The trigger handler receives a `context` object with:
+
+- `client` - Botpress client for API calls
+- `logger` - Logging utilities
+- `event` - The triggering event (if event-based)
+- `state` - Access to bot and user state
+
+## Integration events
+
+Subscribe to events from your configured integrations:
+
+```typescript
+export default new Trigger({
+  name: "on-github-push",
+  event: "github.push",
+  handler: async ({ context, event }) => {
+    // Handle GitHub push event
+    const repo = event.payload.repository;
+    await notifyTeam(repo);
+  },
+});
+```
+
+<Tip>
+Triggers are useful for responding to external events or running scheduled tasks. For user-initiated conversations, use conversations instead.
+</Tip>
+
