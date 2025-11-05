@@ -215,11 +215,11 @@ Event subscriptions that respond to external events or scheduled triggers.
 import { Trigger } from "@botpress/runtime";
 
 export default new Trigger({
-  name: "webchat-task",
+  name: "conversationStarted",
   events: [
-    "webchat:initialized"
-  ]
-  handler: async ({ context }) => {
+    "webchat:conversationStarted",
+  ],
+  handler: async ({ event }) => {
     // Trigger logic
   },
 });
@@ -248,7 +248,7 @@ export const WebsiteKB = new Knowledge({
 
 ## Generated files
 
-The ADK generates TypeScript types in the `.botpress` directory:
+The ADK generates TypeScript types in `.adk/bot/.botpress`:
 
 - `.botpress/types/` - Type definitions for integrations and interfaces
 - `.botpress/dist/` - Compiled output (created during build)
