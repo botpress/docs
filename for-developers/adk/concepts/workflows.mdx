@@ -2,7 +2,7 @@
 title: Workflows
 ---
 
-Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike conversations that respond to user messages, workflows can run independently on a schedule or be triggered by events.
+Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike [conversations](/for-developers/adk/concepts/conversations), workflows can run independently on a schedule or be triggered by events.
 
 ## Creating a workflow
 
@@ -14,7 +14,7 @@ import { Workflow } from "@botpress/runtime";
 export default new Workflow({
   name: "my-workflow",
   description: "A workflow that processes data",
-  handler: async ({ step }) => {
+  handler: async ({}) => {
     // Workflow logic
   },
 });
@@ -24,13 +24,14 @@ export default new Workflow({
 
 Workflows can run on a schedule using cron syntax:
 
-```typescript
+```typescript highlight={6}
+import { WebsiteKB } from '../knowledge/docs'
+
 export default new Workflow({
   name: "periodic-indexing",
   description: "Indexes knowledge base every 6 hours",
   schedule: "0 */6 * * *", // Every 6 hours
-  handler: async ({ context }) => {
-    // Refresh knowledge base
+  handler: async ({}) => {
     await WebsiteKB.refresh();
   },
 });
@@ -40,10 +41,10 @@ export default new Workflow({
 
 Use the `step` function to create checkpoints in long-running workflows:
 
-```typescript
+```typescript highlight={4-17}
 export default new Workflow({
   name: "data-processing",
-  handler: async ({ step, context }) => {
+  handler: async ({ step }) => {
     // Step 1: Fetch data
     const data = await step("fetch-data", async () => {
       return await fetchDataFromAPI();
@@ -63,34 +64,3 @@ export default new Workflow({
 ```
 
 Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
-
-## Triggering workflows
-
-Workflows can be triggered by events or called from other parts of your agent:
-
-```typescript
-import { Workflow } from "@botpress/runtime";
-
-export default new Workflow({
-  name: "on-user-signup",
-  handler: async ({ step, context, event }) => {
-    // Handle user signup event
-    const userId = event.userId;
-    await sendWelcomeEmail(userId);
-  },
-});
-```
-
-## Workflow context
-
-The workflow handler receives a `context` object with access to:
-
-- `client` - Botpress client for API calls
-- `logger` - Logging utilities
-- `state` - Persistent workflow state
-- `event` - Triggering event (if triggered)
-
-<Tip>
-Use workflows for operations that may take a long time, need to be retried, or should run on a schedule. For simple message handling, use conversations instead.
-</Tip>
-

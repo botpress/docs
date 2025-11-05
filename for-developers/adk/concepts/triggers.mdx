@@ -2,7 +2,7 @@
 title: Triggers
 ---
 
-Triggers subscribe to events and execute handlers when those events occur. They enable your agent to respond to external events, scheduled tasks, or system events.
+Triggers subscribe to events and execute handlers when those events occur. They enable your agent to respond to external events from integrations or system events.
 
 ## Creating a trigger
 
@@ -12,73 +12,74 @@ Create a trigger in `src/triggers/`:
 import { Trigger } from "@botpress/runtime";
 
 export default new Trigger({
-  name: "on-user-signup",
-  description: "Handles user signup events",
-  handler: async ({ context, event }) => {
-    // Handle the event
-    const userId = event.userId;
-    await sendWelcomeMessage(userId);
+  name: "conversationStarted",
+  events: ["webchat:conversationStarted"],
+  handler: async ({ event }) => {
+    // Trigger logic
   },
 });
 ```
 
-## Event subscriptions
+Triggers subscribe to events using an array of event names. The above Trigger only executes when it receives the `webchat:conversationStarted` event.
 
-Subscribe to specific events from integrations:
+### Naming a Trigger
 
-```typescript
+Trigger names can contain only alphanumeric characters and underscores.
+
+## Event structure
+
+The handler receives an `event` object with:
+
+- `event.type` - The event type string (one of the subscribed events)
+- `event.payload` - The event payload data (varies by event type)
+
+You can read these properties to handle the event appropriately:
+
+```typescript highlight={11-13}
+import { Trigger } from "@botpress/runtime";
+
 export default new Trigger({
-  name: "on-slack-message",
-  event: "slack.message.created",
-  handler: async ({ context, event }) => {
-    // Handle Slack message event
-    const message = event.payload;
-    // Process the message
+  name: "reactionAdded",
+  description: "Handles WhatsApp reactions",
+  events: ["whatsapp:reactionAdded"],
+  handler: async ({ event }) => {
+    // Handle WhatsApp reaction added event
+    // event.type contains "whatsapp:reactionAdded"
+    // event.payload contains information about the reaction
+    const reactionData = event.payload;
+    if (reactionData.reaction === "U+1F44D")
+      // Process the reaction
   },
 });
 ```
 
-## Scheduled triggers
+<Note>
+  For reference information about the payload from integration events, check out the [Integrations documentation](/integrations/get-started/introduction).
+</Note>
 
-Triggers can run on a schedule using cron syntax:
 
-```typescript
+## Multiple event subscriptions
+
+A trigger can subscribe to multiple events and handle each of them differently:
+
+```typescript highlight={5-7, 10-17}
 export default new Trigger({
-  name: "daily-report",
-  schedule: "0 9 * * *", // Every day at 9 AM
-  handler: async ({ context }) => {
-    // Generate and send daily report
-    await generateDailyReport();
+  name: "onLinearIssueUpdate",
+  description: "Handles Linear issue events",
+  events: [
+    "linear:issueCreated",
+    "linear:issueDeleted",
+    "linear:issueUpdated",
+  ],
+  handler: async ({ event }) => {
+    // Check event type to handle different cases
+    if (event.type === "linear:issueDeleted") {
+      // Handle deletion
+    } else if (event.type === "linear:issueCreated") {
+      // Handle creation
+    } else if (event.type === "linear:issueUpdated") {
+      // Handle update
+    }
   },
 });
 ```
-
-## Trigger context
-
-The trigger handler receives a `context` object with:
-
-- `client` - Botpress client for API calls
-- `logger` - Logging utilities
-- `event` - The triggering event (if event-based)
-- `state` - Access to bot and user state
-
-## Integration events
-
-Subscribe to events from your configured integrations:
-
-```typescript
-export default new Trigger({
-  name: "on-github-push",
-  event: "github.push",
-  handler: async ({ context, event }) => {
-    // Handle GitHub push event
-    const repo = event.payload.repository;
-    await notifyTeam(repo);
-  },
-});
-```
-
-<Tip>
-Triggers are useful for responding to external events or running scheduled tasks. For user-initiated conversations, use conversations instead.
-</Tip>
-

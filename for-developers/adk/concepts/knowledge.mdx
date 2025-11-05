@@ -2,7 +2,7 @@
 title: Knowledge
 ---
 
-Knowledge bases provide context to your agent's AI models. They enable your agent to answer questions based on documents, websites, or other data sources.
+Knowledge bases provide context to your agent's AI models. They allow your agent to answer questions based on documents, websites, or other data sources.
 
 ## Creating a knowledge base
 
@@ -21,6 +21,8 @@ export default new Knowledge({
 ```
 
 ## Data sources
+
+You can add knowledge from several different data sources:
 
 ### Website source
 
@@ -47,8 +49,8 @@ export default new Knowledge({
 Index files from a directory:
 
 ```typescript
-const FileSource = DataSource.Files.fromDirectory("./docs", {
-  extensions: [".md", ".txt"],
+const FileSource = DataSource.Directory.fromPath("./docs", {
+  filter: (filePath) => filePath.endsWith(".md") || filePath.endsWith(".txt"),
 });
 
 export default new Knowledge({
@@ -57,12 +59,33 @@ export default new Knowledge({
 });
 ```
 
+### Table source
+
+Index data from a table:
+
+```typescript
+import { DataSource } from "@botpress/runtime";
+import { OrderTable } from "../tables/OrderTable";
+
+const TableSource = DataSource.Table.fromTable(OrderTable, {
+  id: "orders",
+  transform: ({ row }) => {
+    return `Order #${row.id}\nCustomer: ${row.userId}\nTotal: $${row.total}\nStatus: ${row.status}`;
+  },
+});
+
+export default new Knowledge({
+  name: "orders-kb",
+  sources: [TableSource],
+});
+```
+
 ## Using knowledge in conversations
 
 Provide knowledge bases to your conversation handlers:
 
-```typescript
-import { WebsiteKB } from "../knowledge/website-docs";
+```typescript highlight={1, 8}
+import { WebsiteKB } from "../knowledge/docs";
 
 export default new Conversation({
   channel: "*",
@@ -79,8 +102,10 @@ export default new Conversation({
 
 Refresh knowledge bases to update their content:
 
-```typescript
-// In a workflow
+```typescript highlight={6, 8}
+import { Workflow } from "@botpress/runtime";
+import { WebsiteKB } from "..knowledge/docs"
+
 export default new Workflow({
   name: "refresh-knowledge",
   schedule: "0 0 * * *", // Daily
@@ -89,24 +114,3 @@ export default new Workflow({
   },
 });
 ```
-
-## Knowledge base options
-
-Configure knowledge base behavior:
-
-```typescript
-export default new Knowledge({
-  name: "documentation",
-  sources: [WebsiteSource],
-  options: {
-    chunkSize: 1000,      // Characters per chunk
-    chunkOverlap: 200,    // Overlap between chunks
-    maxChunks: 1000,      // Maximum chunks to index
-  },
-});
-```
-
-<Tip>
-Knowledge bases are automatically indexed and made available to your agent's AI models. Use them to provide context-specific information that helps your agent answer questions accurately.
-</Tip>
-

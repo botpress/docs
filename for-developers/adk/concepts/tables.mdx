@@ -9,92 +9,62 @@ Tables define data storage schemas for your agent. They provide structured stora
 Create a table definition in `src/tables/`:
 
 ```typescript
-import { Table } from "@botpress/runtime";
+import { Table, z } from "@botpress/runtime";
 
 export default new Table({
-  name: "users",
-  description: "User information table",
-  schema: {
-    id: "string",
-    name: "string",
-    email: "string",
-    createdAt: "timestamp",
+  name: "PricingTable",
+  columns: {
+    itemName: z.string(),
+    price: z.string(),
   },
 });
 ```
+
+### Naming a table
+
+To properly deploy your agent, make sure your table name follows the correct convention:
+
+- Cannot start with a number
+- Must be 30 characters or less
+- Can contain only letters, numbers, and underscores
+- Must end with `Table`
 
 ## Table schema
 
-Define your table schema using simple type definitions:
+Define your table using Zod schemas:
 
 ```typescript
 export default new Table({
-  name: "orders",
-  schema: {
-    id: "string",
-    userId: "string",
-    items: "array",
-    total: "number",
-    status: "string",
-    createdAt: "timestamp",
-    updatedAt: "timestamp",
+  name: "OrderTable",
+  columns: {
+    id: z.string(),
+    userId: z.string(),
+    items: z.array(z.string()),
+    total: z.number(),
+    status: z.string(),
+    createdAt: z.string().datetime(),
+    updatedAt: z.string().datetime(),
   },
 });
 ```
-
-Supported types:
-
-- `"string"` - Text data
-- `"number"` - Numeric data
-- `"boolean"` - Boolean values
-- `"timestamp"` - Date/time values
-- `"array"` - Array of values
-- `"object"` - Nested object structures
 
 ## Using tables
 
-Tables are automatically created and synced when you deploy. Access them through the Botpress client:
+Tables are automatically created and synced when you deploy. Access them using the Botpress client:
 
-```typescript
-// In a conversation or workflow
-export default new Conversation({
-  channel: "*",
-  handler: async ({ execute, context }) => {
-    // Create a row
-    await context.client.tables.upsertRows({
-      table: "users",
+```ts highlight={4-9}
+export default new Workflow({
+  name: "createOrder",
+  handler: async ({ client }) => {
+    await client.upsertTableRows({
+      table: "OrderTable",
       rows: [{
-        id: "user-123",
-        name: "John Doe",
-        email: "john@example.com",
-        createdAt: new Date(),
-      }],
-    });
-
-    // Find rows
-    const users = await context.client.tables.findRows({
-      table: "users",
-      filter: {
-        email: "john@example.com",
-      },
-    });
-
-    await execute({
-      instructions: "You are a helpful assistant.",
-    });
+        // Order data
+      }]
+    })
   },
 });
 ```
-
-## Table operations
-
-The Botpress client provides table operations:
-
-- `createRows` - Create new rows
-- `updateRows` - Update existing rows
-- `upsertRows` - Create or update rows
-- `findRows` - Query rows with filters
-- `deleteRows` - Delete rows
 
 <Tip>
 Tables are automatically synced with Botpress Cloud. When you deploy your agent, table schemas are created or updated to match your definitions.

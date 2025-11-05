@@ -22,9 +22,7 @@ export default new Conversation({
 The `channel` property determines which integration channels the `Conversation` handles:
 
 <CodeGroup>
-```ts All channels highlight={4}
-import { Conversation } from "@botpress/runtime";
-
+```ts All channels highlight={2}
 export default new Conversation({
   channel: "*",
   handler: async ({ execute }) => {
@@ -35,9 +33,7 @@ export default new Conversation({
 });
 ```
 
-```ts Specific channel highlight={4}
-import { Conversation } from "@botpress/runtime";
-
+```ts Specific channel highlight={2}
 export default new Conversation({
   channel: "webchat.channel",
   handler: async ({ execute }) => {
@@ -48,9 +44,7 @@ export default new Conversation({
 });
 ```
 
-```ts Array of channels highlight={4-7}
-import { Conversation } from "@botpress/runtime";
-
+```ts Array of channels highlight={2-5}
 export default new Conversation({
   channel: [
     "chat.channel",
@@ -69,16 +63,11 @@ export default new Conversation({
 
 The handler function receives context about the incoming message and provides APIs to execute your agent's logic:
 
-```typescript highlight={5-13}
-import { Conversation } from "@botpress/runtime";
-
+```typescript highlight={3-8}
 export default new Conversation({
   channel: "*",
   handler: async ({ execute, message }) => {
-    // Access message content
     const userMessage = message.text;
-
-    // Execute agent with instructions
     await execute({
       instructions: `You are a helpful assistant. The user said: ${userMessage}`,
     });
@@ -90,8 +79,7 @@ export default new Conversation({
 
 Provide knowledge to your agent's AI model:
 
-```typescript highlight={2, 9}
-import { Conversation } from "@botpress/runtime";
+```typescript highlight={1, 8}
 import { WebsiteKB } from "../knowledge/docs";
 
 export default new Conversation({
@@ -109,9 +97,7 @@ export default new Conversation({
 
 Add hooks to customize behavior at different stages:
 
-```typescript highlight={8-15}
-import { Conversation } from "@botpress/runtime";
-
+```typescript highlight={6-13}
 export default new Conversation({
   channel: "*",
   handler: async ({ execute }) => {
