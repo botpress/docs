@@ -83,3 +83,67 @@ export default new Trigger({
   },
 });
 ```
+
+## Reference
+
+### Trigger props
+
+<Expandable title="Trigger props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the trigger. Must be at least 3 characters, less than 255 characters, and contain only alphanumeric characters and underscores.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the trigger does. Must be less than 1024 characters.
+  </ResponseField>
+  <ResponseField
+    name="events"
+    type="string[]"
+    required
+  >
+    Array of event names to subscribe to. The trigger will execute when any of these events occur.
+  </ResponseField>
+  <ResponseField
+    name="handler"
+    type="(props: object) => Promise&lt;void&gt; | void"
+    required
+  >
+    Handler function that processes the matched event. The props object structure is documented in the handler parameters section below.
+  </ResponseField>
+</Expandable>
+
+### Handler parameters
+
+The handler function receives the matched event:
+
+<Expandable title="Handler parameters">
+  <ResponseField
+    name="event"
+    type="object"
+    required
+  >
+    The event object that matched one of the subscribed event names.
+    <Expandable title="Event properties">
+      <ResponseField
+        name="type"
+        type="string"
+        required
+      >
+        The event type string (one of the subscribed events).
+      </ResponseField>
+      <ResponseField
+        name="payload"
+        type="any"
+        required
+      >
+        The event payload data. The structure varies by event type—for integration events, check out the [integration documentation](/integrations/get-started/introduction).
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>

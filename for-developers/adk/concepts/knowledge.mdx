@@ -114,3 +114,30 @@ export default new Workflow({
   },
 });
 ```
+
+## Reference
+
+### Knowledge props
+
+<Expandable title="Knowledge props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the knowledge base.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the knowledge base contains.
+  </ResponseField>
+  <ResponseField
+    name="sources"
+    type="DataSource[]"
+    required
+  >
+    Array of data sources to index. Can include `Website`, `Directory`, or `Table` sources.
+  </ResponseField>
+</Expandable>

@@ -127,6 +127,402 @@ src/conversations/
 └── support.ts        # Support-focused handler
 ```
 
+## Reference
+
+### Conversation props
+
+<Expandable title="Conversation props">
+  <ResponseField
+    name="channel"
+    type="string | string[] | '*'"
+    required
+  >
+    Channel specification. Can be a single channel name, an array of channel names, or '*' to match all channels.
+  </ResponseField>
+  <ResponseField
+    name="handler"
+    type="(props: object) => Promise&lt;void&gt; | void"
+    required
+  >
+    Handler function that processes incoming messages and events. The props object structure is documented in the handler parameters section below.
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="z.ZodTypeAny"
+  >
+    Optional Zod schema defining the conversation state structure. Defaults to an empty object if not provided.
+  </ResponseField>
+  <ResponseField
+    name="startFromTrigger"
+    type="(event: any) => Promise&lt;string | false&gt; | string | false"
+  >
+    Optional function to determine if a conversation should start from a trigger event. Returns a conversation ID or false.
+  </ResponseField>
+</Expandable>
+
+### Handler parameters
+
+The handler function receives different parameters depending on the incoming request type. The handler uses a discriminated union based on the `type` field:
+
+#### Message handler
+
+When `type` is `"message"`:
+
+<Expandable title="Message handler parameters">
+  <ResponseField
+    name="type"
+    type="'message'"
+    required
+  >
+    Indicates this is a message request.
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="any"
+    required
+  >
+    Message object containing the user's message data. Typed by `ConversationInstance` at runtime based on the channel.
+  </ResponseField>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    Conversation instance providing methods to interact with the conversation (send messages, manage state, etc.).
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="any"
+    required
+  >
+    Mutable conversation state object. Changes to this object are automatically persisted. Typed based on your state schema.
+  </ResponseField>
+  <ResponseField
+    name="client"
+    type="object"
+    required
+  >
+    Botpress client for making API calls (tables, events, etc.).
+  </ResponseField>
+  <ResponseField
+    name="execute"
+    type="(props: object) => Promise&lt;any&gt;"
+    required
+  >
+    Function to execute autonomous AI logic. Used to run the agent with instructions, tools, knowledge bases, etc.
+    <Expandable title="Execute props">
+      <ResponseField
+        name="instructions"
+        type="string | (() => string) | (() => Promise&lt;string&gt;)"
+        required
+      >
+        Instructions for the AI agent. Can be a string or a function that returns a string.
+      </ResponseField>
+      <ResponseField
+        name="tools"
+        type="object[]"
+      >
+        Optional array of tools the agent can use.
+      </ResponseField>
+      <ResponseField
+        name="objects"
+        type="object[]"
+      >
+        Optional array of objects the agent can interact with.
+      </ResponseField>
+      <ResponseField
+        name="exits"
+        type="Record&lt;string, object&gt;"
+      >
+        Optional record of exit handlers.
+      </ResponseField>
+      <ResponseField
+        name="signal"
+        type="AbortSignal"
+      >
+        Optional abort signal to cancel execution.
+      </ResponseField>
+      <ResponseField
+        name="hooks"
+        type="object"
+      >
+        Optional hooks for customizing behavior (onBeforeTool, onAfterTool, onTrace, etc.).
+      </ResponseField>
+      <ResponseField
+        name="temperature"
+        type="number | (() => number) | (() => Promise&lt;number&gt;)"
+      >
+        Optional temperature for the AI model. Defaults to 0.7.
+      </ResponseField>
+      <ResponseField
+        name="model"
+        type="string | string[] | (() => string | string[]) | (() => Promise&lt;string | string[]&gt;)"
+      >
+        Optional model name(s) to use. Can be a string, array of strings, or a function that returns either.
+      </ResponseField>
+      <ResponseField
+        name="knowledge"
+        type="object[]"
+      >
+        Optional array of knowledge bases to use.
+      </ResponseField>
+      <ResponseField
+        name="iterations"
+        type="number"
+      >
+        Optional maximum number of iterations (loops). Defaults to 10.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+#### Event handler
+
+When `type` is `"event"`:
+
+<Expandable title="Event handler parameters">
+  <ResponseField
+    name="type"
+    type="'event'"
+    required
+  >
+    Indicates this is an event request.
+  </ResponseField>
+  <ResponseField
+    name="event"
+    type="any"
+    required
+  >
+    Event object containing event data from integrations or system events. Typed by `ConversationInstance` at runtime based on the channel.
+  </ResponseField>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    Conversation instance providing methods to interact with the conversation (send messages, manage state, etc.).
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="any"
+    required
+  >
+    Mutable conversation state object. Changes to this object are automatically persisted. Typed based on your state schema.
+  </ResponseField>
+  <ResponseField
+    name="client"
+    type="object"
+    required
+  >
+    Botpress client for making API calls (tables, events, etc.).
+  </ResponseField>
+  <ResponseField
+    name="execute"
+    type="(props: object) => Promise&lt;any&gt;"
+    required
+  >
+    Function to execute autonomous AI logic. Used to run the agent with instructions, tools, knowledge bases, etc.
+    <Expandable title="Execute props">
+      <ResponseField
+        name="instructions"
+        type="string | (() => string) | (() => Promise&lt;string&gt;)"
+        required
+      >
+        Instructions for the AI agent. Can be a string or a function that returns a string.
+      </ResponseField>
+      <ResponseField
+        name="tools"
+        type="object[]"
+      >
+        Optional array of tools the agent can use.
+      </ResponseField>
+      <ResponseField
+        name="objects"
+        type="object[]"
+      >
+        Optional array of objects the agent can interact with.
+      </ResponseField>
+      <ResponseField
+        name="exits"
+        type="Record&lt;string, object&gt;"
+      >
+        Optional record of exit handlers.
+      </ResponseField>
+      <ResponseField
+        name="signal"
+        type="AbortSignal"
+      >
+        Optional abort signal to cancel execution.
+      </ResponseField>
+      <ResponseField
+        name="hooks"
+        type="object"
+      >
+        Optional hooks for customizing behavior (onBeforeTool, onAfterTool, onTrace, etc.).
+      </ResponseField>
+      <ResponseField
+        name="temperature"
+        type="number | (() => number) | (() => Promise&lt;number&gt;)"
+      >
+        Optional temperature for the AI model. Defaults to 0.7.
+      </ResponseField>
+      <ResponseField
+        name="model"
+        type="string | string[] | (() => string | string[]) | (() => Promise&lt;string | string[]&gt;)"
+      >
+        Optional model name(s) to use. Can be a string, array of strings, or a function that returns either.
+      </ResponseField>
+      <ResponseField
+        name="knowledge"
+        type="object[]"
+      >
+        Optional array of knowledge bases to use.
+      </ResponseField>
+      <ResponseField
+        name="iterations"
+        type="number"
+      >
+        Optional maximum number of iterations (loops). Defaults to 10.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+#### Workflow request handler
+
+When `type` is `"workflow_request"`:
+
+<Expandable title="Workflow request handler parameters">
+  <ResponseField
+    name="type"
+    type="'workflow_request'"
+    required
+  >
+    Indicates this is a workflow data request.
+  </ResponseField>
+  <ResponseField
+    name="request"
+    type="object"
+    required
+  >
+    Workflow request object containing workflow and step information.
+    <Expandable title="Request properties">
+      <ResponseField
+        name="type"
+        type="string"
+        required
+      >
+        The request type in the format `"workflowName:requestName"`.
+      </ResponseField>
+      <ResponseField
+        name="workflow"
+        type="object"
+        required
+      >
+        The workflow instance that made the request.
+      </ResponseField>
+      <ResponseField
+        name="step"
+        type="string"
+        required
+      >
+        The name of the step that made the request.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    Conversation instance providing methods to interact with the conversation (send messages, manage state, etc.).
+  </ResponseField>
+  <ResponseField
+    name="state"
+    type="any"
+    required
+  >
+    Mutable conversation state object. Changes to this object are automatically persisted. Typed based on your state schema.
+  </ResponseField>
+  <ResponseField
+    name="client"
+    type="object"
+    required
+  >
+    Botpress client for making API calls (tables, events, etc.).
+  </ResponseField>
+  <ResponseField
+    name="execute"
+    type="(props: object) => Promise&lt;any&gt;"
+    required
+  >
+    Function to execute autonomous AI logic. Used to run the agent with instructions, tools, knowledge bases, etc.
+    <Expandable title="Execute props">
+      <ResponseField
+        name="instructions"
+        type="string | (() => string) | (() => Promise&lt;string&gt;)"
+        required
+      >
+        Instructions for the AI agent. Can be a string or a function that returns a string.
+      </ResponseField>
+      <ResponseField
+        name="tools"
+        type="object[]"
+      >
+        Optional array of tools the agent can use.
+      </ResponseField>
+      <ResponseField
+        name="objects"
+        type="object[]"
+      >
+        Optional array of objects the agent can interact with.
+      </ResponseField>
+      <ResponseField
+        name="exits"
+        type="Record&lt;string, object&gt;"
+      >
+        Optional record of exit handlers.
+      </ResponseField>
+      <ResponseField
+        name="signal"
+        type="AbortSignal"
+      >
+        Optional abort signal to cancel execution.
+      </ResponseField>
+      <ResponseField
+        name="hooks"
+        type="object"
+      >
+        Optional hooks for customizing behavior (onBeforeTool, onAfterTool, onTrace, etc.).
+      </ResponseField>
+      <ResponseField
+        name="temperature"
+        type="number | (() => number) | (() => Promise&lt;number&gt;)"
+      >
+        Optional temperature for the AI model. Defaults to 0.7.
+      </ResponseField>
+      <ResponseField
+        name="model"
+        type="string | string[] | (() => string | string[]) | (() => Promise&lt;string | string[]&gt;)"
+      >
+        Optional model name(s) to use. Can be a string, array of strings, or a function that returns either.
+      </ResponseField>
+      <ResponseField
+        name="knowledge"
+        type="object[]"
+      >
+        Optional array of knowledge bases to use.
+      </ResponseField>
+      <ResponseField
+        name="iterations"
+        type="number"
+      >
+        Optional maximum number of iterations (loops). Defaults to 10.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
 <Tip>
 Each conversation file should export a default `Conversation` instance. The ADK automatically discovers and registers all conversations in the `src/conversations/` directory.
 </Tip>

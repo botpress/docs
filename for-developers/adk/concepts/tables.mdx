@@ -31,13 +31,14 @@ To properly deploy your agent, make sure your table name follows the correct con
 
 ## Table schema
 
+### Simple definition
+
 Define your table using Zod schemas:
 
 ```typescript
 export default new Table({
   name: "OrderTable",
   columns: {
-    id: z.string(),
     userId: z.string(),
     items: z.array(z.string()),
     total: z.number(),
@@ -47,6 +48,30 @@ export default new Table({
   },
 });
 ```
+
+### Extended definition
+
+You can also define table columns with additional options for each column:
+
+```ts highlight={5-14}
+import { Table, z } from "@botpress/runtime";
+
+export default new Table({
+  name: "OrderTable",
+  columns: {
+    itemName: {
+      schema: z.string(),
+      searchable: true
+    },
+    price: {
+      schema: z.string(),
+      searchable: true
+    }
+  },
+});
+```
+
+Check out the [column options](#table-props) in the Table props reference for a full overview of the available options.
 
 ## Using tables
 
@@ -65,6 +90,79 @@ export default new Workflow({
   },
 });
 ```
+
+## Reference
+
+<Expandable title="Table props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the table. Must be 30 characters or less, cannot start with a number, can contain only letters, numbers, and underscores, and must end with 'Table'.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the table stores.
+  </ResponseField>
+  <ResponseField
+    name="factor"
+    type="number"
+  >
+    Optional factor for table operations. Defaults to 1.
+  </ResponseField>
+  <ResponseField
+    name="columns"
+    type="object"
+    required
+  >
+    Object mapping column names to their definitions. Each key is a column name. Values can be either a simple Zod schema or an object with advanced column configuration options.
+    <Expandable title="simple column definition">
+      <ResponseField
+        name="{key}"
+        type="z.ZodTypeAny"
+        required
+      >
+        Zod schema defining the column's data type and validation rules.
+      </ResponseField>
+    </Expandable>
+    <Expandable title="advanced column definition">
+      <ResponseField
+        name="schema"
+        type="z.ZodTypeAny"
+        required
+      >
+        Zod schema defining the column's data type and validation rules.
+      </ResponseField>
+      <ResponseField
+        name="computed"
+        type="boolean"
+      >
+        Whether this column is computed from other columns. Defaults to false.
+      </ResponseField>
+      <ResponseField
+        name="searchable"
+        type="boolean"
+      >
+        Whether this column should be searchable. Defaults to false.
+      </ResponseField>
+      <ResponseField
+        name="dependencies"
+        type="string[]"
+      >
+        Array of column names this computed column depends on. Required for computed columns.
+      </ResponseField>
+      <ResponseField
+        name="value"
+        type="(row: any) => Promise&lt;any&gt;"
+      >
+        Async function that computes the column value from the row data. Required for computed columns.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
 
 <Tip>
 Tables are automatically synced with Botpress Cloud. When you deploy your agent, table schemas are created or updated to match your definitions.

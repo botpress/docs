@@ -147,3 +147,76 @@ export default new Trigger({
 Actions are ideal for business logic that doesn't need to be part of the conversational flow. They can be tested independently and reused across different parts of your agent.
 </Tip>
 
+
+## Reference
+
+### Action props
+
+<Expandable title="Action props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the action. Must be alphanumeric with no special characters or spaces.
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    Optional display title for the action.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the action does.
+  </ResponseField>
+  <ResponseField
+    name="attributes"
+    type="Record&lt;string, string&gt;"
+  >
+    Optional metadata attributes for the action.
+  </ResponseField>
+  <ResponseField
+    name="input"
+    type="z.ZodTypeAny"
+    required
+  >
+    Zod schema defining the input parameters for the action.
+  </ResponseField>
+  <ResponseField
+    name="output"
+    type="z.ZodTypeAny"
+    required
+  >
+    Zod schema defining the output/return type of the action.
+  </ResponseField>
+  <ResponseField
+    name="cached"
+    type="boolean"
+  >
+    Whether the action results should be cached. Defaults to false.
+  </ResponseField>
+  <ResponseField
+    name="handler"
+    type="(input: any) => Promise&lt;any&gt;"
+    required
+  >
+    Async function that implements the action logic. Receives validated input matching your input schema and returns validated output matching your output schema.
+  </ResponseField>
+</Expandable>
+
+### Handler parameters
+
+The handler function receives the validated input parameters based on the `input` schema:
+
+<Expandable title="Handler parameters">
+  <ResponseField
+    name="input"
+    type="any"
+    required
+  >
+    The validated input object matching the action's input schema. All properties are typed based on the schema definition.
+  </ResponseField>
+</Expandable>
