@@ -1,0 +1,188 @@
+---
+title: Tools
+---
+
+Tools are functions that can be called by the AI model during conversations. They allow your agent to perform actions, retrieve information, or interact with external systems based on user requests.
+
+## Creating a tool
+
+Create a tool in `src/tools/`:
+
+```typescript
+import { Autonomous } from "@botpress/runtime";
+import { z } from "@botpress/sdk";
+
+export default new Autonomous.Tool({
+  name: "myTool",
+  description: "A tool that does something useful",
+  input: z.object({}), // Input schema
+  output: z.object({}), // Output schema
+  handler: async ({}) => {
+    // Tool logic
+    return {};
+  },
+});
+```
+
+## Tool input and output
+
+Define input and output schemas using Zod schemas. The AI model uses these schemas to understand when and how to call your tool:
+
+```typescript highlight={7-14}
+import { Autonomous } from "@botpress/runtime";
+import { z } from "@botpress/sdk";
+
+export default new Autonomous.Tool({
+  name: "getWeather",
+  description: "Get the current weather for a location",
+  input: z.object({
+    location: z.string().describe("The city or location name"),
+    unit: z.enum(["celsius", "fahrenheit"]).optional().describe("Temperature unit"),
+  }),
+  output: z.object({
+    temperature: z.number(),
+    condition: z.string(),
+  }),
+  handler: async ({ location, unit }) => {
+    // Fetch weather data
+    const weather = await fetchWeatherData(location, unit);
+    return {
+      temperature: weather.temp,
+      condition: weather.condition,
+    };
+  },
+});
+```
+
+## Using tools in conversations
+
+Provide an array of tools to your agent in a conversation handler:
+
+```typescript highlight={2, 9}
+import { Conversation } from "@botpress/runtime";
+import getWeather from "../tools/weather";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful weather assistant.",
+      tools: [getWeather],
+    });
+  },
+});
+```
+
+## Converting actions to tools
+
+You can convert [actions](/for-developers/adk/concepts/actions) to tools using the `asTool()` method:
+
+```typescript highlight={1, 8}
+import { Conversation, actions } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [actions.calculateTotal.asTool()],
+    });
+  },
+});
+```
+
+## Tool handler
+
+The handler function receives the input parameters and executes the tool's logic. It can also call custom actions.
+
+<CodeGroup>
+
+```ts Basic handler highlight={10-13}
+import { Autonomous } from "@botpress/runtime";
+import { z } from "@botpress/sdk";
+
+export default new Autonomous.Tool({
+  name: "searchDatabase",
+  description: "Search the database",
+  input: z.object({
+    query: z.string(),
+  }),
+  handler: async ({ query }) => {
+    // Perform search
+    return { results: [] };
+  },
+});
+```
+
+```ts Calling actions highlight={1, 10-13}
+import { Autonomous, actions } from "@botpress/runtime";
+import { z } from "@botpress/sdk";
+
+export default new Autonomous.Tool({
+  name: "processOrder",
+  description: "Process a customer order",
+  input: z.object({
+    orderId: z.string(),
+  }),
+  handler: async ({ orderId }) => {
+    const result = await actions.validateOrder({ orderId });
+    return result;
+  },
+});
+```
+
+</CodeGroup>
+
+## Multiple tools
+
+You can provide multiple tools to your agent:
+
+```typescript highlight={2, 9-13}
+import { Conversation } from "@botpress/runtime";
+import { getWeather, searchDatabase, processOrder } from "../tools/index";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant with access to various tools.",
+      tools: [
+        getWeather,
+        searchDatabase,
+        processOrder,
+      ],
+    });
+  },
+});
+```
+
+## Tool descriptions
+
+The `description` field is crucial—it helps the AI model understand when to use your tool. Write clear, concise descriptions:
+
+```typescript highlight={3}
+export default new Autonomous.Tool({
+  name: "calculateTotal",
+  description: "Calculate the total price of items including tax and shipping. Use this when the user asks about prices, costs, or totals.",
+  input: z.object({
+    items: z.array(z.object({
+      price: z.number(),
+      quantity: z.number(),
+    })),
+  }),
+  // ...
+});
+```
+
+## Best practices
+
+- Write clear, descriptive tool names and descriptions
+- Use Zod schemas with `.describe()` to provide context for each input parameter
+- Keep tool handlers focused on a single responsibility
+- Use tools for operations that require external data or actions
+- Test tools independently before using them in conversations
+
+<Tip>
+Tools are ideal for operations that the AI model needs to perform dynamically based on user requests. They enable your agent to go beyond just generating text and actually interact with systems, retrieve data, and perform actions.
+</Tip>
+
