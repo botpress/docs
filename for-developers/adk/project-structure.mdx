@@ -1,22 +1,24 @@
+import { Files, File, Folder } from '/snippets/folder-component.jsx';
+
 ADK projects follow a consistent structure that organizes your agent's code, configuration, and dependencies.
 
 ## Directory structure
 
-```
-my-agent/
-├── agent.config.ts          # Agent configuration
-├── agent.json               # Linked bot configuration
-├── dependencies.json         # Integration dependencies
-├── package.json             # Node.js project configuration
-├── tsconfig.json            # TypeScript configuration
-└── src/                     # Source code
-    ├── conversations/       # Conversation handlers
-    ├── workflows/          # Long-running processes
-    ├── actions/            # Callable functions
-    ├── tables/             # Data storage schemas
-    ├── triggers/           # Event subscriptions
-    └── knowledge/          # Knowledge base sources
-```
+<Files>
+  <Folder name="src" defaultOpen>
+    <Folder name="conversations" />
+    <Folder name="workflows" />
+    <Folder name="actions" />
+    <Folder name="tables" />
+    <Folder name="triggers" />
+    <Folder name="knowledge" />
+  </Folder>
+  <File name="agent.config.ts" />
+  <File name="agent.json" />
+  <File name="dependencies.json" />
+  <File name="package.json" />
+  <File name="tsconfig.json" />
+</Files>
 
 ## Configuration files
 
