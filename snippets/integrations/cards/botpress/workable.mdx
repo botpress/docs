@@ -1830,6 +1830,108 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
 </Expandable>
 
+### Get job questions
+
+<span>{"Get the questions associated with a job offer"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="shortCode"
+    type="string"
+    required
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="questions"
+    type="array"
+    required
+  >
+    <span>{"The questions"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The question's id"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The question's body"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    <span>{"The question's type"}</span>
+
+Available options: `free_text`, `multiple_choice`, `boolean`, `dropdown`, `numeric`, `date`, `file`
+  </ResponseField>
+  <ResponseField
+    name="required"
+    type="boolean"
+    required
+  >
+    <span>{"specifies wether providing an answer to the question is required"}</span>
+  </ResponseField>
+  <ResponseField
+    name="singleAnswer"
+    type="boolean"
+  >
+    <span>{"Wether the question allows for multiple answers. Defined only for type multiple_choice."}</span>
+  </ResponseField>
+  <ResponseField
+    name="choices"
+    type="array"
+  >
+    <span>{"An array specifying the possible answers. Defined only for types multiple_choice and dropdown."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The choice's id"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The choice's text"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="supportedFileTypes"
+    type="array"
+  >
+    <span>{"An array specifying the accepted file types. Defined only if question type is file."}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxFileSize"
+    type="number"
+  >
+    <span>{"The maximum file size in bytes. Defined only if question is file"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
 ### List candidates
 
 <span>{"List the candidates for a job"}</span>
