@@ -4,6 +4,49 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="November 7, 2025">
+  ## Features & Enhancements
+
+  - Redesigned billing section in the Dashboard:
+
+  <Frame>
+    <img
+      alt="New billing section"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-11-06/new-billing.png"
+    />
+    <img
+      alt="New billing section"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-11-06/new-billing-dark.png"
+    />
+  </Frame>
+
+  - Added option to rename [Execute Code Cards](/learn/reference/cards/execute-code)
+  - Added handling to allow adding duplicate files to Webchat message
+  - Added option to configure custom analytics for an entire workspace
+
+  ## Integrations
+
+  - **HubSpot**: Added [Search Company](/integrations/integration-guides/hubspot#search-company) Card
+  - **Workable**: Added [Get Job Questions](/integrations/integration-guides/workable#get-job-questions) Card
+  - **Intercom HITL**: Improved handling for email address formatting
+  - **Sharepoint**: Fixed an issue with syncing document libraries on registration
+
+  ## Bug Fixes
+
+  - Fixed an issue with the [AI Transition](/learn/reference/cards/ai/ai-transition) Card where newly-added fields would be impossible to delete
+  - Fixed an issue where the [Capture Information](/learn/reference/cards/capture-information) Card's **Skip if variable is already filled** option wasn't working    properly
+  - Fixed issue where the Dashboard's hotkeys were interfering with the Help Desk bot
+  - Fixed visual issues with viewing Knowledge Bases on mobile Dashboard
+  - Fixed a visual issue where Webchat bot contact info was being displayed even when configuration fields were empty
+
+  ## Miscellaneous
+
+  - Added two new methods returned by the Webchat React library's [`useWebchat`](/webchat/react-library/hooks/use-webchat-client) hook: `bindConversation` and `bindUser`
+
+</Update>
+
 <Update label="October 31, 2025">
   ## Features & Enhancements
 
