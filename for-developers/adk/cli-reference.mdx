@@ -11,8 +11,9 @@ These flags are available for all commands:
 
 | Flag | Alias | Description |
 |------|-------|-------------|
-| `--verbose` | `-v` | Enable verbose logging |
 | `--help` | `-h` | Show help information |
+| `--version` | `-V` | Show version number |
+| `--no-cache` | | Disable caching for integration lookups |
 
 ## Commands
 
@@ -37,7 +38,6 @@ adk init my-agent --template hello-world
 | Flag | Description | Default |
 |------|-------------|---------|
 | `--template` | Template to use: `blank` or `hello-world` | `blank` |
-| `--package-manager` | Package manager: `npm`, `pnpm`, `yarn`, or `bun` | `bun` |
 
 ---
 
@@ -48,24 +48,17 @@ Start the development server with hot reloading.
 **Usage:**
 ```bash
 adk dev
+adk dev --port 3000
+adk dev --logs
 ```
 
 **Flags:**
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `--port` | Port for the development server | `3000` |
-| `--source-map` | Generate source maps for debugging | `true` |
-
-**Description:**
-
-The `dev` command:
-1. Generates TypeScript types for your integrations
-2. Builds your agent
-3. Starts a local development server
-4. Watches for file changes and automatically rebuilds
-
-You'll be prompted to authenticate with Botpress Cloud if you haven't already.
+| `-p, --port` | Port for the development server | `3000` |
+| `--port-console` | Port for the console/UI server | `3001` |
+| `-l, --logs` | Stream logs to stderr (CI/CLI-friendly mode, disables UI) | `false` |
 
 ---
 
@@ -80,17 +73,7 @@ adk build
 
 **Flags:**
 
-| Flag | Description | Default |
-|------|-------------|---------|
-| `--source-map` | Generate source maps | `true` |
-
-**Description:**
-
-Compiles your agent and creates an optimized build in the `.botpress/dist` directory. The build includes:
-- Compiled TypeScript code
-- Bundled dependencies
-- Generated type definitions
-- Source maps (if enabled)
+No flags available.
 
 ---
 
@@ -101,21 +84,14 @@ Deploy your agent to Botpress Cloud.
 **Usage:**
 ```bash
 adk deploy
+adk deploy --env production
 ```
 
 **Flags:**
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `--bot-id` | Bot ID to deploy to (creates new bot if not provided) | |
-| `--no-build` | Skip the build step | `false` |
-
-**Description:**
-
-Deploys your agent to your Botpress workspace. If no `--bot-id` is provided, a new bot will be created. The command will:
-1. Build your agent (unless `--no-build` is specified)
-2. Upload the built agent to Botpress Cloud
-3. Make your agent available for use
+| `-e, --env` | Deployment environment | `production` |
 
 ---
 
@@ -128,23 +104,23 @@ Add an integration to your agent project.
 adk add webchat
 adk add slack@latest
 adk add my-workspace/custom-integration@1.0.0
+adk add interface:translator@1.0.0
+adk add webchat --alias custom-webchat
 ```
 
 **Arguments:**
 
 | Argument | Description |
 |----------|-------------|
-| `integration` | Integration name with optional version (e.g., `webchat@latest` or `slack@1.2.0`) |
+| `resource` | Integration or interface name with optional version (e.g., `webchat@latest`, `slack@1.2.0`, or `interface:translator@1.0.0`) |
 
-**Description:**
+**Flags:**
 
-Adds an integration to your `dependencies.json` file and generates TypeScript types for it. The integration is automatically enabled by default.
+| Flag | Description |
+|------|-------------|
+| `--alias` | Use a custom alias for the resource |
 
-**Examples:**
-
-- `adk add webchat` - Add latest webchat integration
-- `adk add slack@0.5.0` - Add specific version of Slack integration
-- `adk add my-workspace/custom@latest` - Add integration from a specific workspace
+**Aliases:** `i`, `install`
 
 ---
 
@@ -154,18 +130,276 @@ Chat with your deployed bot directly from the CLI.
 
 **Usage:**
 ```bash
-adk chat my-bot-id
+adk chat
+```
+
+<Note>
+Run `adk dev` first to create a development bot if you don't have a devId in your `agent.json`.
+</Note>
+
+---
+
+### `adk login`
+
+Authenticate with your Botpress account.
+
+**Usage:**
+```bash
+adk login
+adk login --token <token>
+adk login --profile <profile>
+adk login --api-url <url>
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--token` | Botpress API token | |
+| `--profile` | Profile name to use | `default` |
+| `--api-url` | Botpress API URL | `https://api.botpress.cloud` |
+
+---
+
+### `adk profiles`
+
+Manage authentication profiles.
+
+#### `adk profiles list`
+
+List all configured profiles.
+
+**Usage:**
+```bash
+adk profiles list
+```
+
+#### `adk profiles set`
+
+Switch to a different profile.
+
+**Usage:**
+```bash
+adk profiles set
+adk profiles set <profile>
 ```
 
 **Arguments:**
 
 | Argument | Description |
 |----------|-------------|
-| `bot-id` | Bot ID to chat with |
+| `profile` | Profile name to switch to (interactive if not provided) |
 
-**Description:**
+---
 
-Opens an interactive chat session with your deployed bot. Useful for testing your agent's responses.
+### `adk upgrade`
+
+Upgrade integration(s) to latest version.
+
+**Usage:**
+```bash
+adk upgrade
+adk upgrade <integration>
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `integration` | Integration alias to upgrade (interactive if not specified) |
+
+**Aliases:** `up`
+
+---
+
+### `adk remove`
+
+Remove an integration from your agent.
+
+**Usage:**
+```bash
+adk remove
+adk remove <integration>
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `integration` | Integration alias to remove (interactive if not specified) |
+
+**Aliases:** `rm`
+
+---
+
+### `adk search`
+
+Search for integrations in the Botpress hub.
+
+**Usage:**
+```bash
+adk search <query>
+adk search slack --format json --limit 10
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `query` | Search query |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--format` | Output format: `table` or `json` | `table` |
+| `--limit` | Limit number of results | `20` |
+
+---
+
+### `adk list`
+
+List integrations (installed or available).
+
+**Usage:**
+```bash
+adk list
+adk list --available
+adk list --format json --limit 100
+```
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--available` | List all available integrations (instead of installed) | `false` |
+| `--format` | Output format: `table` or `json` | `table` |
+| `--limit` | Limit number of results | `50` |
+
+---
+
+### `adk info`
+
+Show detailed information about an integration.
+
+**Usage:**
+```bash
+adk info <name>
+adk info slack --actions
+adk info webchat --full --format json
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `name` | Integration name |
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--actions` | Show only actions |
+| `--channels` | Show only channels |
+| `--events` | Show only events |
+| `--full` | Show all details |
+| `--format` | Output format: `table` or `json` (default: `table`) |
+
+---
+
+### `adk link`
+
+Link local agent to workspace and bot.
+
+**Usage:**
+```bash
+adk link
+adk link --workspace <workspaceId> --bot <botId>
+adk link --workspace <workspaceId> --bot <botId> --dev <devBotId>
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--workspace` | Workspace ID |
+| `--bot` | Bot ID to link to |
+| `--dev` | Dev bot ID (optional) |
+
+---
+
+### `adk self-upgrade`
+
+Upgrade ADK CLI to the latest version.
+
+**Usage:**
+```bash
+adk self-upgrade
+```
+
+**Aliases:** `self-update`
+
+---
+
+### `adk assets`
+
+Manage agent assets and static files.
+
+#### `adk assets sync`
+
+Synchronize assets with remote storage.
+
+**Usage:**
+```bash
+adk assets sync
+adk assets sync --dry-run
+adk assets sync --yes --force
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--dry-run` | Preview changes without applying them |
+| `-y, --yes` | Skip confirmation prompts |
+| `--bail-on-failure` | Stop on first error |
+| `--force` | Force re-upload all files |
+
+#### `adk assets list`
+
+List all asset files.
+
+**Usage:**
+```bash
+adk assets list
+adk assets list --local
+adk assets list --remote
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--local` | Show only local assets |
+| `--remote` | Show only remote assets |
+
+#### `adk assets status`
+
+Show asset synchronization status.
+
+**Usage:**
+```bash
+adk assets status
+```
+
+#### `adk assets pull`
+
+Download remote assets to local directory.
+
+**Usage:**
+```bash
+adk assets pull
+```
 
 ---
 
