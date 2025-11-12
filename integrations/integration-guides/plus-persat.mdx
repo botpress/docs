@@ -1,0 +1,65 @@
+---
+title: Persat
+description: Add a bot to Persat using the official integration.
+icon: '/integrations/integration-guides/assets/icons/persat.png'
+tag: NEW
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/plus/plus-persat.mdx'
+import Triggers from '/snippets/integrations/triggers/plus/plus-persat.mdx'
+
+<OpenInHub integration={integrationVersions["plus/persat"]}/>
+
+{/* vale on */}
+
+The official Persat integration allows your bot to interact with your Persat clients.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/learn/get-started/quick-start)
+  - A [Persat account](https://www.persat.com.ar/sesion)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **<Icon icon="boxes"/> Explore Hub** in the upper-right corner.
+    2. Search for the **Persat** integration, then select **Install Integration**.
+
+    In the **Configuration** menu, you should see one field: **API Key**
+
+    Leave this empty for now—you'll come back to it after creating your Persat API key.
+  </Step>
+  <Step title="Create a Persat API key">
+    Next, create a Persat API key:
+
+    1. [Log in to your Persat account](https://www.persat.com.ar/sesion).
+    2. Select your avatar in the upper-right corner, then select **Integraciones y Partners**.
+    3. Select **Integra con nuestra API**, then go to **API keys**.
+    4. Create and copy a new API key. When prompted to configure its access level, make sure you select **Acceso Total** (complete access).
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API key** field, paste your Persat API key.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
+
+<Check>
+Your Persat integration is ready. You can use its [Cards](#cards) to interact with your Persat clients.
+</Check>
+
+---
+
+## Cards
+
+<Cards />

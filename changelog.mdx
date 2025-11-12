@@ -4,6 +4,157 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="November 7, 2025">
+  ## Features & Enhancements
+
+  - Redesigned billing section in the Dashboard:
+
+  <Frame>
+    <img
+      alt="New billing section"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-11-06/new-billing.png"
+    />
+    <img
+      alt="New billing section"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-11-06/new-billing-dark.png"
+    />
+  </Frame>
+
+  - Added option to rename [Execute Code Cards](/learn/reference/cards/execute-code)
+  - Added handling to allow adding duplicate files to Webchat message
+  - Added option to configure custom analytics for an entire workspace
+
+  ## Integrations
+
+  - **HubSpot**: Added [Search Company](/integrations/integration-guides/hubspot#search-company) Card
+  - **Workable**: Added [Get Job Questions](/integrations/integration-guides/workable#get-job-questions) Card
+  - **Intercom HITL**: Improved handling for email address formatting
+  - **Sharepoint**: Fixed an issue with syncing document libraries on registration
+
+  ## Bug Fixes
+
+  - Fixed an issue with the [AI Transition](/learn/reference/cards/ai/ai-transition) Card where newly-added fields would be impossible to delete
+  - Fixed an issue where the [Capture Information](/learn/reference/cards/capture-information) Card's **Skip if variable is already filled** option wasn't working    properly
+  - Fixed issue where the Dashboard's hotkeys were interfering with the Help Desk bot
+  - Fixed visual issues with viewing Knowledge Bases on mobile Dashboard
+  - Fixed a visual issue where Webchat bot contact info was being displayed even when configuration fields were empty
+
+  ## Miscellaneous
+
+  - Added two new methods returned by the Webchat React library's [`useWebchat`](/webchat/react-library/hooks/use-webchat-client) hook: `bindConversation` and `bindUser`
+
+</Update>
+
+<Update label="October 31, 2025">
+  ## Features & Enhancements
+
+  ### New Actions experience
+
+  Overhauled the Actions experience and added ability generate Actions and Schemas using AI:
+
+  <Tabs>
+    <Tab title="Just write your prompt...">
+      <Frame>
+        <img
+          alt="Action prompt"
+          className="block dark:hidden"
+          src="/learn/reference/assets/action-prompt.png"
+        />
+        <img
+          alt="Action prompt"
+          className="hidden dark:block"
+          src="/learn/reference/assets/action-prompt-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="then use the generated Action.">
+      <Frame>
+        <img
+          alt="Generated action"
+          className="block dark:hidden"
+          src="/learn/reference/assets/generated-action.png"
+        />
+        <img
+          alt="Actions"
+          className="hidden dark:block"
+          src="/learn/reference/assets/generated-action-dark.png"
+        />
+      </Frame>
+    </Tab>
+  </Tabs>
+
+  ### Dashboard improvements
+
+  - Added the ability to manage Knowledge Bases from the Dashboard:
+
+  <Frame>
+    <img
+      alt="Dashboard Knowledge Bases"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-31/dashboard-kb.png"
+    />
+    <img
+      alt="Dashboard Knowledge Bases"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-31/dashboard-kb-dark.png"
+    />
+  </Frame>
+
+  - Redesigned agent overview page with better metrics, feature visibility, and a link to the bot's shareable preview:
+
+  <Frame>
+    <img
+      alt="New agent overview"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-31/new-overview.png"
+    />
+    <img
+      alt="New agent overview"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-31/new-overview-dark.png"
+    />
+  </Frame>
+
+  - Redesigned Conversations tab that shows you Conversation Insights, sentiment analysis and an AI summary:
+
+  <Frame>
+    <img
+      alt="New Conversations tab"
+      className="block dark:hidden"
+      src="/changelog-assets/2025-10-31/new-conversations.png"
+    />
+    <img
+      alt="New Conversations tab"
+      className="hidden dark:block"
+      src="/changelog-assets/2025-10-31/new-conversations-dark.png"
+    />
+  </Frame>
+
+  ## Integrations
+
+  - **Workable**: Added [Workable](/integrations/integration-guides/workable) integration
+  - **Mintlify**: Added [Mintlify](/integrations/integration-guides/mintlify) integration
+  - **WhatsApp**: Fixed an issue with parsing Mexican phone numbers
+  - **Freshchat**: Fixed an issue with handling empty events
+  - **HubSpot**: Fixed an issue where Cards that return search results would cause errors when no results were found
+  - **Instagram**: Added option for bot to reply to comments on posts
+  - **Twilio**:
+    - Added new Cards: **Start Conversation** and **Get or Create User**
+    - Added better Markdown support
+
+  ## Bug Fixes
+
+  - Fixed visual bug when loading variable picker in a Card's inspector
+  - Fixed a bug where user variables would reset with each new conversation in the Emulator
+  - Fixed an issue where sending multiple API requests to upsert rows using the Tables API was causing duplicate rows
+
+  ## Miscellaneous
+
+  - Added file metadata to the [`searchFiles`](/api-reference/files-api/openapi/searchFiles) endpoint's response
+</Update>
+
 <Update label="October 24, 2025">
   ## Integrations
 

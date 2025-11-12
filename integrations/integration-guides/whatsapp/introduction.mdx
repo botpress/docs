@@ -92,10 +92,16 @@ You will need:
         2. In the **App Secret** field,  select **Show**, then copy your secret.
       </Accordion>
       <Accordion
-        title="Phone Number ID"
+        title="Default Bot Phone Number ID"
       >
         1. In your Meta App's left sidebar, expand the **WhatsApp** menu and select **API Setup**.
         2. In the **Send and receive messages** section, copy your **Phone Number ID**.
+      </Accordion>
+      <Accordion
+        title="WABA ID (WhatsApp Business Account ID)"
+      >
+        1. In your Meta App's left sidebar, expand the **WhatsApp** menu and select **API Setup**.
+        2. In the **Send and receive messages** section, copy your **WhatsApp Business Account ID**.
       </Accordion>
     </AccordionGroup>
 
@@ -172,5 +178,10 @@ You will need:
     Unfortunately, we can't help speed up Meta's business verification process.
 
     If you need to test out your bot right away, you can use the [WhatsApp Playground](#playground) while waiting for business verification.
+  </Accordion>
+  <Accordion
+    title="Bot receiving WhatsApp messages, but not sending messages back"
+  >
+    There may be a problem with the payment method in your WhatsApp business account. Check the billing hub and make sure your [payment method](https://business.facebook.com/billing_hub/) is configured correctly.
   </Accordion>
 </AccordionGroup>

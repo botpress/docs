@@ -1,0 +1,399 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Candidate Created
+
+<span>{"A candidate was created on a job."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    <span>{"Event data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="firedAt"
+    type="string"
+    required
+  >
+    <span>{"The date and time the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The event identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resourceType"
+    type="string"
+    required
+  >
+    <span>{"The type of the payload resource"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The candidate that was created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job"
+    type="object"
+  >
+    <span>{"The job details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="eventType"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Candidate Moved
+
+<span>{"A candidate was moved on a job."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    <span>{"Event data"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="firedAt"
+    type="string"
+    required
+  >
+    <span>{"The date and time the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The event identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="resourceType"
+    type="string"
+    required
+  >
+    <span>{"The type of the payload resource"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"The candidate that was moved"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"The candidate identifier"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The candidate's full name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The candidate's first name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The candidate's last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="headline"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="account"
+    type="object | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stage"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="stageKind"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="disqualified"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate is disqualified"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withdrew"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate withdrew"}</span>
+  </ResponseField>
+  <ResponseField
+    name="disqualificationReason"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sourced"
+    type="boolean"
+  >
+    <span>{"Flag indicating whether the candidate has been sourced"}</span>
+  </ResponseField>
+  <ResponseField
+    name="profileUrl"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+  >
+    <span>{"The creation timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+  >
+    <span>{"The last update timestamp of the candidate record"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hiredAt"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="address"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="job"
+    type="object"
+  >
+    <span>{"The job details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="shortCode"
+    type="string"
+  >
+    <span>{"The job's system generated code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    <span>{"The job title"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="eventType"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
