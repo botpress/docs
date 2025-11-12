@@ -1,0 +1,42 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Add To Sync
+
+<span>{"Add new data to the sync list"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="documentLibraryNames"
+    type="string"
+    required
+  >
+    <span>{"Document Libraries to sync. Supported formats: Single library (NewDL), Comma-separated (Policies,Procedures), JSON array ([\"Policies\",\"Procedures\"]), or Single item JSON array ([\"NewDL\"])"}</span>
+  </ResponseField>
+  <ResponseField
+    name="folderKbMap"
+    type="string"
+    required
+  >
+    <span>{"JSON map of kbId to array of folder prefixes for routing files to specific KBs. Example: {\"kb-marketing\":[\"Campaigns\"],\"kb-policies\":[\"HR\",\"Legal\"]}"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    
+  </ResponseField>
+</Expandable>
+
+
+{/* vale on */}

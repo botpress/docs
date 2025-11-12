@@ -845,6 +845,83 @@ This Card has no output.
   </ResponseField>
 </Expandable>
 
+### Search Company
+
+<span>{"Search for a company in Hubspot"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the company to search for"}</span>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+  >
+    <span>{"The domain of the company to search for"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="company"
+    type="object"
+  >
+    <span>{"The company found"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+    required
+  >
+    <span>{"The domain of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"Creation date of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"Last time the company was updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    <span>{"The properties of the company"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
 ### Search Contact
 
 <span>{"Search for a contact in Hubspot"}</span>
@@ -872,9 +949,8 @@ This Card has no output.
   <ResponseField
     name="contact"
     type="object"
-    required
   >
-    <span>{"The contact found"}</span>
+    <span>{"The contact found, or undefined if not found"}</span>
 
     <Expandable>
   <ResponseField
@@ -944,9 +1020,8 @@ This Card has no output.
   <ResponseField
     name="deal"
     type="object"
-    required
   >
-    <span>{"The deal found"}</span>
+    <span>{"The deal found, or undefined if not found"}</span>
 
     <Expandable>
   <ResponseField
@@ -1009,9 +1084,8 @@ This Card has no output.
   <ResponseField
     name="lead"
     type="object"
-    required
   >
-    <span>{"The lead found"}</span>
+    <span>{"The lead found, or undefined if not found"}</span>
 
     <Expandable>
   <ResponseField
