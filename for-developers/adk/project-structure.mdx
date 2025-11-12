@@ -185,7 +185,7 @@ export default new Action({
   name: "yourAction",
   input: z.object({}),
   output: z.object({}),
-  async handler() {
+  async handler({ input }) {
     // Your logic here
     return { message: "This is your action's output." };
   },

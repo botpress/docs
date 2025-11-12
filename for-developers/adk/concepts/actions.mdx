@@ -15,7 +15,7 @@ export default new Action({
   name: "myAction",
   input: z.object({}), // Input schema
   output: z.object({}), // Output schema
-  handler: async ({}) => {
+  handler: async ({ input }) => {
     // Function logic
     return {}
   },
@@ -38,7 +38,7 @@ export default new Action({
   output: z.object({
     total: z.number()
   }),
-  handler: async (input) => {
+  handler: async ({ input }) => {
     const total = input.items.reduce(
       (sum, item) => sum + item.price * item.quantity,
       0
@@ -200,16 +200,16 @@ Actions are ideal for business logic that doesn't need to be part of the convers
   </ResponseField>
   <ResponseField
     name="handler"
-    type="(input: any) => Promise&lt;any&gt;"
+    type="(props: { input: any, client: any }) => Promise&lt;any&gt;"
     required
   >
-    Async function that implements the action logic. Receives validated input matching your input schema and returns validated output matching your output schema.
+    Async function that implements the action logic. Receives an object with `input` (validated input matching your input schema) and `client` (the Botpress client for making API calls), and returns validated output matching your output schema.
   </ResponseField>
 </Expandable>
 
 ### Handler parameters
 
-The handler function receives the validated input parameters based on the `input` schema:
+The handler function receives an object with `input` and `client` properties:
 
 <Expandable title="Handler parameters">
   <ResponseField
@@ -218,5 +218,12 @@ The handler function receives the validated input parameters based on the `input
     required
   >
     The validated input object matching the action's input schema. All properties are typed based on the schema definition.
+  </ResponseField>
+  <ResponseField
+    name="client"
+    type="Client"
+    required
+  >
+    The Botpress client instance that can be used to make API calls and interact with the Botpress platform.
   </ResponseField>
 </Expandable>

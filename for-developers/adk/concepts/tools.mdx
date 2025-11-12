@@ -91,6 +91,25 @@ export default new Conversation({
 });
 ```
 
+## Converting workflows to tools
+
+You can convert [workflows](/for-developers/adk/concepts/workflows) to tools using the `asTool()` method:
+
+```typescript highlight={2, 9}
+import { Conversation } from "@botpress/runtime";
+import myWorkflow from "../workflows/index"
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [myWorkflow.asTool()],
+    });
+  },
+});
+```
+
 ## Tool handler
 
 The handler function receives the input parameters and executes the tool's logic. It can also call custom actions.
