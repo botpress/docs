@@ -6,9 +6,9 @@
     }
   ],
   "info": {
-    "title": "Botpress API",
-    "description": "API for Botpress Cloud",
-    "version": "1.1.0"
+    "title": "Botpress Tables API",
+    "description": "API for Botpress Tables",
+    "version": "1.52.1"
   },
   "paths": {
     "/v1/tables": {
@@ -26,6 +26,60 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -35,12 +89,72 @@
           "default": {
             "$ref": "#/components/responses/listTablesResponse"
           }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "listTables"
+          }
         }
       },
       "post": {
         "operationId": "createTable",
         "description": "Initiates the creation of a new table based on the provided schema, excluding system-managed fields like IDs and timestamps.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/createTableResponse"
@@ -51,6 +165,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/createTableBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "createTable"
+          }
         }
       }
     },
@@ -67,6 +186,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -75,6 +248,11 @@
           },
           "default": {
             "$ref": "#/components/responses/getTableResponse"
+          }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "getTable"
           }
         }
       },
@@ -90,6 +268,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -102,6 +334,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/getOrCreateTableBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "getOrCreateTable"
+          }
         }
       },
       "put": {
@@ -113,6 +350,60 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -128,6 +419,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/updateTableBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "updateTable"
+          }
         }
       },
       "delete": {
@@ -142,6 +438,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -150,6 +500,11 @@
           },
           "default": {
             "$ref": "#/components/responses/deleteTableResponse"
+          }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "deleteTable"
           }
         }
       }
@@ -167,6 +522,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -179,6 +588,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/duplicateTableBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "duplicateTable"
+          }
         }
       }
     },
@@ -216,6 +630,60 @@
               "default": true,
               "type": "boolean"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -225,7 +693,13 @@
           "default": {
             "$ref": "#/components/responses/exportTableResponse"
           }
-        }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "exportTable"
+          }
+        },
+        "x-hidden": true
       }
     },
     "/v1/tables/{table}/jobs": {
@@ -241,6 +715,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -250,7 +778,13 @@
           "default": {
             "$ref": "#/components/responses/getTableJobsResponse"
           }
-        }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "getTableJobs"
+          }
+        },
+        "x-hidden": true
       }
     },
     "/v1/tables/{table}/import": {
@@ -266,6 +800,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -278,7 +866,13 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/importTableBody"
-        }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "importTable"
+          }
+        },
+        "x-hidden": true
       }
     },
     "/v1/tables/{table}/column": {
@@ -294,6 +888,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -306,6 +954,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/renameTableColumnBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "renameTableColumn"
+          }
         }
       }
     },
@@ -331,6 +984,60 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -339,6 +1046,11 @@
           },
           "default": {
             "$ref": "#/components/responses/getTableRowResponse"
+          }
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "getTableRow"
           }
         }
       }
@@ -356,6 +1068,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -368,6 +1134,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/findTableRowsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "findTableRows"
+          }
         }
       }
     },
@@ -384,6 +1155,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -396,6 +1221,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/createTableRowsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "createTableRows"
+          }
         }
       },
       "put": {
@@ -407,6 +1237,60 @@
             "in": "path",
             "description": "The table's name or unique identifier for targeting specific table operations.",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
             "schema": {
               "type": "string"
             }
@@ -422,6 +1306,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/updateTableRowsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "updateTableRows"
+          }
         }
       }
     },
@@ -438,6 +1327,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -450,6 +1393,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/deleteTableRowsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "deleteTableRows"
+          }
         }
       }
     },
@@ -466,6 +1414,60 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-name",
+            "in": "header",
+            "description": "Integration name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-id",
+            "in": "header",
+            "description": "User Id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-user-role",
+            "in": "header",
+            "description": "User Role",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -478,2651 +1480,17 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/upsertTableRowsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "upsertTableRows"
+          }
         }
       }
     }
   },
   "components": {
-    "securitySchemes": {
-      "BearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
-      },
-      "BotIdHeader": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "x-bot-id",
-        "description": "Your bot ID."
-      }
-    },
     "schemas": {
-      "Bot": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Bot](#schema_bot)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Bot](#schema_bot) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [Bot](#schema_bot) in ISO 8601 format"
-          },
-          "signingSecret": {
-            "type": "string",
-            "maxLength": 2000,
-            "description": "Signing secret of the [Bot](#schema_bot)"
-          },
-          "integrations": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "enabled": {
-                  "type": "boolean"
-                },
-                "name": {
-                  "type": "string",
-                  "maxLength": 200,
-                  "description": "Name of the [Integration](#schema_integration)"
-                },
-                "version": {
-                  "type": "string",
-                  "maxLength": 200,
-                  "description": "Version of the [Integration](#schema_integration)"
-                },
-                "webhookUrl": {
-                  "type": "string",
-                  "maxLength": 2000
-                },
-                "webhookId": {
-                  "type": "string",
-                  "maxLength": 200
-                },
-                "identifier": {
-                  "type": "string",
-                  "maxLength": 2000
-                },
-                "configurationType": {
-                  "type": "string",
-                  "maxLength": 200,
-                  "nullable": true
-                },
-                "configuration": {
-                  "type": "object",
-                  "additionalProperties": true
-                },
-                "status": {
-                  "type": "string",
-                  "enum": [
-                    "registration_pending",
-                    "registered",
-                    "registration_failed",
-                    "unregistration_pending",
-                    "unregistered",
-                    "unregistration_failed"
-                  ]
-                },
-                "statusReason": {
-                  "type": "string",
-                  "maxLength": 2000,
-                  "nullable": true
-                },
-                "id": {
-                  "type": "string",
-                  "minLength": 28,
-                  "maxLength": 36,
-                  "description": "ID of the [Integration](#schema_integration)"
-                },
-                "createdAt": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "Creation date of the [Integration](#schema_integration) in ISO 8601 format"
-                },
-                "updatedAt": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "Updating date of the [Integration](#schema_integration) in ISO 8601 format"
-                },
-                "title": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 64,
-                  "description": "Title of the integration. This is the name that will be displayed in the UI"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the integration. This is the description that will be displayed in the UI"
-                },
-                "iconUrl": {
-                  "type": "string",
-                  "description": "URL of the icon of the integration. This is the icon that will be displayed in the UI"
-                },
-                "public": {
-                  "type": "boolean",
-                  "description": "Indicates whether the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
-                },
-                "verificationStatus": {
-                  "type": "string",
-                  "enum": [
-                    "unapproved",
-                    "pending",
-                    "approved",
-                    "rejected"
-                  ],
-                  "description": "Status of the integration version verification"
-                }
-              },
-              "required": [
-                "enabled",
-                "name",
-                "version",
-                "webhookUrl",
-                "webhookId",
-                "configurationType",
-                "configuration",
-                "status",
-                "statusReason",
-                "id",
-                "createdAt",
-                "updatedAt",
-                "title",
-                "description",
-                "iconUrl",
-                "public",
-                "verificationStatus"
-              ],
-              "additionalProperties": false
-            },
-            "description": "A mapping of integrations to their configuration"
-          },
-          "user": {
-            "type": "object",
-            "properties": {
-              "tags": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "maxLength": 64,
-                      "description": "Title of the tag"
-                    },
-                    "description": {
-                      "type": "string",
-                      "maxLength": 256,
-                      "description": "Description of the tag"
-                    }
-                  },
-                  "description": "Definition of a tag that can be provided on the object",
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "tags"
-            ],
-            "description": "User object configuration",
-            "additionalProperties": false
-          },
-          "conversation": {
-            "type": "object",
-            "properties": {
-              "tags": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "maxLength": 64,
-                      "description": "Title of the tag"
-                    },
-                    "description": {
-                      "type": "string",
-                      "maxLength": 256,
-                      "description": "Description of the tag"
-                    }
-                  },
-                  "description": "Definition of a tag that can be provided on the object",
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "tags"
-            ],
-            "description": "Conversation object configuration",
-            "additionalProperties": false
-          },
-          "message": {
-            "type": "object",
-            "properties": {
-              "tags": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "maxLength": 64,
-                      "description": "Title of the tag"
-                    },
-                    "description": {
-                      "type": "string",
-                      "maxLength": 256,
-                      "description": "Description of the tag"
-                    }
-                  },
-                  "description": "Definition of a tag that can be provided on the object",
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "tags"
-            ],
-            "description": "Message object configuration",
-            "additionalProperties": false
-          },
-          "states": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "conversation",
-                    "user",
-                    "bot",
-                    "task"
-                  ],
-                  "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "description": "Schema of the [State](#schema_state) in the `JSON schema` format. This `JSON schema` is going to be used for validating the state data."
-                },
-                "expiry": {
-                  "type": "number",
-                  "minimum": 1,
-                  "description": "Expiry of the [State](#schema_state) in milliseconds. The state will expire if it is idle for the configured value. By default, a state doesn't expire."
-                }
-              },
-              "required": [
-                "type",
-                "schema"
-              ],
-              "additionalProperties": false
-            },
-            "description": "A mapping of states to their definition"
-          },
-          "configuration": {
-            "type": "object",
-            "properties": {
-              "data": {
-                "type": "object",
-                "additionalProperties": true,
-                "description": "Configuration data"
-              },
-              "schema": {
-                "type": "object",
-                "additionalProperties": true,
-                "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
-              }
-            },
-            "required": [
-              "data",
-              "schema"
-            ],
-            "description": "Configuration of the bot",
-            "additionalProperties": false
-          },
-          "events": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the event"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the event"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "required": [
-                "schema"
-              ],
-              "description": "Event Definition",
-              "additionalProperties": false
-            },
-            "description": "Events definition"
-          },
-          "recurringEvents": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "schedule": {
-                  "type": "object",
-                  "properties": {
-                    "cron": {
-                      "type": "string",
-                      "maxLength": 200
-                    }
-                  },
-                  "required": [
-                    "cron"
-                  ],
-                  "additionalProperties": false
-                },
-                "type": {
-                  "type": "string",
-                  "maxLength": 200
-                },
-                "payload": {
-                  "type": "object",
-                  "additionalProperties": true
-                },
-                "failedAttempts": {
-                  "type": "number",
-                  "description": "The number of times the recurring event failed to run. This counter resets once the recurring event runs successfully."
-                },
-                "lastFailureReason": {
-                  "type": "string",
-                  "maxLength": 2000,
-                  "description": "The reason why the recurring event failed to run in the last attempt.",
-                  "nullable": true
-                }
-              },
-              "required": [
-                "schedule",
-                "type",
-                "payload",
-                "failedAttempts",
-                "lastFailureReason"
-              ],
-              "additionalProperties": false
-            },
-            "description": "Recurring events"
-          },
-          "subscriptions": {
-            "type": "object",
-            "properties": {
-              "events": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "additionalProperties": false
-                },
-                "nullable": true,
-                "description": "Events that the bot is currently subscribed on (ex: \"slack:reactionAdded\"). If null, the bot is subscribed to all events."
-              }
-            },
-            "required": [
-              "events"
-            ],
-            "description": "Subscriptions of the bot",
-            "additionalProperties": false
-          },
-          "actions": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the action"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the action"
-                },
-                "billable": {
-                  "type": "boolean"
-                },
-                "cacheable": {
-                  "type": "boolean"
-                },
-                "input": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                },
-                "output": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                }
-              },
-              "required": [
-                "input",
-                "output"
-              ],
-              "description": "Action definition",
-              "additionalProperties": false
-            },
-            "description": "Actions definition"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Tags of [Bot](#schema_bot)"
-          },
-          "name": {
-            "type": "string",
-            "description": "Name of the [Bot](#schema_bot)"
-          },
-          "deployedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Last deployment date of the [Bot](#schema_bot) in the ISO 8601 format"
-          },
-          "dev": {
-            "type": "boolean",
-            "description": "Indicates whether the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
-          },
-          "createdBy": {
-            "type": "string",
-            "description": "ID of the user that created the bot"
-          },
-          "alwaysAlive": {
-            "type": "boolean",
-            "description": "Indicates whether the [Bot](#schema_bot) should be in always alive mode"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "active",
-              "deploying"
-            ],
-            "description": "Status of the bot"
-          },
-          "medias": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "URL of the media file"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Name of the media file"
-                }
-              },
-              "required": [
-                "url",
-                "name"
-              ]
-            },
-            "description": "Media files associated with the [Bot](#schema_bot)"
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "signingSecret",
-          "integrations",
-          "user",
-          "conversation",
-          "message",
-          "states",
-          "configuration",
-          "events",
-          "recurringEvents",
-          "subscriptions",
-          "actions",
-          "tags",
-          "name",
-          "dev",
-          "alwaysAlive",
-          "status",
-          "medias"
-        ],
-        "additionalProperties": false
-      },
-      "Integration": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Integration](#schema_integration)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Integration](#schema_integration) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [Integration](#schema_integration) in ISO 8601 format"
-          },
-          "identifier": {
-            "type": "object",
-            "properties": {
-              "fallbackHandlerScript": {
-                "type": "string",
-                "maxLength": 2000,
-                "description": "VRL Script of the [Integration](#schema_integration) to handle incoming requests for a request that doesn't have an identifier"
-              },
-              "extractScript": {
-                "type": "string",
-                "maxLength": 2000,
-                "description": "VRL Script of the [Integration](#schema_integration) to extract the identifier from an incoming webhook often use for OAuth"
-              }
-            },
-            "description": "Global identifier configuration of the [Integration](#schema_integration)",
-            "additionalProperties": false
-          },
-          "sandbox": {
-            "type": "object",
-            "properties": {
-              "identifierExtractScript": {
-                "type": "string",
-                "maxLength": 2000,
-                "description": "VRL Script of the [Integration](#schema_integration) to extract the identifier from an incoming webhook used specifically for the sandbox"
-              },
-              "messageExtractScript": {
-                "type": "string",
-                "maxLength": 2000,
-                "description": "VRL Script of the [Integration](#schema_integration) to extract the message from an incoming webhook used specifically for the sandbox"
-              }
-            },
-            "additionalProperties": false
-          },
-          "url": {
-            "type": "string",
-            "maxLength": 2000,
-            "description": "URL of the [Integration](#schema_integration)"
-          },
-          "name": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Name of the [Integration](#schema_integration)"
-          },
-          "version": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Version of the [Integration](#schema_integration)"
-          },
-          "interfaces": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "minLength": 28,
-                  "maxLength": 36,
-                  "description": "ID of the interface"
-                },
-                "name": {
-                  "type": "string",
-                  "maxLength": 200,
-                  "description": "Name of the interface"
-                },
-                "version": {
-                  "type": "string",
-                  "maxLength": 200,
-                  "description": "Version of the interface"
-                },
-                "entities": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "maxLength": 200
-                      }
-                    },
-                    "required": [
-                      "name"
-                    ],
-                    "additionalProperties": false
-                  }
-                },
-                "actions": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "maxLength": 200
-                      }
-                    },
-                    "required": [
-                      "name"
-                    ],
-                    "additionalProperties": false
-                  }
-                },
-                "events": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "maxLength": 200
-                      }
-                    },
-                    "required": [
-                      "name"
-                    ],
-                    "additionalProperties": false
-                  }
-                },
-                "channels": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "maxLength": 200
-                      }
-                    },
-                    "required": [
-                      "name"
-                    ],
-                    "additionalProperties": false
-                  }
-                }
-              },
-              "required": [
-                "id",
-                "name",
-                "version",
-                "entities",
-                "actions",
-                "events",
-                "channels"
-              ],
-              "additionalProperties": false
-            }
-          },
-          "configuration": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string",
-                "maxLength": 64,
-                "description": "Title of the configuration"
-              },
-              "description": {
-                "type": "string",
-                "maxLength": 256,
-                "description": "Description of the configuration"
-              },
-              "identifier": {
-                "type": "object",
-                "properties": {
-                  "linkTemplateScript": {
-                    "type": "string",
-                    "maxLength": 2000
-                  },
-                  "required": {
-                    "type": "boolean"
-                  }
-                },
-                "required": [
-                  "required"
-                ],
-                "description": "Identifier configuration of the [Integration](#schema_integration)",
-                "additionalProperties": false
-              },
-              "schema": {
-                "type": "object",
-                "additionalProperties": true,
-                "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
-              }
-            },
-            "required": [
-              "identifier",
-              "schema"
-            ],
-            "description": "Configuration definition",
-            "additionalProperties": false
-          },
-          "configurations": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the configuration"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the configuration"
-                },
-                "identifier": {
-                  "type": "object",
-                  "properties": {
-                    "linkTemplateScript": {
-                      "type": "string",
-                      "maxLength": 2000
-                    },
-                    "required": {
-                      "type": "boolean"
-                    }
-                  },
-                  "required": [
-                    "required"
-                  ],
-                  "description": "Identifier configuration of the [Integration](#schema_integration)",
-                  "additionalProperties": false
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
-                }
-              },
-              "required": [
-                "identifier",
-                "schema"
-              ],
-              "description": "Configuration definition",
-              "additionalProperties": false
-            }
-          },
-          "channels": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the channel"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the channel"
-                },
-                "messages": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object",
-                    "properties": {
-                      "schema": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
-                    },
-                    "required": [
-                      "schema"
-                    ],
-                    "description": "Message definition",
-                    "additionalProperties": false
-                  }
-                },
-                "conversation": {
-                  "type": "object",
-                  "properties": {
-                    "tags": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "object",
-                        "properties": {
-                          "title": {
-                            "type": "string",
-                            "maxLength": 64,
-                            "description": "Title of the tag"
-                          },
-                          "description": {
-                            "type": "string",
-                            "maxLength": 256,
-                            "description": "Description of the tag"
-                          }
-                        },
-                        "description": "Definition of a tag that can be provided on the object",
-                        "additionalProperties": false
-                      }
-                    },
-                    "creation": {
-                      "type": "object",
-                      "properties": {
-                        "enabled": {
-                          "type": "boolean",
-                          "description": "Enable conversation creation"
-                        },
-                        "requiredTags": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          },
-                          "description": "The list of tags that are required to be specified when calling the API directly to create a conversation."
-                        }
-                      },
-                      "required": [
-                        "enabled",
-                        "requiredTags"
-                      ],
-                      "description": "The conversation creation setting determines how to create a conversation through the API directly. The integration will have to implement the `createConversation` functionality to support this setting.",
-                      "additionalProperties": false
-                    }
-                  },
-                  "required": [
-                    "tags",
-                    "creation"
-                  ],
-                  "description": "Conversation object configuration",
-                  "additionalProperties": false
-                },
-                "message": {
-                  "type": "object",
-                  "properties": {
-                    "tags": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "object",
-                        "properties": {
-                          "title": {
-                            "type": "string",
-                            "maxLength": 64,
-                            "description": "Title of the tag"
-                          },
-                          "description": {
-                            "type": "string",
-                            "maxLength": 256,
-                            "description": "Description of the tag"
-                          }
-                        },
-                        "description": "Definition of a tag that can be provided on the object",
-                        "additionalProperties": false
-                      }
-                    }
-                  },
-                  "required": [
-                    "tags"
-                  ],
-                  "description": "Message object configuration",
-                  "additionalProperties": false
-                }
-              },
-              "required": [
-                "messages",
-                "conversation",
-                "message"
-              ],
-              "description": "Channel definition",
-              "additionalProperties": false
-            }
-          },
-          "states": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "conversation",
-                    "user",
-                    "integration"
-                  ],
-                  "description": "Type of the [State](#schema_state) (`conversation`, `user` or `integration`)"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "description": "Schema of the [State](#schema_state) in the `JSON schema` format. This `JSON schema` is going to be used for validating the state data."
-                }
-              },
-              "required": [
-                "type",
-                "schema"
-              ],
-              "description": "State definition",
-              "additionalProperties": false
-            }
-          },
-          "events": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the event"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the event"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "required": [
-                "schema"
-              ],
-              "description": "Event Definition",
-              "additionalProperties": false
-            }
-          },
-          "actions": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the action"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the action"
-                },
-                "billable": {
-                  "type": "boolean"
-                },
-                "cacheable": {
-                  "type": "boolean"
-                },
-                "input": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                },
-                "output": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                }
-              },
-              "required": [
-                "input",
-                "output"
-              ],
-              "description": "Action definition",
-              "additionalProperties": false
-            }
-          },
-          "user": {
-            "type": "object",
-            "properties": {
-              "tags": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "maxLength": 64,
-                      "description": "Title of the tag"
-                    },
-                    "description": {
-                      "type": "string",
-                      "maxLength": 256,
-                      "description": "Description of the tag"
-                    }
-                  },
-                  "description": "Definition of a tag that can be provided on the object",
-                  "additionalProperties": false
-                }
-              },
-              "creation": {
-                "type": "object",
-                "properties": {
-                  "enabled": {
-                    "type": "boolean",
-                    "description": "Enable user creation"
-                  },
-                  "requiredTags": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "The list of tags that are required to be specified when calling the API directly to create a user."
-                  }
-                },
-                "required": [
-                  "enabled",
-                  "requiredTags"
-                ],
-                "description": "The user creation setting determines how to create a user through the API directly. The integration will have to implement the `createUser` functionality to support this setting.",
-                "additionalProperties": false
-              }
-            },
-            "required": [
-              "tags",
-              "creation"
-            ],
-            "description": "User object configuration",
-            "additionalProperties": false
-          },
-          "entities": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the entity"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the entity"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "required": [
-                "schema"
-              ],
-              "description": "Entity definition",
-              "additionalProperties": false
-            }
-          },
-          "dev": {
-            "type": "boolean",
-            "description": "Indicates whether the integration is a development integration; Dev integrations run locally"
-          },
-          "title": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 64,
-            "description": "Title of the integration. This is the name that will be displayed in the UI"
-          },
-          "description": {
-            "type": "string",
-            "maxLength": 256,
-            "description": "Description of the integration. This is the description that will be displayed in the UI"
-          },
-          "iconUrl": {
-            "type": "string",
-            "description": "URL of the icon of the integration. This is the icon that will be displayed in the UI"
-          },
-          "readmeUrl": {
-            "type": "string",
-            "description": "URL of the readme of the integration. This is the readme that will be displayed in the UI"
-          },
-          "public": {
-            "type": "boolean",
-            "description": "Indicates whether the integration is public. Public integrations are available to all and cannot be updated without creating a new version."
-          },
-          "verificationStatus": {
-            "type": "string",
-            "enum": [
-              "unapproved",
-              "pending",
-              "approved",
-              "rejected"
-            ],
-            "description": "Status of the integration version verification"
-          },
-          "secrets": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Secrets are integration-wide values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "identifier",
-          "url",
-          "name",
-          "version",
-          "interfaces",
-          "configuration",
-          "configurations",
-          "channels",
-          "states",
-          "events",
-          "actions",
-          "user",
-          "entities",
-          "dev",
-          "title",
-          "description",
-          "iconUrl",
-          "readmeUrl",
-          "public",
-          "verificationStatus",
-          "secrets"
-        ],
-        "additionalProperties": false
-      },
-      "Interface": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Interface](#schema_interface)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Interface](#schema_interface) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [Interface](#schema_interface) in ISO 8601 format"
-          },
-          "name": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Name of the [Interface](#schema_interface)"
-          },
-          "version": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Version of the [Interface](#schema_interface)"
-          },
-          "entities": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the entity"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the entity"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "required": [
-                "schema"
-              ],
-              "description": "Entity definition",
-              "additionalProperties": false
-            }
-          },
-          "events": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the event"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the event"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "required": [
-                "schema"
-              ],
-              "description": "Event Definition",
-              "additionalProperties": false
-            }
-          },
-          "actions": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the action"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the action"
-                },
-                "billable": {
-                  "type": "boolean"
-                },
-                "cacheable": {
-                  "type": "boolean"
-                },
-                "input": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                },
-                "output": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                }
-              },
-              "required": [
-                "input",
-                "output"
-              ],
-              "description": "Action definition",
-              "additionalProperties": false
-            }
-          },
-          "channels": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the channel"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the channel"
-                },
-                "messages": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "object",
-                    "properties": {
-                      "schema": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
-                    },
-                    "required": [
-                      "schema"
-                    ],
-                    "description": "Message definition",
-                    "additionalProperties": false
-                  }
-                }
-              },
-              "required": [
-                "messages"
-              ],
-              "additionalProperties": false
-            }
-          },
-          "nameTemplate": {
-            "type": "object",
-            "properties": {
-              "script": {
-                "type": "string",
-                "maxLength": 2000
-              },
-              "language": {
-                "type": "string",
-                "maxLength": 200
-              }
-            },
-            "required": [
-              "script",
-              "language"
-            ],
-            "description": "Template string optionally used at build time by integrations implementing this interface to pick a name for actions and events.",
-            "additionalProperties": false
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "name",
-          "version",
-          "entities",
-          "events",
-          "actions",
-          "channels"
-        ],
-        "additionalProperties": false
-      },
-      "Plugin": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Plugin](#schema_plugin)"
-          },
-          "name": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Name of the [Plugin](#schema_plugin)"
-          },
-          "version": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Version of the [Plugin](#schema_plugin)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Plugin](#schema_plugin) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [Plugin](#schema_plugin) in ISO 8601 format"
-          },
-          "configuration": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string",
-                "maxLength": 64,
-                "description": "Title of the configuration"
-              },
-              "description": {
-                "type": "string",
-                "maxLength": 256,
-                "description": "Description of the configuration"
-              },
-              "schema": {
-                "type": "object",
-                "additionalProperties": true,
-                "description": "Schema of the configuration in the `JSON schema` format. The configuration data is validated against this `JSON schema`."
-              }
-            },
-            "required": [
-              "schema"
-            ],
-            "description": "Configuration definition",
-            "additionalProperties": false
-          },
-          "states": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": [
-                    "conversation",
-                    "user",
-                    "bot",
-                    "task"
-                  ],
-                  "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "description": "Schema of the [State](#schema_state) in the `JSON schema` format. This `JSON schema` is going to be used for validating the state data."
-                },
-                "expiry": {
-                  "type": "number",
-                  "minimum": 1,
-                  "description": "Expiry of the [State](#schema_state) in milliseconds. The state will expire if it is idle for the configured value. By default, a state doesn't expire."
-                }
-              },
-              "required": [
-                "type",
-                "schema"
-              ],
-              "additionalProperties": false
-            }
-          },
-          "events": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the event"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the event"
-                },
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
-              },
-              "required": [
-                "schema"
-              ],
-              "description": "Event Definition",
-              "additionalProperties": false
-            }
-          },
-          "actions": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 64,
-                  "description": "Title of the action"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 256,
-                  "description": "Description of the action"
-                },
-                "billable": {
-                  "type": "boolean"
-                },
-                "cacheable": {
-                  "type": "boolean"
-                },
-                "input": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                },
-                "output": {
-                  "type": "object",
-                  "properties": {
-                    "schema": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "required": [
-                    "schema"
-                  ],
-                  "additionalProperties": false
-                }
-              },
-              "required": [
-                "input",
-                "output"
-              ],
-              "description": "Action definition",
-              "additionalProperties": false
-            }
-          },
-          "dependencies": {
-            "type": "object",
-            "properties": {
-              "interfaces": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "minLength": 28,
-                      "maxLength": 36
-                    },
-                    "name": {
-                      "type": "string",
-                      "maxLength": 200
-                    },
-                    "version": {
-                      "type": "string",
-                      "maxLength": 200
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "version"
-                  ],
-                  "additionalProperties": false
-                }
-              },
-              "integrations": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "minLength": 28,
-                      "maxLength": 36
-                    },
-                    "name": {
-                      "type": "string",
-                      "maxLength": 200
-                    },
-                    "version": {
-                      "type": "string",
-                      "maxLength": 200
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "version"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "interfaces",
-              "integrations"
-            ],
-            "additionalProperties": false
-          },
-          "user": {
-            "type": "object",
-            "properties": {
-              "tags": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "maxLength": 64,
-                      "description": "Title of the tag"
-                    },
-                    "description": {
-                      "type": "string",
-                      "maxLength": 256,
-                      "description": "Description of the tag"
-                    }
-                  },
-                  "description": "Definition of a tag that can be provided on the object",
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "tags"
-            ],
-            "description": "User object configuration",
-            "additionalProperties": false
-          },
-          "conversation": {
-            "type": "object",
-            "properties": {
-              "tags": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "maxLength": 64,
-                      "description": "Title of the tag"
-                    },
-                    "description": {
-                      "type": "string",
-                      "maxLength": 256,
-                      "description": "Description of the tag"
-                    }
-                  },
-                  "description": "Definition of a tag that can be provided on the object",
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "tags"
-            ],
-            "description": "Conversation object configuration",
-            "additionalProperties": false
-          },
-          "title": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 64,
-            "description": "Title of the plugin. This is the name that will be displayed in the UI"
-          },
-          "description": {
-            "type": "string",
-            "maxLength": 256,
-            "description": "Description of the plugin. This is the description that will be displayed in the UI"
-          },
-          "iconUrl": {
-            "type": "string",
-            "description": "URL of the icon of the plugin. This is the icon that will be displayed in the UI"
-          },
-          "readmeUrl": {
-            "type": "string",
-            "description": "URL of the readme of the plugin. This is the readme that will be displayed in the UI"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "version",
-          "createdAt",
-          "updatedAt",
-          "configuration",
-          "states",
-          "events",
-          "actions",
-          "dependencies",
-          "user",
-          "conversation",
-          "title",
-          "description",
-          "iconUrl",
-          "readmeUrl"
-        ],
-        "additionalProperties": false
-      },
-      "Workspace": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "ownerId": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          },
-          "botCount": {
-            "type": "number"
-          },
-          "billingVersion": {
-            "type": "string",
-            "enum": [
-              "v1",
-              "v2",
-              "v3"
-            ]
-          },
-          "plan": {
-            "type": "string",
-            "enum": [
-              "community",
-              "team",
-              "enterprise",
-              "plus"
-            ]
-          },
-          "blocked": {
-            "type": "boolean"
-          },
-          "spendingLimit": {
-            "type": "number"
-          },
-          "about": {
-            "default": "",
-            "type": "string"
-          },
-          "profilePicture": {
-            "default": "",
-            "type": "string"
-          },
-          "contactEmail": {
-            "default": "",
-            "type": "string"
-          },
-          "website": {
-            "default": "",
-            "type": "string"
-          },
-          "socialAccounts": {
-            "default": [],
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "isPublic": {
-            "type": "boolean"
-          },
-          "handle": {
-            "default": "",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "ownerId",
-          "createdAt",
-          "updatedAt",
-          "botCount",
-          "billingVersion",
-          "plan",
-          "blocked",
-          "spendingLimit"
-        ],
-        "title": "updateWorkspaceResponse",
-        "additionalProperties": false
-      },
-      "WorkspaceMember": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "email": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "viewer",
-              "billing",
-              "developer",
-              "manager",
-              "administrator",
-              "owner"
-            ]
-          },
-          "profilePicture": {
-            "type": "string"
-          },
-          "displayName": {
-            "type": "string",
-            "maxLength": 100
-          }
-        },
-        "required": [
-          "id",
-          "email",
-          "createdAt",
-          "role"
-        ],
-        "title": "updateWorkspaceMemberResponse",
-        "additionalProperties": false
-      },
-      "Account": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "displayName": {
-            "type": "string",
-            "maxLength": 100
-          },
-          "emailVerified": {
-            "type": "boolean"
-          },
-          "profilePicture": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Account](#schema_account) in ISO 8601 format"
-          }
-        },
-        "required": [
-          "id",
-          "email",
-          "emailVerified",
-          "createdAt"
-        ],
-        "additionalProperties": false
-      },
-      "Usage": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "ID of the usage that it is linked to. It can either be a workspace id or a bot id"
-          },
-          "period": {
-            "type": "string",
-            "description": "Period of the quota that it is applied to"
-          },
-          "value": {
-            "type": "number",
-            "description": "Value of the current usage"
-          },
-          "quota": {
-            "type": "number",
-            "description": "Quota of the current usage"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "invocation_timeout",
-              "invocation_calls",
-              "storage_count",
-              "bot_count",
-              "knowledgebase_vector_storage",
-              "workspace_ratelimit",
-              "table_row_count",
-              "workspace_member_count",
-              "integrations_owned_count",
-              "ai_spend",
-              "openai_spend",
-              "bing_search_spend",
-              "always_alive"
-            ],
-            "description": "Usage type that can be used"
-          }
-        },
-        "required": [
-          "id",
-          "period",
-          "value",
-          "quota",
-          "type"
-        ],
-        "additionalProperties": false
-      },
-      "Issue": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastSeenAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "groupedData": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "raw": {
-                  "type": "string"
-                },
-                "pretty": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "raw"
-              ],
-              "additionalProperties": false
-            }
-          },
-          "eventsCount": {
-            "type": "number"
-          },
-          "category": {
-            "type": "string",
-            "enum": [
-              "user_code",
-              "limits",
-              "configuration",
-              "other"
-            ]
-          },
-          "resolutionLink": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "required": [
-          "id",
-          "code",
-          "createdAt",
-          "lastSeenAt",
-          "title",
-          "description",
-          "groupedData",
-          "eventsCount",
-          "category",
-          "resolutionLink"
-        ],
-        "additionalProperties": false
-      },
-      "IssueEvent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "data": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "raw": {
-                  "type": "string"
-                },
-                "pretty": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "raw"
-              ],
-              "additionalProperties": false
-            }
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "data"
-        ],
-        "additionalProperties": false
-      },
-      "Activity": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "taskId": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string",
-            "enum": [
-              "unknown",
-              "capture",
-              "bot_message",
-              "user_message",
-              "agent_message",
-              "event",
-              "action",
-              "task_status",
-              "subtask_status",
-              "exception"
-            ]
-          },
-          "data": {
-            "type": "object",
-            "additionalProperties": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the activity in ISO 8601 format"
-          }
-        },
-        "required": [
-          "id",
-          "description",
-          "taskId",
-          "category",
-          "data",
-          "createdAt"
-        ],
-        "additionalProperties": false
-      },
-      "Version": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name"
-        ],
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [User](#schema_user)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [User](#schema_user) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [User](#schema_user) in ISO 8601 format"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [User](#schema_user). The set of [Tags](/docs/developers/concepts/tags) available on a [User](#schema_user) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
-          },
-          "name": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Name of the [User](#schema_user)"
-          },
-          "pictureUrl": {
-            "type": "string",
-            "maxLength": 40000,
-            "description": "Picture URL of the [User](#schema_user)"
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "tags"
-        ],
-        "description": "The user object represents someone interacting with the bot within a specific integration. The same person interacting with a bot in slack and messenger will be represented with two different users.",
-        "additionalProperties": false
-      },
-      "Conversation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Conversation](#schema_conversation)"
-          },
-          "currentTaskId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the current [Task](#schema_task)"
-          },
-          "currentWorkflowId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the current [Workflow](#schema_workflow)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Conversation](#schema_conversation) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [Conversation](#schema_conversation) in ISO 8601 format"
-          },
-          "channel": {
-            "type": "string",
-            "description": "Name of the channel where the [Conversation](#schema_conversation) is happening"
-          },
-          "integration": {
-            "type": "string",
-            "description": "Name of the integration that created the [Conversation](#schema_conversation)"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Conversation](#schema_conversation). The set of [Tags](/docs/developers/concepts/tags) available on a [Conversation](#schema_conversation) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "channel",
-          "integration",
-          "tags"
-        ],
-        "description": "The [Conversation](#schema_conversation) object represents an exchange of messages between one or more users. A [Conversation](#schema_conversation) is always linked to an integration's channels. For example, a Slack channel represents a conversation.",
-        "additionalProperties": false
-      },
-      "Event": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Event](#schema_event)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Event](#schema_event) in ISO 8601 format"
-          },
-          "type": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Type of the [Event](#schema_event)."
-          },
-          "payload": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Payload is the content of the event defined by the integration installed on your bot or one of the default events created by our api."
-          },
-          "conversationId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Conversation](#schema_conversation) to link the event to."
-          },
-          "userId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [User](#schema_user) to link the event to."
-          },
-          "messageId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Message](#schema_message) to link the event to."
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "processed",
-              "ignored",
-              "failed",
-              "scheduled"
-            ]
-          },
-          "failureReason": {
-            "type": "string",
-            "maxLength": 2000,
-            "nullable": true,
-            "description": "Reason why the event failed to be processed"
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "type",
-          "payload",
-          "status",
-          "failureReason"
-        ],
-        "description": "The event object represents an action or an occurrence.",
-        "additionalProperties": false
-      },
-      "Message": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Message](#schema_message)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Message](#schema_message) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Update date of the [Message](#schema_message) in ISO 8601 format"
-          },
-          "type": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Type of the [Message](#schema_message) represents the resource type that the message is related to"
-          },
-          "payload": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Payload is the content type of the message. Accepted payload options: Text, Image, Choice, Dropdown, Card, Carousel, File, Audio, Video, Location"
-          },
-          "direction": {
-            "type": "string",
-            "enum": [
-              "incoming",
-              "outgoing"
-            ],
-            "description": "Direction of the message (`incoming` or `outgoing`)."
-          },
-          "userId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [User](#schema_user)"
-          },
-          "conversationId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Conversation](#schema_conversation)"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Conversation](#schema_conversation). The set of [Tags](/docs/developers/concepts/tags) available on a [Conversation](#schema_conversation) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "type",
-          "payload",
-          "direction",
-          "userId",
-          "conversationId",
-          "tags"
-        ],
-        "description": "The Message object represents a message in a [Conversation](#schema_conversation) for a specific [User](#schema_user).",
-        "additionalProperties": false
-      },
-      "State": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [State](#schema_state)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [State](#schema_state) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [State](#schema_state) in ISO 8601 format"
-          },
-          "botId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Bot](#schema_bot)"
-          },
-          "conversationId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Conversation](#schema_conversation)"
-          },
-          "userId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [User](#schema_user)"
-          },
-          "name": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Name of the [State](#schema_state) which is declared inside the bot definition"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "conversation",
-              "user",
-              "bot",
-              "task",
-              "integration",
-              "workflow"
-            ],
-            "description": "Type of the [State](#schema_state) represents the resource type (`conversation`, `user`, `bot`, `task`, `integration` or `workflow`) that the state is related to"
-          },
-          "payload": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Payload is the content of the state defined by your bot."
-          }
-        },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "botId",
-          "name",
-          "type",
-          "payload"
-        ],
-        "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation, or a user.",
-        "additionalProperties": false
-      },
-      "Task": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Task](#schema_task)"
-          },
-          "title": {
-            "type": "string",
-            "maxLength": 64,
-            "description": "Title describing the task"
-          },
-          "description": {
-            "type": "string",
-            "maxLength": 256,
-            "description": "All the notes related to the execution of the current task"
-          },
-          "type": {
-            "type": "string",
-            "description": "Type of the task"
-          },
-          "data": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Content related to the task"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "in_progress",
-              "failed",
-              "completed",
-              "blocked",
-              "paused",
-              "timeout",
-              "cancelled"
-            ],
-            "description": "Status of the task"
-          },
-          "parentTaskId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Parent task id is the parent task that created this task"
-          },
-          "conversationId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Conversation id related to this task"
-          },
-          "userId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Specific user related to this task"
-          },
-          "timeoutAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The timeout date where the task should be failed in the ISO 8601 format"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the task in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the task in ISO 8601 format"
-          },
-          "failureReason": {
-            "type": "string",
-            "maxLength": 2000,
-            "description": "If the task fails this is the reason behind it"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Task](#schema_task). Individual keys can be unset by posting an empty value to them."
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "description",
-          "type",
-          "data",
-          "status",
-          "timeoutAt",
-          "createdAt",
-          "updatedAt",
-          "tags"
-        ],
-        "description": "Task definition",
-        "additionalProperties": false
-      },
-      "Workflow": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "ID of the [Workflow](#schema_workflow)"
-          },
-          "name": {
-            "type": "string",
-            "maxLength": 200,
-            "description": "Name of the workflow"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "in_progress",
-              "failed",
-              "completed",
-              "listening",
-              "paused",
-              "timedout",
-              "cancelled"
-            ],
-            "description": "Status of the [Workflow](#schema_workflow)"
-          },
-          "input": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Input provided to the [Workflow](#schema_workflow)"
-          },
-          "output": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Data returned by the [Workflow](#schema_workflow) output"
-          },
-          "parentWorkflowId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Parent [Workflow](#schema_workflow) id is the parent [Workflow](#schema_workflow) that created this [Workflow](#schema_workflow)"
-          },
-          "conversationId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Conversation id related to this [Workflow](#schema_workflow)"
-          },
-          "userId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "User id related to this [Workflow](#schema_workflow)"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the [Workflow](#schema_workflow) in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the [Workflow](#schema_workflow) in ISO 8601 format"
-          },
-          "completedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The date when the [Workflow](#schema_workflow) completed in ISO 8601 format"
-          },
-          "failureReason": {
-            "type": "string",
-            "maxLength": 2000,
-            "description": "If the [Workflow](#schema_workflow) fails this is the reason behind it"
-          },
-          "timeoutAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The timeout date when the [Workflow](#schema_workflow) will fail in the ISO 8601 format"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Workflow](#schema_workflow). Individual keys can be unset by posting an empty value to them."
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "status",
-          "input",
-          "output",
-          "createdAt",
-          "updatedAt",
-          "timeoutAt",
-          "tags"
-        ],
-        "description": "Workflow definition",
-        "additionalProperties": false
-      },
       "Table": {
         "type": "object",
         "properties": {
@@ -3248,11 +1616,11 @@
                         },
                         "searchable": {
                           "type": "boolean",
-                          "description": "Indicates whether the column is vectorized and searchable."
+                          "description": "Indicates if the column is vectorized and searchable."
                         },
                         "hidden": {
                           "type": "boolean",
-                          "description": "Indicates whether the field is hidden in the UI"
+                          "description": "Indicates if the field is hidden in the UI"
                         },
                         "order": {
                           "type": "number",
@@ -3368,7 +1736,7 @@
           },
           "isComputeEnabled": {
             "type": "boolean",
-            "description": "Indicates whether the table is enabled for computation."
+            "description": "Indicates if the table is enabled for computation."
           },
           "createdAt": {
             "type": "string",
@@ -3407,7 +1775,7 @@
           },
           "searchable": {
             "type": "boolean",
-            "description": "Indicates whether the column is vectorized and searchable."
+            "description": "Indicates if the column is vectorized and searchable."
           },
           "type": {
             "type": "string",
@@ -3539,110 +1907,6 @@
           "computed"
         ],
         "additionalProperties": true
-      },
-      "File": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "File ID"
-          },
-          "botId": {
-            "type": "string",
-            "description": "The ID of the bot to which the file belongs"
-          },
-          "key": {
-            "type": "string",
-            "description": "Unique key for the file. Must be unique across the bot (and the integration, when applicable)."
-          },
-          "url": {
-            "type": "string",
-            "description": "URL to retrieve the file content. This URL will be ready to use once the file is uploaded.\n\nIf the file has a `public_content` policy, this will contain the permanent public URL to retrieve the file; otherwise, this will contain a temporary pre-signed URL to download the file which should be used shortly after retrieving and should not be stored long-term as the URL will expire after a short timeframe."
-          },
-          "size": {
-            "type": "number",
-            "description": "File size in bytes. Non-null if file upload status is \"COMPLETE\".",
-            "nullable": true
-          },
-          "contentType": {
-            "type": "string",
-            "description": "MIME type of the file's content"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "maxLength": 1000
-            },
-            "description": "The tags of the file as an object of key/value pairs"
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "nullable": true
-            },
-            "description": "Metadata of the file as an object of key/value pairs. The values can be of any type."
-          },
-          "createdAt": {
-            "type": "string",
-            "description": "File creation timestamp in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "description": "File last update timestamp in ISO 8601 format"
-          },
-          "accessPolicies": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "integrations",
-                "public_content"
-              ]
-            },
-            "description": "Access policies configured for the file."
-          },
-          "index": {
-            "type": "boolean",
-            "description": "Whether the file was requested to be indexed for search or not."
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "upload_pending",
-              "upload_failed",
-              "upload_completed",
-              "indexing_pending",
-              "indexing_failed",
-              "indexing_completed"
-            ],
-            "description": "Status of the file. If the status is `upload_pending`, the file content has not been uploaded yet. The status will be set to `upload_completed` once the file content has been uploaded successfully.\n\nIf the upload failed for any reason (e.g. exceeding the storage quota or the maximum file size limit) the status will be set to `upload_failed` and the reason for the failure will be available in the `failedStatusReason` field of the file.\n\nHowever, if the file has been uploaded and the `index` attribute was set to `true` on the file, the status will immediately transition to the `indexing_pending` status (the `upload_completed` status step will be skipped).\n\nOnce the indexing is completed and the file is ready to be used for searching its status will be set to `indexing_completed`. If the indexing failed the status will be set to `indexing_failed` and the reason for the failure will be available in the `failedStatusReason` field."
-          },
-          "failedStatusReason": {
-            "type": "string",
-            "description": "If the file status is `upload_failed` or `indexing_failed` this will contain the reason of the failure."
-          },
-          "expiresAt": {
-            "type": "string",
-            "description": "File expiry timestamp in ISO 8601 format"
-          }
-        },
-        "required": [
-          "id",
-          "botId",
-          "key",
-          "url",
-          "size",
-          "contentType",
-          "tags",
-          "metadata",
-          "createdAt",
-          "updatedAt",
-          "accessPolicies",
-          "index",
-          "status"
-        ],
-        "additionalProperties": false
       }
     },
     "responses": {
@@ -4325,7 +2589,7 @@
                 },
                 "isComputeEnabled": {
                   "type": "boolean",
-                  "description": "Indicates whether the table is enabled for computation."
+                  "description": "Indicates if the table is enabled for computation."
                 }
               },
               "required": [
@@ -4374,7 +2638,7 @@
                 },
                 "isComputeEnabled": {
                   "type": "boolean",
-                  "description": "Indicates whether the table is enabled for computation."
+                  "description": "Indicates if the table is enabled for computation."
                 }
               },
               "required": [
@@ -4463,7 +2727,7 @@
                 },
                 "isComputeEnabled": {
                   "type": "boolean",
-                  "description": "Indicates whether the table is enabled for computation."
+                  "description": "Indicates if the table is enabled for computation."
                 }
               },
               "title": "updateTableBody",
@@ -4535,6 +2799,13 @@
                   "maxLength": 1024,
                   "description": "Search term to apply to the row search. When using this parameter, some rows which doesn't match the search term will be returned, use the similarity field to know how much the row matches the search term. "
                 },
+                "select": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Specify which columns to return in the response. Supports both top-level columns (e.g., \"name\") and nested attributes using dot notation (e.g., \"attributes.price\"). System columns (id, createdAt, updatedAt, etc.) are always included. If omitted, all columns are returned."
+                },
                 "orderBy": {
                   "default": "id",
                   "type": "string",
@@ -4597,7 +2868,8 @@
                 "ids": {
                   "type": "array",
                   "items": {
-                    "type": "number"
+                    "type": "number",
+                    "maximum": 2147483647
                   },
                   "maxItems": 1000
                 },
@@ -4630,7 +2902,8 @@
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "number"
+                        "type": "number",
+                        "maximum": 2147483647
                       }
                     },
                     "required": [
@@ -4669,7 +2942,8 @@
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "number"
+                        "type": "number",
+                        "maximum": 2147483647
                       }
                     },
                     "additionalProperties": true
@@ -4699,12 +2973,22 @@
         }
       }
     },
-    "parameters": {}
+    "parameters": {},
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
   },
   "security": [
-      {
-        "BearerAuth": [],
-        "BotIdHeader": []
-      }
-    ]
+    {
+      "BearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "documented"
+    }
+  ]
 }

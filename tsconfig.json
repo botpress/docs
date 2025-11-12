@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedParameters": true,
+    "checkJs": true,
+    "composite": true,
+    "incremental": true,
+    "exactOptionalPropertyTypes": false,
+    "resolveJsonModule": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUnusedLocals": false,
+    "importsNotUsedAsValues": "remove",
+    "noImplicitOverride": false,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "generate-api-reference.ts"
+  ],
+  "ts-node": {
+    "swc": true,
+    "transpileOnly": true
+  }
+}
