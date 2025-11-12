@@ -79,6 +79,9 @@
             "$ref": "#/components/responses/upsertFileResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/upsertFileBody"
         },
@@ -208,6 +211,9 @@
             "$ref": "#/components/responses/listFilesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listFiles"
@@ -292,6 +298,9 @@
             "$ref": "#/components/responses/deleteFileResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteFile"
@@ -374,6 +383,9 @@
             "$ref": "#/components/responses/getFileResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getFile"
@@ -456,6 +468,9 @@
             "$ref": "#/components/responses/updateFileMetadataResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateFileMetadataBody"
         },
@@ -560,6 +575,9 @@
             "$ref": "#/components/responses/copyFileResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/copyFileBody"
         },
@@ -693,6 +711,9 @@
             "$ref": "#/components/responses/searchFilesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "searchFiles"
@@ -793,6 +814,9 @@
             "$ref": "#/components/responses/listFilePassagesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listFilePassages"
@@ -883,7 +907,10 @@
             "title": "setFilePassages"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/files/tags": {
@@ -962,6 +989,9 @@
             "$ref": "#/components/responses/listFileTagsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listFileTags"
@@ -1054,6 +1084,9 @@
             "$ref": "#/components/responses/listFileTagValuesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listFileTagValues"
@@ -1137,7 +1170,10 @@
             "title": "createKnowledgeBase"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "listKnowledgeBases",
@@ -1225,7 +1261,10 @@
             "title": "listKnowledgeBases"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/files/knowledge-bases/{id}": {
@@ -1310,7 +1349,10 @@
             "title": "deleteKnowledgeBase"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "put": {
         "operationId": "updateKnowledgeBase",
@@ -1396,7 +1438,10 @@
             "title": "updateKnowledgeBase"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     }
   },

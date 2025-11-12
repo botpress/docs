@@ -38,9 +38,10 @@ const postProcessOperation = (operation: Operation) => {
     operation.description = EXPERIMENTAL_CALLOUT + '\n' + (operation.description || '')
     operation.tags = operation.tags?.filter((tag) => tag !== 'expermimental')
   }
-  if (operation.tags?.length === 0) {
-    delete operation.tags
+  if (!operation.tags) {
+    operation.tags = []
   }
+  operation.tags.push('Endpoints')
   return operation
 }
 

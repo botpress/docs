@@ -51,7 +51,10 @@
             "title": "runVrl"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/account/me": {
@@ -77,6 +80,9 @@
             "$ref": "#/components/responses/getAccountResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getAccount"
@@ -105,6 +111,9 @@
             "$ref": "#/components/responses/updateAccountResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateAccountBody"
         },
@@ -144,7 +153,10 @@
             "title": "deleteAccount"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/account/pats": {
@@ -175,7 +187,10 @@
             "title": "listPersonalAccessTokens"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "post": {
         "operationId": "createPersonalAccessToken",
@@ -207,7 +222,10 @@
             "title": "createPersonalAccessToken"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/account/pats/{id}": {
@@ -247,7 +265,10 @@
             "title": "deletePersonalAccessToken"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/account/preferences/{key}": {
@@ -290,7 +311,10 @@
             "title": "setAccountPreference"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "getAccountPreference",
@@ -328,7 +352,10 @@
             "title": "getAccountPreference"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/integrations": {
@@ -461,6 +488,9 @@
             "$ref": "#/components/responses/listPublicIntegrationsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listPublicIntegrations"
@@ -500,6 +530,9 @@
             "$ref": "#/components/responses/getPublicIntegrationByIdResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getPublicIntegrationById"
@@ -548,6 +581,9 @@
             "$ref": "#/components/responses/getPublicIntegrationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getPublicIntegration"
@@ -607,7 +643,10 @@
             "title": "listPublicPlugins"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/plugins/{id}": {
@@ -647,7 +686,10 @@
             "title": "getPublicPluginById"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/plugins/{id}/dereferenced": {
@@ -701,7 +743,10 @@
             "title": "getDereferencedPublicPluginById"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/plugins/{name}/{version}": {
@@ -750,7 +795,10 @@
             "title": "getPublicPlugin"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/plugins/{id}/code/{platform}": {
@@ -803,7 +851,10 @@
             "title": "getPublicPluginCode"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/interfaces": {
@@ -858,7 +909,10 @@
             "title": "listPublicInterfaces"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/interfaces/{id}": {
@@ -898,7 +952,10 @@
             "title": "getPublicInterfaceById"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/hub/interfaces/{name}/{version}": {
@@ -947,7 +1004,10 @@
             "title": "getPublicInterface"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots": {
@@ -982,6 +1042,9 @@
             "$ref": "#/components/responses/createBotResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createBotBody"
         },
@@ -1074,6 +1137,9 @@
             "$ref": "#/components/responses/listBotsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listBots"
@@ -1122,6 +1188,9 @@
             "$ref": "#/components/responses/updateBotResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateBotBody"
         },
@@ -1180,6 +1249,9 @@
             "$ref": "#/components/responses/getBotResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getBot"
@@ -1226,6 +1298,9 @@
             "$ref": "#/components/responses/deleteBotResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteBot"
@@ -1282,7 +1357,10 @@
             "title": "transferBot"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/logs": {
@@ -1398,6 +1476,9 @@
             "$ref": "#/components/responses/getBotLogsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getBotLogs"
@@ -1466,7 +1547,10 @@
             "title": "getBotWebchat"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/analytics": {
@@ -1528,6 +1612,9 @@
             "$ref": "#/components/responses/getBotAnalyticsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getBotAnalytics"
@@ -1614,7 +1701,10 @@
             "title": "listActionRuns"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/issues/{issueId}": {
@@ -1667,6 +1757,9 @@
             "$ref": "#/components/responses/getBotIssueResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getBotIssue"
@@ -1722,6 +1815,9 @@
             "$ref": "#/components/responses/deleteBotIssueResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteBotIssue"
@@ -1778,6 +1874,9 @@
             "$ref": "#/components/responses/listBotIssuesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listBotIssues"
@@ -1835,6 +1934,9 @@
             "$ref": "#/components/responses/listBotIssueEventsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listBotIssueEvents"
@@ -1888,7 +1990,10 @@
             "title": "listBotVersions"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "post": {
         "operationId": "createBotVersion",
@@ -1938,7 +2043,10 @@
             "title": "createBotVersion"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/versions/{versionId}": {
@@ -1996,7 +2104,10 @@
             "title": "getBotVersion"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/bot-json": {
@@ -2045,7 +2156,10 @@
             "title": "getBotJson"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/publish-from-bot-json": {
@@ -2097,7 +2211,10 @@
             "title": "publishFromBotJson"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{id}/versions/deploy": {
@@ -2149,7 +2266,10 @@
             "title": "deployBotVersion"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{botId}/integrations/{integrationId}/shareable-id": {
@@ -2211,7 +2331,8 @@
           }
         },
         "tags": [
-          "experimental"
+          "experimental",
+          "Endpoints"
         ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createIntegrationShareableIdBody"
@@ -2281,7 +2402,8 @@
           }
         },
         "tags": [
-          "experimental"
+          "experimental",
+          "Endpoints"
         ],
         "x-mint": {
           "metadata": {
@@ -2348,7 +2470,8 @@
           }
         },
         "tags": [
-          "experimental"
+          "experimental",
+          "Endpoints"
         ],
         "x-mint": {
           "metadata": {
@@ -2417,7 +2540,8 @@
           }
         },
         "tags": [
-          "experimental"
+          "experimental",
+          "Endpoints"
         ],
         "x-mint": {
           "metadata": {
@@ -2473,7 +2597,10 @@
             "title": "listBotApiKeys"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "post": {
         "operationId": "createBotApiKey",
@@ -2514,7 +2641,10 @@
             "title": "createBotApiKey"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/baks/{id}": {
@@ -2563,7 +2693,10 @@
             "title": "deleteBotApiKey"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/bots/{botId}/allowlist": {
@@ -2612,7 +2745,10 @@
             "title": "getBotAllowlist"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "put": {
         "operationId": "updateBotAllowlist",
@@ -2662,7 +2798,10 @@
             "title": "updateBotAllowlist"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/{id}/billing/invoices": {
@@ -2702,7 +2841,10 @@
             "title": "listWorkspaceInvoices"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/{id}/billing/upcoming-invoice": {
@@ -2742,7 +2884,10 @@
             "title": "getUpcomingInvoice"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/{id}/billing/invoices/charge-unpaid": {
@@ -2785,7 +2930,10 @@
             "title": "chargeWorkspaceUnpaidInvoices"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces": {
@@ -2811,6 +2959,9 @@
             "$ref": "#/components/responses/createWorkspaceResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createWorkspaceBody"
         },
@@ -2859,6 +3010,9 @@
             "$ref": "#/components/responses/listWorkspacesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listWorkspaces"
@@ -2898,6 +3052,9 @@
             "$ref": "#/components/responses/getPublicWorkspaceResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getPublicWorkspace"
@@ -2937,6 +3094,9 @@
             "$ref": "#/components/responses/getWorkspaceResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getWorkspace"
@@ -2974,6 +3134,9 @@
             "$ref": "#/components/responses/updateWorkspaceResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateWorkspaceBody"
         },
@@ -3014,6 +3177,9 @@
             "$ref": "#/components/responses/deleteWorkspaceResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteWorkspace"
@@ -3091,7 +3257,10 @@
             "title": "listWorkspaceUsages"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/{id}/usages/by-bot": {
@@ -3164,7 +3333,10 @@
             "title": "breakDownWorkspaceUsageByBot"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/usages/quota-completion": {
@@ -3195,7 +3367,10 @@
             "title": "getAllWorkspaceQuotaCompletion"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/{id}/quota": {
@@ -3268,7 +3443,10 @@
             "title": "getWorkspaceQuota"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/{id}/quotas": {
@@ -3317,7 +3495,10 @@
             "title": "listWorkspaceQuotas"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/handle-availability": {
@@ -3351,7 +3532,10 @@
             "title": "checkHandleAvailability"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspaces/public": {
@@ -3406,6 +3590,9 @@
             "$ref": "#/components/responses/listPublicWorkspacesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listPublicWorkspaces"
@@ -3453,6 +3640,9 @@
             "$ref": "#/components/responses/getAuditRecordsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getAuditRecords"
@@ -3500,7 +3690,10 @@
             "title": "setWorkspacePreference"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "getWorkspacePreference",
@@ -3538,7 +3731,10 @@
             "title": "getWorkspacePreference"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/workspace-members": {
@@ -3581,6 +3777,9 @@
             "$ref": "#/components/responses/listWorkspaceMembersResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listWorkspaceMembers"
@@ -3618,6 +3817,9 @@
             "$ref": "#/components/responses/createWorkspaceMemberResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createWorkspaceMemberBody"
         },
@@ -3660,6 +3862,9 @@
             "$ref": "#/components/responses/getWorkspaceMemberResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getWorkspaceMember"
@@ -3708,6 +3913,9 @@
             "$ref": "#/components/responses/deleteWorkspaceMemberResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteWorkspaceMember"
@@ -3754,6 +3962,9 @@
             "$ref": "#/components/responses/updateWorkspaceMemberResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateWorkspaceMemberBody"
         },
@@ -3810,7 +4021,10 @@
             "title": "listIntegrationApiKeys"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "post": {
         "operationId": "createIntegrationApiKey",
@@ -3851,7 +4065,10 @@
             "title": "createIntegrationApiKey"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/integrations/iaks/{id}": {
@@ -3900,7 +4117,10 @@
             "title": "deleteIntegrationApiKey"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/integrations": {
@@ -3935,6 +4155,9 @@
             "$ref": "#/components/responses/createIntegrationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createIntegrationBody"
         },
@@ -4103,6 +4326,9 @@
             "$ref": "#/components/responses/listIntegrationsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listIntegrations"
@@ -4142,6 +4368,9 @@
             "$ref": "#/components/responses/validateIntegrationCreationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/validateIntegrationCreationBody"
         },
@@ -4193,6 +4422,9 @@
             "$ref": "#/components/responses/updateIntegrationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateIntegrationBody"
         },
@@ -4242,6 +4474,9 @@
             "$ref": "#/components/responses/getIntegrationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getIntegration"
@@ -4288,6 +4523,9 @@
             "$ref": "#/components/responses/deleteIntegrationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteIntegration"
@@ -4336,6 +4574,9 @@
             "$ref": "#/components/responses/validateIntegrationUpdateResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/validateIntegrationUpdateBody"
         },
@@ -4450,6 +4691,9 @@
             "$ref": "#/components/responses/getIntegrationLogsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getIntegrationLogs"
@@ -4507,6 +4751,9 @@
             "$ref": "#/components/responses/getIntegrationByNameResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getIntegrationByName"
@@ -4554,7 +4801,10 @@
             "title": "requestIntegrationVerification"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/interfaces": {
@@ -4597,7 +4847,10 @@
             "title": "createInterface"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "listInterfaces",
@@ -4659,7 +4912,10 @@
             "title": "listInterfaces"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/interfaces/{id}": {
@@ -4708,7 +4964,10 @@
             "title": "getInterface"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "put": {
         "operationId": "updateInterface",
@@ -4758,7 +5017,10 @@
             "title": "updateInterface"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "delete": {
         "operationId": "deleteInterface",
@@ -4805,7 +5067,10 @@
             "title": "deleteInterface"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/interfaces/{name}/{version}": {
@@ -4863,7 +5128,10 @@
             "title": "getInterfaceByName"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/plugins": {
@@ -4906,7 +5174,10 @@
             "title": "createPlugin"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "listPlugins",
@@ -4968,7 +5239,10 @@
             "title": "listPlugins"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/plugins/{id}": {
@@ -5017,7 +5291,10 @@
             "title": "getPlugin"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "put": {
         "operationId": "updatePlugin",
@@ -5067,7 +5344,10 @@
             "title": "updatePlugin"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "delete": {
         "operationId": "deletePlugin",
@@ -5114,7 +5394,10 @@
             "title": "deletePlugin"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/plugins/{id}/dereferenced": {
@@ -5177,7 +5460,10 @@
             "title": "getDereferencedPlugin"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/plugins/{name}/{version}": {
@@ -5235,7 +5521,10 @@
             "title": "getPluginByName"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/plugins/{id}/code/{platform}": {
@@ -5297,7 +5586,10 @@
             "title": "getPluginCode"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/usages/{id}": {
@@ -5379,7 +5671,10 @@
             "title": "getUsage"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/usages/multiple": {
@@ -5443,7 +5738,10 @@
             "title": "getMultipleUsages"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/usages/{id}/history": {
@@ -5516,7 +5814,10 @@
             "title": "listUsageHistory"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/usages/{id}/activity": {
@@ -5613,7 +5914,10 @@
             "title": "listUsageActivity"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/usages/{id}/daily-activity": {
@@ -5710,7 +6014,10 @@
             "title": "listUsageActivityDaily"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/quotas/ai-spend": {
@@ -5753,7 +6060,10 @@
             "title": "changeAISpendQuota"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/activities": {
@@ -5810,7 +6120,10 @@
             "title": "listActivities"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/admin/introspect": {
@@ -5844,7 +6157,10 @@
             "title": "introspect"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     }
   },

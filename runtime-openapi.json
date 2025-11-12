@@ -52,6 +52,9 @@
             "$ref": "#/components/responses/createConversationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createConversationBody"
         },
@@ -171,6 +174,9 @@
             "$ref": "#/components/responses/listConversationsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listConversations"
@@ -228,6 +234,9 @@
             "$ref": "#/components/responses/getConversationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getConversation"
@@ -283,6 +292,9 @@
             "$ref": "#/components/responses/updateConversationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateConversationBody"
         },
@@ -341,6 +353,9 @@
             "$ref": "#/components/responses/deleteConversationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteConversation"
@@ -389,6 +404,9 @@
             "$ref": "#/components/responses/getOrCreateConversationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/getOrCreateConversationBody"
         },
@@ -457,6 +475,9 @@
             "$ref": "#/components/responses/listParticipantsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listParticipants"
@@ -512,6 +533,9 @@
             "$ref": "#/components/responses/addParticipantResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/addParticipantBody"
         },
@@ -581,6 +605,9 @@
             "$ref": "#/components/responses/getParticipantResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getParticipant"
@@ -645,6 +672,9 @@
             "$ref": "#/components/responses/removeParticipantResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "removeParticipant"
@@ -693,6 +723,9 @@
             "$ref": "#/components/responses/createEventResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createEventBody"
         },
@@ -805,6 +838,9 @@
             "$ref": "#/components/responses/listEventsResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listEvents"
@@ -862,6 +898,9 @@
             "$ref": "#/components/responses/getEventResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getEvent"
@@ -919,6 +958,9 @@
             "$ref": "#/components/responses/cancelScheduledEventResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "cancelScheduledEvent"
@@ -967,6 +1009,9 @@
             "$ref": "#/components/responses/createMessageResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createMessageBody"
         },
@@ -1043,6 +1088,9 @@
             "$ref": "#/components/responses/listMessagesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listMessages"
@@ -1091,6 +1139,9 @@
             "$ref": "#/components/responses/getOrCreateMessageResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/getOrCreateMessageBody"
         },
@@ -1151,6 +1202,9 @@
             "$ref": "#/components/responses/getMessageResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getMessage"
@@ -1206,6 +1260,9 @@
             "$ref": "#/components/responses/updateMessageResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateMessageBody"
         },
@@ -1264,6 +1321,9 @@
             "$ref": "#/components/responses/deleteMessageResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteMessage"
@@ -1312,6 +1372,9 @@
             "$ref": "#/components/responses/createUserResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/createUserBody"
         },
@@ -1388,6 +1451,9 @@
             "$ref": "#/components/responses/listUsersResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listUsers"
@@ -1445,6 +1511,9 @@
             "$ref": "#/components/responses/getUserResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getUser"
@@ -1500,6 +1569,9 @@
             "$ref": "#/components/responses/updateUserResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/updateUserBody"
         },
@@ -1558,6 +1630,9 @@
             "$ref": "#/components/responses/deleteUserResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "deleteUser"
@@ -1606,6 +1681,9 @@
             "$ref": "#/components/responses/getOrCreateUserResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/getOrCreateUserBody"
         },
@@ -1692,6 +1770,9 @@
             "$ref": "#/components/responses/setStateExpiryResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/setStateExpiryBody"
         },
@@ -1778,6 +1859,9 @@
             "$ref": "#/components/responses/getStateResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "getState"
@@ -1859,6 +1943,9 @@
             "$ref": "#/components/responses/setStateResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/setStateBody"
         },
@@ -1943,6 +2030,9 @@
             "$ref": "#/components/responses/patchStateResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/patchStateBody"
         },
@@ -2029,6 +2119,9 @@
             "$ref": "#/components/responses/getOrSetStateResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/getOrSetStateBody"
         },
@@ -2080,6 +2173,9 @@
             "$ref": "#/components/responses/callActionResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/callActionBody"
         },
@@ -2131,6 +2227,9 @@
             "$ref": "#/components/responses/configureIntegrationResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "requestBody": {
           "$ref": "#/components/requestBodies/configureIntegrationBody"
         },
@@ -2196,7 +2295,10 @@
             "title": "getTask"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "put": {
         "operationId": "updateTask",
@@ -2255,7 +2357,10 @@
             "title": "updateTask"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "delete": {
         "operationId": "deleteTask",
@@ -2311,7 +2416,10 @@
             "title": "deleteTask"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/chat/tasks": {
@@ -2363,7 +2471,10 @@
             "title": "createTask"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "listTasks",
@@ -2482,7 +2593,10 @@
             "title": "listTasks"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/chat/workflows": {
@@ -2534,7 +2648,10 @@
             "title": "createWorkflow"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "get": {
         "operationId": "listWorkflows",
@@ -2653,7 +2770,10 @@
             "title": "listWorkflows"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/chat/workflows/{id}": {
@@ -2711,7 +2831,10 @@
             "title": "getWorkflow"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "put": {
         "operationId": "updateWorkflow",
@@ -2770,7 +2893,10 @@
             "title": "updateWorkflow"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       },
       "delete": {
         "operationId": "deleteWorkflow",
@@ -2826,7 +2952,10 @@
             "title": "deleteWorkflow"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/chat/workflows/get-or-create": {
@@ -2878,7 +3007,10 @@
             "title": "getOrCreateWorkflow"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     },
     "/v1/chat/tags/{key}/values": {
@@ -2953,6 +3085,9 @@
             "$ref": "#/components/responses/listTagValuesResponse"
           }
         },
+        "tags": [
+          "Endpoints"
+        ],
         "x-mint": {
           "metadata": {
             "title": "listTagValues"
@@ -3009,7 +3144,10 @@
             "title": "trackAnalytics"
           }
         },
-        "x-hidden": true
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
       }
     }
   },
