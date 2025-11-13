@@ -27,7 +27,7 @@ The official Slack integration allows members of your Slack workspace to chat wi
     <Info>
       You will need:
 
-      - A [published bot](/learn/get-started/quick-start)
+      - A [published bot](/get-started/quick-start)
       - A [Slack workspace](https://slack.com/get-started?entry_point=help_center#/createnew)
     </Info>
 
@@ -42,7 +42,7 @@ The official Slack integration allows members of your Slack workspace to chat wi
     <Info>
       You will need:
 
-      - A [published bot](/learn/get-started/quick-start)
+      - A [published bot](/get-started/quick-start)
       - A [Slack workspace](https://slack.com/get-started?entry_point=help_center#/createnew)
       </Info>
 
@@ -186,7 +186,7 @@ If you want the bot to only reply in a thread when [mentioned](https://slack.com
   Enabling reply threading alone doesn't stop your bot from posting in the main channel. To restrict responses exclusively to threads, modify your Workflow to terminate when receiving messages from the main channel:
 
   1. Insert a Standard Node at the very beginning of your Main Workflow. Then, connect it to your existing Workflow.
-  2. Add an [expression Card](/learn/reference/cards/flow-logic#expression) to the Standard Node.
+  2. Add an [expression Card](/studio/concepts/cards/flow-logic#expression) to the Standard Node.
   3. Set the expression Card's condition to `event.channel === 'channel'`.
   TODO: modify conditional to account for other channel types
   3. Create an End Card and connect the expression Card to it.
@@ -229,7 +229,7 @@ However, any outgoing AI-generated messages your bot sends to the Slack integrat
 
 ## Tags
 
-You can read [event tags](/learn/guides/advanced/event-properties#param-tags) to get information about an active Slack conversation:
+You can read [event tags](/studio/guides/advanced/event-properties#param-tags) to get information about an active Slack conversation:
 
 ### Slack conversation ID
 

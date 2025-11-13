@@ -1,0 +1,18 @@
+You can use the Set Inactivity Timeout Card to **override the default inactivity timeout** configured in your [Bot Settings](/studio/concepts/bot-settings#inactivity-timeout).
+
+<Tip>
+  This Card won't work in the Studio's Emulator. Instead, you can test it using the [shareable Webchat link](/get-started/quick-start#preview-and-share-your-bot).
+</Tip>
+
+## Configuration
+
+<Note>
+  This Card is only available for [Standard Nodes](/studio/concepts/nodes/introduction).
+</Note>
+
+To use the Card, just [add it to any Node in your Workflow](/studio/concepts/cards/introduction#add-a-card). The new inactivity timeout will apply starting from when the Card executes.
+
+It has the following settings:
+
+  - **Conversation ID**: The ID of the conversation to update. Defaults to [`event.conversationId`](/studio/guides/advanced/event-properties#param-conversation-id) (current conversation)
+  - **Timeout**: The duration of the timeout in minutes. Set to `0` for the conversation to never expire, or to `-1` to reset to the default timeout
