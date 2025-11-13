@@ -1,0 +1,143 @@
+---
+title: Knowledge
+---
+
+Knowledge bases provide context to your agent's AI models. They allow your agent to answer questions based on documents, websites, or other data sources.
+
+## Creating a knowledge base
+
+Create a knowledge source in `src/knowledge/`:
+
+```typescript
+import { Knowledge, DataSource } from "@botpress/runtime";
+
+export default new Knowledge({
+  name: "documentation",
+  description: "Product documentation",
+  sources: [
+    // Add knowledge sources
+  ],
+});
+```
+
+## Data sources
+
+You can add knowledge from several different data sources:
+
+### Website source
+
+Index a website using a sitemap:
+
+```typescript
+import { DataSource } from "@botpress/runtime";
+
+const WebsiteSource = DataSource.Website.fromSitemap(
+  "https://example.com/sitemap.xml",
+  {
+    filter: ({ url }) => !url.includes("/admin"),
+  }
+);
+
+export default new Knowledge({
+  name: "website-docs",
+  sources: [WebsiteSource],
+});
+```
+
+### File source
+
+Index files from a directory:
+
+```typescript
+const FileSource = DataSource.Directory.fromPath("./docs", {
+  filter: (filePath) => filePath.endsWith(".md") || filePath.endsWith(".txt"),
+});
+
+export default new Knowledge({
+  name: "local-docs",
+  sources: [FileSource],
+});
+```
+
+### Table source
+
+Index data from a table:
+
+```typescript
+import { DataSource } from "@botpress/runtime";
+import { OrderTable } from "../tables/OrderTable";
+
+const TableSource = DataSource.Table.fromTable(OrderTable, {
+  id: "orders",
+  transform: ({ row }) => {
+    return `Order #${row.id}\nCustomer: ${row.userId}\nTotal: $${row.total}\nStatus: ${row.status}`;
+  },
+});
+
+export default new Knowledge({
+  name: "orders-kb",
+  sources: [TableSource],
+});
+```
+
+## Using knowledge in conversations
+
+Provide knowledge bases to your conversation handlers:
+
+```typescript highlight={1, 8}
+import { WebsiteKB } from "../knowledge/docs";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      knowledge: [WebsiteKB],
+    });
+  },
+});
+```
+
+## Refreshing knowledge
+
+Refresh knowledge bases to update their content:
+
+```typescript highlight={6, 8}
+import { Workflow } from "@botpress/runtime";
+import { WebsiteKB } from "..knowledge/docs"
+
+export default new Workflow({
+  name: "refresh-knowledge",
+  schedule: "0 0 * * *", // Daily
+  handler: async () => {
+    await WebsiteKB.refresh();
+  },
+});
+```
+
+## Reference
+
+### Knowledge props
+
+<Expandable title="Knowledge props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the knowledge base.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the knowledge base contains.
+  </ResponseField>
+  <ResponseField
+    name="sources"
+    type="DataSource[]"
+    required
+  >
+    Array of data sources to index. Can include `Website`, `Directory`, or `Table` sources.
+  </ResponseField>
+</Expandable>
