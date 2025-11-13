@@ -547,146 +547,47 @@
           },
           {
             "group": "Admin API",
+            "openapi": {
+              "source": "./admin-openapi.json",
+              "directory": "api-reference/admin-api/openapi"
+            },
             "pages": [
               "api-reference/admin-api/getting-started",
-              "api-reference/admin-api/concepts",
-              {
-                "group": "Endpoints",
-                "pages": [
-                  "/api-reference/admin-api/openapi/getAccount",
-                  "/api-reference/admin-api/openapi/updateAccount",
-                  "/api-reference/admin-api/openapi/listPublicIntegrations",
-                  "/api-reference/admin-api/openapi/getPublicIntegrationById",
-                  "/api-reference/admin-api/openapi/getPublicIntegration",
-                  "/api-reference/admin-api/openapi/createBot",
-                  "/api-reference/admin-api/openapi/listBots",
-                  "/api-reference/admin-api/openapi/updateBot",
-                  "/api-reference/admin-api/openapi/getBot",
-                  "/api-reference/admin-api/openapi/deleteBot",
-                  "/api-reference/admin-api/openapi/getBotLogs",
-                  "/api-reference/admin-api/openapi/getBotAnalytics",
-                  "/api-reference/admin-api/openapi/getBotIssue",
-                  "/api-reference/admin-api/openapi/deleteBotIssue",
-                  "/api-reference/admin-api/openapi/listBotIssues",
-                  "/api-reference/admin-api/openapi/listBotIssueEvents",
-                  "/api-reference/admin-api/openapi/createWorkspace",
-                  "/api-reference/admin-api/openapi/listWorkspaces",
-                  "/api-reference/admin-api/openapi/getPublicWorkspace",
-                  "/api-reference/admin-api/openapi/getWorkspace",
-                  "/api-reference/admin-api/openapi/updateWorkspace",
-                  "/api-reference/admin-api/openapi/deleteWorkspace",
-                  "/api-reference/admin-api/openapi/listPublicWorkspaces",
-                  "/api-reference/admin-api/openapi/getAuditRecords",
-                  "/api-reference/admin-api/openapi/listWorkspaceMembers",
-                  "/api-reference/admin-api/openapi/createWorkspaceMember",
-                  "/api-reference/admin-api/openapi/getWorkspaceMember",
-                  "/api-reference/admin-api/openapi/deleteWorkspaceMember",
-                  "/api-reference/admin-api/openapi/updateWorkspaceMember",
-                  "/api-reference/admin-api/openapi/createIntegration",
-                  "/api-reference/admin-api/openapi/listIntegrations",
-                  "/api-reference/admin-api/openapi/validateIntegrationCreation",
-                  "/api-reference/admin-api/openapi/updateIntegration",
-                  "/api-reference/admin-api/openapi/getIntegration",
-                  "/api-reference/admin-api/openapi/deleteIntegration",
-                  "/api-reference/admin-api/openapi/validateIntegrationUpdate",
-                  "/api-reference/admin-api/openapi/getIntegrationLogs",
-                  "/api-reference/admin-api/openapi/getIntegrationByName"
-                ]
-              }
+              "api-reference/admin-api/concepts"
             ]
           },
           {
             "group": "Files API",
+            "openapi": {
+              "source": "./files-openapi.json",
+              "directory": "api-reference/files-api/openapi"
+            },
             "pages": [
               "api-reference/files-api/getting-started",
               "api-reference/files-api/how-tos/creating-files",
               "api-reference/files-api/how-tos/index-and-search-files",
-              "api-reference/files-api/how-tos/manage-files",
-              {
-                "group": "Endpoints",
-                "pages": [
-                  "/api-reference/files-api/openapi/upsertFile",
-                  "/api-reference/files-api/openapi/listFiles",
-                  "/api-reference/files-api/openapi/deleteFile",
-                  "/api-reference/files-api/openapi/getFile",
-                  "/api-reference/files-api/openapi/updateFileMetadata",
-                  "/api-reference/files-api/openapi/copyFile",
-                  "/api-reference/files-api/openapi/searchFiles",
-                  "/api-reference/files-api/openapi/listFilePassages",
-                  "/api-reference/files-api/openapi/listFileTags",
-                  "/api-reference/files-api/openapi/listFileTagValues"
-                ]
-              }
+              "api-reference/files-api/how-tos/manage-files"
             ]
           },
           {
             "group": "Tables API",
+            "openapi": {
+              "source": "./tables-openapi.json",
+              "directory": "api-reference/tables-api/openapi"
+            },
             "pages": [
-              "api-reference/tables-api/getting-started",
-              {
-                "group": "Endpoints",
-                "pages": [
-                  "/api-reference/tables-api/openapi/listTables",
-                  "/api-reference/tables-api/openapi/createTable",
-                  "/api-reference/tables-api/openapi/getTable",
-                  "/api-reference/tables-api/openapi/getOrCreateTable",
-                  "/api-reference/tables-api/openapi/updateTable",
-                  "/api-reference/tables-api/openapi/deleteTable",
-                  "/api-reference/tables-api/openapi/duplicateTable",
-                  "/api-reference/tables-api/openapi/renameTableColumn",
-                  "/api-reference/tables-api/openapi/getTableRow",
-                  "/api-reference/tables-api/openapi/findTableRows",
-                  "/api-reference/tables-api/openapi/createTableRows",
-                  "/api-reference/tables-api/openapi/updateTableRows",
-                  "/api-reference/tables-api/openapi/deleteTableRows",
-                  "/api-reference/tables-api/openapi/upsertTableRows"
-                ]
-              }
+              "api-reference/tables-api/getting-started"
             ]
           },
           {
             "group": "Runtime API",
+            "openapi": {
+              "source": "./runtime-openapi.json",
+              "directory": "api-reference/runtime-api/openapi"
+            },
             "pages": [
               "api-reference/runtime-api/getting-started",
-              "api-reference/runtime-api/concepts",
-              {
-                "group": "Endpoints",
-                "pages": [
-                  "/api-reference/runtime-api/openapi/createConversation",
-                  "/api-reference/runtime-api/openapi/listConversations",
-                  "/api-reference/runtime-api/openapi/getConversation",
-                  "/api-reference/runtime-api/openapi/updateConversation",
-                  "/api-reference/runtime-api/openapi/deleteConversation",
-                  "/api-reference/runtime-api/openapi/getOrCreateConversation",
-                  "/api-reference/runtime-api/openapi/listParticipants",
-                  "/api-reference/runtime-api/openapi/addParticipant",
-                  "/api-reference/runtime-api/openapi/getParticipant",
-                  "/api-reference/runtime-api/openapi/removeParticipant",
-                  "/api-reference/runtime-api/openapi/createEvent",
-                  "/api-reference/runtime-api/openapi/listEvents",
-                  "/api-reference/runtime-api/openapi/getEvent",
-                  "/api-reference/runtime-api/openapi/createMessage",
-                  "/api-reference/runtime-api/openapi/listMessages",
-                  "/api-reference/runtime-api/openapi/getOrCreateMessage",
-                  "/api-reference/runtime-api/openapi/getMessage",
-                  "/api-reference/runtime-api/openapi/updateMessage",
-                  "/api-reference/runtime-api/openapi/deleteMessage",
-                  "/api-reference/runtime-api/openapi/createUser",
-                  "/api-reference/runtime-api/openapi/listUsers",
-                  "/api-reference/runtime-api/openapi/getUser",
-                  "/api-reference/runtime-api/openapi/updateUser",
-                  "/api-reference/runtime-api/openapi/deleteUser",
-                  "/api-reference/runtime-api/openapi/getOrCreateUser",
-                  "/api-reference/runtime-api/openapi/setStateExpiry",
-                  "/api-reference/runtime-api/openapi/getState",
-                  "/api-reference/runtime-api/openapi/setState",
-                  "/api-reference/runtime-api/openapi/patchState",
-                  "/api-reference/runtime-api/openapi/getOrSetState",
-                  "/api-reference/runtime-api/openapi/callAction",
-                  "/api-reference/runtime-api/openapi/configureIntegration",
-                  "/api-reference/runtime-api/openapi/listTagValues"
-                ]
-              }
+              "api-reference/runtime-api/concepts"
             ]
           }
         ]

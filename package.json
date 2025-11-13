@@ -4,11 +4,17 @@
     "dev": "mintlify dev",
     "check:links": "mintlify broken-links",
     "check-integrations": "node .github/scripts/checks/check-integrations.js",
-    "update-integrations": "node .github/scripts/updates/update.js"
+    "update-integrations": "node .github/scripts/updates/update.js",
+    "generate-api-reference": "ts-node generate-api-reference.ts"
   },
   "dependencies": {
+    "@botpress/api": "1.52.1",
     "glob": "11.0.1",
     "mintlify": "^4.0.461",
     "optional": "^0.1.4"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.15.0",
+    "@types/node": "^24.10.0"
   }
 }
