@@ -66,8 +66,12 @@
               "/index",
               "/get-started/quick-start",
               {
-                "group": "Dashboard",
+                "group": "Manage your agent",
                 "pages": [
+                  {
+                    "group": "Monitor",
+                    "pages": []
+                  },
                   {
                     "group": "Workspace",
                     "pages": [
@@ -101,6 +105,12 @@
                       "/get-started/dashboard/bot/configuration-variables"
                     ]
                   }
+                ]
+              },
+              {
+                "group": "Workspace settings",
+                "pages": [
+                  "test"
                 ]
               }
             ]
@@ -333,7 +343,7 @@
                 ]
               },
               {
-                "group": "Functional Integrations",
+                "group": "Functional integrations",
                 "pages": [
                   "/integrations/functional-integrations/introduction",
                   "/integrations/functional-integrations/knowledge-base-optimization",
@@ -380,7 +390,7 @@
                 "pages": ["/webchat/integrations/wordpress", "/webchat/integrations/wix", "/webchat/integrations/webflow"]
               },
               {
-                "group": "React Library",
+                "group": "React library",
                 "pages": [
                   "/webchat/react-library/get-started",
                   {

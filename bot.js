@@ -6,56 +6,72 @@ webchatScript.defer = true
 
 function loadWebchat() {
   window.botpress.init({
-    "botId": "e3098b37-2e06-4351-859c-d79e06f39ca8",
+    "botId": "3448a722-1716-4b50-b82a-769ec4f2154b",
     "configuration": {
       "version": "v2",
-      "composerPlaceholder": "Ask a question...",
       "botName": "Assistant",
       "botAvatar": "https://files.bpcontent.cloud/2025/06/16/20/20250616204038-BRUW6C2R.svg",
       "botDescription": "Ask AI a question about the documentation.",
+      "composerPlaceholder": "Ask a question...",
       "website": {},
-      "email": {
-        "title": "",
-        "link": ""
-      },
+      "email": {},
       "phone": {},
-      "termsOfService": {
-        "title": "Terms of service",
-        "link": ""
-      },
+      "termsOfService": {},
       "privacyPolicy": {},
-      "color": "#0588F0",
+      "color": "#0588f0",
       "variant": "solid",
       "headerVariant": "glass",
       "themeMode": "light",
-      "fontFamily": "Inter",
-      "radius": 3,
-      "feedbackEnabled": true,
+      "fontFamily": "inter",
+      "radius": 1.5,
+      "feedbackEnabled": false,
       "footer": "[⚡️ by Botpress](https://botpress.com/?from=webchat)",
-      "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/06/13/14/20250613145950-XC43YPI7.css",
-      "allowFileUpload": true,
+      "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/11/14/20/20251114205601-4UXE6WYZ.css",
       "soundEnabled": false,
-      "proactiveMessageEnabled": true,
-      "proactiveBubbleMessage": "Hi! 👋 Need help with the docs?",
+      "embeddedChatId": "docs-bot",
+      "proactiveMessageEnabled": false,
+      "proactiveBubbleMessage": "Hi! ðŸ‘‹ Need help?",
       "proactiveBubbleTriggerType": "afterDelay",
       "proactiveBubbleDelayTime": 10
     },
-    "clientId": "44246de9-1d1b-462c-8ef3-1ce39e65d89a"
+    "clientId": "ea22a9a4-2216-48e6-941a-51b66ebfdf1d"
   });
+  // Hash handling for #ask - opens custom pane
   url = new URL(window.location.href)
-  if (url.hash === "#ask" ) window.botpress.open()
+  if (url.hash === "#ask") {
+    openChatPanel()
+  }
 
   window.addEventListener("hashchange", () => {
     if (window.location.hash === "#ask") {
-      window.botpress.open()
+      openChatPanel()
     }
   })
 };
 
-function askAi() {
-  if (window.botpress) {
-    window.botpress.open()
+function openChatPanel() {
+  const panel = document.getElementById('chatbot-panel');
+  const toggleButton = document.getElementById('chatbot-toggle');
+  
+  if (panel) {
+    if (!panel.classList.contains('chatbot-panel-expanded')) {
+      panel.classList.remove('chatbot-panel-collapsed');
+      panel.classList.add('chatbot-panel-expanded');
+      if (toggleButton) {
+        toggleButton.classList.add('chatbot-toggle-expanded');
+      }
+      localStorage.setItem('chatbot-panel-open', 'true');
+    }
+  } else {
+    // Panel not created yet, wait a bit and try again
+    setTimeout(() => {
+      openChatPanel();
+    }, 100);
   }
+}
+
+function askAi() {
+  openChatPanel()
 }
 
 webchatScript.onload = () => {
