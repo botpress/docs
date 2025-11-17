@@ -1,0 +1,41 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Followed
+
+<span>{"The bot was followed by someone."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="destinationId"
+    type="string"
+    required
+  >
+    <span>{"The Line user ID of the bot"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The Line ID of the user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
