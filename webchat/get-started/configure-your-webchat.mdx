@@ -1,5 +1,5 @@
 ---
-title: Configure your Webchat
+title: Configure Webchat
 ---
 
 <Info>
@@ -11,55 +11,27 @@ You will need:
 
 </Info>
 
-## General configuration
-
 You can configure your bot in the Dashboard:
 
 1. Navigate to the [Dashboard](/learn/get-started/dashboard/) and open your bot's Workspace.
-2. In the left navigation bar, find the bot you want to configure and select **Webchat**.
+2. Select the bot you want to configure, then go to **<Icon icon="settings-2"/> Webchat**.
 
 Here's a breakdown of each configuration section:
 
-### About your bot
+## Bot identity
 
 This section lets you configure general information about your bot:
 
-- Your bot's name (defaults to `Bot`)
 - Your bot's avatar (defaults to the first letter of your bot's name)
+- Your bot's display name (defaults to `Bot`)
 - Your bot's description (optional)
 - A placeholder for your bot's composer (defaults to `Type your message...`)
 - A custom footer for your bot (requires a [Plus plan](https://botpress.com/pricing))
 - A custom avatar for the Floating Action Button (FAB)
 
-### Settings
-
-This section lets you configure your bot's settings:
-
-- Enable/disable message feedback. When enabled, you can view feedback data in the [Analytics](/learn/get-started/dashboard/bot/analytics) tab
-- Enable/disable user file upload
-- Enable sound notifications for new messages. This requires Webchat v3.3+
-- Choose to persist conversations **Across browser tabs** (session storage) or in **One tab only** (local storage)
-
-<Note>
-#### Session storage vs. Local storage
-
-Session storage creates a new user and conversation each time the page is re-opened. Local storage keeps them for your next visits.
-
-You can [learn more about local and session storage here](https://www.geeksforgeeks.org/javascript/difference-between-local-storage-session-storage-and-cookies/).
-
-</Note>
-
-### Proactive message bubble
-
-This section lets you configure and preview a [proactive message bubble](/webchat/interact/proactive-message-bubble) for Webchat. You can:
-
-- Set a proactive message
-- Set a trigger type
-- Set a delay time
-
 ### Contact
 
-This section lets you configure optional contact information for your bot:
+You can also configure optional contact information for your bot:
 
 - Email address
 - Phone number
@@ -67,37 +39,26 @@ This section lets you configure optional contact information for your bot:
 - Terms of service
 - Privacy policy
 
-## Style and appearance
+## Bot appearance
 
-To style your bot using the built-in Webchat theme editor:
-
-1. Navigate to the [Dashboard](/learn/get-started/dashboard/) and open your bot's Workspace.
-2. In the left navigation bar, find the bot you want to style and select **Webchat**.
-3. Select the **Theme** tab to open the theme editor:
-
-The following styling options are available:
+This section contains styling options for Webchat:
 
 - Primary colour (defaults to `#3276EA`). Choose a recommended colour, or use the colour picker to specify a hex code.
-- Theme (defaults to **Light**)
-- Header theme (defaults to **Glass**)
-- Message theme (defaults to **Solid**)
-- Radius (defaults to fully rounded)
 - Font (defaults to **Inter**). Use the search bar to choose any available Google Font.
+- Theme mode (defaults to **Light**)
+- Header style (defaults to **Glass**)
+- Message styling (defaults to **Solid**)
+- Corner radius (defaults to fully rounded)
 
-You can view your changes in the Webchat preview on the right side of the screen. Whenever you want to update the bot's configuration, select **Save Configuration** in the bottom-right corner.
+You can view your changes in the Webchat preview on the right side of the screen. Whenever you want to update the bot's configuration, select **Publish Configuration** in the upper-right corner.
 
 <Warning>
-  Styles from this section won't apply if:
-
-    - You're [manually initializing Webchat](/webchat/get-started/embedding-webchat) by calling `window.botpress.init` in your website's source code. In this case, use the `configuration` object to configure Webchat.
-
-    - You're using the [Webchat React library](/webchat/react-library/get-started). In this case, use the [configuration prop](/webchat/react-library/components/webchat#param-configuration) to configure Webchat.
-
+  Styles from this section won't apply if you're using the [Webchat React library](/webchat/react-library/get-started). In this case, use the [configuration prop](/webchat/react-library/components/webchat#param-configuration) to configure Webchat.
 </Warning>
 
-## Use custom styles
+### Use custom styles
 
-If you want to customize your bot's appearance further, you can modify the built-in CSS classes:
+If you want to customize your bot's appearance further, you can modify the built-in CSS classes in the **Styles** section. Here's a list of all CSS classes available:
 
 <Accordion
   title="CSS Classes"
@@ -230,8 +191,6 @@ If you want to customize your bot's appearance further, you can modify the built
 
 </Accordion>
 
-Just add your styles to the **Styles** field.
-
 ### Position Webchat on the left
 
 By default, the Webchat FAB and the chat window appear on the right side of the screen. You can move them to the left by overriding the default CSS.
@@ -251,3 +210,39 @@ Add the following CSS to your website's stylesheet:
 ```
 
 This will position both the FAB icon and the main Webchat window 20 pixels from the left edge of the viewport. You can adjust the `20px` value as needed.
+
+## Deploy settings
+
+This section lets you configure your bot's deployment settings:
+
+- **Chat interface**: Choose whether you want to use a toggle for the chat's visibility or [embed it in a specific element](/webchat/get-started/embedding-webchat)
+- **Where to show chat**: Enter the HTML ID of the container where the chat should appear (if **Chat interface** is set to **Embedded**)
+- **Chat launcher**: Choose how you want to toggle Webchat (using the default chat bubble or a custom element). Available if **Chat interface** is set to **Toggle**
+- **Button image**: Choose a custom image for the chat bubble (if **Chat launcher** is set to **Chat bubble**)
+- **Element selector**: Enter the HTML ID of the button or element that launches the chat (if **Chat launcher** is set to **Custom element**).
+
+### Proactive message bubble
+
+This section lets you configure and preview a [proactive message bubble](/webchat/interact/proactive-message-bubble) for Webchat. You can:
+
+- Set a proactive message
+- Set a trigger type
+- Set a delay time
+
+## Features
+
+This section lets you configure optional features for your bot:
+
+- **Message feedback**: Enable/disable message feedback. When enabled, you can view feedback data in the [Analytics](/learn/get-started/dashboard/bot/analytics) tab
+- **Allow file upload**: Enable/disable user file upload
+- **Message notification sound**: Enable sound notifications for new messages. This requires Webchat v3.3+
+- **Chat history reset**: Choose whether users can continue conversations after the tab closes (local storage) or not (local storage)
+
+<Note>
+**Session storage vs. Local storage**
+
+Session storage creates a new user and conversation each time the page is re-opened. Local storage keeps them for your next visits.
+
+You can [learn more about local and session storage here](https://www.geeksforgeeks.org/javascript/difference-between-local-storage-session-storage-and-cookies/).
+
+</Note>
