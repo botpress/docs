@@ -11,7 +11,7 @@ function loadWebchat() {
       "version": "v2",
       "botName": "Assistant",
       "botAvatar": "https://files.bpcontent.cloud/2025/06/16/20/20250616204038-BRUW6C2R.svg",
-      "botDescription": "Ask AI a question about the documentation.",
+      "botDescription": "Ask AI a question about the documentation. ⚡️ by Botpress.",
       "composerPlaceholder": "Ask a question...",
       "website": {},
       "email": {},
@@ -50,17 +50,17 @@ function loadWebchat() {
 };
 
 function openChatPanel() {
-  const panel = document.getElementById('chatbot-panel');
-  const toggleButton = document.getElementById('chatbot-toggle');
+  const panel = document.getElementById('bot-panel');
+  const toggleButton = document.getElementById('bot-toggle');
   
   if (panel) {
-    if (!panel.classList.contains('chatbot-panel-expanded')) {
-      panel.classList.remove('chatbot-panel-collapsed');
-      panel.classList.add('chatbot-panel-expanded');
+    if (!panel.classList.contains('bot-panel-expanded')) {
+      panel.classList.remove('bot-panel-collapsed');
+      panel.classList.add('bot-panel-expanded');
       if (toggleButton) {
-        toggleButton.classList.add('chatbot-toggle-expanded');
+        toggleButton.classList.add('bot-toggle-expanded');
       }
-      localStorage.setItem('chatbot-panel-open', 'true');
+      localStorage.setItem('bot-panel-open', 'true');
     }
   } else {
     // Panel not created yet, wait a bit and try again
