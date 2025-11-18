@@ -17,26 +17,29 @@ adk add my-workspace/custom-integration@1.0.0
 ```
 
 This automatically:
-- Adds the integration to `dependencies.json`
+- Adds the integration to `agent.config.ts`
 - Generates TypeScript types for the integration
 
 ### Manual configuration
 
-You can also manually edit `dependencies.json`:
+You can also manually edit `agent.config.ts`:
 
-```json
-{
-  "integrations": {
-    "webchat": {
-      "version": "webchat@latest",
-      "enabled": true
+```typescript
+export default defineConfig({
+  // ... other config ...
+  dependencies: {
+    integrations: {
+      webchat: {
+        version: "webchat@latest",
+        enabled: true,
+      },
+      slack: {
+        version: "slack@0.5.0",
+        enabled: true,
+      },
     },
-    "slack": {
-      "version": "slack@0.5.0",
-      "enabled": true
-    }
-  }
-}
+  },
+});
 ```
 
 After editing manually, run `adk dev` or `adk build` to regenerate types.
@@ -57,18 +60,18 @@ Use `@latest` when you want to automatically receive updates. Use specific versi
 
 Control which integrations are active:
 
-```json
-{
-  "integrations": {
-    "webchat": {
-      "version": "webchat@latest",
-      "enabled": true
+```typescript
+dependencies: {
+  integrations: {
+    webchat: {
+      version: "webchat@latest",
+      enabled: true,
     },
-    "slack": {
-      "version": "slack@latest",
-      "enabled": false
-    }
-  }
+    slack: {
+      version: "slack@latest",
+      enabled: false,
+    },
+  },
 }
 ```
 
@@ -83,7 +86,7 @@ adk add instagram
 ```
 
 ```text
-✓ Added instagram version x.x.x to dependencies.json
+✓ Added instagram version x.x.x to agent.config.ts
 
 Please configure it in the UI using the adk dev command to start using it.
 ```
@@ -104,14 +107,15 @@ adk update <integration-name>
 
 You can also update the version it manually:
 
-1. Update the version in `dependencies.json`:
-   ```json
-   {
-     "integrations": {
-       "webchat": {
-         "version": "webchat@0.3.0"
-       }
-     }
+1. Update the version in `agent.config.ts`:
+   ```typescript
+   dependencies: {
+     integrations: {
+       webchat: {
+         version: "webchat@0.3.0",
+         enabled: true,
+       },
+     },
    }
    ```
 
@@ -121,17 +125,17 @@ You can also update the version it manually:
 
 ## Removing integrations
 
-Remove an integration by deleting it from `dependencies.json`:
+Remove an integration by deleting it from `agent.config.ts`:
 
-```json
-{
-  "integrations": {
-    "webchat": {
-      "version": "webchat@latest",
-      "enabled": true
-    }
+```typescript
+dependencies: {
+  integrations: {
+    webchat: {
+      version: "webchat@latest",
+      enabled: true,
+    },
     // Removed slack integration
-  }
+  },
 }
 ```
 

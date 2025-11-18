@@ -15,7 +15,6 @@ ADK projects follow a consistent structure that organizes your agent's code, con
   </Folder>
   <File name="agent.config.ts" />
   <File name="agent.json" />
-  <File name="dependencies.json" />
   <File name="package.json" />
   <File name="tsconfig.json" />
 </Files>
@@ -24,7 +23,7 @@ ADK projects follow a consistent structure that organizes your agent's code, con
 
 ### `agent.config.ts`
 
-The main agent configuration file. Defines your agent's name, description, default models, and state schemas.
+The main agent configuration file. Defines your agent's name, description, default models, state schemas, and integration dependencies.
 
 ```typescript
 import { z, defineConfig } from "@botpress/runtime";
@@ -49,6 +48,19 @@ export default defineConfig({
       // User-level state
     }),
   },
+
+  dependencies: {
+    integrations: {
+      webchat: {
+        version: "webchat@latest",
+        enabled: true,
+      },
+      chat: {
+        version: "chat@latest",
+        enabled: true,
+      },
+    },
+  },
 });
 ```
 
@@ -61,25 +73,6 @@ Links the agent to a bot in your Workspace:
   "botId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "workspaceId": "wkspace_xxxxxxxxxxxxxxxxxxxxxxxxxx",
   "devId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-}
-```
-
-### `dependencies.json`
-
-Declares the integrations your agent uses. The ADK automatically generates TypeScript types for these integrations.
-
-```json
-{
-  "integrations": {
-    "webchat": {
-      "version": "webchat@latest",
-      "enabled": true
-    },
-    "chat": {
-      "version": "chat@latest",
-      "enabled": true
-    }
-  }
 }
 ```
 
