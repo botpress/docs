@@ -4,8 +4,124 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="November 14, 2025">
+  ## Features & enhancements
+
+  ### GPT-5.1 support
+
+  - Added support for GPT-5.1 from OpenAI
+
+  ### Webchat 3.4
+
+  - Released Webchat 3.4. Improvements include:
+    - Added the ability to paste images from clipboard
+    - Improved scrolling smoothness
+    - Improved typing indicators
+    - Improved media rendering
+    - Improved performance and reliability
+
+  ### Dashboard
+
+  - Redesigned Webchat configuration split into four sections:
+
+  <Tabs>
+    <Tab title="Bot Identity">
+      <Frame>
+        <img
+          alt="Bot Identity"
+          className="block dark:hidden"
+          src="/changelog-assets/2025-11-14/bot-identity.png"
+        />
+        <img
+          alt="Bot Identity"
+          className="hidden dark:block"
+          src="/changelog-assets/2025-11-14/bot-identity-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="Bot Appearance">
+      <Frame>
+        <img
+          alt="Bot Appearance"
+          className="block dark:hidden"
+          src="/changelog-assets/2025-11-14/bot-appearance.png"
+        />
+        <img
+          alt="Bot Appearance"
+          className="hidden dark:block"
+          src="/changelog-assets/2025-11-14/bot-appearance-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="Deploy Settings">
+      <Frame>
+        <img
+          alt="Deploy Settings"
+          className="block dark:hidden"
+          src="/changelog-assets/2025-11-14/deploy-settings.png"
+        />
+        <img
+          alt="Deploy Settings"
+          className="hidden dark:block"
+          src="/changelog-assets/2025-11-14/deploy-settings-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="Features">
+      <Frame>
+        <img
+          alt="Features"
+          className="block dark:hidden"
+          src="/changelog-assets/2025-11-14/features.png"
+        />
+        <img
+          alt="Features"
+          className="hidden dark:block"
+          src="/changelog-assets/2025-11-14/features-dark.png"
+        />
+      </Frame>
+    </Tab>
+  </Tabs>
+
+  - Added keyboard shortcuts to Workspace selector
+
+  ## Card tray
+
+  - Redesigned the Card tray as a modal:
+
+    <Frame>
+      <img
+        alt="Card tray"
+        className="block dark:hidden"
+        src="/changelog-assets/2025-11-14/card-tray.png"
+      />
+      <img
+        alt="Card tray"
+        className="hidden dark:block"
+        src="/changelog-assets/2025-11-14/card-tray-dark.png"
+      />
+    </Frame>
+
+  ## Integrations
+
+  - **Hunter**: Added Hunter integration
+  - **Slack**: Added ability for bot to retrieve a private channel
+  - **WhatsApp**: Fixed an issue where messages were being duplicated under certain circumstances
+  - **HubSpot**: Improved error logging when pipeline status can't be found
+
+  ## Bug fixes
+
+  - Fixed an issue where searching in Studio was not working under certain circumstances
+  - Fixed an issue where hotkeys weren’t working properly when tables were open
+  - Fixed an issue with Human Handoff where typing indicator showed even when the support agent wasn't typing
+  - Fixed a visual issue with Knowledge Bases in the Dashboard in dark mode
+  - Fixed an issue where log filters weren’t updating the displayed logs correctly
+
+
+</Update>
+
 <Update label="November 7, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   - Redesigned billing section in the Dashboard:
 
@@ -33,7 +149,7 @@ icon: newspaper
   - **Intercom HITL**: Improved handling for email address formatting
   - **Sharepoint**: Fixed an issue with syncing document libraries on registration
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue with the [AI Transition](/learn/reference/cards/ai/ai-transition) Card where newly-added fields would be impossible to delete
   - Fixed an issue where the [Capture Information](/learn/reference/cards/capture-information) Card's **Skip if variable is already filled** option wasn't working    properly
@@ -48,7 +164,7 @@ icon: newspaper
 </Update>
 
 <Update label="October 31, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   ### New Actions experience
 
@@ -144,7 +260,7 @@ icon: newspaper
     - Added new Cards: **Start Conversation** and **Get or Create User**
     - Added better Markdown support
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed visual bug when loading variable picker in a Card's inspector
   - Fixed a bug where user variables would reset with each new conversation in the Emulator
@@ -162,7 +278,7 @@ icon: newspaper
   - **Instagram**: Added option for bot to reply to comments on posts
   - **Airtable**: Improved error logging when Cards fail
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where loading multiple documents into a Knowledge Base would stall if the Knowledge Base also contained many website pages
   - Fixed visual bug with pagination in Knowledge Base documents
@@ -173,7 +289,7 @@ icon: newspaper
 </Update>
 
 <Update label="October 17, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   - Improved the UI for the Studio's **Publish** button:
 
@@ -192,7 +308,7 @@ icon: newspaper
 
   - Added support for [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) via the Anthropic integration
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where clicking Tools in your bot's home screen would cause a crash if your bot only contained standard Nodes
   - Fixed an issue where duplicating a Workflow would incorrectly display "Integration not installed or disabled" even though the integration was installed
@@ -203,7 +319,7 @@ icon: newspaper
 </Update>
 
 <Update label="October 10, 2025">
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where the **Copy to bot** option wasn't displaying all available bots after a certain number
   - Fixed a bug with storing a Card's output in a variable, where:
@@ -213,7 +329,7 @@ icon: newspaper
   - Fixed an issue that was making the Webchat typing indicator appear and disappear irregularly while a bot prepared its reply
   - Fixed an issue where file storage wasn't always being reduced even when file was deleted from bot
 
-  ## Features & Enhancements
+  ## Features & enhancements
 
   - Conversations with the Botpress Help Desk now persist between the Dashboard and the Studio
 
@@ -224,7 +340,7 @@ icon: newspaper
 </Update>
 
 <Update label="October 3, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   ### Login
 
@@ -302,7 +418,7 @@ icon: newspaper
 </Update>
 
 <Update label="September 26, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   ### Webchat
 
@@ -354,14 +470,14 @@ icon: newspaper
   - **Attio**: Added [Attio](https://attio.com/) integration
   - **Slack**: Added support for tagged Slack users in incoming message payloads
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where dynamically including Knowledge Bases in Autonomous Nodes (using a variable) wasn't working properly
   - Fixed an issue with the Slack integration where quick replies would result in a 400 error
 </Update>
 
 <Update label="September 19, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   - Added option to rename rich text Knowledge Bases
   - Improved UI for array input fields in Cards
@@ -394,7 +510,7 @@ icon: newspaper
   - **WhatsApp**: Improved handling when the integration is rate limited by WhatsApp
 
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - **UI fixes**:
     - Fixed issue with Dashboard sidebar on mobile
@@ -407,7 +523,7 @@ icon: newspaper
 </Update>
 
 <Update label="September 12, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   - Improved the variable management experience for Autonomous Nodes:
 
@@ -431,7 +547,7 @@ icon: newspaper
       - **Feature Base**: Added Feature Base integration
       - **Webflow**: Added several new events
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where bot exports were failing
   - Fixed various UX issues in Dashboard, Studio and Webchat
@@ -439,7 +555,7 @@ icon: newspaper
 </Update>
 
 <Update label="September 5, 2025">
-  ## Features & Enhancements
+  ## Features & enhancements
 
   - Improved UI for Webchat settings:
 
@@ -480,7 +596,7 @@ icon: newspaper
     - **HubSpot**: Added HubSpot integration
     - **SendGrid**: Fixed issue with API keys
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where bot exports were failing
   - Fixed a visual bug with the close button on Webchat error screens
@@ -489,7 +605,7 @@ icon: newspaper
 
 <Update label="August 29, 2025">
 
-## Features & Enhancements
+## Features & enhancements
 
 - Fresh layout for Dashboard bot menu:
 
@@ -514,7 +630,7 @@ icon: newspaper
   - Improved experience when testing a Trigger and viewing the event’s payload
 - Added [Cal.com](http://Cal.com) integration
 
-## Bug Fixes
+## Bug fixes
 
 - Fixed various visual bugs in Dashboard, including on mobile
 - Fixed visual bugs in Studio:
@@ -527,7 +643,7 @@ icon: newspaper
 
 <Update label="August 22 2025">
 
-## Features & Enhancements
+## Features & enhancements
 
 - Improved the Card inspector UI, which now appears in the Studio's right panel instead of obstructing your Workflow:
 
@@ -552,7 +668,7 @@ icon: newspaper
   - **Calendly**: Added Calendly integration
   - **Twilio**: Added support for receiving media (audio, images, videos, files)
 
-  ## Bug Fixes
+  ## Bug fixes
 
   - Fixed an issue where users without the proper permissions had access to the Billing section in the Dashboard
   - Fixed minor issues with Webchat events
@@ -561,7 +677,7 @@ icon: newspaper
 
 <Update label="August 15, 2025">
 
-## Features & Enhancements
+## Features & enhancements
 
 - You can now choose any Google Font when styling Webchat:
 
@@ -605,7 +721,7 @@ icon: newspaper
 
 <Update label="August 8, 2025">
 
-## Features & Enhancements
+## Features & enhancements
 
 <Frame>
 
@@ -628,7 +744,7 @@ icon: newspaper
   - **Zendesk:** Added the option to customize the Botpress system username in Zendesk
   - **Email:** Minor fix
 
-## Bug Fixes
+## Bug fixes
 
 - Fixed an issue where conversation variables weren't usable in Capture Information Cards and Autonomous Nodes
 - Fixed an issue with searching for files based on tags in the Dashboard
@@ -638,11 +754,11 @@ icon: newspaper
 
 <Update label="August 1, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
     - Improvements to user experience in Analytics tab
 
-    ## Bug Fixes
+    ## Bug fixes
 
     - Fixed an issue where Tables Cards were missing labels when added to a Node
     - Fixed an issue with missing newlines when exporting large tables as CSV
@@ -652,7 +768,7 @@ icon: newspaper
 
 <Update label="July 25, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
     - Users can now decide which members of a Workspace can access bots within that Workspace
     - Improvements to search results in the Card Tray
@@ -664,7 +780,7 @@ icon: newspaper
         - **Slack**: added support for threading in all channel types
         - **Teams**: improvements to Start DM Card
 
-    ## Bug Fixes
+    ## Bug fixes
 
     - Fixed issue with testing the timeout Workflow in the emulator
     - Fixed average values for analytics
@@ -673,7 +789,7 @@ icon: newspaper
 
 <Update label="July 18, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
     - New menu for updating add-ons in Dashboard:
 
@@ -701,7 +817,7 @@ icon: newspaper
 
 <Update label="July 11, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
     - Added a notification indicator to Webchat:
 
@@ -728,7 +844,7 @@ icon: newspaper
 
     - Added Gemini 2.5
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed aggregation issues for Tables API
         - Fixed an issue with renaming bots
@@ -738,7 +854,7 @@ icon: newspaper
 
 <Update label="July 4, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - **New onboarding flow**:
 
@@ -793,7 +909,7 @@ icon: newspaper
         - Teams integration: added a Start DM Card
 
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed issue where changes to rich text Knowledge Bases weren't properly reflected
 
@@ -801,12 +917,12 @@ icon: newspaper
 
 <Update label="June 27, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Increased timeout for crawling websites containing many pages, preventing missing pages in the Knowledge Base
         - Slack integration: Added the ability to pass a Slack `userId` to an external service
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed an issue where the Conversation Started Trigger wasn't firing
         - Fixed an issue with Zendesk integration where Zendesk wasn’t receiving user email addresses from the Start HITL Card
@@ -815,11 +931,11 @@ icon: newspaper
 
 <Update label="June 20, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Improved uninstall flow for integrations
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed various issues in Studio's multiplayer
         - Fixed issue that caused user variables to be erased
@@ -832,7 +948,7 @@ icon: newspaper
 
 <Update label="June 13, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Improved **AI Spend** section with a representation of each bot's usage:
             <Tabs>
@@ -878,7 +994,7 @@ icon: newspaper
         - LLMz responses now use citations
         - General improvements to RAG efficiency
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed issue with improper formatting when pasting into a rich text Knowledge Base
 
@@ -888,7 +1004,7 @@ icon: newspaper
 
 <Update label="June 6, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Webchat style refresh:
 
@@ -929,7 +1045,7 @@ icon: newspaper
             - DeepSeek R1 and V3
             - Llama 4
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed issue where users couldn’t leave the WhatsApp sandbox environment
         - Fixed issue with accessing shared drives with the Google Drive integration
@@ -944,7 +1060,7 @@ icon: newspaper
 
 <Update label="May 30, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Added new Card to set a custom inactivity timeout:
 
@@ -964,7 +1080,7 @@ icon: newspaper
         - Bumped LLM timeout from 30 seconds to 90 seconds
         - Bots using the BigCommerce integration can now recommend best-selling products without hallucinating
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed issue where variables assigned in the last Card in a Workflow weren’t stored
         - Various WhatsApp integration fixes:
@@ -978,7 +1094,7 @@ icon: newspaper
 
 <Update label="May 23, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - The [Fixed Schedule](/learn/reference/triggers#fixed-schedule) Trigger now displays both the timezone and next run:
 
@@ -988,7 +1104,7 @@ icon: newspaper
 
         - Added [Monday.com](http://Monday.com) integration
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed issue where Workflows incorrectly timed out under certain conditions
         - Fixed issue where proactive messages didn’t work properly for new conversations in Webchat 2.5
@@ -1002,7 +1118,7 @@ icon: newspaper
 
 <Update label="May 16, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Fixed links to documentation in Botpress Studio
         - Added option to filter logs by message content
@@ -1012,7 +1128,7 @@ icon: newspaper
             ![Dashboard notifications](/changelog-assets/2025-05-16/dashboard-notifications.png)
             </Frame>
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed issue where Studio wouldn’t load under certain conditions
         - Fixed issue where you couldn’t reset FAB/avatar images to default
@@ -1025,14 +1141,14 @@ icon: newspaper
 
 <Update label="May 9, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
         - **Improvements to Webchat**:
             - Now supports richer Markdown rendering
             - Webchat preview now has a sidebar with a list of recent conversations
             - You can now add an image to your Webchat’s Floating Action Button (FAB)
         - You can now filter your bot’s logs by `userId` or `conversationId`
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Updated React library version and documentation
 
@@ -1046,7 +1162,7 @@ icon: newspaper
 
 <Update label="May 2, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
         - The Slack integration now has a configuration option to **reply as a thread**:
 
             <Frame>
@@ -1060,7 +1176,7 @@ icon: newspaper
                 <Frame>
                 ![HITL display last message date](/changelog-assets/2025-05-02/display-last-message-date.png)
                 </Frame>
-    ## Bug Fixes
+    ## Bug fixes
         - Fixed an issue where variables with circular dependencies would cause bots to crash
         - Fixed an issue where moving a Workflow or a folder inside another folder caused the tables to disappear
         - Increased duration before timeout when indexing knowledge bases with a large number of vectors
@@ -1075,7 +1191,7 @@ icon: newspaper
 
 <Update label="April 25, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Added new models from OpenAI:
             - o4-mini
@@ -1085,7 +1201,7 @@ icon: newspaper
         - Users can now upload multiple files to a single message in Webchat
         - The payload for button/dropdown components now includes the `value` of the button
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Fixed an issue in Knowledge Bases  where the similarity score was in the wrong order
         - Fixed the new keyboard shortcut (`ctrl`+ `P`) for search in Studio
@@ -1100,7 +1216,7 @@ icon: newspaper
 
 <Update label="April 11, 2025">
 
-    ## Features & Enhancements
+    ## Features & enhancements
 
         - Revamped and improved **Usage** tab:
             - New section to track AI spend
@@ -1110,7 +1226,7 @@ icon: newspaper
             - **Local storage**: Keeps user/conversation data across page visits
         - Request headers for the Webhook integration are now passed into the event payload
 
-    ## Bug Fixes
+    ## Bug fixes
 
         - Solved an issue where a React apps running Botpress would not run under certain circumstances
         - Fixed a bug where Human-In-The-Loop (HITL) messages were displayed in the wrong order
