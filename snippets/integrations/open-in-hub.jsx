@@ -1,7 +1,7 @@
-export const OpenInHub = ({ integration }) => {
+export const OpenInHub = ({integration}) => {
+    const {version, id} = integration || {}
     const basePath = 'https://studio.botpress.cloud/home?exploreHub=1&hubItemId='
-    const url = `${basePath}${integration.id}`
-    const version = integration.version
+    const url = `${basePath}${id}`
 
     return (
         <>
@@ -21,7 +21,7 @@ export const OpenInHub = ({ integration }) => {
                 padding: '.5rem'
                 }}
             >
-                v{integration.version}
+                v{version}
             </i>
         </>
     )
