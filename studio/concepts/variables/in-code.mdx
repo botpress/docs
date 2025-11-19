@@ -1,0 +1,95 @@
+---
+title: Use variables in code
+---
+
+If you need more flexibility in how you handle information in Botpress Studio, you can use variables in code (for example, in an [Execute Code](/studio/concepts/cards/execute-code) Card).
+
+<Tip>
+Variables in code follow the pattern `variabletype.variablename`.
+</Tip>
+
+Here are a few examples of how you might use variables in code:
+
+## Assign a value to a variable
+
+This is typically how you'd initialize a variable or change its value.
+
+```javascript
+workflow.orderNumber = 12345
+conversation.cartTotal = 59.99
+user.lastName = 'Smith'
+bot.version = '1.2.3'
+env.databaseURL = 'https://example.com/db'
+```
+
+## Use variables in conditional statements
+
+This checks the value of a variable and executes code accordingly.
+
+```javascript
+if (user.firstName === 'John') {
+  console.log('Hello John!')
+} else {
+  console.log('Welcome, user!')
+}
+```
+
+## Use variables in functions
+
+Here, you might pass a variable as a function argument or use it inside a function.
+
+```javascript
+function greetUser(firstName) {
+  console.log('Hello, ' + firstName + '!')
+}
+
+greetUser(user.firstName)
+```
+
+## Combine variables
+
+You might want to combine or concatenate variables.
+
+```javascript
+var fullName = user.firstName + ' ' + user.lastName
+
+// or
+
+var welcomeMessage = 'Hello, ' + user.firstName + ' ' + user.lastName + '!'
+```
+
+## Check variable types
+
+Botpress might throw an error if types don't match. To avoid this, you can use type checking before assigning values.
+
+```javascript
+if (typeof workflow.userAcctId === 'number') {
+  workflow.userAcctId = 67890
+} else {
+  console.error('Invalid type for userAcctId!')
+}
+```
+
+## Use variables with external APIs
+
+If your bot interacts with external services, you might use an environment variable to store an API key:
+
+```javascript
+const apiKey = env.API_KEY
+const apiUrl = env.API_URL
+
+const config = {
+  headers: {
+    Authorization: `Bearer ${apiKey}`,
+  },
+}
+
+const response = await axios.get(apiUrl, config)
+const data = response.data
+
+// Process the data as needed
+// ...
+
+// Example: Log the response data
+console.log(data)
+```                                                                                                                                                                                                  |
