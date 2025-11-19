@@ -1,0 +1,1462 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+
+### Create Lead
+
+<span>{"Create a new lead in Hunter.io"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"Schema for creating or updating a lead in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_list_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_list_ids"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="custom_attributes"
+    type="object"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"Schema representing a lead in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sync_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sending_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_activity_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_contacted_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verification"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="date"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="leads_list"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_count"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Create or update Lead
+
+<span>{"Create or update a lead in Hunter.io"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"Schema for creating or updating a lead in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_list_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_list_ids"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="custom_attributes"
+    type="object"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"Schema representing a lead in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sync_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sending_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_activity_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_contacted_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verification"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="date"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="leads_list"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_count"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Delete Lead
+
+<span>{"Delete a lead from Hunter.io"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"The ID of the lead to delete"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+### Get Leads
+
+<span>{"Fetch leads from Hunter.io"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="search"
+    type="object"
+    required
+  >
+    <span>{"Filters to search leads in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="leads_list_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="industry"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sync_status"
+    type="enum<string>"
+  >
+    Available options: `pending`, `error`, `success`
+  </ResponseField>
+  <ResponseField
+    name="sending_status"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verification_status"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_activity_at"
+    type="enum<string>"
+  >
+    Available options: `*`, `~`
+  </ResponseField>
+  <ResponseField
+    name="last_contacted_at"
+    type="enum<string>"
+  >
+    Available options: `*`, `~`
+  </ResponseField>
+  <ResponseField
+    name="custom_attributes"
+    type="object"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="query"
+    type="string"
+  >
+    <span>{"Filter on first name, last name or email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="offset"
+    type="number"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="leads"
+    type="array"
+    required
+  >
+    <span>{"List of leads retrieved from Hunter.io"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sync_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sending_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_activity_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_contacted_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verification"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="date"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="leads_list"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_count"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Retrieve Lead
+
+<span>{"Retrieve a specific lead by ID from Hunter.io"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"The ID of the lead to retrieve"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"Schema representing a lead in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sync_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="sending_status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_activity_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_contacted_at"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="verification"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="date"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="leads_list"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_count"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+### Update Lead
+
+<span>{"Update an existing lead in Hunter.io"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"The ID of the lead to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"Schema for creating or updating a lead in Hunter.io"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="email"
+    type="string (email)"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="first_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="last_name"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_industry"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="company_size"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="confidence_score"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="website"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="country_code"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="linkedin_url"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="twitter"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="notes"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_list_id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="leads_list_ids"
+    type="array"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="custom_attributes"
+    type="object"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+This Card has no output.
+
+
+{/* vale on */}
