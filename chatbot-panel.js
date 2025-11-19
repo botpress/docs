@@ -304,7 +304,7 @@
 
     // Check if mobile
     function isMobile() {
-      return window.innerWidth <= 768;
+      return window.innerWidth <= 1024;
     }
 
     // Handle Enter key in input (desktop only)

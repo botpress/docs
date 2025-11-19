@@ -401,7 +401,7 @@ img {
   border: none;
   background: transparent;
   color: light-dark(rgb(var(--gray-600)), rgb(var(--gray-400)));
-  font-size: 1.0625rem;
+  font-size: 0.875rem;
   font-family: inherit;
   outline: none;
   outline-width: 0;
@@ -410,12 +410,6 @@ img {
 
 .ask-ai-input::placeholder {
   color: light-dark(rgb(var(--gray-600)), var(--gray-400));
-}
-
-@media (min-width: 640px) {
-  .ask-ai-input {
-    font-size: 0.875rem;
-  }
 }
 
 .ask-ai-shortcut {
@@ -472,7 +466,7 @@ img {
 }
 
 /* Responsive styles for input bubble */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .ask-ai-input-bubble {
     bottom: 16px;
     left: 50%;
