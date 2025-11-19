@@ -10,8 +10,8 @@ function loadWebchat() {
     "configuration": {
       "version": "v2",
       "botName": "Assistant",
-      "botAvatar": "https://files.bpcontent.cloud/2025/06/16/20/20250616204038-BRUW6C2R.svg",
-      "botDescription": "Ask AI a question about the documentation. ⚡️ by Botpress.",
+      "botAvatar": "https://files.bpcontent.cloud/2025/11/18/20/20251118205639-DLNS05I5.png",
+      "botDescription": "Ask AI a question about the documentation. Powered by Botpress.",
       "composerPlaceholder": "Ask a question...",
       "website": {},
       "email": {},

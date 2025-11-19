@@ -23,9 +23,7 @@
     toggleButton.className = 'bot-toggle';
     toggleButton.setAttribute('aria-label', 'Open bot');
     toggleButton.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open-icon lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m10 15-3-3 3-3"/></svg>
     `;
 
     // Create the toggle button to close (inside panel, left side)
@@ -34,9 +32,7 @@
     toggleCloseButton.className = 'bot-toggle-close';
     toggleCloseButton.setAttribute('aria-label', 'Close bot');
     toggleCloseButton.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close-icon lucide-panel-right-close"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m8 9 3 3-3 3"/></svg>
     `;
 
     // Create the resize handle
@@ -59,9 +55,9 @@
     botContainer.id = 'docs-bot';
     botContainer.className = 'bot-iframe-container';
     
-    // Assemble the panel
+    // Assemble the panel - toggle button goes inside resize handle
     panel.appendChild(mobileDismiss);
-    panel.appendChild(toggleCloseButton);
+    resizeHandle.appendChild(toggleCloseButton);
     panel.appendChild(botContainer);
     panel.appendChild(resizeHandle);
 
@@ -159,7 +155,10 @@
 
     // Event listeners
     toggleButton.addEventListener('click', togglePanel);
-    toggleCloseButton.addEventListener('click', closePanel);
+    toggleCloseButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closePanel();
+    });
     mobileDismiss.addEventListener('click', closePanel);
 
     // Keyboard shortcut handler (Command+I or Ctrl+I) to toggle panel
