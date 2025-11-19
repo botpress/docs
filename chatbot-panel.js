@@ -40,13 +40,13 @@
     resizeHandle.className = 'bot-resize-handle';
     resizeHandle.setAttribute('aria-label', 'Resize panel');
 
-    // Create mobile dismiss arrow (shown only on mobile)
+    // Create mobile grabber (shown only on mobile)
     const mobileDismiss = document.createElement('div');
     mobileDismiss.className = 'bot-mobile-dismiss';
-    mobileDismiss.setAttribute('aria-label', 'Close bot');
+    mobileDismiss.setAttribute('aria-label', 'Swipe down to close');
     mobileDismiss.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="18 15 12 9 6 15"></polyline>
+      <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="2" width="36" height="4" rx="2" fill="currentColor"/>
       </svg>
     `;
 
@@ -93,6 +93,8 @@
     function closePanel() {
       panel.classList.remove('bot-panel-expanded');
       panel.classList.add('bot-panel-collapsed');
+      panel.classList.remove('swiping');
+      panel.style.transform = ''; // Reset any transform
       toggleButton.classList.remove('bot-toggle-expanded');
       localStorage.setItem('bot-panel-open', 'false');
       updateContentSideLayoutVisibility();
@@ -153,12 +155,75 @@
       }
     });
 
+    // Swipe-to-dismiss functionality for mobile
+    let touchStartY = 0;
+    let touchCurrentY = 0;
+    let touchStartTime = 0;
+    let isSwiping = false;
+    const swipeThreshold = 100; // Minimum distance to trigger dismiss
+    const swipeVelocityThreshold = 0.3; // Minimum velocity (px/ms) to trigger dismiss
+
+    function handleTouchStart(e) {
+      if (window.innerWidth > 1024) return; // Only on mobile
+      if (!panel.classList.contains('bot-panel-expanded')) return;
+      
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+      isSwiping = true;
+      panel.classList.add('swiping');
+    }
+
+    function handleTouchMove(e) {
+      if (!isSwiping || window.innerWidth > 1024) return;
+      if (!panel.classList.contains('bot-panel-expanded')) return;
+
+      touchCurrentY = e.touches[0].clientY;
+      const deltaY = touchCurrentY - touchStartY;
+
+      // Only allow downward swipes
+      if (deltaY > 0) {
+        e.preventDefault();
+        const translateY = Math.min(deltaY, window.innerHeight);
+        panel.style.transform = `translateX(0) translateY(${translateY}px)`;
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (!isSwiping || window.innerWidth > 1024) return;
+      if (!panel.classList.contains('bot-panel-expanded')) return;
+
+      const deltaY = touchCurrentY - touchStartY;
+      const timeDelta = Date.now() - touchStartTime;
+      const velocity = timeDelta > 0 ? deltaY / timeDelta : 0;
+
+      // Dismiss if swiped far enough or with enough velocity
+      if (deltaY > swipeThreshold || velocity > swipeVelocityThreshold) {
+        closePanel();
+      } else {
+        // Snap back to original position
+        panel.style.transform = '';
+      }
+
+      panel.classList.remove('swiping');
+      isSwiping = false;
+      touchStartY = 0;
+      touchCurrentY = 0;
+      touchStartTime = 0;
+    }
+
+    // Add touch event listeners to the panel
+    panel.addEventListener('touchstart', handleTouchStart, { passive: false });
+    panel.addEventListener('touchmove', handleTouchMove, { passive: false });
+    panel.addEventListener('touchend', handleTouchEnd, { passive: false });
+    panel.addEventListener('touchcancel', handleTouchEnd, { passive: false });
+
     // Event listeners
     toggleButton.addEventListener('click', togglePanel);
     toggleCloseButton.addEventListener('click', (e) => {
       e.stopPropagation();
       closePanel();
     });
+    // Keep click handler for grabber as fallback
     mobileDismiss.addEventListener('click', closePanel);
 
     // Keyboard shortcut handler (Command+I or Ctrl+I) to toggle panel
