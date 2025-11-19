@@ -6,37 +6,30 @@ webchatScript.defer = true
 
 function loadWebchat() {
   window.botpress.init({
-    "botId": "001e4b2d-d9af-4324-9021-000e3dc530fe",
+    "botId": "e3098b37-2e06-4351-859c-d79e06f39ca8",
     "configuration": {
       "version": "v2",
       "composerPlaceholder": "Ask a question...",
       "botName": "Assistant",
-      "botAvatar": "https://files.bpcontent.cloud/2025/11/19/21/20251119210301-2SLGBPIY.png",
+      "botAvatar": "https://files.bpcontent.cloud/2025/11/19/21/20251119215003-XFGOK7KD.png",
       "botDescription": "Ask AI a question about the documentation. Powered by Botpress.",
-      "website": {},
-      "email": {},
-      "phone": {},
-      "termsOfService": {},
       "privacyPolicy": {},
-      "color": "#0588f0",
+      "color": "#0588F0",
       "variant": "solid",
       "headerVariant": "glass",
       "themeMode": "light",
-      "fontFamily": "inter",
+      "fontFamily": "Inter",
       "radius": 1.5,
       "feedbackEnabled": true,
       "footer": "[âš¡ by Botpress](https://botpress.com/?from=webchat)",
-      "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/11/19/21/20251119210232-LISUTXUC.css",
+      "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/06/13/14/20250613145950-XC43YPI7.css",
       "allowFileUpload": true,
       "soundEnabled": false,
       "toggleChatId": "docs-bot",
       "embeddedChatId": "docs-bot",
       "proactiveMessageEnabled": false,
-      "proactiveBubbleMessage": "Hi! ðŸ‘‹ Need help?",
-      "proactiveBubbleTriggerType": "afterDelay",
-      "proactiveBubbleDelayTime": 10
     },
-    "clientId": "a1a38604-d5c7-4f5b-a644-0c9347acd585"
+    "clientId": "44246de9-1d1b-462c-8ef3-1ce39e65d89a"
   });
   // Hash handling for #ask - opens custom pane
   url = new URL(window.location.href)
