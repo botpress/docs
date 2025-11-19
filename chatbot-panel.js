@@ -50,6 +50,11 @@
       </svg>
     `;
 
+    // Create dimming overlay for mobile
+    const overlay = document.createElement('div');
+    overlay.className = 'bot-overlay';
+    overlay.setAttribute('aria-label', 'Close panel');
+
     // Create the container for the iframe (user will inject iframe here)
     const botContainer = document.createElement('div');
     botContainer.id = 'docs-bot';
@@ -62,6 +67,7 @@
     panel.appendChild(resizeHandle);
 
     // Add to body
+    document.body.appendChild(overlay);
     document.body.appendChild(panel);
     document.body.appendChild(toggleButton);
 
@@ -69,6 +75,26 @@
     const savedWidth = localStorage.getItem('bot-panel-width');
     if (savedWidth) {
       panel.style.width = savedWidth;
+    }
+
+    // Helper function to check if mobile
+    function isMobile() {
+      return window.innerWidth <= 1024;
+    }
+
+    // Helper function to update overlay visibility
+    function updateOverlay() {
+      if (!isMobile()) {
+        overlay.classList.remove('visible');
+        return;
+      }
+      
+      const isExpanded = panel.classList.contains('bot-panel-expanded');
+      if (isExpanded) {
+        overlay.classList.add('visible');
+      } else {
+        overlay.classList.remove('visible');
+      }
     }
 
     // Toggle functionality
@@ -87,6 +113,7 @@
         toggleButton.classList.remove('bot-toggle-expanded');
         localStorage.setItem('bot-panel-open', 'false');
       }
+      updateOverlay();
     }
 
     function closePanel() {
@@ -96,6 +123,7 @@
       panel.style.transform = ''; // Reset any transform
       toggleButton.classList.remove('bot-toggle-expanded');
       localStorage.setItem('bot-panel-open', 'false');
+      updateOverlay();
     }
 
     // Resize functionality
@@ -210,6 +238,12 @@
     });
     // Keep click handler for grabber as fallback
     mobileDismiss.addEventListener('click', closePanel);
+    // Close panel when clicking overlay on mobile
+    overlay.addEventListener('click', (e) => {
+      if (isMobile() && panel.classList.contains('bot-panel-expanded')) {
+        closePanel();
+      }
+    });
 
     // Keyboard shortcut handler (Command+I or Ctrl+I) to toggle panel
     document.addEventListener('keydown', (e) => {
@@ -239,6 +273,28 @@
       panel.classList.add('bot-panel-expanded');
       toggleButton.classList.add('bot-toggle-expanded');
     }
+    
+    // Update overlay on initial load
+    updateOverlay();
+    
+    // Update overlay on resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateOverlay();
+      }, 100);
+    });
+    
+    // Watch for panel state changes to update overlay
+    const panelObserver = new MutationObserver(() => {
+      updateOverlay();
+    });
+    
+    panelObserver.observe(panel, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
   }
 })();
 
@@ -482,25 +538,8 @@
         }
 
         // Send the message to the webchat
-        // Try different methods to send the message
         if (window.botpress && window.botpress.sendMessage) {
           window.botpress.sendMessage(message);
-        } else if (window.botpress && window.botpress.sendTextMessage) {
-          window.botpress.sendTextMessage(message);
-        } else if (window.botpress && window.botpress.api && window.botpress.api.sendMessage) {
-          window.botpress.api.sendMessage(message);
-        } else {
-          // Try to send via postMessage to the iframe inside docs-bot
-          const botContainer = document.getElementById('docs-bot');
-          if (botContainer) {
-            const iframe = botContainer.querySelector('iframe');
-            if (iframe && iframe.contentWindow) {
-              iframe.contentWindow.postMessage({
-                type: 'sendMessage',
-                text: message
-              }, '*');
-            }
-          }
         }
 
         // Clear the input
@@ -519,4 +558,3 @@
     });
   }
 })();
-
