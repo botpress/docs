@@ -87,7 +87,6 @@
         toggleButton.classList.remove('bot-toggle-expanded');
         localStorage.setItem('bot-panel-open', 'false');
       }
-      updateContentSideLayoutVisibility();
     }
 
     function closePanel() {
@@ -97,20 +96,6 @@
       panel.style.transform = ''; // Reset any transform
       toggleButton.classList.remove('bot-toggle-expanded');
       localStorage.setItem('bot-panel-open', 'false');
-      updateContentSideLayoutVisibility();
-    }
-
-    // Function to update content-side-layout visibility
-    function updateContentSideLayoutVisibility() {
-      const contentSideLayout = document.getElementById('content-side-layout');
-      if (contentSideLayout) {
-        const isExpanded = panel.classList.contains('bot-panel-expanded');
-        if (isExpanded) {
-          contentSideLayout.style.visibility = 'hidden';
-        } else {
-          contentSideLayout.style.visibility = '';
-        }
-      }
     }
 
     // Resize functionality
@@ -254,8 +239,6 @@
       panel.classList.add('bot-panel-expanded');
       toggleButton.classList.add('bot-toggle-expanded');
     }
-    // Update content-side-layout visibility based on initial state
-    updateContentSideLayoutVisibility();
   }
 })();
 
@@ -349,12 +332,6 @@
             toggleButton.classList.add('bot-toggle-expanded');
           }
           localStorage.setItem('bot-panel-open', 'true');
-          
-          // Update content-side-layout visibility
-          const contentSideLayout = document.getElementById('content-side-layout');
-          if (contentSideLayout) {
-            contentSideLayout.style.visibility = 'hidden';
-          }
         }
       }
     }
@@ -502,12 +479,6 @@
             toggleButton.classList.add('bot-toggle-expanded');
           }
           localStorage.setItem('bot-panel-open', 'true');
-          
-          // Update content-side-layout visibility
-          const contentSideLayout = document.getElementById('content-side-layout');
-          if (contentSideLayout) {
-            contentSideLayout.style.visibility = 'hidden';
-          }
         }
 
         // Send the message to the webchat
