@@ -477,16 +477,20 @@ img {
     bottom: 16px;
     left: 50%;
     transform: translateX(-50%) translateY(0);
-    width: calc(100% - 32px);
-    max-width: calc(100% - 32px);
+    width: calc(100% - 64px);
+    max-width: 320px;
   }
   
   .ask-ai-input-bubble-hidden {
     transform: translateX(-50%) translateY(10px);
   }
 
-  /* Make input bar clickable but not typeable on mobile */
+  .ask-ai-input-wrapper {
+    padding: 0 12px 0 16px;
+  }
+
   .ask-ai-input {
+    padding: 12px 0;
     pointer-events: none;
     cursor: pointer;
   }
