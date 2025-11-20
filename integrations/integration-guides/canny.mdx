@@ -1,0 +1,59 @@
+---
+title: Canny
+description: Add a bot to Canny using the official integration.
+icon: '/integrations/integration-guides/assets/icons/canny.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/canny.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.canny}/>
+
+The official Canny integration allows your bot to manage posts and comments in your Canny feature request boards.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/get-started/quick-start)
+  - A [Canny account](https://canny.io/register)
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+    2. Search for the **Canny** integration, then select **Install Integration**.
+
+    In the **Configuration** menu, you should see one field: **API key**. Leave it empty for now—you'll come back to it after getting your Canny API key.
+  </Step>
+  <Step title="Get your Canny API key">
+    Next, get your Canny API key:
+
+    1. [Log in to your Canny dashboard](https://canny.io/login).
+    2. In the top-right corner, select your profile icon and go to **Settings**.
+    3. From the left sidebar, go to **API**.
+    4. Copy your API key.
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Now, you can finish setting up the integration in Botpress:
+
+    1. In the integration's **API Key** field, paste your Canny API key.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
+
+<Check>
+  Your Canny integration is ready. You can use the integration's [Cards](#cards) to interact with your Canny account.
+</Check>
+
+## Cards
+
+<Cards />

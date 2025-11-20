@@ -11,51 +11,65 @@ function loadWebchat() {
       "version": "v2",
       "composerPlaceholder": "Ask a question...",
       "botName": "Assistant",
-      "botAvatar": "https://files.bpcontent.cloud/2025/06/16/20/20250616204038-BRUW6C2R.svg",
-      "botDescription": "Ask AI a question about the documentation.",
-      "website": {},
-      "email": {
-        "title": "",
-        "link": ""
-      },
-      "phone": {},
-      "termsOfService": {
-        "title": "Terms of service",
-        "link": ""
-      },
+      "botAvatar": "https://files.bpcontent.cloud/2025/11/19/21/20251119215003-XFGOK7KD.png",
+      "botDescription": "Ask AI a question about the documentation. Powered by Botpress.",
       "privacyPolicy": {},
       "color": "#0588F0",
       "variant": "solid",
       "headerVariant": "glass",
       "themeMode": "light",
       "fontFamily": "Inter",
-      "radius": 3,
+      "radius": 1.5,
       "feedbackEnabled": true,
-      "footer": "[⚡️ by Botpress](https://botpress.com/?from=webchat)",
+      "footer": "[âš¡ by Botpress](https://botpress.com/?from=webchat)",
       "additionalStylesheetUrl": "https://files.bpcontent.cloud/2025/06/13/14/20250613145950-XC43YPI7.css",
       "allowFileUpload": true,
       "soundEnabled": false,
-      "proactiveMessageEnabled": true,
-      "proactiveBubbleMessage": "Hi! 👋 Need help with the docs?",
-      "proactiveBubbleTriggerType": "afterDelay",
-      "proactiveBubbleDelayTime": 10
+      "toggleChatId": "docs-bot",
+      "embeddedChatId": "docs-bot",
+      "proactiveMessageEnabled": false,
     },
     "clientId": "44246de9-1d1b-462c-8ef3-1ce39e65d89a"
   });
+  // Hash handling for #ask - opens custom pane
   url = new URL(window.location.href)
-  if (url.hash === "#ask" ) window.botpress.open()
+  if (url.hash === "#ask") {
+    openChatPanel()
+  }
 
   window.addEventListener("hashchange", () => {
     if (window.location.hash === "#ask") {
-      window.botpress.open()
+      openChatPanel()
     }
   })
 };
 
-function askAi() {
-  if (window.botpress) {
-    window.botpress.open()
+function openChatPanel() {
+  const panel = document.getElementById('bot-panel');
+  const toggleButton = document.getElementById('bot-toggle');
+  
+  if (panel) {
+    if (!panel.classList.contains('bot-panel-expanded')) {
+      panel.classList.remove('bot-panel-collapsed');
+      panel.classList.add('bot-panel-expanded');
+      if (toggleButton) {
+        toggleButton.classList.add('bot-toggle-expanded');
+      }
+      localStorage.setItem('bot-panel-open', 'true');
+      if (window.focusComposerInput) {
+        window.focusComposerInput();
+      }
+    }
+  } else {
+    // Panel not created yet, wait a bit and try again
+    setTimeout(() => {
+      openChatPanel();
+    }, 100);
   }
+}
+
+function askAi() {
+  openChatPanel()
 }
 
 webchatScript.onload = () => {

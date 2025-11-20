@@ -22,7 +22,7 @@ Install this integration to generate a personalized [webhook](https://docs.webho
 <Info>
   You will need:
 
-  - A [published bot](/learn/get-started/quick-start)
+  - A [published bot](/get-started/quick-start)
 </Info>
 
 ### Install the integration
@@ -192,14 +192,14 @@ Webhooks don't return any data in the response body.
 ## Use webhook data in Studio
 
 <Tip>
-  You can [test the webhook in the Studio's emulator](/learn/reference/triggers#test-a-trigger) to make sure you're handling requests properly.
+  You can [test the webhook in the Studio's emulator](/studio/concepts/triggers#test-a-trigger) to make sure you're handling requests properly.
 </Tip>
 
 To read data from a webhook request in the Studio:
 
 1. In Botpress Studio, add the [Event](#event) Trigger to the Workflow you want to use the request's data in.
 2. Connect any Nodes you want to the Trigger—they'll execute whenever the webhook receives an request.
-3. Now, you can [read the event's payload](/learn/guides/advanced/event-properties) to access information about the webhook request:
+3. Now, you can [read the event's payload](/studio/guides/advanced/event-properties) to access information about the webhook request:
 
 ### Read the payload
 
@@ -257,7 +257,7 @@ Here's the structure of a webhook event's payload:
   </Expandable>
 </ResponseField>
 
-The contents of `event.payload` are overwritten as soon as the bot or the user sends a new message. If you need to access a webhook request's data later, consider storing it in a [variable](/learn/reference/variables/overview).
+The contents of `event.payload` are overwritten as soon as the bot or the user sends a new message. If you need to access a webhook request's data later, consider storing it in a [variable](/studio/concepts/variables/overview).
 
 ### Payload size limit
 

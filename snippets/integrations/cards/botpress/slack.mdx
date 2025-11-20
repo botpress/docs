@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
 
 ### Add Reaction
 
@@ -191,6 +191,34 @@ Available options: `dm`, `channel`
     required
   >
     <span>{"The text of the message"}</span>
+  </ResponseField>
+</Expandable>
+
+### Start Channel Conversation
+
+<span>{"Initiate a conversation in a channel"}</span>
+
+**Input**:
+
+<Expandable title="input fields">
+  <ResponseField
+    name="channelName"
+    type="string"
+    required
+  >
+    <span>{"The name of the channel you want the conversation to be created at"}</span>
+  </ResponseField>
+</Expandable>
+
+**Output**:
+
+<Expandable title="output">
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the new conversation"}</span>
   </ResponseField>
 </Expandable>
 

@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
 
 ### Generate Content
 
@@ -22,7 +22,7 @@ Here's a reference for all [Cards](/learn/reference/cards/introduction) availabl
   >
     <span>{"Model to use for content generation"}</span>
 
-Available options: `gpt-5-2025-08-07`, `gpt-5-mini-2025-08-07`, `gpt-5-nano-2025-08-07`, `o4-mini-2025-04-16`, `o3-2025-04-16`, `gpt-4.1-2025-04-14`, `gpt-4.1-mini-2025-04-14`, `gpt-4.1-nano-2025-04-14`, `o3-mini-2025-01-31`, `o1-2024-12-17`, `o1-mini-2024-09-12`, `gpt-4o-mini-2024-07-18`, `gpt-4o-2024-11-20`, `gpt-4o-2024-08-06`, `gpt-4o-2024-05-13`, `gpt-4-turbo-2024-04-09`, `gpt-3.5-turbo-0125`
+Available options: `gpt-5.1-2025-11-13`, `gpt-5-2025-08-07`, `gpt-5-mini-2025-08-07`, `gpt-5-nano-2025-08-07`, `o4-mini-2025-04-16`, `o3-2025-04-16`, `gpt-4.1-2025-04-14`, `gpt-4.1-mini-2025-04-14`, `gpt-4.1-nano-2025-04-14`, `o3-mini-2025-01-31`, `o1-2024-12-17`, `o1-mini-2024-09-12`, `gpt-4o-mini-2024-07-18`, `gpt-4o-2024-11-20`, `gpt-4o-2024-08-06`, `gpt-4o-2024-05-13`, `gpt-4-turbo-2024-04-09`, `gpt-3.5-turbo-0125`
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -555,6 +555,8 @@ Available options: `natural`, `vivid`
 
 ### Generate Speech
 
+<span>{"Generate Speech"}</span>
+
 **Input**:
 
 <Expandable title="input fields">
@@ -562,32 +564,38 @@ Available options: `natural`, `vivid`
     name="model"
     type="enum<string>"
   >
-    Available options: `tts-1`, `tts-1-hd`
+    <span>{"The model used"}</span>
+
+Available options: `tts-1`, `tts-1-hd`
   </ResponseField>
   <ResponseField
     name="input"
     type="string"
     required
   >
-    
+    <span>{"The input"}</span>
   </ResponseField>
   <ResponseField
     name="voice"
     type="enum<string>"
   >
-    Available options: `alloy`, `echo`, `fable`, `onyx`, `nova`, `shimmer`
+    <span>{"The voice used"}</span>
+
+Available options: `alloy`, `echo`, `fable`, `onyx`, `nova`, `shimmer`
   </ResponseField>
   <ResponseField
     name="format"
     type="enum<string>"
   >
-    Available options: `mp3`, `opus`, `aac`, `flac`, `wav`, `pcm`
+    <span>{"The format used"}</span>
+
+Available options: `mp3`, `opus`, `aac`, `flac`, `wav`, `pcm`
   </ResponseField>
   <ResponseField
     name="speed"
     type="number"
   >
-    
+    <span>{"The speed used"}</span>
   </ResponseField>
   <ResponseField
     name="expiration"
@@ -612,7 +620,7 @@ Available options: `natural`, `vivid`
     type="object"
     required
   >
-    
+    <span>{"Cost of the speech generation, in U.S. dollars"}</span>
 
     <Expandable>
   <ResponseField

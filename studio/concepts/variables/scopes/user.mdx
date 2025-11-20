@@ -1,0 +1,27 @@
+---
+title: User variables
+---
+
+User variables let you store and reuse information within the scope of **a single user**.
+
+Any information you assign to a user variable will follow the user across multiple conversations with your bot. This makes user variables great for storing user-specific information, like:
+
+- Personal details
+- User preferences
+- Notes from previous conversations
+
+<Note>
+    If you don't want your variable to follow the user between conversations, use a different [variable scope](/studio/concepts/variables/overview#variable-scopes).
+</Note>
+
+<Tip>
+    Need help getting started with variables? Check out our [introduction to variables](/studio/concepts/variables/overview).
+</Tip>
+
+## Read a user variable
+
+You can use `{{user.variablename}}` or `@user.variablename` to read a user variable. For example, in a **Text** Card:
+
+<Frame>
+![User variable in a text card](./assets/user-variable-example.png)
+</Frame>

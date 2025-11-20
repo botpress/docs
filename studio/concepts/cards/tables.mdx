@@ -1,0 +1,57 @@
+You can use table Cards to perform operations on data you have stored in a table. This page contains a list of available table Cards.
+
+<Note>
+Table cards don't directly display their result. You'll need to first save the data in variables to be able to use them in the conversation.
+</Note>
+
+## Get Record
+
+To retrieve a specific record from a table, use the **Get Record** Card. For example, you might use the Get Record operation to retrieve a user's profile information based on their unique user ID. Here's how to do it:
+
+1. Add the **Get Record** Card to the desired Node.
+2. Select the table you want to get the record from.
+3. Select the **Record ID** you want to retrieve. You can either select a default ID or use variables.
+4. Choose the result variable that will store the record data. (This variable needs be an [Object](/studio/concepts/variables/overview#data-types-for-variables) since table records are objects.)
+5. Done! You can use this variable in other Cards to access the record data.
+
+## Insert Record
+
+To create a new record in a table, use the **Insert Record** Card. This operation can be particularly useful when you need to store new information, such as a new user's details or a newly completed transaction. Here's how to do it:
+
+1. Add the **Insert Record** card to the desired Node.
+2. Select the table where you want to insert the record.
+3. Define a value for each field. You can either define a value manually or use variables.
+4. Done! Once the conversation goes through this card, the record will be created in the table.
+
+## Update Record
+
+To update a record in a table, use the **Update Record** Card. For example, you might use this operation to update a user's profile information or to update the status of a transaction. Here's how to do it:
+
+1. Add the **Update Record** card to the desired Node.
+2. Select the table you want to update.
+3. Select the **Record ID** you want to update. You can either select a default ID or use variables. For example, if you want to update a user's profile information, you can specify their user ID as the unique identifier.
+4. Select **Add properties to update**, then select the columns you want to change. For each column, you can define a value manually or use variables.
+5. Done! Once the conversation goes through this card, the record will be updated in the table.
+
+## Delete Record
+
+To delete a record in a table, use the **Delete Record** Card. For example, you might use this operation to delete a user's data if they choose to deactivate their account. Here's how to do it:
+
+1. Add the `Delete Record` card to the desired Node.
+2. Select the table where you want to delete the record.
+3. Select the ID of the record you want to delete. You can either select a default ID or use variables.
+4. Done! Once the conversation goes through this card, the record will be deleted from the table.
+
+<Warning>
+Deleted records can't be recovered—make sure you're deleting the correct record.
+</Warning>
+
+## Find Records
+
+To search for and fetch multiple records, use the **Find Records** Card. For example, you might use this operation to fetch all transactions made by a specific user. Here's how to do it:
+
+1. Add the **Find Records** Card to the desired Node.
+2. Select the table where you want to find records.
+3. Define your filter criteria in natural language. You can also use variables to make this query dynamic like: `Price is below ${workflow.maxPrice}`.
+4. Choose the result variable that will store the data. (This variable needs to have the [Array](/studio/concepts/variables/overview#data-types-for-variables) type)
+5. Done! You can use this variable in subsequent Cards to access the data.

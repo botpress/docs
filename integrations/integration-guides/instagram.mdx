@@ -1,7 +1,6 @@
 ---
 description: Add your bot to Instagram using the official integration.
 icon: '/integrations/integration-guides/assets/icons/instagram.svg'
-
 ---
 
 {/* vale off */}
@@ -12,8 +11,7 @@ import Cards from '/snippets/integrations/cards/botpress/instagram.mdx'
 
 {/* vale on */}
 
-<OpenInHub integration={integrationVersions.instagram}/>
-
+<OpenInHub integration={integrationVersions.instagram} />
 
 The official Instagram integration allows your users to chat with your bot by messaging an Instagram account.
 
@@ -25,7 +23,7 @@ The official Instagram integration allows your users to chat with your bot by me
         <Info>
             You will need:
 
-            - A [published bot](/learn/get-started/quick-start)
+            - A [published bot](/get-started/quick-start)
             - A [professional Instagram account](https://help.instagram.com/138925576505882?helpref=faq_content). If you have a personal Instagram account, the setup wizard will ask you to switch to a professional account.
         </Info>
 
@@ -37,23 +35,13 @@ The official Instagram integration allows your users to chat with your bot by me
     </Tab>
     <Tab title="Manual configuration">
 
-    <Warning>
-        ### Manual configuration is temporarily unavailable
-
-        We're currently updating the integration to support the latest version of the Instagram API. This means the option to manually configure your Instagram integration is temporarily unavailable.
-
-        If your app uses v20.0 (or earlier) of the Instagram API, you can still follow the steps below. Otherwise, you can set up the integration using [basic configuration](#basic-configuration) or test it in the [playground](#playground).
-
-
-    </Warning>
-
         You can also manually configure the Instagram integration with your own Meta app.
 
         <Info>
 
             You will need:
 
-            - A [published bot](/learn/get-started/quick-start)
+            - A [published bot](/get-started/quick-start)
             - A [Meta developer app](https://developers.facebook.com/apps/creation/). Check out the [Meta developer documentation](https://developers.facebook.com/docs/instagram-platform) to learn more about the setup process.
             - A [professional Instagram account](https://help.instagram.com/138925576505882?helpref=faq_content). If you have a personal Instagram account, the setup wizard will ask you to switch to a professional account.
         </Info>
@@ -74,6 +62,7 @@ The official Instagram integration allows your users to chat with your bot by me
                 2. Select the app you want to use with the integration.
                 3. From the left navigation bar, select **Add Product**.
                 4. Under the **Instagram** section, select **Set up**.
+
             </Step>
             <Step title="Configure Instagram Tester role">
                 Next, add an Instagram Tester role to your Meta App:
@@ -92,9 +81,15 @@ The official Instagram integration allows your users to chat with your bot by me
                         title="Client Secret"
                     >
                         1. From your Meta app's left sidebar, expand **Instagram** and select **API setup with Instagram login**.
+
+                        <Warning>
+                          Make sure you're in **API setup with Instagram login** and not **API setup with Facebook login**.
+                        </Warning>
+
                         2. Copy the code under **Instagram app secret**.
                         3. Go back to the integration's configuration menu in Botpress.
                         4. Paste the code into the **Client Secret** field.
+
                     </Accordion>
                     <Accordion
                         title="Verify Token"
@@ -105,6 +100,11 @@ The official Instagram integration allows your users to chat with your bot by me
                         title="Access Token"
                     >
                         1. From your Meta app's left sidebar, expand **Instagram** and select **API setup with Instagram login**.
+
+                        <Warning>
+                          Make sure you're in **API setup with Instagram login** and not **API setup with Facebook login**.
+                        </Warning>
+
                         2. Expand **Generate access tokens**, then **Generate token**.
                         3. Select **Allow**, then copy the access token.
                         4. Go back to the integration's configuration menu in Botpress.
@@ -114,6 +114,11 @@ The official Instagram integration allows your users to chat with your bot by me
                         title="Instagram Account ID"
                     >
                         1. From your Meta app's left sidebar, expand **Instagram** and select **API setup with Instagram login**.
+
+                        <Warning>
+                          Make sure you're in **API setup with Instagram login** and not **API setup with Facebook login**.
+                        </Warning>
+
                         2. Expand **Generate access tokens**. Then, copy the number under your Instagram account handle.
                         3. Go back to the integration's configuration menu in Botpress.
                         4. Paste the number into the **Instagram Account ID** field.
@@ -158,7 +163,7 @@ The official Instagram integration allows your users to chat with your bot by me
         <Info>
             You will need:
 
-            - A [published bot](/learn/get-started/quick-start)
+            - A [published bot](/get-started/quick-start)
             - A [professional Instagram account](https://help.instagram.com/138925576505882?helpref=faq_content). If you have a personal Instagram account, the setup wizard will ask you to switch to a professional account.
         </Info>
 
@@ -167,6 +172,7 @@ The official Instagram integration allows your users to chat with your bot by me
         3. Select **Test your agent on Instagram**.
         4. Follow the instructions to set up the playground.
     </Tab>
+
 </Tabs>
 
 ---
