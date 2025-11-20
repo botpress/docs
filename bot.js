@@ -56,6 +56,9 @@ function openChatPanel() {
         toggleButton.classList.add('bot-toggle-expanded');
       }
       localStorage.setItem('bot-panel-open', 'true');
+      if (window.focusComposerInput) {
+        window.focusComposerInput();
+      }
     }
   } else {
     // Panel not created yet, wait a bit and try again
