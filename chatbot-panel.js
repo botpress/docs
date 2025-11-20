@@ -74,7 +74,10 @@
     // Restore panel width from localStorage
     const savedWidth = localStorage.getItem('bot-panel-width');
     if (savedWidth) {
-      panel.style.width = savedWidth;
+      const maxWidth = window.innerWidth * 0.38; // 38vw
+      const savedWidthPx = parseInt(savedWidth, 10);
+      const clampedWidth = Math.min(savedWidthPx, maxWidth);
+      panel.style.width = clampedWidth + 'px';
     }
 
     // Helper function to check if mobile
@@ -97,6 +100,28 @@
       }
     }
 
+    // Function to focus the composer input in the iframe
+    function focusComposerInput() {
+      let intervalId = setInterval(() => {
+        try {
+          const iframe = document.querySelector('iframe[title="Botpress"]');
+          
+          if (iframe && iframe.contentDocument) {
+            const textarea = iframe.contentDocument.querySelector('.bpComposerInput');
+            
+            if (textarea) {
+              textarea.focus();
+              clearInterval(intervalId);
+            }
+          }
+        } catch (e) {
+          clearInterval(intervalId);
+        }
+      }, 50);
+    }
+
+    window.focusComposerInput = focusComposerInput;
+
     // Toggle functionality
     function togglePanel() {
       const isCollapsed = panel.classList.contains('bot-panel-collapsed');
@@ -107,6 +132,7 @@
         toggleButton.classList.add('bot-toggle-expanded');
         // Store state in localStorage
         localStorage.setItem('bot-panel-open', 'true');
+        focusComposerInput();
       } else {
         panel.classList.remove('bot-panel-expanded');
         panel.classList.add('bot-panel-collapsed');
@@ -130,6 +156,8 @@
     let isResizing = false;
     let startX = 0;
     let startWidth = 0;
+    let hasMoved = false;
+    const clickThreshold = 5; // pixels - if moved less than this, treat as click
 
     resizeHandle.addEventListener('mousedown', (e) => {
       // Don't start resizing if clicking on the close button
@@ -137,6 +165,7 @@
         return;
       }
       isResizing = true;
+      hasMoved = false;
       startX = e.clientX;
       startWidth = parseInt(window.getComputedStyle(panel).width, 10);
       panel.classList.add('resizing');
@@ -149,10 +178,19 @@
     document.addEventListener('mousemove', (e) => {
       if (!isResizing) return;
       
-      const diff = startX - e.clientX; // Inverted because we're resizing from the right
-      const newWidth = Math.max(368, Math.min(600, startWidth + diff));
-      panel.style.width = newWidth + 'px';
-      localStorage.setItem('bot-panel-width', newWidth + 'px');
+      const moveDistance = Math.abs(e.clientX - startX);
+      if (moveDistance > clickThreshold) {
+        hasMoved = true;
+      }
+      
+      if (hasMoved) {
+        const diff = startX - e.clientX; // Inverted because we're resizing from the right
+        const maxWidth = window.innerWidth * 0.35;
+        const newWidth = Math.max(368, Math.min(maxWidth, startWidth + diff));
+        panel.style.width = newWidth + 'px';
+        localStorage.setItem('bot-panel-width', newWidth + 'px');
+      }
+      
       e.preventDefault();
       e.stopPropagation();
     });
@@ -163,6 +201,13 @@
         panel.classList.remove('resizing');
         document.body.style.cursor = '';
         document.body.style.userSelect = '';
+        
+        // If it was just a click (no significant movement), toggle the panel
+        if (!hasMoved) {
+          togglePanel();
+        }
+        
+        hasMoved = false;
         e.preventDefault();
         e.stopPropagation();
       }
@@ -246,16 +291,11 @@
     });
 
     // Keyboard shortcut handler (Command+I or Ctrl+I) to toggle panel
-    document.addEventListener('keydown', (e) => {
+    function handleKeyboardShortcut(e) {
       const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       const modifierKey = isMac ? e.metaKey : e.ctrlKey;
       
-        if (modifierKey && e.key === 'i' && !e.shiftKey && !e.altKey) {
-        // Don't trigger if user is typing in an input/textarea
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
-          return;
-        }
-        
+      if (modifierKey && e.key === 'i' && !e.shiftKey && !e.altKey) {
         e.preventDefault();
         const isCollapsed = panel.classList.contains('bot-panel-collapsed');
         if (isCollapsed) {
@@ -264,7 +304,34 @@
           closePanel();
         }
       }
-    });
+    }
+
+    document.addEventListener('keydown', handleKeyboardShortcut);
+
+    function setupIframeKeyboardListener() {
+      try {
+        const iframe = document.querySelector('iframe[title="Botpress"]');
+        if (iframe && iframe.contentDocument) {
+          iframe.contentDocument.addEventListener('keydown', handleKeyboardShortcut);
+        }
+      } catch (e) {}
+    }
+
+    setupIframeKeyboardListener();
+
+    let iframeListenerInterval = setInterval(() => {
+      try {
+        const iframe = document.querySelector('iframe[title="Botpress"]');
+        if (iframe && iframe.contentDocument) {
+          iframe.contentDocument.addEventListener('keydown', handleKeyboardShortcut);
+          clearInterval(iframeListenerInterval);
+        }
+      } catch (e) {}
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(iframeListenerInterval);
+    }, 10000);
 
     // Restore previous state from localStorage
     const wasOpen = localStorage.getItem('bot-panel-open') === 'true';
@@ -283,6 +350,13 @@
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         updateOverlay();
+        // Clamp panel width to 38vw max on window resize
+        const currentWidth = parseInt(window.getComputedStyle(panel).width, 10);
+        const maxWidth = window.innerWidth * 0.38; // 38vw
+        if (currentWidth > maxWidth) {
+          panel.style.width = maxWidth + 'px';
+          localStorage.setItem('bot-panel-width', maxWidth + 'px');
+        }
       }, 100);
     });
     
@@ -388,6 +462,10 @@
             toggleButton.classList.add('bot-toggle-expanded');
           }
           localStorage.setItem('bot-panel-open', 'true');
+          // Try to focus the composer input after opening
+          if (window.focusComposerInput) {
+            window.focusComposerInput();
+          }
         }
       }
     }
@@ -535,6 +613,10 @@
             toggleButton.classList.add('bot-toggle-expanded');
           }
           localStorage.setItem('bot-panel-open', 'true');
+          // Try to focus the composer input after opening
+          if (window.focusComposerInput) {
+            window.focusComposerInput();
+          }
         }
 
         // Send the message to the webchat
