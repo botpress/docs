@@ -5,9 +5,9 @@ mode: 'frame'
 
 <div className="high-contrast flex flex-col items-center justify-center w-full" >
   <div className="absolute top-0 left-0 right-0">
-    <img src="https://i.ibb.co/d4TT3kvW/background-dark.webp" className="block dark:hidden pointer-events-none" style={{opacity: "0.7"}} alt="Banner"  data-path="images/hero/background-light.png" data-optimize="true" data-opv="3"  />
+    <img src="https://i.ibb.co/d4TT3kvW/background-dark.webp" className="block dark:hidden pointer-events-none opacity-60" alt="Banner"  data-path="images/hero/background-light.png" data-optimize="true" data-opv="3"  />
 
-    <img src="https://i.ibb.co/d4TT3kvW/background-dark.webp" className="hidden dark:block pointer-events-none" style={{opacity: "0.7"}} alt="Banner" data-path="images/hero/background-dark.png" data-optimize="true" data-opv="3" />
+    <img src="https://i.ibb.co/d4TT3kvW/background-dark.webp" className="hidden dark:block pointer-events-none opacity-60" alt="Banner" data-path="images/hero/background-dark.png" data-optimize="true" data-opv="3" />
   </div>
   <div className="relative z-10 px-4 pt-16 lg:py-48 lg:pb-12 max-w-3xl mx-auto">
   <h1 className="block text-4xl font-medium text-center text-gray-900 dark:text-zinc-50 tracking-tight">
@@ -38,7 +38,7 @@ mode: 'frame'
 
 <div className="flex flex-wrap gap-8 max-w-[56rem] mx-auto px-5 flex-col md:flex-row">
   <div className="home-columns">
-    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '24px', marginBottom: '0.5em' }}>
+    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl mb-4">
       Build
     </h2>
 
@@ -58,7 +58,7 @@ mode: 'frame'
   </div>
 
   <div className="home-columns">
-    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '24px', marginBottom: '0.5em' }}>
+    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl mb-4">
       Deploy
     </h2>
 
@@ -78,7 +78,7 @@ mode: 'frame'
   </div>
 
   <div className="home-columns">
-    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '24px', marginBottom: '0.5em' }}>
+    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl mb-4">
       For developers
     </h2>
 
@@ -94,23 +94,13 @@ mode: 'frame'
   </div>
 </div>
 
-<div
-  style={{
-  maxWidth: '56rem',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  paddingLeft: '1.25rem',
-  paddingRight: '1.25rem',
-  marginTop: '2em',
-  marginBottom: '2em',
-}}
->
-  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast" style={{ fontSize: '24px' }}>
+<div className="max-w-[56rem] mx-auto px-5 mt-8 mb-8">
+  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl">
     Browse by concept
   </h2>
 
   <div>
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500  dark:text-gray-400" style={{ marginTop: '1.5em' }}>
+    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500  dark:text-gray-400 mt-6">
       Conversational logic
     </div>
 
@@ -140,7 +130,7 @@ mode: 'frame'
       </Card>
     </CardGroup>
 
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500  dark:text-gray-400" style={{ marginTop: '1.5em' }}>
+    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500  dark:text-gray-400 mt-6">
       Data manipulation
     </div>
 
@@ -158,7 +148,7 @@ mode: 'frame'
       </Card>
     </CardGroup>
 
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '1.5em' }}>
+    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 mt-6">
       Custom code
     </div>
 
@@ -172,7 +162,7 @@ mode: 'frame'
       </Card>
     </CardGroup>
 
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400" style={{ marginTop: '1.5em' }}>
+    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 mt-6">
       Maintenance
     </div>
 

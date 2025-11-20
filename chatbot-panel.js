@@ -74,7 +74,10 @@
     // Restore panel width from localStorage
     const savedWidth = localStorage.getItem('bot-panel-width');
     if (savedWidth) {
-      panel.style.width = savedWidth;
+      const maxWidth = window.innerWidth * 0.38; // 38vw
+      const savedWidthPx = parseInt(savedWidth, 10);
+      const clampedWidth = Math.min(savedWidthPx, maxWidth);
+      panel.style.width = clampedWidth + 'px';
     }
 
     // Helper function to check if mobile
@@ -150,7 +153,8 @@
       if (!isResizing) return;
       
       const diff = startX - e.clientX; // Inverted because we're resizing from the right
-      const newWidth = Math.max(368, Math.min(600, startWidth + diff));
+      const maxWidth = window.innerWidth * 0.35;
+      const newWidth = Math.max(368, Math.min(maxWidth, startWidth + diff));
       panel.style.width = newWidth + 'px';
       localStorage.setItem('bot-panel-width', newWidth + 'px');
       e.preventDefault();
@@ -283,6 +287,13 @@
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         updateOverlay();
+        // Clamp panel width to 38vw max on window resize
+        const currentWidth = parseInt(window.getComputedStyle(panel).width, 10);
+        const maxWidth = window.innerWidth * 0.38; // 38vw
+        if (currentWidth > maxWidth) {
+          panel.style.width = maxWidth + 'px';
+          localStorage.setItem('bot-panel-width', maxWidth + 'px');
+        }
       }, 100);
     });
     
