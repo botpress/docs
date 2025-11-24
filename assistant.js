@@ -1,10 +1,7 @@
-// Collapsible bot panel on the right side
-// The iframe will be injected into the element with ID "docs-bot"
-
+// Bot panel
 (function() {
   'use strict';
 
-  // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initBotPanel);
   } else {
@@ -12,12 +9,10 @@
   }
 
   function initBotPanel() {
-    // Create the panel container
     const panel = document.createElement('div');
     panel.id = 'bot-panel';
     panel.className = 'bot-panel bot-panel-collapsed';
 
-    // Create the toggle button to open (arrow on right side)
     const toggleButton = document.createElement('button');
     toggleButton.id = 'bot-toggle';
     toggleButton.className = 'bot-toggle';
@@ -26,7 +21,6 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open-icon lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m10 15-3-3 3-3"/></svg>
     `;
 
-    // Create the toggle button to close (inside panel, left side)
     const toggleCloseButton = document.createElement('button');
     toggleCloseButton.id = 'bot-toggle-close';
     toggleCloseButton.className = 'bot-toggle-close';
@@ -35,12 +29,10 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close-icon lucide-panel-right-close"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m8 9 3 3-3 3"/></svg>
     `;
 
-    // Create the resize handle
     const resizeHandle = document.createElement('div');
     resizeHandle.className = 'bot-resize-handle';
     resizeHandle.setAttribute('aria-label', 'Resize panel');
 
-    // Create mobile grabber (shown only on mobile)
     const mobileDismiss = document.createElement('div');
     mobileDismiss.className = 'bot-mobile-dismiss';
     mobileDismiss.setAttribute('aria-label', 'Swipe down to close');
@@ -50,42 +42,35 @@
       </svg>
     `;
 
-    // Create dimming overlay for mobile
     const overlay = document.createElement('div');
     overlay.className = 'bot-overlay';
     overlay.setAttribute('aria-label', 'Close panel');
 
-    // Create the container for the iframe (user will inject iframe here)
     const botContainer = document.createElement('div');
     botContainer.id = 'docs-bot';
     botContainer.className = 'bot-iframe-container';
     
-    // Assemble the panel - toggle button goes inside resize handle
+    const iframe = document.createElement('iframe');
+    iframe.title = 'Botpress';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.src = 'http://192.168.1.58:5174/'; // TODO: replace with real link
+    
+    botContainer.appendChild(iframe);
+    
     panel.appendChild(mobileDismiss);
     resizeHandle.appendChild(toggleCloseButton);
     panel.appendChild(botContainer);
     panel.appendChild(resizeHandle);
 
-    // Add to body
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
     document.body.appendChild(toggleButton);
 
-    // Restore panel width from localStorage
-    const savedWidth = localStorage.getItem('bot-panel-width');
-    if (savedWidth) {
-      const maxWidth = window.innerWidth * 0.38; // 38vw
-      const savedWidthPx = parseInt(savedWidth, 10);
-      const clampedWidth = Math.min(savedWidthPx, maxWidth);
-      panel.style.width = clampedWidth + 'px';
-    }
-
-    // Helper function to check if mobile
     function isMobile() {
       return window.innerWidth <= 1024;
     }
 
-    // Helper function to update overlay visibility
     function updateOverlay() {
       if (!isMobile()) {
         overlay.classList.remove('visible');
@@ -100,29 +85,27 @@
       }
     }
 
-    // Function to focus the composer input in the iframe
     function focusComposerInput() {
-      let intervalId = setInterval(() => {
-        try {
-          const iframe = document.querySelector('iframe[title="Botpress"]');
-          
-          if (iframe && iframe.contentDocument) {
-            const textarea = iframe.contentDocument.querySelector('.bpComposerInput');
-            
-            if (textarea) {
-              textarea.focus();
-              clearInterval(intervalId);
-            }
-          }
-        } catch (e) {
-          clearInterval(intervalId);
-        }
-      }, 50);
+      const iframe = document.querySelector('iframe[title="Botpress"]');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'focusInput'
+        }, '*');
+      }
     }
 
     window.focusComposerInput = focusComposerInput;
 
-    // Toggle functionality
+    window.askAi = function() {
+      if (panel.classList.contains('bot-panel-collapsed')) {
+        panel.classList.remove('bot-panel-collapsed');
+        panel.classList.add('bot-panel-expanded');
+        toggleButton.classList.add('bot-toggle-expanded');
+        focusComposerInput();
+        updateOverlay();
+      }
+    };
+
     function togglePanel() {
       const isCollapsed = panel.classList.contains('bot-panel-collapsed');
       
@@ -130,14 +113,11 @@
         panel.classList.remove('bot-panel-collapsed');
         panel.classList.add('bot-panel-expanded');
         toggleButton.classList.add('bot-toggle-expanded');
-        // Store state in localStorage
-        localStorage.setItem('bot-panel-open', 'true');
         focusComposerInput();
       } else {
         panel.classList.remove('bot-panel-expanded');
         panel.classList.add('bot-panel-collapsed');
         toggleButton.classList.remove('bot-toggle-expanded');
-        localStorage.setItem('bot-panel-open', 'false');
       }
       updateOverlay();
     }
@@ -146,21 +126,18 @@
       panel.classList.remove('bot-panel-expanded');
       panel.classList.add('bot-panel-collapsed');
       panel.classList.remove('swiping');
-      panel.style.transform = ''; // Reset any transform
+      panel.style.transform = '';
       toggleButton.classList.remove('bot-toggle-expanded');
-      localStorage.setItem('bot-panel-open', 'false');
       updateOverlay();
     }
 
-    // Resize functionality
     let isResizing = false;
     let startX = 0;
     let startWidth = 0;
     let hasMoved = false;
-    const clickThreshold = 5; // pixels - if moved less than this, treat as click
+    const clickThreshold = 5;
 
     resizeHandle.addEventListener('mousedown', (e) => {
-      // Don't start resizing if clicking on the close button
       if (e.target.closest('#bot-toggle-close')) {
         return;
       }
@@ -184,11 +161,10 @@
       }
       
       if (hasMoved) {
-        const diff = startX - e.clientX; // Inverted because we're resizing from the right
+        const diff = startX - e.clientX;
         const maxWidth = window.innerWidth * 0.35;
         const newWidth = Math.max(368, Math.min(maxWidth, startWidth + diff));
         panel.style.width = newWidth + 'px';
-        localStorage.setItem('bot-panel-width', newWidth + 'px');
       }
       
       e.preventDefault();
@@ -202,7 +178,6 @@
         document.body.style.cursor = '';
         document.body.style.userSelect = '';
         
-        // If it was just a click (no significant movement), toggle the panel
         if (!hasMoved) {
           togglePanel();
         }
@@ -213,16 +188,15 @@
       }
     });
 
-    // Swipe-to-dismiss functionality for mobile
     let touchStartY = 0;
     let touchCurrentY = 0;
     let touchStartTime = 0;
     let isSwiping = false;
-    const swipeThreshold = 100; // Minimum distance to trigger dismiss
-    const swipeVelocityThreshold = 0.3; // Minimum velocity (px/ms) to trigger dismiss
+    const swipeThreshold = 100;
+    const swipeVelocityThreshold = 0.3;
 
     function handleTouchStart(e) {
-      if (window.innerWidth > 1024) return; // Only on mobile
+      if (window.innerWidth > 1024) return;
       if (!panel.classList.contains('bot-panel-expanded')) return;
       
       touchStartY = e.touches[0].clientY;
@@ -238,7 +212,6 @@
       touchCurrentY = e.touches[0].clientY;
       const deltaY = touchCurrentY - touchStartY;
 
-      // Only allow downward swipes
       if (deltaY > 0) {
         e.preventDefault();
         const translateY = Math.min(deltaY, window.innerHeight);
@@ -254,11 +227,9 @@
       const timeDelta = Date.now() - touchStartTime;
       const velocity = timeDelta > 0 ? deltaY / timeDelta : 0;
 
-      // Dismiss if swiped far enough or with enough velocity
       if (deltaY > swipeThreshold || velocity > swipeVelocityThreshold) {
         closePanel();
       } else {
-        // Snap back to original position
         panel.style.transform = '';
       }
 
@@ -269,31 +240,34 @@
       touchStartTime = 0;
     }
 
-    // Add touch event listeners to the panel
     panel.addEventListener('touchstart', handleTouchStart, { passive: false });
     panel.addEventListener('touchmove', handleTouchMove, { passive: false });
     panel.addEventListener('touchend', handleTouchEnd, { passive: false });
     panel.addEventListener('touchcancel', handleTouchEnd, { passive: false });
 
-    // Event listeners
     toggleButton.addEventListener('click', togglePanel);
     toggleCloseButton.addEventListener('click', (e) => {
       e.stopPropagation();
       closePanel();
     });
-    // Keep click handler for grabber as fallback
     mobileDismiss.addEventListener('click', closePanel);
-    // Close panel when clicking overlay on mobile
     overlay.addEventListener('click', (e) => {
       if (isMobile() && panel.classList.contains('bot-panel-expanded')) {
         closePanel();
       }
     });
 
-    // Keyboard shortcut handler (Command+I or Ctrl+I) to toggle panel
     function handleKeyboardShortcut(e) {
       const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       const modifierKey = isMac ? e.metaKey : e.ctrlKey;
+      
+      if (e.key === 'Escape') {
+        const isExpanded = panel.classList.contains('bot-panel-expanded');
+        if (isExpanded) {
+          e.preventDefault();
+          closePanel();
+        }
+      }
       
       if (modifierKey && e.key === 'i' && !e.shiftKey && !e.altKey) {
         e.preventDefault();
@@ -308,59 +282,50 @@
 
     document.addEventListener('keydown', handleKeyboardShortcut);
 
-    function setupIframeKeyboardListener() {
-      try {
-        const iframe = document.querySelector('iframe[title="Botpress"]');
-        if (iframe && iframe.contentDocument) {
-          iframe.contentDocument.addEventListener('keydown', handleKeyboardShortcut);
+    window.addEventListener('message', (event) => {
+      if (event.data.type === 'togglePanel') {
+        const isCollapsed = panel.classList.contains('bot-panel-collapsed');
+        if (isCollapsed) {
+          togglePanel();
+        } else {
+          closePanel();
         }
-      } catch (e) {}
-    }
+      }
+      
+      if (event.data.type === 'closePanel') {
+        closePanel();
+      }
+    });
 
-    setupIframeKeyboardListener();
-
-    let iframeListenerInterval = setInterval(() => {
-      try {
-        const iframe = document.querySelector('iframe[title="Botpress"]');
-        if (iframe && iframe.contentDocument) {
-          iframe.contentDocument.addEventListener('keydown', handleKeyboardShortcut);
-          clearInterval(iframeListenerInterval);
+    function handleHashChange() {
+      if (window.location.hash === '#ask') {
+        if (panel.classList.contains('bot-panel-collapsed')) {
+          panel.classList.remove('bot-panel-collapsed');
+          panel.classList.add('bot-panel-expanded');
+          toggleButton.classList.add('bot-toggle-expanded');
+          focusComposerInput();
+          updateOverlay();
         }
-      } catch (e) {}
-    }, 100);
-
-    setTimeout(() => {
-      clearInterval(iframeListenerInterval);
-    }, 10000);
-
-    // Restore previous state from localStorage
-    const wasOpen = localStorage.getItem('bot-panel-open') === 'true';
-    if (wasOpen) {
-      panel.classList.remove('bot-panel-collapsed');
-      panel.classList.add('bot-panel-expanded');
-      toggleButton.classList.add('bot-toggle-expanded');
+      }
     }
     
-    // Update overlay on initial load
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
     updateOverlay();
     
-    // Update overlay on resize
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         updateOverlay();
-        // Clamp panel width to 38vw max on window resize
         const currentWidth = parseInt(window.getComputedStyle(panel).width, 10);
-        const maxWidth = window.innerWidth * 0.38; // 38vw
+        const maxWidth = window.innerWidth * 0.38;
         if (currentWidth > maxWidth) {
           panel.style.width = maxWidth + 'px';
-          localStorage.setItem('bot-panel-width', maxWidth + 'px');
         }
       }, 100);
     });
     
-    // Watch for panel state changes to update overlay
     const panelObserver = new MutationObserver(() => {
       updateOverlay();
     });
@@ -372,11 +337,10 @@
   }
 })();
 
-// Floating input bubble at bottom center
+// Input bubble
 (function() {
   'use strict';
 
-  // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initInputBubble);
   } else {
@@ -384,29 +348,24 @@
   }
 
   function initInputBubble() {
-    // Create the input bubble container
     const inputBubble = document.createElement('div');
     inputBubble.id = 'ask-ai-input-bubble';
     inputBubble.className = 'ask-ai-input-bubble';
 
-    // Create the inner wrapper
     const wrapper = document.createElement('div');
     wrapper.className = 'ask-ai-input-wrapper';
 
-    // Create the input element
     const input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Ask a question...';
     input.className = 'ask-ai-input';
     input.setAttribute('aria-label', 'Ask a question...');
 
-    // Create keyboard shortcut indicator
     const shortcutIndicator = document.createElement('span');
     shortcutIndicator.className = 'ask-ai-shortcut';
     const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
     shortcutIndicator.textContent = isMac ? '⌘I' : 'Ctrl+I';
 
-    // Create send button
     const sendButton = document.createElement('button');
     sendButton.className = 'ask-ai-send-button';
     sendButton.setAttribute('aria-label', 'Send message');
@@ -423,21 +382,17 @@
     inputBubble.appendChild(wrapper);
     document.body.appendChild(inputBubble);
 
-    // Start with hidden class so it can animate in
     inputBubble.classList.add('ask-ai-input-bubble-hidden');
 
-    // Check if we're on the landing page
     function isLandingPage() {
       const path = window.location.pathname;
       return path === '/' || path === '/index' || path.endsWith('/index.html');
     }
 
-    // Check if mobile
     function isMobile() {
       return window.innerWidth <= 1024;
     }
 
-    // Handle Enter key in input (desktop only)
     function handleEnterKey(e) {
       if (e.key === 'Enter' && !e.shiftKey && !isMobile()) {
         e.preventDefault();
@@ -447,7 +402,6 @@
       }
     }
 
-    // Make input bar clickable to open panel on mobile
     function handleMobileInputClick(e) {
       if (isMobile()) {
         e.preventDefault();
@@ -461,8 +415,6 @@
           if (toggleButton) {
             toggleButton.classList.add('bot-toggle-expanded');
           }
-          localStorage.setItem('bot-panel-open', 'true');
-          // Try to focus the composer input after opening
           if (window.focusComposerInput) {
             window.focusComposerInput();
           }
@@ -470,29 +422,22 @@
       }
     }
 
-    // Set up mobile/desktop behavior
     function setupInputBehavior() {
       if (isMobile()) {
         input.readOnly = true;
-        // Remove desktop handlers
         input.removeEventListener('keydown', handleEnterKey);
-        // Add mobile click handlers
         input.addEventListener('click', handleMobileInputClick, { once: false });
         wrapper.addEventListener('click', handleMobileInputClick, { once: false });
       } else {
         input.readOnly = false;
-        // Remove mobile click handlers
         input.removeEventListener('click', handleMobileInputClick);
         wrapper.removeEventListener('click', handleMobileInputClick);
-        // Add desktop handler
         input.addEventListener('keydown', handleEnterKey);
       }
     }
 
-    // Initial setup
     setupInputBehavior();
 
-    // Update on resize
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
@@ -501,9 +446,7 @@
       }, 100);
     });
 
-    // Function to check panel state and update visibility
     function updateVisibility() {
-      // Don't show on landing page
       if (isLandingPage()) {
         inputBubble.style.display = 'none';
         return;
@@ -513,12 +456,9 @@
       if (panel) {
         const isExpanded = panel.classList.contains('bot-panel-expanded');
         if (isExpanded) {
-          // Animate out
           inputBubble.classList.add('ask-ai-input-bubble-hidden');
         } else {
-          // Animate in - ensure it's visible first, then remove hidden class
           inputBubble.style.display = '';
-          // Use requestAnimationFrame to ensure the display change is applied before removing the class
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               inputBubble.classList.remove('ask-ai-input-bubble-hidden');
@@ -526,7 +466,6 @@
           });
         }
       } else {
-        // Panel doesn't exist yet, show the bubble
         inputBubble.style.display = '';
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
@@ -536,7 +475,6 @@
       }
     }
 
-    // Watch for URL changes (for SPA navigation)
     let lastPath = window.location.pathname;
     const checkPathChange = () => {
       if (window.location.pathname !== lastPath) {
@@ -545,13 +483,9 @@
       }
     };
 
-    // Check periodically for path changes
     setInterval(checkPathChange, 100);
-
-    // Also listen to popstate for browser back/forward
     window.addEventListener('popstate', updateVisibility);
 
-    // Watch for panel state changes
     const panel = document.getElementById('bot-panel');
     if (panel) {
       const observer = new MutationObserver(() => {
@@ -563,10 +497,8 @@
         attributeFilter: ['class']
       });
       
-      // Initial check
       updateVisibility();
     } else {
-      // If panel doesn't exist yet, check periodically
       const checkInterval = setInterval(() => {
         const panel = document.getElementById('bot-panel');
         if (panel) {
@@ -585,58 +517,114 @@
       }, 100);
     }
 
-    // Function to update send button state
     function updateSendButton() {
       const hasValue = input.value.trim().length > 0;
       sendButton.disabled = !hasValue;
     }
 
-    // Update send button on input
     input.addEventListener('input', updateSendButton);
-    updateSendButton(); // Initial state
+    updateSendButton();
 
-    // Function to execute when input is activated
     function handleAskAI() {
       const message = input.value.trim();
       if (!message) return;
 
-      // Check if webchat has successfully loaded
-      if (window.botpress && typeof window.botpress.init === 'function') {
-        // Open the chat panel
-        const panel = document.getElementById('bot-panel');
-        const toggleButton = document.getElementById('bot-toggle');
-        
-        if (panel && !panel.classList.contains('bot-panel-expanded')) {
-          panel.classList.remove('bot-panel-collapsed');
-          panel.classList.add('bot-panel-expanded');
-          if (toggleButton) {
-            toggleButton.classList.add('bot-toggle-expanded');
-          }
-          localStorage.setItem('bot-panel-open', 'true');
-          // Try to focus the composer input after opening
-          if (window.focusComposerInput) {
-            window.focusComposerInput();
-          }
+      const panel = document.getElementById('bot-panel');
+      const toggleButton = document.getElementById('bot-toggle');
+      
+      if (panel && !panel.classList.contains('bot-panel-expanded')) {
+        panel.classList.remove('bot-panel-collapsed');
+        panel.classList.add('bot-panel-expanded');
+        if (toggleButton) {
+          toggleButton.classList.add('bot-toggle-expanded');
         }
-
-        // Send the message to the webchat
-        if (window.botpress && window.botpress.sendMessage) {
-          window.botpress.sendMessage(message);
-        }
-
-        // Clear the input
-        input.value = '';
-        updateSendButton();
-        input.blur();
       }
+
+      const iframe = document.querySelector('iframe[title="Botpress"]');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'sendMessage',
+          message: message
+        }, '*');
+      }
+
+      input.value = '';
+      updateSendButton();
+      input.blur();
     }
 
-    // Handle send button click
     sendButton.addEventListener('click', (e) => {
       e.preventDefault();
       if (!sendButton.disabled) {
         handleAskAI();
       }
+    });
+  }
+})();
+
+// "Ask AI" button override
+(function() {
+  'use strict';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAskAIOverride);
+  } else {
+    initAskAIOverride();
+  }
+
+  function initAskAIOverride() {
+    const overriddenButtons = new WeakSet();
+    
+    function findAndOverrideButton() {
+      const button = document.getElementById('page-context-menu-button');
+      
+      if (button && button.innerText.trim() === 'Ask AI' && !overriddenButtons.has(button)) {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const panel = document.getElementById('bot-panel');
+          const toggleButton = document.getElementById('bot-toggle');
+          
+          if (panel && !panel.classList.contains('bot-panel-expanded')) {
+            panel.classList.remove('bot-panel-collapsed');
+            panel.classList.add('bot-panel-expanded');
+            if (toggleButton) {
+              toggleButton.classList.add('bot-toggle-expanded');
+            }
+          }
+          
+          const iframe = document.querySelector('iframe[title="Botpress"]');
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({
+              type: 'askAI',
+              data: {
+                path: window.location.pathname,
+                title: document.title.replace(' - Botpress', '')
+              }
+            }, '*');
+            
+            iframe.contentWindow.postMessage({
+              type: 'focusInput'
+            }, '*');
+          }
+        }, true);
+        
+        overriddenButtons.add(button);
+        return true;
+      }
+      return false;
+    }
+
+    findAndOverrideButton();
+
+    const observer = new MutationObserver(() => {
+      findAndOverrideButton();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
     });
   }
 })();
