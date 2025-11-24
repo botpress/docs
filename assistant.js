@@ -11,11 +11,11 @@
   function initBotPanel() {
     const panel = document.createElement('div');
     panel.id = 'bot-panel';
-    panel.className = 'bot-panel bot-panel-collapsed';
+    panel.classList.add('bot-panel', 'bot-panel-collapsed');
 
     const toggleButton = document.createElement('button');
     toggleButton.id = 'bot-toggle';
-    toggleButton.className = 'bot-toggle';
+    toggleButton.classList.add('bot-toggle');
     toggleButton.setAttribute('aria-label', 'Open bot');
     toggleButton.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open-icon lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m10 15-3-3 3-3"/></svg>
@@ -23,18 +23,18 @@
 
     const toggleCloseButton = document.createElement('button');
     toggleCloseButton.id = 'bot-toggle-close';
-    toggleCloseButton.className = 'bot-toggle-close';
+    toggleCloseButton.classList.add('bot-toggle-close');
     toggleCloseButton.setAttribute('aria-label', 'Close bot');
     toggleCloseButton.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close-icon lucide-panel-right-close"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m8 9 3 3-3 3"/></svg>
     `;
 
     const resizeHandle = document.createElement('div');
-    resizeHandle.className = 'bot-resize-handle';
+    resizeHandle.classList.add('bot-resize-handle');
     resizeHandle.setAttribute('aria-label', 'Resize panel');
 
     const mobileDismiss = document.createElement('div');
-    mobileDismiss.className = 'bot-mobile-dismiss';
+    mobileDismiss.classList.add('bot-mobile-dismiss');
     mobileDismiss.setAttribute('aria-label', 'Swipe down to close');
     mobileDismiss.innerHTML = `
       <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,18 +43,18 @@
     `;
 
     const overlay = document.createElement('div');
-    overlay.className = 'bot-overlay';
+    overlay.classList.add('bot-overlay');
     overlay.setAttribute('aria-label', 'Close panel');
 
     const botContainer = document.createElement('div');
     botContainer.id = 'docs-bot';
-    botContainer.className = 'bot-iframe-container';
+    botContainer.classList.add('bot-iframe-container');
     
     const iframe = document.createElement('iframe');
     iframe.title = 'Botpress';
     iframe.style.width = '100%';
     iframe.style.height = '100%';
-    iframe.src = 'http://192.168.1.58:5174/'; // TODO: replace with real link
+    iframe.src = 'http://192.168.1.48:5174/'; // TODO: replace with real link
     
     botContainer.appendChild(iframe);
     
@@ -94,6 +94,19 @@
       }
     }
 
+    function sendPanelOpenedMessage() {
+      const iframe = document.querySelector('iframe[title="Botpress"]');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          type: 'panelOpened',
+          data: {
+            path: window.location.pathname,
+            title: document.title.replace(' - Botpress', '')
+          }
+        }, '*');
+      }
+    }
+
     window.focusComposerInput = focusComposerInput;
 
     window.askAi = function() {
@@ -101,6 +114,7 @@
         panel.classList.remove('bot-panel-collapsed');
         panel.classList.add('bot-panel-expanded');
         toggleButton.classList.add('bot-toggle-expanded');
+        sendPanelOpenedMessage();
         focusComposerInput();
         updateOverlay();
       }
@@ -113,6 +127,7 @@
         panel.classList.remove('bot-panel-collapsed');
         panel.classList.add('bot-panel-expanded');
         toggleButton.classList.add('bot-toggle-expanded');
+        sendPanelOpenedMessage();
         focusComposerInput();
       } else {
         panel.classList.remove('bot-panel-expanded');
@@ -295,6 +310,10 @@
       if (event.data.type === 'closePanel') {
         closePanel();
       }
+      
+      if (event.data.type === 'requestCurrentPage') {
+        sendPanelOpenedMessage();
+      }
     });
 
     function handleHashChange() {
@@ -303,6 +322,7 @@
           panel.classList.remove('bot-panel-collapsed');
           panel.classList.add('bot-panel-expanded');
           toggleButton.classList.add('bot-toggle-expanded');
+          sendPanelOpenedMessage();
           focusComposerInput();
           updateOverlay();
         }
@@ -334,6 +354,32 @@
       attributes: true,
       attributeFilter: ['class']
     });
+    
+    let lastPath = window.location.pathname;
+    const checkPathChange = () => {
+      if (window.location.pathname !== lastPath) {
+        lastPath = window.location.pathname;
+        
+        const isExpanded = panel.classList.contains('bot-panel-expanded');
+        if (isExpanded) {
+          const iframe = document.querySelector('iframe[title="Botpress"]');
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({
+              type: 'pageChanged',
+              data: {
+                path: window.location.pathname,
+                title: document.title.replace(' - Botpress', '')
+              }
+            }, '*');
+          }
+        }
+      }
+    };
+    
+    setInterval(checkPathChange, 100);
+    window.addEventListener('popstate', () => {
+      setTimeout(checkPathChange, 10);
+    });
   }
 })();
 
@@ -350,24 +396,24 @@
   function initInputBubble() {
     const inputBubble = document.createElement('div');
     inputBubble.id = 'ask-ai-input-bubble';
-    inputBubble.className = 'ask-ai-input-bubble';
+    inputBubble.classList.add('ask-ai-input-bubble');
 
     const wrapper = document.createElement('div');
-    wrapper.className = 'ask-ai-input-wrapper';
+    wrapper.classList.add('ask-ai-input-wrapper');
 
     const input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Ask a question...';
-    input.className = 'ask-ai-input';
+    input.classList.add('ask-ai-input');
     input.setAttribute('aria-label', 'Ask a question...');
 
     const shortcutIndicator = document.createElement('span');
-    shortcutIndicator.className = 'ask-ai-shortcut';
+    shortcutIndicator.classList.add('ask-ai-shortcut');
     const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
     shortcutIndicator.textContent = isMac ? '⌘I' : 'Ctrl+I';
 
     const sendButton = document.createElement('button');
-    sendButton.className = 'ask-ai-send-button';
+    sendButton.classList.add('ask-ai-send-button');
     sendButton.setAttribute('aria-label', 'Send message');
     sendButton.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -414,6 +460,16 @@
           panel.classList.add('bot-panel-expanded');
           if (toggleButton) {
             toggleButton.classList.add('bot-toggle-expanded');
+          }
+          const iframe = document.querySelector('iframe[title="Botpress"]');
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({
+              type: 'panelOpened',
+              data: {
+                path: window.location.pathname,
+                title: document.title.replace(' - Botpress', '')
+              }
+            }, '*');
           }
           if (window.focusComposerInput) {
             window.focusComposerInput();
@@ -543,6 +599,14 @@
       const iframe = document.querySelector('iframe[title="Botpress"]');
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage({
+          type: 'panelOpened',
+          data: {
+            path: window.location.pathname,
+            title: document.title.replace(' - Botpress', '')
+          }
+        }, '*');
+        
+        iframe.contentWindow.postMessage({
           type: 'sendMessage',
           message: message
         }, '*');
@@ -596,6 +660,14 @@
           
           const iframe = document.querySelector('iframe[title="Botpress"]');
           if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({
+              type: 'panelOpened',
+              data: {
+                path: window.location.pathname,
+                title: document.title.replace(' - Botpress', '')
+              }
+            }, '*');
+            
             iframe.contentWindow.postMessage({
               type: 'askAI',
               data: {
