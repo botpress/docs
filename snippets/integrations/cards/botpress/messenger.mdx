@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Get or Create a Conversation
 
@@ -19,11 +19,17 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
     <Expandable>
   <ResponseField
-    name="id"
+    name="userId"
     type="string"
     required
   >
-    <span>{"The Messenger ID of the user in the conversation"}</span>
+    <span>{"The Messenger user ID of the user in the conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="commentId"
+    type="string"
+  >
+    <span>{"The Messenger ID of the comment for which the private-reply conversation should be created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

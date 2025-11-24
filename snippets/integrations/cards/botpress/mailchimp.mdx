@@ -1,7 +1,7 @@
 {/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
 
 ### Add Customer Profile to Campaign
 
@@ -106,28 +106,28 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email_address"
     type="string"
     required
   >
-    
+    <span>{"The email address of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
     required
   >
-    
+    <span>{"The status of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="list_id"
     type="string"
     required
   >
-    
+    <span>{"The list id of the customer"}</span>
   </ResponseField>
 </Expandable>
 
@@ -234,28 +234,28 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email_address"
     type="string"
     required
   >
-    
+    <span>{"The email address of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
     required
   >
-    
+    <span>{"The status of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="list_id"
     type="string"
     required
   >
-    
+    <span>{"The list id of the customer"}</span>
   </ResponseField>
 </Expandable>
 
@@ -271,7 +271,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     default={100}
   >
-    
+    <span>{"List count to retrieve"}</span>
   </ResponseField>
 </Expandable>
 
@@ -283,7 +283,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"The list of campaings"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1193,9 +1193,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1225,7 +1225,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"Links"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1242,9 +1242,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1274,7 +1274,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     default={100}
   >
-    
+    <span>{"List count to retrieve"}</span>
   </ResponseField>
 </Expandable>
 
@@ -1286,7 +1286,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"The array of list"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1663,9 +1663,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1688,7 +1688,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The constraints of the lists"}</span>
 
     <Expandable>
   <ResponseField
@@ -1719,7 +1719,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"Link"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1736,9 +1736,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1779,25 +1779,25 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"The id of the campaign"}</span>
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum<string>"
+    type="string | string | string | string | string"
   >
-    Available options: `pending`, `preprocessing`, `started`, `finalizing`, `finished`
+    <span>{"The status of the campaign"}</span>
   </ResponseField>
   <ResponseField
     name="total_operations"
     type="number"
   >
-    
+    <span>{"The number of operation done in the camplain"}</span>
   </ResponseField>
   <ResponseField
     name="_links"
     type="array"
   >
-    
+    <span>{"Link"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1814,9 +1814,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
