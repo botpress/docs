@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a new lead in Hunter.io"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="lead"
     type="object"
@@ -23,117 +25,120 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string (email)"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_list_id"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_list_ids"
     type="array"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="custom_attributes"
     type="object"
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="lead"
     type="object"
@@ -147,147 +152,147 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="email"
     type="string (email)"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sync_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sending_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_activity_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_contacted_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="verification"
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -295,14 +300,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -311,7 +316,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -319,21 +324,21 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_count"
     type="number"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -342,19 +347,22 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create or update Lead
 
 <span>{"Create or update a lead in Hunter.io"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="lead"
     type="object"
@@ -368,117 +376,120 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string (email)"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_list_id"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_list_ids"
     type="array"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="custom_attributes"
     type="object"
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="lead"
     type="object"
@@ -492,147 +503,147 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="email"
     type="string (email)"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sync_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sending_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_activity_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_contacted_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="verification"
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -640,14 +651,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -656,7 +667,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -664,21 +675,21 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_count"
     type="number"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -687,19 +698,22 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Lead
 
 <span>{"Delete a lead from Hunter.io"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="number"
@@ -707,19 +721,25 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The ID of the lead to delete"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Get Leads
 
 <span>{"Fetch leads from Hunter.io"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="search"
     type="object"
@@ -732,85 +752,85 @@ This Card has no output.
     name="leads_list_id"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="industry"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sync_status"
@@ -822,13 +842,13 @@ This Card has no output.
     name="sending_status"
     type="array"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="verification_status"
     type="array"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_activity_at"
@@ -846,7 +866,7 @@ This Card has no output.
     name="custom_attributes"
     type="object"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="query"
@@ -858,21 +878,24 @@ This Card has no output.
     name="limit"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="offset"
     type="number"
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="leads"
     type="array"
@@ -886,147 +909,147 @@ This Card has no output.
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="email"
     type="string (email)"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sync_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sending_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_activity_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_contacted_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="verification"
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -1034,14 +1057,14 @@ This Card has no output.
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1050,7 +1073,7 @@ This Card has no output.
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -1058,21 +1081,21 @@ This Card has no output.
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_count"
     type="number"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1081,19 +1104,22 @@ This Card has no output.
     type="string"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Retrieve Lead
 
 <span>{"Retrieve a specific lead by ID from Hunter.io"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="number"
@@ -1101,11 +1127,14 @@ This Card has no output.
   >
     <span>{"The ID of the lead to retrieve"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="lead"
     type="object"
@@ -1119,147 +1148,147 @@ This Card has no output.
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="email"
     type="string (email)"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sync_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="sending_status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_activity_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_contacted_at"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="verification"
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -1267,14 +1296,14 @@ This Card has no output.
     type="string | null"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="status"
     type="string | null"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1283,7 +1312,7 @@ This Card has no output.
     type="object"
     required
   >
-
+    
 
     <Expandable>
   <ResponseField
@@ -1291,21 +1320,21 @@ This Card has no output.
     type="number"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_count"
     type="number"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1314,19 +1343,22 @@ This Card has no output.
     type="string"
     required
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Lead
 
 <span>{"Update an existing lead in Hunter.io"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="number"
@@ -1346,117 +1378,121 @@ This Card has no output.
     name="email"
     type="string (email)"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="first_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="last_name"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="position"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_industry"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="company_size"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="confidence_score"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="website"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="country_code"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="source"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="linkedin_url"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="phone_number"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="twitter"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="notes"
     type="string"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_list_id"
     type="number"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="leads_list_ids"
     type="array"
   >
-
+    
   </ResponseField>
   <ResponseField
     name="custom_attributes"
     type="object"
   >
-
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 
 {/* vale on */}

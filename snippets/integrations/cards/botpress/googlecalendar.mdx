@@ -3,13 +3,120 @@
 
 Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
 
+### Check Availability
+
+<span>{"Checks calendar availability and returns free time slots for the specified date range."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="timeMin"
+    type="string"
+    required
+  >
+    <span>{"Start of the time range to check (ISO 8601 format, e.g., \"2025-11-05T09:00:00-04:00\")."}</span>
+  </ResponseField>
+  <ResponseField
+    name="timeMax"
+    type="string"
+    required
+  >
+    <span>{"End of the time range to check (ISO 8601 format, e.g., \"2025-11-05T17:00:00-04:00\")."}</span>
+  </ResponseField>
+  <ResponseField
+    name="slotDurationMinutes"
+    type="number"
+    default={45}
+  >
+    <span>{"Duration of each time slot in minutes. Defaults to 45 minutes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="timezone"
+    type="string"
+    default="America/Toronto"
+  >
+    <span>{"Timezone for formatting output (e.g., \"America/Toronto\"). Defaults to America/Toronto."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="freeSlots"
+    type="array"
+    required
+  >
+    <span>{"Array of available time slots in ISO format."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="start"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 formatted start time of the free slot."}</span>
+  </ResponseField>
+  <ResponseField
+    name="end"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 formatted end time of the free slot."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="formattedFreeSlots"
+    type="array"
+    required
+  >
+    <span>{"Array of human-readable formatted free slots (e.g., \"9:00 AM – 9:45 AM\")."}</span>
+  </ResponseField>
+  <ResponseField
+    name="busySlots"
+    type="array"
+    required
+  >
+    <span>{"Array of busy time slots in ISO format."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="start"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 formatted start time of the busy slot."}</span>
+  </ResponseField>
+  <ResponseField
+    name="end"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 formatted end time of the busy slot."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Create Event
 
 <span>{"Creates a new event in the calendar."}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"The definition of the new event."}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="summary"
     type="string"
@@ -87,11 +194,59 @@ Available options: `confirmed`, `tentative`, `cancelled`
 
 Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
-</Expandable>
+  <ResponseField
+    name="enableGoogleMeet"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether to enable Google Meet for the event. Optional. The default value is false."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sendNotifications"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Whether to send notifications to attendees. Optional. The default value is true."}</span>
+  </ResponseField>
+  <ResponseField
+    name="attendees"
+    type="array"
+  >
+    <span>{"List of attendees for the event. Email invitations will be sent automatically."}</span>
 
-**Output**:
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The email address of the attendee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"The name of the attendee. Optional."}</span>
+  </ResponseField>
+  <ResponseField
+    name="optional"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether this is an optional attendee. Optional. The default is False."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
 
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"The data of the new event."}</span>
+
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -192,15 +347,75 @@ Available options: `confirmed`, `tentative`, `cancelled`
 
 Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
-</Expandable>
+  <ResponseField
+    name="enableGoogleMeet"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether to enable Google Meet for the event. Optional. The default value is false."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sendNotifications"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Whether to send notifications to attendees. Optional. The default value is true."}</span>
+  </ResponseField>
+  <ResponseField
+    name="attendees"
+    type="array"
+  >
+    <span>{"List of attendees for the event. Email invitations will be sent automatically."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the attendee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"The name of the attendee. Optional."}</span>
+  </ResponseField>
+  <ResponseField
+    name="optional"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether this is an optional attendee. Optional. The default is False."}</span>
+  </ResponseField>
+  <ResponseField
+    name="responseStatus"
+    type="enum<string>"
+  >
+    <span>{"The attendee's response status. Read-only when creating events."}</span>
+
+Available options: `needsAction`, `declined`, `tentative`, `accepted`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="conferenceLink"
+    type="string"
+  >
+    <span>{"The Google Meet link for the event. This is automatically generated when enableGoogleMeet is true."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Event
 
 <span>{"Deletes an event from the calendar."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="eventId"
     type="string"
@@ -208,369 +423,25 @@ Available options: `default`, `public`, `private`, `confidential`
   >
     <span>{"The ID of the calendar event to delete."}</span>
   </ResponseField>
-</Expandable>
-
-**Output**:
-
-This Card has no output.
-
-### Event Create
-
-**Input**:
-
-<Expandable title="input fields">
-  <ResponseField
-    name="item"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Opaque identifier of the event."}</span>
-  </ResponseField>
-  <ResponseField
-    name="summary"
-    type="string"
-    required
-  >
-    <span>{"Title of the event."}</span>
-  </ResponseField>
-  <ResponseField
-    name="description"
-    type="string"
-  >
-    <span>{"Description of the event. Can contain HTML. Optional."}</span>
-  </ResponseField>
-  <ResponseField
-    name="location"
-    type="string"
-  >
-    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
-  </ResponseField>
-  <ResponseField
-    name="startDateTime"
-    type="string"
-    required
-  >
-    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
-  </ResponseField>
-  <ResponseField
-    name="endDateTime"
-    type="string"
-    required
-  >
-    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
-  </ResponseField>
-  <ResponseField
-    name="colorId"
-    type="string"
-  >
-    <span>{"The color ID of the event. Optional."}</span>
-  </ResponseField>
-  <ResponseField
-    name="eventType"
-    type="enum<string>"
-    required
-  >
-    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
-
-Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
-  </ResponseField>
-  <ResponseField
-    name="guestsCanInviteOthers"
-    type="boolean"
-    default={true}
-  >
-    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
-  </ResponseField>
-  <ResponseField
-    name="guestsCanSeeOtherGuests"
-    type="boolean"
-    default={true}
-  >
-    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
-  </ResponseField>
-  <ResponseField
-    name="htmlLink"
-    type="string"
-    required
-  >
-    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
-  </ResponseField>
-  <ResponseField
-    name="recurrence"
-    type="array"
-  >
-    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
-  </ResponseField>
-  <ResponseField
-    name="status"
-    type="enum<string>"
-    default="confirmed"
-  >
-    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
-
-Available options: `confirmed`, `tentative`, `cancelled`
-  </ResponseField>
-  <ResponseField
-    name="visibility"
-    type="enum<string>"
-    default="default"
-  >
-    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
-
-Available options: `default`, `public`, `private`, `confidential`
-  </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
 
-**Output**:
-
-<Expandable title="output">
   <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-</Expandable>
-
-### Event Delete
-
-**Input**:
-
-<Expandable title="input fields">
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-</Expandable>
-
-**Output**:
-
-This Card has no output.
-
-### Event List
-
-**Input**:
-
-<Expandable title="input fields">
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-</Expandable>
-
-**Output**:
-
-<Expandable title="output">
-  <ResponseField
-    name="items"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="meta"
+    name="output"
     type="object"
-    required
   >
-    
-
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
+    This Card has no output.
   </ResponseField>
-    </Expandable>
-  </ResponseField>
-</Expandable>
-
-### Event Read
-
-**Input**:
-
-<Expandable title="input fields">
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-</Expandable>
-
-**Output**:
-
-<Expandable title="output">
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-</Expandable>
-
-### Event Update
-
-**Input**:
-
-<Expandable title="input fields">
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="item"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Opaque identifier of the event."}</span>
-  </ResponseField>
-  <ResponseField
-    name="summary"
-    type="string"
-    required
-  >
-    <span>{"Title of the event."}</span>
-  </ResponseField>
-  <ResponseField
-    name="description"
-    type="string"
-  >
-    <span>{"Description of the event. Can contain HTML. Optional."}</span>
-  </ResponseField>
-  <ResponseField
-    name="location"
-    type="string"
-  >
-    <span>{"Geographic location of the event as free-form text. Optional. (e.g., \"Meeting Room\")."}</span>
-  </ResponseField>
-  <ResponseField
-    name="startDateTime"
-    type="string"
-    required
-  >
-    <span>{"The start date and time in RFC3339 format (e.g., \"2023-12-31T10:00:00.000Z\")."}</span>
-  </ResponseField>
-  <ResponseField
-    name="endDateTime"
-    type="string"
-    required
-  >
-    <span>{"The end date and time in RFC3339 format (e.g., \"2023-12-31T12:00:00.000Z\")."}</span>
-  </ResponseField>
-  <ResponseField
-    name="colorId"
-    type="string"
-  >
-    <span>{"The color ID of the event. Optional."}</span>
-  </ResponseField>
-  <ResponseField
-    name="eventType"
-    type="enum<string>"
-    required
-  >
-    <span>{"Specific type of the event. This cannot be modified after the event is created."}</span>
-
-Available options: `default`, `birthday`, `focusTime`, `fromGmail`, `outOfOffice`, `workingLocation`
-  </ResponseField>
-  <ResponseField
-    name="guestsCanInviteOthers"
-    type="boolean"
-    default={true}
-  >
-    <span>{"Whether attendees other than the organizer can invite others to the event. Optional. The default is True."}</span>
-  </ResponseField>
-  <ResponseField
-    name="guestsCanSeeOtherGuests"
-    type="boolean"
-    default={true}
-  >
-    <span>{"Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True."}</span>
-  </ResponseField>
-  <ResponseField
-    name="htmlLink"
-    type="string"
-    required
-  >
-    <span>{"URL of the event page in the Google Calendar Web UI."}</span>
-  </ResponseField>
-  <ResponseField
-    name="recurrence"
-    type="array"
-  >
-    <span>{"List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. This field is omitted for single events or instances of recurring events."}</span>
-  </ResponseField>
-  <ResponseField
-    name="status"
-    type="enum<string>"
-    default="confirmed"
-  >
-    <span>{"Status of the event. Optional. The default value is \"confirmed\"."}</span>
-
-Available options: `confirmed`, `tentative`, `cancelled`
-  </ResponseField>
-  <ResponseField
-    name="visibility"
-    type="enum<string>"
-    default="default"
-  >
-    <span>{"Visibility of the event. Optional. The default value is \"default\"."}</span>
-
-Available options: `default`, `public`, `private`, `confidential`
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-</Expandable>
-
-**Output**:
-
-<Expandable title="output">
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-</Expandable>
 
 ### List Events
 
 <span>{"Retrieves events from the calendar."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="count"
     type="number"
@@ -590,11 +461,14 @@ Available options: `default`, `public`, `private`, `confidential`
   >
     <span>{"Only return events occurring on or after this date. Must be in RFC3339 format. Defaults to now if not specified."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="events"
     type="array"
@@ -703,6 +577,63 @@ Available options: `confirmed`, `tentative`, `cancelled`
 
 Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
+  <ResponseField
+    name="enableGoogleMeet"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether to enable Google Meet for the event. Optional. The default value is false."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sendNotifications"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Whether to send notifications to attendees. Optional. The default value is true."}</span>
+  </ResponseField>
+  <ResponseField
+    name="attendees"
+    type="array"
+  >
+    <span>{"List of attendees for the event. Email invitations will be sent automatically."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the attendee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"The name of the attendee. Optional."}</span>
+  </ResponseField>
+  <ResponseField
+    name="optional"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether this is an optional attendee. Optional. The default is False."}</span>
+  </ResponseField>
+  <ResponseField
+    name="responseStatus"
+    type="enum<string>"
+  >
+    <span>{"The attendee's response status. Read-only when creating events."}</span>
+
+Available options: `needsAction`, `declined`, `tentative`, `accepted`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="conferenceLink"
+    type="string"
+  >
+    <span>{"The Google Meet link for the event. This is automatically generated when enableGoogleMeet is true."}</span>
+  </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
@@ -711,15 +642,18 @@ Available options: `default`, `public`, `private`, `confidential`
   >
     <span>{"Token used to access the next page of this result. Omitted if no further results are available."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Event
 
 <span>{"Updates an existing event in the calendar. Omitted properties are left unchanged."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -804,11 +738,59 @@ Available options: `confirmed`, `tentative`, `cancelled`
 
 Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
-</Expandable>
+  <ResponseField
+    name="enableGoogleMeet"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether to enable Google Meet for the event. Optional. The default value is false."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sendNotifications"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Whether to send notifications to attendees. Optional. The default value is true."}</span>
+  </ResponseField>
+  <ResponseField
+    name="attendees"
+    type="array"
+  >
+    <span>{"List of attendees for the event."}</span>
 
-**Output**:
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    <span>{"The email address of the attendee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"The name of the attendee. Optional."}</span>
+  </ResponseField>
+  <ResponseField
+    name="optional"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether this is an optional attendee. Optional. The default is False."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
 
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"The data of the event."}</span>
+
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -909,7 +891,65 @@ Available options: `confirmed`, `tentative`, `cancelled`
 
 Available options: `default`, `public`, `private`, `confidential`
   </ResponseField>
-</Expandable>
+  <ResponseField
+    name="enableGoogleMeet"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether to enable Google Meet for the event. Optional. The default value is false."}</span>
+  </ResponseField>
+  <ResponseField
+    name="sendNotifications"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Whether to send notifications to attendees. Optional. The default value is true."}</span>
+  </ResponseField>
+  <ResponseField
+    name="attendees"
+    type="array"
+  >
+    <span>{"List of attendees for the event. Email invitations will be sent automatically."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"The email address of the attendee."}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"The name of the attendee. Optional."}</span>
+  </ResponseField>
+  <ResponseField
+    name="optional"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether this is an optional attendee. Optional. The default is False."}</span>
+  </ResponseField>
+  <ResponseField
+    name="responseStatus"
+    type="enum<string>"
+  >
+    <span>{"The attendee's response status. Read-only when creating events."}</span>
+
+Available options: `needsAction`, `declined`, `tentative`, `accepted`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="conferenceLink"
+    type="string"
+  >
+    <span>{"The Google Meet link for the event. This is automatically generated when enableGoogleMeet is true."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

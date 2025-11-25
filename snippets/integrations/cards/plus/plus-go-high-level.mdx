@@ -5,9 +5,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Create Appointment
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -15,11 +17,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the appointment to create."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -40,13 +45,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create Contact
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -54,11 +62,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the contact to create, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -79,13 +90,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create Opportunity
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -93,11 +107,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the opportunity to create, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -118,13 +135,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Contact
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="contactId"
     type="string"
@@ -132,11 +152,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the contact to delete"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -151,13 +174,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Event
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="eventId"
     type="string"
@@ -165,11 +191,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the event to delete"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -184,13 +213,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Opportunity
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="opportunityId"
     type="string"
@@ -198,11 +230,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the opportunity to delete"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -217,13 +252,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Appointment
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="appointmentId"
     type="string"
@@ -231,11 +269,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The ID of the appointment to retrieve"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -256,13 +297,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Calendar Events
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -270,11 +314,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The order list params (e.g., location ID, start time, end time)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -295,13 +342,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Contact
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="contactId"
     type="string"
@@ -309,11 +359,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the contact to retrieve"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -334,13 +387,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Contacts By Business Id
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="businessId"
     type="string"
@@ -354,11 +410,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Optional query parameters as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -379,13 +438,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Opportunity
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="opportunityId"
     type="string"
@@ -393,11 +455,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the opportunity to retrieve"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -418,13 +483,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Order By ID
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="orderId"
     type="string"
@@ -446,11 +514,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The type of the alternate ID (e.g., location)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -471,13 +542,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List Orders
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -485,11 +559,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The order list params (e.g., location ID)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -510,13 +587,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Make API Call
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="endpoint"
     type="string"
@@ -543,11 +623,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The params to send with the request as a string JSON object if required."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -568,13 +651,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Appointment
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="appointmentId"
     type="string"
@@ -589,11 +675,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Updated properties of the appointment, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -614,13 +703,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Contact
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="contactId"
     type="string"
@@ -635,11 +727,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the contact to update, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -660,13 +755,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Opportunity
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="opportunityId"
     type="string"
@@ -681,11 +779,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the opportunity to update, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -706,13 +807,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Opportunity Status
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="opportunityId"
     type="string"
@@ -727,11 +831,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"New status of the opportunity"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -752,13 +859,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Upsert Contact
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -766,11 +876,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the contact to upsert, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -791,13 +904,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Upsert Opportunity
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="properties"
     type="string"
@@ -805,11 +921,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Properties of the opportunity to upsert, as a string JSON object."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -830,7 +949,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}
