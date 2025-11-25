@@ -54,7 +54,7 @@
     iframe.title = 'Botpress';
     iframe.style.width = '100%';
     iframe.style.height = '100%';
-    iframe.src = 'http://192.168.1.48:5174/'; // TODO: replace with real link
+    iframe.src = 'https://botpress.github.io/docs-bot/';
     
     botContainer.appendChild(iframe);
     
