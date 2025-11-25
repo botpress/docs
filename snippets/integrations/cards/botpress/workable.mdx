@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a candidate in the specified job"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sourced"
     type="boolean"
@@ -336,11 +338,14 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   >
     <span>{"The shortcode of the job the candidate is applying to"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="status"
     type="string"
@@ -742,15 +747,18 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create candidate in talent pool
 
 <span>{"Create a candidate in the talent pool"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sourced"
     type="boolean"
@@ -1012,11 +1020,14 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="status"
     type="string"
@@ -1414,15 +1425,18 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get candidate
 
 <span>{"Get a candidate by ID"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -1430,11 +1444,14 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   >
     <span>{"The candidate's ID"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="candidate"
     type="object"
@@ -1828,15 +1845,18 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get job questions
 
 <span>{"Get the questions associated with a job offer"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="shortCode"
     type="string"
@@ -1844,11 +1864,14 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   >
     <span>{"The job's system generated code"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="questions"
     type="array"
@@ -1930,15 +1953,18 @@ Available options: `free_text`, `multiple_choice`, `boolean`, `dropdown`, `numer
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List candidates
 
 <span>{"List the candidates for a job"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="email"
     type="string"
@@ -1981,11 +2007,14 @@ Available options: `free_text`, `multiple_choice`, `boolean`, `dropdown`, `numer
   >
     <span>{"Returns results updated after the specified timestamp"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="candidates"
     type="array"
@@ -2143,15 +2172,18 @@ Available options: `free_text`, `multiple_choice`, `boolean`, `dropdown`, `numer
   >
     <span>{"The token for the next page of results"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update candidate
 
 <span>{"Update an existing candidate. Omitted fields will remain unchanged."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -2448,11 +2480,14 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="candidate"
     type="object"
@@ -2847,7 +2882,8 @@ Available options: `academiaedu`, `angellist`, `behance`, `bitbucket`, `blogger`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

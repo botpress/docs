@@ -5,9 +5,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Generate Content
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="model"
     type="object"
@@ -225,11 +227,14 @@ Available options: `text`, `json_object`
   >
     <span>{"Set to `true` to output debug information to the bot logs"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -386,17 +391,23 @@ Available options: `text`, `json_object`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List Language Models
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
-
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="models"
     type="array"
@@ -404,7 +415,8 @@ This Card has no input fields.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

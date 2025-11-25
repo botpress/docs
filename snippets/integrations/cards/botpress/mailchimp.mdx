@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Adds a Customer's Profile to a Campaign"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="email"
     type="string (email)"
@@ -96,48 +98,54 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The ID of the Mailchimp campaign (e.g. f6g7h8i9j0)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email_address"
     type="string"
     required
   >
-    
+    <span>{"The email address of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
     required
   >
-    
+    <span>{"The status of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="list_id"
     type="string"
     required
   >
-    
+    <span>{"The list id of the customer"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Add Customer Profile to List/Audience
 
 <span>{"Add Customer's Profile to a List/Audience"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="email"
     type="string (email)"
@@ -224,66 +232,77 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The ID of the Mailchimp list or audience (e.g. a1b2c3d4e5)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email_address"
     type="string"
     required
   >
-    
+    <span>{"The email address of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
     required
   >
-    
+    <span>{"The status of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="list_id"
     type="string"
     required
   >
-    
+    <span>{"The list id of the customer"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get All Campaigns
 
 <span>{"Get all available campaigns"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"List count to retrieve"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="count"
     type="number"
     default={100}
   >
-    
+    <span>{"List count to retrieve"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="campaigns"
     type="array"
     required
   >
-    
+    <span>{"The list of campaings"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1193,9 +1212,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1225,7 +1244,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"Links"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1242,9 +1261,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1260,33 +1279,39 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get All Email Lists/Audiences
 
 <span>{"Get all available email lists/audiences"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="count"
     type="number"
     default={100}
   >
-    
+    <span>{"List count to retrieve"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="lists"
     type="array"
     required
   >
-    
+    <span>{"The array of list"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1663,9 +1688,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1688,7 +1713,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The constraints of the lists"}</span>
 
     <Expandable>
   <ResponseField
@@ -1719,7 +1744,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"Link"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1736,9 +1761,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1754,15 +1779,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Mass Mailing of the Campaign
 
 <span>{"Mass Mailing of the Campaign by its IDs"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="campaignIds"
     type="string"
@@ -1770,34 +1798,37 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The Campaign IDs (Can be either a string with comma-separated IDs)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
   >
-    
+    <span>{"The id of the campaign"}</span>
   </ResponseField>
   <ResponseField
     name="status"
-    type="enum<string>"
+    type="string | string | string | string | string"
   >
-    Available options: `pending`, `preprocessing`, `started`, `finalizing`, `finished`
+    <span>{"The status of the campaign"}</span>
   </ResponseField>
   <ResponseField
     name="total_operations"
     type="number"
   >
-    
+    <span>{"The number of operation done in the camplain"}</span>
   </ResponseField>
   <ResponseField
     name="_links"
     type="array"
   >
-    
+    <span>{"Link"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1814,9 +1845,9 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="method"
-    type="enum<string>"
+    type="string | string | string | string | string | string | string"
   >
-    Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`, `HEAD`
+    
   </ResponseField>
   <ResponseField
     name="targetSchema"
@@ -1832,7 +1863,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

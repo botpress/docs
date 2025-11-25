@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a new client"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="uid_client"
     type="string"
@@ -102,11 +104,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -221,15 +226,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Client
 
 <span>{"Retrieves client from their uid_client"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="uid_client"
     type="string"
@@ -237,11 +245,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -356,15 +367,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Submit Form
 
 <span>{"Submits form"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="uid_client"
     type="string"
@@ -396,11 +410,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -556,15 +573,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Client
 
 <span>{"Update client information"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="uid_client"
     type="string"
@@ -656,11 +676,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Client group identifier. Must be valid; otherwise, a 409 CONFLICT will be returned."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -774,7 +797,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

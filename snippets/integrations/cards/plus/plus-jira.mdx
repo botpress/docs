@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Add comment to issue in Jira"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="issueKey"
     type="string"
@@ -24,26 +26,32 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Message content in text format"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Find User
 
 <span>{"Find user by Account ID"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="accountId"
     type="string"
@@ -51,11 +59,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Account ID (e.g. 5b10a2844c20165700ede21g or 747474:a1b2c3d4-e5f6-7890-a1b2-c3d4e5f67890)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="self"
     type="string"
@@ -385,15 +396,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### New Issue
 
 <span>{"Create a new issue in Jira"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="summary"
     type="string"
@@ -433,11 +447,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The ID of the user to whom the issue is assigned (Optional) (e.g. 5b10ac8d82e05b22cc7d4ef5)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="issueKey"
     type="string"
@@ -445,15 +462,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Issue
 
 <span>{"Update a issue in Jira"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="summary"
     type="string"
@@ -498,11 +518,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The Key for Issue (e.g. TASK-185)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="issueKey"
     type="string"
@@ -510,7 +533,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

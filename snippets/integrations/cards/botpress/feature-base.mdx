@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a post on feature base"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="title"
     type="string"
@@ -66,11 +68,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Set the post creation date."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="submission"
     type="object"
@@ -88,15 +93,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete post
 
 <span>{"Delete a post"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -104,30 +112,41 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The id of the submission."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Get a board
 
 <span>{"Get a board by ID"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
   >
     <span>{"The unique identifier of the board to retrieve."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"A single board"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -200,15 +219,18 @@ This Card has no output.
   >
     <span>{"Flag indicating whether posts in this board are visible to the company only by default."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Comments
 
 <span>{"Get a comments thread"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="submissionId"
     type="string"
@@ -267,11 +289,14 @@ Available options: `best`, `top`, `new`, `old`
   >
     <span>{"Page number. Starts at 1"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="results"
     type="array"
@@ -403,19 +428,25 @@ Available options: `best`, `top`, `new`, `old`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List boards
 
 <span>{"List all boards"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
-
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="results"
     type="array"
@@ -498,15 +529,18 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List posts
 
 <span>{"List all posts"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -567,11 +601,14 @@ This Card has no input fields.
   >
     <span>{"Page number. Starts at 1"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
@@ -647,15 +684,18 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update post
 
 <span>{"Update a post"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -717,11 +757,15 @@ This Card has no input fields.
   >
     <span>{"The post creation date."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 
 {/* vale on */}

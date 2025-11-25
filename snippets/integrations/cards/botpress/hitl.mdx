@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create an end user in the external service and in Botpress"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="name"
     type="string"
@@ -29,11 +31,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Email address of the end user"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="userId"
     type="string"
@@ -41,15 +46,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the Botpress user representing the end user"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Start new HITL session
 
 <span>{"Create a new HITL session in the external service and in Botpress"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="userId"
     type="string"
@@ -898,11 +906,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     </Tab>
     </Tabs>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -910,15 +921,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the Botpress conversation representing the HITL session"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Stop HITL session
 
 <span>{"Stop an existing HITL session in the external service"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -926,11 +940,15 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the Botpress conversation representing the HITL session"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 
 {/* vale on */}

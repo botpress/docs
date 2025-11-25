@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Adds a new sheet to the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="title"
     type="string"
@@ -17,11 +19,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The title of the new sheet to add to the spreadsheet."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="spreadsheetId"
     type="string"
@@ -67,15 +72,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Append Values
 
 <span>{"Appends values to the spreadsheet. The input range is used to search for existing data and find a \"table\" within that range. Values will be appended to the next row of the table, starting with the first column of the table."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="range"
     type="string"
@@ -99,11 +107,14 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The values to write to the range. This is an array of arrays, where each inner array represents a major dimension (a row or column) of data. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="spreadsheetId"
     type="string"
@@ -163,15 +174,18 @@ Available options: `ROWS`, `COLUMNS`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Clear Values
 
 <span>{"Clears values from a spreadsheet. Only values are cleared; all other properties of the cell (such as formatting, data validation, etc..) are kept."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="range"
     type="string"
@@ -179,11 +193,14 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The A1 notation of the range to clear. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="spreadsheetId"
     type="string"
@@ -198,15 +215,18 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The range (in A1 notation) that was cleared."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create Named Range in Sheet
 
 <span>{"Creates a named range in a sheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sheetId"
     type="number"
@@ -228,11 +248,14 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The A1 notation of the range to associate with the named range. (e.g. \"Sheet1!A1:B2\")"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="namedRangeId"
     type="string"
@@ -240,15 +263,18 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The ID of the new named range."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Sheet
 
 <span>{"Deletes a sheet from the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sheetId"
     type="number"
@@ -256,23 +282,32 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The ID of the sheet to delete."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Get All Sheets in Spreadsheet
 
 <span>{"Returns all sheets in the spreadsheet."}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
-
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sheets"
     type="array"
@@ -325,15 +360,18 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Info of a SpreadSheet
 
 <span>{"Returns the properties and metadata of the specified spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="fields"
     type="array"
@@ -341,11 +379,14 @@ This Card has no input fields.
   >
     <span>{"The fields to include in the response when retrieving spreadsheet properties and metadata. This is a list of field names. (eg. spreadsheetId, properties.title, sheets.properties.sheetId, sheets.properties.title)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="spreadsheetId"
     type="string | null"
@@ -394,19 +435,25 @@ This Card has no input fields.
   >
     <span>{"The sheets present in the spreadsheet."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Named Ranges
 
 <span>{"Returns all named ranges in the spreadsheet."}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
-
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="namedRanges"
     type="array"
@@ -445,19 +492,25 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Protected Ranges
 
 <span>{"Returns all protected ranges in the spreadsheet."}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
-
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="protectedRanges"
     type="array"
@@ -517,15 +570,18 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Values
 
 <span>{"Returns the values of a range in the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="range"
     type="string"
@@ -542,11 +598,14 @@ This Card has no input fields.
 
 Available options: `ROWS`, `COLUMNS`
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="range"
     type="string"
@@ -570,15 +629,18 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The data that was read. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension (a row or column). Each item in the inner array corresponds with one cell. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Move Sheet Horizontally
 
 <span>{"Moves a sheet to a new index in the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sheetId"
     type="number"
@@ -593,19 +655,25 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The new index of the sheet within the spreadsheet."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Protect Named Range
 
 <span>{"Creates a protected range from a named range, preventing modification."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="namedRangeId"
     type="string"
@@ -625,11 +693,14 @@ This Card has no output.
   >
     <span>{"Whether the user adding the protection can edit the protected range."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="protectedRangeId"
     type="number"
@@ -637,15 +708,18 @@ This Card has no output.
   >
     <span>{"The ID of the new protected range."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Rename Sheet
 
 <span>{"Renames a sheet in the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sheetId"
     type="number"
@@ -660,19 +734,25 @@ This Card has no output.
   >
     <span>{"The new title of the sheet."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Set Sheet Visibility
 
 <span>{"Sets the visibility of a sheet in the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="sheetId"
     type="number"
@@ -687,19 +767,25 @@ This Card has no output.
   >
     <span>{"Whether the sheet is hidden."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Unprotect Range
 
 <span>{"Removes protection from a protected range in the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="protectedRangeId"
     type="number"
@@ -707,19 +793,25 @@ This Card has no output.
   >
     <span>{"The ID of the protected range to unprotect."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Update Values
 
 <span>{"Sets values in a range in the spreadsheet."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="range"
     type="string"
@@ -743,11 +835,14 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The values to write to the range. This is an array of arrays, where each inner array represents a major dimension (a row or column) of data. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="spreadsheetId"
     type="string"
@@ -783,7 +878,8 @@ Available options: `ROWS`, `COLUMNS`
   >
     <span>{"The number of cells updated."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}
