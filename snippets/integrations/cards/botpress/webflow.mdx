@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a new collection in your Webflow site."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionInfo"
     type="object"
@@ -58,11 +60,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionDetails"
     type="object"
@@ -178,15 +183,18 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create Collection item(s)
 
 <span>{"Create one or multiple items in a Webflow collection"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -259,11 +267,14 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -341,15 +352,18 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Delete Collection
 
 <span>{"Delete a specific collection from your Webflow site."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -357,19 +371,25 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   >
     <span>{"The ID of your Webflow collection"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Delete Item(s)
 
 <span>{"Delete one or more items from a collection"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -404,19 +424,25 @@ This Card has no output.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Get Collection Details
 
 <span>{"Retrieve detailed information about a specific collection in your Webflow site."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -424,11 +450,14 @@ This Card has no output.
   >
     <span>{"The ID of your Webflow collection"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionDetails"
     type="object"
@@ -544,15 +573,18 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Collection Item
 
 <span>{"Retrieve a specific item from a Webflow collection using its unique ID."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -574,11 +606,14 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   >
     <span>{"The ID of your Webflow item"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="itemDetails"
     type="object"
@@ -656,19 +691,25 @@ Available options: `Color`, `DateTime`, `Email`, `ExtFileRef`, `File`, `Image`, 
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List Collections
 
 <span>{"Retrieve a list of all collections in your Webflow site."}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
-
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collections"
     type="array"
@@ -717,15 +758,18 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List Collection Items
 
 <span>{"List items in a Webflow collection. By default, this lists draft items. To list live items, set the \"Is Live Items\" parameter to true."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -763,11 +807,14 @@ This Card has no input fields.
   >
     <span>{"checkbox to decide if the list is for live items or not"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -875,15 +922,18 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Publish Item(s)
 
 <span>{"Publish one or more items in a collection"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -898,11 +948,14 @@ This Card has no input fields.
   >
     <span>{"Array of item IDs to publish"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="publishedItemIds"
     type="array"
@@ -917,15 +970,18 @@ This Card has no input fields.
   >
     <span>{"Array of errors encountered during publishing"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Unpublish Live Item(s)
 
 <span>{"Unpublish one or more live items in a collection"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -940,19 +996,25 @@ This Card has no input fields.
   >
     <span>{"Array of item IDs to unpublish"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Update Item(s)
 
 <span>{"Update one or more items in a collection"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="collectionID"
     type="string"
@@ -1025,11 +1087,14 @@ This Card has no output.
   >
     <span>{"checkbox to decide if the list is for live items or not"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -1107,7 +1172,8 @@ This Card has no output.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

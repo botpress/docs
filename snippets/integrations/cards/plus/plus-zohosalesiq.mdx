@@ -5,9 +5,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Create User
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="name"
     type="string"
@@ -26,11 +28,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="userId"
     type="string"
@@ -38,13 +43,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Start Hitl
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="userId"
     type="string"
@@ -887,11 +895,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     </Tab>
     </Tabs>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -899,13 +910,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Stop Hitl
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -919,11 +933,15 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     Available options: `timeout`, `cancel`
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 
 {/* vale on */}

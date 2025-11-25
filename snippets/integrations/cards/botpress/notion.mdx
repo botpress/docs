@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Add a comment to a discussion in Notion"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="discussionId"
     type="string"
@@ -24,19 +26,25 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Must be plain text"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Add Comment to Page
 
 <span>{"Add a comment to a page in Notion"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="pageId"
     type="string"
@@ -51,19 +59,25 @@ This Card has no output.
   >
     <span>{"Must be plain text"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Create Page in Database
 
 <span>{"Add a new page to a database in Notion"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="databaseId"
     type="string"
@@ -78,19 +92,25 @@ This Card has no output.
   >
     <span>{"The values of the page's properties. Must match the parent database's properties"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Delete Block
 
 <span>{"Delete a block in Notion"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="blockId"
     type="string"
@@ -98,19 +118,25 @@ This Card has no output.
   >
     <span>{"The ID of the block to delete. Can be found in the URL of the block"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### List items in folder
 
 <span>{"List the files and folders in a folder"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="folderId"
     type="string"
@@ -152,11 +178,14 @@ Available options: `file`, `folder`
   >
     <span>{"The token to get the next page of items. Leave empty to get the first page."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -275,15 +304,18 @@ Available options: `file`, `folder`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Transfer file to Botpress
 
 <span>{"Transfer a file from an external service to Botpress"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="file"
     type="object"
@@ -358,11 +390,14 @@ Available options: `file`, `folder`
   >
     <span>{"Whether to index the file in vector storage"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="botpressFileId"
     type="string"
@@ -370,15 +405,18 @@ Available options: `file`, `folder`
   >
     <span>{"The file ID of the uploaded file on Botpress"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Database
 
 <span>{"Get a database from Notion"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="databaseId"
     type="string"
@@ -386,11 +424,14 @@ Available options: `file`, `folder`
   >
     <span>{"The ID of the database to fetch. Can be found in the URL of the database"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="object"
     type="string"
@@ -412,7 +453,8 @@ Available options: `file`, `folder`
   >
     <span>{"A stringified representation of the database structure"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

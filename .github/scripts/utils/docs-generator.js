@@ -182,15 +182,61 @@ function generateActionSection(actionName, actionData) {
     const title = actionData.title || capitalize(actionName)
     const description = preserveEscaping(actionData.description || '')
     
-    // Generate input section
-    const inputSection = actionData.input?.schema?.properties && Object.keys(actionData.input.schema.properties).length > 0
-        ? generateExpandableSection(actionData.input.schema, "input fields")
-        : 'This Card has no input fields.'
+    // Generate input section wrapped in ResponseField
+    let inputSection = ''
+    if (actionData.input?.schema?.properties && Object.keys(actionData.input.schema.properties).length > 0) {
+        const required = actionData.input.schema.required || []
+        const fields = Object.entries(actionData.input.schema.properties)
+            .map(([name, field]) => generateResponseField(name, field, required))
+            .join('\n')
+        
+        const inputDescription = preserveEscaping(actionData.input.schema.description || '')
+        const descriptionSection = inputDescription ? `    ${inputDescription}\n\n` : ''
+        
+        inputSection = `  <ResponseField
+    name="input"
+    type="object"
+  >
+${descriptionSection}    <Expandable>
+${fields}
+    </Expandable>
+  </ResponseField>`
+    } else {
+        inputSection = `  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>`
+    }
     
-    // Generate output section  
-    const outputSection = actionData.output?.schema?.properties && Object.keys(actionData.output.schema.properties).length > 0
-        ? generateExpandableSection(actionData.output.schema, "output")
-        : 'This Card has no output.'
+    // Generate output section wrapped in ResponseField
+    let outputSection = ''
+    if (actionData.output?.schema?.properties && Object.keys(actionData.output.schema.properties).length > 0) {
+        const required = actionData.output.schema.required || []
+        const fields = Object.entries(actionData.output.schema.properties)
+            .map(([name, field]) => generateResponseField(name, field, required))
+            .join('\n')
+        
+        const outputDescription = preserveEscaping(actionData.output.schema.description || '')
+        const descriptionSection = outputDescription ? `    ${outputDescription}\n\n` : ''
+        
+        outputSection = `  <ResponseField
+    name="output"
+    type="object"
+  >
+${descriptionSection}    <Expandable>
+${fields}
+    </Expandable>
+  </ResponseField>`
+    } else {
+        outputSection = `  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>`
+    }
     
     // Build the section with optional description
     let section = `### ${title}\n\n`
@@ -199,7 +245,7 @@ function generateActionSection(actionName, actionData) {
         section += `${description}\n\n`
     }
     
-    section += `**Input**:\n\n${inputSection}\n\n**Output**:\n\n${outputSection}\n\n`
+    section += `${inputSection}\n\n${outputSection}\n\n`
     
     return section
 }
@@ -251,7 +297,7 @@ function generateCardDocumentation(integrationName, actions) {
     let mdxContent = `{/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Cards](/learn/reference/cards/introduction) available with the integration:
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
 
 `
     
@@ -270,7 +316,7 @@ function generateTriggerDocumentation(integrationName, events) {
     let mdxContent = `{/* This file is auto-generated. Do not edit directly. */}
 {/* vale off */}
 
-Here's a reference for all [Triggers](/learn/reference/triggers/) available with the integration:
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
 
 
 <Tip>

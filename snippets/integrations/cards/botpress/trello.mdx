@@ -7,9 +7,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Add a new comment to a card"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for adding a comment to a card"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -24,11 +28,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The body text of the comment"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for adding a comment to a card"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="message"
     type="string"
@@ -43,24 +52,30 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Unique identifier of the newly created comment"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Board List
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -84,24 +99,30 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Board Member List
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -125,13 +146,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Board Member Read
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -139,11 +163,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -151,13 +178,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Board Read
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -165,11 +195,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -177,13 +210,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Card Create
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="object"
@@ -263,11 +299,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -275,13 +314,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Card Delete
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -289,28 +331,37 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Card List
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -334,24 +385,30 @@ This Card has no output.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Card Member List
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -375,13 +432,16 @@ This Card has no output.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Card Member Read
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -389,11 +449,14 @@ This Card has no output.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -401,13 +464,16 @@ This Card has no output.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Card Read
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -415,11 +481,14 @@ This Card has no output.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -427,13 +496,16 @@ This Card has no output.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Card Update
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -520,11 +592,14 @@ This Card has no output.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -532,15 +607,20 @@ This Card has no output.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create new card
 
 <span>{"Create a card and add it to a list"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for creating a new card"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="listId"
     type="string"
@@ -579,11 +659,16 @@ This Card has no output.
   >
     <span>{"The due date of the card in ISO 8601 format (Optional)."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for creating a card"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="message"
     type="string"
@@ -598,15 +683,20 @@ This Card has no output.
   >
     <span>{"Unique identifier of the new card"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get all board members
 
 <span>{"Get all members of a board"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting all members of a board"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="boardId"
     type="string"
@@ -614,11 +704,16 @@ This Card has no output.
   >
     <span>{"Unique identifier of the board"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting all members of a board"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="members"
     type="array"
@@ -650,19 +745,27 @@ This Card has no output.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get all boards
 
 <span>{"Get all boards managed by the authenticated user"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
 
-This Card has no input fields.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting all boards"}</span>
 
-**Output**:
-
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="boards"
     type="array"
@@ -687,15 +790,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get all card members
 
 <span>{"Get all members of a card"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting all members of a card"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -703,11 +811,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the card"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting all members of a card"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="members"
     type="array"
@@ -739,15 +852,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get board by ID
 
 <span>{"Get a board by its unique identifier"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a board from its ID"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="boardId"
     type="string"
@@ -755,11 +873,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the board"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a board from its ID"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="board"
     type="object"
@@ -784,15 +907,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get members by name
 
 <span>{"Find all members whose display name match this name"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a member from its name"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="boardId"
     type="string"
@@ -807,11 +935,16 @@ This Card has no input fields.
   >
     <span>{"Display name of the member"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a member from its name"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="members"
     type="array"
@@ -843,15 +976,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get boards by name
 
 <span>{"Find all boards whose display name match this name"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a board ID from its name"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="boardName"
     type="string"
@@ -859,11 +997,16 @@ This Card has no input fields.
   >
     <span>{"Display name of the board"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a board from its name"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="boards"
     type="array"
@@ -888,15 +1031,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get card by ID
 
 <span>{"Get a card by its unique identifier"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a card from its ID"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -904,11 +1052,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the card"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a card from its ID"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="card"
     type="object"
@@ -988,15 +1141,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Find cards by name name
 
 <span>{"Find all lists whose display name match this name"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a card ID from its name"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="listId"
     type="string"
@@ -1011,11 +1169,16 @@ This Card has no input fields.
   >
     <span>{"Display name of the card"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a card ID from its name"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="cards"
     type="array"
@@ -1095,15 +1258,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get cards in list
 
 <span>{"Get all cards in a list"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting all cards in a list"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="listId"
     type="string"
@@ -1111,11 +1279,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the list"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting all cards in a list"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="cards"
     type="array"
@@ -1195,15 +1368,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get list by ID
 
 <span>{"Get a list by its unique identifier"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a list from its ID"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="listId"
     type="string"
@@ -1211,11 +1389,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the list"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a list from its ID"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="list"
     type="object"
@@ -1240,15 +1423,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get lists by name
 
 <span>{"Find all lists whose display name match this name"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a list ID from its name"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="boardId"
     type="string"
@@ -1263,11 +1451,16 @@ This Card has no input fields.
   >
     <span>{"Display name of the list"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a list ID from its name"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="lists"
     type="array"
@@ -1292,15 +1485,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get lists in board
 
 <span>{"Get all lists in a board"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting all lists in a board"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="boardId"
     type="string"
@@ -1308,11 +1506,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the board"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting all lists in a board"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="lists"
     type="array"
@@ -1337,15 +1540,20 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get member by ID or username
 
 <span>{"Get a member by their unique identifier or username"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for getting a member from its ID or username"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="memberIdOrUsername"
     type="string | string"
@@ -1353,11 +1561,16 @@ This Card has no input fields.
   >
     <span>{"ID or username of the member to get"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for getting a member by its ID or username"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="member"
     type="object"
@@ -1389,24 +1602,30 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List List
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="nextToken"
     type="string"
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="items"
     type="array"
@@ -1430,13 +1649,16 @@ This Card has no input fields.
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### List Read
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -1444,11 +1666,14 @@ This Card has no input fields.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="item"
     type="string"
@@ -1456,15 +1681,18 @@ This Card has no input fields.
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Move card down
 
 <span>{"Move a card n spaces down"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -1479,11 +1707,16 @@ This Card has no input fields.
   >
     <span>{"Number of spaces by which to move the card down"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for moving a card down"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="message"
     type="string"
@@ -1491,15 +1724,18 @@ This Card has no input fields.
   >
     <span>{"Output message"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Move card to another list
 
 <span>{"Move a card to another list within the same board"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -1514,11 +1750,16 @@ This Card has no input fields.
   >
     <span>{"Unique identifier of the list in which the card will be moved"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for moving a card to a list"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="message"
     type="string"
@@ -1526,15 +1767,18 @@ This Card has no input fields.
   >
     <span>{"Output message"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Move card up
 
 <span>{"Move a card n spaces up"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -1549,11 +1793,16 @@ This Card has no input fields.
   >
     <span>{"Number of spaces by which to move the card up"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for moving a card up"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="message"
     type="string"
@@ -1561,15 +1810,20 @@ This Card has no input fields.
   >
     <span>{"Output message"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update card
 
 <span>{"Update the details of a card"}</span>
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for creating a new card"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="cardId"
     type="string"
@@ -1635,11 +1889,16 @@ Available options: `complete`, `incomplete`
   >
     <span>{"The due date of the card in ISO 8601 format (Optional). Leave empty to keep the current due date."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema for updating a card"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="message"
     type="string"
@@ -1647,7 +1906,8 @@ Available options: `complete`, `incomplete`
   >
     <span>{"Output message"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}
