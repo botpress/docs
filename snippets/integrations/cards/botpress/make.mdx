@@ -5,9 +5,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Send Data
 
-**Input**:
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"Input schema for sending data"}</span>
 
-<Expandable title="input fields">
+    <Expandable>
   <ResponseField
     name="data"
     type="string"
@@ -15,11 +19,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"JSON string of data to send"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <span>{"Output schema after sending data, expecting any JSON structure"}</span>
 
-<Expandable title="output">
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -33,7 +42,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Data received from Make.com, will be the string `Accepted` if successful and no data is returned"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

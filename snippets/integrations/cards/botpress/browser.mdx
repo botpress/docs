@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Extract the full content & the metadata of the specified pages as markdown."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="urls"
     type="array"
@@ -38,11 +40,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Maximum age of the cached page content (in seconds)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="results"
     type="array"
@@ -92,15 +97,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Capture Screenshot
 
 <span>{"Capture a screenshot of the specified page."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="url"
     type="string"
@@ -141,11 +149,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Whether the screenshot is fullscreen or not"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="imageUrl"
     type="string"
@@ -159,15 +170,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"URL to the HTML page of the screenshot"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Discover Website URLs
 
 <span>{"Discovers the URLs of a website by finding links using sitemaps, robots.txt, and crawling."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="url"
     type="string"
@@ -201,11 +215,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"List of glob patterns to exclude URLs from the discovery. All URLs matching these patterns will be excluded from the results, even if they are included in the \"include\" patterns."}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="urls"
     type="array"
@@ -229,15 +246,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 Available options: `urls_limit_reached`, `end_of_results`, `time_limit_reached`
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Website Logo
 
 <span>{"Get the logo of the specified website."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="domain"
     type="string"
@@ -261,11 +281,14 @@ Available options: `urls_limit_reached`, `end_of_results`, `time_limit_reached`
 
 Available options: `64`, `128`, `256`, `512`
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="logoUrl"
     type="string"
@@ -273,15 +296,18 @@ Available options: `64`, `128`, `256`, `512`
   >
     <span>{"URL to the website logo"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Web Search
 
 <span>{"Search information on the web. You need to browse to that page to get the full content of the page."}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="query"
     type="string"
@@ -323,11 +349,14 @@ Available options: `Day`, `Week`, `Month`
   >
     <span>{"Whether to browse to the pages to get the full content"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="results"
     type="array"
@@ -430,7 +459,8 @@ Available options: `Day`, `Week`, `Month`
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

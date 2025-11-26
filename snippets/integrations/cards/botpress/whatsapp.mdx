@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Sends a WhatsApp Message Template to a user in an existing conversation"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversation"
     type="object"
@@ -52,11 +54,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -64,15 +69,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"ID of the conversation created"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Start Conversation
 
 <span>{"Proactively starts a conversation with a WhatsApp user by sending them a message using a WhatsApp Message Template"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversation"
     type="object"
@@ -115,11 +123,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -127,13 +138,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The Botpress ID of the created conversation"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Start Typing Indicator
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -154,17 +168,23 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The timeout in milliseconds after which the typing indicator should stop"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 ### Stop Typing Indicator
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="conversationId"
     type="string"
@@ -179,11 +199,15 @@ This Card has no output.
   >
     <span>{"The message ID from which the typing indicator should be removed"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-This Card has no output.
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
 
 
 {/* vale on */}

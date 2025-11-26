@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a profile in Klaviyo: either email or phone is required"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="email"
     type="string (email)"
@@ -103,11 +105,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Custom key-value pairs to store with the profile (JSON string)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profile"
     type="object"
@@ -218,15 +223,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Profile
 
 <span>{"Get a profile in Klaviyo"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profileId"
     type="string"
@@ -234,11 +242,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The unique (Klaviyo) identifier of the profile"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profile"
     type="object"
@@ -349,15 +360,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Get Profiles
 
 <span>{"Get profiles using filters in Klaviyo"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="filterField"
     type="enum<string>"
@@ -397,11 +411,14 @@ Available options: `equals`, `greater-than`, `less-than`, `greater-or-equal`, `l
 
 Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subscriptions.email.marketing.list_suppressions.timestamp`, `-subscriptions.email.marketing.list_suppressions.timestamp`, `subscriptions.email.marketing.suppression.timestamp`, `-subscriptions.email.marketing.suppression.timestamp`, `updated`, `-updated`
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profiles"
     type="array"
@@ -512,15 +529,18 @@ Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subsc
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Subscribe Profiles
 
 <span>{"Subscribe profiles asynchronously to a SMS and/or email marketing in Klaviyo"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profileSubscriptions"
     type="array"
@@ -577,11 +597,14 @@ Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subsc
   >
     <span>{"Whether to import historical profiles (true = existing subscribers with timestamp, false = new real-time opt-ins)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -589,15 +612,18 @@ Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subsc
   >
     <span>{"Whether the job to subscribe the profiles has been successfully scheduled"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Profile
 
 <span>{"Update a profile in Klaviyo"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profileId"
     type="string"
@@ -698,11 +724,14 @@ Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subsc
   >
     <span>{"Custom key-value pairs to store with the profile (JSON string)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="profile"
     type="object"
@@ -813,7 +842,8 @@ Available options: `created`, `-created`, `email`, `-email`, `id`, `-id`, `subsc
   </ResponseField>
     </Expandable>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}

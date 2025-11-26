@@ -120,7 +120,7 @@ img {
   width: 32px;
   height: calc(100vh - 4.64rem);
   background-color: transparent;
-  z-index: 10000;
+  z-index: 30;
   pointer-events: auto;
   display: flex;
   align-items: center;
@@ -146,7 +146,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
+  z-index: 30;
   padding: 0;
 }
 
@@ -172,7 +172,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10002;
+  z-index: 32;
   pointer-events: none;
   background-color: light-dark(#fcfcfc, #1a1a1a);
   border: 1px solid light-dark(rgb(226,222,230), rgb(255 255 255/.07));
@@ -216,7 +216,7 @@ img {
   width: 400px;
   height: calc(100vh - 4.64rem);
   background-color: light-dark(#f7f7f8, #09090b);
-  z-index: 9999;
+  z-index: 29;
   display: flex;
   flex-direction: row;
   transform: translateX(100%);
@@ -242,7 +242,7 @@ img {
   height: 100%;
   cursor: col-resize;
   background-color: transparent;
-  z-index: 10000;
+  z-index: 30;
   pointer-events: auto;
   display: flex;
   align-items: center;
@@ -283,7 +283,7 @@ img {
   right: 0;
   height: 40px;
   background-color: transparent;
-  z-index: 10003;
+  z-index: 33;
   align-items: center;
   justify-content: center;
   cursor: grab;
@@ -331,7 +331,7 @@ img {
     left: 0;
     right: 0;
     height: 100dvh;
-    z-index: 10001;
+    z-index: 31;
     padding: 0;
     margin: 0;
     transform: translateY(100%);
@@ -366,7 +366,7 @@ img {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10000;
+    z-index: 30;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -384,7 +384,7 @@ img {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%) translateY(0);
-  z-index: 10000;
+  z-index: 30;
   width: 480px;
   max-width: 480px;
   pointer-events: none;

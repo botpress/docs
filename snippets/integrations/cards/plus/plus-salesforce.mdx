@@ -7,9 +7,11 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 <span>{"Create a Salesforce Case"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Subject"
     type="string"
@@ -36,11 +38,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -60,15 +65,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create Contact
 
 <span>{"Create a Salesforce Contact"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="FirstName"
     type="string"
@@ -102,11 +110,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Custom fields (JSON)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -126,15 +137,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Create Lead
 
 <span>{"Create a Salesforce Lead"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="FirstName"
     type="string"
@@ -187,11 +201,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -211,15 +228,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Make API Request
 
 <span>{"Make a request to Salesforce API"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="method"
     type="string"
@@ -252,11 +272,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Request body in JSON format"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -282,15 +305,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Search Cases
 
 <span>{"Search Salesforce Cases"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Id"
     type="string"
@@ -315,11 +341,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The status of the case"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -339,15 +368,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Search Contacts
 
 <span>{"Search Salesforce Contacts"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Id"
     type="string"
@@ -366,11 +398,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The email address of the contact (e.g. john.doe@example.com)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -390,15 +425,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Search Leads
 
 <span>{"Search Salesforce Leads"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Id"
     type="string"
@@ -417,11 +455,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"The email address of the lead (e.g., john.doe@example.com)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="success"
     type="boolean"
@@ -441,15 +482,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Case
 
 <span>{"Update a Salesforce Case"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Id"
     type="string"
@@ -481,11 +525,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -505,15 +552,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Contact
 
 <span>{"Update a Salesforce Contact"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Id"
     type="string"
@@ -551,11 +601,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Custom fields (JSON)"}</span>
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -575,15 +628,18 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 ### Update Lead
 
 <span>{"Update a Salesforce Lead"}</span>
 
-**Input**:
-
-<Expandable title="input fields">
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="Id"
     type="string"
@@ -639,11 +695,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
-**Output**:
-
-<Expandable title="output">
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
   <ResponseField
     name="id"
     type="string"
@@ -663,7 +722,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     
   </ResponseField>
-</Expandable>
+    </Expandable>
+  </ResponseField>
 
 
 {/* vale on */}
