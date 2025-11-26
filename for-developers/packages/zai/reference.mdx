@@ -244,7 +244,7 @@ const result = await zai.filter(input, condition, options)
 
 <ResponseField
   name="input"
-  type="Array<T>"
+  type="array"
   required
 >
   The array of elements to filter.
@@ -294,7 +294,7 @@ const result = await zai.filter(input, condition, options)
 
 **Returns**
 
-<ResponseField name="Response" type="Response<Array<T>>">
+<ResponseField name="Response" type="Response<array>">
   The filtered array containing only elements that match the condition.
 </ResponseField>
 
@@ -584,6 +584,412 @@ const result = await zai.text(prompt, options)
 
 <ResponseField name="Response" type="Response<string>">
   The generated text according to the prompt.
+</ResponseField>
+
+---
+
+### `sort()`
+
+Sorts array items based on natural language sorting criteria.
+
+```ts
+const result = await zai.sort(input, instructions, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"
+  type="array"
+  required
+>
+  The array of items to sort.
+</ResponseField>
+
+<ResponseField
+  name="instructions"
+  type="string"
+  required
+>
+  Natural language description of how to sort (e.g., "by priority", "newest first", "from least expensive to most expensive").
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="SortOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="tokensPerItem"
+      type="number"
+      default="250"
+    >
+      The maximum number of tokens per item (1-100,000).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<array>">
+  The sorted array according to the specified instructions.
+</ResponseField>
+
+---
+
+### `rate()`
+
+Rates array items on a 1-5 scale based on single or multiple criteria.
+
+```ts
+const result = await zai.rate(input, instructions, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"
+  type="array"
+  required
+>
+  The array of items to rate.
+</ResponseField>
+
+<ResponseField
+  name="instructions"
+  type="string | Record<string, string>"
+  required
+>
+  Single criterion (string) or multiple criteria (object mapping criterion names to descriptions).
+
+  Ratings scale: 1 = Very Bad, 2 = Bad, 3 = Average, 4 = Good, 5 = Very Good
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="RateOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="tokensPerItem"
+      type="number"
+      default="250"
+    >
+      The maximum number of tokens per item (1-100,000).
+    </ResponseField>
+    <ResponseField
+      name="maxItemsPerChunk"
+      type="number"
+      default="50"
+    >
+      The maximum number of items to rate per chunk (1-100).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<RatingResult[], SimplifiedRatingResult[]>">
+  For single criterion (string instructions), returns array of numbers (total scores).
+
+  For multiple criteria (object instructions), returns array of objects with scores per criterion and total.
+
+  <Expandable>
+    <ResponseField name="[criterionName]" type="number">
+      Score for this criterion (1-5).
+    </ResponseField>
+    <ResponseField name="total" type="number">
+      Sum of all criterion scores.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `group()`
+
+Groups array items into categories based on semantic similarity or criteria.
+
+```ts
+const result = await zai.group(input, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="input"s
+  type="Array<T>"
+  required
+>
+  The array of items to group.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="GroupOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="instructions"
+      type="string"
+    >
+      Instructions for how to group the items (e.g., "Group by type of customer issue", "Categorize by technology").
+    </ResponseField>
+    <ResponseField
+      name="tokensPerElement"
+      type="number"
+      default="250"
+    >
+      The maximum number of tokens per element (1-100,000).
+    </ResponseField>
+    <ResponseField
+      name="chunkLength"
+      type="number"
+      default="16000"
+    >
+      The maximum number of tokens per chunk (100-100,000).
+    </ResponseField>
+    <ResponseField
+      name="initialGroups"
+      type="Array<InitialGroup>"
+      default="[]"
+    >
+      Predefined categories to use for grouping.
+
+      <Expandable>
+        <ResponseField name="id" type="string" required>
+          Unique identifier for the group.
+        </ResponseField>
+        <ResponseField name="label" type="string" required>
+          Display name for the group.
+        </ResponseField>
+        <ResponseField name="elements" type="array">
+          Optional initial elements in this group.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<Group<T>[], Record<string, T[]>>">
+  Simplified form: Object mapping group labels to arrays of items.
+
+  Full form: Array of group objects with id, label, and elements.
+
+  <Expandable>
+    <ResponseField name="id" type="string">
+      Unique identifier for the group.
+    </ResponseField>
+    <ResponseField name="label" type="string">
+      Display name for the group.
+    </ResponseField>
+    <ResponseField name="elements" type="array">
+      Items that belong to this group.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `answer()`
+
+Answers questions from documents with citations and intelligent handling of edge cases.
+
+```ts
+const result = await zai.answer(documents, question, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="documents"
+  type="array"
+  required
+>
+  Array of documents to search (strings, objects, or any type).
+</ResponseField>
+
+<ResponseField
+  name="question"
+  type="string"
+  required
+>
+  The question to answer.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="AnswerOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="examples"
+      type="Array<AnswerExample>"
+      default="[]"
+    >
+      Examples to help guide answer generation.
+    </ResponseField>
+    <ResponseField
+      name="instructions"
+      type="string"
+    >
+      Additional instructions for answer generation.
+    </ResponseField>
+    <ResponseField
+      name="chunkLength"
+      type="number"
+      default="16000"
+    >
+      Maximum number of tokens per document chunk (250-100,000).
+    </ResponseField>
+    <ResponseField
+      name="maxRefinementPasses"
+      type="number"
+      default="3"
+    >
+      Maximum number of refinement iterations when merging chunked results (1-10).
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<AnswerResult>">
+  The result can be one of five types:
+
+  <Expandable title="answer response attributes">
+    <ResponseField name="type" type="'answer'">
+      Indicates this is a successful answer with citations.
+    </ResponseField>
+    <ResponseField name="answer" type="string">
+      The answer text.
+    </ResponseField>
+    <ResponseField name="citations" type="array">
+      Citations mapping answer text to source documents.
+
+      <Expandable>
+        <ResponseField name="offset" type="number">
+          Character offset where this citation appears in the answer.
+        </ResponseField>
+        <ResponseField name="item" type="any">
+          The source document item.
+        </ResponseField>
+        <ResponseField name="snippet" type="string">
+          The relevant text snippet from the document.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+
+  <Expandable title="ambiguous response attributes">
+    <ResponseField name="type" type="'ambiguous'">
+      Indicates the question has multiple valid interpretations.
+    </ResponseField>
+    <ResponseField name="ambiguity" type="string">
+      Explanation of what is ambiguous.
+    </ResponseField>
+    <ResponseField name="follow_up" type="string">
+      A follow-up question to clarify.
+    </ResponseField>
+    <ResponseField name="answers" type="array">
+      Possible answers for different interpretations (2-3 answers).
+    </ResponseField>
+  </Expandable>
+
+  <Expandable title="out of topic response attributes">
+    <ResponseField name="type" type="'out_of_topic'">
+      Indicates the question is unrelated to the documents.
+    </ResponseField>
+    <ResponseField name="reason" type="string">
+      Why the question is considered out of topic.
+    </ResponseField>
+  </Expandable>
+
+  <Expandable title="invalid question response attributes">
+    <ResponseField name="type" type="'invalid_question'">
+      Indicates the question is invalid or malformed.
+    </ResponseField>
+    <ResponseField name="reason" type="string">
+      What makes this an invalid question.
+    </ResponseField>
+  </Expandable>
+
+  <Expandable title="missing knowledge response attributes">
+    <ResponseField name="type" type="'missing_knowledge'">
+      Indicates insufficient information to answer.
+    </ResponseField>
+    <ResponseField name="reason" type="string">
+      What knowledge is missing.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `patch()`
+
+Patches files based on natural language instructions using the micropatch protocol.
+
+```ts
+const result = await zai.patch(files, instructions, options)
+```
+
+**Parameters**
+
+<ResponseField
+  name="files"
+  type="Array<File>"
+  required
+>
+  Array of files to patch.
+
+  <Expandable>
+    <ResponseField name="path" type="string" required>
+      The file path (e.g., 'src/components/Button.tsx').
+    </ResponseField>
+    <ResponseField name="name" type="string" required>
+      The file name (e.g., 'Button.tsx').
+    </ResponseField>
+    <ResponseField name="content" type="string" required>
+      The file content.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField
+  name="instructions"
+  type="string"
+  required
+>
+  Natural language instructions describing what changes to make.
+</ResponseField>
+
+<ResponseField
+  name="options"
+  type="PatchOptions"
+>
+  <Expandable>
+    <ResponseField
+      name="maxTokensPerChunk"
+      type="number"
+    >
+      Maximum tokens per chunk when processing large files. If not specified, all files must fit in a single prompt.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+**Returns**
+
+<ResponseField name="Response" type="Response<Array<File>>">
+  Array of patched files with the same structure as input, plus:
+
+  <Expandable>
+    <ResponseField name="patch" type="string">
+      The micropatch operations that were applied.
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 ---

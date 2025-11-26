@@ -9,7 +9,7 @@ Zai is an LLM utility library that provides a clean, type-safe API for common AI
 - Verify a Boolean condition within a piece of content
 - Generate or summarize text
 
-We recommend using Zai with the [Botpress SDK](/for-developers/sdk/overview) to help process LLM inputs and outputs.
+We recommend using Zai with the [ADK](/for-developers/adk/overview) and [SDK](/for-developers/sdk/overview) to help process LLM inputs and outputs.
 
 <Note>
 
@@ -97,8 +97,8 @@ const product = await zai.extract(
 Use the [`check`](/for-developers/packages/zai/reference#check) method to verify a condition against some input:
 
 ```ts
-const result = await zai.check(email, 'is spam')
-const { value, explanation } = await result.result()
+const { output } = await zai.check(email, 'is spam').result()
+const { value, explanation } = output
 ```
 
 ### Filter an array
@@ -167,3 +167,79 @@ const blogPost = await zai.text(
 // Returns: Generated text about AI benefits in customer service
 ```
 
+### Sort items based on criteria
+
+Use the [`sort`](/for-developers/packages/zai/reference#sort) method to order items using natural language instructions:
+
+```ts
+const tasks = [
+  "Update documentation",
+  "Fix critical security bug",
+  "Add new feature",
+  "System is down - all users affected"
+]
+const prioritized = await zai.sort(tasks, 'by urgency and impact, most urgent first')
+// Returns: ["System is down...", "Fix critical security bug", "Add new feature", "Update documentation"]
+```
+
+### Rate items on a scale
+
+Use the [`rate`](/for-developers/packages/zai/reference#rate) method to evaluate items on a 1-5 scale:
+
+```ts
+const reviews = [
+  "Amazing product! Best purchase ever!",
+  "It's okay, nothing special",
+  "Terrible quality, broke immediately"
+]
+const ratings = await zai.rate(reviews, 'Rate the sentiment')
+// Returns: [5, 3, 1]
+```
+
+### Group items into categories
+
+Use the [`group`](/for-developers/packages/zai/reference#group) method to categorize items into groups:
+
+```ts
+const messages = [
+  "I can't log in to my account",
+  "How do I reset my password?",
+  "When will my order arrive?",
+  "The app keeps crashing"
+]
+const groups = await zai.group(messages, {
+  instructions: 'Group by type of customer issue'
+})
+// Returns: { "Login Issues": [...], "Shipping Questions": [...], "Technical Errors": [...] }
+```
+
+### Answer questions with citations
+
+Use the [`answer`](/for-developers/packages/zai/reference#answer) method to answer questions from documents with source citations:
+
+```ts
+const documents = [
+  'Botpress was founded in 2016.',
+  'The company is based in Quebec, Canada.',
+  'Botpress provides an AI agent platform.'
+]
+const result = await zai.answer(documents, 'When was Botpress founded?')
+if (result.type === 'answer') {
+  console.log(result.answer) // "Botpress was founded in 2016."
+  console.log(result.citations) // Array of citations with source references
+}
+```
+
+### Modify files with natural language
+
+Use the [`patch`](/for-developers/packages/zai/reference#patch) method to make surgical code edits across one or many files. Instead of  regenerating entire files, it makes precise, minimal changes while preserving formatting and context:
+
+```ts
+const files = [{
+  path: 'src/utils.ts',
+  name: 'utils.ts',
+  content: 'export function add(a: number, b: number) {\n  return a + b\n}'
+}]
+const patched = await zai.patch(files, 'add JSDoc comments to all exported functions')
+// Returns modified file with JSDoc comments added
+```
