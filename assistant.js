@@ -432,7 +432,7 @@
 
     function isLandingPage() {
       const path = window.location.pathname;
-      return path === '/' || '/docs' || path === '/index' || path.endsWith('/index.html');
+      return path === '/' || path === '/docs' || path === '/index' || path.endsWith('/index.html');
     }
 
     function isMobile() {
