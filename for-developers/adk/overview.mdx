@@ -1,40 +1,18 @@
 The **Agent Development Kit (ADK)** is a CLI tool and development framework for building AI agents on Botpress. It provides a streamlined development experience with TypeScript support, hot reloading, and type-safe APIs for creating conversational AI applications.
 
+<Tip>
+  The [Botpress documentation assistant](#ask) is built entirely using the ADK and the [Webchat React library](/webchat/react-library/get-started). You can [check out the source code on GitHub](https://github.com/botpress/docs-bot).
+</Tip>
+
 ## What is the ADK?
 
-The ADK enables developers to build Botpress agents using code instead of the Studio interface. It provides:
+The ADK allows developers to build Botpress agents using code instead of the Studio interface. It provides:
 
 - **Project scaffolding**: Quickly initialize new agent projects with templates
 - **Type-safe development**: Automatic TypeScript type generation for integrations, interfaces, and more
 - **Development workflow**: Hot reloading development server with live updates
 - **Build and deploy**: Compile and deploy agents to Botpress Cloud
 - **Integration management**: Add, update, and manage integrations from the Botpress Hub
-
-## Key features
-
-### TypeScript-first development
-
-The ADK generates TypeScript types for all integrations, interfaces, and assets in your project, providing full IntelliSense support and compile-time type checking.
-
-### Project structure
-
-ADK projects follow a clear, organized structure:
-
-- `src/conversations/` - Conversation handlers for different channels
-- `src/workflows/` - Long-running processes and background tasks
-- `src/actions/` - Callable functions that can be invoked by workflows or conversations
-- `src/tables/` - Data storage schemas and table definitions
-- `src/triggers/` - Event subscriptions and handlers
-- `src/knowledge/` - Knowledge base sources and files
-
-### Development workflow
-
-The ADK provides a seamless development experience:
-
-1. **Initialize**: Create a new agent project with `adk init`
-2. **Develop**: Run `adk dev` for hot reloading development
-3. **Build**: Compile your agent with `adk build`
-4. **Deploy**: Deploy to Botpress Cloud with `adk deploy`
 
 ## When to use the ADK
 
@@ -46,7 +24,7 @@ The ADK is ideal for:
 - Developers who need TypeScript type safety
 
 <Tip>
-For most users, the Botpress Studio web interface is recommended. The ADK is best suited for experienced developers who need more control or integration with development workflows.
+For most users, we recommend Botpress Studio. The ADK is best suited for developers who need more control or integration with development workflows.
 </Tip>
 
 ## Next steps

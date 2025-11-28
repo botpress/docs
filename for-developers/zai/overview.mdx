@@ -13,7 +13,7 @@ We recommend using Zai with the [ADK](/for-developers/adk/overview) and [SDK](/f
 
 <Note>
 
-  For a full list of available methods, check out the [reference section](/for-developers/packages/zai/reference).
+  For a full list of available methods, check out the [reference section](/for-developers/zai/reference).
 
 </Note>
 
@@ -78,7 +78,7 @@ Here are some examples of how you can use Zai:
 
 ### Get structured data from text
 
-Use the [`extract`](/for-developers/packages/zai/reference#extract) method to get structured data from a plain piece of text:
+Use the [`extract`](/for-developers/zai/reference#extract) method to get structured data from a plain piece of text:
 
 ```ts
 const text = "Blueberries are 3.99$ and are in stock."
@@ -94,7 +94,7 @@ const product = await zai.extract(
 
 ### Verify a condition
 
-Use the [`check`](/for-developers/packages/zai/reference#check) method to verify a condition against some input:
+Use the [`check`](/for-developers/zai/reference#check) method to verify a condition against some input:
 
 ```ts
 const { output } = await zai.check(email, 'is spam').result()
@@ -103,7 +103,7 @@ const { value, explanation } = output
 
 ### Filter an array
 
-Use the [`filter`](/for-developers/packages/zai/reference#filter) method to filter elements of an array based on a condition:
+Use the [`filter`](/for-developers/zai/reference#filter) method to filter elements of an array based on a condition:
 
 ```ts
 const comments = [
@@ -117,7 +117,7 @@ const cleanComments = await zai.filter(comments, 'is not spam or inappropriate')
 
 ### Label content with categories
 
-Use the [`label`](/for-developers/packages/zai/reference#label) method to categorize content with predefined labels:
+Use the [`label`](/for-developers/zai/reference#label) method to categorize content with predefined labels:
 
 ```ts
 const email = "Congratulations! You've won $1,000,000! Click here now!"
@@ -131,7 +131,7 @@ const result = await zai.label(email, {
 
 ### Rewrite text according to instructions
 
-Use the [`rewrite`](/for-developers/packages/zai/reference#rewrite) method to transform text based on specific instructions:
+Use the [`rewrite`](/for-developers/zai/reference#rewrite) method to transform text based on specific instructions:
 
 ```ts
 const original = "The meeting is scheduled for tomorrow at 3pm."
@@ -144,7 +144,7 @@ const rewritten = await zai.rewrite(
 
 ### Summarize long content
 
-Use the [`summarize`](/for-developers/packages/zai/reference#summarize) method to create concise summaries of lengthy text:
+Use the [`summarize`](/for-developers/zai/reference#summarize) method to create concise summaries of lengthy text:
 
 ```ts
 const longArticle = "..." // Long article content
@@ -157,7 +157,7 @@ const summary = await zai.summarize(longArticle, {
 
 ### Generate text from prompts
 
-Use the [`text`](/for-developers/packages/zai/reference#text) method to generate content based on prompts:
+Use the [`text`](/for-developers/zai/reference#text) method to generate content based on prompts:
 
 ```ts
 const blogPost = await zai.text(
@@ -169,7 +169,7 @@ const blogPost = await zai.text(
 
 ### Sort items based on criteria
 
-Use the [`sort`](/for-developers/packages/zai/reference#sort) method to order items using natural language instructions:
+Use the [`sort`](/for-developers/zai/reference#sort) method to order items using natural language instructions:
 
 ```ts
 const tasks = [
@@ -184,7 +184,7 @@ const prioritized = await zai.sort(tasks, 'by urgency and impact, most urgent fi
 
 ### Rate items on a scale
 
-Use the [`rate`](/for-developers/packages/zai/reference#rate) method to evaluate items on a 1-5 scale:
+Use the [`rate`](/for-developers/zai/reference#rate) method to evaluate items on a 1-5 scale:
 
 ```ts
 const reviews = [
@@ -198,7 +198,7 @@ const ratings = await zai.rate(reviews, 'Rate the sentiment')
 
 ### Group items into categories
 
-Use the [`group`](/for-developers/packages/zai/reference#group) method to categorize items into groups:
+Use the [`group`](/for-developers/zai/reference#group) method to categorize items into groups:
 
 ```ts
 const messages = [
@@ -215,7 +215,7 @@ const groups = await zai.group(messages, {
 
 ### Answer questions with citations
 
-Use the [`answer`](/for-developers/packages/zai/reference#answer) method to answer questions from documents with source citations:
+Use the [`answer`](/for-developers/zai/reference#answer) method to answer questions from documents with source citations:
 
 ```ts
 const documents = [
@@ -232,7 +232,7 @@ if (result.type === 'answer') {
 
 ### Modify files with natural language
 
-Use the [`patch`](/for-developers/packages/zai/reference#patch) method to make surgical code edits across one or many files. Instead of  regenerating entire files, it makes precise, minimal changes while preserving formatting and context:
+Use the [`patch`](/for-developers/zai/reference#patch) method to make surgical code edits across one or many files. Instead of  regenerating entire files, it makes precise, minimal changes while preserving formatting and context:
 
 ```ts
 const files = [{
