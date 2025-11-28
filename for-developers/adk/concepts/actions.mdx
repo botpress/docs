@@ -1,0 +1,229 @@
+---
+title: Actions
+---
+
+Actions are callable functions that can be invoked by workflows, conversations, or other actions. They encapsulate reusable logic and can be called from anywhere in your agent.
+
+## Creating an action
+
+Create an action in `src/actions/`:
+
+```typescript
+import { Action, z } from "@botpress/runtime";
+
+export default new Action({
+  name: "myAction",
+  input: z.object({}), // Input schema
+  output: z.object({}), // Output schema
+  handler: async ({ input }) => {
+    // Function logic
+    return {}
+  },
+});
+```
+
+## Action input and output
+
+Define input and output schemas using TypeScript types or Zod schemas:
+
+```typescript highlight={3-11}
+export default new Action({
+  name: "calculateTotal",
+  input: z.object({
+    items: z.array(z.object({
+      price: z.number(),
+      quantity: z.number(),
+    })),
+  }),
+  output: z.object({
+    total: z.number()
+  }),
+  handler: async ({ input }) => {
+    const total = input.items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    return { total };
+  },
+});
+```
+
+## Calling actions
+
+Actions can be called from anywhere in your agent's source. Just import `actions` and call them directly:
+
+<CodeGroup>
+
+```ts From a workflow highlight={1, 6}
+import { Workflow, actions } from "@botpress/runtime";
+
+export default new Workflow({
+  name: "someWorkflow",
+  handler: async ({}) => {
+    const result = await actions.doSomething();
+      // Other logic
+  },
+});
+```
+
+```ts From a trigger highlight={1, 9}
+import { Trigger, actions } from "@botpress/runtime";
+
+export default new Trigger({
+  name: "webchatConversationStarted",
+  events: [
+    "webchat:conversationStarted",
+  ],
+  handler: async ({ event }) => {
+    const result = await actions.doSomething()
+    // Other logic
+  },
+});
+```
+
+```ts From a tool highlight={1,6}
+import { Autonomous, actions } from "@botpress/runtime"
+
+export default new Autonomous.Tool({
+    name: "someTool",
+    handler: async () => {
+        const result = await actions.doSomething()
+    }
+    // Other logic
+})
+```
+
+</CodeGroup>
+
+### As a tool in a conversation
+
+You can provide an action to your agent as a [tool](/for-developers/adk/concepts/tools) using the `asTool` method:
+
+```ts highlight={1,8}
+import { Conversation, actions } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [actions.calculateTotal.asTool()]
+    });
+  },
+});
+```
+
+## Integration actions
+
+When you [install an integration](/for-developers/adk/managing-integrations), its actions become available anywhere in your agent's source:
+
+```ts highlight={1, 12-14}
+import { Trigger, actions } from "@botpress/runtime";
+
+export default new Trigger({
+  name: "webchatConversationStarted",
+  events: [
+    "webchat:conversationStarted",
+  ],
+  handler: async ({ event }) => {
+    let conversationId = event.conversationId
+
+    if (conversationId) {
+      await actions.webchat.showWebchat({
+        conversationId
+      })
+    }
+
+  },
+});
+```
+
+## Best practices
+
+- Keep actions focused on a single responsibility
+- Use actions for reusable logic that's needed across multiple parts of your agent
+
+<Tip>
+Actions are ideal for business logic that doesn't need to be part of the conversational flow. They can be tested independently and reused across different parts of your agent.
+</Tip>
+
+
+## Reference
+
+### Action props
+
+<Expandable title="Action props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the action. Must be alphanumeric with no special characters or spaces.
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+  >
+    Optional display title for the action.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the action does.
+  </ResponseField>
+  <ResponseField
+    name="attributes"
+    type="Record&lt;string, string&gt;"
+  >
+    Optional metadata attributes for the action.
+  </ResponseField>
+  <ResponseField
+    name="input"
+    type="z.ZodTypeAny"
+    required
+  >
+    Zod schema defining the input parameters for the action.
+  </ResponseField>
+  <ResponseField
+    name="output"
+    type="z.ZodTypeAny"
+    required
+  >
+    Zod schema defining the output/return type of the action.
+  </ResponseField>
+  <ResponseField
+    name="cached"
+    type="boolean"
+  >
+    Whether the action results should be cached. Defaults to false.
+  </ResponseField>
+  <ResponseField
+    name="handler"
+    type="(props: { input: any, client: any }) => Promise&lt;any&gt;"
+    required
+  >
+    Async function that implements the action logic. Receives an object with `input` (validated input matching your input schema) and `client` (the Botpress client for making API calls), and returns validated output matching your output schema.
+  </ResponseField>
+</Expandable>
+
+### Handler parameters
+
+The handler function receives an object with `input` and `client` properties:
+
+<Expandable title="Handler parameters">
+  <ResponseField
+    name="input"
+    type="any"
+    required
+  >
+    The validated input object matching the action's input schema. All properties are typed based on the schema definition.
+  </ResponseField>
+  <ResponseField
+    name="client"
+    type="Client"
+    required
+  >
+    The Botpress client instance that can be used to make API calls and interact with the Botpress platform.
+  </ResponseField>
+</Expandable>

@@ -1,0 +1,149 @@
+---
+title: Triggers
+---
+
+Triggers subscribe to events and execute handlers when those events occur. They enable your agent to respond to external events from integrations or system events.
+
+## Creating a trigger
+
+Create a trigger in `src/triggers/`:
+
+```typescript
+import { Trigger } from "@botpress/runtime";
+
+export default new Trigger({
+  name: "conversationStarted",
+  events: ["webchat:conversationStarted"],
+  handler: async ({ event }) => {
+    // Trigger logic
+  },
+});
+```
+
+Triggers subscribe to events using an array of event names. The above Trigger only executes when it receives the `webchat:conversationStarted` event.
+
+### Naming a Trigger
+
+Trigger names can contain only alphanumeric characters and underscores.
+
+## Event structure
+
+The handler receives an `event` object with:
+
+- `event.type` - The event type string (one of the subscribed events)
+- `event.payload` - The event payload data (varies by event type)
+
+You can read these properties to handle the event appropriately:
+
+```typescript highlight={11-13}
+import { Trigger } from "@botpress/runtime";
+
+export default new Trigger({
+  name: "reactionAdded",
+  description: "Handles WhatsApp reactions",
+  events: ["whatsapp:reactionAdded"],
+  handler: async ({ event }) => {
+    // Handle WhatsApp reaction added event
+    // event.type contains "whatsapp:reactionAdded"
+    // event.payload contains information about the reaction
+    const reactionData = event.payload;
+    if (reactionData.reaction === "U+1F44D")
+      // Process the reaction
+  },
+});
+```
+
+<Note>
+  For reference information about the payload from integration events, check out the [Integrations documentation](/integrations/get-started/introduction).
+</Note>
+
+
+## Multiple event subscriptions
+
+A trigger can subscribe to multiple events and handle each of them differently:
+
+```typescript highlight={5-7, 10-17}
+export default new Trigger({
+  name: "onLinearIssueUpdate",
+  description: "Handles Linear issue events",
+  events: [
+    "linear:issueCreated",
+    "linear:issueDeleted",
+    "linear:issueUpdated",
+  ],
+  handler: async ({ event }) => {
+    // Check event type to handle different cases
+    if (event.type === "linear:issueDeleted") {
+      // Handle deletion
+    } else if (event.type === "linear:issueCreated") {
+      // Handle creation
+    } else if (event.type === "linear:issueUpdated") {
+      // Handle update
+    }
+  },
+});
+```
+
+## Reference
+
+### Trigger props
+
+<Expandable title="Trigger props">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    Unique name for the trigger. Must be at least 3 characters, less than 255 characters, and contain only alphanumeric characters and underscores.
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    Optional description of what the trigger does. Must be less than 1024 characters.
+  </ResponseField>
+  <ResponseField
+    name="events"
+    type="string[]"
+    required
+  >
+    Array of event names to subscribe to. The trigger will execute when any of these events occur.
+  </ResponseField>
+  <ResponseField
+    name="handler"
+    type="(props: object) => Promise&lt;void&gt; | void"
+    required
+  >
+    Handler function that processes the matched event. The props object structure is documented in the handler parameters section below.
+  </ResponseField>
+</Expandable>
+
+### Handler parameters
+
+The handler function receives the matched event:
+
+<Expandable title="Handler parameters">
+  <ResponseField
+    name="event"
+    type="object"
+    required
+  >
+    The event object that matched one of the subscribed event names.
+    <Expandable title="Event properties">
+      <ResponseField
+        name="type"
+        type="string"
+        required
+      >
+        The event type string (one of the subscribed events).
+      </ResponseField>
+      <ResponseField
+        name="payload"
+        type="any"
+        required
+      >
+        The event payload data. The structure varies by event type—for integration events, check out the [integration documentation](/integrations/get-started/introduction).
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>

@@ -1,0 +1,145 @@
+---
+title: Managing integrations
+---
+
+Integrations connect your agent to external services and platforms. This guide covers how to add, configure, and manage integrations in your ADK project.
+
+## Adding integrations
+
+### Using the CLI
+
+Add an integration using the `adk add` command:
+
+```bash
+adk add webchat
+adk add slack@latest
+adk add my-workspace/custom-integration@1.0.0
+```
+
+This automatically:
+- Adds the integration to `agent.config.ts`
+- Generates TypeScript types for the integration
+
+### Manual configuration
+
+You can also manually edit `agent.config.ts`:
+
+```typescript
+export default defineConfig({
+  // ... other config ...
+  dependencies: {
+    integrations: {
+      webchat: {
+        version: "webchat@latest",
+        enabled: true,
+      },
+      slack: {
+        version: "slack@0.5.0",
+        enabled: true,
+      },
+    },
+  },
+});
+```
+
+After editing manually, run `adk dev` or `adk build` to regenerate types.
+
+## Integration versions
+
+Integration versions use the format `name@version`:
+
+- `webchat@latest` - Use the latest version
+- `slack@0.5.0` - Use a specific version
+- `my-workspace/custom@1.2.3` - Use an integration from a specific workspace
+
+<Tip>
+Use `@latest` when you want to automatically receive updates. Use specific versions for production deployments to ensure stability.
+</Tip>
+
+## Enabling and disabling
+
+Control which integrations are active:
+
+```typescript
+dependencies: {
+  integrations: {
+    webchat: {
+      version: "webchat@latest",
+      enabled: true,
+    },
+    slack: {
+      version: "slack@latest",
+      enabled: false,
+    },
+  },
+}
+```
+
+Disabled integrations are still included in your project but won't be active when your agent runs.
+
+## Integration configuration
+
+If you install an integration that requires configuration, you'll receive a message instructing you to configure it:
+
+```bash
+adk add instagram
+```
+
+```text
+✓ Added instagram version x.x.x to agent.config.ts
+
+Please configure it in the UI using the adk dev command to start using it.
+```
+
+## Updating integrations
+
+To update an integration:
+
+### Using the CLI
+
+```
+adk update <integration-name>
+```
+
+### Manually
+
+You can also update the version it manually:
+
+1. Update the version in `agent.config.ts`:
+   ```typescript
+   dependencies: {
+     integrations: {
+       webchat: {
+         version: "webchat@0.3.0",
+         enabled: true,
+       },
+     },
+   }
+   ```
+
+2. Run `adk dev` or `adk build` to regenerate types
+
+3. Test your agent to ensure compatibility
+
+## Removing integrations
+
+Remove an integration by deleting it from `agent.config.ts`:
+
+```typescript
+dependencies: {
+  integrations: {
+    webchat: {
+      version: "webchat@latest",
+      enabled: true,
+    },
+    // Removed slack integration
+  },
+}
+```
+
+Run `adk dev` or `adk build` to update generated types.
+
+<Tip>
+Always test your agent after adding, updating, or removing integrations to ensure everything works correctly.
+</Tip>
+
