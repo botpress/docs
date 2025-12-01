@@ -7,9 +7,7 @@ This page contains a reference for all methods available when [injecting Webchat
 
 ---
 
-{/* vale off */}
-
-## open
+## `open`
 
 The `window.botpress.open` method opens the Webchat window:
 
@@ -33,7 +31,7 @@ The `open` method takes no parameters.
 
 ---
 
-## close
+## `close`
 
 The `window.botpress.close` method closes the Webchat window:
 
@@ -57,7 +55,7 @@ The `close` method takes no parameters.
 
 ---
 
-## toggle
+## `toggle`
 
 The `window.botpress.toggle` method toggles the Webchat window open/closed depending on its current state:
 
@@ -81,7 +79,7 @@ The `toggle` method takes no parameters.
 
 ---
 
-## updateUser
+## `updateUser`
 
 The asynchronous `window.botpress.updateUser` method updates the data associated with the current Webchat user:
 
@@ -177,7 +175,7 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
 
 ---
 
-## getUser
+## `getUser`
 
 The asynchronous `window.botpress.getUser` method gets the data associated with the current Webchat user:
 
@@ -249,7 +247,7 @@ The `getUser` method takes no parameters.
 
 ---
 
-## config
+## `config`
 
 The `window.botpress.config` method updates [Webchat's configuration](/webchat/get-started/configure-your-webchat) and the current user's data.
 
@@ -566,7 +564,7 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
 />
 ---
 
-## restartConversation
+## `restartConversation`
 
 The asynchronous `window.botpress.restartConversation` method ends the current conversation and starts a new one:
 
@@ -591,7 +589,7 @@ The `restartConversation` method takes no parameters.
 
 ---
 
-## sendMessage
+## `sendMessage`
 
 The asynchronous `window.botpress.sendMessage` method sends a new message to your bot on behalf of the current user:
 
@@ -622,7 +620,7 @@ It becomes available after [Webchat is ready to receive messages](/webchat/inter
 
 ---
 
-## sendEvent
+## `sendEvent`
 
 The asynchronous `window.botpress.sendEvent` method sends a new event to your bot:
 
@@ -653,7 +651,7 @@ It becomes available after [Webchat is ready to receive messages](/webchat/inter
 
 ---
 
-## setUnreadMessageCount
+## `setUnreadMessageCount`
 
 The `window.botpress.setUnreadMessageCount` method sets the number of unread messages to display on the Floating Action Button (FAB):
 
@@ -682,7 +680,7 @@ It becomes available after [Webchat has been initialized](/webchat/interact/list
 
 ---
 
-## on
+## `on`
 
 The `window.botpress.on` method sets up an event listener for a given Webchat event:
 
@@ -729,5 +727,3 @@ window.botpress.on('<string>', (event) => {});
 >
   An unsubscribe function that can be called to remove the event listener.
 </ResponseField>
-
-{/* vale on */}
