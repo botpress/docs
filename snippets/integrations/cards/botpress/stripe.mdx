@@ -5,6 +5,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Create Customer
 
+<span>{"Creates a new Stripe customer."}</span>
+
   <ResponseField
     name="input"
     type="object"
@@ -59,7 +61,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="customer"
     type="object"
   >
-    
+    <span>{"The created customer object"}</span>
 
     <Expandable>
   <ResponseField
@@ -67,33 +69,33 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string | null"
     required
   >
-    
+    <span>{"The email of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string | null"
   >
-    
+    <span>{"The name of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string | null"
     required
   >
-    
+    <span>{"The description of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string | null"
   >
-    
+    <span>{"The phone of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="address"
@@ -106,13 +108,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-    
+    <span>{"The creation timestamp (UNIX) of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="delinquent"
     type="boolean | null"
   >
-    
+    <span>{"If the customer is delinquent"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -121,6 +123,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Create Or Retrieve Customer
 
+<span>{"Creates a new Stripe customer or retrieves an existing one by email."}</span>
+
   <ResponseField
     name="input"
     type="object"
@@ -175,7 +179,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="customer"
     type="object"
   >
-    
+    <span>{"The created or retrieved customer object"}</span>
 
     <Expandable>
   <ResponseField
@@ -183,33 +187,33 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string | null"
     required
   >
-    
+    <span>{"The email of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string | null"
   >
-    
+    <span>{"The name of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string | null"
     required
   >
-    
+    <span>{"The description of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string | null"
   >
-    
+    <span>{"The phone of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="address"
@@ -222,13 +226,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-    
+    <span>{"The creation timestamp (UNIX) of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="delinquent"
     type="boolean | null"
   >
-    
+    <span>{"If the customer is delinquent"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -236,7 +240,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="customers"
     type="array"
   >
-    
+    <span>{"A list of customers matching the criteria"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -244,33 +248,33 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string | null"
     required
   >
-    
+    <span>{"The email of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string | null"
   >
-    
+    <span>{"The name of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string | null"
     required
   >
-    
+    <span>{"The description of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string | null"
   >
-    
+    <span>{"The phone of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="address"
@@ -283,13 +287,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-    
+    <span>{"The creation timestamp (UNIX) of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="delinquent"
     type="boolean | null"
   >
-    
+    <span>{"If the customer is delinquent"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -297,6 +301,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
 
 ### Create Payment Link
+
+<span>{"Creates a Stripe payment link for a product."}</span>
 
   <ResponseField
     name="input"
@@ -364,18 +370,20 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"The ID of the created payment link"}</span>
   </ResponseField>
   <ResponseField
     name="url"
     type="string"
   >
-    
+    <span>{"The URL of the created payment link"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### Create Subscription Payment Link
+
+<span>{"Creates a Stripe payment link for a subscription product."}</span>
 
   <ResponseField
     name="input"
@@ -462,18 +470,20 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"The ID of the created subscription link"}</span>
   </ResponseField>
   <ResponseField
     name="url"
     type="string"
   >
-    
+    <span>{"The URL of the created subscription link"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### Deactivate Payment Link
+
+<span>{"Deactivates a Stripe payment link by ID."}</span>
 
   <ResponseField
     name="input"
@@ -499,24 +509,26 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"The ID of the deactivated payment link"}</span>
   </ResponseField>
   <ResponseField
     name="url"
     type="string"
   >
-    
+    <span>{"The URL of the deactivated payment link"}</span>
   </ResponseField>
   <ResponseField
     name="active"
     type="boolean"
   >
-    
+    <span>{"Whether the payment link is active"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### Find Payment Link
+
+<span>{"Finds a Stripe payment link by URL."}</span>
 
   <ResponseField
     name="input"
@@ -542,12 +554,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"The ID of the found payment link"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### List Customers By Email
+
+<span>{"Lists Stripe customers, optionally filtered by email."}</span>
 
   <ResponseField
     name="input"
@@ -572,12 +586,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="customers"
     type="object"
   >
-    
+    <span>{"A record of customers grouped by email"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### List Payment Links
+
+<span>{"Lists all active Stripe payment links."}</span>
 
   <ResponseField
     name="input"
@@ -595,7 +611,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="paymentLinks"
     type="array"
   >
-    
+    <span>{"A list of payment links"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -603,14 +619,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The ID of the payment link"}</span>
   </ResponseField>
   <ResponseField
     name="url"
     type="string"
     required
   >
-    
+    <span>{"The URL of the payment link"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -618,6 +634,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
 
 ### List Product Prices
+
+<span>{"Lists all Stripe product prices."}</span>
 
   <ResponseField
     name="input"
@@ -635,12 +653,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="products"
     type="object"
   >
-    
+    <span>{"A record of products and their prices"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### Retrieve Customer By ID
+
+<span>{"Retrieves a Stripe customer by their ID."}</span>
 
   <ResponseField
     name="input"
@@ -666,30 +686,32 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="string"
   >
-    
+    <span>{"The ID of the retrieved customer"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string | null"
   >
-    
+    <span>{"The email of the retrieved customer"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string | null"
   >
-    
+    <span>{"The description of the retrieved customer"}</span>
   </ResponseField>
   <ResponseField
     name="created"
     type="number"
   >
-    
+    <span>{"The creation timestamp (UNIX) of the customer"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
 ### Search Customers By Fields
+
+<span>{"Searches Stripe customers by email, name, or phone."}</span>
 
   <ResponseField
     name="input"
@@ -726,7 +748,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="customers"
     type="array"
   >
-    
+    <span>{"A list of customers matching the search criteria"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -734,33 +756,33 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The id of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string | null"
     required
   >
-    
+    <span>{"The email of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string | null"
   >
-    
+    <span>{"The name of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string | null"
     required
   >
-    
+    <span>{"The description of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
     type="string | null"
   >
-    
+    <span>{"The phone of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="address"
@@ -773,13 +795,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="number"
     required
   >
-    
+    <span>{"The creation timestamp (UNIX) of the customer"}</span>
   </ResponseField>
   <ResponseField
     name="delinquent"
     type="boolean | null"
   >
-    
+    <span>{"If the customer is delinquent"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

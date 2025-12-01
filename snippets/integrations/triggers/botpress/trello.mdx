@@ -650,12 +650,10 @@ You can access data returned from any of these Triggers by reading `event.payloa
   </ResponseField>
   <ResponseField
     name="state"
-    type="enum<string>"
+    type="string | string"
     required
   >
     <span>{"State of the check item"}</span>
-
-Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="textData"
@@ -976,12 +974,10 @@ Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="state"
-    type="enum<string>"
+    type="string | string"
     required
   >
     <span>{"State of the check item"}</span>
-
-Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="textData"
@@ -1097,7 +1093,7 @@ Available options: `complete`, `incomplete`
     type="object"
     required
   >
-    
+    <span>{"The action details for the deleted comment"}</span>
 
     <Expandable>
   <ResponseField
@@ -1650,12 +1646,10 @@ Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="state"
-    type="enum<string>"
+    type="string | string"
     required
   >
     <span>{"State of the check item"}</span>
-
-Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="due"
@@ -1682,12 +1676,10 @@ Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="state"
-    type="enum<string>"
+    type="string | string"
     required
   >
     <span>{"Old state of the check item"}</span>
-
-Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="due"
@@ -1806,12 +1798,10 @@ Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="state"
-    type="enum<string>"
+    type="string | string"
     required
   >
     <span>{"State of the check item"}</span>
-
-Available options: `complete`, `incomplete`
   </ResponseField>
   <ResponseField
     name="textData"
@@ -1927,7 +1917,7 @@ Available options: `complete`, `incomplete`
     type="object"
     required
   >
-    
+    <span>{"The action details for the updated comment"}</span>
 
     <Expandable>
   <ResponseField

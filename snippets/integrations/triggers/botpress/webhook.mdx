@@ -11,6 +11,8 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
 ### Event
 
+<span>{"The event triggered in the webhook"}</span>
+
   <ResponseField
     name="payload"
     type="object"
@@ -22,35 +24,37 @@ You can access data returned from any of these Triggers by reading `event.payloa
     name="body"
     type="string"
   >
-    
+    <span>{"The body of the event"}</span>
   </ResponseField>
   <ResponseField
     name="query"
     type="object"
     required
   >
-    
+    <span>{"The query of the event"}</span>
   </ResponseField>
   <ResponseField
     name="path"
     type="string"
     required
   >
-    
+    <span>{"The path of the event"}</span>
   </ResponseField>
   <ResponseField
     name="headers"
     type="object"
     required
   >
-    
+    <span>{"The headers of the event"}</span>
   </ResponseField>
   <ResponseField
     name="method"
     type="enum<string>"
     required
   >
-    Available options: `GET`, `POST`
+    <span>{"The method of the event"}</span>
+
+Available options: `GET`, `POST`
   </ResponseField>
     </Expandable>
   </ResponseField>
