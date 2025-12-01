@@ -5,6 +5,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Find Target
 
+<span>{"Find a target in a repository"}</span>
+
   <ResponseField
     name="input"
     type="object"
@@ -15,14 +17,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The query used to find the target"}</span>
   </ResponseField>
   <ResponseField
     name="channel"
     type="enum<string>"
     required
   >
-    Available options: `pullRequest`, `issue`
+    <span>{"The channel of the target"}</span>
+
+Available options: `pullRequest`, `issue`
   </ResponseField>
   <ResponseField
     name="repo"
@@ -44,7 +48,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"The list of received target"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -52,21 +56,23 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The display name"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="object"
     required
   >
-    
+    <span>{"The tags associated with the target"}</span>
   </ResponseField>
   <ResponseField
     name="channel"
     type="enum<string>"
     required
   >
-    Available options: `pullRequest`, `issue`
+    <span>{"The channel of the target"}</span>
+
+Available options: `pullRequest`, `issue`
   </ResponseField>
     </Expandable>
   </ResponseField>
