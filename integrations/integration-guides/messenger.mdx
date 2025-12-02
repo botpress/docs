@@ -1,7 +1,7 @@
 ---
-title: Messenger
-description: Add your bot to Messenger using the official integration
-icon: '/integrations/integration-guides/assets/icons/messenger.svg'
+title: Messenger and Facebook
+description: Add your bot to Messenger and Facebook using the official integration
+icon: '/integrations/integration-guides/assets/icons/messenger-and-facebook.svg'
 ---
 
 {/* vale off */}
@@ -14,7 +14,7 @@ import Cards from '/snippets/integrations/cards/botpress/messenger.mdx'
 
 {/* vale on */}
 
-The official Messenger integration allows users to chat with your bot by messaging a Facebook page.
+The official Messenger and Facebook integration allows users to chat with your bot by messaging a Facebook page.
 
 ## Setup
 
@@ -82,7 +82,7 @@ The official Messenger integration allows users to chat with your bot by messagi
       <Step title="Install the integration">
 
           1. In Botpress Studio, select **<Icon icon="boxes"/> Explore Hub** in the upper-right corner.
-          2. Search for the **Messenger** integration, then select **Install Integration**.
+          2. Search for the **Messenger and Facebook** integration, then select **Install Integration**.
           3. In the **Configuration** menu, select the drop-down menu, then select **Configure by manually supplying the Meta app details**.
 
         </Step>
@@ -164,7 +164,11 @@ The official Messenger integration allows users to chat with your bot by messagi
         </Note>
       </Step>
       <Step title="Subscribe to webhook fields">
-        Under **Webhook fields**, subscribe to `messages` and `messaging_postbacks`.
+        Under **Webhook fields**, subscribe to:
+
+        - `messages`
+        - `messaging_postbacks`
+        - `feed`
       </Step>
     </Steps>
 
@@ -244,24 +248,12 @@ To get the Messenger ID of the recipient:
 event.tags.message["messenger:recipientId"]
 ```
 
-or
-
-```js
-event.tags.conversation["messenger:recipientId"]
-```
-
 ### Sender ID
 
 To get the Messenger ID of the sender:
 
 ```js
 event.tags.message["messenger:senderId"]
-```
-
-or
-
-```js
-event.tags.conversation["messenger:senderId"]
 ```
 
 ### Conversation ID
