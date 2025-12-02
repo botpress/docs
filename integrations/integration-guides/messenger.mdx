@@ -164,7 +164,11 @@ The official Messenger integration allows users to chat with your bot by messagi
         </Note>
       </Step>
       <Step title="Subscribe to webhook fields">
-        Under **Webhook fields**, subscribe to `messages` and `messaging_postbacks`.
+        Under **Webhook fields**, subscribe to:
+
+        - `messages`
+        - `messaging_postbacks`
+        - `feed`
       </Step>
     </Steps>
 
@@ -244,24 +248,12 @@ To get the Messenger ID of the recipient:
 event.tags.message["messenger:recipientId"]
 ```
 
-or
-
-```js
-event.tags.conversation["messenger:recipientId"]
-```
-
 ### Sender ID
 
 To get the Messenger ID of the sender:
 
 ```js
 event.tags.message["messenger:senderId"]
-```
-
-or
-
-```js
-event.tags.conversation["messenger:senderId"]
 ```
 
 ### Conversation ID
