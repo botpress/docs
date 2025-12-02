@@ -1,0 +1,304 @@
+---
+title: GitHub
+description: Add a bot to GitHub using the official integration.
+icon: '/integrations/integration-guides/assets/icons/github.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/github.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/github.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.github}/>
+
+The official GitHub integration allows your bot to interact with your GitHub repositories.
+
+## Setup
+
+<Tabs>
+  <Tab title="Basic configuration">
+
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [GitHub account](https://github.com/signup)
+    </Info>
+
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **GitHub** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize GitHub**.
+      </Step>
+      <Step>
+        Follow the instructions to connect Botpress to your GitHub account.
+      </Step>
+    </Steps>
+
+    <Note>
+      When using this configuration mode, a Botpress-managed GitHub App connects to your GitHub organizations and repositories. The app has the necessary permissions to listen to pull request and issue events and to create comments on issues, pull requests, and discussions.
+
+      If you need more granular control over permissions or prefer to use your own GitHub App, choose one of the manual configuration options instead.
+    </Note>
+
+  </Tab>
+  <Tab title="Manual with GitHub App">
+
+    For advanced use cases, you can use your own GitHub App with our integration.
+
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [GitHub account](https://github.com/signup)
+    </Info>
+
+    ### Step 1: Install the integration
+
+    First, install the integration in Botpress:
+
+    <Steps>
+      <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+      <Step>Search for the **GitHub** integration, then select **Install Integration**.</Step>
+      <Step>In the **Configuration** menu, select the drop-down menu, then select **Configure with a GitHub App**.</Step>
+      <Step>Copy the webhook URL—you'll need it when creating your GitHub App.</Step>
+    </Steps>
+
+    ### Step 2: Create a GitHub App
+
+    Next, create your GitHub App:
+
+    <Steps>
+      <Step>On GitHub, navigate to your organization's **Settings** page (or your personal account settings).</Step>
+      <Step>In the left sidebar, select **Developer settings**, then **GitHub Apps**.</Step>
+      <Step>Select **New GitHub App**.</Step>
+      <Step>
+        Fill in the required fields:
+        - **GitHub App name**: Choose a unique name for your app.
+        - **Homepage URL**: Enter your organization's website or any valid URL.
+      </Step>
+      <Step>
+        In the **Webhook** section:
+        - Paste the webhook URL you copied from Botpress into the **Webhook URL** field.
+        - Generate a secure secret key using a password generator.
+        - Paste the secret key into the **Webhook secret** field.
+      </Step>
+    </Steps>
+
+    ### Step 3: Configure permissions
+
+    Set the required permissions for your GitHub App:
+
+    **Repository permissions:**
+    - **Discussions**: Read & write
+    - **Issues**: Read & write
+    - **Pull requests**: Read & write
+
+    **Organization permissions:**
+    - **Team discussions**: Read & write
+
+    ### Step 4: Subscribe to webhook events
+
+    Select the webhook events your bot should receive:
+
+    - Discussion
+    - Discussion comment
+    - Issues
+    - Issue comment
+    - Pull request
+    - Pull request review
+    - Pull request review comment
+    - Pull request review thread
+
+    When you're done, select **Create GitHub App**.
+
+    ### Step 5: Generate a private key
+
+    Next, generate a private key:
+
+    <Steps>
+      <Step>In your newly created GitHub App, navigate to the **General** tab.</Step>
+      <Step>Scroll down to **Private keys** and select **Generate a private key**.</Step>
+      <Step>Save the downloaded `.pem` file to a secure location.</Step>
+    </Steps>
+
+    ### Step 6: Install the GitHub App
+
+    Now you can install the GitHub App:
+
+    <Steps>
+      <Step>In your GitHub App's settings, select **Install App** from the left sidebar.</Step>
+      <Step>Select the organization or account where you want to install the app.</Step>
+      <Step>Choose whether to grant access to all repositories or select specific ones.</Step>
+      <Step>Select **Install**.</Step>
+    </Steps>
+
+    ### Step 7: Configure the integration in Botpress
+
+    Finally, fill in the integration's configuration fields:
+
+    <AccordionGroup>
+      <Accordion title="GitHub App ID">
+        1. In your GitHub App's **General** tab, find the **App ID** field.
+        2. Copy the App ID and paste it into the **GitHub App ID** field in Botpress.
+      </Accordion>
+      <Accordion title="GitHub App Private Key">
+        Open the `.pem` file you downloaded earlier and paste its entire contents into the **GitHub App Private Key** field.
+      </Accordion>
+      <Accordion title="GitHub Webhook Secret">
+        Paste the webhook secret key you generated in [Step 2](#step-2:-create-a-github-app) into the **GitHub Webhook Secret** field.
+      </Accordion>
+      <Accordion title="GitHub App Installation ID">
+        1. Navigate to your organization's **Settings > Installed GitHub Apps**.
+        2. Find your newly installed GitHub App and select **Configure**.
+        3. Look at the URL—it should end with `/installations/:installation_id`. For example, in `https://github.com/organizations/my-org/settings/installations/123456`, the installation ID is `123456`.
+        4. Copy the installation ID and paste it into the **GitHub App Installation ID** field in Botpress.
+      </Accordion>
+    </AccordionGroup>
+
+    When you've filled in all the fields, select **Save Configuration**. This will automatically enable your integration.
+
+    <Check>
+      You've manually configured your GitHub integration with a GitHub App!
+    </Check>
+
+  </Tab>
+  <Tab title="Manual with Personal Access Token (PAT)">
+
+    You can also use a Personal Access Token (PAT) to connect your GitHub account to Botpress.
+
+    <Warning>
+      When you use a PAT, actions taken by the bot will be attributed to your personal GitHub account. If you want actions attributed to your organization, use the [GitHub App configuration](#manual-with-github-app) instead.
+
+      GitHub Apps also don't consume a seat in your organization and offer more granular permissions—we recommend using them for production use cases.
+    </Warning>
+
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [GitHub account](https://github.com/signup)
+    </Info>
+
+    ### Step 1: Install the integration
+
+    <Steps>
+      <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+      <Step>Search for the **GitHub** integration, then select **Install Integration**.</Step>
+      <Step>In the **Configuration** menu, select the drop-down menu, then select **Configure with a Personal Access Token**.</Step>
+      <Step>Copy the webhook URL—you'll need it when setting up the webhook.</Step>
+    </Steps>
+
+    ### Step 2: Enable fine-grained PATs for your organization
+
+    If you're using an organization, you need to enable fine-grained Personal Access Tokens:
+
+    <Steps>
+      <Step>On GitHub, navigate to your organization's **Settings** page.</Step>
+      <Step>In the left sidebar, under **Third-party Access**, select **Personal access tokens**.</Step>
+      <Step>Select **Allow access via fine-grained personal access tokens**.</Step>
+      <Step>Complete the setup process to enable fine-grained PATs.</Step>
+    </Steps>
+
+    <Note>
+      You don't need to enable classic personal access tokens.
+    </Note>
+
+    ### Step 3: Set up the webhook
+
+    <Steps>
+      <Step>Navigate to either your repository or organization's **Settings** page on GitHub.</Step>
+      <Step>In the left sidebar, select **Webhooks**, then **Add webhook**.</Step>
+      <Step>
+        Configure the webhook:
+        - **Payload URL**: Paste the webhook URL from Botpress.
+        - **Content type**: Select `application/json`.
+        - **Secret**: Generate a secure secret key and paste it here.
+      </Step>
+      <Step>
+        Under **Which events would you like to trigger this webhook?**, select **Let me select individual events**, then choose:
+        - Discussion
+        - Discussion comment
+        - Issues
+        - Issue comment
+        - Pull request
+        - Pull request review
+        - Pull request review comment
+        - Pull request review thread
+      </Step>
+      <Step>Select **Add webhook**.</Step>
+    </Steps>
+
+    ### Step 4: Create a fine-grained Personal Access Token
+
+    <Steps>
+      <Step>On GitHub, go to your account **Settings**.</Step>
+      <Step>In the left sidebar, select **Developer settings**, then **Personal access tokens > Fine-grained tokens**.</Step>
+      <Step>Select **Generate new token**.</Step>
+      <Step>
+        Configure the token:
+        - **Token name**: Enter a descriptive name (e.g., "Botpress Integration").
+        - **Expiration**: Choose an appropriate expiration date.
+        - **Resource owner**: Select your organization (or personal account).
+        - **Repository access**: Select the repositories your bot needs access to.
+
+        <Note>
+          If you select **Public Repositories only**, the bot won't be able to reply to issues or pull requests.
+        </Note>
+      </Step>
+      <Step>
+        Under **Permissions**, set the following:
+
+        **Repository permissions:**
+        - **Discussions**: Read & write
+        - **Issues**: Read & write
+        - **Pull requests**: Read & write
+
+        **Organization (or Account) permissions:**
+        - **Team discussions**: Read & write
+      </Step>
+      <Step>Select **Generate token** and copy it to a secure location.</Step>
+    </Steps>
+
+    ### Step 5: Configure the integration in Botpress
+
+    Fill in the integration's configuration fields:
+
+    <AccordionGroup>
+      <Accordion title="GitHub Personal Access Token">
+        Paste the Personal Access Token you generated in the previous step.
+      </Accordion>
+      <Accordion title="GitHub Webhook Secret">
+        Paste the webhook secret key you generated in [Step 3](#step-3:-set-up-the-webhook).
+      </Accordion>
+    </AccordionGroup>
+
+    When you've filled in all the fields, select **Save Configuration**. This will automatically enable your integration.
+
+    <Check>
+      You've manually configured your GitHub integration with a Personal Access Token!
+    </Check>
+
+  </Tab>
+</Tabs>
+
+---
+
+## Cards
+
+<Cards />
+
+---
+
+## Triggers
+
+<Triggers />
