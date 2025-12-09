@@ -18,12 +18,8 @@
   color: light-dark(rgba(112, 26, 117), rgba(245, 208, 254));
 }
 
-.tooltip {
-  text-decoration-line: none !important;
-}
-
-.bg-tooltip {
-  background-color: rgb(255, 0, 255);
+.steps {
+  margin-top: 0;
 }
 
 .bpFab {
@@ -83,6 +79,17 @@
 [data-nav-tag="BETA"] {
   background-color: light-dark(rgb(255 251 235/.5), rgb(245 158 11/.1)) !important;
   color: light-dark(rgb(120 53 15/var(--tw-text-opacity)), rgb(253 230 138/var(--tw-text-opacity))) !important;
+}
+
+[data-nav-tag="Plus"] {
+  background-color: light-dark(#E3EAFD, #07296A) !important;
+  color: light-dark(#133A9A, #7196F4) !important;
+}
+
+
+[data-nav-tag="Team"] {
+  background-color: light-dark(#D1FAE4, #0F4C2C) !important;
+  color: light-dark(#166E3F, #6AE1A1) !important;
 }
 
 @media (min-width: 768px) { .bpWebchat {

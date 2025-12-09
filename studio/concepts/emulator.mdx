@@ -8,7 +8,7 @@ You can debug your bot conversation using the built-in Emulator in the right-sid
 <Note>
 Note
 
-To visualize the actual user experience, use the Share button to have a hosted easily shareable version of the [Web Chat](/webchat/get-started/introduction) (this is the production bot already, conversations will be saved) or ideally test the bot in the channel you intend to deploy it on. Conversations in the Emulator won't be saved and the [bot invocations](/get-started/dashboard/workspace/usage) won't be counted against your usage quota, but AI operations will.
+To visualize the actual user experience, use the Share button to have a hosted easily shareable version of the [Web Chat](/webchat/get-started/introduction) (this is the production bot already, conversations will be saved) or ideally test the bot in the channel you intend to deploy it on. Conversations in the Emulator won't be saved and the [bot invocations](/get-started/configure-your-workspace#track-usage-quotas) won't be counted against your usage quota, but AI operations will.
 </Note>
 
 ## Shortcuts
@@ -47,7 +47,7 @@ The Emulator shows the status of the conversation and the different steps that a
 
 ### Bot events
 
-* Conversation started: The user has started the conversation by sending a message or a [Trigger](/get-started/dashboard/bot/events) Event has been triggered.
+* Conversation started: The user has started the conversation by sending a message or a [Trigger](/studio/concepts/triggers) has fired.
 * Conversation ended: The conversation flowed to an End node and has gone through the [Conversation End Workflow](/studio/concepts/workflows#conversation-end), or it has ended by not having possible transitions.
 * Error occurred: An irrecoverable error has occurred and the conversation has flowed to the [Error](/studio/concepts/workflows#error) . The error message is visible by hovering the status.
 * Waiting for user input: The bot is waiting for the user to send a message in order to proceed with the conversation.
