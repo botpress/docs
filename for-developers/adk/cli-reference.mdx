@@ -92,6 +92,7 @@ adk deploy --env production
 | Flag | Description | Default |
 |------|-------------|---------|
 | `-e, --env` | Deployment environment | `production` |
+| `-y, --yes` | Auto-approve preflight changes without prompting | `false` |
 
 ---
 
@@ -136,6 +137,46 @@ adk chat
 <Note>
 Run `adk dev` first to create a development bot if you don't have a `devId` in your `agent.json`.
 </Note>
+
+---
+
+### `adk mcp`
+
+Start an MCP (Model Context Protocol) server for AI assistant integration. This allows AI coding assistants like Claude Code and Cursor to interact with your ADK agent.
+
+**Usage:**
+```bash
+adk mcp
+adk mcp --cwd ./my-agent
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--cwd` | Working directory for MCP operations |
+
+#### `adk mcp:init`
+
+Generate MCP configuration files for AI assistants.
+
+**Usage:**
+```bash
+adk mcp:init --tool cursor
+adk mcp:init --tool claude-code --tool vscode
+adk mcp:init --all
+adk mcp:init --all --force
+adk mcp:init --tool cursor --project-dir ./bot
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--tool` | Specific tool(s) to configure: `claude-code`, `vscode`, `cursor` |
+| `--all` | Generate configuration for all supported tools |
+| `--force` | Overwrite existing ADK configuration |
+| `--project-dir` | ADK project subdirectory (for monorepos, e.g., `./bot`) |
 
 ---
 
@@ -325,6 +366,8 @@ adk link --workspace <workspaceId> --bot <botId> --dev <devBotId>
 | `--workspace` | Workspace ID |
 | `--bot` | Bot ID to link to |
 | `--dev` | Dev bot ID (optional) |
+| `--api-url` | Botpress API URL (e.g., `https://api.botpress.cloud`) |
+| `-f, --force` | Overwrite existing `agent.json` if present |
 
 ---
 
@@ -400,6 +443,122 @@ Download remote assets to local directory.
 ```bash
 adk assets pull
 ```
+
+---
+
+### `adk config`
+
+Configure agent settings interactively or manage specific configuration values.
+
+**Usage:**
+```bash
+adk config
+adk config --prod
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--prod` | Use production configuration |
+
+#### `adk config:get`
+
+Get a specific configuration value.
+
+**Usage:**
+```bash
+adk config:get <key>
+adk config:get myKey --prod
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `key` | Configuration key to retrieve |
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--prod` | Use production configuration |
+
+#### `adk config:set`
+
+Set a specific configuration value.
+
+**Usage:**
+```bash
+adk config:set <key> <value>
+adk config:set myKey myValue --prod
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `key` | Configuration key to set |
+| `value` | Configuration value |
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--prod` | Use production configuration |
+
+---
+
+### `adk kb`
+
+Manage knowledge bases and synchronization.
+
+#### `adk kb sync`
+
+Synchronize knowledge bases with Botpress.
+
+**Usage:**
+```bash
+adk kb sync --dev
+adk kb sync --prod
+adk kb sync --dev --dry-run
+adk kb sync --prod --force --yes
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--dev` | Sync with development bot |
+| `--prod` | Sync with production bot |
+| `--dry-run` | Preview changes without applying them |
+| `-y, --yes` | Skip confirmation prompts |
+| `--force` | Force re-sync all knowledge bases |
+
+<Note>
+Either `--dev` or `--prod` is required when running `adk kb sync`.
+</Note>
+
+---
+
+### `adk telemetry`
+
+Manage telemetry preferences.
+
+**Usage:**
+```bash
+adk telemetry --status
+adk telemetry --enable
+adk telemetry --disable
+```
+
+**Flags:**
+
+| Flag | Description |
+|------|-------------|
+| `--status` | Show current telemetry status |
+| `--enable` | Enable telemetry |
+| `--disable` | Disable telemetry |
 
 ---
 
