@@ -26,15 +26,21 @@ You can add knowledge from several different data sources:
 
 ### Website source
 
-Index a website using a sitemap:
+There are multiple ways to index websites:
+
+#### From a sitemap
+
+Index a website using a sitemap XML file:
 
 ```typescript
-import { DataSource } from "@botpress/runtime";
+import { Knowledge, DataSource } from "@botpress/runtime";
 
 const WebsiteSource = DataSource.Website.fromSitemap(
   "https://example.com/sitemap.xml",
   {
     filter: ({ url }) => !url.includes("/admin"),
+    maxPages: 1000,
+    maxDepth: 10,
   }
 );
 
@@ -44,9 +50,77 @@ export default new Knowledge({
 });
 ```
 
+#### From a base URL
+
+Crawl a website starting from a base URL (requires the Browser integration):
+
+```typescript
+import { Knowledge, DataSource } from "@botpress/runtime";
+
+const WebsiteSource = DataSource.Website.fromWebsite(
+  "https://example.com",
+  {
+    filter: ({ url }) => !url.includes("/admin"),
+    maxPages: 500,
+    maxDepth: 5,
+  }
+);
+
+export default new Knowledge({
+  name: "website-docs",
+  sources: [WebsiteSource],
+});
+```
+
+#### From `llms.txt`
+
+Index pages referenced in an `llms.txt` file:
+
+```typescript
+import { Knowledge, DataSource } from "@botpress/runtime";
+
+const WebsiteSource = DataSource.Website.fromLlmsTxt(
+  "https://example.com/llms.txt"
+);
+
+export default new Knowledge({
+  name: "website-docs",
+  sources: [WebsiteSource],
+});
+```
+
+#### From specific URLs
+
+Index a specific list of URLs:
+
+```typescript
+import { Knowledge, DataSource } from "@botpress/runtime";
+
+const WebsiteSource = DataSource.Website.fromUrls([
+  "https://example.com/page1",
+  "https://example.com/page2",
+  "https://example.com/page3",
+]);
+
+export default new Knowledge({
+  name: "website-docs",
+  sources: [WebsiteSource],
+});
+```
+
+#### Website source options
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `id` | `string` | Optional unique identifier for the source |
+| `filter` | `(ctx) => boolean` | Filter function receiving `{ url, lastmod?, changefreq?, priority? }` |
+| `fetch` | `string \| function` | Fetch strategy: `'node:fetch'` (default), `'integration:browser'`, or custom function |
+| `maxPages` | `number` | Maximum pages to index (1-50000, default: 50000) |
+| `maxDepth` | `number` | Maximum sitemap depth (1-20, default: 20) |
+
 ### File source
 
-Index files from a directory:
+Index files from a local directory (development only):
 
 ```typescript
 const FileSource = DataSource.Directory.fromPath("./docs", {
@@ -59,13 +133,24 @@ export default new Knowledge({
 });
 ```
 
+<Note>
+  Directory sources only work during development (`adk dev`). For production, use website sources or upload files to Botpress Cloud.
+</Note>
+
+#### Directory source options
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `id` | `string` | Optional unique identifier for the source |
+| `filter` | `(filePath: string) => boolean` | Filter function to include/exclude files |
+
 ### Table source
 
 Index data from a table:
 
 ```typescript
-import { DataSource } from "@botpress/runtime";
-import { OrderTable } from "../tables/OrderTable";
+import { Knowledge, DataSource } from "@botpress/runtime";
+import OrderTable from "../tables/OrderTable";
 
 const TableSource = DataSource.Table.fromTable(OrderTable, {
   id: "orders",
@@ -104,7 +189,7 @@ Refresh knowledge bases to update their content:
 
 ```typescript highlight={6, 8}
 import { Workflow } from "@botpress/runtime";
-import { WebsiteKB } from "..knowledge/docs"
+import WebsiteKB from "../knowledge/docs"
 
 export default new Workflow({
   name: "refresh-knowledge",
@@ -113,6 +198,22 @@ export default new Workflow({
     await WebsiteKB.refresh();
   },
 });
+```
+
+### Force refresh
+
+Force re-indexing of all content even if unchanged:
+
+```typescript
+await WebsiteKB.refresh({ force: true });
+```
+
+### Refresh a specific source
+
+Refresh a single data source within a knowledge base:
+
+```typescript
+await WebsiteKB.refreshSource("my-source-id", { force: true });
 ```
 
 ## Reference

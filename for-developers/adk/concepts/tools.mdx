@@ -9,8 +9,7 @@ Tools are functions that can be called by the AI model during conversations. The
 Create a tool in `src/tools/`:
 
 ```typescript
-import { Autonomous } from "@botpress/runtime";
-import { z } from "@botpress/sdk";
+import { Autonomous, z } from "@botpress/runtime";
 
 export default new Autonomous.Tool({
   name: "myTool",
@@ -29,8 +28,7 @@ export default new Autonomous.Tool({
 Define input and output schemas using Zod schemas. The AI model uses these schemas to understand when and how to call your tool:
 
 ```typescript highlight={7-14}
-import { Autonomous } from "@botpress/runtime";
-import { z } from "@botpress/sdk";
+import { Autonomous, z } from "@botpress/runtime";
 
 export default new Autonomous.Tool({
   name: "getWeather",
@@ -117,8 +115,7 @@ The handler function receives the input parameters and executes the tool's logic
 <CodeGroup>
 
 ```ts Basic handler highlight={10-13}
-import { Autonomous } from "@botpress/runtime";
-import { z } from "@botpress/sdk";
+import { Autonomous, z } from "@botpress/runtime";
 
 export default new Autonomous.Tool({
   name: "searchDatabase",
@@ -134,8 +131,7 @@ export default new Autonomous.Tool({
 ```
 
 ```ts Calling actions highlight={1, 10-13}
-import { Autonomous, actions } from "@botpress/runtime";
-import { z } from "@botpress/sdk";
+import { Autonomous, actions, z } from "@botpress/runtime";
 
 export default new Autonomous.Tool({
   name: "processOrder",
@@ -190,6 +186,34 @@ export default new Autonomous.Tool({
     })),
   }),
   // ...
+});
+```
+
+## Signals
+
+Tools can throw special signals to influence the AI's behavior:
+
+### ThinkSignal
+
+Throw a `ThinkSignal` to provide additional context to the AI without returning a result:
+
+```typescript highlight={9-12}
+import { Autonomous } from "@botpress/runtime";
+
+export default new Autonomous.Tool({
+  name: "searchDatabase",
+  handler: async ({ query }) => {
+    const results = await search(query);
+
+    if (results.length === 0) {
+      throw new Autonomous.ThinkSignal(
+        "No results found",
+        "No results were found. Try a different search query."
+      );
+    }
+
+    return results;
+  },
 });
 ```
 

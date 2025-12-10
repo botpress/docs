@@ -1,5 +1,6 @@
 ---
 title: Workflows
+sidebarTitle: Overview
 ---
 
 Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike [conversations](/for-developers/adk/concepts/conversations), workflows can run independently on a schedule or be triggered by events.
@@ -41,9 +42,9 @@ export default new Workflow({
 });
 ```
 
-## Workflow steps
+## Steps
 
-Use the `step` function to create checkpoints in long-running workflows:
+By default, workflows time out after 2 minutes—if you need to run a workflow for longer, you should use the `step` function. This lets you break the workflow up into a series of steps that each take only a few seconds to run individually:
 
 ```typescript highlight={4-17}
 export default new Workflow({
@@ -67,7 +68,69 @@ export default new Workflow({
 });
 ```
 
-Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
+Steps are *persisted*—if a workflow is interrupted, it can resume from the last completed step. This provides better handling when errors occur in complex, long-running workflows.
+
+<Note>
+  You can nest steps inside other steps—each step will complete when each of its sub-steps complete.
+</Note>
+
+### Reference
+
+The `step` object also provides many additional methods for workflow control:
+
+<Card title="Step reference" icon="list-check" href="/for-developers/adk/concepts/workflows/steps">
+  Learn about all available step methods
+</Card>
+
+### Handling failing steps
+
+If a step (or a [step method](/for-developers/adk/concepts/workflows/steps#methods)) fails, it'll throw a rejected promise. This will fail not only the current step, but the *entire workflow*.
+
+To avoid this, make sure you catch errors gracefully:
+
+```ts
+try {
+  await step.request("orderId", "Please provide the order ID.");
+} catch (err) {
+  console.log(err);
+}
+```
+
+If the method you're using has an `options.maxAttempts` field, it'll throw an error after the maximum number of retries has been exceeded. You can track the retries using the `attempt` parameter and catch any errors:
+
+```ts highlight={5, 8, 10-12}
+try {
+  await step(
+    "data-processing",
+    async ({ attempt }) => {
+      console.log(`Trying step: attempt #${attempt}`);
+      // Your code here
+    },
+    { maxAttempts: 10 }
+  );
+} catch (err) {
+  console.log(err);
+}
+```
+
+## Output
+
+Workflows can return an output that matches the output schema:
+
+```typescript highlight={10}
+export default new Workflow({
+  name: "calculate-totals",
+  input: z.object({ orderId: z.string() }),
+  output: z.object({ total: z.number() }),
+  handler: async ({ input, step }) => {
+    const order = await step("fetch-order", async () => {
+      return await fetchOrder(input.orderId);
+    });
+
+    return { total: order.total };
+  },
+});
+```
 
 ## Reference
 
@@ -166,6 +229,13 @@ The handler function receives workflow context and provides step management:
     Botpress client for making API calls (tables, events, etc.).
   </ResponseField>
   <ResponseField
+    name="signal"
+    type="AbortSignal"
+    required
+  >
+    An abort signal that indicates when the workflow should stop execution.
+  </ResponseField>
+  <ResponseField
     name="execute"
     type="(props: object) => Promise&lt;any&gt;"
     required
@@ -236,3 +306,94 @@ The handler function receives workflow context and provides step management:
     </Expandable>
   </ResponseField>
 </Expandable>
+
+## Methods
+
+Workflows can be started and managed programmatically:
+
+### `workflow.start()`
+
+Start a new workflow instance:
+
+```typescript
+import ProcessingWorkflow from "../workflows/processing";
+
+const instance = await ProcessingWorkflow.start({ orderId: "12345" });
+console.log("Started workflow:", instance.id);
+```
+
+### `workflow.getOrCreate()`
+
+Get an existing workflow or create a new one with deduplication:
+
+```typescript
+const instance = await ProcessingWorkflow.getOrCreate({
+  key: "order-12345", // Unique key for deduplication
+  input: { orderId: "12345" },
+  statuses: ["pending", "in_progress"], // Only match workflows with these statuses
+});
+```
+
+### `workflow.asTool()`
+
+Convert a workflow into a tool for use with `execute()`:
+
+```typescript highlight={2, 9}
+import { Conversation } from "@botpress/runtime";
+import ProcessingWorkflow from "../workflows/processing";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [ProcessingWorkflow.asTool()],
+    });
+  },
+});
+```
+
+### `workflow.provide()`
+
+Provide data in response to a workflow data request (used with `step.request()`):
+
+```typescript highlight={1, 6-9}
+import { isWorkflowDataRequest } from "@botpress/runtime";
+import OrderWorkflow from "../workflows/order";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ type, request }) => {
+    if (type === "workflow_request") {
+      await OrderWorkflow.provide(request, { orderId: "12345" });
+    }
+  },
+});
+```
+
+## Helper functions
+
+### `isWorkflowDataRequest()`
+
+Check if an event is a workflow data request:
+
+```typescript
+import { isWorkflowDataRequest } from "@botpress/runtime";
+
+if (isWorkflowDataRequest(event)) {
+  // Handle the workflow data request
+}
+```
+
+### `isWorkflowCallback()`
+
+Check if an event is a workflow callback:
+
+```typescript
+import { isWorkflowCallback } from "@botpress/runtime";
+
+if (isWorkflowCallback(event)) {
+  // Handle the workflow callback
+}
+```
+
