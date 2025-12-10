@@ -44,7 +44,7 @@ export default new Workflow({
 
 ## Steps
 
-Use the `step` function to create checkpoints in long-running workflows. Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
+By default, workflows time out after 2 minutes—if you need to run a workflow for longer, you should use the `step` function. This lets you break the workflow up into a series of steps that each take only a few seconds to run individually:
 
 ```typescript highlight={4-17}
 export default new Workflow({
@@ -68,11 +68,50 @@ export default new Workflow({
 });
 ```
 
-The `step` object provides many additional methods for workflow control including `sleep`, `map`, `batch`, and more.
+Steps are *persisted*—if a workflow is interrupted, it can resume from the last completed step. This provides better handling when errors occur in complex, long-running workflows.
 
-<Card title="Workflow steps" icon="list-check" href="/for-developers/adk/concepts/workflows/steps">
+<Note>
+  You can nest steps inside other steps—each step will complete when each of its sub-steps complete.
+</Note>
+
+### Reference
+
+The `step` object also provides many additional methods for workflow control:
+
+<Card title="Step reference" icon="list-check" href="/for-developers/adk/concepts/workflows/steps">
   Learn about all available step methods
 </Card>
+
+### Handling failing steps
+
+If a step (or a [step method](/for-developers/adk/concepts/workflows/steps#methods)) fails, it'll throw a rejected promise. This will fail not only the current step, but the *entire workflow*.
+
+To avoid this, make sure you catch errors gracefully:
+
+```ts
+try {
+  await step.request("orderId", "Please provide the order ID.");
+} catch (err) {
+  console.log(err);
+}
+```
+
+If the method you're using has an `options.maxAttempts` field, it'll throw an error after the maximum number of retries has been exceeded. You can track the retries using the `attempt` parameter and catch any errors:
+
+```ts highlight={5, 8, 10-12}
+try {
+  await step(
+    "data-processing",
+    async ({ attempt }) => {
+      console.log(`Trying step: attempt #${attempt}`);
+      // Your code here
+    },
+    { maxAttempts: 10 }
+  );
+} catch (err) {
+  console.log(err);
+}
+```
 
 ## Output
 

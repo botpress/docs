@@ -1,4 +1,4 @@
-The `step` function creates checkpoints in long-running workflows. Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
+This page contains a full reference for the [`step` function](/for-developers/adk/concepts/workflows/overview#steps).
 
 ```typescript
 const data = await step("fetch-data", async () => {
@@ -10,6 +10,11 @@ const data = await step("fetch-data", async () => {
 
 <ResponseField name="name" type="string" required>
   Unique identifier for this step within the workflow.
+
+  <Note>
+    Make sure you set a unique identifier for each step. Otherwise, the second step won't execute and will reuse the output of the first step.
+  </Note>
+
 </ResponseField>
 <ResponseField name="run" type="(opts: { attempt: number }) => T | Promise<T>" required>
   Function to execute. Receives the current attempt number.
