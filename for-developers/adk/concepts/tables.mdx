@@ -75,18 +75,32 @@ Check out the [column options](#table-props) in the Table props reference for a 
 
 ## Using tables
 
-Tables are automatically created and synced when you deploy. Access them using the Botpress client:
+Tables are automatically created and synced when you deploy. You can import them and interact with them directly using the table instance methods, which provide type-safe operations:
 
-```ts highlight={4-9}
+```ts src/workflows/create-order.ts highlight={8-10, 13-18, 21-23}
+import { Workflow } from "@botpress/runtime";
+import OrderTable from "../tables/order-table";
+
 export default new Workflow({
   name: "createOrder",
-  handler: async ({ client }) => {
-    await client.upsertTableRows({
-      table: "OrderTable",
-      rows: [{
-        // Order data
-      }]
-    })
+  handler: async ({ step }) => {
+    // Create rows
+    const { rows } = await OrderTable.createRows({
+      rows: [{ userId: "user123", total: 99.99, status: "pending" }],
+    });
+
+    // Find rows with filters
+    const { rows: orders } = await OrderTable.findRows({
+      filter: { status: "pending" },
+      orderBy: "createdAt",
+      orderDirection: "desc",
+      limit: 10,
+    });
+
+    // Update rows
+    await OrderTable.updateRows({
+      rows: [{ id: orders[0].id, status: "completed" }],
+    });
   },
 });
 ```

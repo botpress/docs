@@ -16,6 +16,14 @@ adk add slack@latest
 adk add my-workspace/custom-integration@1.0.0
 ```
 
+### Using an alias
+
+Add an integration with a custom alias:
+
+```bash
+adk add webchat --alias custom-webchat
+```
+
 This automatically:
 - Adds the integration to `agent.config.ts`
 - Generates TypeScript types for the integration
@@ -98,7 +106,7 @@ To update an integration:
 ### Using the CLI
 
 ```
-adk update <integration-name>
+adk upgrade <integration-name>
 ```
 
 ### Manually
@@ -123,7 +131,17 @@ You can also update the version it manually:
 
 ## Removing integrations
 
-Remove an integration by deleting it from `agent.config.ts`:
+### Using the CLI
+
+Remove an integration using the `adk remove` command:
+
+```bash
+adk remove <integration-name>
+```
+
+### Manually
+
+You can also remove an integration by deleting it from `agent.config.ts`:
 
 ```typescript
 dependencies: {

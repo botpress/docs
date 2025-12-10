@@ -1,5 +1,6 @@
 ---
 title: Workflows
+sidebarTitle: Overview
 ---
 
 Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike [conversations](/for-developers/adk/concepts/conversations), workflows can run independently on a schedule or be triggered by events.
@@ -41,9 +42,9 @@ export default new Workflow({
 });
 ```
 
-## Workflow steps
+## Steps
 
-Use the `step` function to create checkpoints in long-running workflows:
+Use the `step` function to create checkpoints in long-running workflows. Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
 
 ```typescript highlight={4-17}
 export default new Workflow({
@@ -67,7 +68,30 @@ export default new Workflow({
 });
 ```
 
-Steps are persisted, so if a workflow is interrupted, it can resume from the last completed step.
+The `step` object provides many additional methods for workflow control including `sleep`, `map`, `batch`, and more.
+
+<Card title="Workflow steps" icon="list-check" href="/for-developers/adk/concepts/workflows/steps">
+  Learn about all available step methods
+</Card>
+
+## Output
+
+Workflows can return an output that matches the output schema:
+
+```typescript highlight={10}
+export default new Workflow({
+  name: "calculate-totals",
+  input: z.object({ orderId: z.string() }),
+  output: z.object({ total: z.number() }),
+  handler: async ({ input, step }) => {
+    const order = await step("fetch-order", async () => {
+      return await fetchOrder(input.orderId);
+    });
+
+    return { total: order.total };
+  },
+});
+```
 
 ## Reference
 
@@ -166,6 +190,13 @@ The handler function receives workflow context and provides step management:
     Botpress client for making API calls (tables, events, etc.).
   </ResponseField>
   <ResponseField
+    name="signal"
+    type="AbortSignal"
+    required
+  >
+    An abort signal that indicates when the workflow should stop execution.
+  </ResponseField>
+  <ResponseField
     name="execute"
     type="(props: object) => Promise&lt;any&gt;"
     required
@@ -236,3 +267,94 @@ The handler function receives workflow context and provides step management:
     </Expandable>
   </ResponseField>
 </Expandable>
+
+## Methods
+
+Workflows can be started and managed programmatically:
+
+### `workflow.start()`
+
+Start a new workflow instance:
+
+```typescript
+import ProcessingWorkflow from "../workflows/processing";
+
+const instance = await ProcessingWorkflow.start({ orderId: "12345" });
+console.log("Started workflow:", instance.id);
+```
+
+### `workflow.getOrCreate()`
+
+Get an existing workflow or create a new one with deduplication:
+
+```typescript
+const instance = await ProcessingWorkflow.getOrCreate({
+  key: "order-12345", // Unique key for deduplication
+  input: { orderId: "12345" },
+  statuses: ["pending", "in_progress"], // Only match workflows with these statuses
+});
+```
+
+### `workflow.asTool()`
+
+Convert a workflow into a tool for use with `execute()`:
+
+```typescript highlight={2, 9}
+import { Conversation } from "@botpress/runtime";
+import ProcessingWorkflow from "../workflows/processing";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [ProcessingWorkflow.asTool()],
+    });
+  },
+});
+```
+
+### `workflow.provide()`
+
+Provide data in response to a workflow data request (used with `step.request()`):
+
+```typescript highlight={1, 6-9}
+import { isWorkflowDataRequest } from "@botpress/runtime";
+import OrderWorkflow from "../workflows/order";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ type, request }) => {
+    if (type === "workflow_request") {
+      await OrderWorkflow.provide(request, { orderId: "12345" });
+    }
+  },
+});
+```
+
+## Helper functions
+
+### `isWorkflowDataRequest()`
+
+Check if an event is a workflow data request:
+
+```typescript
+import { isWorkflowDataRequest } from "@botpress/runtime";
+
+if (isWorkflowDataRequest(event)) {
+  // Handle the workflow data request
+}
+```
+
+### `isWorkflowCallback()`
+
+Check if an event is a workflow callback:
+
+```typescript
+import { isWorkflowCallback } from "@botpress/runtime";
+
+if (isWorkflowCallback(event)) {
+  // Handle the workflow callback
+}
+```
+

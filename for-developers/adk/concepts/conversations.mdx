@@ -116,6 +116,62 @@ export default new Conversation({
 });
 ```
 
+## Conversation instance
+
+The `handler` receives a `conversation` object that provides methods to interact with the current conversation:
+
+### Sending messages
+
+Send a message to the conversation:
+
+```typescript
+await conversation.send({
+  type: "text",
+  payload: { text: "Hello!" },
+});
+```
+
+### Typing indicators
+
+Control typing indicators:
+
+```typescript
+await conversation.startTyping();
+// ... do some work ...
+await conversation.stopTyping();
+```
+
+<Note>
+  Typing indicators are automatically managed when using `execute()`. You only need to manage them manually when sending messages outside of the AI execution.
+</Note>
+
+### Conversation tags
+
+Access and modify conversation tags:
+
+```typescript
+// Read tags
+const priority = conversation.tags.priority;
+
+// Set tags
+conversation.tags.priority = "high";
+```
+
+### Trigger subscriptions
+
+Subscribe a conversation to triggers:
+
+```typescript
+// Subscribe to a trigger
+await conversation.subscribeToTrigger("myTrigger");
+
+// Subscribe with a key for filtered triggers
+await conversation.subscribeToTrigger("myTrigger", "specific-key");
+
+// Unsubscribe
+await conversation.unsubscribeFromTrigger("myTrigger");
+```
+
 ## Multiple conversations
 
 You can create multiple conversation handlers for different channels or use cases:

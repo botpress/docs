@@ -9,6 +9,7 @@ ADK projects follow a consistent structure that organizes your agent's code, con
     <Folder name="conversations" />
     <Folder name="workflows" />
     <Folder name="actions" />
+    <Folder name="tools" />
     <Folder name="tables" />
     <Folder name="triggers" />
     <Folder name="knowledge" />
@@ -23,9 +24,9 @@ ADK projects follow a consistent structure that organizes your agent's code, con
 
 ### `agent.config.ts`
 
-The main agent configuration file. Defines your agent's name, description, default models, state schemas, and integration dependencies.
+The main agent configuration file. Defines your agent's name, description, default models, state schemas, tags, configuration schema, and integration dependencies.
 
-```typescript
+```typescript expandable
 import { z, defineConfig } from "@botpress/runtime";
 
 export default defineConfig({
@@ -39,13 +40,44 @@ export default defineConfig({
 
   bot: {
     state: z.object({
-      // Bot-level state
+      // Bot-level state accessible via `bot.state`
     }),
+    tags: {
+      // Bot-level tags
+    },
   },
 
   user: {
     state: z.object({
-      // User-level state
+      // User-level state accessible via `user.state`
+    }),
+    tags: {
+      // User-level tags
+    },
+  },
+
+  conversation: {
+    tags: {
+      // Conversation-level tags
+    },
+  },
+
+  message: {
+    tags: {
+      // Message-level tags
+    },
+  },
+
+  workflow: {
+    tags: {
+      // Workflow-level tags
+    },
+  },
+
+  configuration: {
+    schema: z.object({
+      // Configuration schema for your agent
+      // Accessible via `configuration` export
     }),
   },
 
@@ -183,7 +215,24 @@ export default new Action({
     return { message: "This is your action's output." };
   },
 });
+```
 
+### `src/tools/`
+
+Tools that the AI model can call during conversations. Tools are provided to the `execute()` function.
+
+```typescript
+import { Autonomous, z } from "@botpress/runtime";
+
+export default new Autonomous.Tool({
+  name: "myTool",
+  description: "A tool that does something useful",
+  input: z.object({ query: z.string() }),
+  output: z.object({ result: z.string() }),
+  handler: async ({ query }) => {
+    return { result: "Tool output" };
+  },
+});
 ```
 
 ### `src/tables/`
@@ -240,6 +289,54 @@ export const WebsiteKB = new Knowledge({
   sources: [WebsiteSource],
 });
 ```
+
+## Global state and configuration
+
+The ADK provides exports for accessing global state and configuration throughout your agent.
+
+### Bot state
+
+Access and modify bot-level state that persists across all conversations:
+
+```typescript
+import { bot } from "@botpress/runtime";
+
+// Read bot state
+const currentValue = bot.state.someField;
+
+// Update bot state
+bot.state.someField = "new value";
+```
+
+### User state
+
+Access and modify user-level state that persists for each user:
+
+```typescript
+import { user } from "@botpress/runtime";
+
+// Read user state
+const preferences = user.state.preferences;
+
+// Update user state
+user.state.visitCount = (user.state.visitCount || 0) + 1;
+```
+
+### Configuration
+
+Access your agent's configuration values (defined in `agent.config.ts`):
+
+```typescript
+import { configuration } from "@botpress/runtime";
+
+// Access configuration values
+const apiKey = configuration.apiKey;
+const maxRetries = configuration.maxRetries;
+```
+
+<Tip>
+  State schemas are defined in `agent.config.ts` under `bot.state` and `user.state`. The configuration schema is defined under `configuration.schema`.
+</Tip>
 
 ## Generated files
 
