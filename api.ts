@@ -13,7 +13,10 @@ const generateDocs = async (folder: string, api: any, openapiFilename: string, a
   for (const [path, value] of Object.entries(api.paths)) {
     for (const [method, endpoint] of Object.entries(value as any)) {
       const operation = (endpoint as any).operationId
-      await writeFile(`${folder}/${operation}.mdx`, `---\ntitle: ${operation}\nopenapi: ${openapiFilename} ${method.toUpperCase()} ${path}\n---\n`)
+      await writeFile(
+        `${folder}/${operation}.mdx`,
+        `---\ntitle: ${operation}\nopenapi: ${openapiFilename} ${method.toUpperCase()} ${path}\n---\n`
+      )
       docs.push(`${absolutePath}/${operation}`)
     }
   }
@@ -23,7 +26,12 @@ const generateDocs = async (folder: string, api: any, openapiFilename: string, a
 
 const main = async () => {
   const chatApi = await loadOpenApi('./chat-openapi.json')
-  await generateDocs('./api-reference/chat-api/openapi', chatApi, '/chat-openapi.json', '/api-reference/chat-api/openapi')
+  await generateDocs(
+    './api-reference/chat-api/openapi',
+    chatApi,
+    '/chat-openapi.json',
+    '/api-reference/chat-api/openapi'
+  )
 }
 
 void main()
