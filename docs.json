@@ -40,7 +40,7 @@
     "library": "lucide"
   },
   "interaction": {
-      "drilldown": false
+    "drilldown": false
   },
   "contextual": {
     "options": [
@@ -81,7 +81,6 @@
                   "/get-started/manage-your-agent/human-handoff",
                   "/get-started/manage-your-agent/edit-appearance",
                   "/get-started/manage-your-agent/control-access"
-
                 ]
               },
               "/get-started/configure-your-workspace"
@@ -274,6 +273,7 @@
                   "/integrations/integration-guides/intercom",
                   "integrations/integration-guides/klaviyo",
                   "/integrations/integration-guides/line",
+                  "/integrations/integration-guides/loops",
                   "/integrations/integration-guides/mailerlite",
                   "/integrations/integration-guides/messenger",
                   "/integrations/integration-guides/mintlify",
@@ -361,7 +361,11 @@
               },
               {
                 "group": "Integrations",
-                "pages": ["/webchat/integrations/wordpress", "/webchat/integrations/wix", "/webchat/integrations/webflow"]
+                "pages": [
+                  "/webchat/integrations/wordpress",
+                  "/webchat/integrations/wix",
+                  "/webchat/integrations/webflow"
+                ]
               },
               {
                 "group": "React library",
@@ -452,10 +456,7 @@
               },
               {
                 "group": "Zai",
-                "pages": [
-                  "for-developers/zai/overview",
-                  "for-developers/zai/reference"
-                ]
+                "pages": ["for-developers/zai/overview", "for-developers/zai/reference"]
               }
             ]
           }
@@ -472,10 +473,7 @@
               {
                 "group": "First steps",
                 "expanded": true,
-                "pages": [
-                  "tutorial/basics/first-steps/prompting",
-                  "tutorial/basics/first-steps/adding-knowledge"
-                ]
+                "pages": ["tutorial/basics/first-steps/prompting", "tutorial/basics/first-steps/adding-knowledge"]
               },
               {
                 "group": "Custom logic",
@@ -551,10 +549,7 @@
               "source": "./admin-openapi.json",
               "directory": "api-reference/admin-api/openapi"
             },
-            "pages": [
-              "api-reference/admin-api/getting-started",
-              "api-reference/admin-api/concepts"
-            ]
+            "pages": ["api-reference/admin-api/getting-started", "api-reference/admin-api/concepts"]
           },
           {
             "group": "Files API",
@@ -575,9 +570,7 @@
               "source": "./tables-openapi.json",
               "directory": "api-reference/tables-api/openapi"
             },
-            "pages": [
-              "api-reference/tables-api/getting-started"
-            ]
+            "pages": ["api-reference/tables-api/getting-started"]
           },
           {
             "group": "Runtime API",
@@ -585,18 +578,13 @@
               "source": "./runtime-openapi.json",
               "directory": "api-reference/runtime-api/openapi"
             },
-            "pages": [
-              "api-reference/runtime-api/getting-started",
-              "api-reference/runtime-api/concepts"
-            ]
+            "pages": ["api-reference/runtime-api/getting-started", "api-reference/runtime-api/concepts"]
           }
         ]
       },
       {
         "tab": "Changelog",
-        "pages": [
-          "changelog"
-        ]
+        "pages": ["changelog"]
       }
     ],
     "global": {
@@ -662,7 +650,7 @@
   ],
   "integrations": {
     "mixpanel": {
-        "projectToken": "1195923e954ce61d822842b5832047cd"
+      "projectToken": "1195923e954ce61d822842b5832047cd"
     }
-}
+  }
 }

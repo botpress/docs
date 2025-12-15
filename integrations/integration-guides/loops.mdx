@@ -1,0 +1,90 @@
+---
+title: Loops
+description: Add a bot to Loops using the official integration.
+icon: '/integrations/integration-guides/assets/icons/loops.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/loops.mdx'
+import Triggers from '/snippets/integrations/triggers/botpress/loops.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.loops}/>
+
+The official Loops integration allows your bot to send emails to your customers via Loops.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](https://botpress.com/docs/get-started/quickstart)
+  - A [Loops account](https://app.loops.so/)
+</Info>
+
+### Step 1: Install the integration in Botpress
+
+First, install the integration in Botpress:
+
+<Steps>
+  <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+  <Step>Search for the **Loops** integration, then select **Install Integration**.</Step>
+  <Step>In the **Configuration** menu, you should see two fields: **API Key** and **Webhook Signing Secret**. Leave these blank for now—you'll come back to them after configuring the integration in Loops.</Step>
+  <Step>Copy the webhook URL.</Step>
+</Steps>
+
+### Step 2: Configure the webhook in Loops
+
+Next, configure your Botpress webhook in Loops:
+
+<Steps>
+  <Step>
+    Log in to your Loops account.
+  </Step>
+  <Step>
+    Go to **Settings** > **Webhook**.
+  </Step>
+  <Step>
+    Paste your integration's webhook URL into the **Endpoint URL** field, then select **Update URL**.
+  </Step>
+  <Step>
+    Copy the generated **Signing Secret**.
+  </Step>
+  <Step>
+    Paste it into the integration's **Webhook Signing Secret** field in Botpress.
+  </Step>
+</Steps>
+
+### Step 3: Create a Loops API key
+
+Then, create your Loops API key:
+
+<Steps>
+  <Step>
+    In your Loops account, go to **Settings** > **API**.
+  </Step>
+  <Step>
+    Select **Generate key**.
+  </Step>
+  <Step>
+    Copy the generated key, then paste it into the integration's **API Key** field in Botpress.
+  </Step>
+</Steps>
+
+<Check>
+  Your Loops integration is ready. You can use the integration's [Cards](#cards) and [Triggers](#triggers) to interact with your customer emails.
+</Check>
+
+---
+
+## Cards
+
+<Cards />
+
+## Triggers
+
+<Triggers />
