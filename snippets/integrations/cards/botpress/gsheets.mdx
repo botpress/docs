@@ -77,7 +77,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Append Values
 
-<span>{"Appends values to the spreadsheet. The input range is used to search for existing data and find a \"table\" within that range. Values will be appended to the next row of the table, starting with the first column of the table."}</span>
+<span>{"Appends values to the spreadsheet. The input startColumn is used to search for existing data and find a \"table\" within that range. Values will be appended to the next row of the table, starting with the first column of the table."}</span>
 
   <ResponseField
     name="input"
@@ -85,11 +85,17 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <Expandable>
   <ResponseField
-    name="range"
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="startColumn"
     type="string"
     required
   >
-    <span>{"The A1 notation of a range to search for a logical table of data. Values are appended after the last row of the table. (e.g. \"Sheet1!A1:B2\")"}</span>
+    <span>{"The start column letter(s) (e.g. \"A\", \"B\", \"AA\"). The range will be constructed from this column row 1 to column row 100000."}</span>
   </ResponseField>
   <ResponseField
     name="majorDimension"
@@ -391,7 +397,7 @@ Available options: `ROWS`, `COLUMNS`
     name="spreadsheetId"
     type="string | null"
   >
-    <span>{"The spreadsheet ID."}</span>
+    <span>{"The unique identifier of the spreadsheet."}</span>
   </ResponseField>
   <ResponseField
     name="spreadsheetUrl"
@@ -777,33 +783,7 @@ Available options: `ROWS`, `COLUMNS`
     This Card has no output.
   </ResponseField>
 
-### Unprotect Range
-
-<span>{"Removes protection from a protected range in the spreadsheet."}</span>
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="protectedRangeId"
-    type="number"
-    required
-  >
-    <span>{"The ID of the protected range to unprotect."}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    This Card has no output.
-  </ResponseField>
-
-### Update Values
+### Set Values
 
 <span>{"Sets values in a range in the spreadsheet."}</span>
 
@@ -879,6 +859,32 @@ Available options: `ROWS`, `COLUMNS`
     <span>{"The number of cells updated."}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+
+### Unprotect Range
+
+<span>{"Removes protection from a protected range in the spreadsheet."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="protectedRangeId"
+    type="number"
+    required
+  >
+    <span>{"The ID of the protected range to unprotect."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
   </ResponseField>
 
 
