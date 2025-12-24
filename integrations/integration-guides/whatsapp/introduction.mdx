@@ -22,55 +22,68 @@ The official WhatsApp integration allows your users to chat with your bot by mes
 
 <Tabs>
   <Tab title="Basic configuration">
+    <Info>
+    You will need:
 
-<Info>
-You will need:
+    - A [published bot](https://botpress.com/docs/botpress-quickstart)
+    - A [Facebook account](https://www.facebook.com/signup)
+    </Info>
 
-- A [published bot](https://botpress.com/docs/botpress-quickstart)
-- A [Facebook account](https://www.facebook.com/signup)
-</Info>
+    <Tip>
+    Visual learner?
 
-<Tip>
-Visual learner?
+    Check out our [WhatsApp guide](https://www.youtube.com/watch?v=qdFSwBwWG1Q) on YouTube for a step-by-step video guide.
+    </Tip>
 
-Check out our [WhatsApp guide](https://www.youtube.com/watch?v=qdFSwBwWG1Q) on YouTube for a step-by-step video guide.
-</Tip>
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **WhatsApp** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize WhatsApp**.
+      </Step>
+      <Step>
+        Follow the instructions to connect Botpress to your WhatsApp account.
+      </Step>
+    </Steps>
 
-1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
-2. Search for the **WhatsApp** integration, then select **Install Integration**.
-3. In the **Configuration** menu, select **Authorize WhatsApp**.
-4. Follow the instructions to connect Botpress to your WhatsApp account.
+    <Note>
+    Additional requirements:
 
-<Note>
-Additional requirements:
+    - While setting up your WhatsApp integration, we will ask you to create or select:
 
-- While setting up your WhatsApp integration, we will ask you to create or select:
+      - A [Facebook business page](https://www.facebook.com/business/help/1968057156746246?id=939256796236247)
+      - A [WhatsApp business account](https://business.whatsapp.com)
 
-  - A [Facebook business page](https://www.facebook.com/business/help/1968057156746246?id=939256796236247)
-  - A [WhatsApp business account](https://business.whatsapp.com)
+    - After setup is complete, your business will undergo a [verification process by Meta](https://www.facebook.com/business/help/1095661473946872?id=180505742745347), the parent company of WhatsApp. This verification confirms the identity and eligibility of your business to use Meta's platforms.
+    </Note>
+  </Tab>
 
-- After setup is complete, your business will undergo a [verification process by Meta](https://www.facebook.com/business/help/1095661473946872?id=180505742745347), the parent company of WhatsApp. This verification confirms the identity and eligibility of your business to use Meta's platforms.
-</Note>
-</Tab>
+  <Tab title="Manual configuration">
 
-<Tab title="Manual configuration">
+    For advanced use cases, you can use your own Meta app with our integration.
 
-For advanced use cases, you can use your own Meta app with our integration.
+    <Info>
+    You will need:
 
-<Info>
-You will need:
+    - A [Meta developer app](https://developers.facebook.com/apps/creation/) with the . Check out the [Meta developer documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started#set-up-developer-assets) to learn more about the setup process.
+    </Info>
 
-- A [Meta developer app](https://developers.facebook.com/apps/creation/). Check out the [Meta developer documentation](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started#set-up-developer-assets) to learn more about the setup process.
-</Info>
 
-<Steps titleSize="h3">
-  <Step title="Install the integration">
-    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
-    2. Search for the **WhatsApp** integration, then select **Install Integration**.
-    3. In the **Configuration** menu, open the drop-down menu and select **Manual Configuration**.
-  </Step>
-  <Step title="Configure the integration">
-    To configure the integration, you need to create a webhook endpoint for the WhatsApp integration. To do this, fill in the integration's configuration fields:
+    ### Step 1: Install the integration in Botpress
+
+    <Steps>
+      <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+      <Step>Search for the **WhatsApp** integration, then select **Install Integration**.</Step>
+      <Step>In the **Configuration** menu, open the drop-down menu and select **Manual Configuration**.</Step>
+    </Steps>
+
+    ### Step 2: Configure the integration
+
+    Next, fill in the integration's configuration fields using information from your Meta app:
 
     <AccordionGroup>
       <Accordion
@@ -81,65 +94,142 @@ You will need:
       <Accordion
         title="Access Token"
       >
-        1. In your Meta App's left sidebar, expand the **WhatsApp** menu and select **API Setup**.
-        2. In the **Access Token** section, select **Generate access token**.
-        3. Follow the instructions in the popup, then copy your access token.
+        <Steps>
+          <Step>
+            In your Meta app's left sidebar, go to **Use cases > Connect with customers through WhatsApp > Customize**.
+
+            <Note>
+              If you haven't added WhatsApp as a use case yet, select **Add use cases**, then **Connect with customers through WhatsApp**.
+            </Note>
+          </Step>
+          <Step>
+            Select a WhatsApp business portfolio (if you haven't already).
+          </Step>
+          <Step>
+            Go to **API testing**.
+          </Step>
+          <Step>
+            Select **Generate access token**, then copy the token.
+          </Step>
+          <Step>
+            In Botpress, paste the token into the integration's **Access Token** configuration field.
+          </Step>
+        </Steps>
       </Accordion>
       <Accordion
         title="Client Secret"
       >
-        1. In your Meta App's left sidebar, expand the **App Settings** menu and select **Basic**.
-        2. In the **App Secret** field,  select **Show**, then copy your secret.
+      <Steps>
+        <Step>In your Meta App's left sidebar, expand the **App Settings** menu and select **Basic**.</Step>
+        <Step>In the **App Secret** field,  select **Show**, then copy your secret.</Step>
+        <Step>In Botpress, paste the secret into the integration's **Client Secret** configuration field.</Step>
+      </Steps>
       </Accordion>
       <Accordion
         title="Default Bot Phone Number ID"
       >
-        1. In your Meta App's left sidebar, expand the **WhatsApp** menu and select **API Setup**.
-        2. In the **Send and receive messages** section, copy your **Phone Number ID**.
+        <Steps>
+          <Step>
+            In your Meta app's left sidebar, go to **Use cases > Connect with customers through WhatsApp > Customize**.
+
+            <Note>
+              If you haven't added WhatsApp as a use case yet, select **Add use cases**, then **Connect with customers through WhatsApp**.
+            </Note>
+          </Step>
+          <Step>
+            Select a WhatsApp business portfolio (if you haven't already).
+          </Step>
+          <Step>
+            Go to **API testing**.
+          </Step>
+          <Step>
+            Under **Select a 'From' phone number**, copy the **Phone number ID**.
+          </Step>
+          <Step>
+            In Botpress, paste the ID into the integration's **Default Bot Phone Number ID** configuration field.
+          </Step>
+        </Steps>
       </Accordion>
       <Accordion
         title="WABA ID (WhatsApp Business Account ID)"
       >
-        1. In your Meta App's left sidebar, expand the **WhatsApp** menu and select **API Setup**.
-        2. In the **Send and receive messages** section, copy your **WhatsApp Business Account ID**.
+        <Steps>
+          <Step>
+            In your Meta app's left sidebar, go to **Use cases > Connect with customers through WhatsApp > Customize**.
+            <Note>
+              If you haven't added WhatsApp as a use case yet, select **Add use cases**, then **Connect with customers through WhatsApp**.
+            </Note>
+          </Step>
+          <Step>
+            Select a WhatsApp business portfolio (if you haven't already).
+          </Step>
+          <Step>
+            Go to **API testing**.
+          </Step>
+          <Step>
+            Under **Select a 'From' phone number**, copy the **WhatsApp Business Account ID**.
+          </Step>
+          <Step>
+            In Botpress, paste the ID into the integration's **WhatsApp Business Account ID** configuration field.
+          </Step>
+        </Steps>
       </Accordion>
     </AccordionGroup>
 
     When you've filled in all the fields, select **Save Configuration**. This will automatically enable your integration.
-  </Step>
-  <Step title="Add your webhook">
+
+    ### Step 3: Add your webhook
+
     Now that you've enabled your integration, you can add your webhook to your Meta app's configuration:
 
-    1. Copy the webhook URL and **Verify Token** from the **Configuration** section.
-    2. In your Meta App's left sidebar, expand the **WhatsApp** menu and select **Configuration**.
-    3. Paste the webhook URL into the **Callback URL** field.
-    4. Paste your **Verify Token** in the **Verify Token** field.
+    <Steps>
+      <Step>In Botpress, copy the webhook URL and **Verify Token** from the integration's **Configuration** section.</Step>
+      <Step>
+        In your Meta app's left sidebar, go to **Use cases > Connect with customers through WhatsApp > Customize**.
+        <Note>
+          If you haven't added WhatsApp as a use case yet, select **Add use cases**, then **Connect with customers through WhatsApp**.
+        </Note>
+      </Step>
+      <Step>
+        Select a WhatsApp business portfolio (if you haven't already).
+      </Step>
+      <Step>Go to **Configuration**.</Step>
+      <Step>Paste the webhook URL into the **Callback URL** field.</Step>
+      <Step>Paste your **Verify Token** in the **Verify Token** field.</Step>
+      <Step>
+        Select **Verify and save**. Then, subscribe to the following webhook fields:
 
-    <Note>
-    For more information, check out WhatsApp's guide on [getting started with Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started#send-test-message).
-    </Note>
-  </Step>
-</Steps>
+        - `message_template_components_update`
+        - `message_template_quality_update`
+        - `message_template_status_update`
+        - `messages`
+        - `template_category_update`
+      </Step>
+    </Steps>
 
-<Check>
-  You've manually configured your WhatsApp integration!
-</Check>
-</Tab>
-<Tab title="Playground">
-  If you want to test your bot's behaviour in WhatsApp before going through the actual setup process, you can use the WhatsApp integration playground.
+    <Check>
+      You've manually configured your WhatsApp integration!
 
-  <Info>
-    You will need:
+      For more information, check out WhatsApp's guide on [getting started with Cloud API](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started#send-test-message).
+    </Check>
+  </Tab>
+  <Tab title="Playground">
+    If you want to test your bot's behaviour in WhatsApp before going through the actual setup process, you can use the WhatsApp integration playground.
 
-    - A [published bot](https://botpress.com/docs/botpress-quickstart)
-    - A [WhatsApp account](https://web.whatsapp.com)
-  </Info>
+    <Info>
+      You will need:
 
-  1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
-  2. Search for the **WhatsApp** integration, then select **Install Integration**.
-  3. Select **Test your agent on WhatsApp**.
-  4. Follow the instructions to set up the playground.
-</Tab>
+      - A [published bot](https://botpress.com/docs/botpress-quickstart)
+      - A [WhatsApp account](https://web.whatsapp.com)
+    </Info>
+
+    <Steps>
+      <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+      <Step>Search for the **WhatsApp** integration, then select **Install Integration**.</Step>
+      <Step>Select **Test your agent on WhatsApp**.</Step>
+      <Step>Follow the instructions to set up the playground.</Step>
+    </Steps>
+  </Tab>
 </Tabs>
 
 ---
