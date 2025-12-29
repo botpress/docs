@@ -1,0 +1,56 @@
+---
+title: Chatwoot
+description: Add a bot to Chatwoot using the official integration.
+icon: '/integrations/integration-guides/assets/icons/chatwoot.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/plus/plus-chatwoot.mdx'
+import Triggers from '/snippets/integrations/triggers/plus/plus-chatwoot.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions["plus/chatwoot"]}/>
+
+The official Chatwoot integration allows users to chat with your bot through Telegram, WhatsApp, Email, or any Chatwoot-supported channel. It also allows your bot to hand off conversations to human agents when needed.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/get-started/quick-start)
+  - A Chatwoot account ([self-hosted](https://) or [cloud](https://app.chatwoot.com/app/auth/signup?utm_source=navbar-link))
+</Info>
+
+### Step 1: Install the integration in Botpress
+
+<Steps>
+  <Step>
+    In Botpress Studio, select **Explore Hub** in the upper-right corner.
+  </Step>
+  <Step>
+    Search for the **Chatwoot** integration, then select **Install Integration**.
+  </Step>
+  <Step>
+    In the **Configuration** menu, you should see three fields:
+
+    - **API Access Token**
+    - **Account ID**
+    - **Inbox ID**
+
+    Leave these empty for now—you'll come back to them after setting up the integration in Chatwoot.
+  </Step>
+  <Step>
+    Copy the integration's webhook URL (beginning in `https://webhook.botpress.cloud`).
+  </Step>
+</Steps>
+
+---
+
+## Triggers
+
+<Triggers />
