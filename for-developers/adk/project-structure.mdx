@@ -1,24 +1,36 @@
-import { Files, File, Folder } from '/snippets/folder-component.jsx';
-
 ADK projects follow a consistent structure that organizes your agent's code, configuration, and dependencies.
 
 ## Directory structure
 
-<Files>
-  <Folder name="src" defaultOpen>
-    <Folder name="conversations" />
-    <Folder name="workflows" />
-    <Folder name="actions" />
-    <Folder name="tools" />
-    <Folder name="tables" />
-    <Folder name="triggers" />
-    <Folder name="knowledge" />
-  </Folder>
-  <File name="agent.config.ts" />
-  <File name="agent.json" />
-  <File name="package.json" />
-  <File name="tsconfig.json" />
-</Files>
+<Tree>
+  <Tree.Folder name="src" defaultOpen>
+    <Tree.Folder name="conversations">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="workflows">
+     <Tree.File name="index.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="actions">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="tools">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="tables">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="triggers">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="knowledge">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+  </Tree.Folder>
+  <Tree.File name="agent.config.ts" />
+  <Tree.File name="agent.json" />
+  <Tree.File name="package.json" />
+  <Tree.File name="tsconfig.json" />
+</Tree>
 
 ## Configuration files
 

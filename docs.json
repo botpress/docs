@@ -64,345 +64,28 @@
     "tabs": [
       {
         "tab": "Docs",
-        "pages": [
+        "products": [
           {
-            "group": "Get started",
-            "icon": "rocket",
-            "pages": [
-              "/index",
-              "/get-started/quick-start",
+            "product": "ADK & Studio",
+            "description": "Platform for building AI agents",
+            "icon": "bot",
+            "pages": ["api-reference/introduction"],
+            "dropdowns": [
               {
-                "group": "Manage your agent",
+                "dropdown": "ADK",
+                "icon": "code-xml",
+                "description": "TypeScript framework",
                 "pages": [
-                  "/get-started/manage-your-agent/preview",
-                  "/get-started/manage-your-agent/monitor",
-                  "/get-started/manage-your-agent/knowledge",
-                  "/get-started/manage-your-agent/inspect",
-                  "/get-started/manage-your-agent/human-handoff",
-                  "/get-started/manage-your-agent/edit-appearance",
-                  "/get-started/manage-your-agent/control-access"
-                ]
-              },
-              "/get-started/configure-your-workspace"
-            ]
-          },
-          {
-            "group": "Studio",
-            "icon": "share-2",
-            "pages": [
-              "/studio/introduction",
-              {
-                "group": "Concepts",
-                "pages": [
-                  "/studio/concepts/home",
                   {
-                    "group": "Nodes",
-                    "icon": "square-mouse-pointer",
-                    "pages": ["/studio/concepts/nodes/introduction", "/studio/concepts/nodes/autonomous-node"]
-                  },
-                  {
-                    "group": "Cards",
-                    "icon": "rows-3",
+                    "group": "Get started",
                     "pages": [
-                      "/studio/concepts/cards/introduction",
-                      "/studio/concepts/cards/send-messages",
-                      "/studio/concepts/cards/execute-code",
-                      "/studio/concepts/cards/tables",
-                      "/studio/concepts/cards/set-inactivity-timeout",
-                      "/studio/concepts/cards/webchat",
-                      "/studio/concepts/cards/flow-logic",
-                      {
-                        "group": "AI",
-                        "pages": [
-                          "/studio/concepts/cards/ai/introduction",
-                          "/studio/concepts/cards/ai/ai-task",
-                          "/studio/concepts/cards/ai/ai-transition",
-                          "/studio/concepts/cards/ai/ai-generate-text"
-                        ]
-                      },
-                      "/studio/concepts/cards/capture-information",
-                      "/studio/concepts/cards/fixed-schedule",
-                      "/studio/concepts/cards/agents",
-                      "/studio/concepts/cards/utilities"
+                      "for-developers/adk/overview",
+                      "for-developers/adk/quickstart",
+                      "for-developers/adk/project-structure",
+                      "for-developers/adk/managing-integrations",
+                      "for-developers/adk/cli-reference"
                     ]
                   },
-                  "/studio/concepts/workflows",
-                  {
-                    "group": "Knowledge Bases",
-                    "icon": "book-open",
-                    "pages": [
-                      "/studio/concepts/knowledge-base/introduction",
-                      "/studio/concepts/knowledge-base/add-sources",
-                      "/studio/concepts/knowledge-base/knowledge-base-best-practices"
-                    ]
-                  },
-                  "/studio/concepts/tables",
-                  "/studio/concepts/actions",
-                  {
-                    "group": "Agents",
-                    "icon": "bot",
-                    "pages": [
-                      "/studio/concepts/agents/introduction",
-                      "/studio/concepts/agents/summary-agent",
-                      "/studio/concepts/agents/personality-agent",
-                      "/studio/concepts/agents/policy-agent",
-                      "/studio/concepts/agents/translator-agent",
-                      "/studio/concepts/agents/knowledge-agent",
-                      "/studio/concepts/agents/hitl-agent",
-                      "/studio/concepts/agents/vision-agent",
-                      "/studio/concepts/agents/analytics-agent"
-                    ]
-                  },
-                  "/studio/concepts/hooks",
-                  "/studio/concepts/card-hub",
-                  "/studio/concepts/integrations",
-                  "/studio/concepts/schemas",
-                  "/studio/concepts/versions",
-                  "/studio/concepts/bot-settings",
-                  "/studio/concepts/find",
-                  {
-                    "group": "Variables",
-                    "icon": "variable",
-                    "pages": [
-                      "/studio/concepts/variables/overview",
-                      {
-                        "group": "Scopes",
-                        "pages": [
-                          "/studio/concepts/variables/scopes/workflow",
-                          "/studio/concepts/variables/scopes/user",
-                          "/studio/concepts/variables/scopes/conversation",
-                          "/studio/concepts/variables/scopes/bot",
-                          "/studio/concepts/variables/scopes/configuration"
-                        ]
-                      },
-                      "/studio/concepts/variables/built-in",
-                      "/studio/concepts/variables/pass-between-workflows",
-                      "/studio/concepts/variables/in-code"
-                    ]
-                  },
-                  "/studio/concepts/triggers",
-                  "/studio/concepts/debugger-logs-json",
-                  "/studio/concepts/emulator",
-                  "/studio/concepts/import-export-bots",
-                  "/studio/concepts/copy-to-bot",
-                  {
-                    "group": "Controls and Settings",
-                    "icon": "wrench",
-                    "pages": [
-                      "/studio/concepts/controls-and-settings/keyboard-shortcuts",
-                      "/studio/concepts/controls-and-settings/studio-commands",
-                      "/studio/concepts/controls-and-settings/studio-preferences"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Guides",
-                "pages": [
-                  "/studio/guides/introduction",
-                  {
-                    "group": "How-to",
-                    "pages": [
-                      "/studio/guides/how-to/translate",
-                      "/studio/guides/how-to/send-reminders",
-                      "/studio/guides/how-to/different-an-models",
-                      "/studio/guides/how-to/track-ai-spend-in-table"
-                    ]
-                  },
-                  {
-                    "group": "Advanced",
-                    "pages": [
-                      "/studio/guides/advanced/use-code",
-                      "/studio/guides/advanced/event-properties",
-                      "/studio/guides/advanced/best-practices-for-state-management",
-                      {
-                        "group": "Safety",
-                        "pages": [
-                          "/studio/guides/advanced/safety/introduction",
-                          "/studio/guides/advanced/safety/preventing-abuse",
-                          "/studio/guides/advanced/safety/brand-safety-framework"
-                        ]
-                      },
-                      {
-                        "group": "Exporting Data",
-                        "pages": [
-                          "/studio/guides/advanced/exporting-data/introduction",
-                          "/studio/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
-                          "/studio/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
-                          "/studio/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
-                          "/studio/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
-                          "/studio/guides/advanced/exporting-data/analyze-llmz-responses"
-                        ]
-                      },
-                      "/studio/guides/advanced/kitchen-sink-advanced-starter-template",
-                      "/studio/guides/advanced/tips-to-optimize-ai-cost",
-                      "/studio/guides/advanced/retention-period",
-                      "/studio/guides/advanced/v12"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Integrations",
-            "icon": "boxes",
-            "pages": [
-              "/integrations/get-started/introduction",
-              "/integrations/get-started/botpress-hub",
-              {
-                "group": "Guides",
-                "pages": [
-                  "/integrations/integration-guides/plus-apify",
-                  "/integrations/integration-guides/apollo",
-                  "/integrations/integration-guides/attio",
-                  "/integrations/integration-guides/asana",
-                  "/integrations/integration-guides/bamboohr",
-                  "/integrations/integration-guides/canny",
-                  "/integrations/integration-guides/chat",
-                  "/integrations/integration-guides/plus-email-notifier",
-                  "/integrations/integration-guides/github",
-                  "/integrations/integration-guides/gmail",
-                  "/integrations/integration-guides/plus-google-analytics",
-                  "/integrations/integration-guides/googlecalendar",
-                  "/integrations/integration-guides/gsheets",
-                  "/integrations/integration-guides/hitl",
-                  "/integrations/integration-guides/hubspot",
-                  "/integrations/integration-guides/hunter",
-                  "/integrations/integration-guides/instagram",
-                  "/integrations/integration-guides/intercom",
-                  "integrations/integration-guides/klaviyo",
-                  "/integrations/integration-guides/line",
-                  "/integrations/integration-guides/loops",
-                  "/integrations/integration-guides/mailerlite",
-                  "/integrations/integration-guides/messenger",
-                  "/integrations/integration-guides/mintlify",
-                  "/integrations/integration-guides/plus-persat",
-                  "/integrations/integration-guides/teams",
-                  "/integrations/integration-guides/notion",
-                  "/integrations/integration-guides/pipedrive",
-                  "/integrations/integration-guides/slack",
-                  {
-                    "group": "Sunshine Conversation",
-                    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/sunco.svg",
-                    "pages": [
-                      "/integrations/integration-guides/sunshine-conversations/introduction",
-                      "/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
-                    ]
-                  },
-                  "/integrations/integration-guides/telegram",
-                  "/integrations/integration-guides/trello",
-                  "/integrations/integration-guides/twilio",
-                  "/integrations/integration-guides/viber",
-                  "/integrations/integration-guides/vonage",
-                  "/integrations/integration-guides/webhook",
-                  "/integrations/integration-guides/workable",
-                  {
-                    "group": "WhatsApp",
-                    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/whatsapp.svg",
-                    "pages": [
-                      "/integrations/integration-guides/whatsapp/introduction",
-                      {
-                        "group": "Mapping",
-                        "pages": [
-                          "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
-                          "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
-                        ]
-                      },
-                      "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
-                    ]
-                  },
-                  "/integrations/integration-guides/zapier",
-                  "/integrations/integration-guides/zendesk"
-                ]
-              },
-              {
-                "group": "Functional integrations",
-                "pages": [
-                  "/integrations/functional-integrations/introduction",
-                  "/integrations/functional-integrations/knowledge-base-optimization",
-                  "/integrations/functional-integrations/conversation-analyzer",
-                  "/integrations/functional-integrations/improvement"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Webchat",
-            "icon": "message-square",
-            "pages": [
-              "/webchat/get-started/introduction",
-              "/webchat/get-started/quick-start",
-              "/webchat/get-started/embed-in-element",
-              "/webchat/get-started/configure-your-webchat",
-              {
-                "group": "Interact with Webchat",
-                "pages": [
-                  "/webchat/interact/open-close-webchat",
-                  "/webchat/interact/use-custom-toggle",
-                  "/webchat/interact/proactive-message-bubble",
-                  "/webchat/interact/open-webchat-on-page-load",
-                  "/webchat/interact/send-user-data",
-                  "/webchat/interact/listen-to-events",
-                  "/webchat/interact/start-trigger",
-                  "/webchat/interact/webchat-notification",
-                  "/webchat/interact/send-message",
-                  {
-                    "group": "Send custom events",
-                    "pages": [
-                      "/webchat/interact/send-custom-events/from-webchat",
-                      "/webchat/interact/send-custom-events/to-webchat"
-                    ]
-                  },
-                  "/webchat/interact/update-config",
-                  "/webchat/interact/error-handling",
-                  "/webchat/interact/reference"
-                ]
-              },
-              {
-                "group": "Integrations",
-                "pages": [
-                  "/webchat/integrations/wordpress",
-                  "/webchat/integrations/wix",
-                  "/webchat/integrations/webflow"
-                ]
-              },
-              {
-                "group": "React library",
-                "pages": [
-                  "/webchat/react-library/get-started",
-                  {
-                    "group": "Components",
-                    "pages": [
-                      "/webchat/react-library/components/webchat",
-                      "/webchat/react-library/components/fab",
-                      "/webchat/react-library/components/container",
-                      "/webchat/react-library/components/header",
-                      "/webchat/react-library/components/message-list",
-                      "/webchat/react-library/components/composer",
-                      "/webchat/react-library/components/stylesheet-provider"
-                    ]
-                  },
-                  {
-                    "group": "Hooks",
-                    "pages": ["/webchat/react-library/hooks/use-webchat-client"]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "group": "For developers",
-            "icon": "hammer",
-            "pages": [
-              "for-developers/introduction",
-              {
-                "group": "ADK",
-                "tag": "BETA",
-                "pages": [
-                  "for-developers/adk/overview",
-                  "for-developers/adk/getting-started",
-                  "for-developers/adk/project-structure",
                   {
                     "group": "Concepts",
                     "pages": [
@@ -421,80 +104,380 @@
                       "for-developers/adk/concepts/tools"
                     ]
                   },
-                  "for-developers/adk/managing-integrations",
-                  "for-developers/adk/cli-reference"
+                  {
+                    "group": "Utilities",
+                    "pages": [
+                      {
+                        "group": "Zai",
+                        "pages": ["for-developers/zai/overview", "for-developers/zai/reference"]
+                      }
+                    ]
+                  }
                 ]
               },
               {
-                "group": "SDK",
+                "dropdown": "Studio",
+                "description": "Visual, drag-and-drop interface",
+                "icon": "workflow",
                 "pages": [
-                  "for-developers/sdk/overview",
-                  "for-developers/sdk/installation",
+                  {
+                    "group": "Get started",
+                    "pages": [
+                      "/get-started/quick-start",
+                      {
+                        "group": "Manage your agent",
+                        "pages": [
+                          "/get-started/manage-your-agent/preview",
+                          "/get-started/manage-your-agent/monitor",
+                          "/get-started/manage-your-agent/knowledge",
+                          "/get-started/manage-your-agent/inspect",
+                          "/get-started/manage-your-agent/human-handoff",
+                          "/get-started/manage-your-agent/edit-appearance",
+                          "/get-started/manage-your-agent/control-access"
+                        ]
+                      },
+                      "/get-started/configure-your-workspace"
+                    ]
+                  },
+
+                  {
+                    "group": "Concepts",
+                    "pages": [
+                      "/studio/concepts/home",
+                      {
+                        "group": "Nodes",
+                        "icon": "square-mouse-pointer",
+                        "pages": ["/studio/concepts/nodes/introduction", "/studio/concepts/nodes/autonomous-node"]
+                      },
+                      {
+                        "group": "Cards",
+                        "icon": "rows-3",
+                        "pages": [
+                          "/studio/concepts/cards/introduction",
+                          "/studio/concepts/cards/send-messages",
+                          "/studio/concepts/cards/execute-code",
+                          "/studio/concepts/cards/tables",
+                          "/studio/concepts/cards/set-inactivity-timeout",
+                          "/studio/concepts/cards/webchat",
+                          "/studio/concepts/cards/flow-logic",
+                          {
+                            "group": "AI",
+                            "pages": [
+                              "/studio/concepts/cards/ai/introduction",
+                              "/studio/concepts/cards/ai/ai-task",
+                              "/studio/concepts/cards/ai/ai-transition",
+                              "/studio/concepts/cards/ai/ai-generate-text"
+                            ]
+                          },
+                          "/studio/concepts/cards/capture-information",
+                          "/studio/concepts/cards/fixed-schedule",
+                          "/studio/concepts/cards/agents",
+                          "/studio/concepts/cards/utilities"
+                        ]
+                      },
+                      "/studio/concepts/workflows",
+                      {
+                        "group": "Knowledge Bases",
+                        "icon": "book-open",
+                        "pages": [
+                          "/studio/concepts/knowledge-base/introduction",
+                          "/studio/concepts/knowledge-base/add-sources",
+                          "/studio/concepts/knowledge-base/knowledge-base-best-practices"
+                        ]
+                      },
+                      "/studio/concepts/tables",
+                      "/studio/concepts/actions",
+                      {
+                        "group": "Agents",
+                        "icon": "bot",
+                        "pages": [
+                          "/studio/concepts/agents/introduction",
+                          "/studio/concepts/agents/summary-agent",
+                          "/studio/concepts/agents/personality-agent",
+                          "/studio/concepts/agents/policy-agent",
+                          "/studio/concepts/agents/translator-agent",
+                          "/studio/concepts/agents/knowledge-agent",
+                          "/studio/concepts/agents/hitl-agent",
+                          "/studio/concepts/agents/vision-agent",
+                          "/studio/concepts/agents/analytics-agent"
+                        ]
+                      },
+                      "/studio/concepts/hooks",
+                      "/studio/concepts/card-hub",
+                      "/studio/concepts/integrations",
+                      "/studio/concepts/schemas",
+                      "/studio/concepts/versions",
+                      "/studio/concepts/bot-settings",
+                      "/studio/concepts/find",
+                      {
+                        "group": "Variables",
+                        "icon": "variable",
+                        "pages": [
+                          "/studio/concepts/variables/overview",
+                          {
+                            "group": "Scopes",
+                            "pages": [
+                              "/studio/concepts/variables/scopes/workflow",
+                              "/studio/concepts/variables/scopes/user",
+                              "/studio/concepts/variables/scopes/conversation",
+                              "/studio/concepts/variables/scopes/bot",
+                              "/studio/concepts/variables/scopes/configuration"
+                            ]
+                          },
+                          "/studio/concepts/variables/built-in",
+                          "/studio/concepts/variables/pass-between-workflows",
+                          "/studio/concepts/variables/in-code"
+                        ]
+                      },
+                      "/studio/concepts/triggers",
+                      "/studio/concepts/debugger-logs-json",
+                      "/studio/concepts/emulator",
+                      "/studio/concepts/import-export-bots",
+                      "/studio/concepts/copy-to-bot",
+                      {
+                        "group": "Controls and Settings",
+                        "icon": "wrench",
+                        "pages": [
+                          "/studio/concepts/controls-and-settings/keyboard-shortcuts",
+                          "/studio/concepts/controls-and-settings/studio-commands",
+                          "/studio/concepts/controls-and-settings/studio-preferences"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "/studio/guides/introduction",
+                      {
+                        "group": "How-to",
+                        "pages": [
+                          "/studio/guides/how-to/translate",
+                          "/studio/guides/how-to/send-reminders",
+                          "/studio/guides/how-to/different-an-models",
+                          "/studio/guides/how-to/track-ai-spend-in-table"
+                        ]
+                      },
+                      {
+                        "group": "Advanced",
+                        "pages": [
+                          "/studio/guides/advanced/use-code",
+                          "/studio/guides/advanced/event-properties",
+                          "/studio/guides/advanced/best-practices-for-state-management",
+                          {
+                            "group": "Safety",
+                            "pages": [
+                              "/studio/guides/advanced/safety/introduction",
+                              "/studio/guides/advanced/safety/preventing-abuse",
+                              "/studio/guides/advanced/safety/brand-safety-framework"
+                            ]
+                          },
+                          {
+                            "group": "Exporting Data",
+                            "pages": [
+                              "/studio/guides/advanced/exporting-data/introduction",
+                              "/studio/guides/advanced/exporting-data/exporting-raw-conversations-with-the-botpress-api",
+                              "/studio/guides/advanced/exporting-data/getting-the-conversation-history-from-within-your-bot",
+                              "/studio/guides/advanced/exporting-data/streaming-analytics-from-within-your-bot-with-hooks",
+                              "/studio/guides/advanced/exporting-data/exporting-compiled-bot-analytics-with-the-botpress-api",
+                              "/studio/guides/advanced/exporting-data/analyze-llmz-responses"
+                            ]
+                          },
+                          "/studio/guides/advanced/kitchen-sink-advanced-starter-template",
+                          "/studio/guides/advanced/tips-to-optimize-ai-cost",
+                          "/studio/guides/advanced/retention-period",
+                          "/studio/guides/advanced/v12"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "Webchat",
+                "description": "Frontend for your AI agent",
+                "icon": "message-square",
+                "pages": [
+                  "/webchat/get-started/introduction",
+                  "/webchat/get-started/quick-start",
+                  "/webchat/get-started/embed-in-element",
+                  "/webchat/get-started/configure-your-webchat",
+                  {
+                    "group": "Interact with Webchat",
+                    "pages": [
+                      "/webchat/interact/open-close-webchat",
+                      "/webchat/interact/use-custom-toggle",
+                      "/webchat/interact/proactive-message-bubble",
+                      "/webchat/interact/open-webchat-on-page-load",
+                      "/webchat/interact/send-user-data",
+                      "/webchat/interact/listen-to-events",
+                      "/webchat/interact/start-trigger",
+                      "/webchat/interact/webchat-notification",
+                      "/webchat/interact/send-message",
+                      {
+                        "group": "Send custom events",
+                        "pages": [
+                          "/webchat/interact/send-custom-events/from-webchat",
+                          "/webchat/interact/send-custom-events/to-webchat"
+                        ]
+                      },
+                      "/webchat/interact/update-config",
+                      "/webchat/interact/error-handling",
+                      "/webchat/interact/reference"
+                    ]
+                  },
                   {
                     "group": "Integrations",
                     "pages": [
-                      "for-developers/sdk/integration/getting-started",
-                      "for-developers/sdk/integration/messaging",
-                      "for-developers/sdk/integration/concepts",
-                      "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
-                      "for-developers/sdk/integration/enable-oauth",
-                      "for-developers/sdk/integration/use-your-own-llm"
+                      "/webchat/integrations/wordpress",
+                      "/webchat/integrations/wix",
+                      "/webchat/integrations/webflow"
                     ]
                   },
                   {
-                    "group": "Interfaces",
+                    "group": "React library",
                     "pages": [
-                      "for-developers/sdk/interface/introduction",
-                      "for-developers/sdk/interface/how-tos/add-and-implement",
-                      "for-developers/sdk/interface/how-tos/implementing-hitl",
-                      "for-developers/sdk/interface/how-tos/implementing-file-sync"
+                      "/webchat/react-library/get-started",
+                      {
+                        "group": "Components",
+                        "pages": [
+                          "/webchat/react-library/components/webchat",
+                          "/webchat/react-library/components/fab",
+                          "/webchat/react-library/components/container",
+                          "/webchat/react-library/components/header",
+                          "/webchat/react-library/components/message-list",
+                          "/webchat/react-library/components/composer",
+                          "/webchat/react-library/components/stylesheet-provider"
+                        ]
+                      },
+                      {
+                        "group": "Hooks",
+                        "pages": ["/webchat/react-library/hooks/use-webchat-client"]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "dropdown": "Integrations",
+                "icon": "plug",
+                "description": "Channels where you can deploy your agent",
+                "pages": [
+                  "/integrations/get-started/introduction",
+                  "/integrations/get-started/botpress-hub",
+                  {
+                    "group": "Guides",
+                    "pages": [
+                      "/integrations/integration-guides/plus-apify",
+                      "/integrations/integration-guides/apollo",
+                      "/integrations/integration-guides/attio",
+                      "/integrations/integration-guides/asana",
+                      "/integrations/integration-guides/bamboohr",
+                      "/integrations/integration-guides/canny",
+                      "/integrations/integration-guides/chat",
+                      "/integrations/integration-guides/plus-email-notifier",
+                      "/integrations/integration-guides/github",
+                      "/integrations/integration-guides/gmail",
+                      "/integrations/integration-guides/plus-google-analytics",
+                      "/integrations/integration-guides/googlecalendar",
+                      "/integrations/integration-guides/gsheets",
+                      "/integrations/integration-guides/hitl",
+                      "/integrations/integration-guides/hubspot",
+                      "/integrations/integration-guides/hunter",
+                      "/integrations/integration-guides/instagram",
+                      "/integrations/integration-guides/intercom",
+                      "integrations/integration-guides/klaviyo",
+                      "/integrations/integration-guides/line",
+                      "/integrations/integration-guides/loops",
+                      "/integrations/integration-guides/mailerlite",
+                      "/integrations/integration-guides/messenger",
+                      "/integrations/integration-guides/mintlify",
+                      "/integrations/integration-guides/plus-persat",
+                      "/integrations/integration-guides/teams",
+                      "/integrations/integration-guides/notion",
+                      "/integrations/integration-guides/pipedrive",
+                      "/integrations/integration-guides/slack",
+                      {
+                        "group": "Sunshine Conversation",
+                        "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/sunco.svg",
+                        "pages": [
+                          "/integrations/integration-guides/sunshine-conversations/introduction",
+                          "/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
+                        ]
+                      },
+                      "/integrations/integration-guides/telegram",
+                      "/integrations/integration-guides/trello",
+                      "/integrations/integration-guides/twilio",
+                      "/integrations/integration-guides/viber",
+                      "/integrations/integration-guides/vonage",
+                      "/integrations/integration-guides/webhook",
+                      "/integrations/integration-guides/workable",
+                      {
+                        "group": "WhatsApp",
+                        "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/whatsapp.svg",
+                        "pages": [
+                          "/integrations/integration-guides/whatsapp/introduction",
+                          {
+                            "group": "Mapping",
+                            "pages": [
+                              "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
+                              "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
+                            ]
+                          },
+                          "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
+                        ]
+                      },
+                      "/integrations/integration-guides/zapier",
+                      "/integrations/integration-guides/zendesk"
                     ]
                   },
-                  "for-developers/sdk/bots-as-code",
-                  "/for-developers/sdk/cli-reference"
+                  {
+                    "group": "Functional integrations",
+                    "pages": [
+                      "/integrations/functional-integrations/introduction",
+                      "/integrations/functional-integrations/knowledge-base-optimization",
+                      "/integrations/functional-integrations/conversation-analyzer",
+                      "/integrations/functional-integrations/improvement"
+                    ]
+                  },
+                  {
+                    "group": "SDK",
+                    "pages": [
+                      "for-developers/sdk/overview",
+                      "for-developers/sdk/installation",
+                      {
+                        "group": "Integrations",
+                        "pages": [
+                          "for-developers/sdk/integration/getting-started",
+                          "for-developers/sdk/integration/messaging",
+                          "for-developers/sdk/integration/concepts",
+                          "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
+                          "for-developers/sdk/integration/enable-oauth",
+                          "for-developers/sdk/integration/use-your-own-llm"
+                        ]
+                      },
+                      {
+                        "group": "Interfaces",
+                        "pages": [
+                          "for-developers/sdk/interface/introduction",
+                          "for-developers/sdk/interface/how-tos/add-and-implement",
+                          "for-developers/sdk/interface/how-tos/implementing-hitl",
+                          "for-developers/sdk/interface/how-tos/implementing-file-sync"
+                        ]
+                      },
+                      "for-developers/sdk/bots-as-code",
+                      "/for-developers/sdk/cli-reference"
+                    ]
+                  }
                 ]
-              },
-              {
-                "group": "Zai",
-                "pages": ["for-developers/zai/overview", "for-developers/zai/reference"]
               }
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Tutorial",
-        "pages": [
-          "tutorial/introduction",
+          },
           {
-            "group": "Basics of Botpress",
-            "tag": "BETA",
-            "pages": [
-              {
-                "group": "First steps",
-                "expanded": true,
-                "pages": ["tutorial/basics/first-steps/prompting", "tutorial/basics/first-steps/adding-knowledge"]
-              },
-              {
-                "group": "Custom logic",
-                "expanded": true,
-                "pages": [
-                  "tutorial/basics/custom-logic/workflows",
-                  "tutorial/basics/custom-logic/creating-nodes",
-                  "tutorial/basics/custom-logic/adding-cards",
-                  "tutorial/basics/custom-logic/using-custom-logic-with-ai"
-                ]
-              },
-              {
-                "group": "Storing information",
-                "expanded": true,
-                "pages": [
-                  "tutorial/basics/storing-information/variables",
-                  "tutorial/basics/storing-information/assigning-a-value",
-                  "tutorial/basics/storing-information/scoping-variables"
-                ]
-              }
-            ]
+            "product": "Desk",
+            "icon": "headset",
+            "description": "Customer experience workspace for human-AI teams",
+            "pages": ["desk"]
           }
         ]
       },
