@@ -64,22 +64,34 @@
     "tabs": [
       {
         "tab": "Docs",
-        "products": [
+        "pages": [
           {
-            "product": "ADK",
-            "description": "TypeScript framework for building AI agents",
-            "icon": "code-xml",
+            "group": "Get started",
             "pages": [
+              "/index",
+              "/get-started/quick-start",
               {
-                "group": "Get started",
+                "group": "Manage your agent",
                 "pages": [
-                  "for-developers/adk/overview",
-                  "for-developers/adk/quickstart",
-                  "for-developers/adk/project-structure",
-                  "for-developers/adk/managing-integrations",
-                  "for-developers/adk/cli-reference"
+                  "/get-started/manage-your-agent/preview",
+                  "/get-started/manage-your-agent/monitor",
+                  "/get-started/manage-your-agent/knowledge",
+                  "/get-started/manage-your-agent/inspect",
+                  "/get-started/manage-your-agent/human-handoff",
+                  "/get-started/manage-your-agent/edit-appearance",
+                  "/get-started/manage-your-agent/control-access"
                 ]
               },
+              "/get-started/configure-your-workspace"
+            ]
+          },
+          {
+            "group": "ADK",
+            "tag": "BETA",
+            "pages": [
+              "for-developers/adk/overview",
+              "for-developers/adk/quickstart",
+              "for-developers/adk/project-structure",
               {
                 "group": "Concepts",
                 "pages": [
@@ -98,41 +110,18 @@
                   "for-developers/adk/concepts/tools"
                 ]
               },
+              "for-developers/adk/managing-integrations",
+              "for-developers/adk/cli-reference",
               {
-                "group": "Utilities",
-                "pages": [
-                  {
-                    "group": "Zai",
-                    "pages": ["for-developers/zai/overview", "for-developers/zai/reference"]
-                  }
-                ]
+                "group": "Zai",
+                "pages": ["for-developers/zai/overview", "for-developers/zai/reference"]
               }
             ]
           },
           {
-            "product": "Studio",
-            "icon": "workflow",
-            "description": "Visual interface for building AI agents",
+            "group": "Studio",
             "pages": [
-              {
-                "group": "Get started",
-                "pages": [
-                  "/get-started/quick-start",
-                  {
-                    "group": "Manage your agent",
-                    "pages": [
-                      "/get-started/manage-your-agent/preview",
-                      "/get-started/manage-your-agent/monitor",
-                      "/get-started/manage-your-agent/knowledge",
-                      "/get-started/manage-your-agent/inspect",
-                      "/get-started/manage-your-agent/human-handoff",
-                      "/get-started/manage-your-agent/edit-appearance",
-                      "/get-started/manage-your-agent/control-access"
-                    ]
-                  },
-                  "/get-started/configure-your-workspace"
-                ]
-              },
+              "/studio/introduction",
               {
                 "group": "Concepts",
                 "pages": [
@@ -287,9 +276,112 @@
             ]
           },
           {
-            "product": "Webchat",
-            "icon": "message-square",
-            "description": "Custom frontend for your AI agent",
+            "group": "Integrations",
+            "pages": [
+              "/integrations/get-started/introduction",
+              "/integrations/get-started/botpress-hub",
+              {
+                "group": "Guides",
+                "pages": [
+                  "/integrations/integration-guides/plus-apify",
+                  "/integrations/integration-guides/apollo",
+                  "/integrations/integration-guides/attio",
+                  "/integrations/integration-guides/asana",
+                  "/integrations/integration-guides/bamboohr",
+                  "/integrations/integration-guides/canny",
+                  "/integrations/integration-guides/chat",
+                  "/integrations/functional-integrations/conversation-analyzer",
+                  "/integrations/integration-guides/plus-email-notifier",
+                  "/integrations/integration-guides/github",
+                  "/integrations/integration-guides/gmail",
+                  "/integrations/integration-guides/plus-google-analytics",
+                  "/integrations/integration-guides/googlecalendar",
+                  "/integrations/integration-guides/gsheets",
+                  "/integrations/integration-guides/hitl",
+                  "/integrations/integration-guides/hubspot",
+                  "/integrations/integration-guides/hunter",
+                  "/integrations/functional-integrations/improvement",
+                  "/integrations/integration-guides/instagram",
+                  "/integrations/integration-guides/intercom",
+                  "integrations/integration-guides/klaviyo",
+                  "/integrations/functional-integrations/knowledge-base-optimization",
+                  "/integrations/integration-guides/line",
+                  "/integrations/integration-guides/loops",
+                  "/integrations/integration-guides/mailerlite",
+                  "/integrations/integration-guides/messenger",
+                  "/integrations/integration-guides/mintlify",
+                  "/integrations/integration-guides/plus-persat",
+                  "/integrations/integration-guides/teams",
+                  "/integrations/integration-guides/notion",
+                  "/integrations/integration-guides/pipedrive",
+                  "/integrations/integration-guides/slack",
+                  {
+                    "group": "Sunshine Conversation",
+                    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/sunco.svg",
+                    "pages": [
+                      "/integrations/integration-guides/sunshine-conversations/introduction",
+                      "/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
+                    ]
+                  },
+                  "/integrations/integration-guides/telegram",
+                  "/integrations/integration-guides/trello",
+                  "/integrations/integration-guides/twilio",
+                  "/integrations/integration-guides/viber",
+                  "/integrations/integration-guides/vonage",
+                  "/integrations/integration-guides/webhook",
+                  "/integrations/integration-guides/workable",
+                  {
+                    "group": "WhatsApp",
+                    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/whatsapp.svg",
+                    "pages": [
+                      "/integrations/integration-guides/whatsapp/introduction",
+                      {
+                        "group": "Mapping",
+                        "pages": [
+                          "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
+                          "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
+                        ]
+                      },
+                      "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
+                    ]
+                  },
+                  "/integrations/integration-guides/zapier",
+                  "/integrations/integration-guides/zendesk"
+                ]
+              },
+              {
+                "group": "SDK",
+                "pages": [
+                  "for-developers/sdk/overview",
+                  "for-developers/sdk/installation",
+                  {
+                    "group": "Integrations",
+                    "pages": [
+                      "for-developers/sdk/integration/getting-started",
+                      "for-developers/sdk/integration/messaging",
+                      "for-developers/sdk/integration/concepts",
+                      "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
+                      "for-developers/sdk/integration/enable-oauth",
+                      "for-developers/sdk/integration/use-your-own-llm"
+                    ]
+                  },
+                  {
+                    "group": "Interfaces",
+                    "pages": [
+                      "for-developers/sdk/interface/introduction",
+                      "for-developers/sdk/interface/how-tos/add-and-implement",
+                      "for-developers/sdk/interface/how-tos/implementing-hitl",
+                      "for-developers/sdk/interface/how-tos/implementing-file-sync"
+                    ]
+                  },
+                  "for-developers/sdk/bots-as-code",
+                  "/for-developers/sdk/cli-reference"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Webchat",
             "pages": [
               "/webchat/get-started/introduction",
               "/webchat/get-started/quick-start",
@@ -350,12 +442,6 @@
                 ]
               }
             ]
-          },
-          {
-            "product": "Desk",
-            "icon": "headset",
-            "description": "Customer experience workspace for human-AI teams",
-            "pages": ["desk"]
           }
         ]
       },
@@ -396,118 +482,7 @@
         ]
       },
       {
-        "tab": "Integrations",
-        "pages": [
-          "/integrations/get-started/introduction",
-          "/integrations/get-started/botpress-hub",
-          {
-            "group": "Guides",
-            "pages": [
-              "/integrations/integration-guides/plus-apify",
-              "/integrations/integration-guides/apollo",
-              "/integrations/integration-guides/attio",
-              "/integrations/integration-guides/asana",
-              "/integrations/integration-guides/bamboohr",
-              "/integrations/integration-guides/canny",
-              "/integrations/integration-guides/chat",
-              "/integrations/integration-guides/plus-email-notifier",
-              "/integrations/integration-guides/github",
-              "/integrations/integration-guides/gmail",
-              "/integrations/integration-guides/plus-google-analytics",
-              "/integrations/integration-guides/googlecalendar",
-              "/integrations/integration-guides/gsheets",
-              "/integrations/integration-guides/hitl",
-              "/integrations/integration-guides/hubspot",
-              "/integrations/integration-guides/hunter",
-              "/integrations/integration-guides/instagram",
-              "/integrations/integration-guides/intercom",
-              "integrations/integration-guides/klaviyo",
-              "/integrations/integration-guides/line",
-              "/integrations/integration-guides/loops",
-              "/integrations/integration-guides/mailerlite",
-              "/integrations/integration-guides/messenger",
-              "/integrations/integration-guides/mintlify",
-              "/integrations/integration-guides/plus-persat",
-              "/integrations/integration-guides/teams",
-              "/integrations/integration-guides/notion",
-              "/integrations/integration-guides/pipedrive",
-              "/integrations/integration-guides/slack",
-              {
-                "group": "Sunshine Conversation",
-                "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/sunco.svg",
-                "pages": [
-                  "/integrations/integration-guides/sunshine-conversations/introduction",
-                  "/integrations/integration-guides/sunshine-conversations/zendesk-messaging"
-                ]
-              },
-              "/integrations/integration-guides/telegram",
-              "/integrations/integration-guides/trello",
-              "/integrations/integration-guides/twilio",
-              "/integrations/integration-guides/viber",
-              "/integrations/integration-guides/vonage",
-              "/integrations/integration-guides/webhook",
-              "/integrations/integration-guides/workable",
-              {
-                "group": "WhatsApp",
-                "icon": "https://mintlify.s3.us-west-1.amazonaws.com/botpress/integrations/integration-guides/assets/icons/whatsapp.svg",
-                "pages": [
-                  "/integrations/integration-guides/whatsapp/introduction",
-                  {
-                    "group": "Mapping",
-                    "pages": [
-                      "/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp",
-                      "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
-                    ]
-                  },
-                  "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
-                ]
-              },
-              "/integrations/integration-guides/zapier",
-              "/integrations/integration-guides/zendesk"
-            ]
-          },
-          {
-            "group": "Functional integrations",
-            "pages": [
-              "/integrations/functional-integrations/introduction",
-              "/integrations/functional-integrations/knowledge-base-optimization",
-              "/integrations/functional-integrations/conversation-analyzer",
-              "/integrations/functional-integrations/improvement"
-            ]
-          },
-          {
-            "group": "SDK",
-            "pages": [
-              "for-developers/sdk/overview",
-              "for-developers/sdk/installation",
-              {
-                "group": "Integrations",
-                "pages": [
-                  "for-developers/sdk/integration/getting-started",
-                  "for-developers/sdk/integration/messaging",
-                  "for-developers/sdk/integration/concepts",
-                  "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
-                  "for-developers/sdk/integration/enable-oauth",
-                  "for-developers/sdk/integration/use-your-own-llm"
-                ]
-              },
-              {
-                "group": "Interfaces",
-                "pages": [
-                  "for-developers/sdk/interface/introduction",
-                  "for-developers/sdk/interface/how-tos/add-and-implement",
-                  "for-developers/sdk/interface/how-tos/implementing-hitl",
-                  "for-developers/sdk/interface/how-tos/implementing-file-sync"
-                ]
-              },
-              "for-developers/sdk/bots-as-code",
-              "/for-developers/sdk/cli-reference"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API",
+        "tab": "API Reference",
         "groups": [
           {
             "group": "Get Started",
