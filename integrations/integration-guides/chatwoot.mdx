@@ -8,8 +8,6 @@ icon: '/integrations/integration-guides/assets/icons/chatwoot.svg'
 
 import integrationVersions from '/snippets/integrations/versions.mdx'
 import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
-import Cards from '/snippets/integrations/cards/plus/plus-chatwoot.mdx'
-import Triggers from '/snippets/integrations/triggers/plus/plus-chatwoot.mdx'
 
 {/* vale on */}
 
@@ -23,7 +21,7 @@ The official Chatwoot integration allows users to chat with your bot through Tel
   You will need:
 
   - A [published bot](/get-started/quick-start)
-  - A Chatwoot account ([self-hosted](https://) or [cloud](https://app.chatwoot.com/app/auth/signup?utm_source=navbar-link))
+  - A Chatwoot account ([self-hosted](https://developers.chatwoot.com/self-hosted) or [cloud](https://app.chatwoot.com/app/auth/signup?utm_source=navbar-link))
 </Info>
 
 ### Step 1: Install the integration in Botpress
@@ -41,16 +39,108 @@ The official Chatwoot integration allows users to chat with your bot through Tel
     - **API Access Token**
     - **Account ID**
     - **Inbox ID**
-
-    Leave these empty for now—you'll come back to them after setting up the integration in Chatwoot.
-  </Step>
-  <Step>
-    Copy the integration's webhook URL (beginning in `https://webhook.botpress.cloud`).
   </Step>
 </Steps>
 
----
+### Step 2: Get your credentials from Chatwoot
 
-## Triggers
+Log in to Chatwoot. Then, in Botpress, fill in the integration's configuration fields using information from your Chatwoot account:
 
-<Triggers />
+<AccordionGroup>
+<Accordion title="API Access Token">
+<Steps>
+  <Step>
+    In Chatwoot, select your profile icon (bottom-left corner).
+  </Step>
+  <Step>
+    Go to **Profile Settings**.
+  </Step>
+  <Step>
+    Scroll to the **Access Token** section.
+  </Step>
+  <Step>
+    Copy the token, then paste it into the **API Access Token** field in Botpress.
+  </Step>
+</Steps>
+</Accordion>
+<Accordion title="Account ID">
+<Steps>
+  <Step>
+    In the Chatwoot page's URL, find and copy your account ID—it should be after `/accounts/`.
+
+    For example, if your page URL is:
+
+    `https://app.chatwoot.com/app/accounts/145294/...`
+
+    the account ID is:
+
+    `145294`.
+  </Step>
+  <Step>
+    Paste the account ID into the **Account ID** field in Botpress.
+  </Step>
+</Steps>
+</Accordion>
+<Accordion title="Inbox ID">
+<Steps>
+  <Step>
+    In Chatwoot, go to **Settings > Inboxes**.
+  </Step>
+  <Step>
+    Select **Add Inbox**.
+  </Step>
+  <Step>
+    Select **API** as the channel type.
+  </Step>
+  <Step>
+    Choose a name for the channel.
+  </Step>
+  <Step>
+    After creation, select the inbox to open its settings.
+  </Step>
+  <Step>
+    In the Chatwoot page's URL, find and copy your inbox ID—it should be after `/inboxes/`.
+
+    For example, if your page URL is:
+
+    `https://app.chatwoot.com/app/accounts/1/settings/inboxes/88275`
+
+    the inbox ID is `88275`.
+  </Step>
+  <Step>
+    Paste the inbox ID into the **Inbox ID** field in Botpress.
+  </Step>
+</Steps>
+</Accordion>
+</AccordionGroup>
+
+### Step 3: Configure your webhook in Chatwoot.
+
+Finally, configure your Botpress webhook in Chatwoot:
+
+<Steps>
+  <Step>
+    In Botpress, copy the integration's webhook URL (starting with `https://webhook.botpress.cloud`).
+  </Step>
+  <Step>
+    In Chatwoot, go to **Settings > Integrations > Webhooks**.
+  </Step>
+  <Step>
+    Select **Add New Webhook**.
+  </Step>
+  <Step>
+    Paste the Botpress webhook URL.
+  </Step>
+  <Step>
+    Select the following events:
+    - `message_created`
+    - `conversation_status_changed`
+  </Step>
+  <Step>
+    Select **Create Webhook**.
+  </Step>
+</Steps>
+
+<Check>
+  Your Chatwoot integration is ready. When users send a message to the provided Chatwoot inbox, it'll respond as your Botpress bot.
+</Check>
