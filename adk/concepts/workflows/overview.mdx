@@ -3,7 +3,7 @@ title: Workflows
 sidebarTitle: Overview
 ---
 
-Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike [conversations](/for-developers/adk/concepts/conversations), workflows can run independently on a schedule or be triggered by events.
+Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike [conversations](/adk/concepts/conversations), workflows can run independently on a schedule or be triggered by events.
 
 <Note>
   While workflows in the ADK are similar in concept to [Workflows](/studio/concepts/workflows) in Botpress Studio, they behave differently and shouldn't be treated as equivalent.
@@ -78,13 +78,13 @@ Steps are *persisted*—if a workflow is interrupted, it can resume from the las
 
 The `step` object also provides many additional methods for workflow control:
 
-<Card title="Step reference" icon="list-check" href="/for-developers/adk/concepts/workflows/steps">
+<Card title="Step reference" icon="list-check" href="/adk/concepts/workflows/steps">
   Learn about all available step methods
 </Card>
 
 ### Handling failing steps
 
-If a step (or a [step method](/for-developers/adk/concepts/workflows/steps#methods)) fails, it'll throw a rejected promise. This will fail not only the current step, but the *entire workflow*.
+If a step (or a [step method](/adk/concepts/workflows/steps#methods)) fails, it'll throw a rejected promise. This will fail not only the current step, but the *entire workflow*.
 
 To avoid this, make sure you catch errors gracefully:
 

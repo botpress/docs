@@ -1,3 +1,9 @@
+/* Force footer to show on frame mode pages */
+[data-page-mode='frame'] footer,
+[data-page-mode='frame'] [data-component='footer'] {
+  display: flex !important;
+}
+
 .transparent-accordion .bg-background-light {
   background-color: transparent !important;
 }
@@ -35,17 +41,17 @@
 }
 
 .button {
-    background-color: #0588f0;
-    color: white;
-    text-align: center;
-    border: 1px solid #0588f0;
-    font-weight: 500;
-    padding: .5rem 1rem;
-    font-size: 0.9rem;
-    line-height: 130%;
-    text-decoration: none;
-    transition: all .2s;
-    position: relative
+  background-color: #0588f0;
+  color: white;
+  text-align: center;
+  border: 1px solid #0588f0;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  line-height: 130%;
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
 }
 
 .button:hover {
@@ -53,46 +59,54 @@
 }
 
 .discord_banner {
-    text-align: center;
-    background-color: light-dark(#fcfcfc, #1a1a1a);
-    border: 1px solid #626762;
-    padding: .5rem 1rem;
-    font-size: 0.9rem;
-    line-height: 130%;
-    text-decoration: none;
-    transition: all .2s;
-    position: relative
+  text-align: center;
+  background-color: light-dark(#fcfcfc, #1a1a1a);
+  border: 1px solid #626762;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  line-height: 130%;
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
 }
 
 .home-columns {
-  margin-bottom: 0.66em;
+  /* margin-bottom: 0.66em; */
 }
 
+#test {
+  margin: 0;
+}
 
 @media (min-width: 768px) {
   .home-columns {
     flex: 1 1 0%;
-    max-width: 33.333%
+    max-width: 33.333%;
+  }
+
+  .lower-columns {
+    flex: 1 1 0%;
+    max-width: 50%;
   }
 }
 
-[data-nav-tag="BETA"] {
-  background-color: light-dark(rgb(255 251 235/.5), rgb(245 158 11/.1)) !important;
-  color: light-dark(rgb(120 53 15/var(--tw-text-opacity)), rgb(253 230 138/var(--tw-text-opacity))) !important;
+[data-nav-tag='Beta'] {
+  background-color: light-dark(#e3eafd, #07296a) !important;
+  color: light-dark(#133a9a, #7196f4) !important;
 }
 
-[data-nav-tag="Plus"] {
-  background-color: light-dark(#E3EAFD, #07296A) !important;
-  color: light-dark(#133A9A, #7196F4) !important;
+[data-nav-tag='Plus'] {
+  background-color: light-dark(#e3eafd, #07296a) !important;
+  color: light-dark(#133a9a, #7196f4) !important;
 }
 
-
-[data-nav-tag="Team"] {
-  background-color: light-dark(#D1FAE4, #0F4C2C) !important;
-  color: light-dark(#166E3F, #6AE1A1) !important;
+[data-nav-tag='Team'] {
+  background-color: light-dark(#d1fae4, #0f4c2c) !important;
+  color: light-dark(#166e3f, #6ae1a1) !important;
 }
 
-@media (min-width: 768px) { .bpWebchat {
+@media (min-width: 768px) {
+  .bpWebchat {
     /* box-shadow: none !important; */
     min-width: 450px;
     width: 29.7vw !important;
@@ -104,7 +118,7 @@
   height: 0.9em !important;
   width: auto !important;
   aspect-ratio: auto !important;
-  pointer-events: none
+  pointer-events: none;
 }
 .max-w-xl {
   /* max-width: 750px; */
@@ -115,7 +129,7 @@ img {
   background-color: inherit !important;
 }
 
-[data-component-part="card-content"] {
+[data-component-part='card-content'] {
   font-size: 0.875rem;
 }
 
@@ -146,7 +160,7 @@ img {
   width: 40px;
   height: calc(100vh - 4.64rem);
   background-color: light-dark(#f7f7f8, #09090b);
-  border-left: 1px solid light-dark(rgb(226,222,230), rgb(255 255 255/.07));
+  border-left: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
   border-right: none;
   color: light-dark(#1a1a1a, #fcfcfc);
   cursor: pointer;
@@ -182,8 +196,8 @@ img {
   z-index: 32;
   pointer-events: none;
   background-color: light-dark(#fcfcfc, #1a1a1a);
-  border: 1px solid light-dark(rgb(226,222,230), rgb(255 255 255/.07));
-  border-radius: .75em;
+  border: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
+  border-radius: 0.75em;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -263,7 +277,7 @@ img {
   overflow: hidden;
   pointer-events: auto;
   min-width: 0;
-  border-left: 1px solid light-dark(rgb(226,222,230), rgb(255 255 255/.07));
+  border-left: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
 }
 
 .bot-panel.resizing {
@@ -343,7 +357,7 @@ img {
     margin: 0;
     transform: translateY(100%);
     transition: transform 0.15s cubic-bezier(0.32, 0.72, 0, 1);
-    border-top: 1px solid light-dark(rgb(226,222,230), rgb(255 255 255/.07));
+    border-top: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
   }
 
   .bot-panel-expanded {
@@ -395,7 +409,9 @@ img {
   width: 480px;
   max-width: 480px;
   pointer-events: none;
-  transition: opacity 150ms ease, transform 150ms ease;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
   opacity: 1;
 }
 
@@ -404,19 +420,21 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 0 16px 0 24px;
-  border: 1px solid light-dark(rgb(var(--gray-950)/.2), rgb(255 255 255/.2));
+  border: 1px solid light-dark(rgb(var(--gray-950) / 0.2), rgb(255 255 255/0.2));
   border-radius: 16px;
   background-color: light-dark(rgba(252, 252, 252, 0.8), rgba(26, 26, 26, 0.8));
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
   pointer-events: auto;
-  transition: border-color 400ms, opacity 150ms ease;
+  transition:
+    border-color 400ms,
+    opacity 150ms ease;
   width: 100%;
 }
 
 .ask-ai-input-bubble:focus-within .ask-ai-input-wrapper {
-  border-color: #0588F0;
+  border-color: #0588f0;
 }
 
 .ask-ai-input {
@@ -464,7 +482,9 @@ img {
   background-color: light-dark(rgba(5, 136, 240, 0.3), rgba(5, 136, 240, 0.3));
   color: white;
   cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
   flex-shrink: 0;
 }
 
@@ -474,7 +494,7 @@ img {
 }
 
 .ask-ai-send-button:not(:disabled) {
-  background-color: #0588F0;
+  background-color: #0588f0;
 }
 
 .ask-ai-send-button:disabled {
@@ -498,7 +518,7 @@ img {
     width: calc(100% - 64px);
     max-width: 320px;
   }
-  
+
   .ask-ai-input-bubble-hidden {
     transform: translateX(-50%) translateY(10px);
   }
