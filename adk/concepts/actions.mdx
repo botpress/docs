@@ -97,7 +97,7 @@ export default new Autonomous.Tool({
 
 ### As a tool in a conversation
 
-You can provide an action to your agent as a [tool](/for-developers/adk/concepts/tools) using the `asTool` method:
+You can provide an action to your agent as a [tool](/adk/concepts/tools) using the `asTool` method:
 
 ```ts highlight={1,8}
 import { Conversation, actions } from "@botpress/runtime";
@@ -115,7 +115,7 @@ export default new Conversation({
 
 ## Integration actions
 
-When you [install an integration](/for-developers/adk/managing-integrations), its actions become available anywhere in your agent's source:
+When you [install an integration](/adk/managing-integrations), its actions become available anywhere in your agent's source:
 
 ```ts highlight={1, 12-14}
 import { Trigger, actions } from "@botpress/runtime";
