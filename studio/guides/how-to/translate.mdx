@@ -60,7 +60,7 @@ You can translate the modal that appears when a user restarts a conversation:
 
 Just copy and paste the following CSS to the **Styles** section of your bot's Webchat settings, then modify the highlighted lines as needed:
 
-```css [expandable] {9, 24-25, 39}
+```css [expandable] {9, 24, 38}
 /* Change the modal's title */
 .bpModalTitle {
     visibility: hidden;
@@ -132,3 +132,28 @@ div.bpMessageContainer[data-direction="system"] > p.bpMessageBlocksTextText::bef
 <Check>
     Your bot's Webchat UI is now translated!
 </Check>
+
+### Delivery status
+
+You can change the "Delivered" label that appears after a user message is received:
+
+<Frame>
+  <img
+    alt="Delivery status"
+    className="block dark:hidden"
+    src="./assets/delivery-status.png"
+  />
+  <img
+    alt="Delivery status"
+    className="hidden dark:block"
+    src="./assets/delivery-status-dark.png"
+  />
+</Frame>
+
+Just copy and paste the following CSS to the **Styles** section of your bot's Webchat settings, then modify the highlighted lines as needed:
+
+```css highlight={2}
+.bpReset .bpMessageDeliveryStatus::after {
+    content: "Envoyé"; /* Replace this with your own translation*/
+}
+```
