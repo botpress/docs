@@ -20,7 +20,31 @@ The official Google Calendar integration allows your bot to access your Google C
 ## Setup
 
 <Tabs>
+  <Tab title="Basic configuration">
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [Google account](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://accounts.google.ca/&ved=2ahUKEwjT06jO35CSAxWy5MkDHcRzEJIQFnoECAwQAQ&usg=AOvVaw2kpHPlQsXrFmVVEu4DOt-N)
+    </Info>
+
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **Google Calendar** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize Google Calendar**.
+      </Step>
+      <Step>
+        Follow the instructions to connect Botpress to your Google account.
+      </Step>
+    </Steps>
+  </Tab>
   <Tab title="Manual configuration">
+    For more advanced use cases, you can manually configure the integration.
 
     <Info>
       You will need:
@@ -38,24 +62,18 @@ The official Google Calendar integration allows your bot to access your Google C
       </Step>
       <Step>
         Go to **Select a project**, then select **New Project**.
-
-        <img src="./assets/google-cloud-calendar-dropdown.png" />
       </Step>
       <Step>
         Enter your project details:
         - **Project name**: Choose a descriptive name for your project.
         - **Organization**: Select your organization (if applicable).
         - **Location**: Choose the appropriate location.
-
-        <img src="./assets/google-cloud-calendar-new-project.png" />
       </Step>
       <Step>
         Select **Create** and wait for the project to be created.
       </Step>
       <Step>
         Verify you're in the correct project by checking the project name next to the Google logo.
-
-        <img src="./assets/google-cloud-calendar-project-dropdown.png" />
       </Step>
     </Steps>
 
@@ -63,52 +81,36 @@ The official Google Calendar integration allows your bot to access your Google C
 
     <Steps>
       <Step>
-        In the Google Cloud Console, open the left navigation bar and go to **API & Services > Credentials**.
-
-        <img src="./assets/google-cloud-calendar-api-services.png" />
+        In the Google Cloud Console, open the left sidebar and go to **API & Services > Credentials**.
       </Step>
       <Step>
-        Select **Create Credentials > API Key** to create an API key. Copy and store it somewhere.
-
-        <img src="./assets/google-cloud-calendar-api-key.png" />
+        Select **+ Create Credentials > API Key** to create an API key. Copy and store it somewhere.
       </Step>
       <Step>
-        Navigate to **Library**, search for "Google Calendar API", and select **Enable**.
-
-        <img src="./assets/google-cloud-calendar-library.png" />
-
-        <img src="./assets/google-cloud-calendar-enable-api.png" />
+        Go to **Library**, search for "Google Calendar API", and select **Enable**.
       </Step>
     </Steps>
 
-    ### Step 3: Create a Service Account
+    ### Step 3: Create a service account
 
     <Steps>
       <Step>
-        Navigate to **Menu > API & Services > Credentials**.
+        Open the left sidebar again and go to **API & Services > Credentials**.
       </Step>
       <Step>
-        Select **Create Credentials > Service Account**.
-
-        <img src="./assets/google-cloud-calendar-service-account.png" />
+        Select **+ Create Credentials > Service Account**.
       </Step>
       <Step>
         Enter a **Service account name**. The Service Account ID will be automatically generated.
-
-        <img src="./assets/google-cloud-calendar-service-account-details.png" />
       </Step>
       <Step>
         The remaining fields are optional. Select **Done** to create the service account.
       </Step>
       <Step>
-        Select your newly created service account, then navigate to the **Keys** tab.
-
-        <img src="./assets/google-cloud-calendar-create-key.png" />
+        Select your newly created service account, then go to the **Keys** tab.
       </Step>
       <Step>
         Select **Add Key > Create new key**, choose **JSON** as the key type, then select **Create**.
-
-        <img src="./assets/google-cloud-calendar-json-private-key.png" />
 
         A JSON file will be downloaded to your machine. Keep this file secure—you'll need it to configure the integration.
       </Step>
@@ -138,107 +140,89 @@ The official Google Calendar integration allows your bot to access your Google C
 
     <Steps>
       <Step>
-        Navigate to **Menu > API & Services > OAuth consent screen**.
+        Open the left sidebar again and go to **API & Services > OAuth consent screen**.
       </Step>
       <Step>
-        Select **Create Credentials > OAuth client ID**.
+        Select **Get started**.
+      </Step>
+      <Step>
+        Configure the OAuth consent screen. Under **App Information**:
 
-        <img src="./assets/google-cloud-calendar-oauth-client.png" />
-      </Step>
-      <Step>
-        Select an **Application type** and enter a name, then select **Create**.
-
-        <img src="./assets/google-cloud-calendar-oauth-client-details.png" />
-      </Step>
-      <Step>
-        Configure the OAuth consent screen:
         - **App name**: Enter a name for your application.
         - **User support email**: Select your email address.
 
-        <img src="./assets/google-cloud-calendar-consent-screen.png" />
+        Then, select **Next**.
       </Step>
       <Step>
-        In the **App domain** section, enter your calendar URL for both the **Application home page** and **Application privacy policy link**.
-
-        <img src="./assets/google-cloud-calendar-app-info.png" />
+        Under **Audience**, select **Internal**. Then, select **Next**.
       </Step>
       <Step>
-        In **Authorized domains**, add `google.com`. Enter a developer contact email, then select **Save and Continue**.
-
-        <img src="./assets/google-cloud-calendar-authorized-domains.png" />
-      </Step>
-    </Steps>
-
-    ### Step 5: Configure scopes
-
-    <Steps>
-      <Step>
-        On the scopes screen, select **Add or Remove Scopes**.
-
-        <img src="./assets/google-cloud-calendar-scopes.png" />
+        Under **Contact Information**, enter a contact email address. Then, select **Next**.
       </Step>
       <Step>
-        Add all the required scopes for the integration to function correctly:
-
-        <img src="./assets/google-cloud-calendar-required-scopes.png" />
-
-        <img src="./assets/google-cloud-calendar-required-scopes-2.png" />
-      </Step>
-      <Step>
-        When prompted for justifications, explain that the bot requires these scopes to create, read, update, and delete calendar events.
-      </Step>
-      <Step>
-        If required, provide a YouTube demo link demonstrating your integration.
-
-        <img src="./assets/google-cloud-calendar-youtube-demo.png" />
+        Agree to the Google API policy, then select **Create**.
       </Step>
     </Steps>
 
-    ### Step 6: Grant calendar access to the service account
+    ### Step 5: Create OAuth client
 
     <Steps>
       <Step>
-        Open [Google Calendar](https://calendar.google.com) and select the settings icon in the upper-right corner.
+        Select **Create OAuth client**.
+      </Step>
+      <Step>
+        Select an **Application type** and enter a name. Then select **Create**.
+      </Step>
+    </Steps>
 
-        <img src="./assets/google-calendar-settings.png" />
+    ### Step 6: Configure scopes
+
+    <Steps>
+      <Step>
+        Go to **Data Access** in the left sidebar, then select **Add or remove scopes**.
+      </Step>
+      <Step>
+        Add the following scopes:
+
+        - `https://www.googleapis.com/auth/calendar`
+        - `https://www.googleapis.com/auth/calendar.events`
+      </Step>
+      <Step>
+        Select **Update**.
+      </Step>
+    </Steps>
+
+    ### Step 7: Grant calendar access to the service account
+
+    <Steps>
+      <Step>
+        Open [Google Calendar](https://calendar.google.com) and select the settings icon in the upper-right corner. Then, select **Settings**.
       </Step>
       <Step>
         In the left sidebar, select the calendar you want to share with your bot.
-
-        <img src="./assets/google-calendar-settings-for-my-calendar.png" />
       </Step>
       <Step>
-        Scroll to **Share with specific people or groups** and select **Add people and groups**.
-
-        <img src="./assets/google-calendar-add-people-groups.png" />
+        Go to **Shared with** > **+ Add people and groups**.
       </Step>
       <Step>
-        Enter the `client_email` from your downloaded JSON file (e.g., `your-service-account@your-project.iam.gserviceaccount.com`).
+        Enter the `client_email` from your downloaded JSON file (for example, `your-service-account@your-project.iam.gserviceaccount.com`).
       </Step>
       <Step>
         Set the permission to **Make changes to events** so the bot can manage calendar events.
-
-        <img src="./assets/google-calendar-manage-sharing.png" />
       </Step>
     </Steps>
 
-    ### Step 7: Configure the integration in Botpress
+    ### Step 8: Configure the integration in Botpress
 
     <Steps>
       <Step>
         In Botpress Studio, select **Explore Hub** in the upper-right corner.
-
-        <img src="./assets/google-calendar-explore-hub.png" />
       </Step>
       <Step>
         Search for the **Google Calendar** integration, then select **Install Integration**.
-
-        <img src="./assets/google-calendar-bp-hub.png" />
       </Step>
       <Step>
         In the **Configuration** menu, select the drop-down and choose **Configure manually**.
-
-        <img src="./assets/google-calendar-integration-configuration.png" />
       </Step>
     </Steps>
 
@@ -246,11 +230,8 @@ The official Google Calendar integration allows your bot to access your Google C
 
     <AccordionGroup>
       <Accordion title="Calendar ID">
-        1. In Google Calendar, navigate to **Settings** and select your calendar.
+        1. In Google Calendar, go to **Settings** and select your calendar.
         2. Scroll to **Integrate calendar** to find your Calendar ID.
-
-        <img src="./assets/google-calendar-id.png" />
-
         3. Copy the Calendar ID and paste it into the **Calendar ID** field in Botpress.
       </Accordion>
       <Accordion title="Client Email">
@@ -260,8 +241,6 @@ The official Google Calendar integration allows your bot to access your Google C
         Open the JSON file you downloaded in [Step 3](#step-3-create-a-service-account) and copy the entire `private_key` value, including the `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` markers.
       </Accordion>
     </AccordionGroup>
-
-    <img src="./assets/google-calendar-integration-manual-configuration.png.png" />
 
     When you've filled in all the fields, select **Save Configuration**.
 
