@@ -62,9 +62,9 @@ const files = response.files
 
 </CodeGroup>
 
-### Filtering by tags
+### Filtering by tag values
 
-If you need to filter files by tags, you can just pass the `tags` parameter which should be an object with key-value pairs of tags a file must have in order to be returned. Tag filtering works in an "AND" fashion, so only the files that have all the specified tags will be returned.
+If you need to filter files by tags, pass in the `tags` parameter, which is an object containing tags as key-value pairs. This will only return files that include all the tags (and corresponding values) that you specify.
 
 <CodeGroup>
 
@@ -81,6 +81,167 @@ import qs from 'qs' // You'll need to install this package first using your favo
 
 const tags = {
   category: 'Sales',
+}
+
+const params = qs.stringify({ tags })
+
+const result = await fetch('https://api.botpress.cloud/v1/files?' + params, {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+
+const response = await result.json()
+const files = response.files
+```
+
+</CodeGroup>
+
+You can also pass in an array of strings as the tag's value. This returns files that have that tag with any of the specified values:
+<CodeGroup>
+
+```ts Using the Botpress Client
+const { files } = await client.listFiles({
+  tags: {
+    category: ['Sales', 'Marketing'],
+  },
+})
+```
+
+```ts Calling the API directly
+import qs from 'qs' // You'll need to install this package first using your favorite package manager
+
+const tags = {
+  category: ['Sales', 'Marketing'],
+}
+
+const params = qs.stringify({ tags })
+
+const result = await fetch('https://api.botpress.cloud/v1/files?' + params, {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+
+const response = await result.json()
+const files = response.files
+```
+
+</CodeGroup>
+
+### Advanced tag filtering
+
+Instead of passing in the value of a tag, you can pass in an object with the `exists`, `not` or `in` properties to allow for more advanced filtering.
+
+#### `exists`
+
+Use the `exists` property to specify whether a tag should be present or absent on the returned files:
+
+<CodeGroup>
+
+```ts Using the Botpress Client
+const { files } = await client.listFiles({
+  tags: {
+    integrationName: {
+      exists: false
+    }
+  }
+})
+```
+
+```ts Calling the API directly
+import qs from 'qs' // You'll need to install this package first using your favorite package manager
+
+const tags = {
+  integrationName: {
+    exists: false
+  }
+}
+
+const params = qs.stringify({ tags })
+
+const result = await fetch('https://api.botpress.cloud/v1/files?' + params, {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+
+const response = await result.json()
+const files = response.files
+```
+
+</CodeGroup>
+
+#### `not`
+
+Use the `not` property to specify a value (or an array of values) to exclude for a given tag:
+
+<CodeGroup>
+
+```ts Using the Botpress Client
+const { files } = await client.listFiles({
+  tags: {
+    integrationName: {
+      not: 'webchat', // Could be a string or an array of strings
+    },
+  },
+})
+```
+
+```ts Calling the API directly
+import qs from 'qs' // You'll need to install this package first using your favorite package manager
+
+const tags = {
+  integrationName: {
+    not: 'webchat' // Could be a string or an array of strings
+  }
+}
+
+const params = qs.stringify({ tags })
+
+const result = await fetch('https://api.botpress.cloud/v1/files?' + params, {
+  method: 'GET',
+  headers: {
+    'x-bot-id': 'YOUR_BOT_ID_GOES_HERE',
+    Authorization: `Bearer ${process.env.BOTPRESS_PAT}`,
+  },
+})
+
+const response = await result.json()
+const files = response.files
+```
+
+</CodeGroup>
+
+#### `in`
+
+Use the `in` property to specify a value (or an array of values) to include for a given tag:
+
+<CodeGroup>
+
+```ts Using the Botpress Client
+const { files } = await client.listFiles({
+  tags: {
+    integrationName: {
+      in: ['webchat', 'whatsapp'], // Could be a string or an array of strings
+    },
+  },
+})
+```
+
+```ts Calling the API directly
+import qs from 'qs' // You'll need to install this package first using your favorite package manager
+
+const tags = {
+  integrationName: {
+    in: ['webchat', 'whatsapp'] // Could be a string or an array of strings
+  }
 }
 
 const params = qs.stringify({ tags })
