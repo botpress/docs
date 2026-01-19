@@ -259,6 +259,82 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
 
+### Comment Created
+
+<span>{"A comment was created in Notion"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="workspace_id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the Notion workspace"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"The type of event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="entity"
+    type="object"
+    required
+  >
+    <span>{"The entity that the event is related to"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"Additional data about the event"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="page_id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the page the comment was created on"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="workspace_name"
+    type="string"
+    required
+  >
+    <span>{"The name of the Notion workspace"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### File Created
 
   <ResponseField
