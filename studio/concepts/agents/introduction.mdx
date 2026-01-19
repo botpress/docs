@@ -6,8 +6,71 @@ sidebarTitle: Introduction
 
 import { YouTube } from '/snippets/youtube.mdx'
 
-Agents are specialized modules or components that extend the capabilities of a bot beyond its basic functions. These agents are designed to perform specific tasks or processes that enhance the bot's ability to interact with users, retrieve information, or manage conversations more effectively.
+<Icon icon="bot"/> Agents **extend your bot's capabilities** beyond its basic functions. They perform tasks that enhance your bot's interactions with users, like:
 
-Botpress offers a variety of specialized Agents to enhance your bot's capabilities and functions. These Agents are designed to perform specific tasks, each contributing to the overall performance of your bot. Here, we introduce five of our agents: HITL, Summary, Personality, Knowledge, and Translator Agents.
+- [Enforcing policies](/studio/concepts/agents/policy-agent) across your bot's interactions
+- Allowing your bot to [communicate in multiple languages](/studio/concepts/agents/translator-agent)
+- Providing [summaries and transcripts](/studio/concepts/agents/summary-agent) of your bot's conversations
 
-<YouTube url="https://www.youtube.com/embed/vVLDSxZouxc?si=xPYruPC0DKG5b18N" />
+{/* <Note>
+  When your bot has multiple Agents enabled, they execute in the following order:
+
+  <Accordion
+    title="Order of Agent execution"
+  >
+  1. Summary
+  2. Personality
+  3. Policy
+  4. Translator
+  5. Knowledge
+  6. Vision
+  7. Router
+  8. Analytics
+  9. HITL Agent
+  </Accordion>
+</Note> */}
+
+## Guides
+
+Select any Agent to learn more about it:
+
+<CardGroup cols={3}>
+  <Card title="Summary Agent" href="/studio/concepts/agents/summary-agent">
+    Condenses the conversation into an AI-generated summary and transcript
+  </Card>
+  <Card title="Personality Agent" href="/studio/concepts/agents/personality-agent">
+    Provides your bot with a personality or tone
+  </Card>
+  <Card title="Policy Agent" href="/studio/concepts/agents/policy-agent">
+    Enforces business rules and compliance guidelines across your bot's interactions
+  </Card>
+  <Card title="Translator Agent" href="/studio/concepts/agents/translator-agent">
+    Allows your bot to communicate in multiple languages
+  </Card>
+  <Card title="Knowledge Agent" href="/studio/concepts/agents/knowledge-agent">
+    Retrieves information from the bot's knowledge base
+  </Card>
+  <Card title="Analytics Agent" href="/studio/concepts/agents/analytics-agent">
+    Collects, analyzes, and stores data on bot interactions
+  </Card>
+  <Card title="Vision Agent" href="/studio/concepts/agents/vision-agent">
+    Adds image recognition and visual processing capabilities to your bot
+  </Card>
+  <Card title="HITL Agent" href="/studio/concepts/agents/hitl-agent">
+    Allows human intervention in the bot's conversations and decision-making
+  </Card>
+</CardGroup>
+
+## Order of execution
+
+When your bot has multiple Agents enabled, they execute in the following order:
+
+1. Summary
+2. Personality
+3. Policy
+4. Translator
+5. Knowledge
+6. Vision
+7. Router
+8. Analytics
+9. HITL Agent
