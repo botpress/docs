@@ -136,7 +136,28 @@ The official Google Calendar integration allows your bot to access your Google C
       ```
     </Note>
 
-    ### Step 4: Configure OAuth consent screen
+    ### Step 4: Enable domain-wide delegation (Google Workspace only)
+
+    <Warning>
+      Domain-wide delegation is **required** if you want your bot to:
+      - Create Google Meet links for events
+      - Send invitations to attendees
+      - Act on behalf of users in your organization
+
+      Without domain-wide delegation, the service account can only manage its own calendar and cannot invite attendees or create Meet links.
+
+      **This feature is only available for Google Workspace accounts.** Personal `@gmail.com` accounts do not support domain-wide delegation.
+    </Warning>
+
+    Follow Google's official guide to [delegate domain-wide authority to your service account](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority).
+
+    When configuring the OAuth scopes in the Google Admin Console, paste in the following scopes (comma-separated):
+
+    ```
+    https://www.googleapis.com/auth/calendar,https://www.googleapis.com/auth/calendar.events
+    ```
+
+    ### Step 5: Configure OAuth consent screen (if not already configured)
 
     <Steps>
       <Step>
@@ -164,7 +185,7 @@ The official Google Calendar integration allows your bot to access your Google C
       </Step>
     </Steps>
 
-    ### Step 5: Create OAuth client
+    ### Step 6: Create OAuth client
 
     <Steps>
       <Step>
@@ -175,7 +196,7 @@ The official Google Calendar integration allows your bot to access your Google C
       </Step>
     </Steps>
 
-    ### Step 6: Configure scopes
+    ### Step 7: Configure scopes
 
     <Steps>
       <Step>
@@ -192,7 +213,7 @@ The official Google Calendar integration allows your bot to access your Google C
       </Step>
     </Steps>
 
-    ### Step 7: Grant calendar access to the service account
+    ### Step 8: Grant calendar access to the service account
 
     <Steps>
       <Step>
@@ -212,7 +233,7 @@ The official Google Calendar integration allows your bot to access your Google C
       </Step>
     </Steps>
 
-    ### Step 8: Configure the integration in Botpress
+    ### Step 9: Configure the integration in Botpress
 
     <Steps>
       <Step>
@@ -240,6 +261,19 @@ The official Google Calendar integration allows your bot to access your Google C
       <Accordion title="Private Key">
         Open the JSON file you downloaded in [Step 3](#step-3-create-a-service-account) and copy the entire `private_key` value, including the `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` markers.
       </Accordion>
+      <Accordion title="Impersonate Email (Google Workspace only)">
+        Enter the email address of a user in your Google Workspace that the service account will impersonate.
+
+        This field is **required** for:
+        - Creating Google Meet links
+        - Sending attendee invitations
+
+        The email must belong to an actual user in your Google Workspace domain. Without this field configured, Meet creation and attendee invitations will not work.
+
+        <Note>
+          This field only applies if you have configured [domain-wide delegation](#step-4-enable-domain-wide-delegation-google-workspace-only). Personal @gmail.com accounts do not support impersonation.
+        </Note>
+      </Accordion>
     </AccordionGroup>
 
     When you've filled in all the fields, select **Save Configuration**.
@@ -250,6 +284,18 @@ The official Google Calendar integration allows your bot to access your Google C
 
   </Tab>
 </Tabs>
+
+---
+
+## Limitations
+
+Different Google account types have different capabilities when using this integration.
+
+| Feature | Google Workspace | Personal (`@gmail.com`) |
+|---------|:----------------:|:---------------------:|
+| Create, read, update, delete events | Yes | Yes |
+| Create Google Meet links | Yes | No |
+| Invite attendees | Yes ([requires domain-wide delegation](#step-4%3A-enable-domain-wide-delegation-google-workspace-only)) | No |
 
 ---
 
