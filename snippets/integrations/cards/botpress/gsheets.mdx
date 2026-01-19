@@ -272,6 +272,46 @@ Available options: `ROWS`, `COLUMNS`
     </Expandable>
   </ResponseField>
 
+### Delete Rows
+
+<span>{"Delete one or more rows by their 1-based indexes. Rows are deleted in reverse order to preserve indexes during deletion."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="rowIndexes"
+    type="array"
+    required
+  >
+    <span>{"The 1-based row indexes to delete."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="deletedCount"
+    type="number"
+    required
+  >
+    <span>{"The number of rows deleted."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Delete Sheet
 
 <span>{"Deletes a sheet from the spreadsheet."}</span>
@@ -296,6 +336,143 @@ Available options: `ROWS`, `COLUMNS`
     type="object"
   >
     This Card has no output.
+  </ResponseField>
+
+### Find Row (First Match)
+
+<span>{"Search for the first row where a specific column matches a value. Returns the row data and its index, or null if no match is found."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="searchColumn"
+    type="string"
+    required
+  >
+    <span>{"The column letter to search in (e.g. \"A\", \"B\", \"AA\")."}</span>
+  </ResponseField>
+  <ResponseField
+    name="searchValue"
+    type="string"
+    required
+  >
+    <span>{"The value to search for in the specified column."}</span>
+  </ResponseField>
+  <ResponseField
+    name="dataRange"
+    type="string"
+  >
+    <span>{"Optional A1 notation range to limit the search (e.g. \"A1:F100\"). If not provided, searches the entire sheet."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="found"
+    type="boolean"
+    required
+  >
+    <span>{"Whether a matching row was found."}</span>
+  </ResponseField>
+  <ResponseField
+    name="row"
+    type="object | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Find Rows
+
+<span>{"Search for rows where a specific column matches a value. Returns all matching rows with their indexes. Handles empty sheets and no matches gracefully by returning an empty array."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="searchColumn"
+    type="string"
+    required
+  >
+    <span>{"The column letter to search in (e.g. \"A\", \"B\", \"AA\")."}</span>
+  </ResponseField>
+  <ResponseField
+    name="searchValue"
+    type="string"
+    required
+  >
+    <span>{"The value to search for in the specified column."}</span>
+  </ResponseField>
+  <ResponseField
+    name="dataRange"
+    type="string"
+  >
+    <span>{"Optional A1 notation range to limit the search (e.g. \"A1:F100\"). If not provided, searches the entire sheet."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="rows"
+    type="array"
+    required
+  >
+    <span>{"The rows that match the search criteria."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="rowIndex"
+    type="number"
+    required
+  >
+    <span>{"The 1-based index of the row in the sheet."}</span>
+  </ResponseField>
+  <ResponseField
+    name="values"
+    type="array"
+    required
+  >
+    <span>{"The cell values in the row."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="totalMatches"
+    type="number"
+    required
+  >
+    <span>{"The total number of matching rows found."}</span>
+  </ResponseField>
+    </Expandable>
   </ResponseField>
 
 ### Get All Sheets in Spreadsheet
@@ -579,6 +756,66 @@ Available options: `ROWS`, `COLUMNS`
     </Expandable>
   </ResponseField>
 
+### Get Row
+
+<span>{"Fetch a specific row by its 1-based index. Provides direct row access without A1 notation math."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="rowIndex"
+    type="number"
+    required
+  >
+    <span>{"The 1-based row index to retrieve (e.g. 1 for the first row, 2 for the second row)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="startColumn"
+    type="string"
+    default="A"
+  >
+    <span>{"The starting column letter (e.g. \"A\"). Defaults to \"A\"."}</span>
+  </ResponseField>
+  <ResponseField
+    name="endColumn"
+    type="string"
+  >
+    <span>{"The ending column letter (e.g. \"Z\"). If not provided, returns all columns with data."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="found"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the row exists and has data."}</span>
+  </ResponseField>
+  <ResponseField
+    name="row"
+    type="object | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Get Values
 
 <span>{"Returns the values of a range in the spreadsheet."}</span>
@@ -634,6 +871,59 @@ Available options: `ROWS`, `COLUMNS`
     required
   >
     <span>{"The data that was read. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension (a row or column). Each item in the inner array corresponds with one cell. (e.g. [[\"a\", \"b\"], [\"c\", \"d\"]])"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Insert Row at Index
+
+<span>{"Insert a new row at a specific 1-based index. Existing rows at and below the index are shifted down."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="rowIndex"
+    type="number"
+    required
+  >
+    <span>{"The 1-based index where the new row should be inserted."}</span>
+  </ResponseField>
+  <ResponseField
+    name="values"
+    type="array"
+  >
+    <span>{"Optional values to populate the new row."}</span>
+  </ResponseField>
+  <ResponseField
+    name="startColumn"
+    type="string"
+    default="A"
+  >
+    <span>{"The starting column letter for the values (e.g. \"A\"). Defaults to \"A\"."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="insertedRowIndex"
+    type="number"
+    required
+  >
+    <span>{"The 1-based index of the newly inserted row."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -885,6 +1175,137 @@ Available options: `ROWS`, `COLUMNS`
     type="object"
   >
     This Card has no output.
+  </ResponseField>
+
+### Update Row
+
+<span>{"Update a specific row by its 1-based index with a partial or complete set of values. Only the provided values are updated."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="rowIndex"
+    type="number"
+    required
+  >
+    <span>{"The 1-based row index to update."}</span>
+  </ResponseField>
+  <ResponseField
+    name="values"
+    type="array"
+    required
+  >
+    <span>{"The values to write to the row, starting from the start column."}</span>
+  </ResponseField>
+  <ResponseField
+    name="startColumn"
+    type="string"
+    default="A"
+  >
+    <span>{"The starting column letter for the update (e.g. \"A\"). Defaults to \"A\"."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="updatedRange"
+    type="string"
+    required
+  >
+    <span>{"The range (in A1 notation) that was updated."}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedCells"
+    type="number"
+    required
+  >
+    <span>{"The number of cells updated."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Upsert Row
+
+<span>{"Update a row if it exists (based on a key column match), or append a new row if no match is found. Useful for maintaining unique records."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="sheetName"
+    type="string"
+  >
+    <span>{"The name of the sheet (e.g. \"Sheet1\"). If not provided, the first visible sheet is used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="keyColumn"
+    type="string"
+    required
+  >
+    <span>{"The column letter to use for matching (e.g. \"A\" for ID column)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="keyValue"
+    type="string"
+    required
+  >
+    <span>{"The value to match in the key column."}</span>
+  </ResponseField>
+  <ResponseField
+    name="values"
+    type="array"
+    required
+  >
+    <span>{"The values to write to the row."}</span>
+  </ResponseField>
+  <ResponseField
+    name="startColumn"
+    type="string"
+    default="A"
+  >
+    <span>{"The starting column letter for the values (e.g. \"A\"). Defaults to \"A\"."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="action"
+    type="enum<string>"
+    required
+  >
+    <span>{"Whether the row was updated or inserted."}</span>
+
+Available options: `updated`, `inserted`
+  </ResponseField>
+  <ResponseField
+    name="rowIndex"
+    type="number"
+    required
+  >
+    <span>{"The 1-based index of the affected row."}</span>
+  </ResponseField>
+    </Expandable>
   </ResponseField>
 
 
