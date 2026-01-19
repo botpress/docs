@@ -67,7 +67,6 @@
         "pages": [
           {
             "group": "Get started",
-            "icon": "rocket",
             "pages": [
               "/index",
               "/get-started/quick-start",
@@ -87,10 +86,40 @@
             ]
           },
           {
+            "group": "ADK",
+            "tag": "Beta",
+            "pages": [
+              "/adk/introduction",
+              "/adk/quickstart",
+              "/adk/project-structure",
+              {
+                "group": "Concepts",
+                "pages": [
+                  "/adk/concepts/conversations",
+                  {
+                    "group": "Workflows",
+                    "pages": ["/adk/concepts/workflows/overview", "/adk/concepts/workflows/steps"]
+                  },
+                  "/adk/concepts/actions",
+                  "/adk/concepts/tables",
+                  "/adk/concepts/triggers",
+                  "/adk/concepts/knowledge",
+                  "/adk/concepts/tools"
+                ]
+              },
+              "/adk/managing-integrations",
+              {
+                "group": "Zai",
+                "pages": ["/adk/zai/overview", "/adk/zai/reference"]
+              },
+              "/adk/cli-reference"
+            ]
+          },
+          {
             "group": "Studio",
-            "icon": "share-2",
             "pages": [
               "/studio/introduction",
+              "/tutorial",
               {
                 "group": "Concepts",
                 "pages": [
@@ -246,7 +275,6 @@
           },
           {
             "group": "Integrations",
-            "icon": "boxes",
             "pages": [
               "/integrations/get-started/introduction",
               "/integrations/get-started/botpress-hub",
@@ -260,6 +288,8 @@
                   "/integrations/integration-guides/bamboohr",
                   "/integrations/integration-guides/canny",
                   "/integrations/integration-guides/chat",
+                  "/integrations/functional-integrations/conversation-analyzer",
+                  "/integrations/integration-guides/chatwoot",
                   "/integrations/integration-guides/plus-email-notifier",
                   "/integrations/integration-guides/github",
                   "/integrations/integration-guides/gmail",
@@ -269,9 +299,11 @@
                   "/integrations/integration-guides/hitl",
                   "/integrations/integration-guides/hubspot",
                   "/integrations/integration-guides/hunter",
+                  "/integrations/functional-integrations/improvement",
                   "/integrations/integration-guides/instagram",
                   "/integrations/integration-guides/intercom",
                   "integrations/integration-guides/klaviyo",
+                  "/integrations/functional-integrations/knowledge-base-optimization",
                   "/integrations/integration-guides/line",
                   "/integrations/integration-guides/loops",
                   "/integrations/integration-guides/mailerlite",
@@ -317,19 +349,38 @@
                 ]
               },
               {
-                "group": "Functional integrations",
+                "group": "SDK",
                 "pages": [
-                  "/integrations/functional-integrations/introduction",
-                  "/integrations/functional-integrations/knowledge-base-optimization",
-                  "/integrations/functional-integrations/conversation-analyzer",
-                  "/integrations/functional-integrations/improvement"
+                  "integrations/sdk/overview",
+                  "integrations/sdk/installation",
+                  {
+                    "group": "Integrations",
+                    "pages": [
+                      "integrations/sdk/integration/getting-started",
+                      "integrations/sdk/integration/messaging",
+                      "integrations/sdk/integration/concepts",
+                      "integrations/sdk/integration/publish-your-integration-on-botpress-hub",
+                      "integrations/sdk/integration/enable-oauth",
+                      "integrations/sdk/integration/use-your-own-llm"
+                    ]
+                  },
+                  {
+                    "group": "Interfaces",
+                    "pages": [
+                      "integrations/sdk/interface/introduction",
+                      "integrations/sdk/interface/how-tos/add-and-implement",
+                      "integrations/sdk/interface/how-tos/implementing-hitl",
+                      "integrations/sdk/interface/how-tos/implementing-file-sync"
+                    ]
+                  },
+                  "integrations/sdk/bots-as-code",
+                  "/integrations/sdk/cli-reference"
                 ]
               }
             ]
           },
           {
             "group": "Webchat",
-            "icon": "message-square",
             "pages": [
               "/webchat/get-started/introduction",
               "/webchat/get-started/quick-start",
@@ -392,73 +443,8 @@
             ]
           },
           {
-            "group": "For developers",
-            "icon": "hammer",
-            "pages": [
-              "for-developers/introduction",
-              {
-                "group": "ADK",
-                "tag": "BETA",
-                "pages": [
-                  "for-developers/adk/overview",
-                  "for-developers/adk/getting-started",
-                  "for-developers/adk/project-structure",
-                  {
-                    "group": "Concepts",
-                    "pages": [
-                      "for-developers/adk/concepts/conversations",
-                      {
-                        "group": "Workflows",
-                        "pages": [
-                          "for-developers/adk/concepts/workflows/overview",
-                          "for-developers/adk/concepts/workflows/steps"
-                        ]
-                      },
-                      "for-developers/adk/concepts/actions",
-                      "for-developers/adk/concepts/tables",
-                      "for-developers/adk/concepts/triggers",
-                      "for-developers/adk/concepts/knowledge",
-                      "for-developers/adk/concepts/tools"
-                    ]
-                  },
-                  "for-developers/adk/managing-integrations",
-                  "for-developers/adk/cli-reference"
-                ]
-              },
-              {
-                "group": "SDK",
-                "pages": [
-                  "for-developers/sdk/overview",
-                  "for-developers/sdk/installation",
-                  {
-                    "group": "Integrations",
-                    "pages": [
-                      "for-developers/sdk/integration/getting-started",
-                      "for-developers/sdk/integration/messaging",
-                      "for-developers/sdk/integration/concepts",
-                      "for-developers/sdk/integration/publish-your-integration-on-botpress-hub",
-                      "for-developers/sdk/integration/enable-oauth",
-                      "for-developers/sdk/integration/use-your-own-llm"
-                    ]
-                  },
-                  {
-                    "group": "Interfaces",
-                    "pages": [
-                      "for-developers/sdk/interface/introduction",
-                      "for-developers/sdk/interface/how-tos/add-and-implement",
-                      "for-developers/sdk/interface/how-tos/implementing-hitl",
-                      "for-developers/sdk/interface/how-tos/implementing-file-sync"
-                    ]
-                  },
-                  "for-developers/sdk/bots-as-code",
-                  "/for-developers/sdk/cli-reference"
-                ]
-              },
-              {
-                "group": "Zai",
-                "pages": ["for-developers/zai/overview", "for-developers/zai/reference"]
-              }
-            ]
+            "group": "Desk",
+            "pages": ["desk/introduction"]
           }
         ]
       },
@@ -646,6 +632,18 @@
     {
       "source": "/learn/guides/:slug*",
       "destination": "/studio/guides/:slug*"
+    },
+    {
+      "source": "/for-developers/adk/:slug*",
+      "destination": "/adk/:slug*"
+    },
+    {
+      "source": "/for-developers/zai/:slug*",
+      "destination": "/adk/zai/:slug*"
+    },
+    {
+      "source": "/for-developers/sdk/:slug*",
+      "destination": "/integrations/sdk/:slug*"
     }
   ],
   "integrations": {

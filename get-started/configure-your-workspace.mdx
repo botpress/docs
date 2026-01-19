@@ -1,3 +1,7 @@
+---
+title: Configure your workspace
+---
+
 In Botpress, your workspace is the environment where you organize, manage, and collaborate on your agent projects.
 
 Each Workspace can contain multiple agents, so you can keep them organized by customer, department, or use case. Within a workspace, you can manage permissions, usage, billing, and more.
@@ -90,7 +94,7 @@ If you just want to install third-party integrations, you can ignore this menuâ€
 
 To learn more about building and deploying your own integrations:
 
-<Card title="SDK" icon="hammer" href="/for-developers/sdk/overview">
+<Card title="SDK" icon="hammer" href="/integrations/sdk/overview">
   Software development kit for building and deploying integrations on Botpress.
 </Card>
 
@@ -216,7 +220,7 @@ Now when your agent hits that specific quota, it'll adjust your plan automatical
     You can access invoices by selecting **Invoice History** in the **<Icon icon="credit-card"/> Billing** menu.
   </Accordion>
   <Accordion title="Where can I add my Tax ID?">
-     You can access invoices by selecting **Billing Information** in the **<Icon icon="credit-card"/> Billing** menu.
+     You can find, edit, or update your Tax ID by selecting **Billing Information** in the **<Icon icon="credit-card"/> Billing** menu.
   </Accordion>
   <Accordion title="Where can I change which email receives receipts and invoices?">
     You can adjust billing email preferences by selecting **Billing Information** in the **<Icon icon="credit-card"/> Billing** menu.
@@ -226,6 +230,9 @@ Now when your agent hits that specific quota, it'll adjust your plan automatical
   </Accordion>
   <Accordion title="Can I make purchases on Botpress even though my payment has failed?">
     No, you can't upgrade a plan or subscription if your payment fails.
+  </Accordion>
+  <Accordion title="When does Botpress send emails about an add-on quota that is nearing its limit?">
+    Botpress sends email notifications to the owner of a Workspace when a quota has reached 75% (or more) of its usage threshold.
   </Accordion>
 </AccordionGroup>
 

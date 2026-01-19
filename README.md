@@ -17,12 +17,14 @@ To contribute, install the following software if you haven't already:
 ## Getting started
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/botpress/docs.git
    cd docs
    ```
 
 2. **Install dependencies:**
+
    ```bash
    pnpm install
    ```
@@ -41,10 +43,10 @@ The Botpress documentation is built with [Mintlify](https://mintlify.com/). Here
 docs/
 ├── docs.json              # Mintlify configuration & navigation
 ├── home.mdx               # Homepage content
-├── learn/                 # Learning materials and guides
+├── studio/                # Documentation for Botpress Studio
 ├── integrations/          # Integration documentation
 ├── webchat/              # Webchat-specific docs
-├── for-developers/       # Developer-focused content
+├── adk/                   # Documentation for the Botpress Agent Development Kit (ADK)
 ├── api-reference/        # API documentation
 ├── snippets/             # Reusable content snippets
 ├── changelog.mdx         # Product changelog
@@ -56,10 +58,10 @@ docs/
 
 ### MDX
 
-All documentation is written in MDX (Markdown with JSX components). You can find full list of supported components in the [Mintlify documentation](https://mintlify.com/docs/text). 
+All documentation is written in MDX (Markdown with JSX components). You can find full list of supported components in the [Mintlify documentation](https://mintlify.com/docs/text).
 
 > [!NOTE]
-> 
+>
 > If you're using VS Code or Cursor, we recommend also installing the official Mintlify extension. This will enable autocomplete for most Mintlify components.
 
 ### Images
@@ -110,7 +112,7 @@ If you're working on documentation for an integration:
    ```zsh
    pnpm run update-integrations
    ```
-   
+
    This will fetch the most up-to-date information for any integrations modified on the current branch.
 
 > [!TIP]
@@ -118,7 +120,7 @@ If you're working on documentation for an integration:
 > You can also update a single integration:
 >
 > ```zsh
-> pnpm run update-integrations <integration-name> 
+> pnpm run update-integrations <integration-name>
 > ```
 >
 > or update all integrations at once:
@@ -139,7 +141,6 @@ This check also runs on every pull request in the repository.
 
 ## Development workflow
 
-
 ### Make a change
 
 1. Fork the repository
@@ -149,7 +150,7 @@ This check also runs on every pull request in the repository.
 5. Validate writing style with `make check-writing` (if Vale is installed)
 6. Check for broken links using `mint broken-links`
 7. Submit a pull request with a clear description of your changes
-   
+
 ### Raise an issue
 
 Use this repository for specific documentation-related issues only. Report any product bugs (or general documentation feedback) via [Discord](https://discord.gg/botpress).

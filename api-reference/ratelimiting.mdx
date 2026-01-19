@@ -1,3 +1,7 @@
+---
+title: Rate limiting
+---
+
 Our APIs are protected using a sliding window rate limiter. This means that exceeding the allowed number of requests per time window will result in a `429 Too Many Requests` (rate-limited) response.
 
 The rate limiter returns for each request the following headers:

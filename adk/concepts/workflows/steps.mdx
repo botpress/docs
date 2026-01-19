@@ -1,0 +1,341 @@
+---
+title: Steps
+---
+
+
+This page contains a full reference for the [`step` function](/adk/concepts/workflows/overview#steps).
+
+```typescript
+const data = await step("fetch-data", async () => {
+  return await fetchDataFromAPI();
+});
+```
+
+## Parameters
+
+<ResponseField name="name" type="string" required>
+  Unique identifier for this step within the workflow.
+
+  <Note>
+    Make sure you set a unique identifier for each step. Otherwise, the second step won't execute and will reuse the output of the first step.
+  </Note>
+
+</ResponseField>
+<ResponseField name="run" type="(opts: { attempt: number }) => T | Promise<T>" required>
+  Function to execute. Receives the current attempt number.
+</ResponseField>
+<ResponseField name="options" type="object">
+  Optional configuration object.
+  <Expandable title="properties">
+    <ResponseField name="maxAttempts" type="number">
+      Maximum number of retry attempts if the step fails. Defaults to 5.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+## Methods
+
+The following methods are available on each step:
+
+### `listen`
+
+Put the workflow into listening mode, waiting for external events to resume:
+
+```typescript
+await step.listen("wait-for-approval");
+// Workflow pauses here until triggered
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the step.
+</ResponseField>
+
+---
+
+### `sleep`
+
+Pause workflow execution for a specified duration:
+
+```typescript
+// Sleep for 5 minutes
+await step.sleep("wait-5-min", 5 * 60 * 1000);
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the step.
+</ResponseField>
+<ResponseField name="ms" type="number" required>
+  Duration to sleep in milliseconds.
+</ResponseField>
+
+---
+
+### `sleepUntil`
+
+Sleep until a specific date:
+
+```typescript
+await step.sleepUntil("wait-until-noon", new Date("2025-01-15T12:00:00Z"));
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the step.
+</ResponseField>
+<ResponseField name="date" type="Date | string" required>
+  The date to sleep until.
+</ResponseField>
+
+---
+
+### `fail`
+
+Mark the workflow as failed and stop execution:
+
+```typescript
+if (!user.isVerified) {
+  await step.fail("User verification required");
+}
+```
+
+**Parameters**:
+
+<ResponseField name="reason" type="string" required>
+  Description of why the workflow failed.
+</ResponseField>
+
+---
+
+### `abort`
+
+Immediately abort the workflow execution without marking it as failed:
+
+```typescript
+if (shouldPause) {
+  step.abort();
+}
+```
+
+**Parameters**:
+
+No parameters.
+
+---
+
+### `progress`
+
+Record a progress checkpoint without performing any action:
+
+```typescript
+await step.progress("Started processing");
+// ... do work ...
+await step.progress("Finished processing");
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the progress checkpoint.
+</ResponseField>
+
+---
+
+### `waitForWorkflow`
+
+Wait for another workflow to complete before continuing:
+
+```typescript
+const childWorkflow = await childWorkflowInstance.start({});
+const result = await step.waitForWorkflow("wait-for-child", childWorkflow.id);
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the step.
+</ResponseField>
+<ResponseField name="workflowId" type="string" required>
+  ID of the workflow to wait for.
+</ResponseField>
+
+---
+
+### `executeWorkflow`
+
+Start another workflow and wait for it to complete:
+
+```typescript
+import ProcessingWorkflow from "../workflows/processing";
+
+const result = await step.executeWorkflow(
+  "process-data",
+  ProcessingWorkflow,
+  { data: inputData }
+);
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the step.
+</ResponseField>
+<ResponseField name="workflow" type="Workflow" required>
+  The workflow instance to execute.
+</ResponseField>
+<ResponseField name="input" type="object">
+  Input data for the workflow (typed based on workflow's input schema).
+</ResponseField>
+
+---
+
+### `map`
+
+Process an array of items in parallel with controlled concurrency:
+
+```typescript
+const results = await step.map(
+  "process-users",
+  users,
+  async (user, { i }) => await processUser(user),
+  { concurrency: 5, maxAttempts: 3 }
+);
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the map operation.
+</ResponseField>
+<ResponseField name="items" type="T[]" required>
+  Array of items to process.
+</ResponseField>
+<ResponseField name="run" type="(item: T, opts: { i: number }) => Promise<U>" required>
+  Function to process each item. Receives the item and its index.
+</ResponseField>
+<ResponseField name="options" type="object">
+  Optional configuration object.
+  <Expandable title="properties">
+    <ResponseField name="maxAttempts" type="number">
+      Maximum retry attempts per item. Defaults to 5.
+    </ResponseField>
+    <ResponseField name="concurrency" type="number">
+      Maximum number of concurrent operations. Defaults to 1.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `forEach`
+
+Process an array of items without collecting results:
+
+```typescript
+await step.forEach(
+  "notify-users",
+  users,
+  async (user) => await sendNotification(user),
+  { concurrency: 10 }
+);
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the forEach operation.
+</ResponseField>
+<ResponseField name="items" type="T[]" required>
+  Array of items to process.
+</ResponseField>
+<ResponseField name="run" type="(item: T, opts: { i: number }) => Promise<void>" required>
+  Function to process each item. Receives the item and its index.
+</ResponseField>
+<ResponseField name="options" type="object">
+  Optional configuration object.
+  <Expandable title="properties">
+    <ResponseField name="maxAttempts" type="number">
+      Maximum retry attempts per item. Defaults to 5.
+    </ResponseField>
+    <ResponseField name="concurrency" type="number">
+      Maximum number of concurrent operations. Defaults to 1.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `batch`
+
+Process items in sequential batches:
+
+```typescript
+await step.batch(
+  "bulk-insert",
+  records,
+  async (batch) => await database.bulkInsert(batch),
+  { batchSize: 100 }
+);
+```
+
+**Parameters**:
+
+<ResponseField name="name" type="string" required>
+  The name of the batch operation.
+</ResponseField>
+<ResponseField name="items" type="T[]" required>
+  Array of items to process.
+</ResponseField>
+<ResponseField name="run" type="(batch: T[], opts: { i: number }) => Promise<void>" required>
+  Function to process each batch. Receives the batch array and starting index.
+</ResponseField>
+<ResponseField name="options" type="object">
+  Optional configuration object.
+  <Expandable title="properties">
+    <ResponseField name="batchSize" type="number">
+      Number of items per batch. Defaults to 20.
+    </ResponseField>
+    <ResponseField name="maxAttempts" type="number">
+      Maximum retry attempts per batch. Defaults to 5.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+---
+
+### `request`
+
+Request data from a conversation and wait for a response. Requires defining `requests` in the workflow:
+
+```typescript
+export default new Workflow({
+  name: "order-workflow",
+  requests: {
+    orderId: z.object({
+      orderId: z.string(),
+    }),
+  },
+  handler: async ({ step }) => {
+    const data = await step.request("orderId", "Please provide the order ID");
+    // data is typed based on the request schema
+  },
+});
+```
+
+**Parameters**:
+
+<ResponseField name="request" type="string" required>
+  The name of the request (must be defined in workflow's `requests` field).
+</ResponseField>
+<ResponseField name="message" type="string" required>
+  Message to display to the user describing what data is needed.
+</ResponseField>
+<ResponseField name="stepName" type="string">
+  Optional custom name for the step. Defaults to the request name.
+</ResponseField>

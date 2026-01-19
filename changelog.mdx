@@ -4,6 +4,154 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="January 16, 2026">
+  ## Features & enhancements
+
+  - You can now use models from [Mistral AI](https://mistral.ai/) by installing the official integration
+  - Users can now upload `.gif` and `.webp` images to their conversations in Webchat
+  - When users upload a file to a Webchat conversation, the Botpress file ID is now included in the event's payload as `fileId`. This allows the bot to manipulate the uploaded file directly (for example, changing its permissions or deleting it)
+
+  ---
+
+  ## Integrations
+
+  ### BambooHR
+
+  Improved parsing for input in the integration's configuration fields
+
+  ### Gmail
+
+  - Improved error handling for when users delete messages
+  - Fixed bug that was causing messages to be processed multiple times
+
+  ### Google Sheets
+
+  Added new Cards:
+
+  - [Find Rows](integrations/integration-guides/gsheets#find-rows)
+  - [Find Row (First Match)](integrations/integration-guides/gsheets#find-row-first-match)
+  - [Get Row](integrations/integration-guides/gsheets#get-row)
+  - [Update Row](integrations/integration-guides/gsheets#update-row)
+  - [Insert Row at Index](integrations/integration-guides/gsheets#insert-row-at-index)
+  - [Delete Rows](integrations/integration-guides/gsheets#delete-rows)
+  - [Upsert Row](integrations/integration-guides/gsheets#upsert-row)
+
+  ### Intercom HITL
+
+  - The conversation title in Botpress is now sent to Intercom when escalating a conversation
+
+  ### Linear
+
+  - **Get User** Card can now get the currently authenticated user
+  - The **List Teams** Card's output now includes each team’s unique key
+
+  ### Notion
+
+  - Added new Cards:
+
+    - [Get Page](integrations/integration-guides/notion#get-page)
+    - [Search by Title](integrations/integration-guides/notion#search-by-title)
+    - [Get Page Content](integrations/integration-guides/notion#get-page-content)
+    - [Append Blocks to Page](integrations/integration-guides/notion#append-blocks-to-page)
+    - [Update Page Properties](integrations/integration-guides/notion#update-page-properties)
+
+  - Added a new Trigger:
+    - [Comment Created](integrations/integration-guides/notion#comment-created)
+
+  ### Zoom
+
+  - When a Zoom transcript is completed, the **Transcript Received** Trigger now includes the audio URL in the transcript
+
+  ---
+
+  ## Bug fixes
+
+  - Fixed an issue where the Summary Agent's transcript message was not returning the entire transcript history
+  - Fixed a visual bug where Workflow context menu was being duplicated when opened over the Card tray
+  - Fixed an issue with the emulator where tools didn’t work properly when added to the same Autonomous Node multiple times
+  - Fixed an issue where the Studio would get stuck on the loading screen if the browser window was out of focus
+  - Fixed the **Watch Video** button for individual Cards in the Card tray
+  - Fixed the Translator Agent's prompt to better support dropdowns
+  - Fixed issues with multiplayer in the Studio where recent changes were lost if the connection was unstable
+  - Fixed an issue where **Reset bot to default** wasn't deleting Knowledge Bases
+  - Fixed a visual issue where an error screen was flashing when creating a new bot
+  - Fixed an issue where the user's configuration for Webchat's embedded chat ID / toggle chat ID was mistakenly being overwritten
+
+</Update>
+
+<Update label="January 9, 2026">
+  ## Dashboard displays bot creator
+
+  The dashboard now displays which member of your workspace created a bot:
+
+  <Frame>
+    <img
+      alt="Bot creator"
+      className="block dark:hidden"
+      src="/changelog-assets/2026-01-09/created-by.png"
+    />
+    <img
+      alt="Bot creator"
+      className="hidden dark:block"
+      src="/changelog-assets/2026-01-09/created-by-dark.png"
+    />
+  </Frame>
+
+  ## Integrations
+
+  - **Hub**: Botpress Hub now has callouts clearly showing when an integration version is deprecated
+  - **Chatwoot**: [Added Chatwoot integration](/integrations/integration-guides/chatwoot)
+  - **Slack**: Fixed an issue where messages containing percentage symbols were causing errors
+  - **Sunshine Conversations**: Added `origin` conversation tag for tracking what channel a conversation originated from
+  - **Zendesk**: Added information about the requester when creating a ticket in Zendesk from the Start HITL Card
+
+  ## Bug fixes
+
+  - Fixed an issue where Autonomous Node responses were incorrectly exceeding the maximum payload size
+  - Fixed visual issues with CLI authentication
+  - Fixed a visual bug with scrolling to the **Copy to bot** option in the Dashboard
+  - Fixed an issue where user data wasn't properly persisted when injecting Webchat
+
+</Update>
+
+<Update label="December 19, 2025">
+  ## Create ADK agents from the dashboard
+
+  - Added support for creating an ADK agent from the dashboard:
+
+  <Frame>
+    <img
+      alt="ADK flow"
+      src="/changelog-assets/2025-12-19/adk-flow.png"
+    />
+  </Frame>
+
+  ## GPT-5.2
+
+  - Added support for GPT-5.2 from OpenAI
+
+  ## Integrations
+
+  - **Gmail**: Added [Cards](/integrations/integration-guides/gmail#cards) to the Gmail integration
+  - **Zendesk**: Added OAuth configuration
+  - **Messenger & Facebook**: Added [Start DM Conversation from Comment](integrations/integration-guides/messenger#start-dm-conversation-from-comment) Card
+
+</Update>
+
+<Update label="December 12, 2025">
+  ## Webchat input improvements
+
+  - Starting with Webchat 3.5, Webchat input is disabled while your bot processes a message
+
+  ## Integrations
+
+  - **Sunshine Conversations**: Added support for incoming files
+
+  ## Bug fixes
+
+  - Fixed an issue where deleting a comment Node would sometimes delete nearby transitions
+</Update>
+
 <Update label="December 5, 2025">
   ## Dashboard improvements
 

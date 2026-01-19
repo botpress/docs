@@ -1,187 +1,78 @@
 ---
 title: 'Welcome to Botpress'
-mode: 'frame'
+mode: frame
 ---
 
-<div className="high-contrast flex flex-col items-center justify-center w-full" >
-  <div className="absolute top-0 left-0 right-0">
-    <img src="https://i.ibb.co/d4TT3kvW/background-dark.webp" className="block dark:hidden pointer-events-none opacity-60" alt="Banner"  data-path="images/hero/background-light.png" data-optimize="true" data-opv="3"  />
+import { WebchatCard } from '/home-components/WebchatCard.jsx'
+import { IntegrationsCard } from '/home-components/IntegrationsCard.jsx'
 
-    <img src="https://i.ibb.co/d4TT3kvW/background-dark.webp" className="hidden dark:block pointer-events-none opacity-60" alt="Banner" data-path="images/hero/background-dark.png" data-optimize="true" data-opv="3" />
+<div className="flex flex-wrap gap-8 max-w-[68rem] mx-auto px-8 lg:px-16 flex-col md:flex-row mb-8 lg:mb-0" >
+  <div className="relative z-10 lg:pt-16 pt-8 lg:pb-12 max-w-3xl ">
+  <h1 className="block md:text-4xl text-3xl font-medium text-gray-900 dark:text-zinc-50 tracking-tight">
+    Documentation
+  </h1>
+
+  <div className="mx-auto mt-4 md:text-lg text-md text-gray-500 dark:text-zinc-500 mb-8">
+    Learn how to use Botpress, the complete AI agent platform.
   </div>
-  <div className="relative z-10 px-4 pt-16 lg:py-48 lg:pb-12 max-w-3xl mx-auto">
-  <h1 className="block text-4xl font-medium text-center text-gray-900 dark:text-zinc-50 tracking-tight">
-      Documentation
-    </h1>
-
-    <div className="max-w-xl mx-auto px-4 mt-4 text-lg text-center text-gray-500 dark:text-zinc-500 mb-8">
-      Learn how to use Botpress, the complete AI agent platform.
+    <div className="flex gap-4">
+      <button onClick={() => askAi()} className="button w-inline-block rounded-xl">
+        <div className="flex items-center gap-2">
+          <img id="ai-bolt" src="/homepage-assets/bolt-white-transparent-fill.svg" alt="bolt icon"/>
+          <span>Ask AI</span>
+        </div>
+      </button>
+      <a
+        href="https://discord.gg/botpress"
+        target="_blank"
+        class="discord_banner w-inline-block rounded-xl"
+      >
+        <div>Get help</div>
+      </a>
     </div>
-  <div className="flex gap-4 justify-center mb-8">
-    <button onClick={() => askAi()} className="button w-inline-block rounded-xl">
-      <div className="flex items-center gap-2">
-        <img id="ai-bolt" src="/homepage-assets/bolt-white-transparent-fill.svg" alt="bolt icon"/>
-        <span>Ask AI</span>
-      </div>
-    </button>
-    <a
-      href="https://discord.gg/botpress"
-      target="_blank"
-      class="discord_banner w-inline-block rounded-xl"
+</div>
+</div>
+
+<div className="flex flex-wrap md:gap-8 max-w-[68rem] mx-auto px-8 lg:px-16 flex-col md:flex-row pb-4">
+  <div className="home-columns">
+    <Card
+      title="ADK"
+      img='/homepage-assets/adk.jpg'
+      cta="Install the CLI"
+      href="/adk/introduction"
     >
-      <div>Get help</div>
-    </a>
-  </div>
-</div>
-</div>
-
-
-<div className="flex flex-wrap gap-8 max-w-[56rem] mx-auto px-5 flex-col md:flex-row">
-  <div className="home-columns">
-    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl mb-4">
-      Build
-    </h2>
-
-    <CardGroup cols={1}>
-      <Card title="Quickstart" icon="rocket" href="/get-started/quick-start" horizontal>
-        Build and deploy your first AI agent
-      </Card>
-
-      <Card title="Concepts" icon="book" href="/studio/introduction" horizontal>
-        Learn the key concepts of Botpress
-      </Card>
-
-      <Card title="Guides" icon="lightbulb" href="/studio/guides/introduction" horizontal>
-        Follow detailed how-to guides
-      </Card>
-    </CardGroup>
+      TypeScript library for building AI agents from code <Badge color="blue">Beta</Badge>
+    </Card>
   </div>
 
   <div className="home-columns">
-    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl mb-4">
-      Deploy
-    </h2>
-
-    <CardGroup cols={1}>
-      <Card title="Add to your website" icon="message-square" href="/webchat/get-started/quick-start" horizontal>
-        Embed a bot on your website
-      </Card>
-
-      <Card title="Integrations" icon="plug" href="/integrations/get-started/introduction" horizontal>
-        Connect a bot to external services
-      </Card>
-
-      <Card title="React library" icon="react" href="/webchat/react-library/get-started" horizontal>
-        Build a bot into your React project
-      </Card>
-    </CardGroup>
+    <Card
+      title="Studio"
+      img='/homepage-assets/studio.jpg'
+      cta="Build an agent"
+      href="/studio/introduction"
+    >
+      Visual, drag-and-drop interface for building AI agents
+    </Card>
   </div>
 
   <div className="home-columns">
-    <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl mb-4">
-      For developers
-    </h2>
-
-    <CardGroup cols={1}>
-      <Card title="ADK" icon="bot" href="/for-developers/adk/overview" horizontal>
-        Build a powerful AI agent from code <Badge color="orange">BETA</Badge>
-      </Card>
-
-      <Card title="SDK" icon="hammer" href="/for-developers/sdk/overview" horizontal>
-        Build and publish your own integration
-      </Card>
-
-      <Card title="API Reference" icon="code" href="/api-reference/introduction" horizontal>
-        Interact with Botpress using our APIs
-      </Card>
-    </CardGroup>
+    <Card
+      title="Desk"
+      img='/homepage-assets/desk.jpg'
+      cta="Import your customers"
+      href="/desk/introduction"
+    >
+      Customer support workspace for human-AI teams
+    </Card>
   </div>
 </div>
 
-<div className="max-w-[56rem] mx-auto px-5 mt-8 mb-8">
-  <h2 class="flex whitespace-pre-wrap group font-semibold prose high-contrast text-2xl">
-    Browse by concept
-  </h2>
-
-  <div>
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500  dark:text-gray-400 mt-6">
-      Conversational logic
-    </div>
-
-    <CardGroup cols={3}>
-      <Card title="Workflows" icon="workflow" href="/studio/concepts/workflows" horizontal>
-        Sequences of steps a bot takes
-      </Card>
-
-      <Card title="Nodes" icon="square-mouse-pointer" href="/studio/concepts/nodes/introduction" horizontal>
-        Steps in a Workflow
-      </Card>
-
-      <Card title="Cards" icon="rows-3" href="/studio/concepts/cards/introduction" horizontal>
-        Actions a bot can take within a Node
-      </Card>
-
-      <Card title="Triggers" icon="play" href="/studio/concepts/triggers" horizontal>
-        Nodes that trigger for certain events
-      </Card>
-
-      <Card title="Knowledge Bases" icon="book-open" href="/studio/concepts/knowledge-base/introduction" horizontal>
-        Sources a bot can refer to
-      </Card>
-
-      <Card title="Agents" icon="bot" href="/studio/concepts/agents/introduction" horizontal>
-        Helpers that extend a bot's capabilities
-      </Card>
-    </CardGroup>
-
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500  dark:text-gray-400 mt-6">
-      Data manipulation
-    </div>
-
-    <CardGroup cols={3}>
-      <Card title="Tables" icon="table" href="/studio/concepts/tables" horizontal>
-        Local databases for storing information
-      </Card>
-
-      <Card title="Variables" icon="variable" href="/studio/concepts/variables/overview" horizontal>
-        Containers for storing and reusing data
-      </Card>
-
-      <Card title="Schemas" icon="circle-dashed" href="/studio/concepts/schemas" horizontal>
-        Blueprints for data your bot uses
-      </Card>
-    </CardGroup>
-
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 mt-6">
-      Custom code
-    </div>
-
-    <CardGroup cols={3}>
-      <Card title="Actions" icon="bolt" href="/studio/concepts/actions" horizontal>
-        Code snippets for AI
-      </Card>
-
-      <Card title="Hooks" icon="anchor" href="/studio/concepts/hooks" horizontal>
-        Code snippets for a bot's lifecycle
-      </Card>
-    </CardGroup>
-
-    <div class="inline-flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 mt-6">
-      Maintenance
-    </div>
-
-    <CardGroup cols={3}>
-      <Card title="Versions" icon="history" href="/studio/concepts/versions" horizontal>
-        History of changes to your bot
-      </Card>
-
-      <Card title="Emulator" icon="messages-square" href="/studio/concepts/emulator" horizontal>
-        Playground to test and debug your bot
-      </Card>
-
-      <Card title="Debugger" icon="logs" href="/studio/concepts/debugger-logs-json" horizontal>
-        Tools to inspect your bot's behaviour
-      </Card>
-    </CardGroup>
+<div className="flex flex-wrap md:gap-8 max-w-[68rem] mx-auto px-8 lg:px-16 flex-col md:flex-row mt-4">
+  <div className="lower-columns">
+    <WebchatCard/>
+  </div>
+  <div className="lower-columns">
+    <IntegrationsCard/>
   </div>
 </div>
