@@ -288,7 +288,7 @@
                   "/integrations/integration-guides/bamboohr",
                   "/integrations/integration-guides/canny",
                   "/integrations/integration-guides/chat",
-                  "/integrations/functional-integrations/conversation-analyzer",
+                  "/integrations/integration-guides/conversation-analyzer",
                   "/integrations/integration-guides/chatwoot",
                   "/integrations/integration-guides/plus-email-notifier",
                   "/integrations/integration-guides/github",
@@ -299,11 +299,11 @@
                   "/integrations/integration-guides/hitl",
                   "/integrations/integration-guides/hubspot",
                   "/integrations/integration-guides/hunter",
-                  "/integrations/functional-integrations/improvement",
+                  "/integrations/integration-guides/improvement",
                   "/integrations/integration-guides/instagram",
                   "/integrations/integration-guides/intercom",
                   "integrations/integration-guides/klaviyo",
-                  "/integrations/functional-integrations/knowledge-base-optimization",
+                  "/integrations/integration-guides/knowledge-base-optimization",
                   "/integrations/integration-guides/line",
                   "/integrations/integration-guides/loops",
                   "/integrations/integration-guides/mailerlite",
@@ -644,6 +644,10 @@
     {
       "source": "/for-developers/sdk/:slug*",
       "destination": "/integrations/sdk/:slug*"
+    },
+    {
+      "source": "/integrations/functional-integrations/:slug*",
+      "destination": "/integrations/integration-guides/:slug*"
     }
   ],
   "integrations": {
