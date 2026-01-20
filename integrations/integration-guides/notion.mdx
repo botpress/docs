@@ -1,5 +1,6 @@
 ---
 title: Notion
+description: Add a bot to Notion using the official integration.
 icon: '/integrations/integration-guides/assets/icons/notion.png'
 ---
 
@@ -14,51 +15,165 @@ import Triggers from '/snippets/integrations/triggers/botpress/notion.mdx'
 
 <OpenInHub integration={integrationVersions.notion}/>
 
-
-
-<img src="./assets/notion.png" />
-
 The Notion Integration with Botpress enables seamless integration to boost productivity, allowing interactions such as commenting on discussions or pages and database manipulations right from your Botpress bot.
 
-Enhance your Workflows and experience a streamlined interaction between Botpress and Notion.
+## Setup
 
-## Prerequisites
+<Tabs>
+  <Tab title="Basic configuration">
+    <Info>
+      You will need:
 
-* A [Notion Account](https://www.notion.so/signup) and a [Notion Workspace](https://www.notion.so/onboarding)
-* A [Botpress Cloud account](https://sso.botpress.cloud) and a [Botpress Bot](/get-started/quick-start)
+      - A [published bot](/get-started/quick-start)
+      - A [Notion account](https://www.notion.so/signup) and [workspace](https://www.notion.so/onboarding)
+    </Info>
 
-## Setup in Botpress
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **Notion** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize Notion**.
+      </Step>
+      <Step>
+        Follow the instructions to connect Botpress to your Notion account.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Manual configuration">
+    For advanced use cases, you can configure the integration manually using a Notion integration token.
 
-1. Go to the [Integration Hub](https://app.botpress.cloud/hub) in Botpress Cloud (if you don't have the integration installed yet).
-2. Find and open the Notion integration then click on the "Install to Bot" button, now go back to your bot settings.
+    <Info>
+      You will need:
 
-The Notion integration has the following settings:
+      - A [published bot](/get-started/quick-start)
+      - A [Notion account](https://www.notion.so/signup) and [workspace](https://www.notion.so/onboarding)
+    </Info>
 
-* **Enabled**: Whether Botpress will communicate with Telegram
-* **Webhook URL**: The URL for receiving data in Botpress
-* **Auth Token**: The token for authenticating requests from Notion
+    ### Step 1: Install the integration in Botpress
 
-## Setup up Notion
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **Notion** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select the drop-down and choose **Configure the integration using a Notion integration token**.
+      </Step>
+      <Step>
+        You should see two fields:
 
-1. To get the **Auth Token**, visit [My Integrations](https://www.notion.so/my-integrations) in Notion. Initiate a new integration, associate it with a workspace, and note down the `Internal Integration Secret`. Insert this secret in the `Auth Token` field under the **Integrations** tab of your bot.
+        - **Internal Integration Secret**
+        - **Webhook Verification Secret**
 
-<img src="./assets/notion-secret.png" />
+        Leave these empty for now—you'll come back to them after setting up the integration in Notion.
+      </Step>
+    </Steps>
 
-2. Enable Notion Comment Capabilities under the **Capabilities** tab of your bot.
+    ### Step 2: Create an integration in Notion
 
-<img src="./assets/notion-capabilities.png" />
+    Next, create a corresponding integration in Notion:
 
-That's it! Now the Notion integration is operational and ready for use within your bot.
+    <Steps>
+      <Step>
+        Go to your [integrations page](https://www.notion.so/profile/integrations) in Notion.
+      </Step>
+      <Step>
+        Select **New integration**.
+      </Step>
+      <Step>
+        Enter an **Integration Name** and **Associated workspace** for the integration. Then, select **Save**.
+      </Step>
+      <Step>
+        Select **Configure integration settings**.
+      </Step>
+      <Step>
+        Under **Internal Integration Secret**, select **Show**, then **Copy**.
+      </Step>
+      <Step>
+        Go back to the integration's configuration menu in Botpress. Then, paste the secret into the **Internal Integration Secret**.
+      </Step>
+      <Step>
+        Select **Save Configuration**.
+      </Step>
+    </Steps>
 
-<Info>
-Info
+    ### Step 3: Give access to pages and databases
 
-To execute certain actions, identification of Notion entities like pages or databases is essential. These IDs can be derived from the URL while viewing the entity or by choosing "Copy Link" from the options menu. For more details, refer to [Get a Database ID - NotionDevelopers](https://developers.notion.com/docs/create-a-notion-integration#step-3-save-the-database-id).
-</Info>
+    For your bot to interact with your Notion workspace, you need to manually specify which pages and databases it has access to:
+
+    <Steps>
+      <Step>
+        In your Notion integration's settings, go to the **Access** tab.
+      </Step>
+      <Step>
+        Select **Edit access**.
+      </Step>
+      <Step>
+        Select the pages you want your bot to have access to. Then, select **Save**.
+      </Step>
+    </Steps>
+
+    ### Step 4: Configure webhook events (optional)
+
+    If you want to use the integration's [Triggers](#triggers) and have your bot respond to events in your Notion workspace, follow the steps below:
+
+    <Steps>
+      <Step>
+        In the integration's configuration menu in Botpress, copy the webhook URL (starting with `https://webhook.botpress.cloud/`).
+      </Step>
+      <Step>
+        In your Notion integration's settings, go to the **Webhooks** tab. Then, select **+ Create a subscription**.
+      </Step>
+      <Step>
+        Paste the webhook URL you copied in the **Webhook URL** field.
+      </Step>
+      <Step>
+        Under **Select the events to listen to**, select the following events:
+
+        - **Page created**
+        - **Page deleted**
+        - **Comment created**
+
+      </Step>
+      <Step>
+        Scroll down to the bottom of the page and select **Verify**.
+      </Step>
+      <Step>
+        In Botpress, go to your bot's most recent [logs](/get-started/manage-your-agent/inspect#logs). Copy the verification token sent from Notion.
+      </Step>
+      <Step>
+        Go back to your Notion integration and paste the token in the **Verification token** field.
+      </Step>
+      <Step>
+        Select **Verify subscription**.
+      </Step>
+      <Step>
+        Finally, go back to the integration's **Configuration** menu in Botpress. Paste the verification token into the **Webhook Verification Secret** field.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+<Check>
+  Your Notion integration is ready to use. You can use the integration's [Cards](#cards) or [Triggers](#triggers) to interact with your Notion workspace.
+</Check>
 
 ---
 
 ## Cards
+
+ <Note>
+To use certain Cards, you might need to identify elements by their IDs. You can get page and database IDs:
+
+- From their URL while viewing them in your browser
+- By choosing **Copy Link** from their options menu
+</Note>
 
 <Cards />
 
