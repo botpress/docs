@@ -30,10 +30,20 @@ The Gmail integration allows your bot to chat with users via your Gmail address.
       - A [Google account](https://accounts.google.com/)
     </Info>
 
-    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
-    2. Search for the **Gmail** integration, then select **Install Integration**.
-    3. In the **Configuration** menu, select **Authorize Gmail**.
-    4. Follow the instructions to connect Botpress to your Google account.
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **Gmail** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize Gmail**.
+      </Step>
+      <Step>
+        Follow the instructions to connect Botpress to your Google account.
+      </Step>
+    </Steps>
 
     <Note>
       When using basic configuration, a Botpress-managed Gmail application will be used to connect to your Gmail account. However, actions taken by the bot will be attributed to the user who authorized the connection rather than the application.
@@ -54,26 +64,58 @@ The Gmail integration allows your bot to chat with users via your Gmail address.
 
     ### Step 1. Create a Google Cloud Platform project
 
-    1. Log in to [Google Cloud Console](https://console.cloud.google.com/) with your Gmail account.
-    2. Select **Select a project** dropdown in the top navigation. Then, select **New Project**.
-    3. Follow the on-screen instructions to create the new project.
+    <Steps>
+      <Step>
+        Log in to [Google Cloud Console](https://console.cloud.google.com/) with your Gmail account.
+      </Step>
+      <Step>
+        Select **Select a project** dropdown in the top navigation. Then, select **New Project**.
+      </Step>
+      <Step>
+        Follow the on-screen instructions to create the new project.
+      </Step>
+    </Steps>
 
     ### Step 2. Enable the Gmail API
 
-    1. In Google Cloud Console, navigate to the **APIs & Services** section.
-        2. Select **Library** from the left sidebar.
-        3. Search for **Gmail API** and select the result.
-        4. Select **Enable** to enable the Gmail API for your project.
+    <Steps>
+      <Step>
+        In Google Cloud Console, navigate to the **APIs & Services** section.
+      </Step>
+      <Step>
+        Select **Library** from the left sidebar.
+      </Step>
+      <Step>
+        Search for **Gmail API** and select the result.
+      </Step>
+      <Step>
+        Select **Enable** to enable the Gmail API for your project.
+      </Step>
+    </Steps>
 
     ### Step 3. Configure the OAuth consent screen
 
-    1. In Google Cloud Console, navigate to the **APIs & Services** section.
-    2. Select **OAuth consent screen** in the left sidebar.
-    3. Select **Get Started** and fill out the **App Information** section. Then, select **Next**.
-    4. Under **Audience**, select **External**.
-    5. Fill in the other required sections, then select **Create**.
-    6. Navigate to the **Data Access** tab, then select **Add or remove scopes**.
-    7. Under **Manually add scopes**, enter the following:
+    <Steps>
+      <Step>
+        In Google Cloud Console, navigate to the **APIs & Services** section.
+      </Step>
+      <Step>
+        Select **OAuth consent screen** in the left sidebar.
+      </Step>
+      <Step>
+        Select **Get Started** and fill out the **App Information** section. Then, select **Next**.
+      </Step>
+      <Step>
+        Under **Audience**, select **External**.
+      </Step>
+      <Step>
+        Fill in the other required sections, then select **Create**.
+      </Step>
+      <Step>
+        Navigate to the **Data Access** tab, then select **Add or remove scopes**.
+      </Step>
+      <Step>
+        Under **Manually add scopes**, enter the following:
 
         ```plaintext
         https://www.googleapis.com/auth/userinfo.email
@@ -81,89 +123,183 @@ The Gmail integration allows your bot to chat with users via your Gmail address.
         https://mail.google.com/
         https://www.googleapis.com/auth/gmail.send
         ```
-    8. Select **Add to table**, then **Update**.
-    9. Select **Save** at the bottom of the screen.
-    10. Navigate to the **Audience** tab. Under **Test users**, select **+ Add users**.
-    11. Add an email address for testing the app, then select **Save**.
+      </Step>
+      <Step>
+        Select **Add to table**, then **Update**.
+      </Step>
+      <Step>
+        Select **Save** at the bottom of the screen.
+      </Step>
+      <Step>
+        Navigate to the **Audience** tab. Under **Test users**, select **+ Add users**.
+      </Step>
+      <Step>
+        Add an email address for testing the app, then select **Save**.
+      </Step>
+    </Steps>
 
     ### Step 4. Create OAuth credentials
 
-    1. In Google Cloud Console, navigate to the **APIs & Services** section.
-    2. Select **Credentials** in the left sidebar.
-    3. Select **Create credentials**, then **OAuth client ID**.
-    4. Select **Web application** as the application type.
-    5. Enter a name for the OAuth client ID.
-    6. Under **Authorized redirect URIs**, enter `https://botpress.com`.
-    7. Select **Add URI**, then **Create**.
-    8. Copy the **Client ID** and **Client secret** for use in the next steps.
+    <Steps>
+      <Step>
+        In Google Cloud Console, navigate to the **APIs & Services** section.
+      </Step>
+      <Step>
+        Select **Credentials** in the left sidebar.
+      </Step>
+      <Step>
+        Select **Create credentials**, then **OAuth client ID**.
+      </Step>
+      <Step>
+        Select **Web application** as the application type.
+      </Step>
+      <Step>
+        Enter a name for the OAuth client ID.
+      </Step>
+      <Step>
+        Under **Authorized redirect URIs**, enter `https://botpress.com`.
+      </Step>
+      <Step>
+        Select **Add URI**, then **Create**.
+      </Step>
+      <Step>
+        Copy the **Client ID** and **Client secret** for use in the next steps.
 
         <Note>
         The client ID is the string that ends with `.apps.googleusercontent.com`.
         </Note>
+      </Step>
+    </Steps>
 
     ### Step 5. Create a service account
 
-    1. In Google Cloud Console, navigate to the **IAM & Admin** section.
-    2. Select **Service accounts** in the left sidebar.
-    3. Select **Create service account**.
-    4. Enter a name for the service account. Then, select **Done**.
+    <Steps>
+      <Step>
+        In Google Cloud Console, navigate to the **IAM & Admin** section.
+      </Step>
+      <Step>
+        Select **Service accounts** in the left sidebar.
+      </Step>
+      <Step>
+        Select **Create service account**.
+      </Step>
+      <Step>
+        Enter a name for the service account. Then, select **Done**.
 
         <Note>
         You don't need to grant any roles to the service account, as it will only be used to sign webhook events.
         </Note>
-    5. Copy the service account email address for use in the next steps.
+      </Step>
+      <Step>
+        Copy the service account email address for use in the next steps.
 
         <Tip>
         The service account email address is the string that ends with `.gserviceaccount.com`.
         </Tip>
+      </Step>
+    </Steps>
 
     ### Step 6. Create a Pub/Sub topic
 
-    1. In Google Cloud Console, search for and navigate to the **Pub/Sub** section.
-    2. Select **Topics** in the left sidebar.
-    3. Select **Create topic**.
-    4. Enter a name for the topic in the **Topic ID** field.
-    5. Uncheck the **Add default subscription** checkbox. Leave the other options unchanged.
-    6. Select **Create** to create the topic.
-    7. Copy the **Topic name** for use in the next steps.
+    <Steps>
+      <Step>
+        In Google Cloud Console, search for and navigate to the **Pub/Sub** section.
+      </Step>
+      <Step>
+        Select **Topics** in the left sidebar.
+      </Step>
+      <Step>
+        Select **Create topic**.
+      </Step>
+      <Step>
+        Enter a name for the topic in the **Topic ID** field.
+      </Step>
+      <Step>
+        Uncheck the **Add default subscription** checkbox. Leave the other options unchanged.
+      </Step>
+      <Step>
+        Select **Create** to create the topic.
+      </Step>
+      <Step>
+        Copy the **Topic name** for use in the next steps.
 
         <Note>
         The topic name is the string that starts with `projects/`.
         </Note>
+      </Step>
+    </Steps>
 
     ### Step 7. Grant publish rights on the Pub/Sub topic
 
-    1. In Google Cloud Console, search for and navigate to the **Pub/Sub** section.
-    2. Select **Topics** in the left sidebar.
-    3. From the topic list, find the topic you created earlier. Then, select the triple-dot <kbd>⋮</kbd> button on the right.
-    4. Select **View permissions** from the dropdown menu.
-    5. Select **Add principal**.
-    6. Under **Add principals**, enter `gmail-api-push@system.gserviceaccount.com`.
+    <Steps>
+      <Step>
+        In Google Cloud Console, search for and navigate to the **Pub/Sub** section.
+      </Step>
+      <Step>
+        Select **Topics** in the left sidebar.
+      </Step>
+      <Step>
+        From the topic list, find the topic you created earlier. Then, select the triple-dot <kbd>⋮</kbd> button on the right.
+      </Step>
+      <Step>
+        Select **View permissions** from the dropdown menu.
+      </Step>
+      <Step>
+        Select **Add principal**.
+      </Step>
+      <Step>
+        Under **Add principals**, enter `gmail-api-push@system.gserviceaccount.com`.
 
         <Note>
         This service account is managed by Google and is used to push events to Pub/Sub.
         </Note>
-    7. Under **Assign roles**, select `Pub/Sub Publisher`.
-    8. Select **Save** to grant publish rights to the service account.
+      </Step>
+      <Step>
+        Under **Assign roles**, select `Pub/Sub Publisher`.
+      </Step>
+      <Step>
+        Select **Save** to grant publish rights to the service account.
+      </Step>
+    </Steps>
 
     ### Step 8. Generate a shared secret
 
-    1. Generate an alphanumeric string to use as a shared secret for signing Pub/Sub push events. We recommend using a string with at least 32 characters.
+    <Steps>
+      <Step>
+        Generate an alphanumeric string to use as a shared secret for signing Pub/Sub push events. We recommend using a string with at least 32 characters.
 
         <Tip>
         You can use an [online password generator](https://bitwarden.com/password-generator/) to create a secure string.
         </Tip>
-    2. Copy this string for use in the next steps.
+      </Step>
+      <Step>
+        Copy this string for use in the next steps.
+      </Step>
+    </Steps>
 
     ### Step 9. Create a Pub/Sub subscription
 
-    1. In Google Cloud Console, search for and navigate to the **Pub/Sub** section.
-    2. Select **Subscriptions** in the left sidebar.
-    3. Select **Create subscription**.
-    4. Enter a name for the subscription in the **Subscription ID** field.
-    5. Select the topic you created earlier from the topic dropdown.
-    6. Under **Delivery type**, select **Push**.
-    7. Enter your integration's Botpress-provided webhook URL in the **Endpoint URL** field. To this URL, add `?shared_secret=`, followed by the shared secret you generated earlier.
+    <Steps>
+      <Step>
+        In Google Cloud Console, search for and navigate to the **Pub/Sub** section.
+      </Step>
+      <Step>
+        Select **Subscriptions** in the left sidebar.
+      </Step>
+      <Step>
+        Select **Create subscription**.
+      </Step>
+      <Step>
+        Enter a name for the subscription in the **Subscription ID** field.
+      </Step>
+      <Step>
+        Select the topic you created earlier from the topic dropdown.
+      </Step>
+      <Step>
+        Under **Delivery type**, select **Push**.
+      </Step>
+      <Step>
+        Enter your integration's Botpress-provided webhook URL in the **Endpoint URL** field. To this URL, add `?shared_secret=`, followed by the shared secret you generated earlier.
 
         <Tip>
         For example, if:
@@ -177,22 +313,42 @@ The Gmail integration allows your bot to chat with users via your Gmail address.
 
         in the **Endpoint URL** field.
         </Tip>
-    8. Check the **Enable authentication** checkbox.
-    9. Select the service account email address you created earlier in the **Service account** field.
-    10. Enter the shared secret you generated earlier in the **Audience** field.
+      </Step>
+      <Step>
+        Check the **Enable authentication** checkbox.
+      </Step>
+      <Step>
+        Select the service account email address you created earlier in the **Service account** field.
+      </Step>
+      <Step>
+        Enter the shared secret you generated earlier in the **Audience** field.
 
         <Note>
           Although this field is marked optional in Google Console, it's required for the integration to work properly.
         </Note>
-    11. Under **Expiration period**, select **Never expire**.
-    12. Under **Acknowledgement deadline**, enter 60 seconds.
-    13. Under **Retry policy**, select **Retry after exponential backoff delay**. Set the minimum backoff to 60 seconds and the maximum backoff to 600 seconds.
-    14. Select **Create** to create the subscription.
+      </Step>
+      <Step>
+        Under **Expiration period**, select **Never expire**.
+      </Step>
+      <Step>
+        Under **Acknowledgement deadline**, enter 60 seconds.
+      </Step>
+      <Step>
+        Under **Retry policy**, select **Retry after exponential backoff delay**. Set the minimum backoff to 60 seconds and the maximum backoff to 600 seconds.
+      </Step>
+      <Step>
+        Select **Create** to create the subscription.
+      </Step>
+    </Steps>
 
     ### Step 10. Authorize the OAuth application
 
-    1. On Gmail, log in to the Google account you want to use with the Gmail integration.
-    2. Once logged in, go to the following URL in your browser:
+    <Steps>
+      <Step>
+        On Gmail, log in to the Google account you want to use with the Gmail integration.
+      </Step>
+      <Step>
+        Once logged in, go to the following URL in your browser:
 
         ```
         https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://mail.google.com/%20https://www.googleapis.com/auth/gmail.send&access_type=offline&prompt=consent&redirect_uri=https://botpress.com&client_id=YOUR_CLIENT_ID
@@ -200,12 +356,16 @@ The Gmail integration allows your bot to chat with users via your Gmail address.
 
         Replace `YOUR_CLIENT_ID` with your OAuth **Client ID** from [Step 4](#step-4-create-oauth-credentials). For example, if your OAuth client ID is `abcd`, the URL should end with `&client_id=abcd`.
 
-    3. Follow the on-screen instructions to authorize the OAuth application with your personal Gmail account.
+      </Step>
+      <Step>
+        Follow the on-screen instructions to authorize the OAuth application with your personal Gmail account.
 
         <Warning>
             After completing the authorization, you will be redirected to [botpress.com](https://botpress.com). Don't close this page.
         </Warning>
-    4. Copy the **authorization code** from the URL in your browser's address bar. The authorization code is the string that appears after `code=` and before `&scope=` in the URL.
+      </Step>
+      <Step>
+        Copy the **authorization code** from the URL in your browser's address bar. The authorization code is the string that appears after `code=` and before `&scope=` in the URL.
 
         <Tip>
         If you have difficulty finding the authorization code in the URL, you can use online tools like https://semalt.tools/en/url-parser or https://parseurlonline.com.
@@ -214,19 +374,35 @@ The Gmail integration allows your bot to chat with users via your Gmail address.
         <Note>
         If you update any scopes, you need to generate a new authorization code and add it to the integration's configuration in Botpress Studio. The previous authorization code won't have the correct scope permissions.
         </Note>
-    5. You can now safely close this page.
+      </Step>
+      <Step>
+        You can now safely close this page.
+      </Step>
+    </Steps>
 
     ### Step 11. Configure the integration in Botpress
 
-    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
-    2. Search for the **Gmail** integration, then select **Install Integration**.
-    3. In the **Configuration** menu, select **Configure manually with your own GCP App**.
-    4. Fill in the required fields with all the information you saved from the previous steps.
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **Gmail** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Configure manually with your own GCP App**.
+      </Step>
+      <Step>
+        Fill in the required fields with all the information you saved from the previous steps.
 
         <Warning>
         The authorization code is only valid for a short period of time. If the code has expired, you will need to repeat the steps outlined in [Step 10](#step-10-authorize-the-oauth-application).
         </Warning>
-    5. Select **Save Configuration**. If no error message is displayed, the integration was successfully configured.
+      </Step>
+      <Step>
+        Select **Save Configuration**. If no error message is displayed, the integration was successfully configured.
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 
