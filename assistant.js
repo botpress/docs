@@ -55,6 +55,7 @@
     iframe.style.width = '100%'
     iframe.style.height = '100%'
     iframe.src = 'https://botpress.github.io/docs-bot/'
+    iframe.allow = 'clipboard-write'
 
     botContainer.appendChild(iframe)
 
