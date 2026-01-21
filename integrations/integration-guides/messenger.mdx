@@ -222,6 +222,161 @@ Expiry time (in hours) for downloaded media files. An expiry time of 0 means the
 
 ---
 
+## Replying to comments in DM
+
+You can configure your bot to reply to user comments in a direct message (DM).
+
+### Step 1: Check where the conversation started
+
+First, add a router Node that checks whether the conversation originated from a user's comment.
+
+<Steps>
+  <Step>
+    In Botpress Studio, enter your [Main Workflow](/studio/concepts/workflows#main).
+  </Step>
+  <Step>
+    [Add a new Node](/studio/concepts/nodes/introduction#add-a-node) to the Workflow.
+  </Step>
+  <Step>
+    Rename the Node to `Router`, then move it between the [Start Node](/studio/concepts/nodes/introduction) and any other existing Nodes:
+
+    <Frame>
+      <img
+        alt="Reply to comments in DMs 1"
+        className="block dark:hidden"
+        src="./assets/messenger-reply-in-dm-1.png"
+      />
+      <img
+        alt="Reply to comments in DMs 1"
+        className="hidden dark:block"
+        src="./assets/messenger-reply-in-dm-1-dark.png"
+      />
+    </Frame>
+  </Step>
+  <Step>
+    Add two [Expression Cards](/studio/concepts/cards/flow-logic#expression) to the `Router` Node.
+  </Step>
+  <Step>
+    Open the second Expression Card's [inspector](/studio/concepts/cards/introduction#configure-a-card). Next to the **Condition** field, toggle <span style={{ display: "inline-flex", verticalAlign: "middle" }}><svg aria-label="Magic icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5.5H14.5M14.5 5.5H17M14.5 5.5V3M14.5 5.5V8M3.30524 11.8365C6.14269 11.8365 8.16353 13.8574 8.16353 16.6948C8.20324 17.1017 8.79676 17.1017 8.83647 16.6948C8.83647 13.8574 10.8574 11.8365 13.6948 11.8365C14.1017 11.7968 14.1017 11.2032 13.6948 11.1635C10.8574 11.1635 8.83647 9.14273 8.83647 6.30524C8.79676 5.89825 8.20324 5.89825 8.16353 6.30524C8.16353 9.14273 6.14269 11.1635 3.30524 11.1635C2.89825 11.2032 2.89825 11.7968 3.30524 11.8365Z" stroke="#0190ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> to disable generative AI.
+  </Step>
+  <Step>
+    Configure this Card for conversations started normally:
+
+  - In the **Label** field, paste in: `Conversation started`
+  - In the **Condition** field, paste in: `{{event.channel == 'channel'}}`
+  </Step>
+  <Step>
+    Open the first Expression Card's [inspector](/studio/concepts/cards/introduction#configure-a-card). Next to the **Condition** field, toggle <span style={{ display: "inline-flex", verticalAlign: "middle" }}><svg aria-label="Magic icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5.5H14.5M14.5 5.5H17M14.5 5.5V3M14.5 5.5V8M3.30524 11.8365C6.14269 11.8365 8.16353 13.8574 8.16353 16.6948C8.20324 17.1017 8.79676 17.1017 8.83647 16.6948C8.83647 13.8574 10.8574 11.8365 13.6948 11.8365C14.1017 11.7968 14.1017 11.2032 13.6948 11.1635C10.8574 11.1635 8.83647 9.14273 8.83647 6.30524C8.79676 5.89825 8.20324 5.89825 8.16353 6.30524C8.16353 9.14273 6.14269 11.1635 3.30524 11.1635C2.89825 11.2032 2.89825 11.7968 3.30524 11.8365Z" stroke="#0190ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> to disable generative AI.
+  </Step>
+  <Step>
+    Configure this Card for conversations started from a comment reply:
+
+  - In the **Label** field, paste in: `Conversation started from comment`
+  - In the **Condition** field, paste in: `{{event.channel == 'commentReplies'}}`
+  </Step>
+  <Step>
+    Attach the Start Node to the `Router` Node. Then, attach the `Conversation started` Expression Card to your regular conversation logic:
+
+    <Frame>
+      <img
+        alt="Reply to comments in DMs 2"
+        className="block dark:hidden"
+        src="./assets/messenger-reply-in-dm-2.png"
+      />
+      <img
+        alt="Reply to comments in DMs 2"
+        className="hidden dark:block"
+        src="./assets/messenger-reply-in-dm-2-dark.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+### Step 2: Reply to the user's comment
+
+Next, add logic to reply to the user's comment. This lets them know that the bot will continue the conversation in a DM.
+
+<Steps>
+  <Step>
+    Add a new Node to your Workflow and rename it to `Reply_to_comment`.
+  </Step>
+  <Step>
+   Add a [Text Card](/studio/concepts/cards/send-messages#text) to the new Node.
+  </Step>
+  <Step>
+    Open the Text Card's inspector.
+
+    In the **Message to send** field, enter the message you want to reply to the user's comment. For example: `Check your DMs!`.
+  </Step>
+  <Step>
+    Attach the `Conversation started from comment` Expression Card to the `Reply_to_comment` Node:
+
+    <Frame>
+      <img
+        alt="Reply to comments in DMs 3"
+        className="block dark:hidden"
+        src="./assets/messenger-reply-in-dm-3.png"
+      />
+      <img
+        alt="Reply to comments in DMs 3"
+        className="hidden dark:block"
+        src="./assets/messenger-reply-in-dm-3-dark.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+
+### Step 3: Start a DM conversation from the comment
+
+Finally, add logic to start a DM conversation whenever a user leaves a comment.
+
+<Steps>
+  <Step>
+    Add a new Node to your Workflow and rename it to `DM_reply`.
+  </Step>
+  <Step>
+    Add the [Start DM Conversation from Comment](#start-dm-conversation-from-comment) Card to the new Node.
+  </Step>
+  <Step>
+    Open the Start DM Conversation from Comment Card's inspector.
+
+    - In the **Comment ID** field, paste in: `{{event.payload.commentId}}`
+    - In the **Message** field, enter the first message you want to send the user in a DM. For example: `Hey! Received your comment.`
+
+    <Note>
+      If you want to send the user's original comment back to them, you can add `{{event.payload.text}}` to the **Message** field.
+    </Note>
+  </Step>
+  <Step>
+    Attach the `Reply_to_comment` Node to the `DM_reply` Node. Then, attach the `DM_reply` Node to the [End Node](/studio/concepts/nodes/introduction#end):
+
+    <Frame>
+      <img
+        alt="Reply to comments in DMs 4"
+        className="block dark:hidden"
+        src="./assets/messenger-reply-in-dm-4.png"
+      />
+      <img
+        alt="Reply to comments in DMs 4"
+        className="hidden dark:block"
+        src="./assets/messenger-reply-in-dm-4-dark.png"
+      />
+    </Frame>
+  </Step>
+</Steps>
+
+<Check>
+  When a user comments on a post, your bot will now:
+
+  - Reply to their comment, letting them know to check their DMs
+  - Continue the conversation in a DM
+
+  You can further modify your Workflow depending on your desired behaviour.
+</Check>
+
+---
+
 ## Cards
 
 <Cards />
