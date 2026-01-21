@@ -1,5 +1,6 @@
 ---
 title: Google Sheets
+description: Add a bot to Google Sheets using the official integration.
 icon: '/integrations/integration-guides/assets/icons/gsheets.svg'
 ---
 
@@ -13,169 +14,226 @@ import Cards from '/snippets/integrations/cards/botpress/gsheets.mdx'
 
 <OpenInHub integration={integrationVersions.gsheets}/>
 
+The Google Sheets integration allows your bot to access and update Google Sheets data in real-time, automating tasks like CRM updates, inventory management, and survey tracking directly within chat.
 
+## Setup
 
-The Google Sheets Integration for Botpress enables your bot to access and update Google Sheets data in real-time, automating tasks like CRM updates, inventory management, and survey tracking directly within chat.
+<Tabs>
+  <Tab title="Basic configuration">
+    <Info>
+      You will need:
 
-## Setting up Google Cloud
+      - A [published bot](/get-started/quick-start)
+      - A [Google account](https://accounts.google.com/)
+    </Info>
 
-**Register Cloud Project**
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **Google Sheets** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize Google Sheets**.
+      </Step>
+      <Step>
+        Follow the instructions to connect Botpress to your Google account.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Manual configuration">
+    For more advanced use cases, you can manually configure the integration using a service account.
 
-1. First, you need to access: [https://console.developers.google.com/](https://console.developers.google.com/)
-2. Log in with your Google account
-3. Next to the Google logo, click on the dropdown list
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [Google account](https://accounts.google.com/)
+      - Access to [Google Cloud Console](https://console.developers.google.com/)
+    </Info>
+
+    ### Step 1: Create a Google Cloud project
+
+    <Steps>
+      <Step>
+        Go to the [Google Cloud Console](https://console.developers.google.com/) and sign in with your Google account.
+      </Step>
+      <Step>
+        Open the project picker dropdown in the top navigation. Then, select **New Project**.
+
+      </Step>
+      <Step>
+        Enter your project details:
+        - **Project name**: Choose a descriptive name for your project.
+        - **Organization**: Select your organization (if applicable).
+        - **Location**: Choose the appropriate location.
+
+
+      </Step>
+      <Step>
+        Select **Create** and wait for the project to be created.
+      </Step>
+      <Step>
+        Verify you're in the correct project by checking the project name next to the Google logo.
+
+      </Step>
+    </Steps>
+
+    ### Step 2: Enable the Google Sheets API
+
+    <Steps>
+      <Step>
+        In the Google Cloud Console, open the left sidebar and go to **API & Services > Credentials**.
 
-<img src="./assets/google-sheet-project.png" />
 
-In this image, the name is listed as Botpress Google Sheet because it's an integration that was already set up previously.
+      </Step>
+      <Step>
+        Select **+ Create Credentials > API Key** to create an API key.
+
+
+      </Step>
+      <Step>
+        Go to **Library**, search for "Google Sheets API", and select **Enable**.
 
-4. After clicking on the dropdown list in the image, a modal will open, and you should click on **New Project**
 
-<img src="./assets/google-cloud-new-project.png" />
+      </Step>
+    </Steps>
 
-5. You will need to enter your project information such as:
-  * Project name
-  * Organization
-  * Location
+    ### Step 3: Create a service account
 
-<img src="./assets/google-cloud-new-project-form.png" />
+    <Steps>
+      <Step>
+        Open the left sidebar and go to **API & Services > Credentials**.
 
-In this case, the name of my project is Tutorial Botpress Integration, but feel free to choose your own name.
 
-6. Then click on the create button
-7. To make sure you are in the correct project, check the project name next to the Google logo
+      </Step>
+      <Step>
+        Select **+ Create Credentials > Service Account**.
+      </Step>
+      <Step>
+        Enter a **Service account name**. The Service Account ID will be automatically generated.
 
-<img src="./assets/google-cloud-project-dropdown.png" />
 
-**Create Project Credentials**
+      </Step>
+      <Step>
+        The remaining fields are optional. Select **Done** to create the service account.
+      </Step>
+      <Step>
+        Select your newly created service account, then go to the **Keys** tab.
 
-8. The next step is to click on Menu → API & Services → Credentials
 
-<img src="./assets/google-cloud-api-services.png" />
+      </Step>
+      <Step>
+        Select **Add Key > Create new key**, choose **JSON** as the key type, then select **Create**.
 
-9. Click on Create Credentials → API Key to create an API key
 
-<img src="./assets/google-cloud-api-key.png" />
 
-**Enable Google Sheet API**
+        A JSON file will be downloaded to your machine. Keep this file secure—you'll need it to configure the integration.
+      </Step>
+    </Steps>
 
-10. The next step is to click on library and in the screen that opens, search for Sheet and enable the Google Sheet API
+    <Note>
+      The downloaded JSON file contains sensitive credentials. Store it securely and never share it publicly. The file structure looks like this:
 
-<img src="./assets/google-cloud-library.png" />
+      ```json
+      {
+        "type": "service_account",
+        "project_id": "your-project-id",
+        "private_key_id": "...",
+        "private_key": "...",
+        "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
+        "client_id": "...",
+        "auth_uri": "...",
+        "token_uri": "...",
+        "auth_provider_x509_cert_url": "...",
+        "client_x509_cert_url": "...",
+        "universe_domain": "googleapis.com"
+      }
+      ```
+    </Note>
 
-<br />
+    ### Step 4: Grant spreadsheet access to the service account
 
-<img src="./assets/google-sheets-enable.png" />
+    <Steps>
+      <Step>
+        Open your Google Sheets spreadsheet in your browser.
+      </Step>
+      <Step>
+        Select the **Share** button in the upper-right corner.
 
-**Register Service Account**
 
-11. The next step is to create a Service Account
+      </Step>
+      <Step>
+        Open the JSON file you downloaded and copy the `client_email` value.
+      </Step>
+      <Step>
+        Paste the `client_email` into the **Add people and groups** field, as if you were inviting someone to access your spreadsheet.
+      </Step>
+      <Step>
+        Set the permission to **Editor** so the bot can read and write to the spreadsheet. Then select **Send**.
 
-12. Still in the Menu → API & Services → Credentials
 
-<img src="./assets/google-cloud-menu-service-account.png" />
+      </Step>
+    </Steps>
 
-13. Fill in the information. When the service account name is filled, the Service Account ID will be automatically generated
+    ### Step 5: Configure the integration in Botpress
 
-<img src="./assets/google-cloud-service-account.png" />
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
 
-14. The other fields are optional and don't need to be filled in, so after defining the Service Account Name, just click on **Done**
 
-**Create and Download JSON Key**
+      </Step>
+      <Step>
+        Search for the **Google Sheets** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select the drop-down and choose **Configure manually with a Service Account Key**.
 
-15. After the Service Account is created, you should go to the KEYS tab
 
-<img src="./assets/google-cloud-service-account-keys.png" />
+      </Step>
+    </Steps>
 
-16. You will need to create a Key, for this click on Add Key → Create new key
+    Fill in the integration's configuration fields:
 
-<img src="./assets/google-cloud-create-new-key.png" />
+    <AccordionGroup>
+      <Accordion title="Spreadsheet ID">
+        1. Open your Google Sheets spreadsheet in your browser.
+        2. Copy the ID from the URL. The ID is the string between `/d/` and `/edit` in the URL.
 
-17. A modal will open where you will select JSON → Create
 
-<img src="./assets/google-cloud-json-private-key.png" />
+        For example, if your URL is `https://docs.google.com/spreadsheets/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/edit`, the Spreadsheet ID is `1AbCdEfGhIjKlMnOpQrStUvWxYz`.
+      </Accordion>
+      <Accordion title="Client Email">
+        Open the JSON file you downloaded in [Step 3](#step-3-create-a-service-account) and copy the `client_email` value.
+      </Accordion>
+      <Accordion title="Private Key">
+        Open the JSON file you downloaded in [Step 3](#step-3-create-a-service-account) and copy the entire `private_key` value, including the `-----BEGIN PRIVATE KEY-----` and `-----END PRIVATE KEY-----` markers.
+      </Accordion>
+    </AccordionGroup>
 
-A JSON file will be downloaded to your machine and we will use this information in our integration with the Botpress bot
+    When you've filled in all the fields, select **Save Configuration**.
 
-Your JSON should look like this, in this case I omitted the values because it's sensitive information:
+    <Check>
+      You've successfully configured the Google Sheets integration!
+    </Check>
 
-```jsx
-{
-  "type": "",
-  "project_id": "",
-  "private_key_id": "",
-  "private_key": "",
-  "client_email": "",
-  "client_id": "",
-  "auth_uri": "",
-  "token_uri": "",
-  "auth_provider_x509_cert_url": "",
-  "client_x509_cert_url": "",
-  "universe_domain": ""
-}
-```
-
-18. With the configurations in the Google Console done, now we need to share the Sheet that the bot will view. To do this, you should:
-
-- Open the JSON that was downloaded, you can use any text editor for this
-- Copy the client\_email
-- Use this email as a way of sharing, as this will be the email that the bot will need and will use to connect to your spreadsheet
-
-## Setting up Sheet
-
-19. To share your spreadsheet in Google Sheet:
-  * In the upper right corner you will see this image and click on it
-
-<img src="./assets/google-sheet-share.png" />
-
-20. You should change the access and set it to allow anyone with the link
-
-<img src="./assets/google-sheet-share-link.png" />
-
-21. And add the email generated by your JSON as if you were inviting the bot to have access to your spreadsheet
-
-Now it's time to configure the integration in Botpress Studio
-
-22. In your Studio, activate the integration with Google Sheet
-
-## Setting up Botpress Studio
-
-23. Complete the required information in your Botpress Studio:
-
-* SpreadSheetID: This will be the id of your Sheet and to find the ID you should go to your Sheet and copy only the ID that your spreadsheet uses as shown in the image below
-
-<img src="./assets/google-sheet-url.png" />
-
-It’s important to remember to copy only the ID and not the entire URL.
-
-* Private Key: This will be the value generated in your JSON file where the parameter name will be private\_key. Important note: you should copy everything that's in the line for this value except the quotation marks ""
-
-* Client Email: This will be the value generated in your JSON file where the parameter name will be client\_email
-
-* Now in your Botpress Studio
-
-* Select the integration tab as shown in the image below
-
-<img src="./assets/google-sheet-explore-the-hub.png" />
-
-* Search for Sheet and install the integration
-
-<img src="./assets/google-sheet-integration-configuration.png" />
-
-* Private Key: This will be the value generated in your JSON file where the parameter name will be private\_key. Important note: you should copy everything that's in the line for this value except the quotation marks ""
-
-* Client Email: This will be the value generated in your JSON file where the parameter name will be client\_email
-
-After everything is done, just save the settings and your bot is integrated with Google Sheet
-
-<Check>
-Done!
-
-You can now use Botpress with Google Sheet.
-</Check>
+  </Tab>
+</Tabs>
 
 ---
 
 ## Cards
+
+<Note>
+  For Cards that take [named ranges](https://support.google.com/docs/answer/63175?hl=en&co=GENIE.Platform%3DDesktop) as input, Google's standard restrictions for range names apply. Range names:
+
+  - Can contain only letters, numbers, and underscores
+  - Can't start with a number, or the words "true" or "false"
+  - Can't contain any spaces or punctuation
+  - Must be 1–250 characters
+  - Can't be in either A1 or R1C1 syntax. For example, you might get an error if you give your range a name like `A1:B2` or `R1C1:R2C2`
+</Note>
 
 <Cards />
