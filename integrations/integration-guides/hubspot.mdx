@@ -42,78 +42,86 @@ The official HubSpot integration allows your bot to interact with your HubSpot a
 
       - A [published bot](/get-started/quick-start)
       - A [HubSpot account](https://hubspot.com)
-      </Info>
+    </Info>
 
-      <Steps titleSize="h3">
-        <Step title="Install the HubSpot integration in Botpress">
+    ### Step 1: Install the HubSpot integration in Botpress
 
-          1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
-          2. Search for the **HubSpot** integration, then select **Install Integration**.
-          3. In the **Configuration** menu, select the drop-down menu, then select **Configure the integration using a HubSpot integration token**.
-          4. Copy the webhook URL—you'll need it when configuring your HubSpot app.
-          5. Leave the configuration fields empty for now—you'll come back to them after you've setup your HubSpot app.
+    <Steps>
+      <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+      <Step>Search for the **HubSpot** integration, then select **Install Integration**.</Step>
+      <Step>In the **Configuration** menu, select the drop-down menu, then select **Manual configuration, use your own HubSpot app**.</Step>
+      <Step>Copy the webhook URL—you'll need it when configuring your HubSpot app.</Step>
+      <Step>Leave the configuration fields empty for now—you'll come back to them after you've setup your HubSpot app.</Step>
+    </Steps>
 
-        </Step>
+    ### Step 2: Create a HubSpot app
 
-        <Step title="Create a HubSpot app">
+    Next, you'll need to create a HubSpot app for your bot:
 
-          Next, you'll need to create a HubSpot app for your bot:
+    <Steps>
+      <Step>Open a new tab and [log into your HubSpot account](https://app.hubspot.com/login).</Step>
+      <Step>In the upper-right corner, select your organization name, then select **Profile & Preferences**.</Step>
+      <Step>Under **Account Management**, select **Integrations**, then **Legacy Apps**.</Step>
+      <Step>Select **Create legacy app** in the upper-right corner. Then, select **Private**.</Step>
+    </Steps>
 
-          1. Open a new tab and [log into your HubSpot account](https://app.hubspot.com/login).
-          2. In the upper-right corner, select your organization name, then select **Profile & Preferences**.
-          3. Under **Account Management**, select **Integrations**, then **Legacy Apps**.
-          4. Select **Create** in the upper-right corner. Then, select **Private**.
+    ### Step 3: Add scopes to your HubSpot app
 
-        </Step>
+    Now, add the required scopes for the HubSpot app to work:
 
-        <Step title="Add scopes to your HubSpot app">
-          Now, add the required scopes for the HubSpot app to work:
+    <Steps>
+      <Step>In the **Scopes** section, select **+ Add new scope**.</Step>
+      <Step>
+        Add the following scopes:
+        - `oauth`
+        - `tickets`
+        - `crm.objects.contacts.read`
+        - `crm.objects.contacts.write`
+        - `crm.objects.owners.read`
+        - `crm.objects.companies.read`
+        - `crm.objects.companies.write`
+        - `crm.objects.leads.read`
+        - `crm.objects.leads.write`
+        - `crm.objects.deals.read`
+        - `crm.objects.deals.write`
+      </Step>
+      <Step>When you're done, select **Update**.</Step>
+    </Steps>
 
-          1. In the **Scopes** section, select **+ Add new scope**.
-          2. Add the following scopes:
-              - `oauth`
-              - `tickets`
-              - `crm.objects.contacts.read`
-              - `crm.objects.contacts.write`
-              - `crm.objects.owners.read`
-              - `crm.objects.companies.read`
-              - `crm.objects.companies.write`
-              - `crm.objects.leads.read`
-              - `crm.objects.leads.write`
-              - `crm.objects.deals.read`
-              - `crm.objects.deals.write`
-          3. When you're done, select **Update**.
-        </Step>
+    ### Step 4: Subscribe to Webhook events (optional)
 
-        <Step title="Subscribe to Webhook events (optional)">
-          Optionally, you can subscribe to Webhook events—these are necessary if you want to use the integration's [Triggers](/studio/concepts/triggers):
+    Optionally, you can subscribe to Webhook events—these are necessary if you want to use the integration's [Triggers](/studio/concepts/triggers):
 
-          1. Navigate to the **Webhooks** tab, then paste the webhook URL you copied earlier into the **Target URL** field.
-          2. Set **Event throttling** to `1`, then select **Create subscription**.
-          3. Enable **Use expanded object support**.
-          4. From the **Which object types** drop-down, select:
-              - Company
-              - Contact
-              - Ticket
-              - Lead
-          5. From the **Listen for which events** drop-down, select:
-              - Created
-              - Deleted
-          6. Select **Subscribe**.
-          7. Select **Create app** in the upper-right corner. Then, select **Continue creating**.
-        </Step>
+    <Steps>
+      <Step>Navigate to the **Webhooks** tab, then paste the webhook URL you copied earlier into the **Target URL** field.</Step>
+      <Step>Set **Event throttling** to `1`, then select **Create subscription**.</Step>
+      <Step>Enable **Use expanded object support**.</Step>
+      <Step>
+        From the **Which object types** drop-down, select:
+        - Company
+        - Contact
+        - Ticket
+        - Lead
+      </Step>
+      <Step>
+        From the **Listen for which events** drop-down, select:
+        - Created
+        - Deleted
+      </Step>
+      <Step>Select **Subscribe**.</Step>
+      <Step>Select **Create app** in the upper-right corner. Then, select **Continue creating**.</Step>
+    </Steps>
 
-        <Step title="Configure the integration in Botpress">
+    ### Step 5: Configure the integration in Botpress
 
-          Now you can use your app's credentials to fill in the configuration fields from [Step 1](#step-1-install-the-hubspot-integration-in-botpress):
+    Now you can use your app's credentials to fill in the configuration fields from [Step 1](#install-the-hubspot-integration-in-botpress):
 
-          1. From your HubSpot app's menu, navigate to the **Auth** tab.
-          2. Copy the **Access token** and **Client secret**.
-          3. Paste them into the integration's **Access Token** and **Client Secret** fields.
-          4. Scroll down and select **Save Configuration**. This automatically activates the integration.
-
-        </Step>
-      </Steps>
+    <Steps>
+      <Step>From your HubSpot app's menu, navigate to the **Auth** tab.</Step>
+      <Step>Copy the **Access token** and **Client secret**.</Step>
+      <Step>Paste them into the integration's **Access Token** and **Client Secret** fields.</Step>
+      <Step>Scroll down and select **Save Configuration**. This automatically activates the integration.</Step>
+    </Steps>
   </Tab>
 </Tabs>
 
