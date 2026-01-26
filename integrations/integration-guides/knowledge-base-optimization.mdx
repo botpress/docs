@@ -1,48 +1,45 @@
 ---
-title: Knowledge Base Optimization
-description: Automatically improve your bot's ability to respond to knowledge queries.
+title: Knowledge Base Optimizer
 icon: '/integrations/integration-guides/assets/icons/knowledge-base-optimization.svg'
 ---
 
+The official Knowledge Base Optimizer integration improves your bot's ability to respond to questions using information contained in your Knowledge Base.
 
-<Warning>
-Early Beta
+## Setup
 
-The Knowledge Base Optimization feature is in beta and shouldn't be used in production or critical Workflows. We encourage testing in non-production environments and welcome your feedback to improve its stability and functionality.
+<Info>
+  You will need:
 
-While in early beta, optimization is a manual process.
+  - A [published bot](/get-started/quick-start)
+</Info>
 
-Each optimization can cost up to 2x the total number of tokens present in each document and consumes a portion of your [AI Spend quota](/get-started/configure-your-workspace#track-usage-quotas).
-
-Optimization uses your default "Best Model", configured through your LLM settings in the Studio.
-</Warning>
-
-You can use the Knowledge Base Optimization feature to improve your bot's ability to respond to questions with information contained in your Knowledge Base.
-
-## Install
-
-Start by installing the [Knowledge Base Optimizer integration](https://studio.botpress.cloud/home?exploreHub=1&hubItemId=intver_01JSPMN283VH8Y25171DMMGYGS&search=Knowledge+Base+Optimizer) from the integration hub.
-
-<img src="./assets/kb-optimizer.png" />
+<Steps>
+  <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+  <Step>Search for the **Knowledge Base Optimizer** integration, then select **Install Integration**.</Step>
+  <Step>In the **Configuration** menu, select **Save Configuration**.</Step>
+</Steps>
 
 ## Optimize
 
-After installing the integration, you can use the "Auto-optimize" feature that now appears on your knowledge bases.
+Now you can select <Icon icon="wand-sparkles"/> **Auto-optimize** on any of your Knowledge Bases:
 
-<img src="./assets/auto-optimize.png" />
+<Frame>
+  <img
+    alt="Auto-optimize"
+    className="block dark:hidden"
+    src="./assets/auto-optimize.png"
+  />
+  <img
+    alt="Auto-optimize"
+    className="hidden dark:block"
+    src="./assets/auto-optimize-dark.png"
+  />
+</Frame>
 
-Optimizing improves your bot's ability to respond to queries with the information contained in your knowledge bases.
+This improves your bot's ability to respond to queries with the information contained in your Knowledge Bases.
 
-## Test
+## How it works
 
-### Before optimizing
+The Knowledge Base Optimizer analyzes each document in your Knowledge Base with AI. It then automatically generates smart summaries for every file and creates an overall summary for the entire Knowledge Base.
 
-In the example below, the bot is unable to parse the user's question, and doesn't understand that the user is trying to query the information contained in the Knowledge Base.
-
-<img src="./assets/test-before-optimize.png" />
-
-### After optimizing
-
-After optimizing the same example, the bot is able to take the same input and recognize that it's being asked a question that pertains to the information contained in its Knowledge Base.
-
-<img src="./assets/test-after-optimizing.png" />
+When your bot gets a question, it uses these summaries—along with the full content—to quickly find and deliver more relevant, accurate answers from your Knowledge Base.

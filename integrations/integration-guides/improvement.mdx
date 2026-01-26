@@ -1,49 +1,88 @@
 ---
 title: Improvement
-description: Provide feedback on specific LLMz iterations to improve future conversations.
 icon: '/integrations/integration-guides/assets/icons/improvement.svg'
 ---
 
-The Improvement integration lets you provide feedback on specific LLMz
+The official Improvement integration lets you provide feedback on your bot's responses in the [emulator](/studio/concepts/emulator). Your bot can then use that feedback when generating future responses.
 
-<Warning>
-The Improvement integration is in beta and shouldn't be used in production or critical Workflows. We encourage testing in non-production environments and welcome your feedback to improve its stability and functionality.
+## Setup
 
-Each stored iteration uses your Workspace's Table Rows quota, and may demonstrate increased usage.
-</Warning>
+The Improvement integration comes pre-installed on every bot. If you need to install it manually:
 
-## Install
+<Info>
+  You will need:
 
-Start by installing the [Improvement integration](https://studio.botpress.cloud/home?exploreHub=1&hubItemId=intver_01JTPD08AXCWVWBCTJQSPGBSB1&search=Conversation+Analyzer) from the integration hub.
+  - A [published bot](/get-started/quick-start)
+</Info>
 
-<img src="./assets/improvement-integration.png" />
+<Steps>
+  <Step>In Botpress Studio, select **Explore Hub** in the upper-right corner.</Step>
+  <Step>Search for the **Improvement** integration, then select **Install Integration**.</Step>
+  <Step>In the **Configuration** menu, select **Save Configuration**.</Step>
+</Steps>
 
-## Store Iterations
+## Suggesting improvements
 
-After installing the integration, all of the iterations produced by LLMz via an Autonomous Node will be stored in the automatically-created "LLMz iterations" Table. Iterations are produced at the message level, meaning a single conversation will typically have multiple iterations.
+You can suggest improvements when chatting with your bot in the emulator:
 
-<img src="./assets/improvement-table.png" />
+<Steps>
+  <Step>
+    Select <Icon icon="pencil"/> **Improve Response** on any message:
 
-This table is automatically populated every time an iteration ends. Each iteration takes up its own record, and stores specific data like the conversation or event ID, along with the iteration itself.
+    <Frame>
+      <img
+        alt="Improve response"
+        className="block dark:hidden"
+        src="./assets/improve-response.png"
+      />
+      <img
+        alt="Improve response"
+        className="hidden dark:block"
+        src="./assets/improve-response-dark.png"
+      />
+    </Frame>
+  </Step>
 
-## Provide Feedback
+  <Step>
+    Enter your feedback and select <Icon icon="refresh-ccw"/ > **Re-generate**., This will show you a preview of an updated response based on your feedback:
 
-Once you've installed the Improvement integration, you can access the "Improvement" window through the "Views" button on the top-right corner of the Studio.
+    <Frame>
+      <img
+        alt="Feedback"
+        className="block dark:hidden"
+        src="./assets/feedback.png"
+      />
+      <img
+        alt="Feedback"
+        className="hidden dark:block"
+        src="./assets/feedback-dark.png"
+      />
+    </Frame>
 
-<img src="./assets/view-improvement.png" />
+    The **Code** section shows you exactly how your bot's execution will be different after the feedback is applied.
+  </Step>
+  <Step>
+    If you're happy with the updated response, select <Icon icon="save"/> **Save as learning**.
+  </Step>
+</Steps>
 
-You can access the Improvements UI from this menu.
+## Managing feedback
 
-<img src="./assets/improvement-ui.png" />
+Any time you save feedback, it gets added to the **Feedback** [Table](/studio/concepts/tables) as a row:
 
-The Improvements UI shows all of your bot's conversations, along with each individual LLMz iteration. This iteration is the code your bot generated to take an action and/or respond to the user.
+<Frame>
+  <img
+    alt="Feedback"
+    className="block dark:hidden"
+    src="./assets/feedback-table.png"
+  />
+  <img
+    alt="Feedback"
+    className="hidden dark:block"
+    src="./assets/feedback-table-dark.png"
+  />
+</Frame>
 
-Hovering over a specific iteration will let you access the Feedback window, in which you can suggest improvements to future iterations of similar tasks.
+Your bot reads directly from this table when applying your feedback. This means you can modify the table's rows and columns to modify how feedback is applied.
 
-<img src="./assets/improvement-ui-diff.png" />
-
-Clicking "Re-generate" will produce a new iteration for your review. Once you're satisfied with the new iteration, clicking "Save" will store this to your bot's "Feedback" Table.
-
-Your bot uses the information stored in its "Feedback" Table to inform future LLMz iterations.
-
-<img src="./assets/improvement-table-result.png" />
+You can also delete a specific piece of feedback by deleting its associated table row.
