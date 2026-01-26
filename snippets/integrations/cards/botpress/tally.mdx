@@ -1,0 +1,141 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### List Submissions
+
+<span>{"List all the submissions for a specified form"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="formId"
+    type="string"
+    required
+  >
+    <span>{"Tally form ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="page"
+    type="integer"
+  >
+    <span>{"Page number for pagination"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filter"
+    type="enum<string>"
+  >
+    <span>{"Filter submissions by status"}</span>
+
+Available options: `all`, `completed`, `partial`
+  </ResponseField>
+  <ResponseField
+    name="startDate"
+    type="string"
+  >
+    <span>{"Start date for filtering submissions"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endDate"
+    type="string"
+  >
+    <span>{"End date for filtering submissions"}</span>
+  </ResponseField>
+  <ResponseField
+    name="afterId"
+    type="string"
+  >
+    <span>{"ID of the submission after which to start listing"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="questions"
+    type="array"
+    required
+  >
+    <span>{"List of questions"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Question ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+  >
+    <span>{"Question type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="submissions"
+    type="array"
+    required
+  >
+    <span>{"List of submissions"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Submission ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responses"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="questionId"
+    type="string"
+    required
+  >
+    <span>{"Question ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    <span>{"Response value"}</span>
+  </ResponseField>
+  <ResponseField
+    name="answer"
+    type="string"
+  >
+    <span>{"Response answer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
