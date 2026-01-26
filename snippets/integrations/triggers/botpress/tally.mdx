@@ -1,0 +1,80 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Form Submitted
+
+<span>{"This event happens when the form is submitted"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="formId"
+    type="string"
+    required
+  >
+    <span>{"Form ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fields"
+    type="array"
+    default={[]}
+  >
+    <span>{"Form fields"}</span>
+
+    <Tabs>
+    <Tab title="Option 2">
+      <Expandable>
+  <ResponseField
+    name="key"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="label"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="string"
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
