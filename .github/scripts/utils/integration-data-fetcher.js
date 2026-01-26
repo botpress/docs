@@ -88,8 +88,7 @@ export function filterIntegrations(data) {
   const filtered = data
     .filter(
       (integration) =>
-        integration.ownerWorkspace?.handle === 'botpress' || integration.ownerWorkspace?.handle === 'plus',
-      integration.ownerWorkspace?.handle === 'agi'
+        integration.ownerWorkspace?.handle === 'botpress' || integration.ownerWorkspace?.handle === 'plus'
     )
     .reduce((acc, integration) => {
       acc[integration.name] = {
