@@ -4,6 +4,76 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="January 23, 2026">
+  ## Additional context for Agents
+
+  When using the Translator Agent or Summary Agent, you can now provide additional context via an **Additional Context** field:
+
+  <Frame>
+    <img
+      alt="Additional context"
+      className="block dark:hidden"
+      src="/changelog-assets/2026-01-23/additional-context.png"
+    />
+    <img
+      alt="Additional context"
+      className="hidden dark:block"
+      src="/changelog-assets/2026-01-23/additional-context-dark.png"
+    />
+  </Frame>
+
+  ## Logging options
+
+  You can now configure a **Logging Mode** in your bot's settings:
+
+  <Frame>
+    <img
+      alt="Logging mode"
+      className="block dark:hidden"
+      src="/changelog-assets/2026-01-23/logging-mode.png"
+    />
+    <img
+      alt="Logging mode"
+      className="hidden dark:block"
+      src="/changelog-assets/2026-01-23/logging-mode-dark.png"
+    />
+  </Frame>
+
+  This lets you choose between 4 options for logging:
+
+  - **Enabled**: Displays all logs
+  - **Verbose**: Displays all logs with as much detail as possible
+  - **Disabled**: Doesn't display any logs
+  - **Console logs only**: Only displays logs you've written yourself
+
+  ## Integrations
+
+  - **Tally**: Added Tally integration
+  - **Slack**:
+    - Added **Reply Behaviour** field to configure where the bot should send replies (in the channel, thread, or both)
+    - Added parsing from Markdown to [`mrkdwn`](https://docs.slack.dev/messaging/formatting-message-text/#basic-formatting)
+  - **Twilio**:
+    - Added typing and "read" indicator support
+    - Improved rendering for multiple content types in the same message
+  - **Zendesk**: Improved logging and error tracking
+  - **Trello**: Various bug fixes and improvements
+
+  ## Bug fixes
+
+  - Fixed an issue that was preventing horizontal scrolling in Tables and Knowledge Bases
+  - Fixed an issue where adding the same website page to 2 different Knowledge Bases would cause the first Knowledge Base to delete that page
+  - Fixed an issue where website Knowledge Base sources were reappearing after being deleted
+  - Fixed an issue where conversation variables and user variables didn't persist their assigned value after the conversation transitioned to another Workflow
+  - Fixed an issue where using Anthropic models with the Personality Agent was causing unexpected errors
+  - Fixed an issue where copying a bot to a new bot didn't enable integrations automatically
+  - Fixed an issue where Start Nodes could be copied, even if the copies never executed
+  - Fixed an issue where additional End Nodes couldn't be deleted when created as copies of the default End Node
+  - Fixed an issue with the Summary Agent where setting the **Transcript Max Messages** setting to 0 would cause an error
+  - Fixed an issue with integration pages in the Hub where the Card schemas displayed matched the latest version of the integration instead of the currently installed version
+  - Fixed an issue where the Capture Information Card's **Skip if variable is already filled** option wasn't skipping properly when the assigned value was an empty object
+
+</Update>
+
 <Update label="January 16, 2026">
   ## Features & enhancements
 

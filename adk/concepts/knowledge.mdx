@@ -123,7 +123,7 @@ export default new Knowledge({
 Index files from a local directory (development only):
 
 ```typescript
-const FileSource = DataSource.Directory.fromPath("./docs", {
+const FileSource = DataSource.Directory.fromPath("/src/knowledge/docs", {
   filter: (filePath) => filePath.endsWith(".md") || filePath.endsWith(".txt"),
 });
 

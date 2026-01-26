@@ -332,6 +332,50 @@ Available options: `issue`
     </Expandable>
   </ResponseField>
 
+### Get or Create a Conversation
+
+<span>{"Proactively create a conversation from a bot"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The issue ID on Linear"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the created conversation"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Get User Profile
 
 <span>{"Get a user profile from Linear"}</span>
@@ -344,9 +388,8 @@ Available options: `issue`
   <ResponseField
     name="linearUserId"
     type="string"
-    required
   >
-    <span>{"The user's ID on Linear. Ex: {{event.payload.linearIds.creatorId}}"}</span>
+    <span>{"The user's ID on Linear. Ex: {{event.payload.linearIds.creatorId}}. If omitted, returns the current user."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -700,6 +743,69 @@ Available options: `issue`
     </Expandable>
   </ResponseField>
 
+### List States
+
+<span>{"List states from Linear"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="count"
+    type="number"
+    default={10}
+  >
+    <span>{"The number of states to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="startCursor"
+    type="string"
+  >
+    <span>{"The cursor to start from"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="states"
+    type="array"
+    required
+  >
+    <span>{"The list of states"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the entity"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The state's name"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"The cursor to fetch the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### List Teams
 
 <span>{"List teams from Linear"}</span>
@@ -730,6 +836,13 @@ Available options: `issue`
     required
   >
     <span>{"The unique identifier of the entity"}</span>
+  </ResponseField>
+  <ResponseField
+    name="key"
+    type="string"
+    required
+  >
+    <span>{"The team's key"}</span>
   </ResponseField>
   <ResponseField
     name="name"
@@ -888,6 +1001,95 @@ Available options: `issue`
     type="object"
   >
     This Card has no output.
+  </ResponseField>
+
+### Resolve Comment
+
+<span>{"Resolve a comment by id"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The comment ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the operation was successful"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Send Raw GraphQL Query
+
+<span>{"Send a raw GraphQL query to the linear API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"The GraphQL query"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parameters"
+    type="array"
+  >
+    <span>{"The query parameters"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The parameter name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+  >
+    <span>{"The parameter value"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="result"
+    type="string"
+  >
+    <span>{"The query result"}</span>
+  </ResponseField>
+    </Expandable>
   </ResponseField>
 
 ### Update Issue
