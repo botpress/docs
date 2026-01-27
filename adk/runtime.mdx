@@ -1,0 +1,390 @@
+---
+title: Runtime utilities
+---
+
+The ADK provides runtime utilities for accessing the execution context, Botpress client, and project information from anywhere in your agent's code.
+
+## Client
+
+The `client` export provides direct access to the Botpress API client. Unlike the `client` passed to handlers, this export works from any file in your agent—including utility functions, shared modules, and scripts run with `adk run`.
+
+<CodeGroup>
+```typescript List conversations
+import { client } from "@botpress/runtime";
+
+const { conversations } = await client.listConversations({});
+console.log(conversations);
+```
+
+```typescript Get a user
+import { client } from "@botpress/runtime";
+
+const { user } = await client.getUser({ id: userId });
+console.log(user);
+```
+
+```typescript Create a message
+import { client } from "@botpress/runtime";
+
+const message = await client.createMessage({
+  conversationId,
+  userId,
+  type: "text",
+  payload: { text: "Hello from a utility function" },
+});
+console.log(message);
+```
+</CodeGroup>
+
+The client automatically uses the correct authentication:
+- **During request handling**: Uses the bot-specific client from the current execution context
+- **In scripts (`adk run`)**: Creates a client using `ADK_TOKEN` and `ADK_BOT_ID` environment variables
+
+<Tip>
+Use this export when you need to call the Botpress API from utility functions or shared modules that don't receive the client as a parameter.
+</Tip>
+
+## Context
+
+The `context` API provides low-level access to the current execution context. It's built on Node.js `AsyncLocalStorage` and contains all runtime information about the current request.
+
+### Getting context about the current execution
+
+You can use `context.get()` to access specific values from the current execution:
+
+<CodeGroup>
+```typescript Get bot ID
+import { context } from "@botpress/runtime";
+
+const botId = context.get("botId");
+console.log(botId);
+```
+
+```typescript Get conversation
+import { context } from "@botpress/runtime";
+
+const conversation = context.get("conversation", { optional: true });
+console.log(conversation);
+```
+
+```typescript Get user
+import { context } from "@botpress/runtime";
+
+const user = context.get("user", { optional: true });
+console.log(user);
+```
+
+```typescript Get runtime info
+import { context } from "@botpress/runtime";
+
+const runtime = context.get("runtime");
+const remainingMs = runtime.getRemainingExecutionTimeInMs();
+console.log(remainingMs);
+```
+</CodeGroup>
+
+The `optional` flag prevents errors when a value might not exist in the current context. Without it, accessing a missing key throws an error.
+
+<Note>
+  Check the [reference](#reference) for a full list of available context values.
+</Note>
+
+### Setting a default context
+
+When running scripts with `adk run`, you may need to set up a default context for code that expects to run within a request:
+
+```typescript
+import { context } from "@botpress/runtime";
+
+context.setDefaultContext({
+  botId: "my-bot-id",
+  // Other context values as needed
+});
+
+// Now context.get() calls will use this default
+const botId = context.get("botId"); // "my-bot-id"
+
+// Clean up when done
+context.clearDefaultContext();
+```
+
+<Note>
+The `adk run` command automatically sets up the default context with authentication. You typically only need `setDefaultContext` for testing or custom script environments.
+</Note>
+
+### Checking execution time
+
+Long-running operations should check remaining execution time to avoid timeouts:
+
+```typescript
+import { context } from "@botpress/runtime";
+
+async function processLargeDataset(items: Item[]) {
+  const SAFETY_MARGIN = 5000;
+
+  for (const item of items) {
+    const remaining = context.get("runtime").getRemainingExecutionTimeInMs();
+
+    if (remaining < SAFETY_MARGIN) {
+      await saveProgress(items.indexOf(item));
+      return { completed: false, processedCount: items.indexOf(item) };
+    }
+
+    await processItem(item);
+  }
+
+  return { completed: true, processedCount: items.length };
+}
+```
+
+### Reference
+
+<ResponseField name="get" type="(key: string, opts?: { optional?: boolean }) => any" required>
+  Get a specific value from the current execution context. Throws an error if the key doesn't exist unless `optional: true` is passed.
+  <Expandable title="Available context values">
+    <ResponseField name="executionId" type="string" required>
+      Unique identifier for the current execution.
+    </ResponseField>
+    <ResponseField name="botId" type="string" required>
+      The bot's unique identifier.
+    </ResponseField>
+    <ResponseField name="bot" type="object" required>
+      Bot metadata including `id`, `tags`, `userId`, and `configuration`.
+    </ResponseField>
+    <ResponseField name="client" type="Client" required>
+      The authenticated Botpress client for this execution.
+    </ResponseField>
+    <ResponseField name="cognitive" type="Cognitive" required>
+      The Cognitive AI client for LLM operations.
+    </ResponseField>
+    <ResponseField name="logger" type="BotLogger" required>
+      Logger instance for the current execution.
+    </ResponseField>
+    <ResponseField name="configuration" type="object" required>
+      The bot's configuration values (from `agent.config.ts`).
+    </ResponseField>
+    <ResponseField name="conversation" type="Conversation">
+      The current conversation object. Only available in conversation and message contexts.
+    </ResponseField>
+    <ResponseField name="user" type="User">
+      The current user object. Only available when a user is associated with the request.
+    </ResponseField>
+    <ResponseField name="event" type="Event">
+      The current event object. Available in event and trigger handlers.
+    </ResponseField>
+    <ResponseField name="message" type="Message">
+      The current message object. Only available in message handlers.
+    </ResponseField>
+    <ResponseField name="workflow" type="Workflow">
+      The current workflow object. Only available in workflow handlers.
+    </ResponseField>
+    <ResponseField name="runtime" type="object" required>
+      Runtime environment information.
+      <Expandable title="Runtime properties">
+        <ResponseField name="sandboxName" type="string" required>
+          Name of the execution sandbox.
+        </ResponseField>
+        <ResponseField name="memoryInMb" type="number" required>
+          Memory limit in megabytes.
+        </ResponseField>
+        <ResponseField name="getRemainingExecutionTimeInMs" type="() => number" required>
+          Function that returns the remaining execution time in milliseconds.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+    <ResponseField name="citations" type="CitationsManager" required>
+      Manager for tracking citations in AI responses.
+    </ResponseField>
+    <ResponseField name="states" type="TrackedState[]" required>
+      Array of tracked state objects for the current execution.
+    </ResponseField>
+    <ResponseField name="tags" type="TrackedTags[]" required>
+      Array of tracked tag objects for the current execution.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="getAll" type="() => BotContext" required>
+  Get the entire context object for the current execution.
+</ResponseField>
+<ResponseField name="set" type="(key: string, value: any) => void" required>
+  Set a value in the current execution context. Can only be called within an active context.
+</ResponseField>
+<ResponseField name="setDefaultContext" type="(data: Partial&lt;BotContext&gt;) => void" required>
+  Set a default context used as a fallback when no execution context is active. Useful for testing and script execution.
+</ResponseField>
+<ResponseField name="clearDefaultContext" type="() => void" required>
+  Clear the default context.
+</ResponseField>
+
+## ADK object
+
+The `adk` export provides access to project configuration and utilities for autonomous execution outside of conversations.
+
+### Getting project information
+
+You can use the `adk` object to read your agent's primitives, configuration and more:
+
+<CodeGroup>
+```typescript Get configuration
+import { adk } from "@botpress/runtime";
+
+const config = adk.project.config;
+console.log(config.name, config.defaultModels);
+```
+
+```typescript List primitives
+import { adk } from "@botpress/runtime";
+
+const workflows = adk.project.workflows;
+const tables = adk.project.tables;
+const conversations = adk.project.conversations;
+console.log(workflows, tables, conversations);
+```
+
+```typescript Get integration
+import { adk } from "@botpress/runtime";
+
+const webchat = adk.project.integrations.get("webchat");
+console.log(webchat);
+```
+</CodeGroup>
+
+### Running an autonomous agent
+
+You can run an autonomous agent outside of a [Conversation](/adk/concepts/conversations) context. This is useful for scripts, migrations, or background tasks:
+
+```typescript
+import { adk, Autonomous, z } from "@botpress/runtime";
+
+const analyzeData = new Autonomous.Tool({
+  name: "analyzeData",
+  description: "Analyze dataset and return insights",
+  input: z.object({ datasetId: z.string() }),
+  output: z.object({ insights: z.array(z.string()) }),
+  handler: async ({ datasetId }) => {
+    // Analysis logic
+    return { insights: ["Finding 1", "Finding 2"] };
+  },
+});
+
+const result = await adk.execute({
+  instructions: "Analyze the sales data and summarize key trends",
+  tools: [analyzeData],
+  iterations: 5,
+});
+```
+
+### Using Zai
+
+The `adk` object gives you access to the [Zai utility library](/adk/zai/overview). You can use Zai to perform type-safe AI operations on arbitrary data:
+
+```typescript
+import { adk, z } from "@botpress/runtime";
+
+const summary = await adk.zai.generate({
+  instructions: "Summarize this text in 2 sentences",
+  input: longText,
+  output: z.object({
+    summary: z.string(),
+    wordCount: z.number(),
+  }),
+});
+```
+
+<Note>
+  For a full list of Zai's methods, check out the [Zai reference documentation](/adk/zai/reference).
+</Note>
+
+### Checking the execution environment
+
+You can check the current execution environment:
+
+<CodeGroup>
+```typescript Check development
+import { adk } from "@botpress/runtime";
+
+if (adk.environment.isDevelopment()) {
+  console.log("Running in development mode");
+}
+```
+
+```typescript Check production
+import { adk } from "@botpress/runtime";
+
+if (adk.environment.isProduction()) {
+  console.log("Running in production mode");
+}
+```
+</CodeGroup>
+
+This is useful if you need to run code only in specific environments—for example, enabling verbose logging or loading mock data during local development, while skipping it in production.
+
+### Reference
+
+<ResponseField name="project" type="Project" required>
+  Project primitives and configuration.
+  <Expandable title="Project properties">
+    <ResponseField name="config" type="AgentConfig" required>
+      Agent configuration from `agent.config.ts`.
+    </ResponseField>
+    <ResponseField name="integrations" type="Integration[]" required>
+      Installed integrations with typed actions. Use `.get(name)` to retrieve a specific integration.
+    </ResponseField>
+    <ResponseField name="actions" type="Action[]" required>
+      Registered action primitives.
+    </ResponseField>
+    <ResponseField name="knowledge" type="Knowledge[]" required>
+      Registered knowledge base primitives.
+    </ResponseField>
+    <ResponseField name="tables" type="Table[]" required>
+      Registered table primitives.
+    </ResponseField>
+    <ResponseField name="workflows" type="Workflow[]" required>
+      Registered workflow primitives.
+    </ResponseField>
+    <ResponseField name="conversations" type="Conversation[]" required>
+      Registered conversation primitives.
+    </ResponseField>
+    <ResponseField name="triggers" type="Trigger[]" required>
+      Registered trigger primitives.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="zai" type="Zai" required>
+  Zai LLM utility toolkit instance configured with the project's default model.
+</ResponseField>
+<ResponseField name="environment" type="Environment" required>
+  Environment detection utilities including `isDevelopment()` and `isProduction()` methods.
+</ResponseField>
+<ResponseField name="execute" type="(props: Autonomous.Props) => Promise&lt;ExecuteResult&gt;" required>
+  Execute an autonomous LLM agent outside of a conversation context.
+  <Expandable title="Execute parameters">
+    <ResponseField name="instructions" type="string" required>
+      Instructions for the autonomous agent.
+    </ResponseField>
+    <ResponseField name="tools" type="Tool[]">
+      Array of tools the agent can use.
+    </ResponseField>
+    <ResponseField name="objects" type="object[]">
+      Array of objects the agent can interact with.
+    </ResponseField>
+    <ResponseField name="exits" type="Record&lt;string, object&gt;">
+      Exit handlers for the agent.
+    </ResponseField>
+    <ResponseField name="signal" type="AbortSignal">
+      Abort signal to cancel execution.
+    </ResponseField>
+    <ResponseField name="temperature" type="number | (() => number)">
+      Temperature for the AI model. Defaults to 0.7.
+    </ResponseField>
+    <ResponseField name="model" type="string | string[]">
+      Model name(s) to use. Defaults to the project's `defaultModels.autonomous` setting.
+    </ResponseField>
+    <ResponseField name="iterations" type="number">
+      Maximum number of iterations. Defaults to 10.
+    </ResponseField>
+    <ResponseField name="hooks" type="object">
+      Execution hooks including `onTrace`, `onIterationEnd`, `onBeforeTool`, `onAfterTool`, `onBeforeExecution`, and `onExit`.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
