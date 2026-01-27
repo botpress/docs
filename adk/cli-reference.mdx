@@ -127,7 +127,7 @@ adk add webchat --alias custom-webchat
 
 ### `adk chat`
 
-Chat with your deployed bot directly from the CLI.
+Chat with your agent in development mode directly from the CLI.
 
 **Usage:**
 ```bash
@@ -137,6 +137,62 @@ adk chat
 <Note>
 Run `adk dev` first to create a development bot if you don't have a `devId` in your `agent.json`.
 </Note>
+
+---
+
+### `adk run`
+
+Run a TypeScript script with the ADK runtime fully initialized. This allows you to execute scripts that use your agent's primitives, integrations, and runtime utilities like `client`, `context`, and `adk`.
+
+**Usage:**
+```bash
+adk run <script> [args...]
+adk run scripts/migrate-data.ts
+adk run scripts/seed-tables.ts --prod
+adk run scripts/analyze.ts arg1 arg2
+```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `script` | Path to the TypeScript script file to run |
+| `args` | Optional arguments to pass to the script |
+
+**Flags:**
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `-f, --force` | Force regeneration of the bot project | `false` |
+| `--prod` | Use production bot instead of dev bot | `false` |
+
+**Script exports:**
+
+Your script can export a function that will be called automatically:
+
+```typescript
+// Option 1: Default export
+export default async function(arg1: string, arg2: string) {
+  // Script logic
+}
+
+// Option 2: Named 'run' export
+export async function run(arg1: string, arg2: string) {
+  // Script logic
+}
+
+// Option 3: Named 'main' export
+export async function main(arg1: string, arg2: string) {
+  // Script logic
+}
+
+// Option 4: Top-level code (runs on import)
+console.log("Script executed!")
+```
+
+<Tip>
+Use `adk run` to execute migrations, seed data, run maintenance tasks, or any script that needs access to your agent's runtime context.
+</Tip>
 
 ---
 
@@ -373,12 +429,20 @@ adk link --workspace <workspaceId> --bot <botId> --dev <devBotId>
 
 ### `adk self-upgrade`
 
-Upgrade ADK CLI to the latest version.
+Upgrade ADK CLI to the latest version or a specific version/tag.
 
 **Usage:**
 ```bash
 adk self-upgrade
+adk self-upgrade beta
+adk self-upgrade 1.13.0
 ```
+
+**Arguments:**
+
+| Argument | Description |
+|----------|-------------|
+| `tag-or-version` | Optional. Tag (`beta`, `next`) or specific version (`1.13.0`) to install |
 
 **Aliases:** `self-update`
 
