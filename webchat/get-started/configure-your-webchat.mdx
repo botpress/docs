@@ -272,3 +272,23 @@ Session storage creates a new user and conversation each time the page is re-ope
 You can [learn more about local and session storage here](https://www.geeksforgeeks.org/javascript/difference-between-local-storage-session-storage-and-cookies/).
 
 </Note>
+
+### Advanced settings
+
+You can also access the following advanced settings:
+
+#### Client ID
+
+The client ID is used to identify your bot's Webchat instance. You can use it when building with our [Webchat React library](/webchat/react-library/get-started).
+
+#### Allowed origins {<Tooltip tip="This feature requires a Botpress Team plan or higher."><Badge stroke color="green">Team</Badge></Tooltip>}
+
+The **Allowed Origins** setting lets you manage which domains are allowed to access Webchat.
+
+By default, this is set to **All Origins**. To restrict the allowed origins:
+
+<Steps>
+  <Step>Select **Whitelist**.</Step>
+  <Step>Select **+ Add Origin**.</Step>
+  <Step>Type the domain you want to allow, then select **Publish Changes**.</Step>
+</Steps>
