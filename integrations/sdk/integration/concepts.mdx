@@ -181,7 +181,7 @@ Just like states, tags can be used as a form of memory, enabling the integration
 
 Integrations can define secrets, such as API keys, tokens, or other sensitive values. While they're most often used for authentication with external services, they can represent any sensitive information required by the integration.
 
-Secrets are defined in the integration definition. When deploying the CLI prompts for secrets and prevents deployment if a required secret is omitted. The secret values are then available at runtime for the integration developer to use.
+Secrets are defined in the integration definition. When deploying an integration, the CLI prompts for any secrets (and prevents deployment if a required secret is omitted).. The secret values are then available at runtime for the integration developer to use.
 
 Secrets are global to the integration and aren't scoped to individual bots.
 
