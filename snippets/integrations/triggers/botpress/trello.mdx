@@ -9,7 +9,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
 </Tip>
 
 
-### Attachment added to card
+### Card Attachment Added
 
 <span>{"Triggered when an attachment is added to a card"}</span>
 
@@ -21,8 +21,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -39,7 +61,31 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+    required
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -63,30 +109,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="list"
-    type="object"
-  >
-    <span>{"List where the card was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the list"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -115,6 +138,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
   <ResponseField
     name="url"
     type="string (uri)"
+    required
   >
     <span>{"URL of the attachment"}</span>
   </ResponseField>
@@ -128,14 +152,121 @@ You can access data returned from any of these Triggers by reading `event.payloa
     name="previewUrl2x"
     type="string (uri)"
   >
-    <span>{"URL of the attachment preview in 2x"}</span>
+    <span>{"URL of the attachment preview at up to 2x the resolution"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Label added to card
+### Checklist Added To Card
+
+<span>{"Triggered when a checklist is added to a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="board"
+    type="object"
+    required
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The preview name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist that was added to the card"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card Label Added
 
 <span>{"Triggered when a label is added to a card"}</span>
 
@@ -147,8 +278,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was modified"}</span>
 
@@ -165,7 +318,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -189,7 +342,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -227,7 +380,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
 
-### Member added to card
+### Member Added To Card
 
 <span>{"Triggered when a member is added to a card"}</span>
 
@@ -239,8 +392,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -257,7 +432,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -266,7 +441,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="object"
     required
   >
-    <span>{"Card that was updated"}</span>
+    <span>{"Card that the member was added to"}</span>
 
     <Expandable>
   <ResponseField
@@ -281,7 +456,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -312,64 +487,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
 
-### Card Created
-
-  <ResponseField
-    name="payload"
-    type="object"
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Deleted
-
-  <ResponseField
-    name="payload"
-    type="object"
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Updated
-
-  <ResponseField
-    name="payload"
-    type="object"
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Comment added to card
+### Comment Created
 
 <span>{"Triggered when a comment is added to a card"}</span>
 
@@ -381,8 +499,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -399,7 +539,31 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+    required
+  >
+    <span>{"List where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -423,15 +587,16 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
-    name="list"
+    name="comment"
     type="object"
+    required
   >
-    <span>{"List where the card was updated"}</span>
+    <span>{"Comment that was added to the card"}</span>
 
     <Expandable>
   <ResponseField
@@ -439,16 +604,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Unique identifier of the list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the list"}</span>
-  </ResponseField>
-    </Expandable>
+    <span>{"Unique identifier of the comment"}</span>
   </ResponseField>
   <ResponseField
     name="text"
@@ -459,8 +615,10 @@ You can access data returned from any of these Triggers by reading `event.payloa
   </ResponseField>
     </Expandable>
   </ResponseField>
+    </Expandable>
+  </ResponseField>
 
-### Card created
+### Card Created
 
 <span>{"Triggered when a card is created"}</span>
 
@@ -472,8 +630,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was created"}</span>
 
@@ -490,7 +670,31 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+    required
+  >
+    <span>{"List where the card was created"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -514,39 +718,16 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="list"
-    type="object"
-  >
-    <span>{"List where the card was created"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the list"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Check item created
+### Checklist Item Created
 
-<span>{"Triggered when a check item is added to a checklist of a card"}</span>
+<span>{"Triggered when a checklist item is added to a card"}</span>
 
   <ResponseField
     name="payload"
@@ -556,8 +737,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -574,7 +777,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -598,7 +801,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -627,11 +830,11 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
   <ResponseField
-    name="checkItem"
+    name="checklistItem"
     type="object"
     required
   >
-    <span>{"Check item that was added to the checklist"}</span>
+    <span>{"The checklist item that was added"}</span>
 
     <Expandable>
   <ResponseField
@@ -639,28 +842,28 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Unique identifier of the check item"}</span>
+    <span>{"Unique identifier of the checklist item"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    <span>{"Name of the check item"}</span>
+    <span>{"Name of the checklist item"}</span>
   </ResponseField>
   <ResponseField
-    name="state"
-    type="string | string"
+    name="isCompleted"
+    type="boolean"
     required
   >
-    <span>{"State of the check item"}</span>
+    <span>{"Indicates if the checklist item is marked as completed"}</span>
   </ResponseField>
   <ResponseField
     name="textData"
     type="object"
     required
   >
-    
+    <span>{"Text data of the checklist item"}</span>
 
     <Expandable>
   <ResponseField
@@ -668,24 +871,18 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="object"
     required
   >
-    <span>{"Emoji of the check item"}</span>
+    <span>{"Emoji of the checklist item"}</span>
   </ResponseField>
     </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="due"
-    type="string (date-time)"
-  >
-    <span>{"Due date of the check item"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Attachment deleted from card
+### Card Attachment Removed
 
-<span>{"Triggered when an attachment is deleted from a card"}</span>
+<span>{"Triggered when an attachment is removed from a card"}</span>
 
   <ResponseField
     name="payload"
@@ -695,8 +892,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -713,7 +932,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -737,30 +956,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="list"
-    type="object"
-  >
-    <span>{"List where the card was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the list"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -791,7 +987,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
 
-### Card deleted
+### Card Deleted
 
 <span>{"Triggered when a card is deleted"}</span>
 
@@ -803,8 +999,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was deleted"}</span>
 
@@ -821,7 +1039,31 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="list"
+    type="object"
+    required
+  >
+    <span>{"List where the card was deleted"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the list"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -842,35 +1084,12 @@ You can access data returned from any of these Triggers by reading `event.payloa
   </ResponseField>
     </Expandable>
   </ResponseField>
-  <ResponseField
-    name="list"
-    type="object"
-  >
-    <span>{"List where the card was deleted"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the list"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Check item deleted
+### Checklist Item Deleted
 
-<span>{"Triggered when a check item is removed from a checklist of a card"}</span>
+<span>{"Triggered when a checklist item is removed from a card"}</span>
 
   <ResponseField
     name="payload"
@@ -880,8 +1099,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -898,7 +1139,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -922,7 +1163,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -951,11 +1192,11 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
   <ResponseField
-    name="checkItem"
+    name="checklistItem"
     type="object"
     required
   >
-    <span>{"Check item that was removed from the checklist"}</span>
+    <span>{"Checklist item that was removed"}</span>
 
     <Expandable>
   <ResponseField
@@ -963,28 +1204,28 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Unique identifier of the check item"}</span>
+    <span>{"Unique identifier of the checklist item"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    <span>{"Name of the check item"}</span>
+    <span>{"Name of the checklist item"}</span>
   </ResponseField>
   <ResponseField
-    name="state"
-    type="string | string"
+    name="isCompleted"
+    type="boolean"
     required
   >
-    <span>{"State of the check item"}</span>
+    <span>{"Indicates if the checklist item is marked as completed"}</span>
   </ResponseField>
   <ResponseField
     name="textData"
     type="object"
     required
   >
-    
+    <span>{"Text data of the checklist item"}</span>
 
     <Expandable>
   <ResponseField
@@ -992,24 +1233,18 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="object"
     required
   >
-    <span>{"Emoji of the check item"}</span>
+    <span>{"Emoji of the checklist item"}</span>
   </ResponseField>
     </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="due"
-    type="string (date-time)"
-  >
-    <span>{"Due date of the check item"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Comment deleted
+### Comment Deleted
 
-<span>{"Triggered when a comment is deleted"}</span>
+<span>{"Triggered when a comment is deleted from a card"}</span>
 
   <ResponseField
     name="payload"
@@ -1019,8 +1254,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -1037,7 +1294,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1061,15 +1318,16 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
-    name="list"
+    name="comment"
     type="object"
+    required
   >
-    <span>{"List where the card was updated"}</span>
+    <span>{"Comment that was deleted from the card"}</span>
 
     <Expandable>
   <ResponseField
@@ -1077,38 +1335,14 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Unique identifier of the list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the list"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="action"
-    type="object"
-    required
-  >
-    <span>{"The action details for the deleted comment"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the comment that was deleted"}</span>
+    <span>{"Unique identifier of the comment"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Label removed from card
+### Card Label Removed
 
 <span>{"Triggered when a label is removed from a card"}</span>
 
@@ -1120,8 +1354,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was modified"}</span>
 
@@ -1138,7 +1394,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1162,7 +1418,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1200,7 +1456,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
 
-### Member removed from card
+### Member Removed From Card
 
 <span>{"Triggered when a member is removed from a card"}</span>
 
@@ -1212,8 +1468,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -1230,7 +1508,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1254,7 +1532,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1280,12 +1558,19 @@ You can access data returned from any of these Triggers by reading `event.payloa
   >
     <span>{"Full name of the member"}</span>
   </ResponseField>
+  <ResponseField
+    name="deactivated"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates if the member was deactivated at the time of removal"}</span>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Card updated
+### Card Updated
 
 <span>{"Triggered when a card is updated"}</span>
 
@@ -1297,8 +1582,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -1315,7 +1622,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1342,55 +1649,55 @@ You can access data returned from any of these Triggers by reading `event.payloa
     <span>{"Name of the card"}</span>
   </ResponseField>
   <ResponseField
-    name="idList"
-    type="string"
-  >
-    <span>{"Unique identifier of the list where the card is located"}</span>
-  </ResponseField>
-  <ResponseField
-    name="desc"
+    name="description"
     type="string"
   >
     <span>{"Description of the card"}</span>
   </ResponseField>
   <ResponseField
-    name="idLabels"
+    name="listId"
+    type="string"
+  >
+    <span>{"Unique identifier of the list where the card is located"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
     type="array"
   >
     <span>{"Labels attached to the card"}</span>
   </ResponseField>
   <ResponseField
-    name="pos"
+    name="verticalPosition"
     type="number"
   >
-    <span>{"Position of the card"}</span>
+    <span>{"Position of the card within the list"}</span>
   </ResponseField>
   <ResponseField
-    name="start"
+    name="startDate"
     type="string | null"
   >
-    <span>{"Start date of the card"}</span>
+    
   </ResponseField>
   <ResponseField
-    name="due"
+    name="dueDate"
     type="string | null"
   >
-    <span>{"Due date of the card"}</span>
+    
   </ResponseField>
   <ResponseField
-    name="dueReminder"
-    type="number | null | number"
+    name="dueDateReminder"
+    type="integer"
   >
-    <span>{"Due reminder of the card"}</span>
+    <span>{"The number of minutes before the due date when a reminder will be sent"}</span>
   </ResponseField>
   <ResponseField
-    name="dueComplete"
+    name="isCompleted"
     type="boolean"
   >
     <span>{"Whether the card is completed"}</span>
   </ResponseField>
   <ResponseField
-    name="closed"
+    name="isArchived"
     type="boolean"
   >
     <span>{"Whether the card is archived"}</span>
@@ -1408,63 +1715,62 @@ You can access data returned from any of these Triggers by reading `event.payloa
   <ResponseField
     name="name"
     type="string"
-    required
   >
-    <span>{"Previous name of the card"}</span>
+    <span>{"Name of the card"}</span>
   </ResponseField>
   <ResponseField
-    name="desc"
-    type="string | null"
-  >
-    <span>{"Previous description of the card"}</span>
-  </ResponseField>
-  <ResponseField
-    name="idList"
+    name="description"
     type="string"
   >
-    <span>{"Previous list where the card was"}</span>
+    <span>{"Description of the card"}</span>
   </ResponseField>
   <ResponseField
-    name="idLabels"
+    name="listId"
+    type="string"
+  >
+    <span>{"Unique identifier of the list where the card is located"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
     type="array"
   >
-    <span>{"Previous labels attached to the card"}</span>
+    <span>{"Labels attached to the card"}</span>
   </ResponseField>
   <ResponseField
-    name="pos"
+    name="verticalPosition"
     type="number"
   >
-    <span>{"Previous position of the card"}</span>
+    <span>{"Position of the card within the list"}</span>
   </ResponseField>
   <ResponseField
-    name="start"
+    name="startDate"
     type="string | null"
   >
-    <span>{"Previous start date of the card"}</span>
+    
   </ResponseField>
   <ResponseField
-    name="due"
+    name="dueDate"
     type="string | null"
   >
-    <span>{"Previous due date of the card"}</span>
+    
   </ResponseField>
   <ResponseField
-    name="dueReminder"
-    type="number | null | number"
+    name="dueDateReminder"
+    type="integer"
   >
-    <span>{"Previous due reminder of the card"}</span>
+    <span>{"The number of minutes before the due date when a reminder will be sent"}</span>
   </ResponseField>
   <ResponseField
-    name="dueComplete"
+    name="isCompleted"
     type="boolean"
   >
-    <span>{"Previous completion state of the card"}</span>
+    <span>{"Whether the card is completed"}</span>
   </ResponseField>
   <ResponseField
-    name="closed"
+    name="isArchived"
     type="boolean"
   >
-    <span>{"Previous archive state of the card"}</span>
+    <span>{"Whether the card is archived"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1487,7 +1793,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the list"}</span>
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1503,14 +1809,14 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Unique identifier of the previous list"}</span>
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    <span>{"Name of the previous list"}</span>
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1526,381 +1832,6 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Unique identifier of the new list"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the new list"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Check item updated
-
-<span>{"Triggered when a check item is modified in a checklist of a card"}</span>
-
-  <ResponseField
-    name="payload"
-    type="object"
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="board"
-    type="object"
-  >
-    <span>{"Board where the card was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the board"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the board"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="card"
-    type="object"
-    required
-  >
-    <span>{"Card that was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the card"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the card"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="checklist"
-    type="object"
-    required
-  >
-    <span>{"Checklist where the item was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the checklist"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the checklist"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="checkItem"
-    type="object"
-    required
-  >
-    <span>{"Check item that was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="state"
-    type="string | string"
-    required
-  >
-    <span>{"State of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="due"
-    type="string (date-time)"
-  >
-    <span>{"Due date of the check item"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="old"
-    type="object"
-    required
-  >
-    <span>{"Old check item data"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Old name of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="state"
-    type="string | string"
-    required
-  >
-    <span>{"Old state of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="due"
-    type="string (date-time)"
-  >
-    <span>{"Old due date of the check item"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Check item state updated on card
-
-<span>{"Triggered when the state of a check item is updated in a checklist of a card"}</span>
-
-  <ResponseField
-    name="payload"
-    type="object"
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="board"
-    type="object"
-  >
-    <span>{"Board where the card was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the board"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the board"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="card"
-    type="object"
-    required
-  >
-    <span>{"Card that was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the card"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the card"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="checklist"
-    type="object"
-    required
-  >
-    <span>{"Checklist where the item was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the checklist"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the checklist"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="checkItem"
-    type="object"
-    required
-  >
-    <span>{"Check item that was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="state"
-    type="string | string"
-    required
-  >
-    <span>{"State of the check item"}</span>
-  </ResponseField>
-  <ResponseField
-    name="textData"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="emoji"
-    type="object"
-    required
-  >
-    <span>{"Emoji of the check item"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="due"
-    type="string (date-time)"
-  >
-    <span>{"Due date of the check item"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Comment updated
-
-<span>{"Triggered when a comment is updated"}</span>
-
-  <ResponseField
-    name="payload"
-    type="object"
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="board"
-    type="object"
-  >
-    <span>{"Board where the card was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the board"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the board"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="card"
-    type="object"
-    required
-  >
-    <span>{"Card that was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the card"}</span>
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    <span>{"Name of the card"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="list"
-    type="object"
-  >
-    <span>{"List where the card was updated"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
     <span>{"Unique identifier of the list"}</span>
   </ResponseField>
   <ResponseField
@@ -1908,57 +1839,16 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the list"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="action"
-    type="object"
-    required
-  >
-    <span>{"The action details for the updated comment"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    <span>{"Unique identifier of the comment that was updated"}</span>
-  </ResponseField>
-  <ResponseField
-    name="text"
-    type="string"
-    required
-  >
-    <span>{"New text of the comment"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-  <ResponseField
-    name="old"
-    type="object"
-    required
-  >
-    <span>{"Old comment data"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="text"
-    type="string"
-    required
-  >
-    <span>{"Old text of the comment"}</span>
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Vote on card
+### Checklist Item Updated
 
-<span>{"Triggered when a vote is added to a card"}</span>
+<span>{"Triggered when a checklist item is modified on a card"}</span>
 
   <ResponseField
     name="payload"
@@ -1968,8 +1858,30 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
     name="board"
     type="object"
+    required
   >
     <span>{"Board where the card was updated"}</span>
 
@@ -1986,13 +1898,14 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the board"}</span>
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
     name="card"
     type="object"
+    required
   >
     <span>{"Card that was updated"}</span>
 
@@ -2009,7 +1922,503 @@ You can access data returned from any of these Triggers by reading `event.payloa
     type="string"
     required
   >
-    <span>{"Name of the card"}</span>
+    <span>{"The preview name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist where the item was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklistItem"
+    type="object"
+    required
+  >
+    <span>{"Checklist item that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates if the checklist item is marked as completed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="textData"
+    type="object"
+    required
+  >
+    <span>{"Text data of the checklist item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="emoji"
+    type="object"
+    required
+  >
+    <span>{"Emoji of the checklist item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="dueDateReminder"
+    type="integer"
+  >
+    <span>{"The number of minutes before the due date when a reminder will be sent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="old"
+    type="object"
+    required
+  >
+    <span>{"The previous data of the checklist item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Name of the checklist item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+  >
+    <span>{"Indicates if the checklist item is marked as completed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="textData"
+    type="object"
+  >
+    <span>{"Text data of the checklist item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="emoji"
+    type="object"
+    required
+  >
+    <span>{"Emoji of the checklist item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="dueDateReminder"
+    type="integer"
+  >
+    <span>{"The number of minutes before the due date when a reminder will be sent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dueDate"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Checklist Item Completion Updated
+
+<span>{"Triggered when the completion status of a checklist item is updated"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="board"
+    type="object"
+    required
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The preview name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklist"
+    type="object"
+    required
+  >
+    <span>{"Checklist where the item was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="checklistItem"
+    type="object"
+    required
+  >
+    <span>{"Checklist item that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the checklist item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the checklist item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isCompleted"
+    type="boolean"
+    required
+  >
+    <span>{"Indicates if the checklist item is marked as completed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="textData"
+    type="object"
+    required
+  >
+    <span>{"Text data of the checklist item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="emoji"
+    type="object"
+    required
+  >
+    <span>{"Emoji of the checklist item"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Comment Updated
+
+<span>{"Triggered when a comment is updated on a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="board"
+    type="object"
+    required
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The preview name of the card"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="comment"
+    type="object"
+    required
+  >
+    <span>{"Comment that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the comment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"Text of the comment"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="old"
+    type="object"
+    required
+  >
+    <span>{"The previous data of the comment"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"Text of the comment"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Card Votes Updated
+
+<span>{"Triggered when a vote is added to or removed from a card"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="eventId"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="actor"
+    type="object | object"
+    required
+  >
+    <span>{"The actor (e.g. member or app) who triggered the event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="dateCreated"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The datetime when the event was triggered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="board"
+    type="object"
+    required
+  >
+    <span>{"Board where the card was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the board"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the board"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="card"
+    type="object"
+    required
+  >
+    <span>{"Card that was updated"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the card"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

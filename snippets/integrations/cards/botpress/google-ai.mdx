@@ -24,7 +24,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   >
     <span>{"Model to use for content generation"}</span>
 
-Available options: `gemini-2.5-flash`, `gemini-2.5-pro`, `models/gemini-2.0-flash`
+Available options: `gemini-3-pro-preview`, `gemini-3-flash-preview`, `gemini-2.5-flash`, `gemini-2.5-pro`, `models/gemini-2.0-flash`
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -164,7 +164,7 @@ Available options: `text`, `json_object`
     name="tools"
     type="array"
   >
-    
+    <span>{"List of tools available for the model to use"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -209,7 +209,7 @@ Available options: `text`, `json_object`
     name="toolChoice"
     type="object"
   >
-    
+    <span>{"The chosen tool to use for content generation"}</span>
 
     <Expandable>
   <ResponseField
@@ -230,7 +230,7 @@ Available options: `text`, `json_object`
     name="userId"
     type="string"
   >
-    
+    <span>{"Unique identifier of the user that sent the prompt"}</span>
   </ResponseField>
   <ResponseField
     name="debug"
@@ -242,7 +242,7 @@ Available options: `text`, `json_object`
     name="meta"
     type="object"
   >
-    
+    <span>{"Contextual metadata about the prompt"}</span>
 
     <Expandable>
   <ResponseField
@@ -292,14 +292,14 @@ Available options: `text`, `json_object`
     type="string"
     required
   >
-    <span>{"Model name"}</span>
+    <span>{"The name of the LLM model that was used"}</span>
   </ResponseField>
   <ResponseField
     name="choices"
     type="array"
     required
   >
-    
+    <span>{"Array of generated message choices from the model"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -397,7 +397,7 @@ Available options: `text`, `json_object`
     type="object"
     required
   >
-    
+    <span>{"A breakdown of token usage and cost information"}</span>
 
     <Expandable>
   <ResponseField
@@ -435,7 +435,7 @@ Available options: `text`, `json_object`
     type="object"
     required
   >
-    
+    <span>{"Metadata added by Botpress"}</span>
 
     <Expandable>
   <ResponseField

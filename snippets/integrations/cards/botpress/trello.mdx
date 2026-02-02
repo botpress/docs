@@ -55,561 +55,6 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     </Expandable>
   </ResponseField>
 
-### Board List
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="items"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="meta"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Board Member List
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="items"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="meta"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Board Member Read
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Board Read
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Create
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="description"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="listId"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="verticalPosition"
-    type="number"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="isClosed"
-    type="boolean"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="isCompleted"
-    type="boolean"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="dueDate"
-    type="string (date-time)"
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="labelIds"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="memberIds"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Delete
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    This Card has no output.
-  </ResponseField>
-
-### Card List
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="items"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="meta"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Member List
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="items"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="meta"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Member Read
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Read
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Card Update
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="item"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="name"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="description"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="listId"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="verticalPosition"
-    type="number"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="isClosed"
-    type="boolean"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="isCompleted"
-    type="boolean"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="dueDate"
-    type="string (date-time)"
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="labelIds"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="memberIds"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
 ### Create new card
 
 <span>{"Create a card and add it to a list"}</span>
@@ -639,16 +84,16 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="cardBody"
     type="string"
   >
-    <span>{"Body text of the new card"}</span>
+    <span>{"The body text of the new card"}</span>
   </ResponseField>
   <ResponseField
-    name="members"
+    name="memberIds"
     type="array"
   >
     <span>{"Members to add to the card (Optional). This should be a list of member IDs."}</span>
   </ResponseField>
   <ResponseField
-    name="labels"
+    name="labelIds"
     type="array"
   >
     <span>{"Labels to add to the card (Optional). This should be a list of label IDs."}</span>
@@ -658,6 +103,15 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string (date-time)"
   >
     <span>{"The due date of the card in ISO 8601 format (Optional)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="completionStatus"
+    type="enum<string>"
+    default="Incomplete"
+  >
+    <span>{"Whether the card should be marked as complete (Optional). Enter \"Complete\" or \"Incomplete\" (without quotes)."}</span>
+
+Available options: `Complete`, `Incomplete`
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -684,6 +138,39 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     <span>{"Unique identifier of the new card"}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+
+### Delete card
+
+<span>{"Deletes a card by its unique identifier"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cardId"
+    type="string"
+    required
+  >
+    <span>{"ID of the card to delete"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hardDelete"
+    type="boolean"
+    default={false}
+  >
+    <span>{"Whether to perform a hard delete or a soft delete (archive). Set to true for hard delete, false for soft delete."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
   </ResponseField>
 
 ### Get all board members
@@ -727,21 +214,21 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the member"}</span>
   </ResponseField>
   <ResponseField
     name="username"
     type="string"
     required
   >
-    
+    <span>{"A public alias that represents the member"}</span>
   </ResponseField>
   <ResponseField
     name="fullName"
     type="string"
     required
   >
-    
+    <span>{"Full name of the member"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -779,14 +266,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -834,21 +321,21 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the member"}</span>
   </ResponseField>
   <ResponseField
     name="username"
     type="string"
     required
   >
-    
+    <span>{"A public alias that represents the member"}</span>
   </ResponseField>
   <ResponseField
     name="fullName"
     type="string"
     required
   >
-    
+    <span>{"Full name of the member"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -896,14 +383,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -958,21 +445,21 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the member"}</span>
   </ResponseField>
   <ResponseField
     name="username"
     type="string"
     required
   >
-    
+    <span>{"A public alias that represents the member"}</span>
   </ResponseField>
   <ResponseField
     name="fullName"
     type="string"
     required
   >
-    
+    <span>{"Full name of the member"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1020,14 +507,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the board"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The name of the board"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1075,69 +562,69 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    
+    <span>{"Detailed description of the card"}</span>
   </ResponseField>
   <ResponseField
     name="listId"
     type="string"
     required
   >
-    
+    <span>{"Identifier of the list the card belongs to"}</span>
   </ResponseField>
   <ResponseField
     name="verticalPosition"
     type="number"
     required
   >
-    
+    <span>{"Position of the card within the list"}</span>
   </ResponseField>
   <ResponseField
     name="isClosed"
     type="boolean"
     required
   >
-    
+    <span>{"Indicates if the card is closed"}</span>
   </ResponseField>
   <ResponseField
     name="isCompleted"
     type="boolean"
     required
   >
-    
+    <span>{"Indicates if the card is completed"}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    
+    <span>{"The expected completed by date (Optional)"}</span>
   </ResponseField>
   <ResponseField
     name="labelIds"
     type="array"
     required
   >
-    
+    <span>{"A list of label IDs attached to the card"}</span>
   </ResponseField>
   <ResponseField
     name="memberIds"
     type="array"
     required
   >
-    
+    <span>{"A list of member IDs assigned to the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1192,69 +679,69 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    
+    <span>{"Detailed description of the card"}</span>
   </ResponseField>
   <ResponseField
     name="listId"
     type="string"
     required
   >
-    
+    <span>{"Identifier of the list the card belongs to"}</span>
   </ResponseField>
   <ResponseField
     name="verticalPosition"
     type="number"
     required
   >
-    
+    <span>{"Position of the card within the list"}</span>
   </ResponseField>
   <ResponseField
     name="isClosed"
     type="boolean"
     required
   >
-    
+    <span>{"Indicates if the card is closed"}</span>
   </ResponseField>
   <ResponseField
     name="isCompleted"
     type="boolean"
     required
   >
-    
+    <span>{"Indicates if the card is completed"}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    
+    <span>{"The expected completed by date (Optional)"}</span>
   </ResponseField>
   <ResponseField
     name="labelIds"
     type="array"
     required
   >
-    
+    <span>{"A list of label IDs attached to the card"}</span>
   </ResponseField>
   <ResponseField
     name="memberIds"
     type="array"
     required
   >
-    
+    <span>{"A list of member IDs assigned to the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1302,69 +789,69 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The preview name of the card"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    
+    <span>{"Detailed description of the card"}</span>
   </ResponseField>
   <ResponseField
     name="listId"
     type="string"
     required
   >
-    
+    <span>{"Identifier of the list the card belongs to"}</span>
   </ResponseField>
   <ResponseField
     name="verticalPosition"
     type="number"
     required
   >
-    
+    <span>{"Position of the card within the list"}</span>
   </ResponseField>
   <ResponseField
     name="isClosed"
     type="boolean"
     required
   >
-    
+    <span>{"Indicates if the card is closed"}</span>
   </ResponseField>
   <ResponseField
     name="isCompleted"
     type="boolean"
     required
   >
-    
+    <span>{"Indicates if the card is completed"}</span>
   </ResponseField>
   <ResponseField
     name="dueDate"
     type="string (date-time)"
   >
-    
+    <span>{"The expected completed by date (Optional)"}</span>
   </ResponseField>
   <ResponseField
     name="labelIds"
     type="array"
     required
   >
-    
+    <span>{"A list of label IDs attached to the card"}</span>
   </ResponseField>
   <ResponseField
     name="memberIds"
     type="array"
     required
   >
-    
+    <span>{"A list of member IDs assigned to the card"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1412,14 +899,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1474,14 +961,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1529,14 +1016,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the list"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"The name of the list"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1584,102 +1071,23 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Unique identifier of the member"}</span>
   </ResponseField>
   <ResponseField
     name="username"
     type="string"
     required
   >
-    
+    <span>{"A public alias that represents the member"}</span>
   </ResponseField>
   <ResponseField
     name="fullName"
     type="string"
     required
   >
-    
+    <span>{"Full name of the member"}</span>
   </ResponseField>
     </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### List List
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="items"
-    type="array"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="meta"
-    type="object"
-    required
-  >
-    
-
-    <Expandable>
-  <ResponseField
-    name="nextToken"
-    type="string"
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### List Read
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="id"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="item"
-    type="string"
-    required
-  >
-    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1748,7 +1156,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    <span>{"Unique identifier of the list in which the card will be moved"}</span>
+    <span>{"Unique identifier of the list in which the card will be moved to"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1832,53 +1240,53 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     <span>{"Unique identifier of the card"}</span>
   </ResponseField>
   <ResponseField
-    name="name"
+    name="cardName"
     type="string"
   >
     <span>{"The name of the card (Optional) (e.g. \"My Test Card\"). Leave empty to keep the current name."}</span>
   </ResponseField>
   <ResponseField
-    name="bodyText"
+    name="cardBody"
     type="string"
   >
-    <span>{"Body text of the new card (Optional). Leave empty to keep the current body."}</span>
+    <span>{"The new body text of the card (Optional). Leave empty to keep the current body."}</span>
   </ResponseField>
   <ResponseField
-    name="closedState"
+    name="lifecycleStatus"
     type="enum<string>"
   >
-    <span>{"Whether the card should be archived (Optional). Enter \"open\", \"archived\" (without quotes), or leave empty to keep the previous status."}</span>
+    <span>{"Whether the card should be archived (Optional). Enter \"Open\", \"Archived\" (without quotes), or leave empty to keep the previous status."}</span>
 
-Available options: `open`, `archived`
+Available options: `Open`, `Archived`
   </ResponseField>
   <ResponseField
-    name="completeState"
+    name="completionStatus"
     type="enum<string>"
   >
-    <span>{"Whether the card should be marked as complete (Optional). Enter \"complete\", \"incomplete\" (without quotes), or leave empty to keep the previous status."}</span>
+    <span>{"Whether the card should be marked as complete (Optional). Enter \"Complete\", \"Incomplete\" (without quotes), or leave empty to keep the previous status."}</span>
 
-Available options: `complete`, `incomplete`
+Available options: `Complete`, `Incomplete`
   </ResponseField>
   <ResponseField
-    name="membersToAdd"
+    name="memberIdsToAdd"
     type="array"
   >
     <span>{"Members to add to the card (Optional). This should be a list of member IDs. Leave empty to keep the current members."}</span>
   </ResponseField>
   <ResponseField
-    name="membersToRemove"
+    name="memberIdsToRemove"
     type="array"
   >
     <span>{"Members to remove from the card (Optional). This should be a list of member IDs. Leave empty to keep the current members."}</span>
   </ResponseField>
   <ResponseField
-    name="labelsToAdd"
+    name="labelIdsToAdd"
     type="array"
   >
     <span>{"Labels to add to the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels."}</span>
   </ResponseField>
   <ResponseField
-    name="labelsToRemove"
+    name="labelIdsToRemove"
     type="array"
   >
     <span>{"Labels to remove from the card (Optional). This should be a list of label IDs. Leave empty to keep the current labels."}</span>
@@ -1888,6 +1296,18 @@ Available options: `complete`, `incomplete`
     type="string (date-time)"
   >
     <span>{"The due date of the card in ISO 8601 format (Optional). Leave empty to keep the current due date."}</span>
+  </ResponseField>
+  <ResponseField
+    name="listId"
+    type="string"
+  >
+    <span>{"Unique identifier of the list in which the card will be moved to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="verticalPosition"
+    type="string"
+  >
+    <span>{"The new position of the card in the list, either \"top\", \"bottom\", or a float (Optional). Leave empty to keep the current position."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
