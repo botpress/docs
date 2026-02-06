@@ -123,7 +123,7 @@ export default new Knowledge({
 Index files from a local directory (development only):
 
 ```typescript
-const FileSource = DataSource.Directory.fromPath("/src/knowledge/docs", {
+const FileSource = DataSource.Directory.fromPath("./src/knowledge/docs", {
   filter: (filePath) => filePath.endsWith(".md") || filePath.endsWith(".txt"),
 });
 
@@ -144,7 +144,8 @@ export default new Knowledge({
 | `id` | `string` | Optional unique identifier for the source |
 | `filter` | `(filePath: string) => boolean` | Filter function to include/exclude files |
 
-### Table source
+{/* Temporarily removing as these are not yet implemented */}
+{/* ### Table source
 
 Index data from a table:
 
@@ -163,7 +164,7 @@ export default new Knowledge({
   name: "orders-kb",
   sources: [TableSource],
 });
-```
+``` */}
 
 ## Using knowledge in conversations
 
