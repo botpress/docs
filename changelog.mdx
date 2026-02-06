@@ -4,6 +4,35 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="January 30, 2026">
+  ## Features & enhancements
+
+  - [Gemini 3 previews](https://aistudio.google.com/models/gemini-3) are now available in Studio
+  - Improved UI for viewing video guides in Studio
+  - You can now copy the raw LLMz output when inspecting a message in the emulator
+  - Studio now displays exactly which configuration field is causing an error when attempting to save an integration's configuration
+  - Added support for BCP 47 to the Translator Agent, which helps distinguish between traditional and simplified Chinese
+
+  ## Integrations
+
+  - **BambooHR**: Fixed an issue that was causing the [Get Custom Info](/integrations/integration-guides/bamboohr#get-custom-info) Card to not return any fields
+  - **WhatsApp**:
+    - Improved logging when messages fail to send
+    - Added referral metadata to tags, which provides details about the origin of the conversation
+
+  ## Bug fixes
+
+  - Fixed an issue where changes to a Workflow were being lost due to a failure to save the Workflow
+  - Fixed an issue where certain integrations showed an error message before attempting to save the configuration
+  - Fixed an issue where certain Knowledge Base IDs were being duplicated when copying a bot
+  - Fixed an issue where the [Find Records](/studio/concepts/cards/tables#find-records) Card wasn't working properly with queries containing variables
+  - Fixed a visual issue with the error message displayed when attempting to drag Autonomous Node Cards into a Standard Node
+  - Fixed a visual issue where default connectors were missing from Nodes with multiple exit connectors
+  - Fixed an issue where hooks related to an integration were deleted after copying a bot if that integration wasn't enabled or configured
+  - Fixed an issue where large favicons were preventing websites from being crawled properly
+
+</Update>
+
 <Update label="January 23, 2026">
   ## Additional context for Agents
 
