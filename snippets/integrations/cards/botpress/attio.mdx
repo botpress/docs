@@ -24,7 +24,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record data to create"}</span>
 
     <Expandable>
   <ResponseField
@@ -40,14 +40,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The attribute slug or ID"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    
+    <span>{"The value to set for the attribute"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -74,7 +74,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record identifier"}</span>
 
     <Expandable>
   <ResponseField
@@ -155,7 +155,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="object"
   >
-    
+    <span>{"The object identifier"}</span>
 
     <Expandable>
   <ResponseField
@@ -178,25 +178,25 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="api_slug"
     type="string"
   >
-    
+    <span>{"The API slug for the object"}</span>
   </ResponseField>
   <ResponseField
     name="singular_noun"
     type="string"
   >
-    
+    <span>{"The singular form of the object name"}</span>
   </ResponseField>
   <ResponseField
     name="plural_noun"
     type="string"
   >
-    
+    <span>{"The plural form of the object name"}</span>
   </ResponseField>
   <ResponseField
     name="created_at"
     type="string"
   >
-    
+    <span>{"RFC3339 timestamp when the object was created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -224,7 +224,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record identifier"}</span>
 
     <Expandable>
   <ResponseField
@@ -263,7 +263,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The fetched record data"}</span>
 
     <Expandable>
   <ResponseField
@@ -352,7 +352,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="object"
   >
-    
+    <span>{"The attribute identifier object"}</span>
 
     <Expandable>
   <ResponseField
@@ -373,7 +373,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="attribute_id"
     type="string"
   >
-    
+    <span>{"The attribute identifier"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -381,74 +381,74 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="title"
     type="string"
   >
-    
+    <span>{"The title of the attribute"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string | null"
   >
-    
+    <span>{"The description of the attribute"}</span>
   </ResponseField>
   <ResponseField
     name="api_slug"
     type="string"
   >
-    
+    <span>{"The API slug for the attribute"}</span>
   </ResponseField>
   <ResponseField
     name="type"
     type="string"
   >
-    
+    <span>{"The type of the attribute"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string"
   >
-    
+    <span>{"The slug for the attribute"}</span>
   </ResponseField>
   <ResponseField
     name="options"
     type="array"
   >
-    
+    <span>{"The list of options for the attribute"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
     name="id"
     type="string"
   >
-    
+    <span>{"The option identifier"}</span>
   </ResponseField>
   <ResponseField
     name="label"
     type="string"
   >
-    
+    <span>{"The label of the option"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
   >
-    
+    <span>{"The name of the option"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
   >
-    
+    <span>{"The value of the option"}</span>
   </ResponseField>
   <ResponseField
     name="title"
     type="string"
   >
-    
+    <span>{"The title of the option"}</span>
   </ResponseField>
   <ResponseField
     name="slug"
     type="string"
   >
-    
+    <span>{"The slug of the option"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -485,7 +485,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="id"
     type="object"
   >
-    
+    <span>{"The object identifier"}</span>
 
     <Expandable>
   <ResponseField
@@ -508,25 +508,25 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="api_slug"
     type="string"
   >
-    
+    <span>{"The API slug for the object"}</span>
   </ResponseField>
   <ResponseField
     name="singular_noun"
     type="string"
   >
-    
+    <span>{"The singular form of the object name"}</span>
   </ResponseField>
   <ResponseField
     name="plural_noun"
     type="string"
   >
-    
+    <span>{"The plural form of the object name"}</span>
   </ResponseField>
   <ResponseField
     name="created_at"
     type="string"
   >
-    
+    <span>{"RFC3339 timestamp when the object was created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -561,14 +561,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The attribute to filter by"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    
+    <span>{"The value to filter for"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -584,21 +584,23 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="enum<string>"
     required
   >
-    Available options: `asc`, `desc`
+    <span>{"The sort direction"}</span>
+
+Available options: `asc`, `desc`
   </ResponseField>
   <ResponseField
     name="attribute"
     type="string"
     required
   >
-    
+    <span>{"The attribute to sort by"}</span>
   </ResponseField>
   <ResponseField
     name="field"
     type="string"
     required
   >
-    
+    <span>{"The field to sort by"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -635,7 +637,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record identifier"}</span>
 
     <Expandable>
   <ResponseField
@@ -701,7 +703,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record identifier"}</span>
 
     <Expandable>
   <ResponseField
@@ -732,7 +734,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record data to update"}</span>
 
     <Expandable>
   <ResponseField
@@ -748,14 +750,14 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"The attribute slug or ID"}</span>
   </ResponseField>
   <ResponseField
     name="value"
     type="string"
     required
   >
-    
+    <span>{"The value to set for the attribute"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -782,7 +784,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"The record identifier"}</span>
 
     <Expandable>
   <ResponseField
