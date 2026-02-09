@@ -310,96 +310,96 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Campaign ID"}</span>
   </ResponseField>
   <ResponseField
     name="web_id"
     type="number"
     required
   >
-    
+    <span>{"Campaign web ID"}</span>
   </ResponseField>
   <ResponseField
     name="parent_campaign_id"
     type="string"
   >
-    
+    <span>{"Parent campaign ID if this is a child campaign"}</span>
   </ResponseField>
   <ResponseField
     name="type"
     type="string"
     required
   >
-    
+    <span>{"Campaign type"}</span>
   </ResponseField>
   <ResponseField
     name="create_time"
     type="string"
     required
   >
-    
+    <span>{"Campaign creation time"}</span>
   </ResponseField>
   <ResponseField
     name="archive_url"
     type="string"
     required
   >
-    
+    <span>{"URL to the campaign archive"}</span>
   </ResponseField>
   <ResponseField
     name="long_archive_url"
     type="string"
     required
   >
-    
+    <span>{"Long URL to the campaign archive"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="string"
     required
   >
-    
+    <span>{"Campaign status"}</span>
   </ResponseField>
   <ResponseField
     name="emails_sent"
     type="number"
     required
   >
-    
+    <span>{"Number of emails sent"}</span>
   </ResponseField>
   <ResponseField
     name="send_time"
     type="string"
     required
   >
-    
+    <span>{"Time when the campaign was sent"}</span>
   </ResponseField>
   <ResponseField
     name="content_type"
     type="string"
     required
   >
-    
+    <span>{"Campaign content type"}</span>
   </ResponseField>
   <ResponseField
     name="needs_block_refresh"
     type="boolean"
     required
   >
-    
+    <span>{"Whether the campaign needs block refresh"}</span>
   </ResponseField>
   <ResponseField
     name="resendable"
     type="boolean"
     required
   >
-    
+    <span>{"Whether the campaign can be resent"}</span>
   </ResponseField>
   <ResponseField
     name="recipients"
     type="object"
   >
-    <span>{"Recipients information"}</span>
+    <span>{"Campaign recipients"}</span>
 
     <Expandable>
   <ResponseField
@@ -442,7 +442,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"Segment options for targeting specific recipients"}</span>
 
     <Expandable>
   <ResponseField
@@ -478,7 +478,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    <span>{"Settings for the campaign"}</span>
+    <span>{"Campaign settings"}</span>
 
     <Expandable>
   <ResponseField
@@ -605,7 +605,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="variate_settings"
     type="object"
   >
-    
+    <span>{"A/B testing settings"}</span>
 
     <Expandable>
   <ResponseField
@@ -744,7 +744,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"Campaign tracking settings"}</span>
 
     <Expandable>
   <ResponseField
@@ -841,7 +841,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="rss_opts"
     type="object"
   >
-    
+    <span>{"RSS campaign options"}</span>
 
     <Expandable>
   <ResponseField
@@ -863,7 +863,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"RSS feed schedule"}</span>
 
     <Expandable>
   <ResponseField
@@ -886,49 +886,49 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="boolean"
     required
   >
-    
+    <span>{"Send on Sunday"}</span>
   </ResponseField>
   <ResponseField
     name="monday"
     type="boolean"
     required
   >
-    
+    <span>{"Send on Monday"}</span>
   </ResponseField>
   <ResponseField
     name="tuesday"
     type="boolean"
     required
   >
-    
+    <span>{"Send on Tuesday"}</span>
   </ResponseField>
   <ResponseField
     name="wednesday"
     type="boolean"
     required
   >
-    
+    <span>{"Send on Wednesday"}</span>
   </ResponseField>
   <ResponseField
     name="thursday"
     type="boolean"
     required
   >
-    
+    <span>{"Send on Thursday"}</span>
   </ResponseField>
   <ResponseField
     name="friday"
     type="boolean"
     required
   >
-    
+    <span>{"Send on Friday"}</span>
   </ResponseField>
   <ResponseField
     name="saturday"
     type="boolean"
     required
   >
-    
+    <span>{"Send on Saturday"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -968,7 +968,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="ab_split_opts"
     type="object"
   >
-    
+    <span>{"A/B split test options"}</span>
 
     <Expandable>
   <ResponseField
@@ -1075,7 +1075,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="social_card"
     type="object"
   >
-    
+    <span>{"Social media card settings"}</span>
 
     <Expandable>
   <ResponseField
@@ -1105,7 +1105,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="report_summary"
     type="object"
   >
-    
+    <span>{"Campaign report summary"}</span>
 
     <Expandable>
   <ResponseField
@@ -1155,7 +1155,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object"
     required
   >
-    
+    <span>{"Ecommerce data for the campaign"}</span>
 
     <Expandable>
   <ResponseField
@@ -1188,45 +1188,45 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="object | object"
     required
   >
-    
+    <span>{"Campaign delivery status"}</span>
   </ResponseField>
   <ResponseField
     name="_links"
     type="array"
     required
   >
-    
+    <span>{"Related links"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
     name="rel"
     type="string"
   >
-    
+    <span>{"Link relation type"}</span>
   </ResponseField>
   <ResponseField
     name="href"
     type="string"
   >
-    
+    <span>{"Link URL"}</span>
   </ResponseField>
   <ResponseField
     name="method"
     type="string | string | string | string | string | string | string"
   >
-    
+    <span>{"HTTP method"}</span>
   </ResponseField>
   <ResponseField
     name="targetSchema"
     type="string"
   >
-    
+    <span>{"Target schema URL"}</span>
   </ResponseField>
   <ResponseField
     name="schema"
     type="string"
   >
-    
+    <span>{"Schema URL"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1251,31 +1251,31 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="rel"
     type="string"
   >
-    
+    <span>{"Link relation type"}</span>
   </ResponseField>
   <ResponseField
     name="href"
     type="string"
   >
-    
+    <span>{"Link URL"}</span>
   </ResponseField>
   <ResponseField
     name="method"
     type="string | string | string | string | string | string | string"
   >
-    
+    <span>{"HTTP method"}</span>
   </ResponseField>
   <ResponseField
     name="targetSchema"
     type="string"
   >
-    
+    <span>{"Target schema URL"}</span>
   </ResponseField>
   <ResponseField
     name="schema"
     type="string"
   >
-    
+    <span>{"Schema URL"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1319,28 +1319,28 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"List ID"}</span>
   </ResponseField>
   <ResponseField
     name="web_id"
     type="number"
     required
   >
-    
+    <span>{"List web ID"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"List name"}</span>
   </ResponseField>
   <ResponseField
     name="contact"
     type="object"
     required
   >
-    
+    <span>{"Contact information for the list"}</span>
 
     <Expandable>
   <ResponseField
@@ -1406,21 +1406,21 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Permission reminder message"}</span>
   </ResponseField>
   <ResponseField
     name="use_archive_bar"
     type="boolean"
     required
   >
-    
+    <span>{"Whether to use the archive bar"}</span>
   </ResponseField>
   <ResponseField
     name="campaign_defaults"
     type="object"
     required
   >
-    
+    <span>{"Default campaign settings"}</span>
 
     <Expandable>
   <ResponseField
@@ -1458,98 +1458,98 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="string"
     required
   >
-    
+    <span>{"Email to notify on subscription"}</span>
   </ResponseField>
   <ResponseField
     name="notify_on_unsubscribe"
     type="string"
     required
   >
-    
+    <span>{"Email to notify on unsubscription"}</span>
   </ResponseField>
   <ResponseField
     name="date_created"
     type="string"
     required
   >
-    
+    <span>{"Date when the list was created"}</span>
   </ResponseField>
   <ResponseField
     name="list_rating"
     type="number"
     required
   >
-    
+    <span>{"List quality rating"}</span>
   </ResponseField>
   <ResponseField
     name="email_type_option"
     type="boolean"
     required
   >
-    
+    <span>{"Whether email type option is enabled"}</span>
   </ResponseField>
   <ResponseField
     name="subscribe_url_short"
     type="string"
     required
   >
-    
+    <span>{"Short subscription URL"}</span>
   </ResponseField>
   <ResponseField
     name="subscribe_url_long"
     type="string"
     required
   >
-    
+    <span>{"Long subscription URL"}</span>
   </ResponseField>
   <ResponseField
     name="beamer_address"
     type="string"
     required
   >
-    
+    <span>{"Beamer email address"}</span>
   </ResponseField>
   <ResponseField
     name="visibility"
     type="string"
     required
   >
-    
+    <span>{"List visibility setting"}</span>
   </ResponseField>
   <ResponseField
     name="double_optin"
     type="boolean"
     required
   >
-    
+    <span>{"Whether double opt-in is required"}</span>
   </ResponseField>
   <ResponseField
     name="has_welcome"
     type="boolean"
     required
   >
-    
+    <span>{"Whether the list has a welcome email"}</span>
   </ResponseField>
   <ResponseField
     name="marketing_permissions"
     type="boolean"
     required
   >
-    
+    <span>{"Whether marketing permissions are enabled"}</span>
   </ResponseField>
   <ResponseField
     name="modules"
     type="array"
     required
   >
-    
+    <span>{"List modules"}</span>
   </ResponseField>
   <ResponseField
     name="stats"
     type="object"
     required
   >
-    
+    <span>{"List statistics"}</span>
 
     <Expandable>
   <ResponseField
@@ -1671,38 +1671,38 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     type="array"
     required
   >
-    
+    <span>{"Related links"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
     name="rel"
     type="string"
   >
-    
+    <span>{"Link relation type"}</span>
   </ResponseField>
   <ResponseField
     name="href"
     type="string"
   >
-    
+    <span>{"Link URL"}</span>
   </ResponseField>
   <ResponseField
     name="method"
     type="string | string | string | string | string | string | string"
   >
-    
+    <span>{"HTTP method"}</span>
   </ResponseField>
   <ResponseField
     name="targetSchema"
     type="string"
   >
-    
+    <span>{"Target schema URL"}</span>
   </ResponseField>
   <ResponseField
     name="schema"
     type="string"
   >
-    
+    <span>{"Schema URL"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1751,31 +1751,31 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="rel"
     type="string"
   >
-    
+    <span>{"Link relation type"}</span>
   </ResponseField>
   <ResponseField
     name="href"
     type="string"
   >
-    
+    <span>{"Link URL"}</span>
   </ResponseField>
   <ResponseField
     name="method"
     type="string | string | string | string | string | string | string"
   >
-    
+    <span>{"HTTP method"}</span>
   </ResponseField>
   <ResponseField
     name="targetSchema"
     type="string"
   >
-    
+    <span>{"Target schema URL"}</span>
   </ResponseField>
   <ResponseField
     name="schema"
     type="string"
   >
-    
+    <span>{"Schema URL"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1835,31 +1835,31 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="rel"
     type="string"
   >
-    
+    <span>{"Link relation type"}</span>
   </ResponseField>
   <ResponseField
     name="href"
     type="string"
   >
-    
+    <span>{"Link URL"}</span>
   </ResponseField>
   <ResponseField
     name="method"
     type="string | string | string | string | string | string | string"
   >
-    
+    <span>{"HTTP method"}</span>
   </ResponseField>
   <ResponseField
     name="targetSchema"
     type="string"
   >
-    
+    <span>{"Target schema URL"}</span>
   </ResponseField>
   <ResponseField
     name="schema"
     type="string"
   >
-    
+    <span>{"Schema URL"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
