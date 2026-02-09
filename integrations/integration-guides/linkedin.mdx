@@ -1,0 +1,183 @@
+---
+title: LinkedIn
+description: Add a bot to LinkedIn using the official integration.
+icon: '/integrations/integration-guides/assets/icons/linkedin.svg'
+tag: New
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/linkedin.mdx'
+
+{/* vale on */}
+
+<OpenInHub integration={integrationVersions.linkedin}/>
+
+The official LinkedIn integration allows your bot to create and delete posts from your LinkedIn account.
+
+## Setup
+
+<Tabs>
+  <Tab title="Basic configuration">
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [LinkedIn account](https://www.linkedin.com/signup)
+    </Info>
+
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **LinkedIn** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select **Authorize LinkedIn**.
+      </Step>
+      <Step>
+        Follow the on-screen instructions to connect Botpress to your LinkedIn account.
+      </Step>
+    </Steps>
+
+    <Note>
+      When using this configuration mode, a Botpress-managed LinkedIn application connects to your LinkedIn account. Actions taken by the bot will be attributed to the LinkedIn account that authorized the connection.
+    </Note>
+
+  </Tab>
+  <Tab title="Manual configuration">
+
+    For advanced use cases, you can manually configure the integration using your own LinkedIn application and OAuth credentials.
+
+    <Info>
+      You will need:
+
+      - A [published bot](/get-started/quick-start)
+      - A [LinkedIn account](https://www.linkedin.com/signup)
+      - A [LinkedIn Page](https://www.linkedin.com/help/linkedin/answer/a543852) associated with your app
+    </Info>
+
+    ### Step 1: Create a LinkedIn application
+
+    <Steps>
+      <Step>
+        Go to the [LinkedIn Developer Portal](https://www.linkedin.com/developers/apps) and select **Create app**.
+      </Step>
+      <Step>
+        Fill in the required fields:
+        - **App name**
+        - **LinkedIn Page**
+        - **App logo**
+      </Step>
+      <Step>
+        Select **Create app**.
+      </Step>
+    </Steps>
+
+    ### Step 2: Configure OAuth settings
+
+    <Steps>
+      <Step>
+        In your LinkedIn application settings, navigate to the **Products** tab.
+      </Step>
+      <Step>
+        Request access to the following products:
+        - **Share on LinkedIn** — required for posting content
+        - **Sign In with LinkedIn using OpenID Connect** — required for authentication
+
+        <Note>
+          Approval may require review by LinkedIn.
+        </Note>
+      </Step>
+      <Step>
+        Navigate to the **Auth** tab.
+      </Step>
+      <Step>
+        Under **OAuth 2.0 settings**, add the following redirect URL:
+
+        ```
+        https://webhook.botpress.cloud/oauth
+        ```
+      </Step>
+      <Step>
+        Copy your **Client ID** and **Client Secret** — you'll need them to configure the integration in Botpress.
+      </Step>
+    </Steps>
+
+    ### Step 3: Obtain an authorization code
+
+    <Steps>
+      <Step>
+        Construct the authorization URL by replacing `YOUR_CLIENT_ID` in the following URL with your actual Client ID:
+
+        ```
+        https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=https://webhook.botpress.cloud/oauth&scope=openid%20profile%20email%20w_member_social&state=manual
+        ```
+      </Step>
+      <Step>
+        Visit this URL in your browser while logged into the LinkedIn account you want to use with the integration.
+      </Step>
+      <Step>
+        Follow the on-screen instructions to authorize the application.
+      </Step>
+      <Step>
+        You will be redirected to `webhook.botpress.cloud`. Do not close this page.
+      </Step>
+      <Step>
+        Copy the **authorization code** from the URL in your browser's address bar.
+
+        <Note>
+          The authorization code is the string that appears after `code=` in the URL.
+        </Note>
+      </Step>
+    </Steps>
+
+    ### Step 4: Configure the integration in Botpress
+
+    <Steps>
+      <Step>
+        In Botpress Studio, select **Explore Hub** in the upper-right corner.
+      </Step>
+      <Step>
+        Search for the **LinkedIn** integration, then select **Install Integration**.
+      </Step>
+      <Step>
+        In the **Configuration** menu, select the drop-down and choose **Manual**.
+      </Step>
+    </Steps>
+
+    Fill in the integration's configuration fields:
+
+    <AccordionGroup>
+      <Accordion title="Client ID">
+        Paste the Client ID you copied from the **Auth** tab in the [LinkedIn Developer Portal](https://www.linkedin.com/developers/apps).
+      </Accordion>
+      <Accordion title="Client Secret">
+        Paste the Client Secret you copied from the **Auth** tab in the [LinkedIn Developer Portal](https://www.linkedin.com/developers/apps).
+      </Accordion>
+      <Accordion title="Authorization Code">
+        Paste the authorization code you obtained in [Step 3](#step-3-obtain-an-authorization-code).
+
+        <Warning>
+          The authorization code is only valid for a short period of time. If the code has expired, repeat [Step 3](#step-3-obtain-an-authorization-code) to obtain a new one.
+        </Warning>
+      </Accordion>
+    </AccordionGroup>
+
+    When you've filled in all the fields, select **Save Configuration**.
+
+    <Check>
+      Your LinkedIn integration has been manually configured and is ready to use.
+    </Check>
+
+  </Tab>
+</Tabs>
+
+---
+
+## Cards
+
+<Cards />
