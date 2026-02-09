@@ -1158,6 +1158,12 @@ Available options: `Complete`, `Incomplete`
   >
     <span>{"Unique identifier of the list in which the card will be moved to"}</span>
   </ResponseField>
+  <ResponseField
+    name="newVerticalPosition"
+    type="string"
+  >
+    <span>{"The new position of the card in the list, either \"top\", \"bottom\", or a stringified float (Optional). Leave empty to keep the current position."}</span>
+  </ResponseField>
     </Expandable>
   </ResponseField>
 
@@ -1293,9 +1299,9 @@ Available options: `Complete`, `Incomplete`
   </ResponseField>
   <ResponseField
     name="dueDate"
-    type="string (date-time)"
+    type="string | null"
   >
-    <span>{"The due date of the card in ISO 8601 format (Optional). Leave empty to keep the current due date."}</span>
+    
   </ResponseField>
   <ResponseField
     name="listId"
@@ -1307,7 +1313,7 @@ Available options: `Complete`, `Incomplete`
     name="verticalPosition"
     type="string"
   >
-    <span>{"The new position of the card in the list, either \"top\", \"bottom\", or a float (Optional). Leave empty to keep the current position."}</span>
+    <span>{"The new position of the card in the list, either \"top\", \"bottom\", or a stringified float (Optional). Leave empty to keep the current position."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

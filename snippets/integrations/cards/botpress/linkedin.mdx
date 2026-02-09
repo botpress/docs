@@ -1,0 +1,115 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Create Post
+
+<span>{"Create a LinkedIn post with optional image or article link"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"The text content of your LinkedIn post (required, max 3000 characters)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="visibility"
+    type="enum<string>"
+    required
+  >
+    <span>{"Who can see this post: PUBLIC (anyone) or CONNECTIONS (1st degree only)"}</span>
+
+Available options: `PUBLIC`, `CONNECTIONS`
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string (uri)"
+  >
+    <span>{"URL of an image to attach (JPG, PNG, GIF, max 8MB). The image will be downloaded and uploaded to LinkedIn. If both imageUrl and articleUrl are provided, only the image will be used."}</span>
+  </ResponseField>
+  <ResponseField
+    name="articleUrl"
+    type="string (uri)"
+  >
+    <span>{"URL of an article/link to share. LinkedIn will generate a preview card. Ignored if imageUrl is provided."}</span>
+  </ResponseField>
+  <ResponseField
+    name="articleTitle"
+    type="string"
+  >
+    <span>{"Custom title for the article preview."}</span>
+  </ResponseField>
+  <ResponseField
+    name="articleDescription"
+    type="string"
+  >
+    <span>{"Custom description for the article preview (optional - LinkedIn will scrape from URL if not provided)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="postUrn"
+    type="string"
+    required
+  >
+    <span>{"The URN identifier of the created post (e.g., urn:li:ugcPost:123456)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="postUrl"
+    type="string"
+    required
+  >
+    <span>{"Direct link to view the post on LinkedIn"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Delete Post
+
+<span>{"Delete a LinkedIn post created by the authenticated user"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="postUrn"
+    type="string"
+    required
+  >
+    <span>{"The URN of the post to delete (e.g., urn:li:ugcPost:123456 or urn:li:share:123456)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the post was successfully deleted"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
