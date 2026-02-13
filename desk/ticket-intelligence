@@ -1,0 +1,188 @@
+---
+title: Ticket Intelligence
+sidebarTitle: Ticket Intelligence
+---
+
+# Ticket Intelligence: How It Works
+
+Botpress Desk generates a **Ticket Intelligence Report** from your Intercom inbox. The report is built from your real conversations and ticket volume and includes:
+
+- **Per-ticket automation scores** by ticket type and workflow
+- **ROI and time-saved estimates** based on observed volume and handling patterns
+- A **ranked implementation roadmap** from quick wins to larger initiatives
+- **CX performance breakdowns** tied to customer impact, with supporting examples from your inbox
+
+This is not a survey product. Desk analyzes resolved conversations to infer satisfaction and identify where automation and workflow changes will have the highest impact.
+
+---
+
+## How conversations become intelligence
+
+### 1) Connect and sync (OAuth)
+
+When you connect your Intercom workspace to Desk via OAuth, Desk securely syncs the minimum data required to generate the report:
+
+- Admins
+- Contacts
+- Conversations, including messages and notes
+- Assignment history and status changes
+
+Desk maps each Intercom conversation to a normalized **ticket**. Ticket messages are represented as **activities**, and metadata (assignees, timestamps, status transitions) is stored alongside the conversation content to support analysis.
+
+---
+
+## What Desk analyzes
+
+### 2) Satisfaction analysis (CSAT), inferred from conversations
+
+Desk infers customer satisfaction from each resolved conversation without requiring customers to answer a survey.
+
+When a ticket is resolved, Desk:
+
+1. Collects customer messages from the ticket.
+2. Analyzes tone, language, and resolution indicators (for example: “thank you” vs “still broken”).
+3. Produces an AI-inferred CSAT label: **Positive**, **Neutral**, or **Negative**.
+4. Attaches a **confidence score** (0 to 100%) and a short **reason summary**.
+
+If an explicit Intercom satisfaction rating exists (for example thumbs up/down), that rating is recorded and takes priority.
+
+### 3) Topic extraction and tagging
+
+Desk scans analyzed tickets for product, feature, and operational topics discussed in the conversation (for example: onboarding, billing, SSO, API, permissions).
+
+These topics are stored as tags and are used to:
+
+- Break down satisfaction by area
+- Cluster tickets by theme
+- Identify repeated requests and common failure modes
+- Power automation opportunity grouping in the report
+
+### 4) Automation scoring (per ticket type and workflow)
+
+Desk estimates automation potential for patterns found in your inbox, including ticket types and recurring workflows.
+
+Automation scoring is derived from signals such as:
+
+- Frequency and consistency of the conversation pattern
+- Repetition across tickets (similar steps, similar questions, similar data requests)
+- Evidence of structured processes (permissions checks, identity verification, account lookups, policy gating)
+- Message volume and back-and-forth, as a proxy for avoidable work
+- Whether resolution depends on data that can be retrieved via integrations or APIs
+- Risk flags (policy sensitivity, edge-case likelihood, brand risk), which can reduce the score
+
+Outputs include:
+
+- **Automation potential score** (0 to 100) with a short rationale
+- Recommended automation approach (deflection, workflow automation, agent-assisted, or human-only)
+- Supporting examples from your inbox
+
+### 5) ROI and time saved estimates
+
+For each automation opportunity, Desk calculates estimated impact using your observed ticket volume and handling patterns.
+
+Typical outputs:
+
+- Estimated **time saved** per ticket and per period (for example: hours per 100 tickets, or hours per month)
+- Estimated **cost savings**, based on time saved and a configurable labor cost assumption
+- A confidence indicator based on how consistent the pattern is in your data
+
+These numbers are estimates, grounded in your inbox data and the report’s assumptions. They are not derived from industry benchmarks.
+
+### 6) Ranked implementation roadmap
+
+Desk prioritizes opportunities into a roadmap using a combination of:
+
+- Impact (time saved and cost savings)
+- Effort (complexity, number of steps, integrations required)
+- Risk (policy and customer experience risk, edge cases)
+- Confidence (how well the opportunity is supported by your data)
+
+The roadmap is structured so teams can start with high-confidence quick wins and then move into more complex initiatives.
+
+---
+
+## What you get in the Ticket Intelligence Report
+
+### CX performance breakdowns
+
+Desk surfaces operational metrics that indicate hidden cost and customer friction, such as:
+
+- Signals of abandonment risk (for example: tickets that drop off after long waits)
+- Customer “nudge” behavior (follow-ups like “any update?”)
+- Average messages per ticket and back-and-forth intensity
+- CSAT breakdowns and drivers, tied to topics
+
+Each section includes specific examples from your inbox and a recommended fix (for example: adjust triage, reduce repeated permission requests, add after-hours coverage, introduce self-serve).
+
+### Automation opportunities ranked by ROI
+
+A prioritized list of ticket types and workflows with:
+
+- Automation potential scores
+- Frequency and volume context
+- Estimated time saved and cost savings
+- Implementation effort and risk notes
+- Suggested automation approach and required systems
+
+### Workflow friction with customer impact
+
+A workflow-level view of where tickets get stuck, including:
+
+- Wait times and excessive agent follow-ups
+- Manual steps that repeat across tickets
+- Clear candidate automation paths, step by step
+
+---
+
+## Data flow summary
+
+Intercom Conversations
+│
+▼
+Desk Sync Engine (initial bulk sync + ongoing updates)
+│
+▼
+Normalized Tickets
+(messages, notes, assignments, status history)
+│
+▼
+Analysis Engines
+├─ CSAT inference (label + confidence + reason)
+├─ Topic extraction (product/feature/workflow tags)
+└─ Automation analysis (scores + ROI + roadmap)
+│
+▼
+Ticket Intelligence Report
+├─ CX performance breakdowns
+├─ Automation opportunities ranked by ROI
+└─ Workflow friction analysis with implementation roadmap
+
+
+---
+
+## Security and privacy
+
+- **Read-only permissions:** Desk requests the minimum OAuth scopes needed to read required data. No write access.
+- **Does not post to Intercom:** Desk does not send messages, update tickets, or modify workspace data.
+- **Auto-delete after 14 days:** Fetched conversation data is automatically deleted 14 days after report generation.
+- **Shareable report links use random IDs:** Report URLs are unguessable identifiers with no sequential IDs and no workspace names embedded.
+
+---
+
+## Getting started
+
+1. **Connect Intercom** from Desk settings and complete OAuth.
+2. **Import conversations** with one click.
+3. **Wait for report generation**. The report is generated automatically after import completes.
+4. **Review the report** and use the ranked roadmap to choose what to implement first.
+
+New conversations are analyzed automatically as they resolve. No additional configuration is required.
+
+<Card
+  title="Ticket Intelligence"
+  href="http://desk.botpress.cloud/ticket-intelligence"
+  cta="Generate your report"
+>
+  
+Get a detailed analysis of your Intercom inbox with per-ticket automation scores, ROI calculations, and a prioritized implementation roadmap.
+</Card>
