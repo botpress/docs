@@ -3,8 +3,6 @@ title: Ticket Intelligence
 sidebarTitle: Ticket Intelligence
 ---
 
-# Ticket Intelligence: How It Works
-
 Botpress Desk generates a **Ticket Intelligence Report** from your Intercom inbox. The report is built from your real conversations and ticket volume and includes:
 
 - **Per-ticket automation scores** by ticket type and workflow
@@ -18,7 +16,7 @@ This is not a survey product. Desk analyzes resolved conversations to infer sati
 
 ## How conversations become intelligence
 
-### 1) Connect and sync (OAuth)
+### Connect and sync (OAuth)
 
 When you connect your Intercom workspace to Desk via OAuth, Desk securely syncs the minimum data required to generate the report:
 
@@ -33,7 +31,7 @@ Desk maps each Intercom conversation to a normalized **ticket**. Ticket messages
 
 ## What Desk analyzes
 
-### 2) Satisfaction analysis (CSAT), inferred from conversations
+### Satisfaction analysis (CSAT), inferred from conversations
 
 Desk infers customer satisfaction from each resolved conversation without requiring customers to answer a survey.
 
@@ -46,7 +44,7 @@ When a ticket is resolved, Desk:
 
 If an explicit Intercom satisfaction rating exists (for example thumbs up/down), that rating is recorded and takes priority.
 
-### 3) Topic extraction and tagging
+### Topic extraction and tagging
 
 Desk scans analyzed tickets for product, feature, and operational topics discussed in the conversation (for example: onboarding, billing, SSO, API, permissions).
 
@@ -57,7 +55,7 @@ These topics are stored as tags and are used to:
 - Identify repeated requests and common failure modes
 - Power automation opportunity grouping in the report
 
-### 4) Automation scoring (per ticket type and workflow)
+### Automation scoring (per ticket type and workflow)
 
 Desk estimates automation potential for patterns found in your inbox, including ticket types and recurring workflows.
 
@@ -76,7 +74,7 @@ Outputs include:
 - Recommended automation approach (deflection, workflow automation, agent-assisted, or human-only)
 - Supporting examples from your inbox
 
-### 5) ROI and time saved estimates
+### ROI and time saved estimates
 
 For each automation opportunity, Desk calculates estimated impact using your observed ticket volume and handling patterns.
 
@@ -88,7 +86,7 @@ Typical outputs:
 
 These numbers are estimates, grounded in your inbox data and the report’s assumptions. They are not derived from industry benchmarks.
 
-### 6) Ranked implementation roadmap
+### Ranked implementation roadmap
 
 Desk prioritizes opportunities into a roadmap using a combination of:
 
@@ -101,7 +99,7 @@ The roadmap is structured so teams can start with high-confidence quick wins and
 
 ---
 
-## What you get in the Ticket Intelligence Report
+## What you get in the Ticket Intelligence report
 
 ### CX performance breakdowns
 
@@ -183,6 +181,6 @@ New conversations are analyzed automatically as they resolve. No additional conf
   href="http://desk.botpress.cloud/ticket-intelligence"
   cta="Generate your report"
 >
-  
+
 Get a detailed analysis of your Intercom inbox with per-ticket automation scores, ROI calculations, and a prioritized implementation roadmap.
 </Card>
