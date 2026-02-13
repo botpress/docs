@@ -132,32 +132,6 @@ A workflow-level view of where tickets get stuck, including:
 
 ---
 
-## Data flow summary
-
-Intercom Conversations
-│
-▼
-Desk Sync Engine (initial bulk sync + ongoing updates)
-│
-▼
-Normalized Tickets
-(messages, notes, assignments, status history)
-│
-▼
-Analysis Engines
-├─ CSAT inference (label + confidence + reason)
-├─ Topic extraction (product/feature/workflow tags)
-└─ Automation analysis (scores + ROI + roadmap)
-│
-▼
-Ticket Intelligence Report
-├─ CX performance breakdowns
-├─ Automation opportunities ranked by ROI
-└─ Workflow friction analysis with implementation roadmap
-
-
----
-
 ## Security and privacy
 
 - **Read-only permissions:** Desk requests the minimum OAuth scopes needed to read required data. No write access.
