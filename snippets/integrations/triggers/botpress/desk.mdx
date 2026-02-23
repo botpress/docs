@@ -1,0 +1,41 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Ticket Activity
+
+<span>{"Emitted when new activities (comments, notes, or system activities) are added to a ticket that the bot is assigned to. Does not include activities created by the bot itself to prevent infinite loops."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="activityCount"
+    type="number"
+    required
+  >
+    <span>{"The number of new activities that were synced"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

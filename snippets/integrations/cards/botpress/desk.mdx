@@ -1,0 +1,2678 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Add Tags
+
+<span>{"Add tags to a ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"Array of tag names to add to the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Assign Ticket
+
+<span>{"Assign a ticket to an admin or bot"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to assign"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the admin or bot to assign the ticket to (adm_ or ibot_)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Close Ticket
+
+<span>{"Close a ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to close"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Admin
+
+<span>{"Get a single admin by ID"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the admin (adm_)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="admin"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the admin (adm_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the admin"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the admin"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avatarUrl"
+    type="string"
+  >
+    <span>{"URL of the admin avatar image"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Customer
+
+<span>{"Get a single customer by ID"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the customer (cus_)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avatarUrl"
+    type="string"
+  >
+    <span>{"URL of the customer avatar image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastSeenAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the customer was last seen"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastContactedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the customer was last contacted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A list of tags associated with the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="attributes"
+    type="object"
+  >
+    <span>{"Attributes of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Ticket
+
+<span>{"Get a single ticket by ID"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket (tkt_)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Admins
+
+<span>{"List all admins in Desk"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Cursor for pagination (admin ID to start from)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of admins to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="admins"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the admin (adm_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the admin"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the admin"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avatarUrl"
+    type="string"
+  >
+    <span>{"URL of the admin avatar image"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more admins available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Bots
+
+<span>{"List all bots in Desk"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Cursor for pagination (bot ID to start from)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of bots to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="bots"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the bot (ibot_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+    required
+  >
+    <span>{"The display name of the bot"}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayAvatarUrl"
+    type="string"
+  >
+    <span>{"URL of the bot avatar image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="botHandle"
+    type="string"
+    required
+  >
+    <span>{"The handle for @mentioning this bot"}</span>
+  </ResponseField>
+  <ResponseField
+    name="canBeAssigned"
+    type="boolean"
+    required
+  >
+    <span>{"Whether this bot can be assigned to tickets"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more bots available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Customers
+
+<span>{"List all customers in Desk"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Cursor for pagination (customer ID to start from)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of customers to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="customers"
+    type="array"
+    required
+  >
+    <span>{"List of customers"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avatarUrl"
+    type="string"
+  >
+    <span>{"URL of the customer avatar image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastSeenAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the customer was last seen"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastContactedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the customer was last contacted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A list of tags associated with the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="attributes"
+    type="object"
+  >
+    <span>{"Attributes of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more customers available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Ticket Activities
+
+<span>{"List activities for a specific ticket with pagination"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to get activities for"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Cursor for pagination (activity ID to start from)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of activities to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="activities"
+    type="array"
+    required
+  >
+    <span>{"List of activities"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the activity"}</span>
+  </ResponseField>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ticket ID this activity belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="activityType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of activity"}</span>
+
+Available options: `comment`, `note`, `system_public`, `system_internal`
+  </ResponseField>
+  <ResponseField
+    name="authorType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of author"}</span>
+
+Available options: `admin`, `customer`, `bot`, `user`
+  </ResponseField>
+  <ResponseField
+    name="authorId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the author"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"The content of the activity"}</span>
+  </ResponseField>
+  <ResponseField
+    name="bodyFormat"
+    type="enum<string>"
+    required
+  >
+    <span>{"The format of the body"}</span>
+
+Available options: `plain`, `html`, `markdown`, `json`
+  </ResponseField>
+  <ResponseField
+    name="isRedacted"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the activity is redacted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the activity was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the activity was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more activities available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Tickets
+
+<span>{"List tickets with pagination and sorting options"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Cursor for pagination (ticket ID to start from)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="orderBy"
+    type="enum<string>"
+    default="updatedAt"
+  >
+    <span>{"Field to order by"}</span>
+
+Available options: `id`, `createdAt`, `updatedAt`, `status`, `priority`, `title`, `closedAt`, `snoozedUntil`, `waitingSince`
+  </ResponseField>
+  <ResponseField
+    name="orderDirection"
+    type="enum<string>"
+    default="desc"
+  >
+    <span>{"Sort direction"}</span>
+
+Available options: `asc`, `desc`
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of tickets to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="tickets"
+    type="array"
+    required
+  >
+    <span>{"List of tickets"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more tickets available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Remove Tags
+
+<span>{"Remove tags from a ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"Array of tag names to remove from the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Rename Ticket
+
+<span>{"Change the title of a ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to rename"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The new title for the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Reopen Ticket
+
+<span>{"Reopen a closed ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to reopen"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Set Customer Attributes
+
+<span>{"Set custom attributes on a customer"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="customerId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="attributes"
+    type="object"
+    required
+  >
+    <span>{"Key-value pairs to set as customer attributes. These will be merged with existing attributes."}</span>
+  </ResponseField>
+  <ResponseField
+    name="ticketId"
+    type="string"
+  >
+    <span>{"Optional ticket ID to log the attribute change as a ticket activity"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="avatarUrl"
+    type="string"
+  >
+    <span>{"URL of the customer avatar image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastSeenAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the customer was last seen"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastContactedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the customer was last contacted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"A list of tags associated with the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="attributes"
+    type="object"
+  >
+    <span>{"Attributes of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Set Priority
+
+<span>{"Set the priority of a ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The new priority for the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Snooze Ticket
+
+<span>{"Snooze a ticket until a specified time"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to snooze"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket should wake up"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Unassign Ticket
+
+<span>{"Remove the assignment from a ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to unassign"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Unsnooze Ticket
+
+<span>{"Wake up a snoozed ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to unsnooze"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
