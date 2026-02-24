@@ -1,0 +1,126 @@
+---
+title: Update variables outside Studio
+---
+
+You can update [variables](/studio/concepts/variables/overview) outside of [Botpress Studio](/studio/introduction) through an API call.
+
+This is useful for keeping your bot in sync with external data—for example, updating a variable immediately when a user changes their preferences on your website.
+
+<Info>
+  You will need:
+
+  - A [published bot](/get-started/quick-start) with at least one variable
+  - Basic knowledge of JavaScript/TypeScript
+</Info>
+
+## Step 1: Define your Action
+
+First, define an [Action](/studio/concepts/actions) that updates your variable.
+
+<Steps>
+  <Step>
+    In Studio, go to the <Icon icon="bolt"/> **Actions** section in the left sidebar.
+  </Step>
+  <Step>
+    Select **Create Action** (or **New Action**).
+  </Step>
+  <Step>
+    Select the Action's default name (`New Action`) in the upper-left-corner of the editor, then rename it to `updateVariable`.
+  </Step>
+  <Step>
+    In the code editor, write code that updates the value of your variable to `newValue` and returns an empty object.
+
+    The exact code depends on the name and [scope](/studio/concepts/variables/overview#variable-scopes) of the variable you want to update. For example, if you have a [user variable](/studio/concepts/variables/scopes/user) named `loginEmail`, you would write:
+
+    ```js
+    user.loginEmail = newValue
+
+    return {}
+    ```
+  </Step>
+  <Step>
+    Go to the <Icon icon="braces"/> **Input Schema** section. Then, rename the schema to `UpdateVariableInput`.
+  </Step>
+  <Step>
+    Erase everything in the code editor, then paste in the following code:
+
+    ```js
+    z.object({
+      conversationId: z.string(),
+      userId: z.string(),
+      newValue: z.string() // Update to your variable's actual data type
+    })
+    ```
+
+    <Note>
+      This code snippet assumes that the [data type](/studio/concepts/variables/overview#data-types-for-variables) of the variable you're updating is a `string`. If your variable uses a different data type, change this to its corresponding [Zod data type](https://zod.dev/api).
+    </Note>
+  </Step>
+  <Step>
+    Go to the <Icon icon="braces"/> **Output Schema** section. Rename the schema to `UpdateVariableOutput`.
+  </Step>
+  <Step>
+    Erase everything in the code editor, then paste in the following code:
+
+    ```js
+    z.object({})
+    ```
+  </Step>
+  <Step>
+    Exit the Action editor, then select <Icon icon="rocket"/> **Publish** in the upper-right corner to deploy your changes.
+  </Step>
+</Steps>
+
+## Step 2: Call your Action using the API
+
+Now, you can call your Action using the Runtime API's [`callAction`](/api-reference/runtime-api/openapi/callAction) endpoint. Just pass in an object that matches the Action's input schema:
+
+<Tabs>
+  <Tab title="In an HTTP request">
+    ```js
+    const options = {
+      method: 'POST',
+      headers: {
+        'x-bot-id': 'YOUR_BOT_ID',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        type: 'updateVariable',
+        input: {
+          conversationId: 'your-conversation-id',
+          userId: 'your-user-id',
+          newValue: 'your-new-value' // If your variable is a string
+        }
+      })
+    };
+
+    fetch('https://api.botpress.cloud/v1/chat/actions', options)
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.error(err));
+    ```
+  </Tab>
+  <Tab title="Using the Botpress client">
+    ```javascript
+    import { Client } from '@botpress/client'
+
+    const client = new Client({
+      token: 'YOUR_PERSONAL_ACCES_TOKEN',
+      botId: 'YOUR_BOT_ID',
+    })
+
+    await client.callAction({
+      type: 'updateVariable',
+      input: {
+        conversationId: 'your-conversation-id',
+        userId: 'your-user-id',
+        newValue: 'your-new-value', /// If your variable is a string
+      },
+    })
+    ```
+  </Tab>
+</Tabs>
+
+<Check>
+  The variable has been updated from outside the Studio.
+</Check>
