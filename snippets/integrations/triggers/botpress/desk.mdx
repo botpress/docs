@@ -9,6 +9,48 @@ You can access data returned from any of these Triggers by reading `event.payloa
 </Tip>
 
 
+### Approval Resolved
+
+<span>{"Emitted when an agent has reviewed and made a decision on a tool approval request"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="approvalId"
+    type="string"
+    required
+  >
+    <span>{"The unique ID of the approval request"}</span>
+  </ResponseField>
+  <ResponseField
+    name="decision"
+    type="enum<string>"
+    required
+  >
+    <span>{"The decision made by the agent"}</span>
+
+Available options: `approved`, `approved_with_edit`, `rejected`
+  </ResponseField>
+  <ResponseField
+    name="approvedInput"
+    type="object"
+  >
+    <span>{"Modified tool input if decision is approved_with_edit"}</span>
+  </ResponseField>
+  <ResponseField
+    name="rejectionNote"
+    type="string"
+  >
+    <span>{"Reason for rejection if decision is rejected"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Ticket Activity
 
 <span>{"Emitted when new activities (comments, notes, or system activities) are added to a ticket that the bot is assigned to. Does not include activities created by the bot itself to prevent infinite loops."}</span>
