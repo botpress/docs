@@ -164,6 +164,49 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -330,7 +373,307 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
     </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Assign Ticket to Team
+
+<span>{"Assign a ticket to a specific team. Clears any existing agent assignment."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to assign"}</span>
+  </ResponseField>
+  <ResponseField
+    name="teamId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the team to assign the ticket to"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Auto Route Ticket
+
+<span>{"Use AI to analyze the ticket and automatically route it to the best team based on content, conversation history, and admin-defined routing rules. The ticket will also be auto-assigned to an agent if the team uses balanced assignment mode."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket to route (tkt_)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="teamId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the team the ticket was routed to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="teamName"
+    type="string"
+    required
+  >
+    <span>{"The name of the team"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+    required
+  >
+    <span>{"AI explanation for why this team was chosen"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -489,6 +832,49 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -553,6 +939,39 @@ Available options: `open`, `closed`, `snoozed`
     <span>{"URL of the admin avatar image"}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Business Hours
+
+<span>{"Get the workspace business hours schedule and whether the workspace is currently within business hours"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="schedule"
+    type="object | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isWithinBusinessHours"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the workspace is currently within business hours (true if no schedule configured)"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -802,6 +1221,49 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1081,6 +1543,88 @@ Available options: `open`, `closed`, `snoozed`
     required
   >
     <span>{"Whether there are more customers available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Teams
+
+<span>{"List all teams in the workspace with their names and descriptions"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Cursor for pagination (team ID to start from)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of teams to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="teams"
+    type="array"
+    required
+  >
+    <span>{"List of teams"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the team (team_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the team"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"A description of the team and its responsibilities"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emoji"
+    type="string"
+  >
+    <span>{"The emoji icon for the team"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="hasMore"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more teams available"}</span>
   </ResponseField>
   <ResponseField
     name="nextCursor"
@@ -1408,6 +1952,49 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
@@ -1587,6 +2174,49 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -1753,6 +2383,49 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -1912,7 +2585,104 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
     </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Request Approval
+
+<span>{"Submit a tool action for agent review and approval before execution"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="toolName"
+    type="string"
+    required
+  >
+    <span>{"The name of the tool being requested for approval"}</span>
+  </ResponseField>
+  <ResponseField
+    name="toolInput"
+    type="object"
+    required
+  >
+    <span>{"The input parameters for the tool"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reasoning"
+    type="string"
+  >
+    <span>{"Optional explanation of why this action is being requested"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="approvalId"
+    type="string"
+    required
+  >
+    <span>{"The unique ID of the approval request"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -2185,6 +2955,295 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Set Routing Metadata
+
+<span>{"Set routing metadata on a ticket (topic, sentiment, language, customerTier, estimatedComplexity). Merges with existing routing data."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -2351,6 +3410,49 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -2509,6 +3611,49 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
+    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -2669,7 +3814,98 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+  <ResponseField
+    name="routing"
+    type="object"
+  >
+    <span>{"Bot-classified routing metadata"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sentiment"
+    type="enum<string>"
+  >
+    <span>{"Customer sentiment"}</span>
+
+Available options: `positive`, `neutral`, `negative`, `frustrated`
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+  >
+    <span>{"Detected or stated language code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerTier"
+    type="string"
+  >
+    <span>{"Customer segment (free, team, enterprise)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="estimatedComplexity"
+    type="enum<string>"
+  >
+    <span>{"Estimated ticket complexity"}</span>
+
+Available options: `simple`, `moderate`, `complex`
+  </ResponseField>
     </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Update Activity
+
+<span>{"Update the body of an existing ticket activity (e.g. to update custom component props)"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ticket ID (tkt_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="activityId"
+    type="string"
+    required
+  >
+    <span>{"The activity ID to update (tka_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"New body content (JSON string for custom components)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the activity was updated successfully"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
