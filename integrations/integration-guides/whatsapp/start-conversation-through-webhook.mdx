@@ -63,9 +63,9 @@ This guide walks you through starting a WhatsApp conversation when an external s
   </Step>
 </Steps>
 
-## 3. Set the conversation ID so the rest of the flow runs in the same conversation
+## 3. Set the conversation ID so the rest of the Workflow runs in the same conversation
 
-So that subsequent nodes (such as the [Autonomous Node](/studio/concepts/nodes/autonomous-node) or your main bot flow) run in the same WhatsApp conversation, set `event.conversationId` to the ID returned by the Start Conversation Card.
+So that subsequent nodes (such as the [Autonomous Node](/studio/concepts/nodes/autonomous-node) or your main bot Workflow) run in the same WhatsApp conversation, set `event.conversationId` to the ID returned by the Start Conversation Card.
 
 <Steps titleSize="h3">
   <Step title="Add an Execute Code Card">
@@ -87,22 +87,22 @@ So that subsequent nodes (such as the [Autonomous Node](/studio/concepts/nodes/a
 </Steps>
 
 <Note>
-  The Start Conversation Card returns an object with a `conversationId` property. By setting `event.conversationId`, you ensure that any subsequent nodes (including the [Autonomous Node](/studio/concepts/nodes/autonomous-node) or your main flow) continue in the same WhatsApp conversation.
+  The Start Conversation Card returns an object with a `conversationId` property. By setting `event.conversationId`, you ensure that any subsequent nodes (including the [Autonomous Node](/studio/concepts/nodes/autonomous-node) or your main Workflow) continue in the same WhatsApp conversation.
 </Note>
 
-## 4. Connect to your main bot flow
+## 4. Connect to your main bot Workflow
 
-Connect the node that contains the rest of your main flow to your **START** node.
+Connect the node that contains the rest of your main Workflow to your **START** node.
 
-![Workflow with start connection to main flow](./assets/autonomous_node_with_start.png)
+![Workflow with start connection to main Workflow](./assets/autonomous_node_with_start.png)
 
 That way, when the webhook fires:
 
 1. The Event trigger runs.
 2. The Start Conversation Card starts a WhatsApp conversation and stores its ID.
 3. The Execute Code Card sets `event.conversationId` to that WhatsApp conversation ID.
-4. The conversation continues in your main flow (for example, in the [Autonomous Node](/studio/concepts/nodes/autonomous-node) or your regular bot flow).
+4. The conversation continues in your main Workflow (for example, in the [Autonomous Node](/studio/concepts/nodes/autonomous-node) or your regular bot Workflow).
 
 <Check>
-  When your external system POSTs to the webhook URL with the right payload (user phone, template name, etc.), your bot will start a WhatsApp conversation and then follow your main workflow for that conversation.
+  When your external system POSTs to the webhook URL with the right payload (user phone, template name, etc.), your bot will start a WhatsApp conversation and then follow your main Workflow for that conversation.
 </Check>
