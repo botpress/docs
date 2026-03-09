@@ -584,6 +584,91 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     This Card has no output.
   </ResponseField>
 
+### Get Company
+
+<span>{"Get a company from Hubspot by ID"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="companyId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the company to get"}</span>
+  </ResponseField>
+  <ResponseField
+    name="propertiesToReturn"
+    type="array"
+  >
+    <span>{"Additional properties to return (e.g., [\"health_status\", \"industry\"]). Default properties are always included."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="company"
+    type="object"
+    required
+  >
+    <span>{"The fetched company"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+    required
+  >
+    <span>{"The domain of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"Creation date of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"Last time the company was updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    <span>{"The properties of the company"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Get Contact
 
 <span>{"Get a contact from Hubspot"}</span>
@@ -1211,6 +1296,107 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     required
   >
     <span>{"The properties of the lead"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Update Company
+
+<span>{"Update a company in Hubspot"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="companyId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the company to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="array"
+    required
+  >
+    <span>{"Properties to update on the company"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the property (e.g., \"health_status\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"The value of the property"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="company"
+    type="object"
+    required
+  >
+    <span>{"The updated company"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="domain"
+    type="string"
+  >
+    <span>{"The domain of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"Creation date of the company"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"Last time the company was updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    <span>{"The properties of the company"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
