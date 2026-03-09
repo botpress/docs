@@ -35,15 +35,13 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="output"
     type="object"
   >
-    <span>{"Output schema for adding a comment to a card"}</span>
-
     <Expandable>
   <ResponseField
     name="message"
     type="string"
     required
   >
-    <span>{"Output message"}</span>
+    <span>{"A message that says if the comment was successfully created or not"}</span>
   </ResponseField>
   <ResponseField
     name="newCommentId"
@@ -128,7 +126,7 @@ Available options: `Complete`, `Incomplete`
     type="string"
     required
   >
-    <span>{"Output message"}</span>
+    <span>{"A message that says if the card was successfully created or not"}</span>
   </ResponseField>
   <ResponseField
     name="newCardId"
@@ -198,15 +196,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting all members of a board"}</span>
-
     <Expandable>
   <ResponseField
     name="members"
     type="array"
     required
   >
-    <span>{"Array of member objects"}</span>
+    <span>{"A list of members who have access to the board"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -250,15 +246,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting all boards"}</span>
-
     <Expandable>
   <ResponseField
     name="boards"
     type="array"
     required
   >
-    <span>{"Array of board objects"}</span>
+    <span>{"A list of Trello boards"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -305,15 +299,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting all members of a card"}</span>
-
     <Expandable>
   <ResponseField
     name="members"
     type="array"
     required
   >
-    <span>{"Array of member objects"}</span>
+    <span>{"A list of members who have been assigned to the card"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -367,15 +359,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a board from its ID"}</span>
-
     <Expandable>
   <ResponseField
     name="board"
     type="object"
     required
   >
-    <span>{"The board object"}</span>
+    <span>{"The details of the Trello board associated with the given ID"}</span>
 
     <Expandable>
   <ResponseField
@@ -405,8 +395,6 @@ Available options: `Complete`, `Incomplete`
     name="input"
     type="object"
   >
-    <span>{"Input schema for getting a member from its name"}</span>
-
     <Expandable>
   <ResponseField
     name="boardId"
@@ -429,15 +417,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a member from its name"}</span>
-
     <Expandable>
   <ResponseField
     name="members"
     type="array"
     required
   >
-    <span>{"Array of member objects"}</span>
+    <span>{"A list of members that match the specified name"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -491,15 +477,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a board from its name"}</span>
-
     <Expandable>
   <ResponseField
     name="boards"
     type="array"
     required
   >
-    <span>{"Array of board objects"}</span>
+    <span>{"A list of boards that match the given display name"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -546,15 +530,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a card from its ID"}</span>
-
     <Expandable>
   <ResponseField
     name="card"
     type="object"
     required
   >
-    <span>{"The card object"}</span>
+    <span>{"The Trello card that's associated with the given card ID"}</span>
 
     <Expandable>
   <ResponseField
@@ -631,9 +613,9 @@ Available options: `Complete`, `Incomplete`
     </Expandable>
   </ResponseField>
 
-### Find cards by name name
+### Find cards by name
 
-<span>{"Find all lists whose display name match this name"}</span>
+<span>{"Find all cards whose display name match this name"}</span>
 
   <ResponseField
     name="input"
@@ -663,15 +645,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a card ID from its name"}</span>
-
     <Expandable>
   <ResponseField
     name="cards"
     type="array"
     required
   >
-    <span>{"Array of card objects"}</span>
+    <span>{"A list of cards that match the given card name"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -773,15 +753,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting all cards in a list"}</span>
-
     <Expandable>
   <ResponseField
     name="cards"
     type="array"
     required
   >
-    <span>{"Array of card objects"}</span>
+    <span>{"An array of cards that are contained within the given list"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -883,15 +861,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a list from its ID"}</span>
-
     <Expandable>
   <ResponseField
     name="list"
     type="object"
     required
   >
-    <span>{"The list object"}</span>
+    <span>{"The Trello list that's associated with the given list ID"}</span>
 
     <Expandable>
   <ResponseField
@@ -945,15 +921,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a list ID from its name"}</span>
-
     <Expandable>
   <ResponseField
     name="lists"
     type="array"
     required
   >
-    <span>{"Array of list objects"}</span>
+    <span>{"A set of lists that are associated with the given board ID and match the given display name"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1000,15 +974,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting all lists in a board"}</span>
-
     <Expandable>
   <ResponseField
     name="lists"
     type="array"
     required
   >
-    <span>{"Array of list objects"}</span>
+    <span>{"A set of all the lists that are associated with the given board ID"}</span>
 
     <Expandable title="array item properties">
   <ResponseField
@@ -1055,15 +1027,13 @@ Available options: `Complete`, `Incomplete`
     name="output"
     type="object"
   >
-    <span>{"Output schema for getting a member by its ID or username"}</span>
-
     <Expandable>
   <ResponseField
     name="member"
     type="object"
     required
   >
-    <span>{"The member object"}</span>
+    <span>{"The Trello member who is associated with the specified member ID or username"}</span>
 
     <Expandable>
   <ResponseField
