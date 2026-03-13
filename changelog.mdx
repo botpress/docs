@@ -4,6 +4,59 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="March 13, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - Webchat can now recover messages if user's connection is interrupted
+
+  ### Integrations
+
+  - **Zendesk**: Improved HITL support
+  - **HITL**: Added support to pass additional information through tags
+  - **Google Calendar** and **Google Sheets**: OAuth is now available
+
+  ### Bug fixes
+
+  - Fixed an issue where Bot Identity and Styling changes were not saving
+  - Fixed an issue where default boolean columns in the **Insert Record** card did not default to false
+  - Fixed an issue in Webchat where text messages appeared as code blocks
+
+  ---
+
+  ## ADK
+
+  ### Control Panel
+
+  - Added a visual Chat view to test conversations and traces (requires Webchat installation):
+
+  <Frame>
+    <img
+      alt="Chat view with Timeline and Bot conversation"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-13/adk_chat.png"
+    />
+    <img
+      alt="Chat view with Timeline and Bot conversation"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-13/adk_chat_dark.png"
+    />
+  </Frame>
+
+  - Updated the UI for the **Tables** and **Traces** pages
+  - Added variable validation for **Configuration Variables**
+  - Improved the type system for workflow events in conversation handlers
+
+  ### CLI
+
+  - Improved support for Windows
+  - MCP port can now be assigned using `adk mcp --port <port>`
+  - The Control Panel no longer opens automatically on `adk dev`
+
+</Update>
+
 <Update label="March 6, 2026">
 
   ## Studio
