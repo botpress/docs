@@ -113,7 +113,7 @@ icon: newspaper
     />
   </Frame>
 
-  - Added a **Triggers** page for managing triggers in ADK agents:
+  - Added a **Triggers** page for managing triggers in your ADK agents:
 
   <Frame>
     <img
@@ -128,7 +128,7 @@ icon: newspaper
     />
   </Frame>
 
-  - Added an **Evals** page for running declarative conversation tests on ADK agents:
+  - Added an **Evals** page for running declarative conversation tests on your ADK agents:
 
   <Frame>
     <img
@@ -164,7 +164,7 @@ icon: newspaper
 
   - Added support to create a new agent without prompts by use `adk init --yes` or `adk init --defaults`
   - Use `adk init --skip-link` to skip the interactive bot-linking step
-  - Control Panel theme (dark or light) can be set using `adk theme`
+  - You can set the Control Panel theme (dark or light) using `adk theme`
 
 </Update>
 
@@ -267,7 +267,7 @@ icon: newspaper
 
   - [Gemini 3 previews](https://aistudio.google.com/models/gemini-3) are now available in Studio
   - Improved UI for viewing video guides in Studio
-  - Raw LLMz output can now be copied when inspecting a message in the emulator
+  - You can now copy the raw LLMz output when inspecting a message in the emulator
   - Studio now displays exactly which configuration field is causing an error when attempting to save an integration's configuration
   - Added support for BCP 47 to the Translator Agent, which helps distinguish between traditional and simplified Chinese
 
@@ -294,7 +294,7 @@ icon: newspaper
 <Update label="January 23, 2026">
   ## Additional context for Agents
 
-  When using the Translator Agent or Summary Agent, additional context can now be provided via an **Additional Context** field:
+  When using the Translator Agent or Summary Agent, you can now provide additional context via an **Additional Context** field:
 
   <Frame>
     <img
@@ -311,7 +311,7 @@ icon: newspaper
 
   ## Logging options
 
-  A **Logging Mode** can now be configured in the bot's settings:
+  You can now configure a **Logging Mode** in your bot's settings:
 
   <Frame>
     <img
@@ -326,12 +326,12 @@ icon: newspaper
     />
   </Frame>
 
-  Choose between 4 options for logging:
+  This lets you choose between 4 options for logging:
 
   - **Enabled**: Displays all logs
   - **Verbose**: Displays all logs with as much detail as possible
   - **Disabled**: Doesn't display any logs
-  - **Console logs only**: Only displays custom-written logs
+  - **Console logs only**: Only displays logs you've written yourself
 
   ## Integrations
 
@@ -364,7 +364,7 @@ icon: newspaper
 <Update label="January 16, 2026">
   ## Features & enhancements
 
-  - Models from [Mistral AI](https://mistral.ai/) can now be used by installing the official integration
+  - You can now use models from [Mistral AI](https://mistral.ai/) by installing the official integration
   - Users can now upload `.gif` and `.webp` images to their conversations in Webchat
   - When users upload a file to a Webchat conversation, the Botpress file ID is now included in the event's payload as `fileId`. This allows the bot to manipulate the uploaded file directly (for example, changing its permissions or deleting it)
 
@@ -439,7 +439,7 @@ icon: newspaper
 <Update label="January 9, 2026">
   ## Dashboard displays bot creator
 
-  The dashboard now displays which workspace member created a bot:
+  The dashboard now displays which member of your workspace created a bot:
 
   <Frame>
     <img
@@ -498,7 +498,7 @@ icon: newspaper
 <Update label="December 12, 2025">
   ## Webchat input improvements
 
-  - Starting with Webchat 3.5, Webchat input is disabled while the bot processes a message
+  - Starting with Webchat 3.5, Webchat input is disabled while your bot processes a message
 
   ## Integrations
 
@@ -558,7 +558,7 @@ icon: newspaper
     />
   </Frame>
 
-  - Added option to automatically recharge a bot's add-ons using **Auto-Recharge**
+  - Added option to automatically recharge your bot's add-ons using **Auto-Recharge**
 
   ## Integrations
 
@@ -770,7 +770,7 @@ icon: newspaper
   Overhauled the Actions experience and added ability generate Actions and Schemas using AI:
 
   <Tabs>
-    <Tab title="Just write a prompt...">
+    <Tab title="Just write your prompt...">
       <Frame>
         <img
           alt="Action prompt"
@@ -832,7 +832,7 @@ icon: newspaper
     />
   </Frame>
 
-  - Redesigned Conversations tab with Conversation Insights, sentiment analysis and an AI summary:
+  - Redesigned Conversations tab that shows you Conversation Insights, sentiment analysis and an AI summary:
 
   <Frame>
     <img
@@ -909,7 +909,7 @@ icon: newspaper
 
   ## Bug fixes
 
-  - Fixed an issue where clicking Tools in the bot's home screen would cause a crash if the bot only contained standard Nodes
+  - Fixed an issue where clicking Tools in your bot's home screen would cause a crash if your bot only contained standard Nodes
   - Fixed an issue where duplicating a Workflow would incorrectly display "Integration not installed or disabled" even though the integration was installed
   - Fixed an issue where imported bots would display ghost Knowledge Bases
   - Fixed an issue where previously-created variables were unavailable to select in certain Cards' output
@@ -954,7 +954,7 @@ icon: newspaper
   - Improved onboarding experience:
 
     - Refreshed, more focused UI
-    - Added option to describe the bot's goal when selecting **Other**:
+    - Added option to describe your bot's goal when selecting **Other**:
 
   <Tabs>
     <Tab title="Select goal">
@@ -987,7 +987,7 @@ icon: newspaper
     </Tab>
   </Tabs>
 
-    - Tasks now run in the background while setting up an agent, making the onboarding experience much faster
+    - Tasks now run in the background while you're setting up your agent, making the onboarding experience much faster
 
   ### Studio
 
@@ -1007,11 +1007,11 @@ icon: newspaper
     ### Webchat v1 deprecation
 
     We're deprecating Webchat v1 (and any old implementations tied to it). This means
-    any Webchat deployments on the website that use v1 will stop functioning. To avoid
+    any Webchat deployments on your website that use v1 will stop functioning. To avoid
     service disruption, all users currently using v1 must migrate to Webchat v2 or higher
     before **December 31, 2025**.
 
-    Webchat v1 users should have already received an email with instructions for upgrading. For any questions, contact the support team.
+    If you're currently a Webchat v1 user, you should have already received an email with instructions for upgrading. For any questions, don't hesitate to contact our support team.
   </Warning>
 
 </Update>
@@ -1043,7 +1043,7 @@ icon: newspaper
   ### Autonomous Nodes
 
   - Added the option to [set a specific LLM for Retrieval-Augmented Generation (RAG) tasks](/studio/concepts/bot-settings#rag-language-model), like searching a Knowledge Base
-  - Added the option to [override the bot's default LLM settings](/studio/concepts/nodes/autonomous-node#override-default-models) at the Node level
+  - Added the option to [override your bot's default LLM settings](/studio/concepts/nodes/autonomous-node#override-default-models) at the Node level
 
   ### Studio
 
@@ -1126,7 +1126,7 @@ icon: newspaper
 
   - Improved the variable management experience for Autonomous Nodes:
 
-    <Frame caption="Read/write access can now be assigned to individual variables as needed.">
+    <Frame caption="You can now assign read/write access to individual variables as needed.">
       <img
         alt="Autonomous Node variable management"
         className="block dark:hidden"
@@ -1244,7 +1244,7 @@ icon: newspaper
 
 ## Features & enhancements
 
-- Improved the Card inspector UI, which now appears in the Studio's right panel instead of obstructing the Workflow:
+- Improved the Card inspector UI, which now appears in the Studio's right panel instead of obstructing your Workflow:
 
 <Frame>
   <img
@@ -1259,7 +1259,7 @@ icon: newspaper
   />
 </Frame>
 
-- Improved UX for cancelling a subscription:
+- Improved UX for cancelling your subscription:
   - Subscription end date now displayed
   - Added a modal to give feedback when cancelling subscription
 - Improved general performance and speed for bots across the board
@@ -1278,7 +1278,7 @@ icon: newspaper
 
 ## Features & enhancements
 
-- Any Google Font can now be chosen when styling Webchat:
+- You can now choose any Google Font when styling Webchat:
 
   <Frame>
     <img
@@ -1293,7 +1293,7 @@ icon: newspaper
     />
   </Frame>
 
-- Analytics can now be viewed for either the current bot or the entire Workspace:
+- You can now view analytics for either the current bot or the entire Workspace:
 
   <Frame>
     <img
@@ -1457,7 +1457,7 @@ icon: newspaper
 
         - **New onboarding flow**:
 
-            When creating a new bot, Studio now has an onboarding flow that automatically builds a production-ready AI agent, styled and tailored to the brand.
+            When you create a new bot, Studio now has an onboarding flow that automatically builds a production-ready AI agent, styled and tailored to your brand.
 
             <Tabs>
                 <Tab title="1. Choose a use case">
@@ -1488,7 +1488,7 @@ icon: newspaper
                       />
                     </Frame>
                 </Tab>
-                <Tab title="3. Try out the AI agent">
+                <Tab title="3. Try out your AI agent">
                     <Frame>
                         <img
                             alt="New agent"
@@ -1624,7 +1624,7 @@ icon: newspaper
                 - Improved animations
                 - New typing indicator
 
-        - Message feedback can now be left in Webchat:
+        - You can now leave message feedback in Webchat:
 
             <Frame>
             <img
@@ -1730,7 +1730,7 @@ icon: newspaper
     ## Bug fixes
 
         - Fixed issue where Studio wouldn’t load under certain conditions
-        - Fixed issue where FAB/avatar images could not be reset to default
+        - Fixed issue where you couldn't reset FAB/avatar images to default
         - Fixed an issue where the [Conversation Started](/studio/concepts/triggers#conversation-started) Trigger didn’t work within the shareable Webchat window
         - Improved rendering of Markdown in Webchat
 
@@ -1744,8 +1744,8 @@ icon: newspaper
         - **Improvements to Webchat**:
             - Now supports richer Markdown rendering
             - Webchat preview now has a sidebar with a list of recent conversations
-            - An image can now be added to the Webchat Floating Action Button (FAB)
-        - Bot logs can now be filtered by `userId` or `conversationId`
+            - You can now add an image to your Webchat's Floating Action Button (FAB)
+        - You can now filter your bot's logs by `userId` or `conversationId`
 
     ## Bug fixes
 
@@ -1820,7 +1820,7 @@ icon: newspaper
         - Revamped and improved **Usage** tab:
             - New section to track AI spend
             - Revised UI makes it clearer to understand usage between bots
-        - The storage location of Webchat user/conversation data can now be specified in the Dashboard settings:
+        - You can now specify the storage location of Webchat user/conversation data in the Dashboard settings:
             - **Session storage**: Creates a new user/conversation every time the page is re-opened
             - **Local storage**: Keeps user/conversation data across page visits
         - Request headers for the Webhook integration are now passed into the event payload
