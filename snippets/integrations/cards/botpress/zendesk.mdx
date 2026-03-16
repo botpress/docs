@@ -121,28 +121,30 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"Ticket ID"}</span>
   </ResponseField>
   <ResponseField
     name="subject"
     type="string"
     required
   >
-    
+    <span>{"Ticket subject"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    
+    <span>{"Ticket description"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum<string>"
     required
   >
-    Available options: `new`, `open`, `pending`, `hold`, `solved`, `closed`
+    <span>{"Ticket status"}</span>
+
+Available options: `new`, `open`, `pending`, `hold`, `solved`, `closed`
   </ResponseField>
   <ResponseField
     name="priority"
@@ -156,28 +158,34 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"ID of the requester"}</span>
   </ResponseField>
   <ResponseField
     name="requester"
     type="object"
   >
-    
+    <span>{"Requester information"}</span>
 
     <Expandable>
   <ResponseField
     name="name"
     type="string"
   >
-    
+    <span>{"Requester name"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    
+    <span>{"Requester email"}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="ticketFormId"
+    type="string | null"
+  >
+    
   </ResponseField>
   <ResponseField
     name="assigneeId"
@@ -191,21 +199,21 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="string"
     required
   >
-    
+    <span>{"Ticket creation date"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    
+    <span>{"Ticket last update date"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
     required
   >
-    
+    <span>{"Ticket tags"}</span>
   </ResponseField>
   <ResponseField
     name="externalId"
@@ -218,20 +226,20 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     name="comment"
     type="object"
   >
-    
+    <span>{"Ticket comment"}</span>
   </ResponseField>
   <ResponseField
     name="via"
     type="object"
   >
-    
+    <span>{"How the ticket was created"}</span>
 
     <Expandable>
   <ResponseField
     name="channel"
     type="string"
   >
-    
+    <span>{"Channel name"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -277,6 +285,12 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
   >
     <span>{"Requester email"}</span>
   </ResponseField>
+  <ResponseField
+    name="ticketFormId"
+    type="string"
+  >
+    <span>{"Ticket Form ID"}</span>
+  </ResponseField>
     </Expandable>
   </ResponseField>
 
@@ -298,28 +312,30 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"Ticket ID"}</span>
   </ResponseField>
   <ResponseField
     name="subject"
     type="string"
     required
   >
-    
+    <span>{"Ticket subject"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    
+    <span>{"Ticket description"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum<string>"
     required
   >
-    Available options: `new`, `open`, `pending`, `hold`, `solved`, `closed`
+    <span>{"Ticket status"}</span>
+
+Available options: `new`, `open`, `pending`, `hold`, `solved`, `closed`
   </ResponseField>
   <ResponseField
     name="priority"
@@ -333,28 +349,34 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"ID of the requester"}</span>
   </ResponseField>
   <ResponseField
     name="requester"
     type="object"
   >
-    
+    <span>{"Requester information"}</span>
 
     <Expandable>
   <ResponseField
     name="name"
     type="string"
   >
-    
+    <span>{"Requester name"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    
+    <span>{"Requester email"}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="ticketFormId"
+    type="string | null"
+  >
+    
   </ResponseField>
   <ResponseField
     name="assigneeId"
@@ -368,21 +390,21 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="string"
     required
   >
-    
+    <span>{"Ticket creation date"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    
+    <span>{"Ticket last update date"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
     required
   >
-    
+    <span>{"Ticket tags"}</span>
   </ResponseField>
   <ResponseField
     name="externalId"
@@ -395,20 +417,20 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     name="comment"
     type="object"
   >
-    
+    <span>{"Ticket comment"}</span>
   </ResponseField>
   <ResponseField
     name="via"
     type="object"
   >
-    
+    <span>{"How the ticket was created"}</span>
 
     <Expandable>
   <ResponseField
     name="channel"
     type="string"
   >
-    
+    <span>{"Channel name"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -454,21 +476,21 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"User ID"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"User name"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    
+    <span>{"User email"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
@@ -493,28 +515,30 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="enum<string>"
     required
   >
-    Available options: `end-user`, `agent`, `admin`
+    <span>{"User role"}</span>
+
+Available options: `end-user`, `agent`, `admin`
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
     required
   >
-    
+    <span>{"User tags"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    
+    <span>{"User creation date"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    
+    <span>{"User last update date"}</span>
   </ResponseField>
   <ResponseField
     name="externalId"
@@ -527,7 +551,7 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     name="userFields"
     type="object"
   >
-    
+    <span>{"Custom user fields"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -571,28 +595,30 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"Ticket ID"}</span>
   </ResponseField>
   <ResponseField
     name="subject"
     type="string"
     required
   >
-    
+    <span>{"Ticket subject"}</span>
   </ResponseField>
   <ResponseField
     name="description"
     type="string"
     required
   >
-    
+    <span>{"Ticket description"}</span>
   </ResponseField>
   <ResponseField
     name="status"
     type="enum<string>"
     required
   >
-    Available options: `new`, `open`, `pending`, `hold`, `solved`, `closed`
+    <span>{"Ticket status"}</span>
+
+Available options: `new`, `open`, `pending`, `hold`, `solved`, `closed`
   </ResponseField>
   <ResponseField
     name="priority"
@@ -606,28 +632,34 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"ID of the requester"}</span>
   </ResponseField>
   <ResponseField
     name="requester"
     type="object"
   >
-    
+    <span>{"Requester information"}</span>
 
     <Expandable>
   <ResponseField
     name="name"
     type="string"
   >
-    
+    <span>{"Requester name"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
   >
-    
+    <span>{"Requester email"}</span>
   </ResponseField>
     </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="ticketFormId"
+    type="string | null"
+  >
+    
   </ResponseField>
   <ResponseField
     name="assigneeId"
@@ -641,21 +673,21 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="string"
     required
   >
-    
+    <span>{"Ticket creation date"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    
+    <span>{"Ticket last update date"}</span>
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
     required
   >
-    
+    <span>{"Ticket tags"}</span>
   </ResponseField>
   <ResponseField
     name="externalId"
@@ -668,20 +700,20 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     name="comment"
     type="object"
   >
-    
+    <span>{"Ticket comment"}</span>
   </ResponseField>
   <ResponseField
     name="via"
     type="object"
   >
-    
+    <span>{"How the ticket was created"}</span>
 
     <Expandable>
   <ResponseField
     name="channel"
     type="string"
   >
-    
+    <span>{"Channel name"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -727,21 +759,21 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="number"
     required
   >
-    
+    <span>{"User ID"}</span>
   </ResponseField>
   <ResponseField
     name="name"
     type="string"
     required
   >
-    
+    <span>{"User name"}</span>
   </ResponseField>
   <ResponseField
     name="email"
     type="string"
     required
   >
-    
+    <span>{"User email"}</span>
   </ResponseField>
   <ResponseField
     name="phone"
@@ -766,28 +798,30 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     type="enum<string>"
     required
   >
-    Available options: `end-user`, `agent`, `admin`
+    <span>{"User role"}</span>
+
+Available options: `end-user`, `agent`, `admin`
   </ResponseField>
   <ResponseField
     name="tags"
     type="array"
     required
   >
-    
+    <span>{"User tags"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
     type="string"
     required
   >
-    
+    <span>{"User creation date"}</span>
   </ResponseField>
   <ResponseField
     name="updatedAt"
     type="string"
     required
   >
-    
+    <span>{"User last update date"}</span>
   </ResponseField>
   <ResponseField
     name="externalId"
@@ -800,7 +834,7 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     name="userFields"
     type="object"
   >
-    
+    <span>{"Custom user fields"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
