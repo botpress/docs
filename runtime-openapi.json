@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Runtime API",
     "description": "API for Botpress Runtime",
-    "version": "1.52.1"
+    "version": "1.80.0"
   },
   "paths": {
     "/v1/chat/conversations": {
@@ -134,6 +134,22 @@
             "name": "channel",
             "in": "query",
             "description": "Filter by integration channel name",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "afterDate",
+            "in": "query",
+            "description": "Date in ISO 8601 string with UTC timezone after which the conversation was created (inclusive)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beforeDate",
+            "in": "query",
+            "description": "Date in ISO 8601 string with UTC timezone before which the conversation was created (inclusive)",
             "schema": {
               "type": "string"
             }
@@ -366,7 +382,7 @@
     "/v1/chat/conversations/get-or-create": {
       "post": {
         "operationId": "getOrCreateConversation",
-        "description": "Retrieves the [Conversation](#schema_conversation) object for a valid identifier. If the conversation does not exist, it will be created.",
+        "description": "Retrieves the [Conversation](#schema_conversation) object containing given tags. If the conversation does not exist, it will be created. Tags will be updated if they are set in the request body.",
         "parameters": [
           {
             "name": "x-bot-id",
@@ -1053,6 +1069,22 @@
             }
           },
           {
+            "name": "afterDate",
+            "in": "query",
+            "description": "Date in ISO 8601 string with UTC timezone after which the message was created (inclusive)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beforeDate",
+            "in": "query",
+            "description": "Date in ISO 8601 string with UTC timezone before which the message was created (inclusive)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1101,7 +1133,7 @@
     "/v1/chat/messages/get-or-create": {
       "post": {
         "operationId": "getOrCreateMessage",
-        "description": "Retrieves the [Message](#schema_message) object for a valid identifier. If the message does not exist, it will be created.",
+        "description": "Retrieves the [Message](#schema_message) object for given discriminating tags. If the message does not exist, it will be created. If the message already exists, its tags and payload will be updated with the provided values if they are defined.",
         "parameters": [
           {
             "name": "x-bot-id",
@@ -1331,6 +1363,118 @@
         }
       }
     },
+    "/v1/chat/initialize-incoming-message": {
+      "post": {
+        "operationId": "initializeIncomingMessage",
+        "description": "Initializes a user, conversation and sends a message to the conversation.",
+        "parameters": [
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/initializeIncomingMessageResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/initializeIncomingMessageResponse"
+          }
+        },
+        "tags": [
+          "experimental",
+          "Endpoints"
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/initializeIncomingMessageBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "initializeIncomingMessage"
+          }
+        },
+        "x-hidden": true
+      }
+    },
+    "/v1/chat/messages/import-messages": {
+      "post": {
+        "operationId": "importMessages",
+        "description": "Imports messages if no matching messages already exist. On partial failure, returns an [Error](#errors) with both `resolvedMessages` and `failedMessages` arrays.",
+        "parameters": [
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/importMessagesResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/importMessagesResponse"
+          }
+        },
+        "tags": [
+          "experimental",
+          "Endpoints"
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/importMessagesBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "importMessages"
+          }
+        },
+        "x-hidden": true
+      }
+    },
     "/v1/chat/users": {
       "post": {
         "operationId": "createUser",
@@ -1413,6 +1557,58 @@
               "additionalProperties": {
                 "type": "string"
               }
+            }
+          },
+          {
+            "name": "afterDate",
+            "in": "query",
+            "description": "Date in ISO 8601 string with UTC timezone after which the user was created or updated (inclusive)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "beforeDate",
+            "in": "query",
+            "description": "Date in ISO 8601 string with UTC timezone before which the user was created or updated (inclusive)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rangeField",
+            "in": "query",
+            "description": "Field used for range filtering. Allowed values are \"updatedAt\" or \"createdAt\". Defaults to \"createdAt\" if omitted.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "updatedAt",
+                "createdAt"
+              ]
+            }
+          },
+          {
+            "name": "sortField",
+            "in": "query",
+            "description": "Sort results by this field",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "updatedAt",
+                "createdAt"
+              ]
+            }
+          },
+          {
+            "name": "sortDirection",
+            "in": "query",
+            "description": "Sort results in this direction",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
             }
           },
           {
@@ -1643,7 +1839,7 @@
     "/v1/chat/users/get-or-create": {
       "post": {
         "operationId": "getOrCreateUser",
-        "description": "Retrieves the [User](#schema_user) object for a valid identifier. If the user does not exist, it will be created.",
+        "description": "Retrieves the [User](#schema_user) object for given discriminating tags. If the user does not exist, it will be created. If the user already exists, its name, pictureUrl, attributes, and tags will be updated with the provided values.",
         "parameters": [
           {
             "name": "x-bot-id",
@@ -1711,7 +1907,6 @@
                 "user",
                 "bot",
                 "integration",
-                "task",
                 "workflow"
               ]
             }
@@ -1800,7 +1995,6 @@
                 "user",
                 "bot",
                 "integration",
-                "task",
                 "workflow"
               ]
             }
@@ -1884,7 +2078,6 @@
                 "user",
                 "bot",
                 "integration",
-                "task",
                 "workflow"
               ]
             }
@@ -1971,7 +2164,6 @@
                 "user",
                 "bot",
                 "integration",
-                "task",
                 "workflow"
               ]
             }
@@ -2060,7 +2252,6 @@
                 "user",
                 "bot",
                 "integration",
-                "task",
                 "workflow"
               ]
             }
@@ -2238,365 +2429,6 @@
             "title": "configureIntegration"
           }
         }
-      }
-    },
-    "/v1/chat/tasks/{id}": {
-      "get": {
-        "operationId": "getTask",
-        "description": "Retrieves the [Task](#schema_task) object for a valid identifier.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Task id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-bot-id",
-            "in": "header",
-            "description": "Bot id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-id",
-            "in": "header",
-            "description": "Integration id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-alias",
-            "in": "header",
-            "description": "Integration alias",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/getTaskResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/getTaskResponse"
-          }
-        },
-        "x-mint": {
-          "metadata": {
-            "title": "getTask"
-          }
-        },
-        "x-hidden": true,
-        "tags": [
-          "Endpoints"
-        ]
-      },
-      "put": {
-        "operationId": "updateTask",
-        "description": "Update a [Task](#schema_task) object by setting the values of the parameters passed. Any parameters not provided will be left unchanged.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Task id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-bot-id",
-            "in": "header",
-            "description": "Bot id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-id",
-            "in": "header",
-            "description": "Integration id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-alias",
-            "in": "header",
-            "description": "Integration alias",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/updateTaskResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/updateTaskResponse"
-          }
-        },
-        "requestBody": {
-          "$ref": "#/components/requestBodies/updateTaskBody"
-        },
-        "x-mint": {
-          "metadata": {
-            "title": "updateTask"
-          }
-        },
-        "x-hidden": true,
-        "tags": [
-          "Endpoints"
-        ]
-      },
-      "delete": {
-        "operationId": "deleteTask",
-        "description": "Permanently deletes a [Task](#schema_task). It cannot be undone.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Task id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-bot-id",
-            "in": "header",
-            "description": "Bot id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-id",
-            "in": "header",
-            "description": "Integration id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-alias",
-            "in": "header",
-            "description": "Integration alias",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/deleteTaskResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/deleteTaskResponse"
-          }
-        },
-        "x-mint": {
-          "metadata": {
-            "title": "deleteTask"
-          }
-        },
-        "x-hidden": true,
-        "tags": [
-          "Endpoints"
-        ]
-      }
-    },
-    "/v1/chat/tasks": {
-      "post": {
-        "operationId": "createTask",
-        "description": "Creates a new [Task](#schema_task). When creating a new [Task](#schema_task), the required tags must be provided. See the specific integration for more details.",
-        "parameters": [
-          {
-            "name": "x-bot-id",
-            "in": "header",
-            "description": "Bot id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-id",
-            "in": "header",
-            "description": "Integration id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-alias",
-            "in": "header",
-            "description": "Integration alias",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "$ref": "#/components/responses/createTaskResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/createTaskResponse"
-          }
-        },
-        "requestBody": {
-          "$ref": "#/components/requestBodies/createTaskBody"
-        },
-        "x-mint": {
-          "metadata": {
-            "title": "createTask"
-          }
-        },
-        "x-hidden": true,
-        "tags": [
-          "Endpoints"
-        ]
-      },
-      "get": {
-        "operationId": "listTasks",
-        "description": "Retrieves a list of [Task](#schema_task) you've previously created. The tasks are returned in sorted order, with the most recent appearing first. The list can be filtered using [Tags](/docs/developers/concepts/tags).",
-        "parameters": [
-          {
-            "name": "nextToken",
-            "in": "query",
-            "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tags",
-            "in": "query",
-            "description": "Filter by tags",
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "conversationId",
-            "in": "query",
-            "description": "Conversation id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "userId",
-            "in": "query",
-            "description": "User id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "parentTaskId",
-            "in": "query",
-            "description": "Parent task id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "status",
-            "in": "query",
-            "description": "Status",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "pending",
-                  "in_progress",
-                  "failed",
-                  "completed",
-                  "blocked",
-                  "paused",
-                  "timeout",
-                  "cancelled"
-                ]
-              }
-            }
-          },
-          {
-            "name": "type",
-            "in": "query",
-            "description": "Type",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-bot-id",
-            "in": "header",
-            "description": "Bot id",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-id",
-            "in": "header",
-            "description": "Integration id",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "x-integration-alias",
-            "in": "header",
-            "description": "Integration alias",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/listTasksResponse"
-          },
-          "default": {
-            "$ref": "#/components/responses/listTasksResponse"
-          }
-        },
-        "x-mint": {
-          "metadata": {
-            "title": "listTasks"
-          }
-        },
-        "x-hidden": true,
-        "tags": [
-          "Endpoints"
-        ]
       }
     },
     "/v1/chat/workflows": {
@@ -3149,6 +2981,61 @@
           "Endpoints"
         ]
       }
+    },
+    "/v1/chat/observations": {
+      "post": {
+        "operationId": "captureObservation",
+        "description": "Capture a bot runtime observation. Does not support integration observations yet.",
+        "parameters": [
+          {
+            "name": "x-bot-id",
+            "in": "header",
+            "description": "Bot id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-id",
+            "in": "header",
+            "description": "Integration id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-integration-alias",
+            "in": "header",
+            "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/captureObservationResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/captureObservationResponse"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/captureObservationBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "captureObservation"
+          }
+        },
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
+      }
     }
   },
   "components": {
@@ -3188,6 +3075,22 @@
             "type": "string",
             "maxLength": 40000,
             "description": "Picture URL of the [User](#schema_user)"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Optional properties"
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Optional attributes"
           }
         },
         "required": [
@@ -3212,7 +3115,8 @@
             "type": "string",
             "minLength": 28,
             "maxLength": 36,
-            "description": "Id of the current [Task](#schema_task)"
+            "deprecated": true,
+            "description": "Unused. This field will be removed in the future."
           },
           "currentWorkflowId": {
             "type": "string",
@@ -3244,6 +3148,10 @@
               "type": "string"
             },
             "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Conversation](#schema_conversation). The set of [Tags](/docs/developers/concepts/tags) available on a [Conversation](#schema_conversation) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
+          },
+          "messageCount": {
+            "type": "number",
+            "description": "Number of messages in the conversation"
           }
         },
         "required": [
@@ -3252,7 +3160,8 @@
           "updatedAt",
           "channel",
           "integration",
-          "tags"
+          "tags",
+          "messageCount"
         ],
         "description": "The [Conversation](#schema_conversation) object represents an exchange of messages between one or more users. A [Conversation](#schema_conversation) is always linked to an integration's channels. For example, a Slack channel represents a conversation.",
         "additionalProperties": false
@@ -3454,11 +3363,10 @@
               "conversation",
               "user",
               "bot",
-              "task",
               "integration",
               "workflow"
             ],
-            "description": "Type of the [State](#schema_state) represents the resource type (`conversation`, `user`, `bot`, `task`, `integration` or `workflow`) that the state is related to"
+            "description": "Type of the [State](#schema_state) represents the resource type (`conversation`, `user`, `bot`, `integration` or `workflow`) that the state is related to"
           },
           "payload": {
             "type": "object",
@@ -3476,109 +3384,6 @@
           "payload"
         ],
         "description": "The state object represents the current payload. A state is always linked to either a bot, a conversation or a user.",
-        "additionalProperties": false
-      },
-      "Task": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Id of the [Task](#schema_task)"
-          },
-          "title": {
-            "type": "string",
-            "maxLength": 64,
-            "description": "Title describing the task"
-          },
-          "description": {
-            "type": "string",
-            "maxLength": 256,
-            "description": "All the notes related to the execution of the current task"
-          },
-          "type": {
-            "type": "string",
-            "description": "Type of the task"
-          },
-          "data": {
-            "type": "object",
-            "additionalProperties": true,
-            "description": "Content related to the task"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "in_progress",
-              "failed",
-              "completed",
-              "blocked",
-              "paused",
-              "timeout",
-              "cancelled"
-            ],
-            "description": "Status of the task"
-          },
-          "parentTaskId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Parent task id is the parent task that created this task"
-          },
-          "conversationId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Conversation id related to this task"
-          },
-          "userId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Specific user related to this task"
-          },
-          "timeoutAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The timeout date where the task should be failed in the ISO 8601 format"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Creation date of the task in ISO 8601 format"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Updating date of the task in ISO 8601 format"
-          },
-          "failureReason": {
-            "type": "string",
-            "maxLength": 2000,
-            "description": "If the task fails this is the reason behind it"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Task](#schema_task). Individual keys can be unset by posting an empty value to them."
-          }
-        },
-        "required": [
-          "id",
-          "title",
-          "description",
-          "type",
-          "data",
-          "status",
-          "timeoutAt",
-          "createdAt",
-          "updatedAt",
-          "tags"
-        ],
-        "description": "Task definition",
         "additionalProperties": false
       },
       "Workflow": {
@@ -3769,10 +3574,23 @@
               "properties": {
                 "conversation": {
                   "$ref": "#/components/schemas/Conversation"
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "created"
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
-                "conversation"
+                "conversation",
+                "meta"
               ],
               "title": "getOrCreateConversationResponse",
               "additionalProperties": false
@@ -4013,10 +3831,23 @@
               "properties": {
                 "message": {
                   "$ref": "#/components/schemas/Message"
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "created"
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
-                "message"
+                "message",
+                "meta"
               ],
               "title": "getOrCreateMessageResponse",
               "additionalProperties": false
@@ -4110,6 +3941,56 @@
           }
         }
       },
+      "initializeIncomingMessageResponse": {
+        "description": "Returns an object containing the user, conversation and message (if created)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "conversation": {
+                  "$ref": "#/components/schemas/Conversation"
+                },
+                "message": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              },
+              "required": [
+                "user",
+                "conversation"
+              ],
+              "title": "initializeIncomingMessageResponse",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "importMessagesResponse": {
+        "description": "Returns the list of [Message](#schema_message) objects that were retrieved or created. On partial failure, returns an [Error](#errors) with `resolvedMessages` (successfully imported) and `failedMessages` (each with an `error` field).",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "messages": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Message"
+                  }
+                }
+              },
+              "required": [
+                "messages"
+              ],
+              "title": "importMessagesResponse",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "createUserResponse": {
         "description": "Returns a [User](#schema_user) object if creation succeeds. Returns an [Error](#errors) otherwise",
         "content": {
@@ -4193,10 +4074,23 @@
               "properties": {
                 "user": {
                   "$ref": "#/components/schemas/User"
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "created"
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
-                "user"
+                "user",
+                "meta"
               ],
               "title": "getOrCreateUserResponse",
               "additionalProperties": false
@@ -4409,112 +4303,6 @@
           }
         }
       },
-      "getTaskResponse": {
-        "description": "Returns a [Task](#schema_task) object if a valid identifier was provided. Returns an [Error](#errors) otherwise",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "task": {
-                  "$ref": "#/components/schemas/Task"
-                }
-              },
-              "required": [
-                "task"
-              ],
-              "title": "getTaskResponse",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "createTaskResponse": {
-        "description": "Returns a [Task](#schema_task) object if creation succeeds. Returns an [Error](#errors) otherwise",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "task": {
-                  "$ref": "#/components/schemas/Task"
-                }
-              },
-              "required": [
-                "task"
-              ],
-              "title": "createTaskResponse",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "updateTaskResponse": {
-        "description": "Returns an updated [Task](#schema_task) object if a valid identifier was provided. Returns an [Error](#errors) otherwise",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "task": {
-                  "$ref": "#/components/schemas/Task"
-                }
-              },
-              "required": [
-                "task"
-              ],
-              "title": "updateTaskResponse",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "deleteTaskResponse": {
-        "description": "Returns the [Task](#schema_task) object that was deleted",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "title": "deleteTaskResponse",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "listTasksResponse": {
-        "description": "Returns a list of [Task](#schema_task) objects",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "tasks": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Task"
-                  }
-                },
-                "meta": {
-                  "type": "object",
-                  "properties": {
-                    "nextToken": {
-                      "type": "string",
-                      "description": "The token to use to retrieve the next page of results, passed as a query string parameter (value should be URL-encoded) to this API endpoint."
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              },
-              "required": [
-                "tasks",
-                "meta"
-              ],
-              "title": "listTasksResponse",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
       "createWorkflowResponse": {
         "description": "Returns a [Workflow](#schema_workflow) object if creation succeeds. Returns an [Error](#errors) otherwise",
         "content": {
@@ -4694,6 +4482,18 @@
             }
           }
         }
+      },
+      "captureObservationResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "captureObservationResponse",
+              "additionalProperties": false
+            }
+          }
+        }
       }
     },
     "requestBodies": {
@@ -4787,7 +4587,9 @@
               "type": "object",
               "properties": {
                 "currentTaskId": {
-                  "type": "string"
+                  "type": "string",
+                  "deprecated": true,
+                  "description": "Unused. This parameter will be ignored if provided and should not be used when updating a conversation."
                 },
                 "tags": {
                   "type": "object",
@@ -5039,7 +4841,6 @@
                 }
               },
               "required": [
-                "payload",
                 "userId",
                 "conversationId",
                 "type",
@@ -5080,6 +4881,247 @@
           }
         }
       },
+      "initializeIncomingMessageBody": {
+        "description": "Message data with related conversation and user",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "tags": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "description": "Tags for the [User](#schema_user)"
+                    },
+                    "integrationName": {
+                      "type": "string",
+                      "maxLength": 200,
+                      "description": "[DEPRECATED] To create a [User](#schema_user) from within a bot, call an action of the integration instead.",
+                      "deprecated": true
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 200,
+                      "description": "Name of the user"
+                    },
+                    "pictureUrl": {
+                      "type": "string",
+                      "maxLength": 40000,
+                      "description": "URI of the user picture"
+                    },
+                    "properties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "DEPRECATED - Use properties instead.",
+                      "deprecated": true
+                    },
+                    "discriminateByTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "description": "Optional list of tag names to use for strict matching when looking up existing messages. If provided, all specified tags must match exactly for a message to be considered a match. For example, with an existing message whose tags are {\"foo\": \"a\", \"bar\": \"b\", baz: \"c\"}: Without this parameter, ALL tags must match exactly. With [\"bar\",\"baz\"], all listed tags must match their values, and other tags are not considered."
+                    }
+                  },
+                  "required": [
+                    "tags",
+                    "discriminateByTags"
+                  ],
+                  "additionalProperties": false
+                },
+                "conversationId": {
+                  "type": "string"
+                },
+                "conversation": {
+                  "type": "object",
+                  "properties": {
+                    "channel": {
+                      "type": "string",
+                      "maxLength": 200,
+                      "description": "Channel name"
+                    },
+                    "tags": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "description": "Tags for the [Conversation](#schema_conversation)"
+                    },
+                    "integrationName": {
+                      "type": "string",
+                      "maxLength": 200,
+                      "description": "[DEPRECATED] To create a conversation from within a bot, call an action of the integration instead.",
+                      "deprecated": true
+                    },
+                    "discriminateByTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "description": "Optional list of tag names to use for strict matching when looking up existing messages. If provided, all specified tags must match exactly for a message to be considered a match. For example, with an existing message whose tags are {\"foo\": \"a\", \"bar\": \"b\", baz: \"c\"}: Without this parameter, ALL tags must match exactly. With [\"bar\",\"baz\"], all listed tags must match their values, and other tags are not considered."
+                    }
+                  },
+                  "required": [
+                    "channel",
+                    "tags",
+                    "discriminateByTags"
+                  ],
+                  "additionalProperties": false
+                },
+                "message": {
+                  "type": "object",
+                  "properties": {
+                    "payload": {
+                      "type": "object",
+                      "additionalProperties": true,
+                      "description": "Payload is the content type of the message. Accepted payload options: Text, Image, Choice, Dropdown, Card, Carousel, File, Audio, Video, Location"
+                    },
+                    "type": {
+                      "type": "string",
+                      "maxLength": 200,
+                      "description": "Type of the [Message](#schema_message) represents the resource type that the message is related to"
+                    },
+                    "tags": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Message](#schema_message). The set of [Tags](/docs/developers/concepts/tags) available on a [Message](#schema_message) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
+                    },
+                    "origin": {
+                      "type": "string",
+                      "enum": [
+                        "synthetic"
+                      ]
+                    },
+                    "discriminateByTags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "maxLength": 500
+                      },
+                      "description": "Optional list of tag names to use for strict matching when looking up existing messages. If provided, all specified tags must match exactly for a message to be considered a match. For example, with an existing message whose tags are {\"foo\": \"a\", \"bar\": \"b\", baz: \"c\"}: Without this parameter, ALL tags must match exactly. With [\"bar\",\"baz\"], all listed tags must match their values, and other tags are not considered."
+                    }
+                  },
+                  "required": [
+                    "payload",
+                    "type",
+                    "tags",
+                    "discriminateByTags"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "title": "initializeIncomingMessageBody",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "importMessagesBody": {
+        "description": "Data for the list of messages to import",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "messages": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "payload": {
+                        "type": "object",
+                        "properties": {},
+                        "additionalProperties": true,
+                        "description": "Payload is the content type of the message. Accepted payload options: Text, Image, Choice, Dropdown, Card, Carousel, File, Audio, Video, Location"
+                      },
+                      "userId": {
+                        "type": "string",
+                        "minLength": 28,
+                        "maxLength": 36,
+                        "description": "ID of the [User](#schema_user)"
+                      },
+                      "conversationId": {
+                        "type": "string",
+                        "minLength": 28,
+                        "maxLength": 36,
+                        "description": "ID of the [Conversation](#schema_conversation)"
+                      },
+                      "type": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "description": "Type of the [Message](#schema_message) represents the resource type that the message is related to"
+                      },
+                      "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Message](#schema_message). The set of [Tags](/docs/developers/concepts/tags) available on a [Message](#schema_message) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation date of the [Message](#schema_message) in ISO 8601 format"
+                      },
+                      "discriminateByTags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "description": "Optional list of tag names to use for strict matching when looking up existing messages. If provided, all specified tags must match exactly for a message to be considered a match. For example, with an existing message whose tags are {\"foo\": \"a\", \"bar\": \"b\", baz: \"c\"}: Without this parameter, ALL tags must match exactly. With [\"bar\",\"baz\"], all listed tags must match their values, and other tags are not considered."
+                      }
+                    },
+                    "required": [
+                      "payload",
+                      "userId",
+                      "conversationId",
+                      "type",
+                      "tags",
+                      "createdAt",
+                      "discriminateByTags"
+                    ],
+                    "description": "Setting empty tags or discriminateByTags will always result in the creation of a new message"
+                  },
+                  "maxItems": 100
+                }
+              },
+              "required": [
+                "messages"
+              ],
+              "title": "importMessagesBody",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "createUserBody": {
         "description": "User data",
         "content": {
@@ -5110,6 +5152,23 @@
                   "type": "string",
                   "maxLength": 40000,
                   "description": "URI of the user picture"
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "DEPRECATED - Use properties instead.",
+                  "deprecated": true
                 }
               },
               "required": [
@@ -5151,6 +5210,23 @@
                   "type": "string",
                   "maxLength": 40000,
                   "description": "URI of the user picture"
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "DEPRECATED - Use properties instead.",
+                  "deprecated": true
                 },
                 "discriminateByTags": {
                   "type": "array",
@@ -5196,6 +5272,25 @@
                   "maxLength": 40000,
                   "nullable": true,
                   "description": "URI of the user picture"
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "deprecated": true,
+                  "description": "DEPRECATED - Use properties instead."
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations. Set individual properties to null to remove them."
                 }
               },
               "title": "updateUserBody",
@@ -5372,123 +5467,6 @@
                 }
               },
               "title": "configureIntegrationBody",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "createTaskBody": {
-        "description": "Task data",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "maxLength": 2000,
-                  "description": "Title describing the task"
-                },
-                "description": {
-                  "type": "string",
-                  "maxLength": 20000,
-                  "description": "All the notes related to the execution of the current task"
-                },
-                "type": {
-                  "type": "string",
-                  "maxLength": 200,
-                  "description": "Type of the task"
-                },
-                "data": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "description": "Content related to the task"
-                },
-                "parentTaskId": {
-                  "type": "string",
-                  "description": "Parent task id is the parent task that created this task"
-                },
-                "conversationId": {
-                  "type": "string",
-                  "description": "Conversation id related to this task"
-                },
-                "userId": {
-                  "type": "string",
-                  "description": "Specific user related to this task"
-                },
-                "timeoutAt": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "The timeout date where the task should be failed in the ISO 8601 format"
-                },
-                "tags": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 500
-                  },
-                  "description": "Tags for the [Task](#schema_task)"
-                }
-              },
-              "required": [
-                "type",
-                "conversationId"
-              ],
-              "title": "createTaskBody",
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "updateTaskBody": {
-        "description": "Task data",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "description": "Title describing the task"
-                },
-                "description": {
-                  "type": "string",
-                  "description": "All the notes related to the execution of the current task"
-                },
-                "data": {
-                  "type": "object",
-                  "additionalProperties": true,
-                  "description": "Content related to the task"
-                },
-                "timeoutAt": {
-                  "type": "string",
-                  "format": "date-time",
-                  "description": "The timeout date where the task should be failed in the ISO 8601 format"
-                },
-                "status": {
-                  "type": "string",
-                  "enum": [
-                    "pending",
-                    "in_progress",
-                    "failed",
-                    "completed",
-                    "blocked",
-                    "paused",
-                    "timeout",
-                    "cancelled"
-                  ],
-                  "description": "Status of the task"
-                },
-                "tags": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 500
-                  },
-                  "description": "Tags for the [Task](#schema_task)"
-                }
-              },
-              "title": "updateTaskBody",
               "additionalProperties": false
             }
           }
@@ -5720,6 +5698,61 @@
             }
           }
         }
+      },
+      "captureObservationBody": {
+        "description": "Add an event to the analytics",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Caller-defined identifier for the observation (e.g. llmz context ID). Uniqueness is not enforced nor guaranteed."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of the observation"
+                },
+                "data": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "Data of the observation"
+                },
+                "messageId": {
+                  "type": "string",
+                  "description": "ID of the message associated with the observation"
+                },
+                "eventId": {
+                  "type": "string",
+                  "description": "ID of the event associated with the observation"
+                },
+                "conversationId": {
+                  "type": "string",
+                  "description": "ID of the conversation associated with the observation"
+                },
+                "userId": {
+                  "type": "string",
+                  "description": "ID of the user associated with the observation"
+                },
+                "errorId": {
+                  "type": "string",
+                  "description": "ID of the error associated with the observation"
+                },
+                "traceId": {
+                  "type": "string",
+                  "description": "ID of the trace associated with the observation"
+                }
+              },
+              "required": [
+                "name",
+                "data"
+              ],
+              "title": "captureObservationBody",
+              "additionalProperties": false
+            }
+          }
+        }
       }
     },
     "parameters": {},
@@ -5738,6 +5771,9 @@
   "tags": [
     {
       "name": "documented"
+    },
+    {
+      "name": "experimental"
     }
   ]
 }
