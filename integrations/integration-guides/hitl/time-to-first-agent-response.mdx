@@ -15,88 +15,77 @@ sidebarTitle: Measure HITL Response Time
 
 This guide explains how to measure the **Time to First Agent Response** for conversations handed off to a human agent via [Human-in-the-Loop (HITL)](/integrations/integration-guides/hitl/introduction). The metric captures how long a user waited from the moment they requested a human agent to the moment an agent was assigned. 
 
-The result is stored as a formatted string in a conversation variable and can be displayed in a Text card, forwarded to a server, or saved to a Botpress table.
+The result is stored as a formatted string in a conversation variable and can be sent using a [Text Card](/studio/concepts/cards/send-messages#text), [sent to an external system](/studio/concepts/cards/execute-code), or [saved to a Botpress table](/studio/concepts/cards/tables#insert-record).
 
 ## 1. Create conversation variables
 
-<Steps titleSize="h3">
-  <Step title="Add the variables">
-    Create the following two variables in your bot, scoped as **Conversation** variables:
+Create the following two variables in your bot, scoped as **Conversation** variables:
 
-    | Variable Name           | Type   | Description                                            |
-    | :---------------------- | :----- | :----------------------------------------------------- |
-    | `hitlRequestTimestamp`  | number | Unix timestamp (ms) of when the HITL request was made |
-    | `hitlTimingDisplay`     | string | Formatted summary string of the timing result          |
+| Variable Name           | Type   | Description                                            |
+| :---------------------- | :----- | :----------------------------------------------------- |
+| `hitlRequestTimestamp`  | number | Unix timestamp (ms) of when the HITL request was made |
+| `hitlTimingDisplay`     | string | Formatted summary string of the timing result          |
 
-    In Botpress Studio, go to **Variables** → **+ New Variable**, set the scope to **Conversation**, and configure each entry as described above.
-  </Step>
-</Steps>
+In Botpress Studio, go to **Variables** → **+ New Variable**, set the scope to **Conversation**, and configure each entry as described above.
 
 ## 2. Capture the request timestamp
 
-Before your **Start HITL** card, insert an **Execute Code** card that records when the user was handed off to HITL:
+Before your [Start HITL](/integrations/integration-guides/hitl/introduction#step-3-add-the-start-hitl-card-to-your-workflow) Card, insert an [Execute Code](/studio/concepts/cards/execute-code) Card that records when the user was handed off to HITL. Use the following code:
 
-<Steps titleSize="h3">
-  <Step title="Add an Execute Code card">
-    Add an **Execute Code** card before the **Start HITL** card and use the following code:
+```js
+conversation.hitlRequestTimestamp = Date.now()
+```
 
-    ```js
-    conversation.hitlRequestTimestamp = Date.now()
-    ```
+This stores the exact moment the user was handed off to HITL, in milliseconds since the [Unix Epoch](https://en.wikipedia.org/wiki/Unix_time).
 
-    This stores the exact moment the user was handed off to HITL, in milliseconds since the Unix epoch.
-  </Step>
-</Steps>
+<Info title="Unix Epoch">
+  The **Unix Epoch** is January 1, 1970 at 00:00:00 UTC. Timestamps in "milliseconds since the Unix epoch" are the number of milliseconds elapsed since that moment.
+</Info>
 
 ## 3. Calculate and format the wait time
 
-After your **Start HITL** card, insert another **Execute Code** card that computes the time until an agent was assigned and formats the result:
+After your [Start HITL](/integrations/integration-guides/hitl/introduction#step-3-add-the-start-hitl-card-to-your-workflow) Card, insert another [Execute Code](/studio/concepts/cards/execute-code) Card that computes the time until an agent was assigned and formats the result. Use the following code:
 
-<Steps titleSize="h3">
-  <Step title="Add an Execute Code card after Start HITL">
-    Add an **Execute Code** card after the **Start HITL** card and use the following code:
+```js
+const { conversation: upstream } = await client.getConversation({ id: event.conversationId })
+const downstreamConvId = upstream.tags?.['hitl#downstream']
 
-    ```js
-    const { conversation: upstream } = await client.getConversation({ id: event.conversationId })
-    const downstreamConvId = upstream.tags?.['hitl#downstream']
+if (downstreamConvId) {
+  const { conversation: downstream } = await client.getConversation({ id: downstreamConvId })
+  const assignedAtMs = parseInt(downstream.tags?.['hitl:assignedAt'] || '0')
 
-    if (downstreamConvId) {
-      const { conversation: downstream } = await client.getConversation({ id: downstreamConvId })
-      const assignedAtMs = parseInt(downstream.tags?.['hitl:assignedAt'] || '0')
+  if (assignedAtMs) {
+    const requestTime = new Date(conversation.hitlRequestTimestamp)
+    const assignedTime = new Date(assignedAtMs)
 
-      if (assignedAtMs) {
-        const requestTime = new Date(conversation.hitlRequestTimestamp)
-        const assignedTime = new Date(assignedAtMs)
+    const diffMs = assignedAtMs - Number(conversation.hitlRequestTimestamp)
+    const diffMins = Math.floor(diffMs / 60000)
+    const diffSecs = Math.floor((diffMs % 60000) / 1000)
 
-        const diffMs = assignedAtMs - Number(conversation.hitlRequestTimestamp)
-        const diffMins = Math.floor(diffMs / 60000)
-        const diffSecs = Math.floor((diffMs % 60000) / 1000)
+    const fmt = (d) =>
+      d.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+        timeZone: 'America/New_York'
+      })
 
-        const fmt = (d) =>
-          d.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-            timeZone: 'America/New_York'
-          })
+    conversation.hitlTimingDisplay =
+      `HITL Request Time: ${fmt(requestTime)}\n` +
+      `HITL Assignment Time: ${fmt(assignedTime)}\n` +
+      `Wait Time: ${diffMins}m ${diffSecs}s`
+  }
+}
+```
 
-        conversation.hitlTimingDisplay =
-          `HITL Request Time: ${fmt(requestTime)}\n` +
-          `HITL Assignment Time: ${fmt(assignedTime)}\n` +
-          `Wait Time: ${diffMins}m ${diffSecs}s`
-      }
-    }
-    ```
-  </Step>
-  <Step title="What this code does">
-    - Fetches the upstream conversation using the current conversation ID.
-    - Resolves the downstream HITL conversation via the `hitl#downstream` tag (set automatically by Botpress when a handoff is initiated).
-    - Reads the `hitl:assignedAt` tag from the downstream conversation (timestamp of when an agent accepted and assigned).
-    - Computes the wait time between the request and assignment.
-    - Formats and stores the result in `conversation.hitlTimingDisplay`.
-  </Step>
-</Steps>
+What this code does:
+
+- Fetches the upstream conversation using the current conversation ID.
+- Resolves the downstream HITL conversation via the `hitl#downstream` tag (set automatically by Botpress when a handoff is initiated).
+- Reads the `hitl:assignedAt` tag from the downstream conversation (timestamp of when an agent accepted and assigned).
+- Computes the wait time between the request and assignment.
+- Formats and stores the result in `conversation.hitlTimingDisplay`.
 
 Once the code runs, `conversation.hitlTimingDisplay` will contain a message in this format:
 
@@ -114,10 +103,10 @@ Wait Time: 0m 24s
 
 The `conversation.hitlTimingDisplay` variable is available for the rest of your Workflow. You can:
 
-- **Display it in chat**: Add a **Text** card and reference `{{conversation.hitlTimingDisplay}}` to send the summary to the conversation (useful for testing and QA).
-- **Log it to a Botpress Table**: Use an **Update Table Row** or **Insert Table Row** card to persist the data for reporting.
-- **Send it to an external system**: Use an **Execute Code** card with an `axios` or `fetch` call to forward the values to your analytics platform, CRM, or data warehouse.
+- **Display it in chat**: Add a [Text](/studio/concepts/cards/send-messages#text) Card and reference `{{conversation.hitlTimingDisplay}}` to send the summary to the conversation (useful for testing and QA).
+- **Log it to a Botpress Table**: Use an [Update Table Row](/studio/concepts/cards/tables#update-record) or [Insert Table Row](/studio/concepts/cards/tables#insert-record) Card to persist the data for reporting.
+- **Send it to an external system**: Use an [Execute Code](/studio/concepts/cards/execute-code) Card with an `axios` or `fetch` call to forward the values to your analytics platform, CRM, or data warehouse.
 
 <Check>
-  You can now measure Time to First Agent Response for HITL conversations and use the result in your bot flow, tables, or external systems.
+  You can now measure Time to First Agent Response for HITL conversations and use the result in your bot Workflows, tables, or external systems.
 </Check>
