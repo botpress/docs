@@ -296,7 +296,14 @@
                   "/integrations/integration-guides/plus-google-analytics",
                   "/integrations/integration-guides/googlecalendar",
                   "/integrations/integration-guides/gsheets",
-                  "/integrations/integration-guides/hitl",
+                  {
+                    "group": "HITL",
+                    "icon": "/integrations/integration-guides/assets/icons/hitl.svg",
+                    "pages": [
+                      "/integrations/integration-guides/hitl/introduction",
+                      "/integrations/integration-guides/hitl/time-to-first-agent-response"
+                    ]
+                  },
                   "/integrations/integration-guides/hubspot",
                   "/integrations/integration-guides/hunter",
                   "/integrations/integration-guides/improvement",
@@ -650,6 +657,10 @@
     {
       "source": "/integrations/functional-integrations/:slug*",
       "destination": "/integrations/integration-guides/:slug*"
+    },
+    {
+      "source": "/integrations/integration-guides/hitl",
+      "destination": "/integrations/integration-guides/hitl/introduction"
     }
   ],
   "integrations": {
