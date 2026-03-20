@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Admin API",
     "description": "API for Botpress Cloud Manager",
-    "version": "1.80.0"
+    "version": "1.82.0"
   },
   "paths": {
     "/v1/admin/helper/vrl": {
@@ -2852,6 +2852,52 @@
         "x-mint": {
           "metadata": {
             "title": "updateBotAllowlist"
+          }
+        },
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
+      }
+    },
+    "/v1/admin/workspaces/{id}/migrate-to-v4": {
+      "post": {
+        "operationId": "migrateWorkspaceToV4",
+        "description": "Migrate a workspace from v3 to v4 billing. Not meant for public use.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Workspace ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-multiple-integrations",
+            "in": "header",
+            "description": "Whether the client supports bots with multiple instances of the same integration. Set to \"true\" to receive integration instances keyed by their alias instead of their id. This header will be removed in the future, and the API will always return multiple instances keyed by alias.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/migrateWorkspaceToV4Response"
+          },
+          "default": {
+            "$ref": "#/components/responses/migrateWorkspaceToV4Response"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/migrateWorkspaceToV4Body"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "migrateWorkspaceToV4"
           }
         },
         "x-hidden": true,
@@ -6965,6 +7011,13 @@
             "type": "boolean",
             "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
           },
+          "secrets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of secret names configured for this [Bot](#schema_bot)"
+          },
           "createdBy": {
             "type": "string",
             "description": "Id of the user that created the bot"
@@ -7023,6 +7076,7 @@
           "tags",
           "name",
           "dev",
+          "secrets",
           "alwaysAlive",
           "status",
           "medias"
@@ -13965,6 +14019,18 @@
           }
         }
       },
+      "migrateWorkspaceToV4Response": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "migrateWorkspaceToV4Response",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "listWorkspaceInvoicesResponse": {
         "description": "Success",
         "content": {
@@ -17022,6 +17088,14 @@
                   "type": "string",
                   "description": "URL of the [Bot](#schema_bot)"
                 },
+                "secrets": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 20000
+                  },
+                  "description": "Secrets are values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
+                },
                 "dev": {
                   "type": "boolean",
                   "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
@@ -17492,6 +17566,15 @@
                   },
                   "description": "Media files associated with the [Bot](#schema_bot)"
                 },
+                "secrets": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 20000,
+                    "nullable": true
+                  },
+                  "description": "Secrets are values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
+                },
                 "layers": {
                   "type": "array",
                   "items": {
@@ -17666,6 +17749,18 @@
                 }
               },
               "title": "updateBotAllowlistBody",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "migrateWorkspaceToV4Body": {
+        "description": "No body required; migration uses workspace id only.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "migrateWorkspaceToV4Body",
               "additionalProperties": false
             }
           }
