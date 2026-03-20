@@ -4,6 +4,60 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="March 20, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - New AI Models: GPT 5.4, Sonnet 4.6, Opus 4.6, Gemini 3.1 Pro Preview
+  - Added support for MDX (Markdown JSX) in the Files API
+
+  ### Integrations
+
+  - All integrations now automatically save configuration settings upon completion of OAuth
+  - **Linear**, **HubSpot**, **LinkedIn**, **GitHub**, and **Notion** now supports OAuth for multiple bots
+  - **WeChat**: Added WeChat integration
+  - **WhatsApp**: Added events to track outbound message delivery lifecycle
+
+  ### Bug fixes
+
+  - Fixed issue where integration settings were reset on update
+  - Fixed issue with duplicate header names in Tables
+  - Fixed issue with duplicate variables being created after variable deletion
+  - Fixed errors when connecting additional stylesheets in Webchat
+
+  ---
+
+  ## ADK
+
+  ### Control Panel
+
+  - Added Copilot (OpenCode) Panel
+
+  <Frame>
+    <img
+      alt="ADK Control Panel with Copilot (OpenCode)"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-20/adk-copilot.png"
+    />
+    <img
+      alt="ADK Control Panel with Copilot (OpenCode)"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-20/adk-copilot-dark.png"
+    />
+  </Frame>
+
+  - Added Chat history in Conversations page
+  - Updated Traces page UI
+
+  ### CLI
+
+  - Self upgrade support for Windows using `adk self-upgrade`
+  - Add Copilot (OpenCode) support using `adk dev --copilot`
+
+</Update>
+
 <Update label="March 13, 2026">
 
   ## Studio
