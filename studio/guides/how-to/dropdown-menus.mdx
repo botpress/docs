@@ -1,0 +1,100 @@
+---
+title: Send options as a dropdown menu
+---
+
+You can present options as a dropdown instead of buttons. This guide covers the built-in behaviour with [Capture Information](/studio/concepts/cards/capture-information) and an approach using code when you need a dropdown with fewer than six options.
+
+<Info>
+    You will need:
+
+    - A [published bot](/get-started/quick-start)
+    - Familiarity with JavaScript if you use [method 2](#method-2-manual-dropdown-execute-code)
+</Info>
+
+<Warning>
+    The approach and styling in this guide are designed to work with [Webchat](/webchat/get-started/quick-start)'s choice components. If your bot is deployed on a different channel, you may need to modify the approach to work with that channel's components. Check out the [integrations](/integrations/get-started/introduction) section for more information.
+</Warning>
+
+## Method 1: Automatic dropdown (Capture Information)
+
+1. Add a [Capture Information](/studio/concepts/cards/capture-information) Card to your [Workflow](/studio/concepts/workflows). Set the field type to **Single Choice** or **Multiple Choice**
+2. Add your options inside the Card under **Choices**.
+
+If you add more than five options, they are shown as a dropdown (list) instead of buttons. (The exact threshold can vary slightly by channel. See [Choices](/studio/concepts/cards/capture-information#choices) on the Capture Information page.)
+
+This is the simplest approach when you have enough options to trigger the dropdown UI.
+
+## Method 2: Manual dropdown (Execute Code)
+
+To show a dropdown even when you have five or fewer options, or to build the option list in code, send a message with `type: 'dropdown'` from an [Execute Code](/studio/concepts/cards/execute-code) Card.
+
+### Send the dropdown message
+
+```javascript
+await client.createMessage({
+  userId: event.botId,
+  conversationId: event.conversationId,
+  tags: {},
+  type: 'dropdown',
+  payload: {
+    text: 'Select an item:', // Shown above the control
+    options: [
+      { label: 'Dropdown 1', value: 'dd1' },
+      { label: 'Dropdown 2', value: 'dd2' },
+    ],
+  },
+})
+```
+
+1. **`payload.text`**: Label or instruction shown with the control.
+2. **`payload.options`**: Each entry is `{ label: string, value: string }`.
+    1. **`label`**: Text the user sees (for example, a product name).
+    2. **`value`**: Value stored or matched in logic (for example, a SKU). They can match or differ.
+
+<Tip>
+    In an Execute Code Card, you can read context from the [event object](/studio/guides/advanced/event-properties).
+</Tip>
+
+### Complete the Workflow after the dropdown
+
+After the dropdown is sent, the user will select an option. Here are some typical ways to handle this:
+
+1. Add a [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) Card so the Workflow pauses until the user interacts
+
+2. Use an [Expression Card](/studio/concepts/cards/flow-logic#expression) (or similar) to evaluate their response by checking `event.payload.value`
+
+3. Use an **Execute Code** Card to store their choice. For example:
+
+    ```javascript
+    workflow.varName = event.payload.value
+    ```
+
+    Remember to [create a Workflow variable](/studio/concepts/variables/scopes/workflow) (for example `varName`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
+
+Wire these cards in order in the same Node (or connected Nodes) so the bot always waits, validates, then saves before continuing.
+
+## Customize the placeholder text (CSS)
+
+Classes for styling dropdowns are listed under **Use custom styles** on the [appearance settings](/webchat/get-started/configure-your-webchat#use-custom-styles) page.
+
+To replace the default **Select…** style label with your own, add custom CSS under **Bot Appearance** → **Styles** in the Studio, for example:
+
+```css
+/* Hide the original "Select..." text */
+.bpMessageBlocksDropdownButtonText {
+  font-size: 0;
+  color: transparent;
+}
+
+.bpMessageBlocksDropdownButtonText::before {
+  content: "Choose an option...";
+  font-size: 0.8rem;
+  color: #7e7c7c;
+}
+```
+
+Adjust `content`, `font-size`, and `color` to match your brand.
+
+<Check>
+    You can rely on **Capture Information** for dropdowns when you have more than five choices, or use `createMessage` with `type: 'dropdown'` in an Execute Code Card whenever you need a dropdown with fewer options or custom `label` and `value` pairs.
+</Check>
