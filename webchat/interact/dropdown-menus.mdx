@@ -64,9 +64,8 @@ After the dropdown is sent, the user must select an option. Here are some typica
 
 1. **Wait for input.** Add a **Wait for User Input** step so the Workflow pauses until the user interacts. See [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) on the Capture Information page (or combine with your next card’s capture behaviour as you prefer).
 
-2. **If the user sends free text instead of using the dropdown**, use an [Expression](/studio/concepts/cards/flow-logic#expression) (or similar) **transition** so that:
-    1. If there is **no** selection payload, **loop back** to the same node (or show a short reminder and stay on the prompt).
-    2. Example condition for “no dropdown value”: `!event.payload.value`
+2. If the user sends free text instead of using the dropdown, use an [Expression Card](/studio/concepts/cards/flow-logic#expression) (or similar) so you can loop back to the same Node and enforce that they pick an option.
+Here's an example condition you can add to the Expression Card to evaluate that their response didn't contain a choice from the dropdown: `!event.payload.value`
 
 3. **Store the selection.** In an **Execute Code** card after a valid selection:
 
