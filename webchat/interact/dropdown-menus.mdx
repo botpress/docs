@@ -1,0 +1,105 @@
+---
+title: Dropdown menus
+description: Use Capture Information for automatic dropdowns, or an Execute Code card to show a dropdown with any number of options, including fewer than six.
+---
+
+You can present options as a **dropdown** instead of buttons. This guide covers the built-in behaviour with [Capture Information](/studio/concepts/cards/capture-information) and an approach **using code** when you need a dropdown with **fewer than six** options.
+
+<Info>
+    You will need:
+
+    1. A [Workflow](/studio/concepts/workflows) in [Botpress Studio](/studio/introduction)
+    2. Familiarity with the [Execute Code](/studio/concepts/cards/execute-code) card for the manual method
+</Info>
+
+<Warning>
+    Rendering and CSS in this guide apply to this channel. Other channels may use different widgets or limits. See your channel’s mapping docs (for example [WhatsApp](/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp)) if applicable.
+</Warning>
+
+## Method 1: Automatic dropdown (Capture Information)
+
+For a [Single Choice](/studio/concepts/cards/capture-information#single-choice) or [Multiple Choice](/studio/concepts/cards/capture-information#multi-choice) prompt with **choices** configured:
+
+1. Add a **Capture Information** card and set the field type to **Single Choice** or **Multiple Choice**.
+2. Add your options under **Choices**.
+
+If you add **more than five** options, they are shown as a **dropdown (list)** instead of buttons. (The exact threshold can vary slightly by channel; see [Choices](/studio/concepts/cards/capture-information#choices) on the Capture Information page.)
+
+This is the simplest approach when you have enough options to trigger the dropdown UI.
+
+## Method 2: Manual dropdown (Execute Code)
+
+To show a **dropdown even when you have five or fewer** options, or to fully control the payload, send a message with `type: 'dropdown'` from an [Execute Code](/studio/concepts/cards/execute-code) card.
+
+### Send the dropdown message
+
+```javascript
+await client.createMessage({
+  userId: event.botId,
+  conversationId: event.conversationId,
+  tags: {},
+  type: 'dropdown',
+  payload: {
+    text: 'Select an item:', // Shown above the control
+    options: [
+      { label: 'Dropdown 1', value: 'dd1' },
+      { label: 'Dropdown 2', value: 'dd2' },
+    ],
+  },
+})
+```
+
+1. **`payload.text`**: Label or instruction shown with the control.
+2. **`payload.options`**: Each entry is `{ label: string, value: string }`.
+    1. **`label`**: Text the user sees (for example a product name).
+    2. **`value`**: Value stored or matched in logic (for example an SKU). They can match or differ.
+
+<Tip>
+    In Execute Code, you can read context from the [event object](/studio/guides/advanced/event-properties) (for example `event.conversationId`). If `createMessage` fails in your environment, confirm `userId` and `conversationId` match how your runtime expects bot-originated messages (see [Send reminders](/studio/guides/how-to/send-reminders) for another `createMessage` pattern).
+</Tip>
+
+### Complete the flow after the dropdown
+
+After the dropdown is sent, the user must select an option. Typical pieces:
+
+1. **Wait for input.** Add a **Wait for User Input** step so the workflow pauses until the user interacts. See [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) on the Capture Information page (or combine with your next card’s capture behaviour as you prefer).
+
+2. **If the user sends free text instead of using the dropdown**, use an [Expression](/studio/concepts/cards/flow-logic#expression) (or similar) **transition** so that:
+    1. If there is **no** selection payload, **loop back** to the same node (or show a short reminder and stay on the prompt).
+    2. Example condition for “no dropdown value”: `!event.payload.value`
+
+3. **Store the selection.** In an **Execute Code** card after a valid selection:
+
+    ```javascript
+    workflow.skuNumber = event.payload.value
+    ```
+
+    [Create a workflow variable](/studio/concepts/variables/scopes/workflow) (for example `skuNumber`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
+
+Wire these cards in order in the same or connected nodes so the bot always waits, validates, then saves before continuing.
+
+## Customize the placeholder text (CSS)
+
+Classes for styling dropdowns are listed under **Use custom styles** on the [appearance settings](/webchat/get-started/configure-your-webchat#use-custom-styles) page (for example `bpMessageBlocksDropdownButtonText` in the **CSS Classes** table).
+
+To replace the default **Select…** style label with your own, add custom CSS under **Bot Appearance** → **Styles** in the Studio, for example:
+
+```css
+/* Hide the original placeholder text */
+.bpMessageBlocksDropdownButtonText {
+  font-size: 0;
+  color: transparent;
+}
+
+.bpMessageBlocksDropdownButtonText::before {
+  content: "Choose an option...";
+  font-size: 0.8rem;
+  color: #7e7c7c;
+}
+```
+
+Adjust `content`, `font-size`, and `color` to match your brand.
+
+<Check>
+    You can rely on **Capture Information** for dropdowns when you have **more than five** choices, or use **`createMessage`** with **`type: 'dropdown'`** in **Execute Code** whenever you need a dropdown with **fewer options** or custom `label` and `value` pairs.
+</Check>
