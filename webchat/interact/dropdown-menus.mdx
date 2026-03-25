@@ -58,11 +58,11 @@ await client.createMessage({
     In Execute Code, you can read context from the [event object](/studio/guides/advanced/event-properties).
 </Tip>
 
-### Complete the workflow after the dropdown
+### Complete the Workflow after the dropdown
 
 After the dropdown is sent, the user must select an option. Typical pieces:
 
-1. **Wait for input.** Add a **Wait for User Input** step so the workflow pauses until the user interacts. See [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) on the Capture Information page (or combine with your next card’s capture behaviour as you prefer).
+1. **Wait for input.** Add a **Wait for User Input** step so the Workflow pauses until the user interacts. See [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) on the Capture Information page (or combine with your next card’s capture behaviour as you prefer).
 
 2. **If the user sends free text instead of using the dropdown**, use an [Expression](/studio/concepts/cards/flow-logic#expression) (or similar) **transition** so that:
     1. If there is **no** selection payload, **loop back** to the same node (or show a short reminder and stay on the prompt).
@@ -74,7 +74,7 @@ After the dropdown is sent, the user must select an option. Typical pieces:
     workflow.varName = event.payload.value
     ```
 
-    [Create a workflow variable](/studio/concepts/variables/scopes/workflow) (for example `varName`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
+    [Create a Workflow variable](/studio/concepts/variables/scopes/workflow) (for example `varName`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
 
 Wire these cards in order in the same or connected nodes so the bot always waits, validates, then saves before continuing.
 
