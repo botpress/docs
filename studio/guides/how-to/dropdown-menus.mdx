@@ -17,18 +17,16 @@ You can present options as a dropdown instead of buttons. This guide covers the 
 
 ## Method 1: Automatic dropdown (Capture Information)
 
-For a [Single Choice](/studio/concepts/cards/capture-information#single-choice) or [Multiple Choice](/studio/concepts/cards/capture-information#multi-choice) prompt with choices configured:
+1. Add a [Capture Information](/studio/concepts/cards/capture-information) Card to your [Workflow](/studio/concepts/workflows). Set the field type to **Single Choice** or **Multiple Choice**
+2. Add your options inside the Card under **Choices**.
 
-1. Add a **Capture Information** card and set the field type to **Single Choice** or **Multiple Choice**.
-2. Add your options under **Choices**.
-
-If you add **more than five** options, they are shown as a **dropdown (list)** instead of buttons. (The exact threshold can vary slightly by channel. See [Choices](/studio/concepts/cards/capture-information#choices) on the Capture Information page.)
+If you add more than five options, they are shown as a dropdown (list) instead of buttons. (The exact threshold can vary slightly by channel. See [Choices](/studio/concepts/cards/capture-information#choices) on the Capture Information page.)
 
 This is the simplest approach when you have enough options to trigger the dropdown UI.
 
 ## Method 2: Manual dropdown (Execute Code)
 
-To show a **dropdown even when you have five or fewer** options, or to fully control the payload, send a message with `type: 'dropdown'` from an [Execute Code](/studio/concepts/cards/execute-code) card.
+To show a dropdown even when you have five or fewer options, or to build the option list in code, send a message with `type: 'dropdown'` from an [Execute Code](/studio/concepts/cards/execute-code) Card.
 
 ### Send the dropdown message
 
@@ -50,21 +48,20 @@ await client.createMessage({
 
 1. **`payload.text`**: Label or instruction shown with the control.
 2. **`payload.options`**: Each entry is `{ label: string, value: string }`.
-    1. **`label`**: Text the user sees (for example a product name).
-    2. **`value`**: Value stored or matched in logic (for example an SKU). They can match or differ.
+    1. **`label`**: Text the user sees (for example, a product name).
+    2. **`value`**: Value stored or matched in logic (for example, a SKU). They can match or differ.
 
 <Tip>
-    In Execute Code, you can read context from the [event object](/studio/guides/advanced/event-properties).
+    In an Execute Code Card, you can read context from the [event object](/studio/guides/advanced/event-properties).
 </Tip>
 
 ### Complete the Workflow after the dropdown
 
-After the dropdown is sent, the user must select an option. Here are some typical ways to handle this:
+After the dropdown is sent, the user will select an option. Here are some typical ways to handle this:
 
-1. **Wait for input.** Add a **Wait for User Input** step so the Workflow pauses until the user interacts. See [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) on the Capture Information page (or combine with your next card’s capture behaviour as you prefer).
+1. Add a [Wait for User Input](/studio/concepts/cards/capture-information#wait-for-user-input) Card so the Workflow pauses until the user interacts
 
-2. If the user sends free text instead of using the dropdown, use an [Expression Card](/studio/concepts/cards/flow-logic#expression) (or similar) so you can loop back to the same Node and enforce that they pick an option.
-Here's an example condition you can add to the Expression Card to evaluate that their response didn't contain a choice from the dropdown: `!event.payload.value`
+2. Use an [Expression Card](/studio/concepts/cards/flow-logic#expression) (or similar) to evaluate their response by checking `event.payload.value`
 
 3. Use an **Execute Code** Card to store their choice. For example:
 
