@@ -67,13 +67,13 @@ After the dropdown is sent, the user must select an option. Here are some typica
 2. If the user sends free text instead of using the dropdown, use an [Expression Card](/studio/concepts/cards/flow-logic#expression) (or similar) so you can loop back to the same Node and enforce that they pick an option.
 Here's an example condition you can add to the Expression Card to evaluate that their response didn't contain a choice from the dropdown: `!event.payload.value`
 
-3. **Store the selection.** In an **Execute Code** card after a valid selection:
+3. Use an **Execute Code** Card to store their choice. For example:
 
     ```javascript
     workflow.varName = event.payload.value
     ```
 
-    [Create a Workflow variable](/studio/concepts/variables/scopes/workflow) (for example `varName`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
+    Remember to [create a Workflow variable](/studio/concepts/variables/scopes/workflow) (for example `varName`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
 
 Wire these cards in order in the same Node (or connected Nodes) so the bot always waits, validates, then saves before continuing.
 
