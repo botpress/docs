@@ -13,7 +13,7 @@ You can present options as a **dropdown** instead of buttons. This guide covers 
 </Info>
 
 <Warning>
-    Rendering and CSS in this guide apply to this channel. Other channels may use different widgets or limits. See your channel’s mapping docs (for example [WhatsApp](/integrations/integration-guides/whatsapp/mapping/botpress-to-whatsapp)) if applicable.
+    Rendering and CSS in this guide apply to this channel. Other channels may use different widgets or limits. See your channel’s mapping docs if applicable.
 </Warning>
 
 ## Method 1: Automatic dropdown (Capture Information)
@@ -23,7 +23,7 @@ For a [Single Choice](/studio/concepts/cards/capture-information#single-choice) 
 1. Add a **Capture Information** card and set the field type to **Single Choice** or **Multiple Choice**.
 2. Add your options under **Choices**.
 
-If you add **more than five** options, they are shown as a **dropdown (list)** instead of buttons. (The exact threshold can vary slightly by channel; see [Choices](/studio/concepts/cards/capture-information#choices) on the Capture Information page.)
+If you add **more than five** options, they are shown as a **dropdown (list)** instead of buttons. (The exact threshold can vary slightly by channel. See [Choices](/studio/concepts/cards/capture-information#choices) on the Capture Information page.)
 
 This is the simplest approach when you have enough options to trigger the dropdown UI.
 
@@ -55,10 +55,10 @@ await client.createMessage({
     2. **`value`**: Value stored or matched in logic (for example an SKU). They can match or differ.
 
 <Tip>
-    In Execute Code, you can read context from the [event object](/studio/guides/advanced/event-properties) (for example `event.conversationId`). If `createMessage` fails in your environment, confirm `userId` and `conversationId` match how your runtime expects bot-originated messages (see [Send reminders](/studio/guides/how-to/send-reminders) for another `createMessage` pattern).
+    In Execute Code, you can read context from the [event object](/studio/guides/advanced/event-properties).
 </Tip>
 
-### Complete the flow after the dropdown
+### Complete the workflow after the dropdown
 
 After the dropdown is sent, the user must select an option. Typical pieces:
 
@@ -71,21 +71,21 @@ After the dropdown is sent, the user must select an option. Typical pieces:
 3. **Store the selection.** In an **Execute Code** card after a valid selection:
 
     ```javascript
-    workflow.skuNumber = event.payload.value
+    workflow.varName = event.payload.value
     ```
 
-    [Create a workflow variable](/studio/concepts/variables/scopes/workflow) (for example `skuNumber`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
+    [Create a workflow variable](/studio/concepts/variables/scopes/workflow) (for example `varName`, type **String**) and grant access in code as needed ([variables in code](/studio/concepts/variables/in-code)).
 
 Wire these cards in order in the same or connected nodes so the bot always waits, validates, then saves before continuing.
 
 ## Customize the placeholder text (CSS)
 
-Classes for styling dropdowns are listed under **Use custom styles** on the [appearance settings](/webchat/get-started/configure-your-webchat#use-custom-styles) page (for example `bpMessageBlocksDropdownButtonText` in the **CSS Classes** table).
+Classes for styling dropdowns are listed under **Use custom styles** on the [appearance settings](/webchat/get-started/configure-your-webchat#use-custom-styles) page.
 
 To replace the default **Select…** style label with your own, add custom CSS under **Bot Appearance** → **Styles** in the Studio, for example:
 
 ```css
-/* Hide the original placeholder text */
+/* Hide the original "Select..." text */
 .bpMessageBlocksDropdownButtonText {
   font-size: 0;
   color: transparent;
