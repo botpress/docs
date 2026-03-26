@@ -187,7 +187,7 @@ You can view a full list of tools your bot currently has access to in the [Inspe
     title="Example: Keep knowledge and web search on-topic"
     >
 
-    This prompt narrows when each search tool runs so the Node does not pull unrelated content:
+    This prompt narrows when each search tool runs so the Node doesn't pull unrelated content:
 
     ```markdown Instructions wrap
     **Tool boundaries**
@@ -200,7 +200,7 @@ You can view a full list of tools your bot currently has access to in the [Inspe
     title="Example: Video link with a timestamp"
     >
 
-    When the base URL lives in a [workflow variable](/studio/concepts/variables/scopes/workflow), this prompt tells the Autonomous Node how to add a start time (replace the variable name with one you have given the Node access to):
+    When the base URL lives in a [Workflow variable](/studio/concepts/variables/scopes/workflow), this prompt tells the Autonomous Node how to add a start time (replace the variable name with one you have given the Node access to):
 
     ```markdown Instructions wrap
     **Video links**
@@ -231,7 +231,7 @@ You can view a full list of tools your bot currently has access to in the [Inspe
     This pattern is for leaving the Autonomous Node for a structured sub-Workflow after saving a value from the conversation. The Autonomous Node needs [read and write access](#give-access-to-variables) to the variable you mention:
 
     ```markdown Instructions wrap
-    When the user asks for deeper details about an email they mentioned, use `workflow.transition` to move to the **Enrich contact** node. Before transitioning, set `workflow.requestedEmail` to that email address.
+    When the user asks for deeper details about an email they mentioned, use `workflow.transition` to move to the **Enrich contact** Node. Before transitioning, set `workflow.requestedEmail` to that email address.
     ```
 
     Replace the node name, variable name, and trigger phrase with whatever matches your bot.
