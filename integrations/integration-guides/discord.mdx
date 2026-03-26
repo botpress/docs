@@ -1,0 +1,122 @@
+---
+title: Discord
+description: Add your bot to Discord using the official integration.
+icon: '/integrations/integration-guides/assets/icons/discord.svg'
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/discord.mdx'
+
+<OpenInHub integration={integrationVersions['shell/discord']}/>
+
+{/* vale on */}
+
+The official Discord integration allows users to chat with your bot in Discord servers, threads, and direct messages.
+
+## Setup
+
+<Info>
+  You will need:
+
+  - A [published bot](/get-started/quick-start)
+  - A [Discord account](https://discord.com/) with permission to create applications
+</Info>
+
+<Steps>
+  <Step title="Install the integration in Botpress">
+    First, install the integration to your bot:
+
+    1. In Botpress Studio, select **<Icon icon="boxes"/> Explore Hub** in the upper-right corner.
+    2. Search for the **Discord** integration.
+    3. Select **Install Integration**.
+
+    In the **Configuration** menu, you should see one field:
+
+    - **Bot Token**
+
+    Leave it empty for now—you'll come back to it after completing the setup in Discord.
+  </Step>
+  <Step title="Create a Discord application">
+    Next, create a Discord application:
+
+    1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and sign in.
+    2. Select **New Application** in the top-right corner.
+    3. Give your application a name and select **Create**.
+  </Step>
+  <Step title="Create a bot user">
+    Now, create a bot user for your application:
+
+    1. In your application's left sidebar, select **Bot**.
+    2. Under the bot's username, you can optionally set a custom avatar and display name.
+    3. Under **Privileged Gateway Intents**, enable the following:
+       - **Server Members Intent**
+       - **Message Content Intent**
+    4. Select **Save Changes**.
+  </Step>
+  <Step title="Copy your bot token">
+    Next, copy your bot's token:
+
+    1. Still on the **Bot** page, below **Token**, select **Reset Token** (or **Copy** if a token is already visible).
+    2. Confirm the reset if prompted.
+    3. Copy the token and store it somewhere safe—you will not be able to see it again.
+
+    <Warning>
+      Never share your bot token publicly or commit it to version control. Anyone with access to this token can control your bot.
+    </Warning>
+  </Step>
+  <Step title="Invite the bot to your server">
+    Now, invite the bot to your Discord server:
+
+    1. In the left sidebar, select **OAuth2** > **OAuth2 URL Generator**.
+    2. Under **Scopes**, select:
+       - `bot`
+       - `applications.commands`
+    3. Under **Bot Permissions**, select the permissions your bot requires. At minimum:
+       - **View Channels**
+       - **Send Messages**
+       - **Create Public Threads**
+       - **Create Private Threads**
+       - **Send Messages in Threads**
+       - **Pin Messages**
+       - **Attach Files**
+       - **Read Message History**
+       - **Add Reactions**
+       - **Create Polls**
+    4. Copy the generated URL at the bottom of the page and open it in your browser.
+    5. Select the server you want to add the bot to and select **Authorize**.
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    Finally, configure the integration in Botpress:
+
+    1. In the integration's **Bot Token** field, paste your Discord bot token.
+    2. Select **Save Configuration**.
+  </Step>
+</Steps>
+
+<Check>
+  Your Discord integration is ready—users can now chat with your Botpress bot in Discord servers, threads, and direct messages.
+</Check>
+
+---
+
+## Options
+
+The Discord integration's **Configuration** menu offers a few additional options:
+
+### Custom display name / avatar
+
+- Fill in the **Bot Name** field to display a custom name as the sender in Discord conversations.
+- Fill in the **Bot Avatar URL** field to set a custom image as the bot's Discord avatar.
+
+<Note>
+  The avatar URL must be publicly accessible. Supported formats include PNG, JPG, and GIF.
+</Note>
+
+---
+
+## Cards
+
+<Cards />
