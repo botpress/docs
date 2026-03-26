@@ -234,14 +234,14 @@ You can view a full list of tools your bot currently has access to in the [Inspe
     When the user asks for deeper details about an email they mentioned, use `workflow.transition` to move to the **Enrich contact** Node. Before transitioning, set `workflow.requestedEmail` to that email address.
     ```
 
-    Replace the node name, variable name, and trigger phrase with whatever matches your bot.
+    Replace the Node name, variable name, and trigger phrase with whatever matches your bot.
     </Accordion>
 
     <Accordion
     title="Example: Menu choice, then transition"
     >
 
-    This prompt combines `global.Message` with `workflow.transition` when the user picks a numeric option. Connect each option with another Node in your Workflow first so `workflow.transition` is valid:
+    This prompt combines `global.Message` with `workflow.transition` when the user picks a numeric option. Connect each target with a **Transition** card on the canvas first so `workflow.transition` is valid:
 
     ```markdown Instructions wrap
     If the user sends **1**, thank them briefly with `global.Message`, then use `workflow.transition` to go to the **Self-serve** node. If they send **2**, use `workflow.transition` to go to the **Guided setup** node.
