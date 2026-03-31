@@ -1,0 +1,109 @@
+---
+title: Adding an integration
+sidebarTitle: Adding an integration
+---
+
+This guide walks you through installing and configuring a Botpress integration in an ADK agent.
+
+<Info>
+  You will need:
+
+  - A [Botpress account](https://sso.botpress.cloud)
+  - A local [ADK](/adk/introduction) project
+</Info>
+
+## 1. Discover and pick an integration
+
+Search the hub by keyword:
+
+```bash
+adk search <query>
+```
+
+List every integration available to install:
+
+```bash
+adk list --available
+```
+
+Inspect a single integration—actions, channels, events, and metadata:
+
+```bash
+adk info <integration-name>
+```
+
+<Tip>
+For a full list of flags (for example JSON output or limits), see [`adk search`](/adk/cli-reference#adk-search), [`adk list`](/adk/cli-reference#adk-list), and [`adk info`](/adk/cli-reference#adk-info) in the CLI reference.
+</Tip>
+
+## 2. Add it to the project
+
+Install a specific version:
+
+```bash
+adk add slack@2.5.5
+```
+
+**Optional alias** (changes how you reference the integration in code):
+
+```bash
+adk add linear@2.0.0 --alias my-linear
+```
+
+The CLI updates your project configuration and generated types. **As of ADK 1.9+,** integrations are declared under `dependencies.integrations` in **`agent.config.ts`** (not `dependencies.json`).
+
+<Note>
+After adding or changing integrations, run `adk dev` or `adk build` so TypeScript types stay in sync with what you installed.
+</Note>
+
+## 3. Configure credentials and settings
+
+### Method 1: Control Panel (recommended for OAuth and guided setup)
+
+1. Run `adk dev`.
+2. Open the Control Panel (often [`http://localhost:3001`](http://localhost:3001)) and go to the Integration page and configure your account.
+
+For more detail, see [Managing an integration](/adk/integrations/managing-integration).
+
+### Method 2: `agent.config.ts`
+
+Edit `version`, `enabled`, and any `config` / `configurationType` fields the integration expects. Sensitive values are often wired through **`process.env.*`** and your workspace or deployment environment.
+
+## 4. Use it in code
+
+Import the generated **`actions`** object and call the integration using its **key** in `dependencies.integrations` (or the key from **`--alias`**):
+
+```typescript
+import { actions } from "@botpress/runtime";
+
+await actions.slack.sendMessage({ channel: "#general", text: "Hello!" });
+```
+
+**Pattern:** `await actions.<integrationKey>.<actionName>(params)`.
+
+- **`<integrationKey>`**: The name under `dependencies.integrations` in `agent.config.ts` (for example `slack`, or `my-linear` if you used `--alias my-linear`).
+- **`<actionName>`**: The action exposed by that integration (see `adk info` or your editor’s types).
+
+**Optional: expose to the model as a tool**
+
+Inside a conversation `execute` call, you can pass integration actions as tools:
+
+```typescript
+await execute({
+  instructions: "…",
+  tools: [actions.slack.sendMessage.asTool()],
+});
+```
+
+Use the same `actions.<integrationKey>.<actionName>.asTool()` pattern as for [custom actions](/adk/concepts/actions#as-a-tool-in-a-conversation).
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Actions" icon="zap" href="/adk/concepts/actions">
+    Call and compose actions from conversations, workflows, and triggers
+  </Card>
+  <Card title="CLI reference" icon="terminal" href="/adk/cli-reference">
+    `adk add`, `adk remove`, and related commands
+  </Card>
+</CardGroup>

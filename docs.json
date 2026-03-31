@@ -107,13 +107,62 @@
                   "/adk/concepts/tools"
                 ]
               },
-              "/adk/managing-integrations",
-              "/adk/runtime",
+              "/adk/control-panel",
               {
-                "group": "Zai",
-                "pages": ["/adk/zai/overview", "/adk/zai/reference"]
+                "group": "Integrations",
+                "pages": [
+                  "/adk/integrations/integrations-overview",
+                  "/adk/integrations/adding-integration",
+                  "/adk/integrations/managing-integration",
+                  "/adk/integrations/removing-integration"
+                ]
               },
-              "/adk/cli-reference"
+              {
+                "group": "Guides",
+                "pages": [
+                  {
+                    "group": "Build & Extend",
+                    "pages": [
+                      "/adk/guides/build-extend/adding-hitl",
+                      "/adk/guides/build-extend/mcp-server",
+                      "/adk/guides/build-extend/external-apis",
+                      "/adk/guides/build-extend/authentication"
+                    ]
+                  },
+                  {
+                    "group": "Evaluate & Improve",
+                    "pages": [
+                      "/adk/guides/evaluate-improve/running-evals",
+                      "/adk/guides/evaluate-improve/debugging-traces"
+                    ]
+                  },
+                  {
+                    "group": "Operate & Scale",
+                    "pages": [
+                      "/adk/guides/operate-scale/deploying",
+                      "/adk/guides/operate-scale/react-frontend"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Coding with AI",
+                "pages": [
+                  "/adk/coding-with-ai/skills-for-agents",
+                  "/adk/coding-with-ai/adk-copilot"
+                ]
+              },
+              {
+                "group": "References",
+                "pages": [
+                  {
+                    "group": "Zai",
+                    "pages": ["/adk/zai/overview", "/adk/zai/reference"]
+                  },
+                  "/adk/runtime",
+                  "/adk/cli-reference"
+                ]
+              }
             ]
           },
           {
@@ -647,6 +696,26 @@
     {
       "source": "/for-developers/adk/:slug*",
       "destination": "/adk/:slug*"
+    },
+    {
+      "source": "/adk/managing-integrations",
+      "destination": "/adk/integrations/integrations-overview"
+    },
+    {
+      "source": "/adk/integrations/overview",
+      "destination": "/adk/integrations/integrations-overview"
+    },
+    {
+      "source": "/adk/integrations/adding",
+      "destination": "/adk/integrations/adding-integration"
+    },
+    {
+      "source": "/adk/integrations/managing",
+      "destination": "/adk/integrations/managing-integration"
+    },
+    {
+      "source": "/adk/integrations/removing",
+      "destination": "/adk/integrations/removing-integration"
     },
     {
       "source": "/for-developers/zai/:slug*",
