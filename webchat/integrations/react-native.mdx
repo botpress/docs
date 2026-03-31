@@ -4,10 +4,12 @@ description: Add your bot in any React Native or Expo app using react-native-web
 ---
 
 <Note>
-**Why a WebView?** Botpress Cloud Webchat is a **browser** client (`window.botpress`). React Native does not run that API natively, so the supported pattern is to run the official Webchat **inside a WebView** and communicate with `postMessage` / `injectJavaScript`.
+**Why a WebView?** Botpress Cloud Webchat is a **browser** client (`window.botpress`). React Native does not run that API natively, so the supported pattern is to run the official Webchat **inside a WebView** and communicate with `postMessage` and `injectJavaScript`.
 
 The [`@botpress/webchat`](/webchat/react-library/get-started) package targets web React. For native apps, use the WebView approach below.
 </Note>
+
+## Prerequisites
 
 <Info>
 You will need:
@@ -17,185 +19,185 @@ You will need:
 * [`react-native-webview`](https://github.com/react-native-webview/react-native-webview)
 </Info>
 
-<Steps titleSize="h2">
-  <Step title="Get your embed code">
-    To embed a bot on your mobile app, you need the bot's Webchat embed code. You can get the embed code from the Dashboard:
+## 1. Copy your Webchat embed code from the dashboard
 
-    1. Open your bot's Workspace and select the bot you want to embed.
-    2. In the left sidebar, go to **Webchat** > **Deploy Settings**.
-    3. Copy the **Embed code**:
+Before you write any app code, grab the same embed snippet you would use on a website. In the Botpress dashboard:
 
-    <Frame>
-      <img
-        alt="Embed code from Dashboard"
-        className="block dark:hidden"
-        src="/snippets/webchat/assets/embed-code-dashboard.png"
-      />
-      <img
-        alt="Embed code from Dashboard"
-        className="hidden dark:block"
-        src="/snippets/webchat/assets/embed-code-dashboard-dark.png"
-      />
-    </Frame>
-  </Step>
+1. Open your bot's Workspace and select the bot you want to embed.
+2. In the left sidebar, go to **Webchat** > **Deploy Settings**.
+3. Copy the **Embed code**:
 
-  <Step title="Lay out your project files">
-    Create a **`src`** folder at your project root if you do not already have one. A typical layout:
+<Frame>
+  <img
+    alt="Embed code from Dashboard"
+    className="block dark:hidden"
+    src="/snippets/webchat/assets/embed-code-dashboard.png"
+  />
+  <img
+    alt="Embed code from Dashboard"
+    className="hidden dark:block"
+    src="/snippets/webchat/assets/embed-code-dashboard-dark.png"
+  />
+</Frame>
 
-    | Path | Purpose |
-    |------|---------|
-    | **`src/botpress/getBotpressWebchat.js`** | Builds `{ html, baseUrl }` for the WebView. |
-    | **`src/botpress/BpWidget.js`** | WebView component and event bridge (`onMessage`); blocks marketing-site navigation on close. |
-    | **`src/botpress/BpWidget.d.ts`** | *(Optional, TypeScript only)* Types for `BpWidget`. |
-    | **`src/config/botpressConfig.js`** | Your **`inject.js`** and embed script URLs from Studio. |
+## 2. Lay out your project files
 
-    You can instead keep files **flat under `src/`** and use relative imports. The examples below assume **`src/botpress/`** and **`src/config/`**.
+Create a **`src`** folder at your project root if you do not already have one. A typical layout:
 
-    **Path alias (optional, Expo / TypeScript):** In **`tsconfig.json`**, merge into `compilerOptions`:
+| Path | Purpose |
+|------|---------|
+| **`src/botpress/getBotpressWebchat.js`** | Builds `{ html, baseUrl }` for the WebView. |
+| **`src/botpress/BpWidget.js`** | WebView component and event bridge (`onMessage`); blocks marketing site navigation on close. |
+| **`src/botpress/BpWidget.d.ts`** | *(Optional, TypeScript only)* Types for `BpWidget`. |
+| **`src/config/botpressConfig.js`** | Webchat URLs and optional `botId`. **Step 4** shows what goes inside `export const botpressConfig = { ... }`. |
 
-    ```json
-    {
-      "compilerOptions": {
-        "paths": {
-          "@/*": ["./src/*"]
-        }
-      }
+You can instead keep files flat under `src/` and use relative imports. The examples below assume **`src/botpress/`** and **`src/config/`**.
+
+**Path alias (optional, Expo / TypeScript):** In **`tsconfig.json`**, merge into `compilerOptions`:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
     }
-    ```
+  }
+}
+```
 
-    Then imports like `import BpWidget from '@/botpress/BpWidget'` resolve. If you skip aliases, use **relative** imports only.
-  </Step>
+Then imports like `import BpWidget from '@/botpress/BpWidget'` resolve. If you skip aliases, use relative imports only.
 
-  <Step title="Install react-native-webview">
-    From your project root:
+## 3. Install react-native-webview
 
-    <CodeGroup>
+From your project root:
 
-    ```bash Expo
-    npx expo install react-native-webview
-    ```
+<CodeGroup>
 
-    ```bash npm
-    npm install react-native-webview
-    ```
+```bash Expo
+npx expo install react-native-webview
+```
 
-    ```bash yarn
-    yarn add react-native-webview
-    ```
+```bash npm
+npm install react-native-webview
+```
 
-    ```bash pnpm
-    pnpm add react-native-webview
-    ```
+```bash yarn
+yarn add react-native-webview
+```
 
-    </CodeGroup>
+```bash pnpm
+pnpm add react-native-webview
+```
 
-    <Note>
-      For bare React Native, follow [react-native-webview linking](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Getting-Started.md) if your setup requires it. Expo users can also see the [Expo WebView docs](https://docs.expo.dev/versions/latest/sdk/webview/).
-    </Note>
-  </Step>
+</CodeGroup>
 
-  <Step title="Create `src/config/botpressConfig.js`">
-    Add **`src/config/botpressConfig.js`** with the **exact URLs** from your Studio embed snippet. Replace the placeholders with your values.
+<Note>
+  For bare React Native, follow [react-native-webview linking](https://github.com/react-native-webview/react-native-webview/blob/master/docs/Getting-Started.md) if your setup requires it. Expo users can also see the [Expo WebView docs](https://docs.expo.dev/versions/latest/sdk/webview/).
+</Note>
 
-    ```javascript
-    /**
-     * Paste both script URLs from Botpress Studio → Webchat → Embed.
-     */
-    export const botpressConfig = {
-      /** Your bot id for your own logs / analytics */
-      botId: "YOUR-BOT-UUID",
+## 4. Save your Studio script URLs in one config file
 
-      /** First script: cdn.botpress.cloud/.../inject.js — version must match Studio */
-      injectScriptUrl: "https://cdn.botpress.cloud/webchat/v3.6/inject.js",
+Create **`src/config/botpressConfig.js`** and export a single **`botpressConfig`** object. Paste the script URLs from **Studio → Webchat → Embed** (the same values from your embed snippet). The HTML helper and the widget only read **`botConfig`**: you pass it in, and you do not duplicate URLs inside `getBotpressWebchat.js` or `BpWidget.js`.
 
-      /** Second script: files.bpcontent.cloud/.../....js (defer in HTML) */
-      embedScriptUrl: "https://files.bpcontent.cloud/YOUR/PATH/YOUR-GENERATED.js",
+<Note>
+**Sensitive values:** `botId` and embed URLs identify your bot. For a public repository, do not commit real values, use placeholders in git or keep this file out of version control.
+</Note>
 
-      /**
-       * HTTPS origin used as WebView `baseUrl` (resolves relative URLs inside the page).
-       */
-      baseUrl: "https://cdn.botpress.cloud/",
-    };
-    ```
 
-  </Step>
+```javascript
+export const botpressConfig = {
+  botId: "YOUR_BOT_ID",
+  injectScriptUrl: "https://cdn.botpress.cloud/webchat/v3.6/inject.js",
+  embedScriptUrl: "https://files.bpcontent.cloud/YOUR/PATH/YOUR-GENERATED.js",
+  baseUrl: "https://cdn.botpress.cloud/",
+};
+```
 
-  <Step title="Create `src/botpress/getBotpressWebchat.js`">
-    Next, add **`src/botpress/getBotpressWebchat.js`**. This helper hands the WebView an **`{ html, baseUrl }`** object you can pass straight into `<WebView source={{ baseUrl, html }} />`.
 
-    ```javascript getBotpressWebchat.js
-    /**
-     * Builds the HTML page loaded by the WebView for Botpress Cloud webchat v3.
-     * @param {Record<string, unknown>} botConfig - Use `botpressConfig` from src/config/botpressConfig.js
-     * @returns {{ html: string, baseUrl: string }}
-     */
-    const getBotpressWebchat = (botConfig) => {
-      const injectUrl =
-        botConfig.injectScriptUrl ||
-        "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
-      const embedUrl = botConfig.embedScriptUrl;
-      if (!embedUrl || typeof embedUrl !== "string") {
-        throw new Error(
-          "botConfig.embedScriptUrl is required (paste the second script URL from Studio embed)",
-        );
+## 5. Build the HTML page that loads Webchat
+
+Add **`src/botpress/getBotpressWebchat.js`**. It builds a tiny HTML page (inject script, embed script, full height container) and returns **`{ html, baseUrl }`** so you can pass it straight into `<WebView source={{ baseUrl, html }} />`.
+
+```javascript getBotpressWebchat.js
+/**
+ * Builds the HTML page loaded by the WebView for Botpress Cloud webchat v3.
+ * @param {Record<string, unknown>} botConfig Pass `botpressConfig` from src/config/botpressConfig.js
+ * @returns {{ html: string, baseUrl: string }}
+ */
+const getBotpressWebchat = (botConfig) => {
+  // Official inject script (Botpress loader); falls back to a known default if omitted.
+  const injectUrl =
+    botConfig.injectScriptUrl ||
+    "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
+  // Studio-generated bundle URL (required). This wires your bot into the page.
+  const embedUrl = botConfig.embedScriptUrl;
+  if (!embedUrl || typeof embedUrl !== "string") {
+    throw new Error(
+      "botConfig.embedScriptUrl is required (paste the second script URL from Studio embed)",
+    );
+  }
+  // Origin passed to WebView as `baseUrl` so relative URLs in the HTML resolve correctly.
+  const baseUrl = botConfig.baseUrl || "https://cdn.botpress.cloud/";
+
+  // Minimal HTML shell: viewport, full-height container, then inject + embed scripts (matches Studio order).
+  const html = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+      html, body { margin: 0; height: 100%; }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
       }
-      const baseUrl = botConfig.baseUrl || "https://cdn.botpress.cloud/";
+      #bp-web-widget-container {
+        height: 100%;
+        width: 100%;
+        flex: 1;
+      }
+    </style>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <script src="${injectUrl}"></script>
+    <script src="${embedUrl}" defer></script>
+  </body>
+</html>`;
 
-      const html = `<!DOCTYPE html>
-                    <html>
-                    <head>
-                    <meta charset="utf-8" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-                    <style>
-                      html, body { margin: 0; height: 100%; }
-                      body {
-                        display: flex;
-                        flex-direction: column;
-                        height: 100vh;
-                      }
-                      #bp-web-widget-container {
-                        height: 100%;
-                        width: 100%;
-                        flex: 1;
-                      }
-                    </style>
-                    <title>Chatbot</title>
-                    </head>
-                    <body>
-                    <script src="${injectUrl}"></script>
-                    <script src="${embedUrl}" defer></script>
-                    </body>
-                    </html>`;
+  // WebView expects this pair: `source={{ baseUrl, html }}`.
+  return { baseUrl, html };
+};
 
-      return { baseUrl, html };
-    };
+module.exports = getBotpressWebchat;
+```
 
-    module.exports = getBotpressWebchat;
-    ```
-  </Step>
+## 6. Show Webchat in a WebView and forward events to React Native
 
-  <Step title="Create `src/botpress/BpWidget.js`">
-    Add **`src/botpress/BpWidget.js`**. It:
+Create **`src/botpress/BpWidget.js`**. It renders a **`WebView`** that loads your HTML, then relays what happens inside the page to your React Native layer:
 
-    * Loads the page from **`getBotpressWebchat(botConfig)`**.
-    * Injects JavaScript to subscribe to **`window.botpress`** and forward events to React Native via **`postMessage`** (`onMessage` receives JSON strings).
-    * Blocks top-level navigation to **`botpress.com` / `*.botpress.com`** so tapping **close** does not replace the WebView with the marketing site; it injects **`window.botpress.close()`** instead.
+* Puts the page from **`getBotpressWebchat(botConfig)`** into the **`WebView`**.
+* Injects a script that subscribes to **`window.botpress`** and sends each event to React Native with **`postMessage`** (you read them in **`onMessage`** as JSON strings).
+* Intercepts navigation to **`botpress.com`** or **`*.botpress.com`** when the user closes the widget and runs **`window.botpress.close()`** instead to close the webchat interface.
 
-    ```javascript BpWidget.js expandable
-    /**
-     * WebView wrapper for Botpress webchat v3: window.botpress API, events to RN via postMessage.
-     */
-    import { WebView } from "react-native-webview";
-    import getBotpressWebchat from "./getBotpressWebchat";
-    import React, { useCallback, useRef } from "react";
+```javascript BpWidget.js expandable
+/**
+ * WebView wrapper for Botpress webchat v3: window.botpress API, events to React Native via postMessage.
+ */
+import { WebView } from "react-native-webview";
+import getBotpressWebchat from "./getBotpressWebchat";
+import React, { useCallback, useRef } from "react";
 
-    const broadcastToRn = `
+const broadcastToReactNative = `
 (function () {
+  // Sends one event payload to React Native as a JSON string (read in onMessage).
   function post(ev, data) {
     try {
       window.ReactNativeWebView.postMessage(JSON.stringify({ event: ev, data: data }));
     } catch (e) {}
   }
+  // Subscribes to window.botpress once it exists and mirrors events into React Native.
   function wire() {
     if (!window.botpress || typeof window.botpress.on !== "function") return false;
     window.botpress.on("webchat:initialized", function () {
@@ -215,11 +217,13 @@ You will need:
         post(ev, data);
       });
     });
+    // Fallback open in case the widget did not auto-open after init.
     setTimeout(function () {
       try { window.botpress.open(); } catch (e) {}
     }, 400);
     return true;
   }
+  // Poll until botpress is ready (or give up after ~12s) so inject order does not race.
   var n = 0;
   var id = setInterval(function () {
     if (wire() || ++n > 240) clearInterval(id);
@@ -228,8 +232,9 @@ You will need:
 true;
 `;
 
-    const closeChatJs = `
+const closeChatJs = `
 try {
+  // Programmatic close when we block a navigation attempt (through onShouldStartLoadWithRequest).
   if (window.botpress && typeof window.botpress.close === "function") {
     window.botpress.close();
   }
@@ -237,126 +242,130 @@ try {
 true;
 `;
 
-    function isBotpressMarketingSiteUrl(url) {
-      if (!url || url.startsWith("about:") || url.startsWith("blob:") || url.startsWith("data:")) {
-        return false;
-      }
-      try {
-        const h = new URL(url).hostname;
-        return h === "botpress.com" || h.endsWith(".botpress.com");
-      } catch {
-        return false;
-      }
+// Returns true when a navigation URL is the public Botpress marketing site (close button behavior).
+function isBotpressMarketingSiteUrl(url) {
+  if (!url || url.startsWith("about:") || url.startsWith("blob:") || url.startsWith("data:")) {
+    return false;
+  }
+  try {
+    const h = new URL(url).hostname;
+    return h === "botpress.com" || h.endsWith(".botpress.com");
+  } catch {
+    return false;
+  }
+}
+
+export default function BpWidget(props) {
+  const { botConfig, onMessage } = props;
+  const webref = useRef(null);
+
+  // Build the in-memory HTML page and origin for this WebView instance.
+  const { html, baseUrl } = getBotpressWebchat(botConfig);
+
+  // Intercept navigations: block opening botpress.com inside the frame and close chat instead.
+  const onShouldStartLoadWithRequest = useCallback((request) => {
+    const { url } = request;
+    if (isBotpressMarketingSiteUrl(url)) {
+      webref.current?.injectJavaScript(closeChatJs);
+      return false;
     }
+    return true;
+  }, []);
 
-    export default function BpWidget(props) {
-      const { botConfig, onMessage } = props;
-      const webref = useRef(null);
+  // Webchat needs JavaScript and DOM storage; originWhitelist allows loading scripts from Botpress CDNs.
+  return (
+    <WebView
+      ref={webref}
+      style={{ flex: 1 }}
+      source={{
+        baseUrl,
+        html,
+      }}
+      onMessage={onMessage}
+      injectedJavaScript={broadcastToReactNative}
+      onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+      setSupportMultipleWindows={false}
+      javaScriptEnabled
+      domStorageEnabled
+      originWhitelist={["*"]}
+    />
+  );
+}
+```
 
-      const { html, baseUrl } = getBotpressWebchat(botConfig);
+<Note>
+  **`onMessage` format:** `event.nativeEvent.data` is a **string**. Parse with `JSON.parse`. Shape: **`{ event: string, data: unknown }`**.
+</Note>
 
-      const onShouldStartLoadWithRequest = useCallback((request) => {
-        const { url } = request;
-        if (isBotpressMarketingSiteUrl(url)) {
-          webref.current?.injectJavaScript(closeChatJs);
-          return false;
-        }
-        return true;
-      }, []);
+## 7. Optional: add TypeScript types for the widget
 
-      return (
-        <WebView
-          ref={webref}
-          style={{ flex: 1 }}
-          source={{
-            baseUrl,
-            html,
+If you use TypeScript, add **`src/botpress/BpWidget.d.ts`** next to **`BpWidget.js`** so imports and props are typed:
+
+```typescript
+import type { FunctionComponent } from "react";
+
+/** Props for the WebView wrapper: Studio-derived config and optional React Native message handler. */
+export interface BpWidgetProps {
+  botConfig: Record<string, unknown>;
+  onMessage?: (e: { nativeEvent: { data: string } }) => void;
+}
+
+/** Default export from BpWidget.js (JavaScript component with these props). */
+declare const BpWidget: FunctionComponent<BpWidgetProps>;
+
+export default BpWidget;
+```
+
+## 8. Render the Webchat widget on a screen
+
+Import **`BpWidget`** and **`botpressConfig`**, then render it full screen or inside any `View` that uses `flex: 1`. Adjust import paths to your real paths (for example Expo Router **`app/index.tsx`**, a root **`App.js`**, or **`src/screens/…`**).
+
+```tsx ChatScreen.tsx
+import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import BpWidget from "@/botpress/BpWidget";
+import { botpressConfig } from "@/config/botpressConfig";
+
+/** Screen that fills the safe area with the Botpress WebView-powered widget. */
+export default function ChatScreen() {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.main}>
+        <BpWidget
+          botConfig={botpressConfig}
+          onMessage={(e) => {
+            // Bridge: WebView posts JSON strings; parse to `{ event, data }` for logging or app logic.
+            const raw = e.nativeEvent?.data;
+            if (!raw) return;
+            try {
+              const msg = JSON.parse(raw);
+              console.log(msg.event, msg.data);
+            } catch {
+              /* non-JSON */
+            }
           }}
-          onMessage={onMessage}
-          injectedJavaScript={broadcastToRn}
-          onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-          setSupportMultipleWindows={false}
-          javaScriptEnabled
-          domStorageEnabled
-          originWhitelist={["*"]}
         />
-      );
-    }
-    ```
+      </View>
+    </SafeAreaView>
+  );
+}
 
-    <Note>
-      **`onMessage` format:** `event.nativeEvent.data` is a **string**. Parse with `JSON.parse`. Shape: **`{ event: string, data: unknown }`**.
-    </Note>
-  </Step>
+const styles = StyleSheet.create({
+  safeArea: { flex: 1 },
+  main: { flex: 1 },
+});
+```
 
-  <Step title="Optional: add `BpWidget.d.ts` for TypeScript">
-    If you use TypeScript, add **`src/botpress/BpWidget.d.ts`** next to **`BpWidget.js`**:
+## 9. Run your app
 
-    ```typescript
-    import type { FC } from "react";
-
-    export interface BpWidgetProps {
-      botConfig: Record<string, unknown>;
-      onMessage?: (e: { nativeEvent: { data: string } }) => void;
-    }
-
-    declare const BpWidget: FC<BpWidgetProps>;
-
-    export default BpWidget;
-    ```
-  </Step>
-
-  <Step title="Render Webchat on a screen">
-    Import **`BpWidget`** and **`botpressConfig`**, then render full-screen or inside a `View` with `flex: 1`. Adjust import paths to match your layout (Expo Router `app/index.tsx`, classic `App.js`, or `src/screens/…`).
-
-    ```tsx ChatScreen.tsx
-    import { StyleSheet, View } from "react-native";
-    import { SafeAreaView } from "react-native-safe-area-context";
-
-    import BpWidget from "@/botpress/BpWidget";
-    import { botpressConfig } from "@/config/botpressConfig";
-
-    export default function ChatScreen() {
-      return (
-        <SafeAreaView style={styles.safeArea}>
-          <View style={styles.main}>
-            <BpWidget
-              botConfig={botpressConfig}
-              onMessage={(e) => {
-                const raw = e.nativeEvent?.data;
-                if (!raw) return;
-                try {
-                  const msg = JSON.parse(raw);
-                  console.log(msg.event, msg.data);
-                } catch {
-                  /* non-JSON */
-                }
-              }}
-            />
-          </View>
-        </SafeAreaView>
-      );
-    }
-
-    const styles = StyleSheet.create({
-      safeArea: { flex: 1 },
-      main: { flex: 1 },
-    });
-    ```
-  </Step>
-
-  <Step title="Run your app">
-    ```bash
-    npm install
-    npx expo start
-    ```
-
-    Then open the iOS Simulator, Android emulator, or a device.
-  </Step>
-</Steps>
+```bash
+npm install
+npx expo start
+```
 
 <Check>
-Your bot should load inside the WebView when you run the app.
+Open the iOS Simulator, Android emulator, or a physical device from there. Your bot should load inside the WebView when you run the app.
 </Check>
 
 
@@ -364,10 +373,10 @@ Your bot should load inside the WebView when you run the app.
 
 | Problem | What to check |
 |--------|----------------|
-| Blank WebView | `embedScriptUrl` and `injectScriptUrl` match Studio; device online; `javaScriptEnabled` and `domStorageEnabled` are true. |
+| Blank WebView | **`embedScriptUrl`** in **`botpressConfig.js`** must be the **`files.bpcontent.cloud/...`** URL from Studio. |
 | Error: `embedScriptUrl is required` | Set `embedScriptUrl` in `botpressConfig`. |
-| Close (X) opens the marketing website | Keep **`onShouldStartLoadWithRequest`** + **`closeChatJs`** in `BpWidget.js` as in the steps above. |
-| Fonts / emoji look wrong | Tune appearance in **Botpress Studio**; avoid forcing global `font-family` in the HTML shell. |
+| Close (X) opens the Botpress.com website | Keep **`onShouldStartLoadWithRequest`** and **`closeChatJs`** in `BpWidget.js` as shown in that section. |
+| Fonts look wrong | Tune appearance in **Botpress Studio**; avoid forcing global `font-family` in the HTML shell. |
 | Android keyboard covers the composer | In **`app.json`** (Expo), under **`expo.android`**, set `"softwareKeyboardLayoutMode": "resize"`. Rebuild the native Android app after changing this (not only a Metro refresh). |
 
 ## Next steps
