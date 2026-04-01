@@ -56,43 +56,24 @@ Select a template:
     Start with a conversation agent project
 ```
 
-Select the `Hello World` template, then follow the prompts to set up the agent. This creates a new `my-agent` directory with:
+Select the `Hello World` template, then follow the prompts to set up the agent. The CLI automatically installs dependencies and creates a `my-agent` directory with:
 
-- `agent.config.ts` - Agent configuration and integration dependencies
-- `agent.json` - Configuration for your linked bot
-- `package.json` - Project configuration
-- `tsconfig.json` - TypeScript configuration
-- `src/` - Source code directory structure
+- `agent.config.ts` — Agent configuration, state schemas, and integration dependencies
+- `package.json` — Project configuration with `dev`, `build`, and `deploy` scripts
+- `tsconfig.json` — TypeScript configuration
+- `src/` — Source code with subdirectories for `conversations`, `actions`, `tables`, `triggers`, `workflows`, and `knowledge`
+- `.mcp.json` — MCP configuration for AI coding assistants (Claude Code, Cursor, etc.)
+- `CLAUDE.md` / `AGENTS.md` — AI assistant instructions for your project
 
-## Install dependencies
+<Tip>
+  The CLI also generates a `.mcp.json` for Claude Code. To add MCP support for other AI editors, run `adk mcp:init --all` inside your project.
+</Tip>
 
-Once you've finished the setup, navigate into your project:
+Navigate into your project:
 
 ```bash
 cd my-agent
 ```
-
-Install the dependencies:
-
-<CodeGroup>
-
-```bash bun
-bun install
-```
-
-```bash pnpm
-pnpm install
-```
-
-```bash yarn
-yarn install
-```
-
-```bash npm
-npm install
-```
-
-</CodeGroup>
 
 ## Test your agent
 
@@ -129,9 +110,20 @@ Type "exit" or press ESC key to quit
 >>
 ```
 
-### View the ADK console
+### View the Development UI
 
-Visit [`http://localhost:3001/`](http://localhost:3001/) to access the interactive ADK console. This gives you an intuitive, visual breakdown of your agent project and lets you [configure its integration's settings](/adk/managing-integrations#integration-configuration).
+While `adk dev` is running, visit [`http://localhost:3001/`](http://localhost:3001/) to access the Development UI. This gives you a visual breakdown of your agent project — browse actions, tools, workflows, tables, and [configure integration settings](/adk/managing-integrations#integration-configuration).
+
+## Link your agent
+
+Before deploying, link your local agent to a Botpress workspace:
+
+```bash
+adk login
+adk link
+```
+
+`adk login` authenticates with your Botpress account. `adk link` connects your local project to a bot in your workspace. If you already linked during `adk init`, you can skip this step.
 
 ## Build your agent
 
@@ -141,35 +133,14 @@ Compile your agent for production:
 adk build
 ```
 
-```txt
-📦 Loaded project: my-agent
-📝 Generating assets types...
-✅ Assets types generated
-🔨 Generating Botpress bot project...
-✅ Bot project generated
-🏗️  Building agent...
-
-✅ Build completed successfully!
-📦 Output directory: <project-path>/.adk/bot/.botpress/dist
-```
-
 This creates an optimized build in the `.adk/bot/.botpress/dist` directory.
 
 ## Deploy your agent
 
-When you're ready, you can deploy your agent to Botpress Cloud:
+When you're ready, deploy your agent to Botpress Cloud:
 
 ```bash
 adk deploy
-```
-
-```txt
-📤 Deploying bot to Botpress...
-
-✅ Agent deployed successfully!
-🌐 Your agent is now live on Botpress
-🤖 Bot ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-🏢 Workspace ID: wkspace_xxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 This uploads your agent to your Botpress workspace and makes it available for use.
