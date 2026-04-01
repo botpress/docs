@@ -1,6 +1,5 @@
 ---
 title: Workflows
-sidebarTitle: Overview
 ---
 
 Workflows are long-running processes that handle complex, multi-step operations or scheduled tasks. Unlike [conversations](/adk/concepts/conversations), workflows can run independently on a schedule or be triggered by events.
@@ -19,7 +18,7 @@ import { Workflow } from "@botpress/runtime";
 export default new Workflow({
   name: "my-workflow",
   description: "A workflow that processes data",
-  handler: async ({}) => {
+  handler: async ({ step }) => {
     // Workflow logic
   },
 });
@@ -44,7 +43,7 @@ export default new Workflow({
 
 ## Steps
 
-By default, workflows time out after 2 minutes—if you need to run a workflow for longer, you should use the `step` function. This lets you break the workflow up into a series of steps that each take only a few seconds to run individually:
+By default, workflows time out after 5 minutes. For longer workflows, use the `step` function to break the workflow into a series of persisted steps:
 
 ```typescript highlight={4-17}
 export default new Workflow({
@@ -68,23 +67,44 @@ export default new Workflow({
 });
 ```
 
-Steps are *persisted*—if a workflow is interrupted, it can resume from the last completed step. This provides better handling when errors occur in complex, long-running workflows.
+Steps are *persisted* — if a workflow is interrupted, it can resume from the last completed step. This provides better handling when errors occur in complex, long-running workflows.
 
 <Note>
-  You can nest steps inside other steps—each step will complete when each of its sub-steps complete.
+  You can nest steps inside other steps — each step will complete when each of its sub-steps complete.
 </Note>
 
-### Reference
+### Step parameters
 
-The `step` object also provides many additional methods for workflow control:
+```typescript
+const data = await step("fetch-data", async ({ attempt }) => {
+  return await fetchDataFromAPI();
+}, { maxAttempts: 5 });
+```
 
-<Card title="Step reference" icon="list-check" href="/adk/concepts/workflows/steps">
-  Learn about all available step methods
-</Card>
+<Expandable title="Step parameters">
+  <ResponseField name="name" type="string" required>
+    Unique identifier for this step within the workflow.
+
+    <Note>
+      Make sure you set a unique identifier for each step. Otherwise, the second step won't execute and will reuse the output of the first step.
+    </Note>
+  </ResponseField>
+  <ResponseField name="run" type="(opts: { attempt: number }) => T | Promise&lt;T&gt;" required>
+    Function to execute. Receives the current attempt number.
+  </ResponseField>
+  <ResponseField name="options" type="object">
+    Optional configuration object.
+    <Expandable title="properties">
+      <ResponseField name="maxAttempts" type="number">
+        Maximum number of retry attempts if the step fails. Defaults to 5.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
 
 ### Handling failing steps
 
-If a step (or a [step method](/adk/concepts/workflows/steps#methods)) fails, it'll throw a rejected promise. This will fail not only the current step, but the *entire workflow*.
+If a step fails, it throws a rejected promise. This will fail not only the current step, but the *entire workflow*.
 
 To avoid this, make sure you catch errors gracefully:
 
@@ -96,7 +116,7 @@ try {
 }
 ```
 
-If the method you're using has an `options.maxAttempts` field, it'll throw an error after the maximum number of retries has been exceeded. You can track the retries using the `attempt` parameter and catch any errors:
+If the method you're using has an `options.maxAttempts` field, it throws an error after the maximum number of retries has been exceeded:
 
 ```ts highlight={5, 8, 10-12}
 try {
@@ -111,6 +131,146 @@ try {
 } catch (err) {
   console.log(err);
 }
+```
+
+## Step methods
+
+The `step` object provides methods for workflow control:
+
+### `step.listen`
+
+Put the workflow into listening mode, waiting for external events to resume:
+
+```typescript
+await step.listen("wait-for-approval");
+// Workflow pauses here until triggered
+```
+
+### `step.sleep`
+
+Pause workflow execution for a specified duration:
+
+```typescript
+await step.sleep("wait-5-min", 5 * 60 * 1000);
+```
+
+### `step.sleepUntil`
+
+Sleep until a specific date:
+
+```typescript
+await step.sleepUntil("wait-until-noon", new Date("2025-01-15T12:00:00Z"));
+```
+
+### `step.fail`
+
+Mark the workflow as failed and stop execution:
+
+```typescript
+if (!user.isVerified) {
+  await step.fail("User verification required");
+}
+```
+
+### `step.abort`
+
+Immediately abort the workflow execution without marking it as failed:
+
+```typescript
+if (shouldPause) {
+  step.abort();
+}
+```
+
+### `step.progress`
+
+Record a progress checkpoint without performing any action:
+
+```typescript
+await step.progress("Started processing");
+// ... do work ...
+await step.progress("Finished processing");
+```
+
+### `step.waitForWorkflow`
+
+Wait for another workflow to complete before continuing:
+
+```typescript
+const childWorkflow = await childWorkflowInstance.start({});
+const result = await step.waitForWorkflow("wait-for-child", childWorkflow.id);
+```
+
+### `step.executeWorkflow`
+
+Start another workflow and wait for it to complete:
+
+```typescript
+import ProcessingWorkflow from "../workflows/processing";
+
+const result = await step.executeWorkflow(
+  "process-data",
+  ProcessingWorkflow,
+  { data: inputData }
+);
+```
+
+### `step.map`
+
+Process an array of items in parallel with controlled concurrency:
+
+```typescript
+const results = await step.map(
+  "process-users",
+  users,
+  async (user, { i }) => await processUser(user),
+  { concurrency: 5, maxAttempts: 3 }
+);
+```
+
+### `step.forEach`
+
+Process an array of items without collecting results:
+
+```typescript
+await step.forEach(
+  "notify-users",
+  users,
+  async (user) => await sendNotification(user),
+  { concurrency: 10 }
+);
+```
+
+### `step.batch`
+
+Process items in sequential batches:
+
+```typescript
+await step.batch(
+  "bulk-insert",
+  records,
+  async (batch) => await database.bulkInsert(batch),
+  { batchSize: 100 }
+);
+```
+
+### `step.request`
+
+Request data from a conversation and wait for a response. Requires defining `requests` in the workflow:
+
+```typescript
+export default new Workflow({
+  name: "order-workflow",
+  requests: {
+    orderId: z.object({
+      orderId: z.string(),
+    }),
+  },
+  handler: async ({ step }) => {
+    const data = await step.request("orderId", "Please provide the order ID");
+    // data is typed based on the request schema
+  },
+});
 ```
 
 ## Output
@@ -130,6 +290,145 @@ export default new Workflow({
     return { total: order.total };
   },
 });
+```
+
+## Workflow methods
+
+Workflows can be started and managed programmatically.
+
+### `workflow.start()`
+
+Start a new workflow instance:
+
+```typescript
+import ProcessingWorkflow from "../workflows/processing";
+
+const instance = await ProcessingWorkflow.start({ orderId: "12345" });
+console.log("Started workflow:", instance.id);
+```
+
+### `workflow.getOrCreate()`
+
+Get an existing workflow or create a new one with deduplication:
+
+```typescript
+const instance = await ProcessingWorkflow.getOrCreate({
+  key: "order-12345", // Unique key for deduplication
+  input: { orderId: "12345" },
+  statuses: ["pending", "in_progress"], // Only match workflows with these statuses
+});
+```
+
+### `Workflow.get()`
+
+Load any workflow instance by its ID:
+
+```typescript
+import { Workflow } from "@botpress/runtime";
+
+const instance = await Workflow.get("workflow-id");
+```
+
+### `workflow.asTool()`
+
+Convert a workflow into a tool for use with `execute()`:
+
+```typescript highlight={2, 9}
+import { Conversation } from "@botpress/runtime";
+import ProcessingWorkflow from "../workflows/processing";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [ProcessingWorkflow.asTool()],
+    });
+  },
+});
+```
+
+### `workflow.provide()`
+
+Provide data in response to a workflow data request (used with `step.request()`):
+
+```typescript highlight={1, 6-9}
+import { isWorkflowDataRequest } from "@botpress/runtime";
+import OrderWorkflow from "../workflows/order";
+
+export default new Conversation({
+  channel: "*",
+  handler: async ({ type, request }) => {
+    if (type === "workflow_request") {
+      await OrderWorkflow.provide(request, { orderId: "12345" });
+    }
+  },
+});
+```
+
+## Workflow instance
+
+When you start a workflow, you get a workflow instance with additional methods:
+
+### `instance.cancel()`
+
+Cancel a running workflow:
+
+```typescript
+const instance = await ProcessingWorkflow.start({ orderId: "12345" });
+await instance.cancel();
+```
+
+### `instance.setTimeout()`
+
+Extend the timeout of a running workflow:
+
+```typescript
+// Relative duration
+await instance.setTimeout({ in: "30m" });
+
+// Absolute timestamp
+await instance.setTimeout({ at: "2025-01-15T12:00:00Z" });
+```
+
+### `instance.complete()`
+
+Complete a workflow early with output (only available inside the handler):
+
+```typescript
+export default new Workflow({
+  name: "my-workflow",
+  output: z.object({ result: z.string() }),
+  handler: async ({ workflow }) => {
+    workflow.complete({ result: "done early" });
+  },
+});
+```
+
+## Helper functions
+
+### `isWorkflowDataRequest()`
+
+Check if an event is a workflow data request:
+
+```typescript
+import { isWorkflowDataRequest } from "@botpress/runtime";
+
+if (isWorkflowDataRequest(event)) {
+  // Handle the workflow data request
+}
+```
+
+### `isWorkflowCallback()`
+
+Check if an event is a workflow callback:
+
+```typescript
+import { isWorkflowCallback } from "@botpress/runtime";
+
+if (isWorkflowCallback(event)) {
+  // Handle the workflow callback
+}
 ```
 
 ## Reference
@@ -197,22 +496,20 @@ export default new Workflow({
 
 ### Handler parameters
 
-The handler function receives workflow context and provides step management:
-
 <Expandable title="Handler parameters">
   <ResponseField
     name="input"
     type="any"
     required
   >
-    The validated input object matching the workflow's input schema. Typed based on your input schema.
+    The validated input object matching the workflow's input schema.
   </ResponseField>
   <ResponseField
     name="state"
     type="any"
     required
   >
-    Workflow state object that persists across workflow executions and steps. Typed based on your state schema.
+    Workflow state object that persists across workflow executions and steps.
   </ResponseField>
   <ResponseField
     name="step"
@@ -226,7 +523,14 @@ The handler function receives workflow context and provides step management:
     type="object"
     required
   >
-    Botpress client for making API calls (tables, events, etc.).
+    Botpress client for making API calls.
+  </ResponseField>
+  <ResponseField
+    name="execute"
+    type="(props: object) => Promise&lt;any&gt;"
+    required
+  >
+    Function to execute autonomous AI logic. See [Execute props](/adk/concepts/conversations#execute-props) for the full reference.
   </ResponseField>
   <ResponseField
     name="signal"
@@ -236,164 +540,10 @@ The handler function receives workflow context and provides step management:
     An abort signal that indicates when the workflow should stop execution.
   </ResponseField>
   <ResponseField
-    name="execute"
-    type="(props: object) => Promise&lt;any&gt;"
+    name="workflow"
+    type="WorkflowInstance"
     required
   >
-    Function to execute autonomous AI logic. Used to run the agent with instructions, tools, knowledge bases, etc.
-    <Expandable title="Execute props">
-      <ResponseField
-        name="instructions"
-        type="string | (() => string) | (() => Promise&lt;string&gt;)"
-        required
-      >
-        Instructions for the AI agent. Can be a string or a function that returns a string.
-      </ResponseField>
-      <ResponseField
-        name="tools"
-        type="object[]"
-      >
-        Optional array of tools the agent can use.
-      </ResponseField>
-      <ResponseField
-        name="objects"
-        type="object[]"
-      >
-        Optional array of objects the agent can interact with.
-      </ResponseField>
-      <ResponseField
-        name="exits"
-        type="Record&lt;string, object&gt;"
-      >
-        Optional record of exit handlers.
-      </ResponseField>
-      <ResponseField
-        name="signal"
-        type="AbortSignal"
-      >
-        Optional abort signal to cancel execution.
-      </ResponseField>
-      <ResponseField
-        name="hooks"
-        type="object"
-      >
-        Optional hooks for customizing behavior (`onBeforeTool`, `onAfterTool`, `onTrace`, etc.).
-      </ResponseField>
-      <ResponseField
-        name="temperature"
-        type="number | (() => number) | (() => Promise&lt;number&gt;)"
-      >
-        Optional temperature for the AI model. Defaults to 0.7.
-      </ResponseField>
-      <ResponseField
-        name="model"
-        type="string | string[] | (() => string | string[]) | (() => Promise&lt;string | string[]&gt;)"
-      >
-        Optional model name(s) to use. Can be a string, array of strings, or a function that returns either.
-      </ResponseField>
-      <ResponseField
-        name="knowledge"
-        type="object[]"
-      >
-        Optional array of knowledge bases to use.
-      </ResponseField>
-      <ResponseField
-        name="iterations"
-        type="number"
-      >
-        Optional maximum number of iterations (loops). Defaults to 10.
-      </ResponseField>
-    </Expandable>
+    The current workflow instance. Provides access to `id`, `name`, `tags`, and methods like `cancel()`, `complete()`, and `setTimeout()`.
   </ResponseField>
 </Expandable>
-
-## Methods
-
-Workflows can be started and managed programmatically:
-
-### `workflow.start()`
-
-Start a new workflow instance:
-
-```typescript
-import ProcessingWorkflow from "../workflows/processing";
-
-const instance = await ProcessingWorkflow.start({ orderId: "12345" });
-console.log("Started workflow:", instance.id);
-```
-
-### `workflow.getOrCreate()`
-
-Get an existing workflow or create a new one with deduplication:
-
-```typescript
-const instance = await ProcessingWorkflow.getOrCreate({
-  key: "order-12345", // Unique key for deduplication
-  input: { orderId: "12345" },
-  statuses: ["pending", "in_progress"], // Only match workflows with these statuses
-});
-```
-
-### `workflow.asTool()`
-
-Convert a workflow into a tool for use with `execute()`:
-
-```typescript highlight={2, 9}
-import { Conversation } from "@botpress/runtime";
-import ProcessingWorkflow from "../workflows/processing";
-
-export default new Conversation({
-  channel: "*",
-  handler: async ({ execute }) => {
-    await execute({
-      instructions: "You are a helpful assistant.",
-      tools: [ProcessingWorkflow.asTool()],
-    });
-  },
-});
-```
-
-### `workflow.provide()`
-
-Provide data in response to a workflow data request (used with `step.request()`):
-
-```typescript highlight={1, 6-9}
-import { isWorkflowDataRequest } from "@botpress/runtime";
-import OrderWorkflow from "../workflows/order";
-
-export default new Conversation({
-  channel: "*",
-  handler: async ({ type, request }) => {
-    if (type === "workflow_request") {
-      await OrderWorkflow.provide(request, { orderId: "12345" });
-    }
-  },
-});
-```
-
-## Helper functions
-
-### `isWorkflowDataRequest()`
-
-Check if an event is a workflow data request:
-
-```typescript
-import { isWorkflowDataRequest } from "@botpress/runtime";
-
-if (isWorkflowDataRequest(event)) {
-  // Handle the workflow data request
-}
-```
-
-### `isWorkflowCallback()`
-
-Check if an event is a workflow callback:
-
-```typescript
-import { isWorkflowCallback } from "@botpress/runtime";
-
-if (isWorkflowCallback(event)) {
-  // Handle the workflow callback
-}
-```
-
