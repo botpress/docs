@@ -46,19 +46,45 @@ adk init my-agent
  ▄▀█ █▀▄ █▄▀  Botpress ADK
  █▀█ █▄▀ █░█  Initialize New Agent
 
+ Step 1 of 2
+
 
 Select a template:
 
-› Blank
-    Start with an empty agent project
+› blank
+    Empty project with just the folder structure
 
-  Hello World
-    Start with a conversation agent project
+  hello-world
+    A working chatbot with chat and webchat integrations
 ```
 
-Select the `Hello World` template, then follow the prompts to set up the agent. The CLI automatically installs dependencies and creates a `my-agent` directory with:
+Select the `hello-world` template. Next, choose your preferred package manager:
+
+```txt
+ ▄▀█ █▀▄ █▄▀  Botpress ADK
+ █▀█ █▄▀ █░█  Initialize New Agent
+
+ Step 2 of 2
+
+
+Select a package manager:
+
+● Bun
+    Install with bun
+○ pnpm
+    Install with pnpm
+○ Yarn
+    Install with yarn
+○ npm
+    Install with npm
+```
+
+If you are logged in, the CLI will also prompt you to select a workspace to link your agent to.
+
+The CLI automatically installs dependencies and creates a `my-agent` directory with:
 
 - `agent.config.ts` — Agent configuration, state schemas, and integration dependencies
+- `agent.json` — Workspace and bot IDs for your linked agent
 - `package.json` — Project configuration with `dev`, `build`, and `deploy` scripts
 - `tsconfig.json` — TypeScript configuration
 - `src/` — Source code with subdirectories for `conversations`, `actions`, `tables`, `triggers`, `workflows`, and `knowledge`
@@ -66,7 +92,7 @@ Select the `Hello World` template, then follow the prompts to set up the agent. 
 - `CLAUDE.md` / `AGENTS.md` — AI assistant instructions for your project
 
 <Tip>
-  The CLI also generates a `.mcp.json` for Claude Code. To add MCP support for other AI editors, run `adk mcp:init --all` inside your project.
+  The CLI generates `.mcp.json` for Claude Code by default. To add MCP configuration for other supported editors, run `adk mcp:init --all` inside your project.
 </Tip>
 
 Navigate into your project:
@@ -110,20 +136,9 @@ Type "exit" or press ESC key to quit
 >>
 ```
 
-### View the Development UI
+### View the Control Panel
 
-While `adk dev` is running, visit [`http://localhost:3001/`](http://localhost:3001/) to access the Development UI. This gives you a visual breakdown of your agent project — browse actions, tools, workflows, tables, and [configure integration settings](/adk/managing-integrations#integration-configuration).
-
-## Link your agent
-
-Before deploying, link your local agent to a Botpress workspace:
-
-```bash
-adk login
-adk link
-```
-
-`adk login` authenticates with your Botpress account. `adk link` connects your local project to a bot in your workspace. If you already linked during `adk init`, you can skip this step.
+While `adk dev` is running, visit [`http://localhost:3001/`](http://localhost:3001/) to access the Control Panel. This gives you a visual breakdown of your agent project — browse actions, tools, workflows, tables, and [configure integration settings](/adk/managing-integrations#integration-configuration).
 
 ## Build your agent
 
@@ -136,6 +151,10 @@ adk build
 This creates an optimized build in the `.adk/bot/.botpress/dist` directory.
 
 ## Deploy your agent
+
+<Note>
+  If you skipped workspace selection during `adk init`, run `adk login` then `adk link` to connect your agent before deploying.
+</Note>
 
 When you're ready, deploy your agent to Botpress Cloud:
 
