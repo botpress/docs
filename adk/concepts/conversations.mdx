@@ -122,7 +122,18 @@ export default new Conversation({
 
 ## Conversation instance
 
-The `handler` receives a `conversation` object that provides methods to interact with the current conversation:
+The `handler` receives a `conversation` object that provides methods to interact with the current conversation. It exposes `conversation.id` (the conversation ID) and `conversation.channel` (the channel name) as read-only properties.
+
+### Loading a conversation by ID
+
+You can load any conversation by its ID using the static `Conversation.get()` method:
+
+```typescript
+import { Conversation } from "@botpress/runtime";
+
+const otherConversation = await Conversation.get("conversation-id");
+await otherConversation.send({ type: "text", payload: { text: "Hello from another conversation!" } });
+```
 
 ### Sending messages
 
