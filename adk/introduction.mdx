@@ -10,7 +10,7 @@ sidebarTitle: Introduction
 
     export default new Conversation({
       channel: "*",
-      handler: async ({ execute, message }) => {
+      handler: async ({ execute }) => {
         await execute({
           instructions: "You are a helpful assistant.",
         });
@@ -24,7 +24,7 @@ sidebarTitle: Introduction
 
     export default new Conversation({
       channel: "*",
-      handler: async ({ execute, message }) => {
+      handler: async ({ execute }) => {
         await execute({
           instructions: "You are a helpful assistant.",
           knowledge: [WebsiteKB]
