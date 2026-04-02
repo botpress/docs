@@ -18,7 +18,7 @@ import { Workflow } from "@botpress/runtime";
 export default new Workflow({
   name: "my-workflow",
   description: "A workflow that processes data",
-  handler: async ({ step }) => {
+  handler: async ({}) => {
     // Workflow logic
   },
 });
@@ -104,7 +104,7 @@ const data = await step("fetch-data", async ({ attempt }) => {
 
 ### Handling failing steps
 
-If a step exhausts its retry attempts, it throws a rejected promise. This will fail not only the current step, but the *entire workflow*.
+If a step runs out of retries, it'll throw a rejected promise. This will fail not only the current step, but the *entire workflow*.
 
 To avoid this, make sure you catch errors gracefully:
 
@@ -116,7 +116,7 @@ try {
 }
 ```
 
-If the method you're using has an `options.maxAttempts` field, it will throw an error after the maximum number of retries has been exceeded:
+If the method you're using has an `options.maxAttempts` field, it'll throw an error after the maximum number of retries has been exceeded:
 
 ```ts highlight={5, 8, 10-12}
 try {
