@@ -43,7 +43,7 @@ export default new Workflow({
 
 ## Steps
 
-By default, workflows time out after 5 minutes. For longer workflows, use the `step` function to break the workflow into a series of persisted steps:
+By default, workflows time out after 5 minutes: if you need to run a workflow for longer, use the `step` function. This lets you break the workflow up into a series of steps that each take only a few seconds to run individually:
 
 ```typescript highlight={4-17}
 export default new Workflow({
