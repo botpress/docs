@@ -348,19 +348,16 @@ export default new Conversation({
 });
 ```
 
-### `workflow.provide()`
+### `instance.provide()`
 
-Provide data in response to a workflow data request (used with `step.request()`):
+Provide data in response to a workflow data request (used with `step.request()`). Use the `request.workflow` instance from the conversation handler:
 
-```typescript highlight={1, 6-9}
-import { isWorkflowDataRequest } from "@botpress/runtime";
-import OrderWorkflow from "../workflows/order";
-
+```typescript highlight={4-6}
 export default new Conversation({
   channel: "*",
   handler: async ({ type, request }) => {
     if (type === "workflow_request") {
-      await OrderWorkflow.provide(request, { orderId: "12345" });
+      await request.workflow.provide("orderId", { orderId: "12345" });
     }
   },
 });

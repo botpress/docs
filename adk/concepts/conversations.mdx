@@ -69,7 +69,7 @@ The handler function receives context about the incoming message and provides AP
 
 ```typescript highlight={3-8}
 export default new Conversation({
-  channel: "*",
+  channel: "chat.channel",
   handler: async ({ execute, message }) => {
     const userMessage = message.payload.text;
     await execute({
@@ -78,6 +78,10 @@ export default new Conversation({
   },
 });
 ```
+
+<Note>
+  When using `channel: "*"`, the `message` type is `unknown` since the concrete channel is only known at runtime. Use a specific channel to get full type safety on message properties.
+</Note>
 
 ## Using knowledge bases
 
