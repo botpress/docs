@@ -290,7 +290,7 @@ When `type` is `"message"`:
     type="object"
     required
   >
-    Message object containing `type` and `payload` properties. Typed based on the channel at runtime.
+    Message object containing `type` and `payload` properties. Runtime type is channel dependent.
   </ResponseField>
 </Expandable>
 
@@ -311,7 +311,7 @@ When `type` is `"event"`:
     type="object"
     required
   >
-    Event object containing `type` and `payload` properties from integrations or custom events. Typed based on the channel at runtime.
+    Event object containing `type` and `payload` properties from integrations or custom events. Runtime type is channel dependent.
   </ResponseField>
 </Expandable>
 

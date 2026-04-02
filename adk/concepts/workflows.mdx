@@ -67,10 +67,10 @@ export default new Workflow({
 });
 ```
 
-Steps are *persisted* — if a workflow is interrupted, it can resume from the last completed step. This provides better handling when errors occur in complex, long-running workflows.
+Steps are *persisted*: if a workflow is interrupted, it can resume from the last completed step. This provides better handling when errors occur in complex, long-running workflows.
 
 <Note>
-  You can nest steps inside other steps — each step will complete when each of its sub-steps complete.
+  You can nest steps inside other steps: each step will complete when each of its sub-steps complete.
 </Note>
 
 ### Step parameters
@@ -86,7 +86,7 @@ const data = await step("fetch-data", async ({ attempt }) => {
     Unique identifier for this step within the workflow.
 
     <Note>
-      Make sure you set a unique identifier for each step. Otherwise, the second step won't execute and will reuse the output of the first step.
+      Make sure you set a unique identifier for each step. Otherwise, a subsequent step won't execute and will reuse the output of a previous step.
     </Note>
   </ResponseField>
   <ResponseField name="run" type="(opts: { attempt: number }) => T | Promise&lt;T&gt;" required>
@@ -104,7 +104,7 @@ const data = await step("fetch-data", async ({ attempt }) => {
 
 ### Handling failing steps
 
-If a step fails, it throws a rejected promise. This will fail not only the current step, but the *entire workflow*.
+If a step exhausts its retry attempts, it throws a rejected promise. This will fail not only the current step, but the *entire workflow*.
 
 To avoid this, make sure you catch errors gracefully:
 
@@ -116,7 +116,7 @@ try {
 }
 ```
 
-If the method you're using has an `options.maxAttempts` field, it throws an error after the maximum number of retries has been exceeded:
+If the method you're using has an `options.maxAttempts` field, it will throw an error after the maximum number of retries has been exceeded:
 
 ```ts highlight={5, 8, 10-12}
 try {
@@ -197,7 +197,7 @@ await step.progress("Finished processing");
 Wait for another workflow to complete before continuing:
 
 ```typescript
-const childWorkflow = await childWorkflowInstance.start({});
+const childWorkflow = await ChildWorkflowInstance.start({});
 const result = await step.waitForWorkflow("wait-for-child", childWorkflow.id);
 ```
 

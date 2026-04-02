@@ -75,7 +75,7 @@ Check out the [column options](#table-props) in the Table props reference for a 
 
 ## Using tables
 
-Tables are automatically created and synced when you deploy. You can import them and interact with them directly using the table instance methods, which provide type-safe operations.
+Tables are automatically created and synced when you deploy. You can interact with them directly using the type-safe, table instance methods.
 
 ### Creating rows
 
@@ -263,7 +263,7 @@ const { rows } = await OrderTable.findRows({
     name="tags"
     type="Record&lt;string, string&gt;"
   >
-    Optional metadata tags for the table. Keys must be 3–50 characters, values 1–255 characters.
+    Optional metadata tags for the table. Keys must be 3–50 characters and values must be 1–255 characters.
   </ResponseField>
   <ResponseField
     name="columns"
@@ -323,7 +323,7 @@ const { rows } = await OrderTable.findRows({
     Fetch a single row by its ID.
   </ResponseField>
   <ResponseField name="findRows" type="(options?) => Promise&lt;{ rows, hasMore, limit, offset }&gt;">
-    Find rows with optional `filter`, `search`, `group`, `orderBy`, `orderDirection`, `limit`, and `offset`.
+    Find rows with optional `filter`, `search`, `group`, `orderBy`, `orderDirection`, `limit`, and `offset` parameters.
   </ResponseField>
   <ResponseField name="createRows" type="(props: { rows, waitComputed? }) => Promise&lt;{ rows, errors?, warnings? }&gt;">
     Insert one or more rows. Set `waitComputed` to true to wait for computed columns to be calculated before returning.
