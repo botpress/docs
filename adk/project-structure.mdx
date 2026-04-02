@@ -126,6 +126,16 @@ Links the agent to a bot in your Workspace:
 }
 ```
 
+### `agent.local.json`
+
+Stores your local development bot ID. This file is gitignored and complements `agent.json`:
+
+```json
+{
+  "devId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
 ### `package.json`
 
 Standard Node.js package configuration. Includes scripts for `dev`, `build`, and `deploy` commands.
