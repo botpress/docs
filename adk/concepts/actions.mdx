@@ -81,15 +81,18 @@ export default new Trigger({
 });
 ```
 
-```ts From a tool highlight={1,6}
-import { Autonomous, actions } from "@botpress/runtime"
+```ts From a tool highlight={1,8}
+import { Autonomous, actions, z } from "@botpress/runtime"
 
 export default new Autonomous.Tool({
     name: "someTool",
+    description: "A tool that does something",
+    input: z.object({}),
+    output: z.object({ result: z.string() }),
     handler: async () => {
         const result = await actions.doSomething()
-    }
-    // Other logic
+        return { result }
+    },
 })
 ```
 
