@@ -44,6 +44,19 @@ Before you write any app code, grab the same embed snippet you would use on a we
 
 Create a **`src`** folder at your project root if you do not already have one. A typical layout:
 
+<Tree>
+  <Tree.Folder name="src" defaultOpen>
+    <Tree.Folder name="botpress" defaultOpen>
+      <Tree.File name="getBotpressWebchat.js" />
+      <Tree.File name="BpWidget.js" />
+      <Tree.File name="BpWidget.d.ts" />
+    </Tree.Folder>
+    <Tree.Folder name="config" defaultOpen>
+      <Tree.File name="botpressConfig.js" />
+    </Tree.Folder>
+  </Tree.Folder>
+</Tree>
+
 | Path | Purpose |
 |------|---------|
 | **`src/botpress/getBotpressWebchat.js`** | Builds `{ html, baseUrl }` for the WebView. |
@@ -97,7 +110,7 @@ pnpm add react-native-webview
 
 ## 4. Save your Studio script URLs in one config file
 
-Create **`src/config/botpressConfig.js`** and export a single **`botpressConfig`** object. Paste the script URLs from **Studio → Webchat → Embed** (the same values from your embed snippet). The HTML helper and the widget only read **`botConfig`**: you pass it in, and you do not duplicate URLs inside `getBotpressWebchat.js` or `BpWidget.js`.
+Create **`src/config/botpressConfig.js`** and export a single **`botpressConfig`** object. Paste the script URLs from **Studio > Webchat > Embed** (the same values from your embed snippet). The HTML helper and the widget only read **`botConfig`**: you pass it in, and you do not duplicate URLs inside `getBotpressWebchat.js` or `BpWidget.js`.
 
 <Note>
 **Sensitive values:** `botId` and embed URLs identify your bot. For a public repository, do not commit real values, use placeholders in git or keep this file out of version control.
