@@ -107,6 +107,20 @@ export default defineConfig({
   <ResponseField name="events" type="object">
     Custom event definitions. Each key is an event name, with an optional schema and description.
   </ResponseField>
+  <ResponseField name="evals" type="object">
+    Optional evaluation settings.
+    <Expandable title="properties">
+      <ResponseField name="idleTimeout" type="number">
+        Timeout in seconds for idle eval conversations.
+      </ResponseField>
+      <ResponseField name="judgePassThreshold" type="number">
+        Pass threshold for LLM judge assertions (1–5).
+      </ResponseField>
+      <ResponseField name="judgeModel" type="string">
+        Model to use for LLM judge assertions (e.g., `"openai:gpt-4o"`).
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
 </Expandable>
 
 ## Accessing configuration at runtime
@@ -184,6 +198,27 @@ adk config:get supportEmail --prod
 
 <Note>
   Agent configuration (`adk config`) is separate from integration configuration. Integration settings like API keys are configured in `agent.config.ts` under `dependencies` or via the Control Panel during `adk dev`. See [Managing Integrations](/adk/managing-integrations) for details.
+</Note>
+
+## Environment variables
+
+You can use `process.env` directly in `agent.config.ts` and throughout your agent code:
+
+```typescript
+export default defineConfig({
+  name: "my-agent",
+  configuration: {
+    schema: z.object({
+      apiKey: z.string().default(process.env.MY_API_KEY ?? ""),
+    }),
+  },
+});
+```
+
+The ADK also injects its own environment variables during `adk dev` and `adk run` (such as `ADK_CONFIGURATION` and `ADK_BOT_ID`), but these are managed internally.
+
+<Note>
+  There is no dedicated secrets API in the ADK. For integration secrets (like API keys for Slack or BambooHR), set them via the Botpress dashboard — they're stored server-side and preserved during deployments.
 </Note>
 
 ## Default models
