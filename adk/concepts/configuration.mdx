@@ -130,21 +130,46 @@ Configuration values are defined by the `configuration.schema` in `agent.config.
 
 ### Interactive configuration
 
-Run `adk config` to interactively set all configuration values:
+Run `adk config` to validate and interactively set all configuration values:
 
 ```bash
 adk config
 ```
 
+```txt
+📝 Configuration (development)
+
+✓ Configuration validated successfully
+```
+
 This validates your values against the schema and prompts for any missing or invalid fields.
+
+<Note>
+  `adk config` requires a `configuration.schema` in your `agent.config.ts`. Without one, you'll see "No configuration schema defined."
+</Note>
 
 ### Get and set values
 
-Set individual configuration values non-interactively:
+Set and retrieve individual configuration values:
 
 ```bash
-adk config:set apiKey sk-my-api-key
-adk config:get apiKey
+adk config:set supportEmail "help@mycompany.com"
+```
+
+```txt
+✓ Configuration updated (development)
+  supportEmail = help@mycompany.com
+```
+
+```bash
+adk config:get supportEmail
+```
+
+```txt
+📝 Configuration value (development)
+
+  Key:   supportEmail
+  Value: help@mycompany.com
 ```
 
 ### Production configuration
@@ -153,9 +178,13 @@ Use the `--prod` flag to manage production configuration separately from develop
 
 ```bash
 adk config --prod
-adk config:set apiKey sk-prod-key --prod
-adk config:get apiKey --prod
+adk config:set supportEmail "help@mycompany.com" --prod
+adk config:get supportEmail --prod
 ```
+
+<Note>
+  Agent configuration (`adk config`) is separate from integration configuration. Integration settings like API keys are configured in `agent.config.ts` under `dependencies` or via the Control Panel during `adk dev`. See [Managing Integrations](/adk/managing-integrations) for details.
+</Note>
 
 ## Default models
 
