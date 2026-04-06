@@ -188,6 +188,27 @@ export default new Conversation({
   System tags (set by integrations, containing `:` in the key) are read-only. You can read them but any writes are silently ignored.
 </Note>
 
+## State references
+
+You can store references to workflow instances in state. They are automatically serialized when saved and loaded back as full instances when read:
+
+```typescript
+import { Reference, z } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  state: z.object({
+    activeWorkflow: Reference.Workflow("onboarding").optional(),
+  }),
+  handler: async ({ state }) => {
+    // state.activeWorkflow is a full WorkflowInstance when loaded
+    if (state.activeWorkflow?.status === "completed") {
+      console.log("Onboarding finished");
+    }
+  },
+});
+```
+
 ## Bot and user identity
 
 The `bot` and `user` objects also expose an `id` property:
