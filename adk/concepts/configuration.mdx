@@ -202,23 +202,29 @@ adk config:get supportEmail --prod
 
 ## Environment variables
 
-You can use `process.env` directly in `agent.config.ts` and throughout your agent code:
+You can use `process.env` directly in `agent.config.ts` and throughout your agent code. This is useful for keeping sensitive values like API keys out of your source code:
 
 ```typescript
-export default defineConfig({
-  name: "my-agent",
-  configuration: {
-    schema: z.object({
-      apiKey: z.string().default(process.env.MY_API_KEY ?? ""),
-    }),
-  },
+configuration: {
+  schema: z.object({
+    apiKey: z.string().default(process.env.MY_API_KEY ?? ""),
+    webhookUrl: z.string().default(process.env.WEBHOOK_URL ?? ""),
+  }),
+},
+```
+
+Then access them at runtime via the typed `configuration` import:
+
+```typescript
+import { configuration } from "@botpress/runtime";
+
+const response = await fetch("https://api.example.com/data", {
+  headers: { Authorization: `Bearer ${configuration.apiKey}` },
 });
 ```
 
-The ADK also injects its own environment variables during `adk dev` and `adk run` (such as `ADK_CONFIGURATION` and `ADK_BOT_ID`), but these are managed internally.
-
 <Note>
-  There is no dedicated secrets API in the ADK. For integration secrets (like API keys for Slack or BambooHR), set them via the Botpress dashboard. They're stored server-side and preserved during deployments.
+  There is no dedicated secrets API in the ADK. For integration-specific credentials (like OAuth tokens), configure them in `agent.config.ts` under `dependencies` or via the Botpress dashboard. See [Managing Integrations](/adk/managing-integrations) for details.
 </Note>
 
 ## Default models
