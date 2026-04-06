@@ -114,7 +114,7 @@ export default defineConfig({
         Timeout in seconds for idle eval conversations.
       </ResponseField>
       <ResponseField name="judgePassThreshold" type="number">
-        Pass threshold for LLM judge assertions (1–5).
+        Pass threshold for LLM judge assertions (1-5).
       </ResponseField>
       <ResponseField name="judgeModel" type="string">
         Model to use for LLM judge assertions (e.g., `"openai:gpt-4o"`).
@@ -218,7 +218,7 @@ export default defineConfig({
 The ADK also injects its own environment variables during `adk dev` and `adk run` (such as `ADK_CONFIGURATION` and `ADK_BOT_ID`), but these are managed internally.
 
 <Note>
-  There is no dedicated secrets API in the ADK. For integration secrets (like API keys for Slack or BambooHR), set them via the Botpress dashboard — they're stored server-side and preserved during deployments.
+  There is no dedicated secrets API in the ADK. For integration secrets (like API keys for Slack or BambooHR), set them via the Botpress dashboard. They're stored server-side and preserved during deployments.
 </Note>
 
 ## Default models
@@ -232,8 +232,8 @@ defaultModels: {
 },
 ```
 
-- **`autonomous`** — used by `execute()` in conversations and workflows
-- **`zai`** — used by Zai operations like `zai.extract()`, `zai.check()`, `zai.text()`
+- **`autonomous`**: used by `execute()` in conversations and workflows
+- **`zai`**: used by Zai operations like `zai.extract()`, `zai.check()`, `zai.text()`
 
 You can override the model per-call using the `model` prop on `execute()`.
 
