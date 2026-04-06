@@ -1,0 +1,175 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Guild Member Added
+
+<span>{"Triggered when a user joins a guild"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Discord user ID of the member who joined"}</span>
+  </ResponseField>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"Guild the member joined"}</span>
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    <span>{"Discord username of the member"}</span>
+  </ResponseField>
+  <ResponseField
+    name="joinedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of when the member joined"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Message Poll Vote Changed
+
+<span>{"Triggered when a user adds or removes their vote on a poll"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Discord user ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"Channel containing the poll"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"Message containing the poll"}</span>
+  </ResponseField>
+  <ResponseField
+    name="guildId"
+    type="string"
+  >
+    <span>{"Guild ID, absent in DMs"}</span>
+  </ResponseField>
+  <ResponseField
+    name="answerId"
+    type="number"
+    required
+  >
+    <span>{"ID of the answer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="action"
+    type="enum<string>"
+    required
+  >
+    <span>{"Whether the vote was added or removed"}</span>
+
+Available options: `add`, `remove`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Reaction Changed
+
+<span>{"Triggered when a user adds or removes a reaction on a message"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"Discord user ID of the user who reacted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"Channel containing the message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"Message that was reacted to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="guildId"
+    type="string"
+  >
+    <span>{"Guild ID, absent in DMs"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emojiName"
+    type="string"
+    required
+  >
+    <span>{"Unicode name or custom emoji name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emojiId"
+    type="string"
+  >
+    <span>{"Custom emoji ID, absent for standard unicode emoji"}</span>
+  </ResponseField>
+  <ResponseField
+    name="action"
+    type="enum<string>"
+    required
+  >
+    <span>{"Whether the reaction was added or removed"}</span>
+
+Available options: `add`, `remove`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
