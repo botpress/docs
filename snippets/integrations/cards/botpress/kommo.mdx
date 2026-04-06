@@ -1,0 +1,599 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Create Contact
+
+<span>{"Creates a new contact"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Full contact name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"First name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"Last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+    required
+  >
+    <span>{"User ID to assign this contact to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdBy"
+    type="number"
+    required
+  >
+    <span>{"User ID who creates this contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedBy"
+    type="number"
+  >
+    <span>{"User ID who updates this contact"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="contact"
+    type="object"
+    required
+  >
+    <span>{"The created contact"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Contact ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Contact name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+    required
+  >
+    <span>{"First name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+    required
+  >
+    <span>{"Last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+    required
+  >
+    <span>{"User responsible for this contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number"
+    required
+  >
+    <span>{"Group ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedBy"
+    type="number"
+    required
+  >
+    <span>{"User who last updated this contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="number"
+    required
+  >
+    <span>{"When created (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="number"
+    required
+  >
+    <span>{"When last updated (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closestTaskAt"
+    type="number"
+  >
+    <span>{"Closest task timestamp"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isDeleted"
+    type="boolean"
+    required
+  >
+    <span>{"Whether contact is deleted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="number"
+    required
+  >
+    <span>{"Account ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Lead
+
+<span>{"Creates a new lead in Kommo CRM"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Lead name (required)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="number"
+  >
+    <span>{"Lead value in dollars"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+  >
+    <span>{"User ID to assign this lead to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pipelineId"
+    type="number"
+  >
+    <span>{"Pipeline ID (defaults to main pipeline)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="number"
+  >
+    <span>{"Initial status/stage ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"The created lead"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Lead ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Lead name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="number"
+  >
+    <span>{"Lead value in dollars"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+  >
+    <span>{"User responsible for this lead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pipelineId"
+    type="number"
+  >
+    <span>{"Which sales pipeline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="number"
+  >
+    <span>{"Which stage in the pipeline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="number"
+    required
+  >
+    <span>{"When created (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="number"
+    required
+  >
+    <span>{"When last updated (Unix timestamp)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Contacts
+
+<span>{"Search for contacts by name, phone number, or email"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"Search query (name, phone number, or email)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="contacts"
+    type="array"
+    required
+  >
+    <span>{"Array of matching contacts (empty if none found)"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Contact ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Contact name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+    required
+  >
+    <span>{"First name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+    required
+  >
+    <span>{"Last name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+    required
+  >
+    <span>{"User responsible for this contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number"
+    required
+  >
+    <span>{"Group ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedBy"
+    type="number"
+    required
+  >
+    <span>{"User who last updated this contact"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="number"
+    required
+  >
+    <span>{"When created (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="number"
+    required
+  >
+    <span>{"When last updated (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closestTaskAt"
+    type="number"
+  >
+    <span>{"Closest task timestamp"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isDeleted"
+    type="boolean"
+    required
+  >
+    <span>{"Whether contact is deleted"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="number"
+    required
+  >
+    <span>{"Account ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Leads
+
+<span>{"search for leads by name or other fields"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"Search query"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="leads"
+    type="array"
+    required
+  >
+    <span>{"Array of matching leads (empty if none found)"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Lead ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Lead name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="number"
+  >
+    <span>{"Lead value in dollars"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+  >
+    <span>{"User responsible for this lead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pipelineId"
+    type="number"
+  >
+    <span>{"Which sales pipeline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="number"
+  >
+    <span>{"Which stage in the pipeline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="number"
+    required
+  >
+    <span>{"When created (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="number"
+    required
+  >
+    <span>{"When last updated (Unix timestamp)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Update Lead
+
+<span>{"Updates an existing lead in Kommo"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="leadId"
+    type="number"
+    required
+  >
+    <span>{"Lead ID to update"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"New name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="number"
+  >
+    <span>{"New price"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+  >
+    <span>{"New responsible user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pipelineId"
+    type="number"
+  >
+    <span>{"New pipeline ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="number"
+  >
+    <span>{"New status/stage ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="lead"
+    type="object"
+    required
+  >
+    <span>{"The updated lead"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Lead ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Lead name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="number"
+  >
+    <span>{"Lead value in dollars"}</span>
+  </ResponseField>
+  <ResponseField
+    name="responsibleUserId"
+    type="number"
+  >
+    <span>{"User responsible for this lead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pipelineId"
+    type="number"
+  >
+    <span>{"Which sales pipeline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="number"
+  >
+    <span>{"Which stage in the pipeline"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="number"
+    required
+  >
+    <span>{"When created (Unix timestamp)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="number"
+    required
+  >
+    <span>{"When last updated (Unix timestamp)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
