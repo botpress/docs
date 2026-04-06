@@ -72,7 +72,7 @@ export default new Conversation({
 
 ### Bot state
 
-Import `bot` from `@botpress/runtime` to access bot-level state from anywhere in your agent:
+Import `bot` from `@botpress/runtime` to access bot-level state inside any handler, action, tool, or workflow:
 
 ```typescript
 import { bot } from "@botpress/runtime";
@@ -86,7 +86,7 @@ bot.state.ticketCounter = counter + 1;
 
 ### User state
 
-Import `user` from `@botpress/runtime` to access per-user state:
+Import `user` from `@botpress/runtime` to access per-user state inside any handler, action, tool, or workflow:
 
 ```typescript
 import { user } from "@botpress/runtime";
@@ -193,7 +193,8 @@ export default new Conversation({
 You can store references to workflow instances in state. They are automatically serialized when saved and loaded back as full instances when read:
 
 ```typescript
-import { Reference, z } from "@botpress/runtime";
+import { Conversation, Reference, z } from "@botpress/runtime";
+import OnboardingWorkflow from "../workflows/onboarding";
 
 export default new Conversation({
   channel: "*",
@@ -201,9 +202,9 @@ export default new Conversation({
     activeWorkflow: Reference.Workflow("onboarding").optional(),
   }),
   handler: async ({ state }) => {
-    // state.activeWorkflow is a full WorkflowInstance when loaded
-    if (state.activeWorkflow?.status === "completed") {
-      console.log("Onboarding finished");
+    // Start a workflow and store the reference in state
+    if (!state.activeWorkflow) {
+      state.activeWorkflow = await OnboardingWorkflow.start({});
     }
   },
 });
