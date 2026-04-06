@@ -105,6 +105,124 @@ Available options: `dm`, `channel`
     </Expandable>
   </ResponseField>
 
+### Get Channels Info
+
+<span>{"Get information about Slack channels one page at a time. Returns channel details for the current page and a cursor for the next page."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="includeArchived"
+    type="boolean"
+  >
+    <span>{"Whether to include archived channels in the results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="includePrivate"
+    type="boolean"
+  >
+    <span>{"Whether to include private channels in the results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Pagination cursor for fetching the next page of channels. Omit for the first page."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channels"
+    type="array"
+    required
+  >
+    <span>{"List of channels on this page"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Slack ID of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string"
+    required
+  >
+    <span>{"The topic of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="purpose"
+    type="string"
+    required
+  >
+    <span>{"The purpose of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="numMembers"
+    type="number"
+    required
+  >
+    <span>{"The number of members in the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isPrivate"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the channel is private"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isArchived"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the channel is archived"}</span>
+  </ResponseField>
+  <ResponseField
+    name="creator"
+    type="string"
+    required
+  >
+    <span>{"The Slack user ID of the channel creator"}</span>
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="number"
+    required
+  >
+    <span>{"The Unix timestamp of when the channel was created"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+    required
+  >
+    <span>{"Cursor for the next page. Empty string if no more pages."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Get User Profile
 
 <span>{"Get information about a user"}</span>
@@ -230,9 +348,14 @@ Available options: `dm`, `channel`
   <ResponseField
     name="channelName"
     type="string"
-    required
   >
-    <span>{"The name of the channel you want the conversation to be created at"}</span>
+    <span>{"[DEPRECATED] The name of the channel you want the conversation to be created at"}</span>
+  </ResponseField>
+  <ResponseField
+    name="channelId"
+    type="string"
+  >
+    <span>{"The ID of the channel you want the conversation to be created at"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
