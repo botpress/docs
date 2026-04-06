@@ -116,7 +116,7 @@ try {
 }
 ```
 
-If the method you're using has an `options.maxAttempts` field, it'll throw an error after the maximum number of retries has been exceeded:
+If the method you're using has an `options.maxAttempts` field, it'll throw an error after the maximum number of retries has been exceeded. You can wrap it in a try/catch to handle the failure:
 
 ```ts highlight={5, 8, 10-12}
 try {
@@ -139,7 +139,7 @@ The `step` object provides methods for workflow control:
 
 ### `step.listen`
 
-Put the workflow into listening mode, waiting for external events to resume:
+Put the workflow into listening mode, waiting for external events to resume. The parameter is a unique step name used for persistence:
 
 ```typescript
 await step.listen("wait-for-approval");
