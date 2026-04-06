@@ -218,13 +218,13 @@ src/conversations/
     name="chat"
     type="(props: object) => Chat"
   >
-    Optional factory function to provide a custom `Chat` instance for the conversation.
+    Optional function that returns a custom `Chat` instance for managing message sending and transcript tracking in the conversation.
   </ResponseField>
 </Expandable>
 
 ### Handler parameters
 
-The handler uses a discriminated union on its function parameters, based on the `type` field.
+The handler receives different parameters depending on the request type. Check the `type` field to determine what kind of request you're handling.
 
 All handler types share these common parameters:
 
