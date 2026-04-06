@@ -6,7 +6,7 @@ Tools are functions that can be called by the AI model during conversations. The
 
 ## Creating a tool
 
-Tools can be created anywhere in your agent's source code. By convention, place them in `src/tools/`:
+Create a tool in `src/tools/`. Tools can also be defined inline in conversation handlers or anywhere in your source code:
 
 ```typescript
 import { Autonomous, z } from "@botpress/runtime";
