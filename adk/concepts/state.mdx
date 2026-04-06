@@ -1,0 +1,200 @@
+---
+title: State
+---
+
+State lets your agent persist data across conversations, users, and the entire bot. The ADK provides three state scopes, each with different lifetimes and access patterns.
+
+## State scopes
+
+| Scope | Lifetime | Access | Defined in |
+|-------|----------|--------|------------|
+| Bot | Global, shared across all users and conversations | `bot.state` | `agent.config.ts` |
+| User | Per-user, persists across all of a user's conversations | `user.state` | `agent.config.ts` |
+| Conversation | Per-conversation, scoped to a single conversation | Handler's `state` parameter | Conversation definition |
+
+## Defining state schemas
+
+### Bot and user state
+
+Define bot and user state schemas in `agent.config.ts`:
+
+```typescript highlight={8-11, 14-18}
+import { z, defineConfig } from "@botpress/runtime";
+
+export default defineConfig({
+  name: "my-agent",
+
+  bot: {
+    state: z.object({
+      version: z.number(),
+      ticketCounter: z.number(),
+    }).default({ version: 0, ticketCounter: 0 }),
+  },
+
+  user: {
+    state: z.object({
+      name: z.string().optional(),
+      department: z.string().optional(),
+      visitCount: z.number().default(0),
+    }),
+  },
+});
+```
+
+<Tip>
+  Use `.default()` on your state schema to set initial values. Without defaults, state fields start as `undefined`.
+</Tip>
+
+### Conversation state
+
+Conversation state is defined on each Conversation definition using the `state` prop:
+
+```typescript highlight={5-8}
+import { Conversation, z } from "@botpress/runtime";
+
+export default new Conversation({
+  channel: "*",
+  state: z.object({
+    topic: z.string().optional(),
+    messageCount: z.number().default(0),
+  }),
+  handler: async ({ execute, state }) => {
+    state.messageCount += 1;
+
+    await execute({
+      instructions: `You are a helpful assistant. Messages so far: ${state.messageCount}`,
+    });
+  },
+});
+```
+
+## Reading and writing state
+
+### Bot state
+
+Import `bot` from `@botpress/runtime` to access bot-level state from anywhere in your agent:
+
+```typescript
+import { bot } from "@botpress/runtime";
+
+// Read
+const counter = bot.state.ticketCounter;
+
+// Write
+bot.state.ticketCounter = counter + 1;
+```
+
+### User state
+
+Import `user` from `@botpress/runtime` to access per-user state:
+
+```typescript
+import { user } from "@botpress/runtime";
+
+// Read
+const name = user.state.name;
+
+// Write
+user.state.visitCount = (user.state.visitCount || 0) + 1;
+```
+
+### Conversation state
+
+Conversation state is accessed via the `state` parameter in the handler:
+
+```typescript
+export default new Conversation({
+  channel: "*",
+  state: z.object({
+    phase: z.string().default("greeting"),
+  }),
+  handler: async ({ state, execute }) => {
+    if (state.phase === "greeting") {
+      state.phase = "main";
+    }
+
+    await execute({
+      instructions: `Current phase: ${state.phase}`,
+    });
+  },
+});
+```
+
+<Note>
+  State changes are automatically tracked and persisted. You don't need to call a save method — just mutate the state object directly.
+</Note>
+
+## Tags
+
+Tags are string key-value pairs you can attach to bots, users, conversations, messages, and workflows. They're useful for categorization, filtering, and querying.
+
+### Defining tags
+
+Define tag schemas in `agent.config.ts`:
+
+```typescript highlight={5-11}
+export default defineConfig({
+  name: "my-agent",
+
+  bot: {
+    tags: {
+      environment: { title: "Environment", description: "Current deployment environment" },
+    },
+  },
+
+  user: {
+    tags: {
+      role: { title: "Role", description: "User's role in the organization" },
+    },
+  },
+
+  conversation: {
+    tags: {
+      priority: { title: "Priority", description: "Conversation priority level" },
+    },
+  },
+});
+```
+
+### Reading and writing tags
+
+```typescript
+import { bot, user } from "@botpress/runtime";
+
+// Bot tags
+bot.tags.environment = "production";
+const env = bot.tags.environment;
+
+// User tags
+user.tags.role = "admin";
+```
+
+Conversation tags are accessed via the `conversation` instance in handlers:
+
+```typescript
+export default new Conversation({
+  channel: "*",
+  handler: async ({ conversation, execute }) => {
+    // Read
+    const priority = conversation.tags.priority;
+
+    // Write
+    conversation.tags.priority = "high";
+  },
+});
+```
+
+<Note>
+  System tags (set by integrations, containing `:` in the key) are read-only. You can read them but any writes are silently ignored.
+</Note>
+
+## Bot and user identity
+
+The `bot` and `user` objects also expose an `id` property:
+
+```typescript
+import { bot, user } from "@botpress/runtime";
+
+const botId = bot.id;
+const userId = user.id;
+```
