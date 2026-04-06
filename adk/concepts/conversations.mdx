@@ -130,12 +130,12 @@ The `handler` receives a `conversation` object that provides methods to interact
 
 ### Loading a conversation by ID
 
-You can load any conversation by its ID using the static `Conversation.get()` method:
+You can load any conversation by passing its ID as a string to the static `Conversation.get()` method:
 
 ```typescript
 import { Conversation } from "@botpress/runtime";
 
-const otherConversation = await Conversation.get("conversation-id");
+const otherConversation = await Conversation.get("your-conversation-id");
 await otherConversation.send({ type: "text", payload: { text: "Hello from another conversation!" } });
 ```
 
