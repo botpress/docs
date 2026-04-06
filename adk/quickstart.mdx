@@ -81,19 +81,7 @@ Select a package manager:
 
 If you are logged in, the CLI will also prompt you to select a workspace to link your agent to.
 
-The CLI automatically installs dependencies and creates a `my-agent` directory with:
-
-- `agent.config.ts` — Agent configuration, state schemas, and integration dependencies
-- `agent.json` — Workspace and bot IDs for your linked agent
-- `package.json` — Project configuration with `dev`, `build`, and `deploy` scripts
-- `tsconfig.json` — TypeScript configuration
-- `src/` — Source code with subdirectories for `conversations`, `actions`, `tables`, `triggers`, `workflows`, and `knowledge`
-- `.mcp.json` — MCP configuration for AI coding assistants (Claude Code, Cursor, etc.)
-- `CLAUDE.md` / `AGENTS.md` — AI assistant instructions for your project
-
-<Tip>
-  The CLI generates `.mcp.json` for Claude Code by default. To add MCP configuration for other supported editors, run `adk mcp:init --all` inside your project.
-</Tip>
+The CLI automatically installs dependencies and creates a `my-agent` directory. See [Project Structure](/adk/project-structure) for a full breakdown of the generated files.
 
 Navigate into your project:
 
