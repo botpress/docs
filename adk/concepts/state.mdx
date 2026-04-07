@@ -2,14 +2,14 @@
 title: State
 ---
 
-State lets your agent persist data across conversations, users, and the entire bot. The ADK provides three state scopes, each with different lifetimes and access patterns.
+State lets your agent store and reuse data across conversations, users, and the entire bot. The ADK provides three types of states, depending on how long you need the data and who should have access to it.
 
 ## State scopes
 
 | Scope | Lifetime | Access | Defined in |
 |-------|----------|--------|------------|
 | Bot | Global, shared across all users and conversations | `bot.state` | `agent.config.ts` |
-| User | Per-user, persists across all of a user's conversations | `user.state` | `agent.config.ts` |
+| User | Per-user, available across all of a user's conversations | `user.state` | `agent.config.ts` |
 | Conversation | Per-conversation, scoped to a single conversation | Handler's `state` parameter | Conversation definition |
 
 ## Defining state schemas
