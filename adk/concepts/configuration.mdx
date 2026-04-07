@@ -164,7 +164,11 @@ This validates your values against the schema and prompts for any missing or inv
 
 ### Get and set values
 
-Set and retrieve individual configuration values. Note that `config:get` reads persisted values only and does not resolve schema defaults:
+Set and retrieve individual configuration values:
+
+<Note>
+  `config:get` reads persisted values only and does not resolve schema defaults.
+</Note>
 
 ```bash
 adk config:set supportEmail "help@mycompany.com"
