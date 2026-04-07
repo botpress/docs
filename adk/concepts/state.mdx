@@ -86,7 +86,7 @@ bot.state.ticketCounter = counter + 1;
 
 ### User state
 
-Import `user` from `@botpress/runtime` to access per-user state inside any handler, action, tool, or workflow:
+Import `user` from `@botpress/runtime` to access current-user state inside any handler, action, tool, or workflow:
 
 ```typescript
 import { user } from "@botpress/runtime";
@@ -100,7 +100,7 @@ user.state.visitCount = (user.state.visitCount || 0) + 1;
 
 ### Conversation state
 
-Conversation state is accessed via the `state` parameter in the handler:
+Conversation state is accessed via the `state` parameter in the handler or on a Conversation instance:
 
 ```typescript
 export default new Conversation({
@@ -169,7 +169,7 @@ const env = bot.tags.environment;
 user.tags.role = "admin";
 ```
 
-Conversation tags are accessed via the `conversation` instance in handlers:
+You can access conversation tags via the `conversation` instance:
 
 ```typescript
 export default new Conversation({
