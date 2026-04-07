@@ -2,7 +2,7 @@
 title: Managing Integrations
 ---
 
-Integrations connect your agent to external services and platforms like Slack, WhatsApp, and Salesforce. This guide covers how to find, add, configure, and manage integrations in your ADK project.
+Integrations connect your agent to external services and platforms. This guide covers how to find, add, configure, and manage integrations in your ADK project.
 
 ## Finding integrations
 
@@ -11,7 +11,7 @@ Integrations connect your agent to external services and platforms like Slack, W
 Search for integrations by keyword:
 
 ```bash
-adk search slack
+adk search crm
 ```
 
 ### List available integrations
@@ -27,15 +27,15 @@ adk list --available
 Get detailed information about a specific integration, including its actions, events, and channels:
 
 ```bash
-adk info slack
+adk info linear
 ```
 
 You can also filter the output:
 
 ```bash
-adk info slack --actions    # Show only actions
-adk info slack --events     # Show only events
-adk info slack --channels   # Show only channels
+adk info linear --actions    # Show only actions
+adk info linear --events     # Show only events
+adk info linear --channels   # Show only channels
 ```
 
 ## Adding integrations
@@ -43,11 +43,11 @@ adk info slack --channels   # Show only channels
 Add an integration using the `adk add` command:
 
 ```bash
-adk add slack
+adk add linear
 ```
 
 ```txt
-✓ Added slack version 4.1.1 as slack to agent.config.ts dependencies
+✓ Added linear version 2.1.2 as linear to agent.config.ts dependencies
 
 Added as disabled. Enable and configure it in the Control Panel.
 ```
@@ -59,7 +59,7 @@ dependencies: {
   integrations: {
     chat: "chat@0.7.7",
     webchat: "webchat@0.3.0",
-    slack: "slack@4.1.1",
+    linear: "linear@2.1.2",
   },
 },
 ```
@@ -73,7 +73,7 @@ dependencies: {
 Add a specific version instead of the latest:
 
 ```bash
-adk add slack@4.0.0
+adk add notion@3.0.0
 ```
 
 ### Using an alias
@@ -81,7 +81,7 @@ adk add slack@4.0.0
 Add an integration with a custom alias. This is useful when you need multiple instances of the same integration:
 
 ```bash
-adk add slack --alias slack-support
+adk add webhook --alias webhook-orders
 ```
 
 The alias is how you reference the integration in your code:
@@ -89,7 +89,7 @@ The alias is how you reference the integration in your code:
 ```typescript
 import { actions } from "@botpress/runtime";
 
-await actions["slack-support"].sendMessage({ channel: "support", text: "Hello" });
+await actions["webhook-orders"].send({ url: "https://api.example.com/orders", data: payload });
 ```
 
 ### Workspace-scoped integrations
@@ -133,7 +133,7 @@ Alias               Name                          Version
 ───────────────────────────────────────────────────────────────
 chat                chat                          0.7.7
 webchat             webchat                       0.3.0
-slack               slack                         4.1.1
+linear              linear                        2.1.2
 ```
 
 ## Updating integrations
@@ -141,7 +141,7 @@ slack               slack                         4.1.1
 ### Update a specific integration
 
 ```bash
-adk upgrade slack
+adk upgrade linear
 ```
 
 ### Update all integrations interactively
@@ -154,7 +154,7 @@ This shows available updates and lets you choose which to upgrade:
 
 ```txt
 ✓ Upgraded:
-  • slack (4.0.0 → 4.1.1)
+  • linear (2.0.0 → 2.1.2)
 
 Run adk dev to install the updated integrations
 ```
@@ -164,11 +164,11 @@ Run adk dev to install the updated integrations
 Remove an integration from your project:
 
 ```bash
-adk remove slack
+adk remove linear
 ```
 
 ```txt
-✓ Removed slack from agent.config.ts dependencies
+✓ Removed linear from agent.config.ts dependencies
   Run adk dev to update your project
 ```
 
@@ -182,9 +182,9 @@ Once an integration is installed and enabled, its actions become available in yo
 import { actions } from "@botpress/runtime";
 
 // Call an integration action
-await actions.slack.sendMessage({
-  channel: "general",
-  text: "Hello from the bot!",
+await actions.linear.createIssue({
+  title: "Bug report from user",
+  teamId: "TEAM-123",
 });
 ```
 
