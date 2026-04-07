@@ -211,7 +211,93 @@ Available options: `APPROVED`, `PENDING`, `REJECTED`, `PAUSED`, `DISABLED`, `ARC
     name="templateVariablesJson"
     type="string"
   >
-    <span>{"JSON array representation of variable values to pass to the WhatsApp Message Template (if required by the template). Currently, only positional parameters are supported."}</span>
+    <span>{"Deprecated: use templateBodyParams instead. JSON array of body variable values: [\"val1\", \"val2\"]."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateHeaderParams"
+    type="object | object | object | object"
+  >
+    <span>{"Header parameter. For text headers: type=\"text\", value is the replacement text, parameterName is optional (for named params). For media headers: type=\"image\"|\"video\"|\"document\", url is the media URL. Documents may include a filename."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateBodyParams"
+    type="object | object"
+  >
+    <span>{"Body parameters. For positional params ({{1}}, {{2}}, ...): type=\"positional\", values is an ordered array of strings. For named params ({{buyer_name}}): type=\"named\", values is a record mapping param names to values."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateButtonParams"
+    type="array"
+  >
+    <span>{"Button parameters as an ordered array. url: value is the URL suffix. quick_reply: payload is the callback data. copy_code: code is the coupon code. skip: no parameter needed (for phone number buttons, etc.)."}</span>
+
+    <Tabs>
+    <Tab title="url">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="quick_reply">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="copy_code">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="skip">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="botPhoneNumberId"
@@ -235,6 +321,12 @@ Available options: `APPROVED`, `PENDING`, `REJECTED`, `PAUSED`, `DISABLED`, `ARC
     required
   >
     <span>{"ID of the conversation created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"ID of the message created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -280,7 +372,93 @@ Available options: `APPROVED`, `PENDING`, `REJECTED`, `PAUSED`, `DISABLED`, `ARC
     name="templateVariablesJson"
     type="string"
   >
-    <span>{"JSON array representation of variable values to pass to the WhatsApp Message Template (if required by the template). Currently, only positional parameters are supported."}</span>
+    <span>{"Deprecated: use templateBodyParams instead. JSON array of body variable values: [\"val1\", \"val2\"]."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateHeaderParams"
+    type="object | object | object | object"
+  >
+    <span>{"Header parameter. For text headers: type=\"text\", value is the replacement text, parameterName is optional (for named params). For media headers: type=\"image\"|\"video\"|\"document\", url is the media URL. Documents may include a filename."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateBodyParams"
+    type="object | object"
+  >
+    <span>{"Body parameters. For positional params ({{1}}, {{2}}, ...): type=\"positional\", values is an ordered array of strings. For named params ({{buyer_name}}): type=\"named\", values is a record mapping param names to values."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateButtonParams"
+    type="array"
+  >
+    <span>{"Button parameters as an ordered array. url: value is the URL suffix. quick_reply: payload is the callback data. copy_code: code is the coupon code. skip: no parameter needed (for phone number buttons, etc.)."}</span>
+
+    <Tabs>
+    <Tab title="url">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="quick_reply">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="copy_code">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="skip">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="botPhoneNumberId"
@@ -304,6 +482,12 @@ Available options: `APPROVED`, `PENDING`, `REJECTED`, `PAUSED`, `DISABLED`, `ARC
     required
   >
     <span>{"The Botpress ID of the created conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"ID of the message created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

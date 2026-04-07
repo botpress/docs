@@ -1,0 +1,73 @@
+---
+title: Kommo
+description: Connect your bot to Kommo CRM using the official integration.
+icon: '/integrations/integration-guides/assets/icons/kommo.svg'
+tag: New
+---
+
+{/* vale off */}
+
+import integrationVersions from '/snippets/integrations/versions.mdx'
+import { OpenInHub } from '/snippets/integrations/open-in-hub.jsx'
+import Cards from '/snippets/integrations/cards/botpress/kommo.mdx'
+
+<OpenInHub integration={integrationVersions.kommo}/>
+
+{/* vale on */}
+
+The official Kommo integration allows your bot to create and update leads, manage contacts, and search your CRM data.
+
+## Setup
+
+<Info>
+  Before you begin, you need:
+
+  - A [published bot](/get-started/quick-start)
+  - A Kommo account with **administrator** access
+  - A **private integration** in your Kommo account
+  - A **long-lived access token** from that private integration
+</Info>
+
+<Steps>
+  <Step title="Install the Kommo integration in Botpress">
+    1. In Botpress Studio, select **Explore Hub** in the upper-right corner.
+    2. Search for the **Kommo** integration, then select **Install Integration**.
+
+    Leave the configuration fields empty for now, you will fill them in after you create the private integration and token in Kommo.
+  </Step>
+  <Step title="Create a private integration in Kommo">
+    1. Log in to your Kommo account.
+    2. Go to **Settings** → **Integrations marketplace**.
+    3. Select **Create Integration** in the upper-right corner.
+    4. Enter a name for your integration.
+    5. Select **all** scopes.
+    6. Save the integration.
+  </Step>
+  <Step title="Generate a long-lived access token">
+    1. Open your integration’s settings in Kommo.
+    2. Select **Generate long-lived token**.
+    3. Choose an expiration date.
+    4. Copy the long-lived token and store it securely.
+
+    <Note>
+      Treat the token like a password. If it is exposed, revoke it in Kommo and generate a new one.
+    </Note>
+  </Step>
+  <Step title="Configure the integration in Botpress">
+    In the Kommo integration **Configuration** page in Botpress, enter:
+
+    - **Base Domain**: Your Kommo subdomain only (for example `mycompany.kommo.com`)
+
+      Do not include `https://` or trailing slashes.
+
+    - **Access Token**: The long-lived token from the previous step.
+
+    Select **Save Configuration** and enable the integration.
+  </Step>
+</Steps>
+
+---
+
+## Cards
+
+<Cards />
