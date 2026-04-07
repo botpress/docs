@@ -204,33 +204,6 @@ adk config:get supportEmail --prod
   Agent configuration (`adk config`) is separate from integration configuration. Integration settings like API keys are managed in the Control Panel during `adk dev`. See [Managing Integrations](/adk/managing-integrations) for details.
 </Note>
 
-## Environment variables
-
-You can use `process.env` directly in `agent.config.ts` and throughout your agent code. This is useful for keeping sensitive values like API keys out of your source code:
-
-```typescript
-configuration: {
-  schema: z.object({
-    apiKey: z.string().default(process.env.MY_API_KEY ?? ""),
-    webhookUrl: z.string().default(process.env.WEBHOOK_URL ?? ""),
-  }),
-},
-```
-
-Then access them at runtime via the typed `configuration` import:
-
-```typescript
-import { configuration } from "@botpress/runtime";
-
-const response = await fetch("https://api.example.com/data", {
-  headers: { Authorization: `Bearer ${configuration.apiKey}` },
-});
-```
-
-<Note>
-  There is no dedicated secrets API in the ADK. For integration-specific credentials (like OAuth tokens), configure them in the Control Panel during `adk dev` or via the Botpress dashboard.
-</Note>
-
 ## Default models
 
 The `defaultModels` field sets which LLM models your agent uses:
