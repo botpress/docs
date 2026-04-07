@@ -49,7 +49,7 @@ export default defineConfig({
 
 Conversation state is defined on each Conversation definition using the `state` prop:
 
-```typescript highlight={5-8}
+```typescript highlight={4-7}
 import { Conversation, z } from "@botpress/runtime";
 
 export default new Conversation({
@@ -102,7 +102,7 @@ user.state.visitCount = (user.state.visitCount || 0) + 1;
 
 Conversation state is accessed via the `state` parameter in the handler or on a Conversation instance:
 
-```typescript
+```typescript highlight={6-8}
 export default new Conversation({
   channel: "*",
   state: z.object({
@@ -132,7 +132,7 @@ Tags are string key-value pairs you can attach to bots, users, conversations, me
 
 Define tag schemas in `agent.config.ts`:
 
-```typescript highlight={5-11}
+```typescript highlight={4-6, 9-11, 14-16}
 export default defineConfig({
   name: "my-agent",
 
