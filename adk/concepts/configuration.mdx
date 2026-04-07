@@ -156,19 +156,11 @@ adk config
 ✓ Configuration validated successfully
 ```
 
-This validates your values against the schema and prompts for any missing or invalid fields.
-
-<Note>
-  `adk config` requires a `configuration.schema` in your `agent.config.ts`. Without one, you'll see "No configuration schema defined."
-</Note>
+This validates your values against the schema and prompts for any missing or invalid fields. Requires a `configuration.schema` in your `agent.config.ts`.
 
 ### Get and set values
 
-Set and retrieve individual configuration values:
-
-<Note>
-  `config:get` reads persisted values only and does not resolve schema defaults.
-</Note>
+Set and retrieve individual configuration values. Note that `config:get` reads persisted values only and does not resolve schema defaults:
 
 ```bash
 adk config:set supportEmail "help@mycompany.com"
