@@ -18,7 +18,7 @@ State lets your agent store and reuse data across conversations, users, and the 
 
 Define bot and user state schemas in `agent.config.ts`:
 
-```typescript highlight={8-11, 14-18}
+```typescript highlight={6-10, 13-17}
 import { z, defineConfig } from "@botpress/runtime";
 
 export default defineConfig({
@@ -102,7 +102,7 @@ user.state.visitCount = (user.state.visitCount || 0) + 1;
 
 Conversation state is accessed via the `state` parameter in the handler or on a Conversation instance:
 
-```typescript
+```typescript highlight={3-5, 6, 7-8}
 export default new Conversation({
   channel: "*",
   state: z.object({
@@ -121,7 +121,7 @@ export default new Conversation({
 ```
 
 <Note>
-  State changes are automatically tracked and persisted. You don't need to call a save method: just mutate the state object directly.
+  State changes are handled automatically. You don't need to call a save method, just update the state object directly.
 </Note>
 
 ## Tags
