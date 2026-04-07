@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Admin API",
     "description": "API for Botpress Cloud Manager",
-    "version": "1.52.1"
+    "version": "1.82.0"
   },
   "paths": {
     "/v1/admin/helper/vrl": {
@@ -1306,6 +1306,62 @@
             "title": "deleteBot"
           }
         }
+      }
+    },
+    "/v1/admin/bots/{id}/signing-secrets/rotate": {
+      "post": {
+        "operationId": "rotateBotSigningSecrets",
+        "description": "Rotate bot signing secrets. This will generate a new signing secret and invalidate the old ones after 24 hours.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Bot ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-workspace-id",
+            "in": "header",
+            "description": "Workspace ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-multiple-integrations",
+            "in": "header",
+            "description": "Whether the client supports bots with multiple instances of the same integration. Set to \"true\" to receive integration instances keyed by their alias instead of their id. This header will be removed in the future, and the API will always return multiple instances keyed by alias.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/rotateBotSigningSecretsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/rotateBotSigningSecretsResponse"
+          }
+        },
+        "tags": [
+          "experimental",
+          "Endpoints"
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/rotateBotSigningSecretsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "rotateBotSigningSecrets"
+          }
+        },
+        "x-hidden": true
       }
     },
     "/v1/admin/bots/{id}/transfer": {
@@ -2804,6 +2860,52 @@
         ]
       }
     },
+    "/v1/admin/workspaces/{id}/migrate-to-v4": {
+      "post": {
+        "operationId": "migrateWorkspaceToV4",
+        "description": "Migrate a workspace from v3 to v4 billing. Not meant for public use.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Workspace ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-multiple-integrations",
+            "in": "header",
+            "description": "Whether the client supports bots with multiple instances of the same integration. Set to \"true\" to receive integration instances keyed by their alias instead of their id. This header will be removed in the future, and the API will always return multiple instances keyed by alias.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/migrateWorkspaceToV4Response"
+          },
+          "default": {
+            "$ref": "#/components/responses/migrateWorkspaceToV4Response"
+          }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/migrateWorkspaceToV4Body"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "migrateWorkspaceToV4"
+          }
+        },
+        "x-hidden": true,
+        "tags": [
+          "Endpoints"
+        ]
+      }
+    },
     "/v1/admin/workspaces/{id}/billing/invoices": {
       "get": {
         "operationId": "listWorkspaceInvoices",
@@ -3221,7 +3323,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -3297,7 +3401,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -3407,7 +3513,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -4533,6 +4641,62 @@
         }
       }
     },
+    "/v1/admin/integrations/{id}/signing-secrets/rotate": {
+      "post": {
+        "operationId": "rotateIntegrationSigningSecrets",
+        "description": "Rotate integration signing secrets. This will generate a new signing secret and invalidate the old ones after 24 hours.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Integration Version ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-workspace-id",
+            "in": "header",
+            "description": "Workspace ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-multiple-integrations",
+            "in": "header",
+            "description": "Whether the client supports bots with multiple instances of the same integration. Set to \"true\" to receive integration instances keyed by their alias instead of their id. This header will be removed in the future, and the API will always return multiple instances keyed by alias.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/rotateIntegrationSigningSecretsResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/rotateIntegrationSigningSecretsResponse"
+          }
+        },
+        "tags": [
+          "experimental",
+          "Endpoints"
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/rotateIntegrationSigningSecretsBody"
+        },
+        "x-mint": {
+          "metadata": {
+            "title": "rotateIntegrationSigningSecrets"
+          }
+        },
+        "x-hidden": true
+      }
+    },
     "/v1/admin/integrations/{id}/validate": {
       "put": {
         "operationId": "validateIntegrationUpdate",
@@ -5617,7 +5781,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -5769,7 +5935,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -5845,7 +6013,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -5945,7 +6115,9 @@
                 "ai_spend",
                 "openai_spend",
                 "bing_search_spend",
-                "always_alive"
+                "always_alive",
+                "indexed_file_count",
+                "file_max_size_bytes"
               ]
             }
           },
@@ -6188,7 +6360,7 @@
           "signingSecret": {
             "type": "string",
             "maxLength": 2000,
-            "description": "Signing secret of the [Bot](#schema_bot)"
+            "description": "Signing secret of the [Bot](#schema_bot). This field is only visible when creating a new bot or when rotating the signing secret of an existing bot."
           },
           "integrations": {
             "type": "object",
@@ -6307,6 +6479,14 @@
                     "rejected"
                   ],
                   "description": "Status of the integration version verification"
+                },
+                "lifecycleStatus": {
+                  "type": "string",
+                  "enum": [
+                    "published",
+                    "deprecated"
+                  ],
+                  "description": "The lifecycle status of the integration. When an integration is deprecated, it can no longer be installed."
                 }
               },
               "required": [
@@ -6328,7 +6508,8 @@
                 "iconUrl",
                 "public",
                 "visibility",
-                "verificationStatus"
+                "verificationStatus",
+                "lifecycleStatus"
               ],
               "additionalProperties": false
             },
@@ -6449,7 +6630,25 @@
                 },
                 "public": {
                   "type": "boolean",
-                  "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                  "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                  "deprecated": true
+                },
+                "visibility": {
+                  "type": "string",
+                  "enum": [
+                    "public",
+                    "private",
+                    "unlisted"
+                  ],
+                  "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+                },
+                "lifecycleStatus": {
+                  "type": "string",
+                  "enum": [
+                    "published",
+                    "deprecated"
+                  ],
+                  "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
                 }
               },
               "required": [
@@ -6464,7 +6663,9 @@
                 "description",
                 "iconUrl",
                 "readmeUrl",
-                "public"
+                "public",
+                "visibility",
+                "lifecycleStatus"
               ],
               "additionalProperties": false
             },
@@ -6574,10 +6775,9 @@
                   "enum": [
                     "conversation",
                     "user",
-                    "bot",
-                    "task"
+                    "bot"
                   ],
-                  "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                  "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                 },
                 "schema": {
                   "type": "object",
@@ -6798,6 +6998,10 @@
             "type": "string",
             "description": "Name of the [Bot](#schema_bot)"
           },
+          "description": {
+            "type": "string",
+            "description": "Description of the [Bot](#schema_bot)"
+          },
           "deployedAt": {
             "type": "string",
             "format": "date-time",
@@ -6806,6 +7010,13 @@
           "dev": {
             "type": "boolean",
             "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
+          },
+          "secrets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of secret names configured for this [Bot](#schema_bot)"
           },
           "createdBy": {
             "type": "string",
@@ -6819,7 +7030,8 @@
             "type": "string",
             "enum": [
               "active",
-              "deploying"
+              "deploying",
+              "deleting"
             ],
             "description": "Status of the bot"
           },
@@ -6864,6 +7076,7 @@
           "tags",
           "name",
           "dev",
+          "secrets",
           "alwaysAlive",
           "status",
           "medias"
@@ -6930,6 +7143,11 @@
             "type": "string",
             "maxLength": 2000,
             "description": "URL of the [Integration](#schema_integration)"
+          },
+          "signingSecret": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "Signing secret of the [Integration](#schema_integration). This field is only visible when creating a new integration or when rotating the signing secret of an existing integration."
           },
           "name": {
             "type": "string",
@@ -7515,6 +7733,14 @@
             ],
             "description": "Status of the integration version verification"
           },
+          "lifecycleStatus": {
+            "type": "string",
+            "enum": [
+              "published",
+              "deprecated"
+            ],
+            "description": "The lifecycle status of the integration. When an integration is deprecated, it can no longer be installed."
+          },
           "secrets": {
             "type": "array",
             "items": {
@@ -7529,6 +7755,7 @@
           "updatedAt",
           "identifier",
           "url",
+          "signingSecret",
           "name",
           "version",
           "interfaces",
@@ -7548,6 +7775,7 @@
           "public",
           "visibility",
           "verificationStatus",
+          "lifecycleStatus",
           "secrets"
         ],
         "additionalProperties": false
@@ -7879,10 +8107,9 @@
                   "enum": [
                     "conversation",
                     "user",
-                    "bot",
-                    "task"
+                    "bot"
                   ],
-                  "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                  "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                 },
                 "schema": {
                   "type": "object",
@@ -8125,6 +8352,36 @@
             "description": "Conversation object configuration",
             "additionalProperties": false
           },
+          "message": {
+            "type": "object",
+            "properties": {
+              "tags": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "maxLength": 64,
+                      "description": "Title of the tag"
+                    },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 256,
+                      "description": "Description of the tag"
+                    }
+                  },
+                  "description": "Definition of a tag that can be provided on the object",
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "tags"
+            ],
+            "description": "Message object configuration",
+            "additionalProperties": false
+          },
           "attributes": {
             "type": "object",
             "additionalProperties": {
@@ -8154,7 +8411,25 @@
           },
           "public": {
             "type": "boolean",
-            "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+            "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+            "deprecated": true
+          },
+          "visibility": {
+            "type": "string",
+            "enum": [
+              "public",
+              "private",
+              "unlisted"
+            ],
+            "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+          },
+          "lifecycleStatus": {
+            "type": "string",
+            "enum": [
+              "published",
+              "deprecated"
+            ],
+            "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
           }
         },
         "required": [
@@ -8170,11 +8445,14 @@
           "dependencies",
           "user",
           "conversation",
+          "message",
           "title",
           "description",
           "iconUrl",
           "readmeUrl",
-          "public"
+          "public",
+          "visibility",
+          "lifecycleStatus"
         ],
         "additionalProperties": false
       },
@@ -8204,7 +8482,8 @@
             "enum": [
               "v1",
               "v2",
-              "v3"
+              "v3",
+              "v4"
             ]
           },
           "plan": {
@@ -8381,7 +8660,9 @@
               "ai_spend",
               "openai_spend",
               "bing_search_spend",
-              "always_alive"
+              "always_alive",
+              "indexed_file_count",
+              "file_max_size_bytes"
             ],
             "description": "Usage type that can be used"
           }
@@ -8908,6 +9189,14 @@
                         ],
                         "description": "Status of the integration version verification"
                       },
+                      "lifecycleStatus": {
+                        "type": "string",
+                        "enum": [
+                          "published",
+                          "deprecated"
+                        ],
+                        "description": "The lifecycle status of the integration. When an integration is deprecated, it can no longer be installed."
+                      },
                       "ownerWorkspace": {
                         "type": "object",
                         "properties": {
@@ -8974,6 +9263,13 @@
                           }
                         },
                         "description": "Metadata about which fields matched the search criteria"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "description": "Optional key-value attributes from the integration definition"
                       }
                     },
                     "required": [
@@ -8988,6 +9284,7 @@
                       "public",
                       "visibility",
                       "verificationStatus",
+                      "lifecycleStatus",
                       "ownerWorkspace",
                       "meta"
                     ]
@@ -9082,6 +9379,11 @@
                       "maxLength": 2000,
                       "description": "URL of the [Integration](#schema_integration)"
                     },
+                    "signingSecret": {
+                      "type": "string",
+                      "maxLength": 2000,
+                      "description": "Signing secret of the [Integration](#schema_integration). This field is only visible when creating a new integration or when rotating the signing secret of an existing integration."
+                    },
                     "name": {
                       "type": "string",
                       "maxLength": 200,
@@ -9666,6 +9968,14 @@
                       ],
                       "description": "Status of the integration version verification"
                     },
+                    "lifecycleStatus": {
+                      "type": "string",
+                      "enum": [
+                        "published",
+                        "deprecated"
+                      ],
+                      "description": "The lifecycle status of the integration. When an integration is deprecated, it can no longer be installed."
+                    },
                     "secrets": {
                       "type": "array",
                       "items": {
@@ -9717,6 +10027,7 @@
                     "updatedAt",
                     "identifier",
                     "url",
+                    "signingSecret",
                     "name",
                     "version",
                     "interfaces",
@@ -9736,6 +10047,7 @@
                     "public",
                     "visibility",
                     "verificationStatus",
+                    "lifecycleStatus",
                     "secrets",
                     "ownerWorkspace",
                     "meta"
@@ -9820,6 +10132,11 @@
                       "maxLength": 2000,
                       "description": "URL of the [Integration](#schema_integration)"
                     },
+                    "signingSecret": {
+                      "type": "string",
+                      "maxLength": 2000,
+                      "description": "Signing secret of the [Integration](#schema_integration). This field is only visible when creating a new integration or when rotating the signing secret of an existing integration."
+                    },
                     "name": {
                       "type": "string",
                       "maxLength": 200,
@@ -10404,6 +10721,14 @@
                       ],
                       "description": "Status of the integration version verification"
                     },
+                    "lifecycleStatus": {
+                      "type": "string",
+                      "enum": [
+                        "published",
+                        "deprecated"
+                      ],
+                      "description": "The lifecycle status of the integration. When an integration is deprecated, it can no longer be installed."
+                    },
                     "secrets": {
                       "type": "array",
                       "items": {
@@ -10455,6 +10780,7 @@
                     "updatedAt",
                     "identifier",
                     "url",
+                    "signingSecret",
                     "name",
                     "version",
                     "interfaces",
@@ -10474,6 +10800,7 @@
                     "public",
                     "visibility",
                     "verificationStatus",
+                    "lifecycleStatus",
                     "secrets",
                     "ownerWorkspace",
                     "meta"
@@ -10549,7 +10876,25 @@
                       },
                       "public": {
                         "type": "boolean",
-                        "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                        "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                        "deprecated": true
+                      },
+                      "visibility": {
+                        "type": "string",
+                        "enum": [
+                          "public",
+                          "private",
+                          "unlisted"
+                        ],
+                        "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+                      },
+                      "lifecycleStatus": {
+                        "type": "string",
+                        "enum": [
+                          "published",
+                          "deprecated"
+                        ],
+                        "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
                       }
                     },
                     "required": [
@@ -10562,7 +10907,9 @@
                       "description",
                       "iconUrl",
                       "readmeUrl",
-                      "public"
+                      "public",
+                      "visibility",
+                      "lifecycleStatus"
                     ]
                   }
                 },
@@ -10658,10 +11005,9 @@
                             "enum": [
                               "conversation",
                               "user",
-                              "bot",
-                              "task"
+                              "bot"
                             ],
-                            "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                            "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                           },
                           "schema": {
                             "type": "object",
@@ -10904,6 +11250,36 @@
                       "description": "Conversation object configuration",
                       "additionalProperties": false
                     },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "tags": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "description": "Title of the tag"
+                              },
+                              "description": {
+                                "type": "string",
+                                "maxLength": 256,
+                                "description": "Description of the tag"
+                              }
+                            },
+                            "description": "Definition of a tag that can be provided on the object",
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "tags"
+                      ],
+                      "description": "Message object configuration",
+                      "additionalProperties": false
+                    },
                     "attributes": {
                       "type": "object",
                       "additionalProperties": {
@@ -10933,7 +11309,25 @@
                     },
                     "public": {
                       "type": "boolean",
-                      "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                      "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                      "deprecated": true
+                    },
+                    "visibility": {
+                      "type": "string",
+                      "enum": [
+                        "public",
+                        "private",
+                        "unlisted"
+                      ],
+                      "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+                    },
+                    "lifecycleStatus": {
+                      "type": "string",
+                      "enum": [
+                        "published",
+                        "deprecated"
+                      ],
+                      "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
                     }
                   },
                   "required": [
@@ -10949,11 +11343,14 @@
                     "dependencies",
                     "user",
                     "conversation",
+                    "message",
                     "title",
                     "description",
                     "iconUrl",
                     "readmeUrl",
-                    "public"
+                    "public",
+                    "visibility",
+                    "lifecycleStatus"
                   ],
                   "additionalProperties": false
                 }
@@ -11038,10 +11435,9 @@
                             "enum": [
                               "conversation",
                               "user",
-                              "bot",
-                              "task"
+                              "bot"
                             ],
-                            "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                            "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                           },
                           "schema": {
                             "type": "object",
@@ -11284,6 +11680,36 @@
                       "description": "Conversation object configuration",
                       "additionalProperties": false
                     },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "tags": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "description": "Title of the tag"
+                              },
+                              "description": {
+                                "type": "string",
+                                "maxLength": 256,
+                                "description": "Description of the tag"
+                              }
+                            },
+                            "description": "Definition of a tag that can be provided on the object",
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "tags"
+                      ],
+                      "description": "Message object configuration",
+                      "additionalProperties": false
+                    },
                     "attributes": {
                       "type": "object",
                       "additionalProperties": {
@@ -11313,7 +11739,25 @@
                     },
                     "public": {
                       "type": "boolean",
-                      "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                      "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                      "deprecated": true
+                    },
+                    "visibility": {
+                      "type": "string",
+                      "enum": [
+                        "public",
+                        "private",
+                        "unlisted"
+                      ],
+                      "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+                    },
+                    "lifecycleStatus": {
+                      "type": "string",
+                      "enum": [
+                        "published",
+                        "deprecated"
+                      ],
+                      "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
                     }
                   },
                   "required": [
@@ -11329,11 +11773,14 @@
                     "dependencies",
                     "user",
                     "conversation",
+                    "message",
                     "title",
                     "description",
                     "iconUrl",
                     "readmeUrl",
-                    "public"
+                    "public",
+                    "visibility",
+                    "lifecycleStatus"
                   ],
                   "additionalProperties": false
                 }
@@ -11418,10 +11865,9 @@
                             "enum": [
                               "conversation",
                               "user",
-                              "bot",
-                              "task"
+                              "bot"
                             ],
-                            "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                            "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                           },
                           "schema": {
                             "type": "object",
@@ -11664,6 +12110,36 @@
                       "description": "Conversation object configuration",
                       "additionalProperties": false
                     },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "tags": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "maxLength": 64,
+                                "description": "Title of the tag"
+                              },
+                              "description": {
+                                "type": "string",
+                                "maxLength": 256,
+                                "description": "Description of the tag"
+                              }
+                            },
+                            "description": "Definition of a tag that can be provided on the object",
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "tags"
+                      ],
+                      "description": "Message object configuration",
+                      "additionalProperties": false
+                    },
                     "attributes": {
                       "type": "object",
                       "additionalProperties": {
@@ -11693,7 +12169,25 @@
                     },
                     "public": {
                       "type": "boolean",
-                      "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                      "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                      "deprecated": true
+                    },
+                    "visibility": {
+                      "type": "string",
+                      "enum": [
+                        "public",
+                        "private",
+                        "unlisted"
+                      ],
+                      "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+                    },
+                    "lifecycleStatus": {
+                      "type": "string",
+                      "enum": [
+                        "published",
+                        "deprecated"
+                      ],
+                      "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
                     }
                   },
                   "required": [
@@ -11709,11 +12203,14 @@
                     "dependencies",
                     "user",
                     "conversation",
+                    "message",
                     "title",
                     "description",
                     "iconUrl",
                     "readmeUrl",
-                    "public"
+                    "public",
+                    "visibility",
+                    "lifecycleStatus"
                   ],
                   "additionalProperties": false
                 }
@@ -12444,6 +12941,27 @@
           }
         }
       },
+      "rotateBotSigningSecretsResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "newSigningSecret": {
+                  "type": "string",
+                  "description": "The new signing secret that can be used immediately. The old signing secret(s) will continue to work for 24 hours after this operation to allow for a smooth transition."
+                }
+              },
+              "required": [
+                "newSigningSecret"
+              ],
+              "title": "rotateBotSigningSecretsResponse",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "transferBotResponse": {
         "description": "Success",
         "content": {
@@ -12832,7 +13350,8 @@
                         "description": "ISO 8601 timestamp of the action run"
                       },
                       "integrationName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Alias of the integration instance used for this action run"
                       },
                       "actionType": {
                         "type": "string"
@@ -12843,12 +13362,20 @@
                         "additionalProperties": true,
                         "description": "Input of the action"
                       },
+                      "inputTruncated": {
+                        "type": "boolean",
+                        "description": "Present if the length of the action's input exceeds 190 KB."
+                      },
                       "output": {
                         "type": "object",
                         "properties": {},
                         "additionalProperties": true,
                         "nullable": true,
                         "description": "Output of the action"
+                      },
+                      "outputTruncated": {
+                        "type": "boolean",
+                        "description": "Present if the length of the action's output exceeds 190 KB."
                       },
                       "status": {
                         "type": "string",
@@ -13492,6 +14019,18 @@
           }
         }
       },
+      "migrateWorkspaceToV4Response": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "migrateWorkspaceToV4Response",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "listWorkspaceInvoicesResponse": {
         "description": "Success",
         "content": {
@@ -13770,7 +14309,8 @@
                   "enum": [
                     "v1",
                     "v2",
-                    "v3"
+                    "v3",
+                    "v4"
                   ]
                 },
                 "plan": {
@@ -13930,7 +14470,8 @@
                   "enum": [
                     "v1",
                     "v2",
-                    "v3"
+                    "v3",
+                    "v4"
                   ]
                 },
                 "plan": {
@@ -14083,7 +14624,9 @@
                       "ai_spend",
                       "openai_spend",
                       "bing_search_spend",
-                      "always_alive"
+                      "always_alive",
+                      "indexed_file_count",
+                      "file_max_size_bytes"
                     ]
                   },
                   "completion": {
@@ -14134,7 +14677,9 @@
                         "ai_spend",
                         "openai_spend",
                         "bing_search_spend",
-                        "always_alive"
+                        "always_alive",
+                        "indexed_file_count",
+                        "file_max_size_bytes"
                       ],
                       "description": "Usage type that can be used"
                     }
@@ -14191,7 +14736,9 @@
                           "ai_spend",
                           "openai_spend",
                           "bing_search_spend",
-                          "always_alive"
+                          "always_alive",
+                          "indexed_file_count",
+                          "file_max_size_bytes"
                         ],
                         "description": "Usage type that can be used"
                       }
@@ -14243,7 +14790,8 @@
                   "enum": [
                     "v1",
                     "v2",
-                    "v3"
+                    "v3",
+                    "v4"
                   ]
                 },
                 "plan": {
@@ -14379,7 +14927,8 @@
                         "enum": [
                           "v1",
                           "v2",
-                          "v3"
+                          "v3",
+                          "v4"
                         ]
                       },
                       "plan": {
@@ -14624,6 +15173,8 @@
                           "SET_SPENDING_LIMIT",
                           "SET_AI_SPENDING_LIMIT",
                           "UPDATE_WORKSPACE_BILLING_READONLY",
+                          "UPDATE_WORKSPACE_PLAN_READONLY",
+                          "UPDATE_WORKSPACE_ADDONS_READONLY",
                           "EXECUTE_AUTO_RECHARGE_SUCCESS",
                           "EXECUTE_AUTO_RECHARGE_FAILED"
                         ]
@@ -15064,6 +15615,27 @@
           }
         }
       },
+      "rotateIntegrationSigningSecretsResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "newSigningSecret": {
+                  "type": "string",
+                  "description": "The new signing secret that can be used immediately. The old signing secret(s) will continue to work for 24 hours after this operation to allow for a smooth transition."
+                }
+              },
+              "required": [
+                "newSigningSecret"
+              ],
+              "title": "rotateIntegrationSigningSecretsResponse",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "validateIntegrationUpdateResponse": {
         "description": "Validation succeeded: the integration can be updated using the same parameters",
         "content": {
@@ -15153,6 +15725,14 @@
                         ],
                         "description": "Status of the integration version verification"
                       },
+                      "lifecycleStatus": {
+                        "type": "string",
+                        "enum": [
+                          "published",
+                          "deprecated"
+                        ],
+                        "description": "The lifecycle status of the integration. When an integration is deprecated, it can no longer be installed."
+                      },
                       "matchedOn": {
                         "type": "object",
                         "properties": {
@@ -15204,6 +15784,13 @@
                           "handle",
                           "name"
                         ]
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "description": "Optional key-value attributes from the integration definition"
                       }
                     },
                     "required": [
@@ -15217,7 +15804,8 @@
                       "iconUrl",
                       "public",
                       "visibility",
-                      "verificationStatus"
+                      "verificationStatus",
+                      "lifecycleStatus"
                     ]
                   }
                 },
@@ -15717,7 +16305,25 @@
                       },
                       "public": {
                         "type": "boolean",
-                        "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                        "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                        "deprecated": true
+                      },
+                      "visibility": {
+                        "type": "string",
+                        "enum": [
+                          "public",
+                          "private",
+                          "unlisted"
+                        ],
+                        "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
+                      },
+                      "lifecycleStatus": {
+                        "type": "string",
+                        "enum": [
+                          "published",
+                          "deprecated"
+                        ],
+                        "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
                       }
                     },
                     "required": [
@@ -15730,7 +16336,9 @@
                       "description",
                       "iconUrl",
                       "readmeUrl",
-                      "public"
+                      "public",
+                      "visibility",
+                      "lifecycleStatus"
                     ]
                   }
                 },
@@ -16163,10 +16771,9 @@
                         "enum": [
                           "conversation",
                           "user",
-                          "bot",
-                          "task"
+                          "bot"
                         ],
-                        "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                        "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                       },
                       "schema": {
                         "type": "object",
@@ -16453,6 +17060,11 @@
                   "minLength": 1,
                   "description": "Optional name for the bot, if not provided will be auto-generated"
                 },
+                "description": {
+                  "type": "string",
+                  "maxLength": 2000,
+                  "description": "Optional description for the bot"
+                },
                 "medias": {
                   "type": "array",
                   "items": {
@@ -16474,7 +17086,15 @@
                 },
                 "url": {
                   "type": "string",
-                  "description": "URL of the [Bot](#schema_bot); Only available for dev bots"
+                  "description": "URL of the [Bot](#schema_bot)"
+                },
+                "secrets": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 20000
+                  },
+                  "description": "Secrets are values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
                 },
                 "dev": {
                   "type": "boolean",
@@ -16496,14 +17116,16 @@
               "properties": {
                 "url": {
                   "type": "string",
-                  "description": "URL of the [Bot](#schema_bot); Only available for dev bots"
+                  "description": "URL of the [Bot](#schema_bot)",
+                  "nullable": true
                 },
                 "authentication": {
                   "type": "string",
                   "enum": [
-                    "iam"
+                    "iam",
+                    "hmac-sha256"
                   ],
-                  "description": "Type of the [Bot](#schema_bot) authentication (`iam`)"
+                  "description": "Type of the [Bot](#schema_bot) authentication (`iam` or `hmac-sha256`)"
                 },
                 "configuration": {
                   "type": "object",
@@ -16732,10 +17354,9 @@
                         "enum": [
                           "conversation",
                           "user",
-                          "bot",
-                          "task"
+                          "bot"
                         ],
-                        "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                        "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                       },
                       "schema": {
                         "type": "object",
@@ -16921,6 +17542,11 @@
                   "minLength": 1,
                   "description": "Optional name for the bot, if not provided will be auto-generated"
                 },
+                "description": {
+                  "type": "string",
+                  "maxLength": 2000,
+                  "description": "Optional description for the bot"
+                },
                 "medias": {
                   "type": "array",
                   "items": {
@@ -16940,6 +17566,15 @@
                   },
                   "description": "Media files associated with the [Bot](#schema_bot)"
                 },
+                "secrets": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 20000,
+                    "nullable": true
+                  },
+                  "description": "Secrets are values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
+                },
                 "layers": {
                   "type": "array",
                   "items": {
@@ -16952,6 +17587,18 @@
                 }
               },
               "title": "updateBotBody",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "rotateBotSigningSecretsBody": {
+        "description": "Empty body",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "rotateBotSigningSecretsBody",
               "additionalProperties": false
             }
           }
@@ -17102,6 +17749,18 @@
                 }
               },
               "title": "updateBotAllowlistBody",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "migrateWorkspaceToV4Body": {
+        "description": "No body required; migration uses workspace id only.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "migrateWorkspaceToV4Body",
               "additionalProperties": false
             }
           }
@@ -17844,6 +18503,10 @@
                   },
                   "description": "**EXPERIMENTAL** Extra integration operations that should be sent or not to the integration instances. The key is the operation name."
                 },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
+                },
                 "secrets": {
                   "type": "object",
                   "additionalProperties": {
@@ -18440,6 +19103,10 @@
                   },
                   "description": "**EXPERIMENTAL** Extra integration operations that should be sent or not to the integration instances. The key is the operation name."
                 },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
+                },
                 "secrets": {
                   "type": "object",
                   "additionalProperties": {
@@ -18609,6 +19276,10 @@
                     "additionalProperties": false
                   },
                   "description": "**EXPERIMENTAL** Extra integration operations that should be sent or not to the integration instances. The key is the operation name."
+                },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
                 },
                 "channels": {
                   "type": "object",
@@ -19107,6 +19778,18 @@
           }
         }
       },
+      "rotateIntegrationSigningSecretsBody": {
+        "description": "Empty body",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "rotateIntegrationSigningSecretsBody",
+              "additionalProperties": false
+            }
+          }
+        }
+      },
       "validateIntegrationUpdateBody": {
         "description": "Integration",
         "content": {
@@ -19205,6 +19888,10 @@
                     "additionalProperties": false
                   },
                   "description": "**EXPERIMENTAL** Extra integration operations that should be sent or not to the integration instances. The key is the operation name."
+                },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
                 },
                 "channels": {
                   "type": "object",
@@ -19932,6 +20619,10 @@
                   },
                   "description": "Optional attributes"
                 },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
+                },
                 "icon": {
                   "type": "string",
                   "description": "Base64 encoded svg of the interface icon. This icon is global to the interface each versions will be updated when this changes."
@@ -20169,6 +20860,10 @@
                   },
                   "description": "Optional attributes. Set attributes to null to remove them"
                 },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
+                },
                 "icon": {
                   "type": "string",
                   "description": "Base64 encoded svg of the interface icon. This icon is global to the interface each versions will be updated when this changes."
@@ -20251,10 +20946,9 @@
                         "enum": [
                           "conversation",
                           "user",
-                          "bot",
-                          "task"
+                          "bot"
                         ],
-                        "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                        "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                       },
                       "schema": {
                         "type": "object",
@@ -20433,6 +21127,36 @@
                   "description": "Conversation object configuration",
                   "additionalProperties": false
                 },
+                "message": {
+                  "type": "object",
+                  "properties": {
+                    "tags": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "description": "Title of the tag"
+                          },
+                          "description": {
+                            "type": "string",
+                            "maxLength": 256,
+                            "description": "Description of the tag"
+                          }
+                        },
+                        "description": "Definition of a tag that can be provided on the object",
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "tags"
+                  ],
+                  "description": "Message object configuration",
+                  "additionalProperties": false
+                },
                 "attributes": {
                   "type": "object",
                   "additionalProperties": {
@@ -20440,6 +21164,10 @@
                     "maxLength": 200
                   },
                   "description": "Optional attributes"
+                },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
                 },
                 "code": {
                   "type": "object",
@@ -20480,7 +21208,17 @@
                 },
                 "public": {
                   "type": "boolean",
-                  "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                  "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                  "deprecated": true
+                },
+                "visibility": {
+                  "type": "string",
+                  "enum": [
+                    "public",
+                    "private",
+                    "unlisted"
+                  ],
+                  "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
                 },
                 "dependencies": {
                   "type": "object",
@@ -20587,10 +21325,9 @@
                         "enum": [
                           "conversation",
                           "user",
-                          "bot",
-                          "task"
+                          "bot"
                         ],
-                        "description": "Type of the [State](#schema_state) (`conversation`, `user`, `bot` or `task`)"
+                        "description": "Type of the [State](#schema_state) (`conversation`, `user` or `bot`)"
                       },
                       "schema": {
                         "type": "object",
@@ -20772,6 +21509,36 @@
                   ],
                   "additionalProperties": false
                 },
+                "message": {
+                  "type": "object",
+                  "properties": {
+                    "tags": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "maxLength": 64,
+                            "description": "Title of the tag"
+                          },
+                          "description": {
+                            "type": "string",
+                            "maxLength": 256,
+                            "description": "Description of the tag"
+                          }
+                        },
+                        "description": "Definition of a tag that can be provided on the object",
+                        "nullable": true,
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "tags"
+                  ],
+                  "additionalProperties": false
+                },
                 "attributes": {
                   "type": "object",
                   "additionalProperties": {
@@ -20780,6 +21547,10 @@
                     "nullable": true
                   },
                   "description": "Optional attributes. Set attributes to null to remove them"
+                },
+                "sdkVersion": {
+                  "type": "string",
+                  "maxLength": 200
                 },
                 "code": {
                   "type": "object",
@@ -20816,7 +21587,17 @@
                 },
                 "public": {
                   "type": "boolean",
-                  "description": "Indicates if the plugin is public. Public plugins are available to all and cannot be updated without creating a new version."
+                  "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
+                  "deprecated": true
+                },
+                "visibility": {
+                  "type": "string",
+                  "enum": [
+                    "public",
+                    "private",
+                    "unlisted"
+                  ],
+                  "description": "The plugin's visibility. Public plugins are available to all and cannot be updated without creating a new version. Unlisted plugins behave identically to public plugins, but they are not listed in the plugin hub. By default, plugins are private and only accessible to the workspace that created them."
                 },
                 "dependencies": {
                   "type": "object",

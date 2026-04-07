@@ -3,6 +3,173 @@
 
 Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
 
+### List Message Templates
+
+<span>{"Lists WhatsApp message templates from the connected WhatsApp Business Account, including parameter schemas and approval status"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+  >
+    <span>{"Filter templates by approval status. Returns all statuses if not specified."}</span>
+
+Available options: `APPROVED`, `PENDING`, `REJECTED`, `PAUSED`, `DISABLED`, `ARCHIVED`, `LIMIT_EXCEEDED`, `IN_APPEAL`
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Filter templates by exact name match."}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={20}
+  >
+    <span>{"Maximum number of templates to return per page (default: 20, max: 100)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for fetching the next page of results. Obtained from a previous listTemplates call."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="templates"
+    type="array"
+    required
+  >
+    <span>{"Array of message templates"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Unique identifier of the template"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the message template"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"Approval status of the template"}</span>
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string"
+    required
+  >
+    <span>{"Category of the template (e.g. MARKETING, UTILITY, AUTHENTICATION)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="language"
+    type="string"
+    required
+  >
+    <span>{"Language and locale code of the template"}</span>
+  </ResponseField>
+  <ResponseField
+    name="components"
+    type="array"
+    required
+  >
+    <span>{"Array of template components (HEADER, BODY, FOOTER, BUTTONS)"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"Component type (HEADER, BODY, FOOTER, BUTTONS)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="format"
+    type="string"
+  >
+    <span>{"Format of the component (e.g. TEXT, IMAGE, VIDEO for HEADER)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+  >
+    <span>{"Text content of the component, may contain {{N}} placeholders"}</span>
+  </ResponseField>
+  <ResponseField
+    name="buttons"
+    type="array"
+  >
+    <span>{"Array of button objects (only present for BUTTONS component type)"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    <span>{"Type of button (QUICK_REPLY, URL, PHONE_NUMBER, etc.)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+  >
+    <span>{"Label text of the button"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+  >
+    <span>{"URL for URL-type buttons, may contain {{1}} placeholder"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone_number"
+    type="string"
+  >
+    <span>{"Phone number for PHONE_NUMBER-type buttons"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="example"
+    type="object"
+  >
+    <span>{"Example values for the component parameters"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for fetching the next page. Undefined if no more pages."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### Send Template Message
 
 <span>{"Sends a WhatsApp Message Template to a user in an existing conversation"}</span>
@@ -44,7 +211,93 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="templateVariablesJson"
     type="string"
   >
-    <span>{"JSON array representation of variable values to pass to the WhatsApp Message Template (if required by the template). Currently, only positional parameters are supported."}</span>
+    <span>{"Deprecated: use templateBodyParams instead. JSON array of body variable values: [\"val1\", \"val2\"]."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateHeaderParams"
+    type="object | object | object | object"
+  >
+    <span>{"Header parameter. For text headers: type=\"text\", value is the replacement text, parameterName is optional (for named params). For media headers: type=\"image\"|\"video\"|\"document\", url is the media URL. Documents may include a filename."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateBodyParams"
+    type="object | object"
+  >
+    <span>{"Body parameters. For positional params ({{1}}, {{2}}, ...): type=\"positional\", values is an ordered array of strings. For named params ({{buyer_name}}): type=\"named\", values is a record mapping param names to values."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateButtonParams"
+    type="array"
+  >
+    <span>{"Button parameters as an ordered array. url: value is the URL suffix. quick_reply: payload is the callback data. copy_code: code is the coupon code. skip: no parameter needed (for phone number buttons, etc.)."}</span>
+
+    <Tabs>
+    <Tab title="url">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="quick_reply">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="copy_code">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="skip">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="botPhoneNumberId"
@@ -68,6 +321,12 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     required
   >
     <span>{"ID of the conversation created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"ID of the message created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -113,7 +372,93 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     name="templateVariablesJson"
     type="string"
   >
-    <span>{"JSON array representation of variable values to pass to the WhatsApp Message Template (if required by the template). Currently, only positional parameters are supported."}</span>
+    <span>{"Deprecated: use templateBodyParams instead. JSON array of body variable values: [\"val1\", \"val2\"]."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateHeaderParams"
+    type="object | object | object | object"
+  >
+    <span>{"Header parameter. For text headers: type=\"text\", value is the replacement text, parameterName is optional (for named params). For media headers: type=\"image\"|\"video\"|\"document\", url is the media URL. Documents may include a filename."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateBodyParams"
+    type="object | object"
+  >
+    <span>{"Body parameters. For positional params ({{1}}, {{2}}, ...): type=\"positional\", values is an ordered array of strings. For named params ({{buyer_name}}): type=\"named\", values is a record mapping param names to values."}</span>
+  </ResponseField>
+  <ResponseField
+    name="templateButtonParams"
+    type="array"
+  >
+    <span>{"Button parameters as an ordered array. url: value is the URL suffix. quick_reply: payload is the callback data. copy_code: code is the coupon code. skip: no parameter needed (for phone number buttons, etc.)."}</span>
+
+    <Tabs>
+    <Tab title="url">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="quick_reply">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="copy_code">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="skip">
+      <Expandable>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="botPhoneNumberId"
@@ -137,6 +482,12 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     required
   >
     <span>{"The Botpress ID of the created conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+  >
+    <span>{"ID of the message created"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>

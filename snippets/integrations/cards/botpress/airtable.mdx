@@ -21,10 +21,584 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="fields"
+    type="array"
+    required
+  >
+    <span>{"The fields and their values for the new record"}</span>
+
+    <Tabs>
+    <Tab title="Option 1">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
     type="string"
     required
   >
-    <span>{"The fields and their values for the new record, in a JSON format (e.g. {\"Name\":\"John Doe\",\"City\":\"In the moon\",\"Verify\":true})"}</span>
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleLineText`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Text value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 2">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `email`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Email address"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 3">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `url`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"URL value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 4">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multilineText`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Multi-line text value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 5">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `richText`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Rich text value (supports Airtable-flavored markdown)"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 6">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `phoneNumber`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Phone number"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 7">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleSelect`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Option name"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 8">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `date`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"ISO date string (e.g. \"2025-03-09\")"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 9">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `dateTime`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"ISO datetime string (e.g. \"2025-03-09T14:30:00.000Z\")"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 10">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `number`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Numeric value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 11">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `percent`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Percent as decimal (e.g. 0.5 for 50%)"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 12">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `currency`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Currency amount"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 13">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `duration`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Duration in seconds"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 14">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `rating`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Rating value (1 to max configured)"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 15">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `checkbox`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="boolean"
+    required
+  >
+    <span>{"Checked state"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 16">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleSelects`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Selected option names"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 17">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleRecordLinks`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Linked record IDs (e.g. [\"recABC123\"])"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 18">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleAttachments`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Attachments to upload"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"Attachment URL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filename"
+    type="string"
+  >
+    <span>{"Attachment filename"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 19">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `barcode`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="object"
+    required
+  >
+    <span>{"Barcode value"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"Barcode text value"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 20">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleCollaborator`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="object"
+    required
+  >
+    <span>{"Collaborator"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Collaborator user ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 21">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleCollaborators`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Collaborators"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Collaborator user ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -69,10 +643,861 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="fields"
+    type="array"
+    required
+  >
+    <span>{"The fields to create in the table. Each field requires a name and type, and some types require additional options."}</span>
+
+    <Tabs>
+    <Tab title="Option 1">
+      <Expandable>
+  <ResponseField
+    name="name"
     type="string"
     required
   >
-    <span>{"The Table's fields, separated by commas. Each field should be in the format \"type_name\" (e.g. \"phoneNumber_Customer Phone, singleLineText_Address\")."}</span>
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleLineText`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 2">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `email`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 3">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `url`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 4">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multilineText`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 5">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `phoneNumber`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 6">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `richText`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 7">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleCollaborator`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 8">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleCollaborators`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 9">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleAttachments`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+  >
+    <span>{"Attachment field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="isReversed"
+    type="boolean"
+  >
+    <span>{"Whether attachments are in reverse order"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 10">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `checkbox`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Checkbox display options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="color"
+    type="enum<string>"
+    required
+  >
+    <span>{"Checkbox color"}</span>
+
+Available options: `greenBright`, `tealBright`, `cyanBright`, `blueBright`, `purpleBright`, `pinkBright`, `redBright`, `orangeBright`, `yellowBright`, `grayBright`
+  </ResponseField>
+  <ResponseField
+    name="icon"
+    type="enum<string>"
+    required
+  >
+    <span>{"Checkbox icon"}</span>
+
+Available options: `star`, `heart`, `thumbsUp`, `flag`, `dot`, `check`, `xCheckbox`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 11">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `currency`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Currency field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="precision"
+    type="number"
+    required
+  >
+    <span>{"Number of decimal places (0-7)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="symbol"
+    type="string"
+    required
+  >
+    <span>{"Currency symbol (e.g. \"$\")"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 12">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `date`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Date field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="dateFormat"
+    type="object"
+    required
+  >
+    <span>{"Date format configuration"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="enum<string>"
+    required
+  >
+    <span>{"Date format preset: local (locale-dependent), friendly (LL e.g. \"January 1, 2020\"), us (M/D/YYYY), european (D/M/YYYY), iso (YYYY-MM-DD)"}</span>
+
+Available options: `local`, `friendly`, `us`, `european`, `iso`
+  </ResponseField>
+  <ResponseField
+    name="format"
+    type="string"
+  >
+    <span>{"Read-only format string, auto-set based on name"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 13">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `dateTime`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"DateTime field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="dateFormat"
+    type="object"
+    required
+  >
+    <span>{"Date format configuration"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="enum<string>"
+    required
+  >
+    <span>{"Date format preset: local (locale-dependent), friendly (LL e.g. \"January 1, 2020\"), us (M/D/YYYY), european (D/M/YYYY), iso (YYYY-MM-DD)"}</span>
+
+Available options: `local`, `friendly`, `us`, `european`, `iso`
+  </ResponseField>
+  <ResponseField
+    name="format"
+    type="string"
+  >
+    <span>{"Read-only format string, auto-set based on name"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="timeFormat"
+    type="object"
+    required
+  >
+    <span>{"Time format configuration"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="enum<string>"
+    required
+  >
+    <span>{"Time format preset: 12hour (h:mma e.g. \"1:00pm\"), 24hour (HH:mm e.g. \"13:00\")"}</span>
+
+Available options: `12hour`, `24hour`
+  </ResponseField>
+  <ResponseField
+    name="format"
+    type="string"
+  >
+    <span>{"Read-only format string, auto-set based on name"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="timeZone"
+    type="string"
+    required
+  >
+    <span>{"Time zone identifier (e.g. \"America/New_York\")"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 14">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `duration`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Duration field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="durationFormat"
+    type="enum<string>"
+    required
+  >
+    <span>{"Duration display format"}</span>
+
+Available options: `h:mm`, `h:mm:ss`, `h:mm:ss.S`, `h:mm:ss.SS`, `h:mm:ss.SSS`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 15">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleRecordLinks`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Record link options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="linkedTableId"
+    type="string"
+    required
+  >
+    <span>{"ID of the linked table"}</span>
+  </ResponseField>
+  <ResponseField
+    name="prefersSingleRecordLink"
+    type="boolean"
+  >
+    <span>{"Whether to prefer a single record link"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inverseLinkFieldId"
+    type="string"
+  >
+    <span>{"ID of the inverse link field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="viewIdForRecordSelection"
+    type="string"
+  >
+    <span>{"ID of the view for record selection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isReversed"
+    type="boolean"
+  >
+    <span>{"Whether the link is reversed"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 16">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleSelects`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Multiple select options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="choices"
+    type="array"
+    required
+  >
+    <span>{"Available choices"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Choice name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="enum<string>"
+  >
+    <span>{"Choice color"}</span>
+
+Available options: `greenBright`, `tealBright`, `cyanBright`, `blueBright`, `purpleBright`, `pinkBright`, `redBright`, `orangeBright`, `yellowBright`, `grayBright`, `blueLight`, `blueDark`, `cyanLight`, `cyanDark`, `tealLight`, `tealDark`, `greenLight`, `greenDark`, `yellowLight`, `yellowDark`, `orangeLight`, `orangeDark`, `redLight`, `redDark`, `pinkLight`, `pinkDark`, `purpleLight`, `purpleDark`, `grayLight`, `grayDark`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 17">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `number`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Number field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="precision"
+    type="number"
+    required
+  >
+    <span>{"Number of decimal places (0-8)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 18">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `percent`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Percent field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="precision"
+    type="number"
+    required
+  >
+    <span>{"Number of decimal places (0-8)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 19">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `rating`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Rating field options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="max"
+    type="number"
+    required
+  >
+    <span>{"Maximum rating value (1-10)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="enum<string>"
+    required
+  >
+    <span>{"Rating color"}</span>
+
+Available options: `greenBright`, `tealBright`, `cyanBright`, `blueBright`, `purpleBright`, `pinkBright`, `redBright`, `orangeBright`, `yellowBright`, `grayBright`
+  </ResponseField>
+  <ResponseField
+    name="icon"
+    type="enum<string>"
+    required
+  >
+    <span>{"Rating icon"}</span>
+
+Available options: `star`, `heart`, `thumbsUp`, `flag`, `dot`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 20">
+      <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"The description of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleSelect`
+  </ResponseField>
+  <ResponseField
+    name="options"
+    type="object"
+    required
+  >
+    <span>{"Single select options"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="choices"
+    type="array"
+    required
+  >
+    <span>{"Available choices"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Choice name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="enum<string>"
+  >
+    <span>{"Choice color"}</span>
+
+Available options: `greenBright`, `tealBright`, `cyanBright`, `blueBright`, `purpleBright`, `pinkBright`, `redBright`, `orangeBright`, `yellowBright`, `grayBright`, `blueLight`, `blueDark`, `cyanLight`, `cyanDark`, `tealLight`, `tealDark`, `greenLight`, `greenDark`, `yellowLight`, `yellowDark`, `orangeLight`, `orangeDark`, `redLight`, `redDark`, `pinkLight`, `pinkDark`, `purpleLight`, `purpleDark`, `grayLight`, `grayDark`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
   <ResponseField
     name="description"
@@ -330,10 +1755,584 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   </ResponseField>
   <ResponseField
     name="fields"
+    type="array"
+    required
+  >
+    <span>{"The fields and their values for the record to be updated"}</span>
+
+    <Tabs>
+    <Tab title="Option 1">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
     type="string"
     required
   >
-    <span>{"The fields and their values for the record to be updated, in a JSON format (e.g. {\"Name\":\"John Doe\",\"Verify\":true})"}</span>
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleLineText`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Text value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 2">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `email`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Email address"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 3">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `url`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"URL value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 4">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multilineText`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Multi-line text value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 5">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `richText`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Rich text value (supports Airtable-flavored markdown)"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 6">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `phoneNumber`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Phone number"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 7">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleSelect`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"Option name"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 8">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `date`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"ISO date string (e.g. \"2025-03-09\")"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 9">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `dateTime`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    <span>{"ISO datetime string (e.g. \"2025-03-09T14:30:00.000Z\")"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 10">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `number`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Numeric value"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 11">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `percent`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Percent as decimal (e.g. 0.5 for 50%)"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 12">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `currency`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Currency amount"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 13">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `duration`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Duration in seconds"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 14">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `rating`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    <span>{"Rating value (1 to max configured)"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 15">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `checkbox`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="boolean"
+    required
+  >
+    <span>{"Checked state"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 16">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleSelects`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Selected option names"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 17">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleRecordLinks`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Linked record IDs (e.g. [\"recABC123\"])"}</span>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 18">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleAttachments`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Attachments to upload"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"Attachment URL"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filename"
+    type="string"
+  >
+    <span>{"Attachment filename"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 19">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `barcode`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="object"
+    required
+  >
+    <span>{"Barcode value"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"Barcode text value"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 20">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `singleCollaborator`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="object"
+    required
+  >
+    <span>{"Collaborator"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Collaborator user ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="Option 21">
+      <Expandable>
+  <ResponseField
+    name="fieldNameOrId"
+    type="string"
+    required
+  >
+    <span>{"The name or ID of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    Available options: `multipleCollaborators`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="array"
+    required
+  >
+    <span>{"Collaborators"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Collaborator user ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
   </ResponseField>
     </Expandable>
   </ResponseField>

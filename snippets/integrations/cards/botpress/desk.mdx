@@ -121,9 +121,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -163,49 +178,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -330,9 +302,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -372,49 +359,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -539,9 +483,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -581,49 +540,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -680,7 +596,7 @@ Available options: `simple`, `moderate`, `complex`
 
 ### Close Ticket
 
-<span>{"Close a ticket"}</span>
+<span>{"[Deprecated: use markAsClosed] Close a ticket"}</span>
 
   <ResponseField
     name="input"
@@ -693,6 +609,12 @@ Available options: `simple`, `moderate`, `complex`
     required
   >
     <span>{"The ID of the ticket to close"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"Optional specific status ID within the closed category. If omitted, the default closed status is used."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -789,9 +711,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -831,49 +768,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1179,9 +1073,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -1222,50 +1131,62 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Ticket Field
+
+<span>{"Get a single field value for a given ticket by slug"}</span>
+
   <ResponseField
-    name="routing"
+    name="input"
     type="object"
   >
-    <span>{"Bot-classified routing metadata"}</span>
-
     <Expandable>
   <ResponseField
-    name="topic"
+    name="ticketId"
     type="string"
+    required
   >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+    <span>{"The ID of the ticket (tkt_)"}</span>
   </ResponseField>
   <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
+    name="slug"
     type="string"
+    required
   >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
+    <span>{"The slug of the field definition"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    <span>{"The slug identifier for the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The display name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string | null"
+    required
+  >
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1553,6 +1474,152 @@ Available options: `simple`, `moderate`, `complex`
     </Expandable>
   </ResponseField>
 
+### List Field Definitions
+
+<span>{"List all ticket field definitions configured for the workspace"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="fields"
+    type="array"
+    required
+  >
+    <span>{"List of ticket field definitions"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The display name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    <span>{"The slug identifier for the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of the field"}</span>
+
+Available options: `text`, `number`, `select`, `multi_select`, `date`, `boolean`
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="isRequired"
+    type="boolean"
+    required
+  >
+    <span>{"Whether this field is required before closing a ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="config"
+    type="object | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Statuses
+
+<span>{"List all ticket statuses configured for the workspace, grouped by category (triage, open, waiting, closed)"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    This Card has no input fields.
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="statuses"
+    type="array"
+    required
+  >
+    <span>{"List of ticket statuses"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The category this status belongs to"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The display name of the status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+    required
+  >
+    <span>{"The position within its category for ordering"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isDefault"
+    type="boolean"
+    required
+  >
+    <span>{"Whether this is the default status for its category"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isActive"
+    type="boolean"
+    required
+  >
+    <span>{"Whether this status is currently active"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### List Teams
 
 <span>{"List all teams in the workspace with their names and descriptions"}</span>
@@ -1774,9 +1841,67 @@ Available options: `plain`, `html`, `markdown`, `json`
     </Expandable>
   </ResponseField>
 
+### List Ticket Fields
+
+<span>{"List all field values for a given ticket"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket (tkt_)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="fields"
+    type="array"
+    required
+  >
+    <span>{"List of ticket field values"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    <span>{"The slug identifier for the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The display name of the field"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 ### List Tickets
 
-<span>{"List tickets with pagination and sorting options"}</span>
+<span>{"List tickets with pagination, sorting, and filtering options"}</span>
 
   <ResponseField
     name="input"
@@ -1796,7 +1921,7 @@ Available options: `plain`, `html`, `markdown`, `json`
   >
     <span>{"Field to order by"}</span>
 
-Available options: `id`, `createdAt`, `updatedAt`, `status`, `priority`, `title`, `closedAt`, `snoozedUntil`, `waitingSince`
+Available options: `id`, `createdAt`, `updatedAt`, `priority`, `title`, `closedAt`, `snoozedUntil`, `waitingSince`
   </ResponseField>
   <ResponseField
     name="orderDirection"
@@ -1813,6 +1938,198 @@ Available options: `asc`, `desc`
     default={50}
   >
     <span>{"Number of tickets to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filterGroups"
+    type="array"
+  >
+    <span>{"Filter groups for advanced filtering. Groups are connected by their connector field."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="operator"
+    type="enum<string>"
+    required
+  >
+    Available options: `AND`, `OR`
+  </ResponseField>
+  <ResponseField
+    name="filters"
+    type="array"
+    required
+  >
+    
+
+    <Tabs>
+    <Tab title="array">
+      <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="field"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="operator"
+    type="enum<string>"
+    required
+  >
+    Available options: `is`, `is_not`
+  </ResponseField>
+  <ResponseField
+    name="values"
+    type="array"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="text">
+      <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="field"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="operator"
+    type="enum<string>"
+    required
+  >
+    Available options: `is`, `is_not`, `contains`, `not_contains`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="time">
+      <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="field"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="operator"
+    type="enum<string>"
+    required
+  >
+    Available options: `within_last`, `more_than`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="unit"
+    type="enum<string>"
+    required
+  >
+    Available options: `hours`, `days`, `weeks`, `months`
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    <Tab title="number">
+      <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="field"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="operator"
+    type="enum<string>"
+    required
+  >
+    Available options: `equals`, `not_equals`, `greater_than`, `less_than`
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="number"
+    required
+  >
+    
+  </ResponseField>
+      </Expandable>
+    </Tab>
+    </Tabs>
+  </ResponseField>
+  <ResponseField
+    name="connector"
+    type="enum<string>"
+    required
+  >
+    Available options: `AND`, `OR`, `END`
+  </ResponseField>
+    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1909,9 +2226,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -1952,49 +2284,6 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
     </Expandable>
   </ResponseField>
   <ResponseField
@@ -2009,6 +2298,726 @@ Available options: `simple`, `moderate`, `complex`
     type="string"
   >
     <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Mark as Closed
+
+<span>{"Move a ticket to the closed category"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket (tkt_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"Optional specific status ID within the closed category. If omitted, the default closed status is used."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Mark as Open
+
+<span>{"Move a ticket to the open category"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket (tkt_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"Optional specific status ID within the open category. If omitted, the default open status is used."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Mark as Triage
+
+<span>{"Move a ticket to the triage category"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket (tkt_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"Optional specific status ID within the triage category. If omitted, the default triage status is used."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Mark as Waiting
+
+<span>{"Move a ticket to the waiting category"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the ticket (tkt_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"Optional specific status ID within the waiting category. If omitted, the default waiting status is used."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier for the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The unique Desk identifier for the customer (cus_)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"The priority level of the ticket"}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="system"
+    type="enum<string>"
+    required
+  >
+    <span>{"The system from which the ticket originated"}</span>
+
+Available options: `native`, `intercom`, `zendesk`
+  </ResponseField>
+  <ResponseField
+    name="systemTicketId"
+    type="string"
+    required
+  >
+    <span>{"The unique identifier of the ticket in the originating system"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assignedTo"
+    type="object | object"
+  >
+    <span>{"The admin or bot assigned to the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
+
+Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO timestamp of when the ticket was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="snoozedUntil"
+    type="string"
+  >
+    <span>{"ISO timestamp of when the ticket will wake up if snoozed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+    required
+  >
+    <span>{"A list of tags associated with the ticket"}</span>
+  </ResponseField>
+  <ResponseField
+    name="metadata"
+    type="object"
+  >
+    <span>{"Additional metadata associated with the ticket"}</span>
+  </ResponseField>
+    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -2131,9 +3140,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -2173,49 +3197,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -2340,9 +3321,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -2383,49 +3379,6 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
@@ -2433,7 +3386,7 @@ Available options: `simple`, `moderate`, `complex`
 
 ### Reopen Ticket
 
-<span>{"Reopen a closed ticket"}</span>
+<span>{"[Deprecated: use markAsOpen] Reopen a closed ticket"}</span>
 
   <ResponseField
     name="input"
@@ -2446,6 +3399,12 @@ Available options: `simple`, `moderate`, `complex`
     required
   >
     <span>{"The ID of the ticket to reopen"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"Optional specific status ID within the open category. If omitted, the default open status is used."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -2542,9 +3501,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -2584,49 +3558,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -2912,9 +3843,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -2955,57 +3901,14 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
     </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
 
-### Set Routing Metadata
+### Set Status Category
 
-<span>{"Set routing metadata on a ticket (topic, sentiment, language, customerTier, estimatedComplexity). Merges with existing routing data."}</span>
+<span>{"Set the category and optionally a specific status of a ticket. If no statusId is provided, the default status for the category is used."}</span>
 
   <ResponseField
     name="input"
@@ -3017,51 +3920,22 @@ Available options: `simple`, `moderate`, `complex`
     type="string"
     required
   >
-    <span>{"The ID of the ticket"}</span>
+    <span>{"The ID of the ticket (tkt_)"}</span>
   </ResponseField>
   <ResponseField
-    name="routing"
-    type="object"
+    name="category"
+    type="enum<string>"
     required
   >
-    
+    <span>{"The target category for the ticket"}</span>
 
-    <Expandable>
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
   <ResponseField
-    name="topic"
+    name="statusId"
     type="string"
   >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
+    <span>{"Optional specific status ID within the category. If omitted, the default status for the category is used."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -3158,9 +4032,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -3201,50 +4090,62 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Set Field Value
+
+<span>{"Set or clear a custom field value on a ticket"}</span>
+
   <ResponseField
-    name="routing"
+    name="input"
     type="object"
   >
-    <span>{"Bot-classified routing metadata"}</span>
-
     <Expandable>
   <ResponseField
-    name="topic"
+    name="ticketId"
     type="string"
+    required
   >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+    <span>{"The ID of the ticket (tkt_)"}</span>
   </ResponseField>
   <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
+    name="slug"
     type="string"
+    required
   >
-    <span>{"Detected or stated language code"}</span>
+    <span>{"The slug of the field definition"}</span>
   </ResponseField>
   <ResponseField
-    name="customerTier"
-    type="string"
+    name="value"
+    type="string | null"
+    required
   >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="slug"
+    type="string"
+    required
+  >
+    <span>{"The slug of the field definition"}</span>
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string | null"
+    required
+  >
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -3367,9 +4268,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -3410,52 +4326,61 @@ Available options: `open`, `closed`, `snoozed`
   >
     <span>{"Additional metadata associated with the ticket"}</span>
   </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Start Customer Typing Indicator
+
+<span>{"Show a typing indicator to the customer in webchat. Only works for native (webchat) tickets. The indicator auto-expires after the timeout."}</span>
+
   <ResponseField
-    name="routing"
+    name="input"
     type="object"
   >
-    <span>{"Bot-classified routing metadata"}</span>
-
     <Expandable>
   <ResponseField
-    name="topic"
+    name="ticketId"
     type="string"
+    required
   >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
+    <span>{"The Desk ticket ID (tkt_)"}</span>
   </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
+    </Expandable>
+  </ResponseField>
 
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
   <ResponseField
-    name="language"
-    type="string"
+    name="output"
+    type="object"
   >
-    <span>{"Detected or stated language code"}</span>
+    This Card has no output.
   </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
 
-Available options: `simple`, `moderate`, `complex`
+### Stop Customer Typing Indicator
+
+<span>{"Stop the typing indicator shown to the customer in webchat."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="string"
+    required
+  >
+    <span>{"The Desk ticket ID (tkt_)"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
-    </Expandable>
-  </ResponseField>
-    </Expandable>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
   </ResponseField>
 
 ### Unassign Ticket
@@ -3569,9 +4494,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -3611,49 +4551,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -3771,9 +4668,24 @@ Available options: `native`, `intercom`, `zendesk`
     type="enum<string>"
     required
   >
-    <span>{"The current status of the ticket"}</span>
+    <span>{"[Deprecated: use category] The current status of the ticket"}</span>
 
 Available options: `open`, `closed`, `snoozed`
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="enum<string>"
+    required
+  >
+    <span>{"The current category of the ticket"}</span>
+
+Available options: `triage`, `open`, `waiting`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="statusId"
+    type="string"
+  >
+    <span>{"The ID of the specific status within the category"}</span>
   </ResponseField>
   <ResponseField
     name="createdAt"
@@ -3813,49 +4725,6 @@ Available options: `open`, `closed`, `snoozed`
     type="object"
   >
     <span>{"Additional metadata associated with the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="routing"
-    type="object"
-  >
-    <span>{"Bot-classified routing metadata"}</span>
-
-    <Expandable>
-  <ResponseField
-    name="topic"
-    type="string"
-  >
-    <span>{"Classified topic (billing, technical, account, etc.)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="sentiment"
-    type="enum<string>"
-  >
-    <span>{"Customer sentiment"}</span>
-
-Available options: `positive`, `neutral`, `negative`, `frustrated`
-  </ResponseField>
-  <ResponseField
-    name="language"
-    type="string"
-  >
-    <span>{"Detected or stated language code"}</span>
-  </ResponseField>
-  <ResponseField
-    name="customerTier"
-    type="string"
-  >
-    <span>{"Customer segment (free, team, enterprise)"}</span>
-  </ResponseField>
-  <ResponseField
-    name="estimatedComplexity"
-    type="enum<string>"
-  >
-    <span>{"Estimated ticket complexity"}</span>
-
-Available options: `simple`, `moderate`, `complex`
-  </ResponseField>
-    </Expandable>
   </ResponseField>
     </Expandable>
   </ResponseField>

@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Files API",
     "description": "API for Botpress Files",
-    "version": "1.52.1"
+    "version": "1.82.0"
   },
   "paths": {
     "/v1/files": {
@@ -146,6 +146,14 @@
                 "type": "string"
               },
               "maxItems": 50
+            }
+          },
+          {
+            "name": "indexed",
+            "in": "query",
+            "description": "Filter files by indexing state",
+            "schema": {
+              "type": "boolean"
             }
           },
           {
@@ -1551,6 +1559,10 @@
               "name": {
                 "type": "string",
                 "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration name."
+              },
+              "alias": {
+                "type": "string",
+                "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration instance alias."
               }
             },
             "required": [
@@ -1698,6 +1710,10 @@
                         "name": {
                           "type": "string",
                           "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration name."
+                        },
+                        "alias": {
+                          "type": "string",
+                          "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration instance alias."
                         }
                       },
                       "required": [
@@ -1872,6 +1888,10 @@
                           "name": {
                             "type": "string",
                             "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration name."
+                          },
+                          "alias": {
+                            "type": "string",
+                            "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration instance alias."
                           }
                         },
                         "required": [
@@ -2037,6 +2057,10 @@
                         "name": {
                           "type": "string",
                           "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration name."
+                        },
+                        "alias": {
+                          "type": "string",
+                          "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration instance alias."
                         }
                       },
                       "required": [
@@ -2192,6 +2216,10 @@
                         "name": {
                           "type": "string",
                           "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration name."
+                        },
+                        "alias": {
+                          "type": "string",
+                          "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration instance alias."
                         }
                       },
                       "required": [
@@ -2347,6 +2375,10 @@
                         "name": {
                           "type": "string",
                           "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration name."
+                        },
+                        "alias": {
+                          "type": "string",
+                          "description": "This field is present if the `type` is \"integration\". If `type` is \"integration\", this is the integration instance alias."
                         }
                       },
                       "required": [
@@ -2926,6 +2958,14 @@
                         "parsing": {
                           "type": "object",
                           "properties": {
+                            "mode": {
+                              "type": "string",
+                              "enum": [
+                                "agent",
+                                "standard"
+                              ],
+                              "description": "The parsing mode to index the file. Using `agent` will use agentic document processing to parse the file and will incurr in AI Spend cost, while `standard` will use a faster but less accurate parser that will not incur in AI Spend cost."
+                            },
                             "minimumParagraphLength": {
                               "type": "integer",
                               "minimum": 50,

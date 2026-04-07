@@ -236,7 +236,8 @@
                       "/studio/guides/how-to/translate",
                       "/studio/guides/how-to/send-reminders",
                       "/studio/guides/how-to/different-an-models",
-                      "/studio/guides/how-to/track-ai-spend-in-table"
+                      "/studio/guides/how-to/track-ai-spend-in-table",
+                      "/studio/guides/how-to/dropdown-menus"
                     ]
                   },
                   {
@@ -297,7 +298,14 @@
                   "/integrations/integration-guides/plus-google-analytics",
                   "/integrations/integration-guides/googlecalendar",
                   "/integrations/integration-guides/gsheets",
-                  "/integrations/integration-guides/hitl",
+                  {
+                    "group": "HITL",
+                    "icon": "/integrations/integration-guides/assets/icons/hitl.svg",
+                    "pages": [
+                      "/integrations/integration-guides/hitl/introduction",
+                      "/integrations/integration-guides/hitl/time-to-first-agent-response"
+                    ]
+                  },
                   "/integrations/integration-guides/hubspot",
                   "/integrations/integration-guides/hunter",
                   "/integrations/integration-guides/improvement",
@@ -305,7 +313,9 @@
                   "/integrations/integration-guides/intercom",
                   "integrations/integration-guides/klaviyo",
                   "/integrations/integration-guides/knowledge-base-optimization",
+                  "/integrations/integration-guides/kommo",
                   "/integrations/integration-guides/line",
+                  "/integrations/integration-guides/linear",
                   "/integrations/integration-guides/linkedin",
                   "/integrations/integration-guides/loops",
                   "/integrations/integration-guides/mailerlite",
@@ -343,7 +353,8 @@
                           "/integrations/integration-guides/whatsapp/mapping/whatsapp-to-botpress"
                         ]
                       },
-                      "/integrations/integration-guides/whatsapp/whatsapp-start-proactively"
+                      "/integrations/integration-guides/whatsapp/whatsapp-start-proactively",
+                      "/integrations/integration-guides/whatsapp/start-conversation-through-webhook"
                     ]
                   },
                   "/integrations/integration-guides/zapier",
@@ -417,7 +428,8 @@
                 "pages": [
                   "/webchat/integrations/wordpress",
                   "/webchat/integrations/wix",
-                  "/webchat/integrations/webflow"
+                  "/webchat/integrations/webflow",
+                  "/webchat/integrations/react-native"
                 ]
               },
               {
@@ -650,6 +662,14 @@
     {
       "source": "/integrations/functional-integrations/:slug*",
       "destination": "/integrations/integration-guides/:slug*"
+    },
+    {
+      "source": "/integrations/integration-guides/hitl",
+      "destination": "/integrations/integration-guides/hitl/introduction"
+    },
+    {
+      "source": "/webchat/interact/dropdown-menus",
+      "destination": "/studio/guides/how-to/dropdown-menus"
     }
   ],
   "integrations": {

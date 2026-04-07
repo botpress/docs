@@ -1,0 +1,1737 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Add Member Role
+
+<span>{"Add a role to a guild member"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="roleId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the role to add"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"Reason for adding the role (appears in audit log)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Add Reaction
+
+<span>{"Create a reaction for the message"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The id of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The id of the message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emoji"
+    type="string"
+    required
+  >
+    <span>{"Can be either the actual emoji or its id"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Ban User
+
+<span>{"Ban a user from a guild"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user to ban"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deleteMessageSeconds"
+    type="number"
+  >
+    <span>{"Number of seconds of messages to delete (0-604800)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"Reason for the ban (appears in audit log)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Call API
+
+<span>{"Send a raw HTTP request to any Discord API endpoint"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="path"
+    type="string"
+    required
+  >
+    <span>{"The API path (e.g. /channels/123/messages)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="queryParams"
+    type="array"
+  >
+    <span>{"The query parameters to send along with the request"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="key"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="value"
+    type="string"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="method"
+    type="enum<string>"
+    required
+  >
+    <span>{"The HTTP method to use"}</span>
+
+Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+  >
+    <span>{"JSON string to send as the request body"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="success"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the request was successful"}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+  >
+    <span>{"The response body as an object if the request was successful"}</span>
+  </ResponseField>
+  <ResponseField
+    name="error"
+    type="string"
+  >
+    <span>{"The error message if the request was not successful"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="number"
+  >
+    <span>{"The HTTP status code of the response"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Channel
+
+<span>{"Creates a new channel in a guild."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild to create the channel in"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="number"
+  >
+    <span>{"Channel type. Defaults to Guild Text (0)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string"
+  >
+    <span>{"Channel topic"}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+  >
+    <span>{"Sorting position of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nsfw"
+    type="boolean"
+  >
+    <span>{"Whether the channel is NSFW"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string"
+  >
+    <span>{"ID of the parent category"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Channel ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="number"
+    required
+  >
+    <span>{"Channel type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Channel name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+  >
+    <span>{"Sorting position of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="nsfw"
+    type="boolean"
+  >
+    <span>{"Whether the channel is NSFW"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Poll
+
+<span>{"Creates a poll in a Discord channel."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel to create the poll in"}</span>
+  </ResponseField>
+  <ResponseField
+    name="question"
+    type="string"
+    required
+  >
+    <span>{"The question of the poll"}</span>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+    required
+  >
+    <span>{"The answers available in the poll (1-10)"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"The text of the answer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emoji"
+    type="string"
+  >
+    <span>{"An optional emoji for the answer"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="duration"
+    type="number"
+  >
+    <span>{"Number of hours the poll should be open for, up to 768 (32 days). Defaults to 24"}</span>
+  </ResponseField>
+  <ResponseField
+    name="allowMultiselect"
+    type="boolean"
+  >
+    <span>{"Whether a user can select multiple answers. Defaults to false"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the message containing the poll"}</span>
+  </ResponseField>
+  <ResponseField
+    name="answers"
+    type="array"
+    required
+  >
+    <span>{"The poll answers with their Discord-assigned IDs"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="answerId"
+    type="number"
+    required
+  >
+    <span>{"The ID of the answer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"The answer text"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Role
+
+<span>{"Create a new role in a guild"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Name of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="number"
+  >
+    <span>{"RGB color value of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hoist"
+    type="boolean"
+  >
+    <span>{"Whether the role should be displayed separately in the sidebar"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mentionable"
+    type="boolean"
+  >
+    <span>{"Whether the role can be mentioned"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"Reason for creating the role (appears in audit log)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The ID of the created role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Name of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="number"
+    required
+  >
+    <span>{"RGB color value of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hoist"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the role is displayed separately in the sidebar"}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+    required
+  >
+    <span>{"Position of the role in the hierarchy"}</span>
+  </ResponseField>
+  <ResponseField
+    name="permissions"
+    type="string"
+    required
+  >
+    <span>{"Bitwise permissions value of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mentionable"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the role can be mentioned"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Delete Channel
+
+<span>{"Deletes a channel from a guild."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel to delete"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Delete Reaction
+
+<span>{"Delete a reaction the current user has made for the message"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The id of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The id of the message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emoji"
+    type="string"
+    required
+  >
+    <span>{"Can be either the actual emoji or its id"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Delete Role
+
+<span>{"Delete a role from a guild"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="roleId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the role to delete"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"Reason for deleting the role (appears in audit log)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### End Poll
+
+<span>{"Immediately end a poll in a channel"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel containing the poll"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the message containing the poll"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the message with the ended poll"}</span>
+  </ResponseField>
+  <ResponseField
+    name="poll"
+    type="object | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Channel Pins
+
+<span>{"Returns all pinned messages in the channel."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel to retrieve pinned messages for"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="messages"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Message ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"Channel ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="guildId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="author"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    <span>{"Username"}</span>
+  </ResponseField>
+  <ResponseField
+    name="discriminator"
+    type="string"
+    required
+  >
+    <span>{"User discriminator"}</span>
+  </ResponseField>
+  <ResponseField
+    name="globalName"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatar"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="bot"
+    type="boolean"
+  >
+    <span>{"Whether the user is a bot"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="timestamp"
+    type="string"
+    required
+  >
+    <span>{"When the message was sent (ISO8601)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="number"
+    required
+  >
+    <span>{"Type of message"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Guild
+
+<span>{"Returns the guild object for the given ID"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild to retrieve"}</span>
+  </ResponseField>
+  <ResponseField
+    name="withCounts"
+    type="boolean"
+    default={false}
+  >
+    <span>{"When true, will return approximate member and presence counts for the guild"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Guild ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Guild name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="icon"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="splash"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="discoverySplash"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="features"
+    type="array"
+    required
+  >
+    <span>{"Enabled guild features"}</span>
+  </ResponseField>
+  <ResponseField
+    name="banner"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="ownerId"
+    type="string"
+    required
+  >
+    <span>{"ID of the guild owner"}</span>
+  </ResponseField>
+  <ResponseField
+    name="region"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="afkChannelId"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="afkTimeout"
+    type="number"
+    required
+  >
+    <span>{"AFK timeout in seconds"}</span>
+  </ResponseField>
+  <ResponseField
+    name="verificationLevel"
+    type="number"
+    required
+  >
+    <span>{"Verification level required for the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="defaultMessageNotifications"
+    type="number"
+    required
+  >
+    <span>{"Default message notification level"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mfaLevel"
+    type="number"
+    required
+  >
+    <span>{"Required MFA level for the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="explicitContentFilter"
+    type="number"
+    required
+  >
+    <span>{"Explicit content filter level"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxPresences"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="maxMembers"
+    type="number"
+  >
+    <span>{"Maximum number of members"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vanityUrlCode"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="premiumTier"
+    type="number"
+    required
+  >
+    <span>{"Premium tier (Server Boost level)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="premiumSubscriptionCount"
+    type="number"
+  >
+    <span>{"Number of boosts"}</span>
+  </ResponseField>
+  <ResponseField
+    name="systemChannelId"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="systemChannelFlags"
+    type="number"
+    required
+  >
+    <span>{"System channel flags"}</span>
+  </ResponseField>
+  <ResponseField
+    name="rulesChannelId"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="publicUpdatesChannelId"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="safetyAlertsChannelId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="preferredLocale"
+    type="string"
+    required
+  >
+    <span>{"Preferred locale"}</span>
+  </ResponseField>
+  <ResponseField
+    name="approximateMemberCount"
+    type="number"
+  >
+    <span>{"Approximate number of members (only present when withCounts is true)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="approximatePresenceCount"
+    type="number"
+  >
+    <span>{"Approximate number of online members (only present when withCounts is true)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="roles"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The role ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The role's name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="color"
+    type="number"
+    required
+  >
+    <span>{"RGB color value of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hoist"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the role is displayed separately in the sidebar"}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+    required
+  >
+    <span>{"The role's position in the hierarchy"}</span>
+  </ResponseField>
+  <ResponseField
+    name="permissions"
+    type="string"
+    required
+  >
+    <span>{"Bitwise permissions value of the role"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mentionable"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the role can be mentioned"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Guild Channels
+
+<span>{"Returns a list of guild channel objects. Does not include threads."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild to retrieve channels for"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channels"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Channel ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="number"
+    required
+  >
+    <span>{"Channel type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Channel name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="position"
+    type="number"
+  >
+    <span>{"Sorting position of the channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="topic"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="nsfw"
+    type="boolean"
+  >
+    <span>{"Whether the channel is NSFW"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastMessageId"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Guild Member
+
+<span>{"Returns a guild member object for the specified user."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user to retrieve"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    <span>{"Username"}</span>
+  </ResponseField>
+  <ResponseField
+    name="discriminator"
+    type="string"
+    required
+  >
+    <span>{"User discriminator"}</span>
+  </ResponseField>
+  <ResponseField
+    name="globalName"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatar"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="bot"
+    type="boolean"
+  >
+    <span>{"Whether the user is a bot"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nick"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatar"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="roles"
+    type="array"
+    required
+  >
+    <span>{"Array of role IDs"}</span>
+  </ResponseField>
+  <ResponseField
+    name="joinedAt"
+    type="string"
+    required
+  >
+    <span>{"When the user joined the guild (ISO8601)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deaf"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the user is deafened in voice channels"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mute"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the user is muted in voice channels"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### getOrCreateChannelConversation
+
+<span>{"Gets or Creates a botpress conversation from a discord channel"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="channelType"
+    type="enum<string>"
+    required
+  >
+    <span>{"The type of the discord channel"}</span>
+
+Available options: `dm`, `guildText`, `guildAnnouncement`, `announcementThread`, `publicThread`, `privateThread`
+  </ResponseField>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The discord channel id"}</span>
+  </ResponseField>
+  <ResponseField
+    name="channelTitle"
+    type="string"
+    required
+  >
+    <span>{"The discord channel title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="guildId"
+    type="string"
+  >
+    <span>{"The discord guild the channel is in"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the created conversation"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get or Create a User
+
+<span>{"Proactively create a user from a bot"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pictureUrl"
+    type="string"
+  >
+    <span>{"The URL of the user profile picture"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Discord user ID"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the created user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Guild Members
+
+<span>{"Returns a list of guild member objects that are members of the guild."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild to retrieve members for"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+  >
+    <span>{"Max number of members to return (1-1000), default 1"}</span>
+  </ResponseField>
+  <ResponseField
+    name="after"
+    type="string"
+  >
+    <span>{"The highest user id in the previous page, default \"0\""}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="members"
+    type="array"
+    required
+  >
+    
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"User ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="username"
+    type="string"
+    required
+  >
+    <span>{"Username"}</span>
+  </ResponseField>
+  <ResponseField
+    name="discriminator"
+    type="string"
+    required
+  >
+    <span>{"User discriminator"}</span>
+  </ResponseField>
+  <ResponseField
+    name="globalName"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatar"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="bot"
+    type="boolean"
+  >
+    <span>{"Whether the user is a bot"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nick"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="avatar"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="roles"
+    type="array"
+    required
+  >
+    <span>{"Array of role IDs"}</span>
+  </ResponseField>
+  <ResponseField
+    name="joinedAt"
+    type="string"
+    required
+  >
+    <span>{"When the user joined the guild (ISO8601)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deaf"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the user is deafened in voice channels"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mute"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the user is muted in voice channels"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Pin Message
+
+<span>{"Pins a message in a channel."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel containing the message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the message to pin"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Remove Member Role
+
+<span>{"Remove a role from a guild member"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="roleId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the role to remove"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"Reason for removing the role (appears in audit log)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Unban User
+
+<span>{"Remove a ban for a user from a guild"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="guildId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user to unban"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reason"
+    type="string"
+  >
+    <span>{"Reason for the unban (appears in audit log)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Unpin Message
+
+<span>{"Unpins a message in a channel."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel containing the pinned message"}</span>
+  </ResponseField>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the message to unpin"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+
+{/* vale on */}

@@ -4,6 +4,301 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="April 3, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - Added option to select the model used by the Vision Agent inside [Extract Content from Image](/studio/concepts/agents/vision-agent#extract-from-incoming-images) Card
+  - Added `--url` flag to CLI `deploy` command allowing you to pass a custom URL when deploying an integration
+
+  ### Integrations
+
+  - **Airtable**: Improved UX of adding Fields in Cards.
+  - **Slack**: 
+    - Improved use of mentions in broadcast messages
+    - Added [Get Channels Info](/integrations/integration-guides/slack#get-channels-info) action
+  - **WhatsApp**:
+    - Added configuration option for customizing typing indicator
+    - Added support for using named parameters in template variables
+  - **Google Sheets**: Improved OAuth configuration flow
+  - **Salesforce**: Improved OAuth configuration flow
+  - **Kommo**: Added Kommo Integration
+
+  ### Bug fixes
+
+  - Fixed issues in Tables with columns duplicating or disappearing when being renamed
+
+</Update>
+
+<Update label="March 27, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - New AI Models: Claude Opus 4.5, Qwen3 8B, Gemini 2.5 Pro/Flash-Lite, Gemini 3.1 Pro/Flash-Lite, Grok 4.1 Fast, Grok 4.20
+  - Added support for bot secrets in SDK
+
+  ### Integrations
+
+  - **Dropbox**: You can now sync files to Knowledge Bases
+  - **WhatsApp**: Added [List Message Templates](/integrations/integration-guides/whatsapp/introduction#list-message-templates) Card
+  - **Linear**: Added new Triggers:
+    - [Aggregate File Changes](/integrations/integration-guides/linear#aggregate-file-changes)
+    - [File Created](/integrations/integration-guides/linear#file-created)
+    - [File Deleted](/integrations/integration-guides/linear#file-deleted)
+    - [File Updated](/integrations/integration-guides/linear#file-updated)
+    - [Folder Deleted Recursive](/integrations/integration-guides/linear#folder-deleted-recursive)
+  - **GitHub**: Added new Triggers:
+    - [Aggregate File Changes](/integrations/integration-guides/github#aggregate-file-changes)
+    - [File Created](/integrations/integration-guides/github#file-created)
+    - [File Deleted](/integrations/integration-guides/github#file-deleted)
+    - [File Updated](/integrations/integration-guides/github#file-updated)
+    - [Folder Deleted Recursive](/integrations/integration-guides/github#folder-deleted-recursive)
+  - **Telegram**: Added typing indicator toggle in integration settings
+
+  ### Bug fixes
+
+  - Fixed an issue with conversations appearing empty when [AI insights](/get-started/manage-your-agent/monitor#ai-insights) were disabled
+
+  ---
+
+  ## ADK
+
+  ### Control Panel
+
+  - Added a global command palette (`Cmd+K` / `Ctrl+K`) for quick navigation in the Control Panel
+  - New **Models** page listing all available models
+  - Updated UI for **Settings** and **Trigger** pages
+  - Added Agent Steps to **Chat** page to see what your agent is doing while it runs
+  - **Actions page** accepts JSON5/JS object syntax for testing actions
+
+  ### CLI
+
+  - Added `adk models` command to see all available models
+
+</Update>
+
+<Update label="March 20, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - New AI Models: GPT 5.4, Sonnet 4.6, Opus 4.6, Gemini 3.1 Pro Preview
+  - Added support for MDX (Markdown JSX) in the Files API
+
+  ### Integrations
+
+  - All integrations now automatically save configuration settings upon completion of OAuth
+  - **Linear**, **HubSpot**, **LinkedIn**, **GitHub**, and **Notion** now supports OAuth for multiple bots
+  - **WeChat**: Added WeChat integration
+  - **WhatsApp**: Added events to track outbound message delivery lifecycle
+
+  ### Bug fixes
+
+  - Fixed issue where integration settings were reset on update
+  - Fixed issue with duplicate header names in Tables
+  - Fixed issue with duplicate variables being created after variable deletion
+  - Fixed errors when connecting additional stylesheets in Webchat
+
+  ---
+
+  ## ADK
+
+  ### Control Panel
+
+  - Added Copilot (OpenCode) Panel
+
+  <Frame>
+    <img
+      alt="ADK Control Panel with Copilot (OpenCode)"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-20/adk-copilot.png"
+    />
+    <img
+      alt="ADK Control Panel with Copilot (OpenCode)"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-20/adk-copilot-dark.png"
+    />
+  </Frame>
+
+  - Added Chat history in Conversations page
+  - Updated Traces page UI
+
+  ### CLI
+
+  - Self upgrade support for Windows using `adk self-upgrade`
+  - Add Copilot (OpenCode) support using `adk dev --copilot`
+
+</Update>
+
+<Update label="March 13, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - Webchat can now recover messages if user's connection is interrupted
+
+  ### Integrations
+
+  - **Zendesk**: Improved HITL support
+  - **HITL**: Added support to pass additional information through tags
+  - **Google Calendar** and **Google Sheets**: OAuth is now available
+
+  ### Bug fixes
+
+  - Fixed an issue where Bot Identity and Styling changes were not saving
+  - Fixed an issue where default boolean columns in the **Insert Record** card did not default to false
+  - Fixed an issue in Webchat where text messages appeared as code blocks
+
+  ---
+
+  ## ADK
+
+  ### Control Panel
+
+  - Added a visual Chat view to test conversations and traces (requires Webchat installation):
+
+  <Frame>
+    <img
+      alt="Chat view with Timeline and Bot conversation"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-13/adk_chat.png"
+    />
+    <img
+      alt="Chat view with Timeline and Bot conversation"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-13/adk_chat_dark.png"
+    />
+  </Frame>
+
+  - Updated the UI for the **Tables** and **Traces** pages
+  - Added variable validation for **Configuration Variables**
+  - Improved the type system for workflow events in conversation handlers
+
+  ### CLI
+
+  - Improved support for Windows
+  - MCP port can now be assigned using `adk mcp --port <port>`
+  - The Control Panel no longer opens automatically on `adk dev`
+
+</Update>
+
+<Update label="March 6, 2026">
+
+  ## Studio
+
+  ### Features & enhancements
+
+  - Improved breakdown UI for **AI Spend by Source** dashboard
+  - Improved logging for Integrations in **Audits** page
+
+  ### Integrations
+
+  - **Dropbox**: Added OAuth configuration
+  - **HubSpot**: Added new cards
+    - [Get Company](/integrations/integration-guides/hubspot#get-company)
+    - [Update Company](/integrations/integration-guides/hubspot#update-company)
+
+  ---
+
+  ## ADK
+
+  ### Control Panel
+
+  - The dev console has been replaced by the **Control Panel**
+  - Dark (default) and light themes with toggle in the top bar
+  - New **Overview** page with panels for Agent summary, Component inventory, and Runtime and Integrations:
+
+  <Frame>
+    <img
+      alt="ADK Control Panel with sidebar and main view"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-06/adk-control-panel.png"
+    />
+    <img
+      alt="ADK Control Panel with sidebar and main view"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-06/adk-control-panel-dark.png"
+    />
+  </Frame>
+
+  - Restructured sidebar into **Connect**, **Build**, **Data**, and **Observe** sections
+  - Improved UI across **Workflow**, **Logs** and **Traces** pages
+  - Added ability to test Integration and Bot Actions in one place on the **Actions** page:
+
+  <Frame>
+    <img
+      alt="Actions page with Integration and Bot Actions"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-06/adk-action.png"
+    />
+    <img
+      alt="Actions page with Integration and Bot Actions"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-06/adk-action-dark.png"
+    />
+  </Frame>
+
+  - Added a **Triggers** page for managing triggers in your ADK agents:
+
+  <Frame>
+    <img
+      alt="Triggers page in Control Panel"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-06/adk-trigger.png"
+    />
+    <img
+      alt="Triggers page in Control Panel"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-06/adk-trigger-dark.png"
+    />
+  </Frame>
+
+  - Added an **Evals** page for running declarative conversation tests on your ADK agents:
+
+  <Frame>
+    <img
+      alt="Evals page for declarative conversation tests"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-06/adk-evals.png"
+    />
+    <img
+      alt="Evals page for declarative conversation tests"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-06/adk-evals-dark.png"
+    />
+  </Frame>
+
+  - Added Configuration Variable management in the **Settings** page:
+
+  <Frame>
+    <img
+      alt="Configuration Variable management in Settings"
+      className="block dark:hidden"
+      src="./changelog-assets/2026-03-06/adk-config-var.png"
+    />
+    <img
+      alt="Configuration Variable management in Settings"
+      className="hidden dark:block"
+      src="./changelog-assets/2026-03-06/adk-config-var-dark.png"
+    />
+  </Frame>
+
+  - Testing page removed
+
+  ### CLI
+
+  - Added support to create a new agent without prompts by use `adk init --yes` or `adk init --defaults`
+  - Use `adk init --skip-link` to skip the interactive bot-linking step
+  - You can set the Control Panel theme (dark or light) using `adk theme`
+
+</Update>
+
 <Update label="February 27th, 2026">
 
   ## Features & enhancements
