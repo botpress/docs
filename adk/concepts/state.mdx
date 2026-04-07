@@ -33,8 +33,8 @@ export default defineConfig({
 
   user: {
     state: z.object({
-      name: z.string().optional(),
-      department: z.string().optional(),
+      name: z.string().optional().describe("The user's name"),
+      department: z.string().optional().describe("The user's department"),
       visitCount: z.number().default(0),
     }),
   },
@@ -42,7 +42,7 @@ export default defineConfig({
 ```
 
 <Tip>
-  Use `.default()` on your state schema to set initial values. Without defaults, state fields start as `undefined`.
+  Use `.default()` to set initial values and `.describe()` to document what each field is for.
 </Tip>
 
 ### Conversation state
@@ -100,7 +100,7 @@ user.state.visitCount = (user.state.visitCount || 0) + 1;
 
 ### Conversation state
 
-Conversation state is accessed via the `state` parameter in the handler or on a Conversation instance:
+Conversation state is accessed via the `state` parameter in the handler:
 
 ```typescript highlight={6-8}
 export default new Conversation({
