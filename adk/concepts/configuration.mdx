@@ -51,8 +51,8 @@ export default defineConfig({
 
   dependencies: {
     integrations: {
-      chat: { version: "chat@0.7.7", enabled: true },
-      webchat: { version: "webchat@0.3.0", enabled: true },
+      chat: "chat@0.7.7",
+      webchat: "webchat@0.3.0",
     },
   },
 });
@@ -197,7 +197,7 @@ adk config:get supportEmail --prod
 ```
 
 <Note>
-  Agent configuration (`adk config`) is separate from integration configuration. Integration settings like API keys are configured in `agent.config.ts` under `dependencies` or via the Control Panel during `adk dev`. See [Managing Integrations](/adk/managing-integrations) for details.
+  Agent configuration (`adk config`) is separate from integration configuration. Integration settings like API keys are managed in the Control Panel during `adk dev`. See [Managing Integrations](/adk/managing-integrations) for details.
 </Note>
 
 ## Environment variables
@@ -224,7 +224,7 @@ const response = await fetch("https://api.example.com/data", {
 ```
 
 <Note>
-  There is no dedicated secrets API in the ADK. For integration-specific credentials (like OAuth tokens), configure them in `agent.config.ts` under `dependencies` or via the Botpress dashboard. See [Managing Integrations](/adk/managing-integrations) for details.
+  There is no dedicated secrets API in the ADK. For integration-specific credentials (like OAuth tokens), configure them in the Control Panel during `adk dev` or via the Botpress dashboard.
 </Note>
 
 ## Default models
@@ -271,11 +271,11 @@ The `dependencies` field declares which integrations your agent uses:
 ```typescript
 dependencies: {
   integrations: {
-    chat: { version: "chat@0.7.7", enabled: true },
-    webchat: { version: "webchat@0.3.0", enabled: true },
-    slack: { version: "slack@1.0.0", enabled: true },
+    chat: "chat@0.7.7",
+    webchat: "webchat@0.3.0",
+    slack: "slack@1.0.0",
   },
 },
 ```
 
-See [Managing Integrations](/adk/managing-integrations) for details on adding, removing, and configuring integrations.
+Integration settings (API keys, tokens, etc.) are configured in the Control Panel during `adk dev`, not in `agent.config.ts`. See [Managing Integrations](/adk/managing-integrations) for details.
