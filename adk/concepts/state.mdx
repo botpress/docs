@@ -184,15 +184,21 @@ export default new Conversation({
 });
 ```
 
-<Note>
-  System tags (set by integrations, containing `:` in the key) are read-only. You can read them but any writes are silently ignored.
-</Note>
+System tags set by integrations (containing `:` in the key) are read-only:
+
+```typescript
+// You can read system tags
+const owner = conversation.tags["webchat:owner"];
+
+// But writes to system tags are silently ignored
+conversation.tags["webchat:owner"] = "new-value"; // no effect
+```
 
 ## State references
 
-You can store references to workflow instances in state. They are automatically serialized when saved and loaded back as full instances when read:
+You can store workflow instances in state. They are saved automatically and loaded back as full instances when read:
 
-```typescript
+```typescript highlight={5, 9}
 import { Conversation, Reference, z } from "@botpress/runtime";
 import OnboardingWorkflow from "../workflows/onboarding";
 
@@ -202,7 +208,6 @@ export default new Conversation({
     activeWorkflow: Reference.Workflow("onboarding").optional(),
   }),
   handler: async ({ state }) => {
-    // Start a workflow and store the reference in state
     if (!state.activeWorkflow) {
       state.activeWorkflow = await OnboardingWorkflow.start({});
     }
