@@ -1,163 +1,195 @@
 ---
-title: Managing integrations
+title: Managing Integrations
 ---
 
-Integrations connect your agent to external services and platforms. This guide covers how to add, configure, and manage integrations in your ADK project.
+Integrations connect your agent to external services and platforms like Slack, WhatsApp, and Salesforce. This guide covers how to find, add, configure, and manage integrations in your ADK project.
+
+## Finding integrations
+
+### Search the hub
+
+Search for integrations by keyword:
+
+```bash
+adk search slack
+```
+
+### List available integrations
+
+Browse all available integrations from the Botpress hub:
+
+```bash
+adk list --available
+```
+
+### View integration details
+
+Get detailed information about a specific integration, including its actions, events, and channels:
+
+```bash
+adk info slack
+```
+
+You can also filter the output:
+
+```bash
+adk info slack --actions    # Show only actions
+adk info slack --events     # Show only events
+adk info slack --channels   # Show only channels
+```
 
 ## Adding integrations
-
-### Using the CLI
 
 Add an integration using the `adk add` command:
 
 ```bash
-adk add webchat
-adk add slack@latest
-adk add my-workspace/custom-integration@1.0.0
+adk add slack
+```
+
+```txt
+✓ Added slack version 4.1.1 as slack to agent.config.ts dependencies
+
+Added as disabled. Enable and configure it in the Control Panel.
+```
+
+This adds the integration to your `agent.config.ts` as a string shorthand:
+
+```typescript
+dependencies: {
+  integrations: {
+    chat: "chat@0.7.7",
+    webchat: "webchat@0.3.0",
+    slack: "slack@4.1.1",
+  },
+},
+```
+
+<Note>
+  Integrations are added as disabled by default. Enable and configure them in the Control Panel during `adk dev`.
+</Note>
+
+### Pinning a version
+
+Add a specific version instead of the latest:
+
+```bash
+adk add slack@4.0.0
 ```
 
 ### Using an alias
 
-Add an integration with a custom alias:
+Add an integration with a custom alias. This is useful when you need multiple instances of the same integration:
 
 ```bash
-adk add webchat --alias custom-webchat
+adk add slack --alias slack-support
 ```
 
-This automatically:
-- Adds the integration to `agent.config.ts`
-- Generates TypeScript types for the integration
-
-### Manual configuration
-
-You can also manually edit `agent.config.ts`:
+The alias is how you reference the integration in your code:
 
 ```typescript
-export default defineConfig({
-  // ... other config ...
-  dependencies: {
-    integrations: {
-      webchat: {
-        version: "webchat@latest",
-        enabled: true,
-      },
-      slack: {
-        version: "slack@0.5.0",
-        enabled: true,
-      },
-    },
-  },
-});
+import { actions } from "@botpress/runtime";
+
+await actions["slack-support"].sendMessage({ channel: "support", text: "Hello" });
 ```
 
-After editing manually, run `adk dev` or `adk build` to regenerate types.
+### Workspace-scoped integrations
 
-## Integration versions
-
-Integration versions use the format `name@version`:
-
-- `webchat@latest` - Use the latest version
-- `slack@0.5.0` - Use a specific version
-- `my-workspace/custom@1.2.3` - Use an integration from a specific workspace
-
-<Tip>
-Use `@latest` when you want to automatically receive updates. Use specific versions for production deployments to ensure stability.
-</Tip>
-
-## Enabling and disabling
-
-Control which integrations are active:
-
-```typescript
-dependencies: {
-  integrations: {
-    webchat: {
-      version: "webchat@latest",
-      enabled: true,
-    },
-    slack: {
-      version: "slack@latest",
-      enabled: false,
-    },
-  },
-}
-```
-
-Disabled integrations are still included in your project but won't be active when your agent runs.
-
-## Integration configuration
-
-If you install an integration that requires configuration, you'll receive a message instructing you to configure it:
+Add a private or custom integration from your workspace:
 
 ```bash
-adk add instagram
+adk add my-workspace/custom-integration@1.0.0
 ```
 
-```text
-✓ Added instagram version x.x.x to agent.config.ts
+## Configuring integrations
 
-Please configure it in the UI using the adk dev command to start using it.
+Integration settings (API keys, tokens, OAuth credentials) are managed in the Control Panel, not in `agent.config.ts`.
+
+1. Run `adk dev` to start the development server
+2. Open the Control Panel at `http://localhost:3001/integrations`
+3. Find the integration and click to configure it
+4. Enter the required settings and enable it
+
+Each integration card in the Control Panel shows its current status:
+
+| Status | Meaning |
+|--------|---------|
+| Connected | Enabled, registered, and configured |
+| Disabled | Turned off, can be enabled |
+| Needs Action | Requires installation, configuration, or enabling |
+| Failed | Registration error |
+
+## Listing installed integrations
+
+View integrations currently installed in your project:
+
+```bash
+adk list
+```
+
+```txt
+Installed Integrations (3)
+
+Alias               Name                          Version
+───────────────────────────────────────────────────────────────
+chat                chat                          0.7.7
+webchat             webchat                       0.3.0
+slack               slack                         4.1.1
 ```
 
 ## Updating integrations
 
-To update an integration:
+### Update a specific integration
 
-### Using the CLI
-
-```
-adk upgrade <integration-name>
+```bash
+adk upgrade slack
 ```
 
-### Manually
+### Update all integrations interactively
 
-You can also update the version it manually:
+```bash
+adk upgrade
+```
 
-1. Update the version in `agent.config.ts`:
-   ```typescript
-   dependencies: {
-     integrations: {
-       webchat: {
-         version: "webchat@0.3.0",
-         enabled: true,
-       },
-     },
-   }
-   ```
+This shows available updates and lets you choose which to upgrade:
 
-2. Run `adk dev` or `adk build` to regenerate types
+```txt
+✓ Upgraded:
+  • slack (4.0.0 → 4.1.1)
 
-3. Test your agent to ensure compatibility
+Run adk dev to install the updated integrations
+```
 
 ## Removing integrations
 
-### Using the CLI
-
-Remove an integration using the `adk remove` command:
+Remove an integration from your project:
 
 ```bash
-adk remove <integration-name>
+adk remove slack
 ```
 
-### Manually
+```txt
+✓ Removed slack from agent.config.ts dependencies
+  Run adk dev to update your project
+```
 
-You can also remove an integration by deleting it from `agent.config.ts`:
+You can also run `adk remove` without a name to choose interactively.
+
+## Using integrations in code
+
+Once an integration is installed and enabled, its actions become available in your agent:
 
 ```typescript
-dependencies: {
-  integrations: {
-    webchat: {
-      version: "webchat@latest",
-      enabled: true,
-    },
-    // Removed slack integration
-  },
-}
+import { actions } from "@botpress/runtime";
+
+// Call an integration action
+await actions.slack.sendMessage({
+  channel: "general",
+  text: "Hello from the bot!",
+});
 ```
 
-Run `adk dev` or `adk build` to update generated types.
+Integration events can be subscribed to in [Triggers](/adk/concepts/triggers) and [Conversations](/adk/concepts/conversations) (via the `events` prop).
 
 <Tip>
-Always test your agent after adding, updating, or removing integrations to ensure everything works correctly.
+  Run `adk info <integration>` to see all available actions and events for an integration.
 </Tip>
-
