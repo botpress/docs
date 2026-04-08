@@ -94,6 +94,10 @@ import { actions } from "@botpress/runtime";
 await actions["webhook-orders"].send({ url: "https://api.example.com/orders", data: payload });
 ```
 
+<Note>
+  Avoid aliasing built-in channel integrations (webchat, chat, slack, teams, telegram, whatsapp). The runtime uses the alias to identify these integrations, and a custom alias will prevent default message components from loading.
+</Note>
+
 ### Workspace-scoped integrations
 
 Add a private or custom integration from your workspace:
