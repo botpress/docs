@@ -1,5 +1,5 @@
 ---
-title: Managing Integrations
+title: Managing integrations
 ---
 
 Integrations connect your agent to external services and platforms. This guide covers how to find, add, configure, and manage integrations in your ADK project.
@@ -65,7 +65,7 @@ dependencies: {
 ```
 
 <Note>
-  Integrations are added as disabled by default. Enable and configure them in the Control Panel during `adk dev`.
+  Newly added integrations are disabled by default. Enable and configure them in the Control Panel during `adk dev`.
 </Note>
 
 ### Pinning a version
@@ -192,4 +192,4 @@ await actions.linear.createIssue({
 });
 ```
 
-Integration events can be subscribed to in [Triggers](/adk/concepts/triggers) and [Conversations](/adk/concepts/conversations) (via the `events` prop).
+You can subscribe to integration events in [Triggers](/adk/concepts/triggers) and [Conversations](/adk/concepts/conversations) (via the `events` prop).
