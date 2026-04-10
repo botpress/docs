@@ -83,7 +83,7 @@ adk add notion@3.0.0
 Add an integration with a custom alias. This is useful when you need multiple instances of the same integration:
 
 ```bash
-adk add webhook --alias webhook-orders
+adk add webhook --alias webhookOrders
 ```
 
 The alias is how you reference the integration in your code:
@@ -91,7 +91,7 @@ The alias is how you reference the integration in your code:
 ```typescript
 import { actions } from "@botpress/runtime";
 
-await actions["webhook-orders"].send({ url: "https://api.example.com/orders", data: payload });
+await actions.webhookOrders.send({ url: "https://api.example.com/orders", data: payload });
 ```
 
 <Note>
@@ -131,7 +131,7 @@ Each integration card in the Control Panel shows its current status:
 
 ## Listing installed integrations
 
-View integrations currently installed in your project:
+View integrations currently installed in your project. The **Alias** column shows the key you use to reference each integration in your code:
 
 ```bash
 adk list
