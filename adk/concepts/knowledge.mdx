@@ -240,6 +240,17 @@ await WebsiteKB.refreshSource("my-source-id", { force: true });
     type="DataSource[]"
     required
   >
-    Array of data sources to index. Can include `Website`, `Directory`, or `Table` sources.
+    Array of data sources to index. Can include `Website` or `Directory` sources.
+  </ResponseField>
+</Expandable>
+
+### Knowledge methods
+
+<Expandable title="Knowledge methods">
+  <ResponseField name="refresh" type="(options?) => Promise&lt;void&gt;">
+    Refresh the knowledge base by re-indexing all sources. Pass `{ force: true }` to re-index even if unchanged.
+  </ResponseField>
+  <ResponseField name="refreshSource" type="(dsId: string, options?) => Promise&lt;void&gt;">
+    Refresh a specific data source by its ID. Pass `{ force: true }` to force re-indexing.
   </ResponseField>
 </Expandable>
