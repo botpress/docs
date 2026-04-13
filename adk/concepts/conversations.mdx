@@ -458,15 +458,4 @@ The `execute` function accepts the following props:
   </ResponseField>
 </Expandable>
 
-<Tip>
-The ADK automatically discovers and registers all exported `Conversation` instances in the `src/conversations/` directory. You can use either default or named exports:
-
-```typescript
-// Default export
-export default new Conversation({ ... });
-
-// Named export
-export const SupportChat = new Conversation({ ... });
-```
-</Tip>
 
