@@ -2228,6 +2228,7 @@
                   "payload": {
                     "oneOf": [
                       {
+                        "title": "Audio",
                         "type": "object",
                         "properties": {
                           "audioUrl": { "type": "string", "minLength": 1 },
@@ -2236,6 +2237,7 @@
                         "required": ["audioUrl", "type"]
                       },
                       {
+                        "title": "Card",
                         "type": "object",
                         "properties": {
                           "title": { "type": "string", "minLength": 1 },
@@ -2258,6 +2260,7 @@
                         "required": ["title", "actions", "type"]
                       },
                       {
+                        "title": "Carousel",
                         "type": "object",
                         "properties": {
                           "items": {
@@ -2289,6 +2292,7 @@
                         "required": ["items", "type"]
                       },
                       {
+                        "title": "Choice",
                         "type": "object",
                         "properties": {
                           "text": { "type": "string", "minLength": 1 },
@@ -2308,6 +2312,7 @@
                         "required": ["text", "options", "type"]
                       },
                       {
+                        "title": "Dropdown",
                         "type": "object",
                         "properties": {
                           "text": { "type": "string", "minLength": 1 },
@@ -2327,6 +2332,7 @@
                         "required": ["text", "options", "type"]
                       },
                       {
+                        "title": "File",
                         "type": "object",
                         "properties": {
                           "fileUrl": { "type": "string", "minLength": 1 },
@@ -2336,6 +2342,7 @@
                         "required": ["fileUrl", "type"]
                       },
                       {
+                        "title": "Image",
                         "type": "object",
                         "properties": {
                           "imageUrl": { "type": "string", "minLength": 1 },
@@ -2344,6 +2351,7 @@
                         "required": ["imageUrl", "type"]
                       },
                       {
+                        "title": "Location",
                         "type": "object",
                         "properties": {
                           "latitude": { "type": "number" },
@@ -2355,6 +2363,7 @@
                         "required": ["latitude", "longitude", "type"]
                       },
                       {
+                        "title": "Markdown",
                         "type": "object",
                         "properties": {
                           "markdown": { "type": "string", "minLength": 1 },
@@ -2363,6 +2372,7 @@
                         "required": ["markdown", "type"]
                       },
                       {
+                        "title": "Text",
                         "type": "object",
                         "properties": {
                           "text": { "type": "string", "minLength": 1 },
@@ -2371,6 +2381,7 @@
                         "required": ["text", "type"]
                       },
                       {
+                        "title": "Video",
                         "type": "object",
                         "properties": {
                           "videoUrl": { "type": "string", "minLength": 1 },
@@ -4580,6 +4591,7 @@
                 "payload": {
                   "oneOf": [
                     {
+                      "title": "Audio",
                       "type": "object",
                       "properties": {
                         "audioUrl": { "type": "string", "minLength": 1 },
@@ -4588,6 +4600,7 @@
                       "required": ["audioUrl", "type"]
                     },
                     {
+                      "title": "Card",
                       "type": "object",
                       "properties": {
                         "title": { "type": "string", "minLength": 1 },
@@ -4610,6 +4623,7 @@
                       "required": ["title", "actions", "type"]
                     },
                     {
+                      "title": "Carousel",
                       "type": "object",
                       "properties": {
                         "items": {
@@ -4641,6 +4655,7 @@
                       "required": ["items", "type"]
                     },
                     {
+                      "title": "Choice",
                       "type": "object",
                       "properties": {
                         "text": { "type": "string", "minLength": 1 },
@@ -4660,6 +4675,7 @@
                       "required": ["text", "options", "type"]
                     },
                     {
+                      "title": "Dropdown",
                       "type": "object",
                       "properties": {
                         "text": { "type": "string", "minLength": 1 },
@@ -4679,6 +4695,7 @@
                       "required": ["text", "options", "type"]
                     },
                     {
+                      "title": "File",
                       "type": "object",
                       "properties": {
                         "fileUrl": { "type": "string", "minLength": 1 },
@@ -4688,6 +4705,7 @@
                       "required": ["fileUrl", "type"]
                     },
                     {
+                      "title": "Image",
                       "type": "object",
                       "properties": {
                         "imageUrl": { "type": "string", "minLength": 1 },
@@ -4696,6 +4714,7 @@
                       "required": ["imageUrl", "type"]
                     },
                     {
+                      "title": "Location",
                       "type": "object",
                       "properties": {
                         "latitude": { "type": "number" },
@@ -4707,6 +4726,7 @@
                       "required": ["latitude", "longitude", "type"]
                     },
                     {
+                      "title": "Markdown",
                       "type": "object",
                       "properties": {
                         "markdown": { "type": "string", "minLength": 1 },
@@ -4715,6 +4735,7 @@
                       "required": ["markdown", "type"]
                     },
                     {
+                      "title": "Text",
                       "type": "object",
                       "properties": {
                         "text": { "type": "string", "minLength": 1 },
@@ -4723,6 +4744,7 @@
                       "required": ["text", "type"]
                     },
                     {
+                      "title": "Video",
                       "type": "object",
                       "properties": {
                         "videoUrl": { "type": "string", "minLength": 1 },
