@@ -129,40 +129,6 @@ Each integration card in the Control Panel shows its current status:
 | Needs Action | Requires installation, configuration, or enabling |
 | Failed | Registration error |
 
-## Migrating from object format
-
-Earlier versions of the ADK used an object format for integrations in `agent.config.ts`:
-
-```typescript
-// Old format (deprecated)
-dependencies: {
-  integrations: {
-    chat: {
-      version: "chat@0.7.7",
-      enabled: true,
-    },
-  },
-}
-```
-
-This has been replaced by string shorthand, with settings now managed in the Control Panel:
-
-```typescript
-// New format
-dependencies: {
-  integrations: {
-    chat: "chat@0.7.7",
-  },
-}
-```
-
-When you run `adk dev` with the old format, the CLI detects it and prompts you to migrate:
-
-1. The CLI displays which integrations use the deprecated format
-2. You're asked to confirm the migration
-3. Integrations without custom configs are automatically converted to string shorthand
-4. Integrations with custom configs need manual updates — move their settings to the Control Panel
-
 ## Listing installed integrations
 
 View integrations currently installed in your project. The **Alias** column shows the key you use to reference each integration in your code:
