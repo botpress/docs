@@ -6,7 +6,7 @@ Tools are functions that can be called by the AI model during conversations. The
 
 ## Creating a tool
 
-Create a tool in `src/tools/`:
+Create a tool in `src/tools/`. You can also define tools inline in a [conversation handler](/adk/concepts/conversations) or convert existing [actions](/adk/concepts/actions#as-a-tool-in-a-conversation) and [workflows](/adk/concepts/workflows#workflowastool) using `.asTool()`:
 
 ```typescript
 import { Autonomous, z } from "@botpress/runtime";

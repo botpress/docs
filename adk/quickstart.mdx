@@ -46,53 +46,48 @@ adk init my-agent
  ▄▀█ █▀▄ █▄▀  Botpress ADK
  █▀█ █▄▀ █░█  Initialize New Agent
 
+ Step 1 of 2
+
 
 Select a template:
 
-› Blank
-    Start with an empty agent project
+› blank
+    Empty project with just the folder structure
 
-  Hello World
-    Start with a conversation agent project
+  hello-world
+    A working chatbot with chat and webchat integrations
 ```
 
-Select the `Hello World` template, then follow the prompts to set up the agent. This creates a new `my-agent` directory with:
+Select the `hello-world` template. Next, choose your preferred package manager:
 
-- `agent.config.ts` - Agent configuration and integration dependencies
-- `agent.json` - Configuration for your linked bot
-- `package.json` - Project configuration
-- `tsconfig.json` - TypeScript configuration
-- `src/` - Source code directory structure
+```txt
+ ▄▀█ █▀▄ █▄▀  Botpress ADK
+ █▀█ █▄▀ █░█  Initialize New Agent
 
-## Install dependencies
+ Step 2 of 2
 
-Once you've finished the setup, navigate into your project:
+
+Select a package manager:
+
+● Bun
+    Install with bun
+○ pnpm
+    Install with pnpm
+○ Yarn
+    Install with yarn
+○ npm
+    Install with npm
+```
+
+If you are logged in, the CLI will also prompt you to select a workspace to link your agent to.
+
+The CLI automatically installs dependencies and creates a `my-agent` directory. See [Project Structure](/adk/project-structure) for a full breakdown of the generated files.
+
+Navigate into your project:
 
 ```bash
 cd my-agent
 ```
-
-Install the dependencies:
-
-<CodeGroup>
-
-```bash bun
-bun install
-```
-
-```bash pnpm
-pnpm install
-```
-
-```bash yarn
-yarn install
-```
-
-```bash npm
-npm install
-```
-
-</CodeGroup>
 
 ## Test your agent
 
@@ -113,9 +108,20 @@ This command:
 3. Starts a local development server
 4. Watches for file changes and automatically rebuilds
 
+### View the Control Panel
+
+While `adk dev` is running, visit [`http://localhost:3001/`](http://localhost:3001/) to access the Control Panel. This gives you a visual overview of your agent project where you can browse conversations, actions, workflows, tables, triggers, knowledge bases, and [configure integration settings](/adk/managing-integrations#integration-configuration).
+
+You can also test your agent directly from the built-in Chat view:
+
+<Frame>
+  <img alt="Control Panel" className="block dark:hidden" src="./assets/control-panel-quickstart.png" />
+  <img alt="Control Panel" className="hidden dark:block" src="./assets/control-panel-quickstart-dark.png" />
+</Frame>
+
 ### Chat in the terminal
 
-Open a new terminal window and start a conversation with your agent:
+Alternatively, open a new terminal window and start a conversation with your agent from the command line:
 
 ```bash
 adk chat
@@ -129,28 +135,12 @@ Type "exit" or press ESC key to quit
 >>
 ```
 
-### View the ADK console
-
-Visit [`http://localhost:3001/`](http://localhost:3001/) to access the interactive ADK console. This gives you an intuitive, visual breakdown of your agent project and lets you [configure its integration's settings](/adk/managing-integrations#integration-configuration).
-
 ## Build your agent
 
 Compile your agent for production:
 
 ```bash
 adk build
-```
-
-```txt
-📦 Loaded project: my-agent
-📝 Generating assets types...
-✅ Assets types generated
-🔨 Generating Botpress bot project...
-✅ Bot project generated
-🏗️  Building agent...
-
-✅ Build completed successfully!
-📦 Output directory: <project-path>/.adk/bot/.botpress/dist
 ```
 
 This creates an optimized build in the `.adk/bot/.botpress/dist` directory.
@@ -163,16 +153,11 @@ When you're ready, you can deploy your agent to Botpress Cloud:
 adk deploy
 ```
 
-```txt
-📤 Deploying bot to Botpress...
-
-✅ Agent deployed successfully!
-🌐 Your agent is now live on Botpress
-🤖 Bot ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-🏢 Workspace ID: wkspace_xxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
 This uploads your agent to your Botpress workspace and makes it available for use.
+
+<Note>
+  If you skipped workspace selection during `adk init`, run `adk login` then `adk link` to connect your agent before deploying.
+</Note>
 
 <Check>
   You deployed your first agent using the ADK!
