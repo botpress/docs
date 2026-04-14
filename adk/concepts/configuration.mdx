@@ -1,0 +1,249 @@
+---
+title: Configuration
+---
+
+Configuration defines your agent's identity, models, state schemas, dependencies, and runtime settings. Everything is centralized in `agent.config.ts`.
+
+## `agent.config.ts`
+
+The main configuration file uses `defineConfig` from `@botpress/runtime`:
+
+```typescript
+import { z, defineConfig } from "@botpress/runtime";
+
+export default defineConfig({
+  name: "my-agent",
+  description: "An AI agent built with the Botpress ADK",
+
+  defaultModels: {
+    autonomous: "cerebras:gpt-oss-120b",
+    zai: "cerebras:gpt-oss-120b",
+  },
+
+  bot: {
+    state: z.object({}),
+    tags: {},
+  },
+
+  user: {
+    state: z.object({}),
+    tags: {},
+  },
+
+  conversation: {
+    tags: {},
+  },
+
+  message: {
+    tags: {},
+  },
+
+  workflow: {
+    tags: {},
+  },
+
+  configuration: {
+    schema: z.object({
+      // your config schema
+    }),
+  },
+
+  dependencies: {
+    integrations: {
+      chat: "chat@0.7.7",
+      webchat: "webchat@0.3.0",
+    },
+  },
+});
+```
+
+## Config options
+
+<Expandable title="defineConfig options">
+  <ResponseField name="name" type="string">
+    Agent name. Used to identify your agent in the Botpress dashboard.
+  </ResponseField>
+  <ResponseField name="description" type="string">
+    Optional description of your agent.
+  </ResponseField>
+  <ResponseField name="defaultModels" type="object">
+    Default LLM models for your agent.
+    <Expandable title="properties">
+      <ResponseField name="autonomous" type="string">
+        Model used for `execute()` calls in conversations and workflows.
+      </ResponseField>
+      <ResponseField name="zai" type="string">
+        Model used for Zai operations (`zai.extract()`, `zai.check()`, etc.).
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField name="bot" type="object">
+    Bot-level state schema and tags. See [State](/adk/concepts/state).
+  </ResponseField>
+  <ResponseField name="user" type="object">
+    User-level state schema and tags. See [State](/adk/concepts/state).
+  </ResponseField>
+  <ResponseField name="conversation" type="object">
+    Conversation-level tags.
+  </ResponseField>
+  <ResponseField name="message" type="object">
+    Message-level tags.
+  </ResponseField>
+  <ResponseField name="workflow" type="object">
+    Workflow-level tags.
+  </ResponseField>
+  <ResponseField name="configuration" type="object">
+    Runtime configuration schema. Values are set via `adk config` and accessed at runtime via the `configuration` import.
+    <Expandable title="properties">
+      <ResponseField name="schema" type="z.ZodObject" required>
+        A Zod object schema defining the configuration fields. Must be `z.object()`.
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField name="dependencies" type="object">
+    Integration and interface dependencies. See [Managing Integrations](/adk/managing-integrations).
+  </ResponseField>
+  <ResponseField name="events" type="object">
+    Custom event definitions. Each key is an event name, with an optional schema and description.
+  </ResponseField>
+  <ResponseField name="evals" type="object">
+    Evaluation settings.
+    <Expandable title="properties">
+      <ResponseField name="idleTimeout" type="number">
+        Timeout in seconds for idle eval conversations.
+      </ResponseField>
+      <ResponseField name="judgePassThreshold" type="number">
+        Pass threshold for LLM judge assertions (1-5).
+      </ResponseField>
+      <ResponseField name="judgeModel" type="string">
+        Model to use for LLM judge assertions (e.g., `"openai:gpt-4o"`).
+      </ResponseField>
+    </Expandable>
+  </ResponseField>
+</Expandable>
+
+## Accessing configuration at runtime
+
+Import `configuration` from `@botpress/runtime` to access your agent's configuration values:
+
+```typescript
+import { configuration } from "@botpress/runtime";
+
+const apiKey = configuration.apiKey;
+const maxRetries = configuration.maxRetries;
+```
+
+Configuration values are defined by the `configuration.schema` in `agent.config.ts` and set via the `adk config` command or the Botpress dashboard.
+
+<Note>
+  Configuration is read-only at runtime. Attempting to set a value will throw an error.
+</Note>
+
+## Managing configuration
+
+### Validate configuration
+
+Run `adk config` to validate all configuration values and set any that are missing:
+
+```bash
+adk config
+```
+
+```txt
+📝 Configuration (development)
+
+✓ Configuration validated successfully
+```
+
+This validates your values against the schema and prompts for any missing or invalid fields. Requires a `configuration.schema` in your `agent.config.ts`.
+
+### Get and set values
+
+Set and retrieve individual configuration values. Note that `config:get` reads persisted values only and does not resolve schema defaults:
+
+```bash
+adk config:set supportEmail "help@mycompany.com"
+```
+
+```txt
+✓ Configuration updated (development)
+  supportEmail = help@mycompany.com
+```
+
+```bash
+adk config:get supportEmail
+```
+
+```txt
+📝 Configuration value (development)
+
+  Key:   supportEmail
+  Value: help@mycompany.com
+```
+
+### Production configuration
+
+Use the `--prod` flag to manage production configuration separately from development:
+
+```bash
+adk config --prod
+adk config:set supportEmail "help@mycompany.com" --prod
+adk config:get supportEmail --prod
+```
+
+<Note>
+  Agent configuration (`adk config`) is separate from integration configuration. Integration settings like API keys are managed in the Control Panel during `adk dev`. See [Managing Integrations](/adk/managing-integrations) for details.
+</Note>
+
+## Default models
+
+The `defaultModels` field sets which LLM models your agent uses:
+
+```typescript
+defaultModels: {
+  autonomous: "cerebras:gpt-oss-120b",
+  zai: "cerebras:gpt-oss-120b",
+},
+```
+
+- **`autonomous`**: used by `execute()` in conversations and workflows
+- **`zai`**: used by Zai operations like `zai.extract()`, `zai.check()`, `zai.text()`
+
+You can override the model per-call using the `model` prop on `execute()`.
+
+## Custom events
+
+Define custom events that your agent can emit and listen to:
+
+```typescript
+export default defineConfig({
+  name: "my-agent",
+  events: {
+    orderPlaced: {
+      description: "Fired when an order is placed",
+      schema: z.object({
+        orderId: z.string(),
+        total: z.number(),
+      }),
+    },
+  },
+});
+```
+
+Custom events can be subscribed to in [Triggers](/adk/concepts/triggers) and [Conversations](/adk/concepts/conversations) (via the `events` prop).
+
+## Dependencies
+
+The `dependencies` field declares which integrations your agent uses:
+
+```typescript
+dependencies: {
+  integrations: {
+    chat: "chat@0.7.7",
+    webchat: "webchat@0.3.0",
+    slack: "slack@1.0.0",
+  },
+},
+```
+
+Integration settings (API keys, tokens, etc.) are configured in the Control Panel during `adk dev`, not in `agent.config.ts`.
