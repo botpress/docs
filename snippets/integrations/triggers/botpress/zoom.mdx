@@ -1,0 +1,61 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Transcript Received
+
+<span>{"Fires when a transcript is received from Zoom"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="meetingUUID"
+    type="string"
+    required
+  >
+    <span>{"The UUID of the Zoom meeting"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hostId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the host"}</span>
+  </ResponseField>
+  <ResponseField
+    name="transcript"
+    type="string"
+    required
+  >
+    <span>{"The transcript of the meeting"}</span>
+  </ResponseField>
+  <ResponseField
+    name="audioUrl"
+    type="string"
+    required
+  >
+    <span>{"The URL of the meeting audio"}</span>
+  </ResponseField>
+  <ResponseField
+    name="rawVtt"
+    type="string"
+  >
+    <span>{"The raw VTT file content of the meeting transcript"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
