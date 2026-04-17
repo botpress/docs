@@ -44,8 +44,6 @@ By default, every bot has an Autonomous Node installed in its main [Workflow](/s
 
 Select your Autonomous Node to open its configuration menu. Here's a breakdown of the configuration options:
 
-- **Allow Conversation**: This option toggles the Autonomous Node's ability to communicate with users directly. If turned off, the Node only processes commands and executes its internal logic without sending messages to users.
-
 - **Instructions**: This field is your Autonomous Node's main prompt. Provide clear guidelines in this section—the more specific you are, the better the agent’s decision-making.
 
   For a detailed guide to prompting, check out the [Prompting tips](#prompting-tips) section.
@@ -79,9 +77,17 @@ By default, Autonomous Nodes can't read or update [variables](/studio/concepts/v
   If you don't see the option to **+ Add variable(s)**, make sure you've [created at least one variable](/studio/concepts/variables/overview#create-a-variable).
 </Tip>
 
-### Loop until an exit condition is met
+### Make your Autonomous Node non-conversational
 
-By default, your Autonomous Node runs in a loop on every user message until one of its [exit conditions](#configuration) are met. If you disable this option, the Autonomous Node will only process one user message before transitioning to the next Node.
+By default, your Autonomous Node responds to every user message in a loop until one of its [exit conditions](#configuration) are met. If you'd rather your Autonomous Node just execute logic without responding to user messages, you can disable **Advanced Settings > Loops until exit condition**.
+
+When this setting is disabled, your Autonomous Node:
+
+1. Processes the user's message
+2. Performs some action (if necessary), like executing a tool
+3. Transitions to the next Node in the Workflow without responding to the user.
+
+This is useful if you want AI to handle logic behind the scenes, but still hard-code the bot's response.
 
 ### Override default models
 
