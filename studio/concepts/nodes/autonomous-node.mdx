@@ -4,7 +4,7 @@ title: Autonomous Node
 
 The Autonomous Node **uses AI to make decisions**—like what your bot should say or what tools it should use.
 
-Unlike a [standard Node](/studio/concepts/nodes/introduction#standard-node), which executes its [Cards](/studio/concepts/cards) one by one, the Autonomous Node uses a Large Language Model (LLM) to decide when to execute its Cards. It can understand the conversation's context, write responses to users, and leverage the tools you give it.
+Unlike a [standard Node](/studio/concepts/nodes/introduction#standard-node), which executes its [Cards](/studio/concepts/cards) one by one, the Autonomous Node uses a Large Language Model (LLM) to decide when to execute tools. It can understand the conversation's context, write responses to users, and leverage the tools you give it.
 
 <Frame>
   <img
@@ -44,34 +44,50 @@ By default, every bot has an Autonomous Node installed in its main [Workflow](/s
 
 Select your Autonomous Node to open its configuration menu. Here's a breakdown of the configuration options:
 
-- **Allow Conversation**: This option toggles the Autonomous Node's ability to communicate with users directly. If turned off, the Node only processes commands and executes its internal logic without sending messages to users.
-
 - **Instructions**: This field is your Autonomous Node's main prompt. Provide clear guidelines in this section—the more specific you are, the better the agent’s decision-making.
 
   For a detailed guide to prompting, check out the [Prompting tips](#prompting-tips) section.
 
-- **Variables access**: This section lets you [give your Autonomous Node access to variables](#give-access-to-variables).
+- **Variables**: This section lets you [give your Autonomous Node access to variables](#give-access-to-variables).
 
-- **Vision Agent**: This section configures whether your Autonomous Node uses the [Vision Agent](/studio/concepts/agents/vision-agent) to extract text content from incoming images. Toggle **Extract from Incoming Images** to enable or disable this option.
+- **Tools**: This section lets you [add tools](#add-tools) that the Autonomous Node can use.
 
-### Add Cards
+- **Search Knowledge**: This section lets you specify which Knowledge Bases your Autonomous Node can refer to.
 
-You can add Cards to your Autonomous Node to expand its capabilities. The LLM powering the Autonomous Node will decide when to use these Cards based on your instructions (and the conversation's context).
+- **Workflows**: This section lets you provide additional [Workflows](/studio/concepts/workflows) to the Autonomous Node, which it can execute during a conversation.
 
-You can refer to Cards using natural language in your instructions—however, your bot may generate better responses if you [refer to them using code](#refer-to-tools-directly).
+- **Exit Conditions**: This section lets you define the conditions under which your Autonomous Node should [exit its loop](#advanced-settings).
+
+### Add tools
+
+You can add tools to your Autonomous Node to expand its capabilities. The LLM powering the Autonomous Node will decide when to use these tools based on your instructions (and the conversation's context).
+
+You can refer to tools using natural language in your instructions—however, your bot may generate better responses if you [refer to them using code](#refer-to-tools-directly).
 
 ### Give access to variables
 
 By default, Autonomous Nodes can't read or update [variables](/studio/concepts/variables/overview). If you need to give an Autonomous Node access to a variable:
 
 1. Select the Autonomous Node to open its configuration menu.
-2. Under **Variables access**, select **+ Add variable(s)**.
+2. Under **Variables**, select **+ Add variable(s)**.
 3. Select any variable to let the Autonomous Node read it.
 4. If you also want to give the Autonomous Node write access to the variable, check **Allow write access**.
 
 <Tip>
   If you don't see the option to **+ Add variable(s)**, make sure you've [created at least one variable](/studio/concepts/variables/overview#create-a-variable).
 </Tip>
+
+### Make your Autonomous Node non-conversational
+
+By default, your Autonomous Node responds to every user message in a loop until one of its [exit conditions](#configuration) are met. If you'd rather your Autonomous Node just execute logic without responding to user messages, you can disable **Advanced Settings > Loops until exit condition**.
+
+When this setting is disabled, your Autonomous Node:
+
+1. Processes the user's message
+2. Performs some action (if necessary), like executing a tool
+3. Transitions to the next Node in the Workflow without responding to the user.
+
+This is useful if you want AI to handle logic behind the scenes, but still hard-code the bot's response.
 
 ### Override default models
 
@@ -82,6 +98,10 @@ By default, all Autonomous Nodes use the LLMs set in your [Bot Settings](/studio
 3. Enable either:
     - **Override default model**: Overrides the default LLM used for generating responses
     - **Override default RAG model**: Overrides the default LLM used for Retrieval-Augmented Generation (RAG) tasks, like answering questions based on [Knowledge Base](/studio/concepts/knowledge-base/introduction) content
+
+### Enable Vision Agent
+
+You can enable the [Vision Agent](/studio/concepts/agents/vision-agent) if you want your Autonomous Node to extract text content from incoming images. Toggle **Advanced Settings > Vision Agent > Extract from Incoming Images** to enable or disable this option.
 
 ---
 
@@ -250,7 +270,7 @@ You can view a full list of tools your bot currently has access to in the [Inspe
 
   </Tab>
   <Tab title="Integration tools">
-    Any additional Cards you've added to the Autonomous Node also have their own tools that you can refer to directly. This includes Cards from external integrations.
+    You can also directly refer refer to any tools from external integrations.
 
     <Accordion
     title="Example: HITL integration"
@@ -353,7 +373,7 @@ Here's a breakdown of how to use the **Inspect** window:
 
 Lower-performance LLMs may struggle with the complexity of operations typically executed by the Autonomous Node. For this reason, we recommend using a high-performing model to power Autonomous Nodes, roughly equivalent to a model like OpenAI's GPT-4.1.
 
-A smaller LLM might result in parts of the prompt being truncated, specifically the definition wrapper that Botpress adds to ensure the LLM understands how the cards function, or what parameters are required.
+A smaller LLM might result in parts of the prompt being truncated, specifically the definition wrapper that Botpress adds to ensure the LLM understands how the tools function, or what parameters are required.
 
 ### Check your LLMz version
 
