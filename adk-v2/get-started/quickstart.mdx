@@ -1,0 +1,100 @@
+---
+title: Quickstart
+description: Create, run, and deploy your first Botpress agent with the ADK.
+---
+
+This guide walks you through creating your first agent, running it locally, and deploying it to Botpress Cloud.
+
+<Info>
+  Before you start, [install the ADK CLI](/adk-v2/get-started/install) and sign in to your [Botpress account](https://sso.botpress.cloud).
+</Info>
+
+## Create an agent
+
+Run the init command and pass a name for your project:
+
+```bash
+adk init my-agent
+```
+
+The CLI walks you through a short wizard. Pick the `hello-world` template to start with a working chatbot:
+
+```txt
+ ▄▀█ █▀▄ █▄▀  Botpress ADK
+ █▀█ █▄▀ █░█  Initialize New Agent
+
+Select a template:
+
+› blank
+    Empty project with just the folder structure
+
+  hello-world
+    A working chatbot with chat and webchat integrations
+
+  slack-triage
+    Slack bot that monitors a channel, classifies requests, and routes to the right person
+
+  knowledge-assistant
+    RAG-powered Q&A agent with knowledge base and source citations
+
+  crm-enrichment
+    Scheduled workflow that enriches CRM contacts with AI-driven classification
+```
+
+If you have more than one package manager available, the wizard also asks which one to use. When you're signed in, it links the new project to a workspace on your account so you can deploy later without re-authenticating.
+
+The CLI creates the `my-agent` directory, installs dependencies, and runs any setup commands the template needs (for `hello-world`, that's installing the `chat` and `webchat` integrations).
+
+Move into the project directory:
+
+```bash
+cd my-agent
+```
+
+<Tip>
+  To skip the wizard, pass `--template` and `--yes`: `adk init my-agent --template hello-world --yes`.
+</Tip>
+
+## Run your agent locally
+
+Start the development server:
+
+```bash
+adk dev
+```
+
+This builds your agent, starts a local server on port `3000`, and watches for file changes so your agent rebuilds as you edit it.
+
+Once it's running, open the Control Panel at [http://localhost:3001](http://localhost:3001). You can browse conversations, inspect workflows and tables, manage integration settings, and chat with your agent from the built-in Chat view.
+
+> [IMAGE PLACEHOLDER]
+> Screenshot of the ADK Control Panel at http://localhost:3001, showing the Chat view with a short conversation against the hello-world agent. Light and dark variants.
+> Purpose: shows the reader what to expect the first time they open the Control Panel.
+
+You can also chat from the terminal. In a new window, with `adk dev` still running, start a conversation:
+
+```bash
+adk chat
+```
+
+```txt
+Botpress Chat
+Type "exit" or press ESC key to quit
+👤 Hey!
+🤖 Hello! How can I assist you today?
+>>
+```
+
+## Deploy to Botpress Cloud
+
+When you're ready to ship your agent, run:
+
+```bash
+adk deploy
+```
+
+This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
+
+<Check>
+  You've shipped your first agent with the ADK.
+</Check>
