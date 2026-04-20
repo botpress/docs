@@ -6,10 +6,20 @@ description: Create, run, and deploy your first Botpress agent with the ADK.
 Go from zero to a deployed agent in about five minutes. By the end, you'll have a working Botpress agent running locally and live on Botpress Cloud.
 
 <Info>
-  Before you start, [install the ADK CLI](/adk/get-started/install) and sign in to your [Botpress account](https://sso.botpress.cloud).
+  Before you start, [install the ADK CLI](/adk/get-started/install). You'll also need a [Botpress account](https://sso.botpress.cloud) to log in with.
 </Info>
 
 <Steps>
+  <Step title="Log in to Botpress">
+    Authenticate with your Botpress account so the CLI can create bots in your workspace and deploy on your behalf:
+
+    ```bash
+    adk login
+    ```
+
+    A browser window opens. Sign in with your Botpress account, and the CLI saves your credentials for every command that follows.
+  </Step>
+
   <Step title="Create a project">
     Run the init command and pass a name for your project:
 
@@ -43,7 +53,7 @@ Go from zero to a deployed agent in about five minutes. By the end, you'll have 
         Scheduled workflow that enriches CRM contacts with AI-driven classification
     ```
 
-    The wizard also asks for a package manager and links your project to a Botpress workspace, so you can deploy later without signing in again.
+    The wizard also asks for a package manager, then prompts you to pick a Botpress workspace to link the project to. Linking sets where `adk deploy` ships your agent.
 
     Once it's done, move into the project directory:
 
@@ -122,6 +132,6 @@ Go from zero to a deployed agent in about five minutes. By the end, you'll have 
     adk deploy
     ```
 
-    This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
+    This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk link` before deploying.
   </Step>
 </Steps>
