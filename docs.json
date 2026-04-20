@@ -89,9 +89,13 @@
             "group": "ADK",
             "tag": "Beta",
             "pages": [
-              "/adk/introduction",
-              "/adk/quickstart",
-              "/adk/project-structure",
+              {
+                "group": "Get started",
+                "pages": [
+                  "/adk/get-started/install",
+                  "/adk/get-started/quickstart"
+                ]
+              },
               {
                 "group": "Concepts",
                 "pages": [
@@ -113,19 +117,6 @@
                 "pages": ["/adk/zai/overview", "/adk/zai/reference"]
               },
               "/adk/cli-reference"
-            ]
-          },
-          {
-            "group": "ADK v2",
-            "tag": "Beta",
-            "pages": [
-              {
-                "group": "Get started",
-                "pages": [
-                  "/adk-v2/get-started/install",
-                  "/adk-v2/get-started/quickstart"
-                ]
-              }
             ]
           },
           {
