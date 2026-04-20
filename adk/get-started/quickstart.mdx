@@ -73,7 +73,7 @@ The tree hides standard files (`package.json`, `tsconfig.json`, `README.md`) and
 
 The `hello-world` template ships with a single conversation handler at `src/conversations/index.ts`:
 
-```typescript
+```typescript highlight={7}
 import { Conversation } from '@botpress/runtime'
 
 export default new Conversation({
@@ -86,7 +86,7 @@ export default new Conversation({
 })
 ```
 
-Edit the `instructions` string to change how your agent behaves.
+The highlighted `instructions` field is your agent's system prompt. Edit it to change what your agent does and how it responds.
 
 ## Run your agent locally
 
