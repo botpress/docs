@@ -41,29 +41,31 @@ Your assistant loads the right skill automatically when you ask for help with a 
 
     Then prompt your assistant based on what you're trying to do. The right skill loads automatically.
 
-    **Add a feature**
+    <AccordionGroup>
+      <Accordion title="Add a feature">
+        ```txt
+        Add a coin-flip tool the agent can call when users ask for a random yes/no answer.
+        ```
 
-    ```txt
-    Add a Notion integration and write a conversation that creates a page when a user shares a note.
-    ```
+        Loads `botpress-adk` to scaffold the tool and wire it into the conversation handler.
+      </Accordion>
 
-    Loads `botpress-adk-integrations` to find and add Notion, then `botpress-adk` to scaffold the conversation handler in `src/conversations/`.
+      <Accordion title="Debug an issue">
+        ```txt
+        My agent replies with "I can't help with that" whenever a user asks about orders. Read the latest traces and figure out what's blocking it.
+        ```
 
-    **Debug an issue**
+        Loads `botpress-adk-debugger`, which runs `adk traces` and `adk logs`, walks the trace tree, classifies the failure, and proposes a fix.
+      </Accordion>
 
-    ```txt
-    My agent replies with "I can't help with that" whenever a user asks about orders. Read the latest traces and figure out what's blocking it.
-    ```
+      <Accordion title="Write tests">
+        ```txt
+        Write an eval for the onboarding conversation that checks the agent collects the user's name and email in the first three turns.
+        ```
 
-    Loads `botpress-adk-debugger`, which runs `adk traces` and `adk logs`, walks the trace tree, classifies the failure, and proposes a fix.
-
-    **Write tests**
-
-    ```txt
-    Write an eval for the onboarding conversation that checks the agent collects the user's name and email in the first three turns.
-    ```
-
-    Loads `botpress-adk-evals` to draft an eval file with the right turn structure and assertions, then runs it against the dev server so you can see it pass or fail.
+        Loads `botpress-adk-evals` to draft an eval file with the right turn structure and assertions, then runs it against the dev server so you can see it pass or fail.
+      </Accordion>
+    </AccordionGroup>
 
     You review and edit every change before it lands.
   </Step>
