@@ -9,15 +9,6 @@ Build an ADK agent alongside Claude Code, Cursor, or Codex. The ADK ships skills
   Before you start, [install the ADK CLI](/adk/get-started/install). For the full init wizard walkthrough and project layout, see the [Quickstart](/adk/get-started/quickstart).
 </Info>
 
-## Start a project
-
-```bash
-adk init my-agent
-cd my-agent
-```
-
-`adk init` installs ADK skills into the project automatically. Your AI coding assistant picks them up the next time you open the folder.
-
 ## Skills installed
 
 | Skill | Use when |
@@ -31,41 +22,62 @@ cd my-agent
 
 Your assistant loads the right skill automatically when you ask for help with a matching task.
 
-## Build with your assistant
+<Steps>
+  <Step title="Start a project">
+    ```bash
+    adk init my-agent
+    cd my-agent
+    ```
 
-Start the dev server so your assistant can run and test the agent:
+    `adk init` installs the ADK skills into your project. Your AI coding assistant picks them up the next time you open the folder.
+  </Step>
 
-```bash
-adk dev
-```
+  <Step title="Build with your assistant">
+    Start the dev server so your assistant can run and test the agent:
 
-Prompt your assistant based on what you're trying to do. The right skill loads automatically.
+    ```bash
+    adk dev
+    ```
 
-**Add a feature**
+    Then prompt your assistant based on what you're trying to do. The right skill loads automatically.
 
-```txt
-Add a Notion integration and write a conversation that creates a page when a user shares a note.
-```
+    **Add a feature**
 
-Loads `botpress-adk-integrations` to find and add Notion, then `botpress-adk` to scaffold the conversation handler in `src/conversations/`.
+    ```txt
+    Add a Notion integration and write a conversation that creates a page when a user shares a note.
+    ```
 
-**Debug an issue**
+    Loads `botpress-adk-integrations` to find and add Notion, then `botpress-adk` to scaffold the conversation handler in `src/conversations/`.
 
-```txt
-My agent replies with "I can't help with that" whenever a user asks about orders. Read the latest traces and figure out what's blocking it.
-```
+    **Debug an issue**
 
-Loads `botpress-adk-debugger`, which runs `adk traces` and `adk logs`, walks the trace tree, classifies the failure, and proposes a fix.
+    ```txt
+    My agent replies with "I can't help with that" whenever a user asks about orders. Read the latest traces and figure out what's blocking it.
+    ```
 
-**Write tests**
+    Loads `botpress-adk-debugger`, which runs `adk traces` and `adk logs`, walks the trace tree, classifies the failure, and proposes a fix.
 
-```txt
-Write an eval for the onboarding conversation that checks the agent collects the user's name and email in the first three turns.
-```
+    **Write tests**
 
-Loads `botpress-adk-evals` to draft an eval file with the right turn structure and assertions, then runs it against the dev server so you can see it pass or fail.
+    ```txt
+    Write an eval for the onboarding conversation that checks the agent collects the user's name and email in the first three turns.
+    ```
 
-You review and edit every change before it lands.
+    Loads `botpress-adk-evals` to draft an eval file with the right turn structure and assertions, then runs it against the dev server so you can see it pass or fail.
+
+    You review and edit every change before it lands.
+  </Step>
+
+  <Step title="Deploy to Botpress Cloud">
+    When the agent is ready, run:
+
+    ```bash
+    adk deploy
+    ```
+
+    This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
+  </Step>
+</Steps>
 
 ## Claude Code slash commands
 
@@ -92,13 +104,3 @@ Then use:
 | `/adk-doc-search` | Search your project docs |
 
 Cursor and Codex use the installed skills automatically. No commands needed.
-
-## Deploy to Botpress Cloud
-
-When the agent is ready, run:
-
-```bash
-adk deploy
-```
-
-This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.

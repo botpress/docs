@@ -3,112 +3,114 @@ title: Quickstart
 description: Create, run, and deploy your first Botpress agent with the ADK.
 ---
 
-This guide walks you through creating your first agent, running it locally, and deploying it to Botpress Cloud.
+Go from zero to a deployed agent in about five minutes. By the end, you'll have a working Botpress agent running locally and live on Botpress Cloud.
 
 <Info>
   Before you start, [install the ADK CLI](/adk/get-started/install) and sign in to your [Botpress account](https://sso.botpress.cloud).
 </Info>
 
-## Create an agent
+<Steps>
+  <Step title="Create a project">
+    Run the init command and pass a name for your project:
 
-Run the init command and pass a name for your project:
+    ```bash
+    adk init my-agent
+    ```
 
-```bash
-adk init my-agent
-```
+    The CLI walks you through a short wizard. Pick the `hello-world` template to start with a working agent:
 
-The CLI walks you through a short wizard. Pick the `hello-world` template to start with a working agent:
+    ```txt
+     ▄▀█ █▀▄ █▄▀  Botpress ADK
+     █▀█ █▄▀ █░█  Initialize New Agent
 
-```txt
- ▄▀█ █▀▄ █▄▀  Botpress ADK
- █▀█ █▄▀ █░█  Initialize New Agent
+     Step 1 of 2
 
- Step 1 of 2
+    Select a template:
 
-Select a template:
+      blank
+        Empty project with just the folder structure
 
-  blank
-    Empty project with just the folder structure
+    › hello-world
+        A working chatbot with chat and webchat integrations
 
-› hello-world
-    A working chatbot with chat and webchat integrations
+      slack-triage
+        Slack bot that monitors a channel, classifies requests, and routes to the right person
 
-  slack-triage
-    Slack bot that monitors a channel, classifies requests, and routes to the right person
+      knowledge-assistant
+        RAG-powered Q&A agent with knowledge base and source citations
 
-  knowledge-assistant
-    RAG-powered Q&A agent with knowledge base and source citations
+      crm-enrichment
+        Scheduled workflow that enriches CRM contacts with AI-driven classification
+    ```
 
-  crm-enrichment
-    Scheduled workflow that enriches CRM contacts with AI-driven classification
-```
+    The wizard then asks for a package manager and, if you're signed in, links the project to a Botpress workspace so you can deploy later without re-authenticating.
 
-The wizard then asks for a package manager and, if you're signed in, links the project to a Botpress workspace so you can deploy later without re-authenticating.
+    Move into the project directory:
 
-Move into the project directory:
+    ```bash
+    cd my-agent
+    ```
+  </Step>
 
-```bash
-cd my-agent
-```
+  <Step title="Explore the project">
+    Every ADK project follows the same layout. `agent.config.ts` at the root defines models, persistent state, and integrations. Each folder under `src/` holds one kind of building block:
 
-## What's in your project
+    <Tree>
+      <Tree.Folder name="my-agent" defaultOpen>
+        <Tree.File name="agent.config.ts" />
+        <Tree.Folder name="src" defaultOpen>
+          <Tree.Folder name="actions" />
+          <Tree.Folder name="conversations" />
+          <Tree.Folder name="knowledge" />
+          <Tree.Folder name="tables" />
+          <Tree.Folder name="triggers" />
+          <Tree.Folder name="workflows" />
+        </Tree.Folder>
+      </Tree.Folder>
+    </Tree>
 
-Every ADK project follows the same layout. `agent.config.ts` at the root defines models, persistent state, and integrations. Each folder under `src/` holds one kind of building block:
+    The tree hides standard files (`package.json`, `tsconfig.json`, `README.md`) and AI coding-assistant guides (`AGENTS.md`, `CLAUDE.md`) that `adk init` also generates.
 
-<Tree>
-  <Tree.Folder name="my-agent" defaultOpen>
-    <Tree.File name="agent.config.ts" />
-    <Tree.Folder name="src" defaultOpen>
-      <Tree.Folder name="actions" />
-      <Tree.Folder name="conversations" />
-      <Tree.Folder name="knowledge" />
-      <Tree.Folder name="tables" />
-      <Tree.Folder name="triggers" />
-      <Tree.Folder name="workflows" />
-    </Tree.Folder>
-  </Tree.Folder>
-</Tree>
+    The `hello-world` template ships with a single conversation handler at `src/conversations/index.ts`:
 
-The tree hides standard files (`package.json`, `tsconfig.json`, `README.md`) and AI coding-assistant guides (`AGENTS.md`, `CLAUDE.md`) that `adk init` also generates.
+    ```typescript highlight={7}
+    import { Conversation } from '@botpress/runtime'
 
-The `hello-world` template ships with a single conversation handler at `src/conversations/index.ts`:
-
-```typescript highlight={7}
-import { Conversation } from '@botpress/runtime'
-
-export default new Conversation({
-  channel: '*',
-  handler: async ({ execute }) => {
-    await execute({
-      instructions: `You are a helpful AI assistant built with Botpress ADK.`,
+    export default new Conversation({
+      channel: '*',
+      handler: async ({ execute }) => {
+        await execute({
+          instructions: `You are a helpful AI assistant built with Botpress ADK.`,
+        })
+      },
     })
-  },
-})
-```
+    ```
 
-The highlighted `instructions` field is your agent's system prompt. Edit it to change what your agent does and how it responds.
+    The highlighted `instructions` field is your agent's system prompt. Edit it to change what your agent does and how it responds.
+  </Step>
 
-## Run your agent locally
+  <Step title="Run your agent locally">
+    Start the development server:
 
-Start the development server:
+    ```bash
+    adk dev
+    ```
 
-```bash
-adk dev
-```
+    `adk dev` builds your agent, starts the dev server on port `3000` and the Control Panel on port `3001`, and rebuilds on every save. Open the Control Panel at [http://localhost:3001](http://localhost:3001) to browse conversations, inspect Workflows and tables, manage integration settings, and chat with your agent from the built-in Chat view.
 
-`adk dev` builds your agent, starts the dev server on port `3000` and the Control Panel on port `3001`, and rebuilds on every save. Open the Control Panel at [http://localhost:3001](http://localhost:3001) to browse conversations, inspect Workflows and tables, manage integration settings, and chat with your agent from the built-in Chat view.
+    <Frame>
+      <img alt="ADK Control Panel" className="block dark:hidden" src="../assets/quickstart.png" />
+      <img alt="ADK Control Panel" className="hidden dark:block" src="../assets/quickstart-dark.png" />
+    </Frame>
+  </Step>
 
-<Frame>
-  <img alt="ADK Control Panel" className="block dark:hidden" src="../assets/quickstart.png" />
-  <img alt="ADK Control Panel" className="hidden dark:block" src="../assets/quickstart-dark.png" />
-</Frame>
+  <Step title="Deploy to Botpress Cloud">
+    When you're ready to ship your agent, run:
 
-## Deploy to Botpress Cloud
+    ```bash
+    adk deploy
+    ```
 
-When you're ready to ship your agent, run:
-
-```bash
-adk deploy
-```
-
-This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
+    This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
+  </Step>
+</Steps>
