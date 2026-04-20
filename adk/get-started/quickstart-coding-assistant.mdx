@@ -93,10 +93,12 @@ Then use:
 
 Cursor and Codex use the installed skills automatically. No commands needed.
 
-## Deploy
+## Deploy to Botpress Cloud
 
-When the agent is ready, ship it:
+When the agent is ready, run:
 
 ```bash
 adk deploy
 ```
+
+This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
