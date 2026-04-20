@@ -1,67 +1,73 @@
 ---
-title: Welcome to the ADK
+title: Botpress ADK
 sidebarTitle: Welcome
 description: Build, run, and deploy AI agents on Botpress as TypeScript code.
 ---
 
-The Agent Development Kit (ADK) is a TypeScript framework for building AI agents on Botpress. You define conversations, workflows, tools, and tables as code in a lightweight project, and the ADK compiles them into a production agent that runs on the Botpress Cloud runtime.
+The Agent Development Kit (ADK) is a CLI and TypeScript framework for building AI agents on Botpress. You define conversations, workflows, tools, and data as code in a lightweight project, and the ADK compiles everything into a production agent that runs on the Botpress Cloud runtime.
 
-A minimal agent is a single file:
+<Frame>
+  > [IMAGE PLACEHOLDER]
+  > Hero image for the ADK welcome page. Could be a composite of the Control Panel, a code editor showing `agent.config.ts`, and the `adk dev` terminal.
+  > Purpose: give the reader a visual sense of what working with the ADK feels like before they dive into any single page.
+</Frame>
 
-```typescript src/conversations/index.ts
-import { Conversation } from '@botpress/runtime'
-
-export default new Conversation({
-  channel: '*',
-  handler: async ({ execute }) => {
-    await execute({
-      instructions: 'You are a helpful AI assistant built with Botpress ADK.',
-    })
-  },
-})
-```
-
-Run `adk dev` and the ADK starts a local dev server, opens a Control Panel, and rebuilds your agent on every save. Run `adk deploy` to ship it to Botpress Cloud.
-
-## Get started
+## Start here
 
 <CardGroup cols={3}>
-  <Card title="Install" horizontal icon="download" href="/adk/get-started/install">
+  <Card title="Install" icon="download" href="/adk/get-started/install">
     Install the ADK CLI on macOS, Linux, or Windows.
   </Card>
-  <Card title="Quickstart" horizontal icon="rocket" href="/adk/get-started/quickstart">
-    Create, run, and deploy your first agent.
+  <Card title="Quickstart" icon="rocket" href="/adk/get-started/quickstart">
+    Build and deploy your first agent in minutes.
   </Card>
-  <Card title="Quickstart with coding assistant" horizontal icon="sparkles" href="/adk/get-started/quickstart-coding-assistant">
-    Build alongside Claude Code, Cursor, or VS Code.
-  </Card>
-</CardGroup>
-
-## What's in an agent
-
-An ADK project has a small set of primitives. Each one lives in its own folder under `src/`, gets picked up automatically, and is strongly typed end-to-end.
-
-<CardGroup cols={2}>
-  <Card title="Conversations" horizontal icon="message-square" href="/adk/concepts/conversations">
-    Handle messages from users across any channel.
-  </Card>
-  <Card title="Workflows" horizontal icon="route" href="/adk/concepts/workflows">
-    Run long-lived, resumable logic with automatic state.
-  </Card>
-  <Card title="Actions" horizontal icon="bolt" href="/adk/concepts/actions">
-    Expose callable functions to your agent and the platform.
-  </Card>
-  <Card title="Tools" horizontal icon="wrench" href="/adk/concepts/tools">
-    Give LLMs typed, described capabilities to call.
-  </Card>
-  <Card title="Tables" horizontal icon="table" href="/adk/concepts/tables">
-    Store and query structured data with schema validation.
-  </Card>
-  <Card title="Triggers" horizontal icon="zap" href="/adk/concepts/triggers">
-    React to events from integrations and schedules.
+  <Card title="Build with AI" icon="sparkles" href="/adk/get-started/quickstart-coding-assistant">
+    Pair the ADK with Claude Code, Cursor, or VS Code.
   </Card>
 </CardGroup>
 
-<Tip>
-  The ADK is in beta. APIs may still change between releases. Join the [Botpress Discord](https://discord.gg/botpress) if you run into issues or want to share feedback.
-</Tip>
+## What you can build with ADK
+
+<CardGroup cols={3}>
+  <Card title="Handle conversations" icon="message-square" href="/adk/concepts/conversations">
+    Route messages across Slack, WhatsApp, webchat, and more with typed payloads and lifecycle hooks.
+  </Card>
+  <Card title="Create tools for AI" icon="wrench" href="/adk/concepts/tools">
+    Give LLMs typed, described capabilities so they can act on your agent's behalf.
+  </Card>
+  <Card title="Build actions" icon="bolt" href="/adk/concepts/actions">
+    Expose callable functions to your agent, workflows, and the platform.
+  </Card>
+  <Card title="Automate with workflows" icon="route" href="/adk/concepts/workflows">
+    Run long-lived, resumable logic that can pause for input, run on schedules, and orchestrate other workflows.
+  </Card>
+  <Card title="Store and query data" icon="table" href="/adk/concepts/tables">
+    Create schema-validated tables with typed queries, filters, and cross-environment sync.
+  </Card>
+  <Card title="Add knowledge bases" icon="lightbulb" href="/adk/concepts/knowledge">
+    Give your agent searchable documents with built-in RAG and source citations.
+  </Card>
+  <Card title="React to events" icon="zap" href="/adk/concepts/triggers">
+    Subscribe to integration events and schedules so your agent reacts in real time.
+  </Card>
+  <Card title="Use AI with Zai" icon="shield-check" href="/adk/zai/overview">
+    Extract structured data, classify content, and summarize documents with high-level AI operations.
+  </Card>
+  <Card title="Connect integrations" icon="plug" href="/adk/managing-integrations">
+    Discover and install integrations from the Hub with typed action calls and event handlers.
+  </Card>
+</CardGroup>
+
+## More resources
+
+<CardGroup cols={3}>
+  <Card title="Community" icon="headset" href="https://discord.gg/botpress">
+    Join the Botpress community on Discord.
+  </Card>
+  <Card title="GitHub" icon="github" href="https://github.com/botpress/adk">
+    Browse the ADK source and report issues.
+  </Card>
+  <Card title="Botpress Cloud" icon="cloud" href="https://app.botpress.cloud">
+    Manage workspaces, bots, and deployments.
+  </Card>
+</CardGroup>
