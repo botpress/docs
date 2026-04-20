@@ -1,0 +1,67 @@
+---
+title: Welcome to the ADK
+sidebarTitle: Welcome
+description: Build, run, and deploy AI agents on Botpress as TypeScript code.
+---
+
+The Agent Development Kit (ADK) is a TypeScript framework for building AI agents on Botpress. You define conversations, workflows, tools, and tables as code in a lightweight project, and the ADK compiles them into a production agent that runs on the Botpress Cloud runtime.
+
+A minimal agent is a single file:
+
+```typescript src/conversations/index.ts
+import { Conversation } from '@botpress/runtime'
+
+export default new Conversation({
+  channel: '*',
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: 'You are a helpful AI assistant built with Botpress ADK.',
+    })
+  },
+})
+```
+
+Run `adk dev` and the ADK starts a local dev server, opens a Control Panel, and rebuilds your agent on every save. Run `adk deploy` to ship it to Botpress Cloud.
+
+## Get started
+
+<CardGroup cols={3}>
+  <Card title="Install" horizontal icon="download" href="/adk/get-started/install">
+    Install the ADK CLI on macOS, Linux, or Windows.
+  </Card>
+  <Card title="Quickstart" horizontal icon="rocket" href="/adk/get-started/quickstart">
+    Create, run, and deploy your first agent.
+  </Card>
+  <Card title="Quickstart with coding assistant" horizontal icon="sparkles" href="/adk/get-started/quickstart-coding-assistant">
+    Build alongside Claude Code, Cursor, or VS Code.
+  </Card>
+</CardGroup>
+
+## What's in an agent
+
+An ADK project has a small set of primitives. Each one lives in its own folder under `src/`, gets picked up automatically, and is strongly typed end-to-end.
+
+<CardGroup cols={2}>
+  <Card title="Conversations" horizontal icon="message-square" href="/adk/concepts/conversations">
+    Handle messages from users across any channel.
+  </Card>
+  <Card title="Workflows" horizontal icon="route" href="/adk/concepts/workflows">
+    Run long-lived, resumable logic with automatic state.
+  </Card>
+  <Card title="Actions" horizontal icon="bolt" href="/adk/concepts/actions">
+    Expose callable functions to your agent and the platform.
+  </Card>
+  <Card title="Tools" horizontal icon="wrench" href="/adk/concepts/tools">
+    Give LLMs typed, described capabilities to call.
+  </Card>
+  <Card title="Tables" horizontal icon="table" href="/adk/concepts/tables">
+    Store and query structured data with schema validation.
+  </Card>
+  <Card title="Triggers" horizontal icon="zap" href="/adk/concepts/triggers">
+    React to events from integrations and schedules.
+  </Card>
+</CardGroup>
+
+<Tip>
+  The ADK is in beta. APIs may still change between releases. Join the [Botpress Discord](https://discord.gg/botpress) if you run into issues or want to share feedback.
+</Tip>

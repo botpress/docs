@@ -1,0 +1,111 @@
+---
+title: Quickstart with coding assistant
+description: Build a Botpress agent alongside Claude Code, Cursor, or VS Code with MCP-powered tools.
+---
+
+The ADK ships an MCP server so your coding assistant can scaffold your agent, add integrations, read dev logs, and run workflows without leaving the editor. This guide takes you from a fresh project to an agent your assistant can build and debug with you.
+
+<Info>
+  Before you start, [install the ADK CLI](/adk/get-started/install) and sign in to your [Botpress account](https://sso.botpress.cloud).
+</Info>
+
+## Create an agent
+
+Run `adk init` and follow the wizard:
+
+```bash
+adk init my-agent
+cd my-agent
+```
+
+For a full walkthrough of the wizard, the project layout, and the `hello-world` starter, see the [Quickstart](/adk/get-started/quickstart).
+
+## Connect your coding assistant
+
+From the project root, generate an MCP config for your assistant:
+
+```bash
+adk mcp:init
+```
+
+This auto-detects Claude Code, VS Code, and Cursor based on the folders in your project and writes the right config for each:
+
+| Tool | Config file |
+|------|-------------|
+| Claude Code | `.mcp.json` |
+| VS Code | `.vscode/mcp.json` |
+| Cursor | `.cursor/mcp.json` |
+
+To target a specific tool or generate configs for all of them:
+
+```bash
+adk mcp:init --tool claude-code
+adk mcp:init --all
+```
+
+For the full list of flags, see [`adk mcp:init`](/adk/cli-reference#adk-mcp-init) in the CLI reference.
+
+Restart your assistant so it picks up the new MCP server, then approve access when prompted.
+
+> [IMAGE PLACEHOLDER]
+> Screenshot of Claude Code (or similar) showing the `adk` MCP server connected, with the list of available tools visible.
+> Purpose: give the reader a concrete picture of what a successful MCP connection looks like before they try it themselves.
+
+## Start the dev server
+
+Several MCP tools need the ADK dev server running so the assistant can read logs, send test messages, and run workflows. Start it in a separate terminal and leave it running:
+
+```bash
+adk dev
+```
+
+## Build with your assistant
+
+Your assistant now has tools to:
+
+- **Understand the project** with `adk_get_agent_info` for structure and primitives.
+- **Add integrations** with `adk_search_integrations`, `adk_get_integration`, and `adk_add_integration`.
+- **Test conversations** with `adk_send_message` and run workflows with `adk_start_workflow`.
+- **Debug locally** with `adk_get_dev_logs` and `adk_query_traces`.
+- **Search the docs** with the proxied `docs_*` tools.
+
+Try a prompt like:
+
+```txt
+Add a Notion integration to this agent, then write a conversation that creates a page when a user shares a note.
+```
+
+The assistant will search the Hub, add the integration to `agent.config.ts`, and scaffold the conversation handler. You review and edit every change.
+
+<Tip>
+  If a suggestion doesn't match the current ADK surface, paste the relevant [concept page](/adk/concepts/conversations) into the chat so the assistant can correct itself.
+</Tip>
+
+## Deploy to Botpress Cloud
+
+When the agent is ready, ship it:
+
+```bash
+adk deploy
+```
+
+<Check>
+  Your coding assistant is wired into your ADK project.
+</Check>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Managing integrations" horizontal icon="plug" href="/adk/managing-integrations">
+    Add channels, actions, and events from the Botpress Hub.
+  </Card>
+  <Card title="Conversations" horizontal icon="message-square" href="/adk/concepts/conversations">
+    Define how your agent greets users and responds across channels.
+  </Card>
+  <Card title="Workflows" horizontal icon="route" href="/adk/concepts/workflows">
+    Run long-lived logic that coordinates tools, users, and AI.
+  </Card>
+  <Card title="CLI reference" horizontal icon="terminal" href="/adk/cli-reference">
+    Browse every command and flag available in the ADK CLI.
+  </Card>
+</CardGroup>
