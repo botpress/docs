@@ -17,7 +17,22 @@ Go from zero to a deployed agent in about five minutes. By the end, you'll have 
     adk login
     ```
 
-    A browser window opens. Sign in with your Botpress account, and the CLI saves your credentials for every command that follows.
+    The CLI first asks which profile to save your credentials under. The `default` profile is fine unless you need to separate multiple Botpress accounts:
+
+    ```txt
+     ▄▀█ █▀▄ █▄▀  Botpress ADK
+     █▀█ █▄▀ █░█  Login
+
+    Which profile should these credentials be saved to?
+
+    › default
+        api.botpress.cloud
+
+      Create new profile
+        Save login under a new profile name
+    ```
+
+    Then pick **Continue with Browser**. A window opens where you sign in with your Botpress account, and the CLI saves your credentials for every command that follows.
   </Step>
 
   <Step title="Create a project">
