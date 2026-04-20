@@ -55,6 +55,43 @@ cd my-agent
   To skip the wizard, pass `--template` and `--yes`: `adk init my-agent --template hello-world --yes`.
 </Tip>
 
+## What's in your project
+
+Every ADK project follows the same layout. `agent.config.ts` at the root defines models, persistent state, and which integrations your agent uses. Each folder under `src/` holds one kind of building block:
+
+<Tree>
+  <Tree.Folder name="my-agent" defaultOpen>
+    <Tree.File name="agent.config.ts" />
+    <Tree.Folder name="src" defaultOpen>
+      <Tree.Folder name="actions" />
+      <Tree.Folder name="conversations" />
+      <Tree.Folder name="knowledge" />
+      <Tree.Folder name="tables" />
+      <Tree.Folder name="triggers" />
+      <Tree.Folder name="workflows" />
+    </Tree.Folder>
+    <Tree.File name="package.json" />
+    <Tree.File name="tsconfig.json" />
+  </Tree.Folder>
+</Tree>
+
+The `hello-world` template ships with a single conversation handler at `src/conversations/index.ts`:
+
+```typescript
+import { Conversation } from '@botpress/runtime'
+
+export default new Conversation({
+  channel: '*',
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: `You are a helpful AI assistant built with Botpress ADK. You can assist users with their questions and tasks.`,
+    })
+  },
+})
+```
+
+Edit the `instructions` string to change how your agent behaves.
+
 ## Run your agent locally
 
 Start the development server:
@@ -63,7 +100,12 @@ Start the development server:
 adk dev
 ```
 
-This builds your agent, starts a local server on port `3000`, and watches for file changes so your agent rebuilds as you edit it.
+`adk dev` does a few things at once:
+
+- Generates TypeScript types for your installed integrations so your editor knows their shapes
+- Builds the agent into a local runtime
+- Starts the dev server on port `3000` and the Control Panel on port `3001`
+- Watches your files and rebuilds on every save
 
 Once it's running, open the Control Panel at [http://localhost:3001](http://localhost:3001). You can browse conversations, inspect Workflows and tables, manage integration settings, and chat with your agent from the built-in Chat view.
 
