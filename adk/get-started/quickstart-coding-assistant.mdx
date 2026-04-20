@@ -85,7 +85,12 @@ Your assistant loads the right skill automatically when you ask for help with a 
 
 ## Claude Code slash commands
 
-Claude Code layers slash commands on top of the skills. Install the plugin once:
+Skills and slash commands work together but do different things:
+
+- **Skills** are the knowledge your assistant uses. They load automatically when you describe a matching task, and they work in Claude Code, Cursor, and Codex.
+- **Slash commands** are Claude Code-only shortcuts that jump straight to a skill. Type `/adk-debug` instead of describing "help me debug this agent." They're faster when you know exactly what you want.
+
+Install the Claude Code plugin once to get the slash commands:
 
 ```txt
 /plugin marketplace add botpress/skills
