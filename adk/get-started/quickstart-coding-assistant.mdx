@@ -39,13 +39,33 @@ Start the dev server so your assistant can run and test the agent:
 adk dev
 ```
 
-Then prompt your assistant:
+Prompt your assistant based on what you're trying to do. The right skill loads automatically.
+
+**Add a feature**
 
 ```txt
 Add a Notion integration and write a conversation that creates a page when a user shares a note.
 ```
 
-The assistant loads `botpress-adk-integrations` to find and add Notion, then `botpress-adk` to scaffold the conversation handler. You review and edit each change before it lands.
+Loads `botpress-adk-integrations` to find and add Notion, then `botpress-adk` to scaffold the conversation handler in `src/conversations/`.
+
+**Debug an issue**
+
+```txt
+My agent replies with "I can't help with that" whenever a user asks about orders. Read the latest traces and figure out what's blocking it.
+```
+
+Loads `botpress-adk-debugger`, which runs `adk traces` and `adk logs`, walks the trace tree, classifies the failure, and proposes a fix.
+
+**Write tests**
+
+```txt
+Write an eval for the onboarding conversation that checks the agent collects the user's name and email in the first three turns.
+```
+
+Loads `botpress-adk-evals` to draft an eval file with the right turn structure and assertions, then runs it against the dev server so you can see it pass or fail.
+
+You review and edit every change before it lands.
 
 ## Claude Code slash commands
 
