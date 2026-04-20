@@ -53,11 +53,16 @@ Go from zero to a deployed agent in about five minutes. By the end, you'll have 
   </Step>
 
   <Step title="Explore the project">
-    Every ADK project follows the same layout. `agent.config.ts` at the root defines which AI models your agent uses, what it remembers between conversations, and which integrations it connects to. Each folder under `src/` holds one kind of building block:
+    Here's what's inside your new project:
 
     <Tree>
       <Tree.Folder name="my-agent" defaultOpen>
         <Tree.File name="agent.config.ts" />
+        <Tree.File name="AGENTS.md" />
+        <Tree.File name="CLAUDE.md" />
+        <Tree.File name="package.json" />
+        <Tree.File name="README.md" />
+        <Tree.File name="tsconfig.json" />
         <Tree.Folder name="src" defaultOpen>
           <Tree.Folder name="actions" />
           <Tree.Folder name="conversations" />
@@ -69,9 +74,11 @@ Go from zero to a deployed agent in about five minutes. By the end, you'll have 
       </Tree.Folder>
     </Tree>
 
-    The tree hides standard files (`package.json`, `tsconfig.json`, `README.md`) and AI coding-assistant guides (`AGENTS.md`, `CLAUDE.md`) that `adk init` also generates.
+    `agent.config.ts` is your agent's main config file. It defines which AI models your agent uses, what it remembers between conversations, and which integrations it connects to.
 
-    The `hello-world` template ships with a single conversation handler at `src/conversations/index.ts`:
+    `AGENTS.md` and `CLAUDE.md` teach AI coding assistants how to work in this project, so tools like Claude Code and Cursor can help you build.
+
+    Each folder under `src/` holds one kind of building block. The `hello-world` template's conversation handler lives at `src/conversations/index.ts`:
 
     ```typescript highlight={7}
     import { Conversation } from '@botpress/runtime'
