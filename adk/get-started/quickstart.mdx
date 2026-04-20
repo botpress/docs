@@ -17,11 +17,13 @@ Run the init command and pass a name for your project:
 adk init my-agent
 ```
 
-The CLI walks you through a short wizard. Pick the `hello-world` template to start with a working agent:
+The CLI walks you through a short wizard. First, pick the `hello-world` template to start with a working agent:
 
 ```txt
  ▄▀█ █▀▄ █▄▀  Botpress ADK
  █▀█ █▄▀ █░█  Initialize New Agent
+
+ Step 1 of 2
 
 Select a template:
 
@@ -41,9 +43,39 @@ Select a template:
     Scheduled workflow that enriches CRM contacts with AI-driven classification
 ```
 
-If you have more than one package manager available, the wizard also asks which one to use. When you're signed in, it links the new project to a workspace on your account so you can deploy later without re-authenticating.
+Then pick a package manager. The wizard only shows the ones already installed on your machine:
 
-The CLI creates the `my-agent` directory, installs dependencies, and runs any setup commands the template needs (for `hello-world`, that's installing the `chat` and `webchat` integrations).
+```txt
+ ▄▀█ █▀▄ █▄▀  Botpress ADK
+ █▀█ █▄▀ █░█  Initialize New Agent
+
+ Step 2 of 2
+
+Select a package manager:
+
+● Bun
+    Install with bun
+○ pnpm
+    Install with pnpm
+○ Yarn (not installed)
+○ npm
+    Install with npm
+```
+
+The CLI creates the `my-agent` directory, installs dependencies, and runs any setup commands the template needs (for `hello-world`, that's installing the `chat` and `webchat` integrations). If you're signed in, it also prompts you to link the project to a workspace so you can deploy later without re-authenticating:
+
+```txt
+Linking to Botpress — connect your agent to a workspace and bot for deployment.
+
+📋 Select a workspace (type to search):
+
+› jacksonyu's Workspace
+  ...
+
+✅ Successfully linked local agent to remote bot!
+Bot: my-agent
+Workspace: jacksonyu's Workspace
+```
 
 Move into the project directory:
 
