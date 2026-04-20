@@ -17,7 +17,7 @@ Run the init command and pass a name for your project:
 adk init my-agent
 ```
 
-The CLI walks you through a short wizard. First, pick the `hello-world` template to start with a working agent:
+The CLI walks you through a short wizard. Pick the `hello-world` template to start with a working agent:
 
 ```txt
  ▄▀█ █▀▄ █▄▀  Botpress ADK
@@ -43,39 +43,7 @@ Select a template:
     Scheduled workflow that enriches CRM contacts with AI-driven classification
 ```
 
-Then pick a package manager. The wizard only shows the ones already installed on your machine:
-
-```txt
- ▄▀█ █▀▄ █▄▀  Botpress ADK
- █▀█ █▄▀ █░█  Initialize New Agent
-
- Step 2 of 2
-
-Select a package manager:
-
-● Bun
-    Install with bun
-○ pnpm
-    Install with pnpm
-○ Yarn (not installed)
-○ npm
-    Install with npm
-```
-
-The CLI creates the `my-agent` directory, installs dependencies, and runs any setup commands the template needs (for `hello-world`, that's installing the `chat` and `webchat` integrations). If you're signed in, it also prompts you to link the project to a workspace so you can deploy later without re-authenticating:
-
-```txt
-Linking to Botpress — connect your agent to a workspace and bot for deployment.
-
-📋 Select a workspace (type to search):
-
-› jacksonyu's Workspace
-  ...
-
-✅ Successfully linked local agent to remote bot!
-Bot: my-agent
-Workspace: jacksonyu's Workspace
-```
+The wizard then asks for a package manager and, if you're signed in, links the project to a Botpress workspace so you can deploy later without re-authenticating.
 
 Move into the project directory:
 
@@ -83,13 +51,9 @@ Move into the project directory:
 cd my-agent
 ```
 
-<Tip>
-  To skip the wizard, pass `--template` and `--yes`: `adk init my-agent --template hello-world --yes`.
-</Tip>
-
 ## What's in your project
 
-Every ADK project follows the same layout. `agent.config.ts` at the root defines models, persistent state, and which integrations your agent uses. Each folder under `src/` holds one kind of building block:
+Every ADK project follows the same layout. `agent.config.ts` at the root defines models, persistent state, and integrations. Each folder under `src/` holds one kind of building block:
 
 <Tree>
   <Tree.Folder name="my-agent" defaultOpen>
@@ -102,8 +66,6 @@ Every ADK project follows the same layout. `agent.config.ts` at the root defines
       <Tree.Folder name="triggers" />
       <Tree.Folder name="workflows" />
     </Tree.Folder>
-    <Tree.File name="package.json" />
-    <Tree.File name="tsconfig.json" />
   </Tree.Folder>
 </Tree>
 
@@ -116,7 +78,7 @@ export default new Conversation({
   channel: '*',
   handler: async ({ execute }) => {
     await execute({
-      instructions: `You are a helpful AI assistant built with Botpress ADK. You can assist users with their questions and tasks.`,
+      instructions: `You are a helpful AI assistant built with Botpress ADK.`,
     })
   },
 })
@@ -132,33 +94,12 @@ Start the development server:
 adk dev
 ```
 
-`adk dev` does a few things at once:
-
-- Generates TypeScript types for your installed integrations so your editor knows their shapes
-- Builds the agent into a local runtime
-- Starts the dev server on port `3000` and the Control Panel on port `3001`
-- Watches your files and rebuilds on every save
-
-Once it's running, open the Control Panel at [http://localhost:3001](http://localhost:3001). You can browse conversations, inspect Workflows and tables, manage integration settings, and chat with your agent from the built-in Chat view.
+`adk dev` builds your agent, starts the dev server on port `3000` and the Control Panel on port `3001`, and rebuilds on every save. Open the Control Panel at [http://localhost:3001](http://localhost:3001) to browse conversations, inspect Workflows and tables, manage integration settings, and chat with your agent from the built-in Chat view.
 
 <Frame>
   <img alt="ADK Control Panel" className="block dark:hidden" src="./assets/quickstart.png" />
   <img alt="ADK Control Panel" className="hidden dark:block" src="./assets/quickstart-dark.png" />
 </Frame>
-
-You can also chat from the terminal. In a new window, with `adk dev` still running, start a conversation:
-
-```bash
-adk chat
-```
-
-```txt
-Botpress Chat
-Type "exit" or press ESC key to quit
-👤 Hey!
-🤖 Hello! How can I assist you today?
->>
-```
 
 ## Deploy to Botpress Cloud
 
