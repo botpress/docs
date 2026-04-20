@@ -1,0 +1,122 @@
+---
+title: Install
+description: Install the ADK CLI on macOS, Linux, or Windows.
+---
+
+The ADK CLI is the command-line tool you use to create, run, and deploy Botpress agents. Install it once on your machine, then use it from any project directory.
+
+<Info>
+  You'll need:
+
+  - A [Botpress account](https://sso.botpress.cloud)
+  - [Node.js](https://nodejs.org/) 22.0.0 or higher
+</Info>
+
+## Install the CLI
+
+Run the install command for your operating system:
+
+<CodeGroup>
+
+```bash macOS & Linux
+curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
+```
+
+```powershell Windows (PowerShell)
+powershell -c "irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex"
+```
+
+</CodeGroup>
+
+The script detects your platform, downloads the right binary, and adds it to your PATH.
+
+## Verify the installation
+
+Open a new terminal and check the installed version:
+
+```bash
+adk --version
+```
+
+If the command isn't found, the install directory isn't on your PATH yet. Restart your terminal, or add the install directory manually:
+
+<CodeGroup>
+
+```bash macOS & Linux (zsh)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+```bash macOS & Linux (bash)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+```powershell Windows (PowerShell)
+# The installer adds %LOCALAPPDATA%\Programs\adk to your user PATH automatically.
+# If adk still isn't found, restart your terminal.
+```
+
+</CodeGroup>
+
+## Install a specific version
+
+By default the installer pulls the latest release. To pin a version, set `ADK_VERSION` before running the install command:
+
+<CodeGroup>
+
+```bash macOS & Linux
+export ADK_VERSION=1.18.0
+curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
+```
+
+```powershell Windows (PowerShell)
+$env:ADK_VERSION = "1.18.0"
+irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex
+```
+
+</CodeGroup>
+
+## Install to a custom directory
+
+If you can't write to the default install location, set `ADK_INSTALL_DIR` to any directory you own:
+
+<CodeGroup>
+
+```bash macOS & Linux
+export ADK_INSTALL_DIR=$HOME/bin
+curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
+```
+
+```powershell Windows (PowerShell)
+$env:ADK_INSTALL_DIR = "$env:USERPROFILE\bin"
+irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex
+```
+
+</CodeGroup>
+
+Make sure the directory you pick is on your PATH.
+
+## Upgrade
+
+To upgrade an existing installation to the latest release, run:
+
+```bash
+adk self-upgrade
+```
+
+You can also pass a release tag (`beta`, `next`) or a specific version:
+
+```bash
+adk self-upgrade 1.18.0
+```
+
+## Install with npm
+
+If you'd rather manage the CLI through a package manager, you can install it from npm instead of using the binary installer:
+
+```bash
+npm install -g @botpress/adk-cli
+```
+
+The npm package may trail the GitHub release by a few minutes while the registry propagates.
