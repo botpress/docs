@@ -6,10 +6,32 @@ description: Create, run, and deploy your first Botpress agent with the ADK.
 This quickstart walks through creating an ADK agent, running it locally, and deploying it to Botpress Cloud.
 
 <Info>
-  Before you start, [install the ADK CLI](/adk/get-started/install). You'll also need a [Botpress account](https://sso.botpress.cloud) to log in with.
+  You'll need [Node.js](https://nodejs.org/) 22.0.0 or higher and a [Botpress account](https://sso.botpress.cloud) to log in with.
 </Info>
 
 <Steps>
+  <Step title="Install the ADK CLI">
+    Run the install command for your operating system:
+
+    <CodeGroup>
+
+    ```bash macOS & Linux
+    curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
+    ```
+
+    ```powershell Windows (PowerShell)
+    powershell -c "irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex"
+    ```
+
+    </CodeGroup>
+
+    Open a new terminal and verify the installation:
+
+    ```bash
+    adk --version
+    ```
+  </Step>
+
   <Step title="Log in to Botpress">
     Authenticate with your Botpress account:
 
