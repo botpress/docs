@@ -90,34 +90,96 @@
             "tag": "Beta",
             "pages": [
               {
-                "group": "Get started",
+                "group": "Get Started",
                 "pages": [
                   "/adk/get-started/welcome",
-                  "/adk/get-started/quickstart",
-                  "/adk/get-started/quickstart-coding-assistant"
+                  "/adk/get-started/quickstart"
                 ]
               },
               {
-                "group": "Concepts",
+                "group": "Setting up your agent",
                 "pages": [
-                  "/adk/concepts/conversations",
-                  "/adk/concepts/workflows",
-                  "/adk/concepts/actions",
-                  "/adk/concepts/tables",
-                  "/adk/concepts/triggers",
-                  "/adk/concepts/knowledge",
-                  "/adk/concepts/tools",
-                  "/adk/concepts/state",
-                  "/adk/concepts/configuration"
+                  "/adk/setup/configuration",
+                  "/adk/setup/environment",
+                  "/adk/setup/integrations"
                 ]
               },
-              "/adk/managing-integrations",
-              "/adk/runtime",
               {
-                "group": "Zai",
-                "pages": ["/adk/zai/overview", "/adk/zai/reference"]
+                "group": "Handling conversations",
+                "pages": [
+                  "/adk/conversations/setup",
+                  "/adk/conversations/messages",
+                  "/adk/conversations/ai-execution",
+                  "/adk/conversations/tools",
+                  "/adk/conversations/custom-components",
+                  "/adk/conversations/lifecycle",
+                  "/adk/conversations/state"
+                ]
               },
-              "/adk/cli-reference"
+              {
+                "group": "Handling longform logic",
+                "pages": [
+                  "/adk/workflows/create",
+                  "/adk/workflows/steps",
+                  "/adk/workflows/request-notify"
+                ]
+              },
+              {
+                "group": "Allowing interaction from outside",
+                "pages": [
+                  "/adk/external/actions",
+                  "/adk/external/scheduling",
+                  "/adk/external/triggers"
+                ]
+              },
+              {
+                "group": "Working with data",
+                "pages": [
+                  "/adk/data/tables",
+                  "/adk/data/knowledge"
+                ]
+              },
+              {
+                "group": "Testing and debugging",
+                "pages": [
+                  "/adk/testing/evals",
+                  "/adk/testing/agent-steps",
+                  "/adk/testing/debugging",
+                  "/adk/testing/scripts"
+                ]
+              },
+              {
+                "group": "LLM Utilities",
+                "pages": [
+                  "/adk/zai/overview",
+                  "/adk/zai/extract",
+                  "/adk/zai/generate",
+                  "/adk/zai/classify"
+                ]
+              },
+              {
+                "group": "AI Native Development",
+                "pages": [
+                  "/adk/ai-native/skills",
+                  "/adk/ai-native/agent-o",
+                  "/adk/ai-native/autonomous-loops"
+                ]
+              },
+              {
+                "group": "Advanced",
+                "pages": [
+                  "/adk/advanced/autonomous-execution",
+                  "/adk/advanced/tracked-state",
+                  "/adk/advanced/hitl",
+                  "/adk/advanced/frontend"
+                ]
+              },
+              {
+                "group": "CLI",
+                "pages": [
+                  "/adk/cli-reference"
+                ]
+              }
             ]
           },
           {
