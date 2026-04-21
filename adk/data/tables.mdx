@@ -1,3 +1,211 @@
 ---
 title: Tables
+description: Define and query structured data storage.
 ---
+
+Tables provide typed, structured storage for your agent. You define a schema using `z` from `@botpress/runtime`, and the ADK syncs it with Botpress Cloud on deploy. Tables are accessible from conversations, workflows, actions, tools, and triggers.
+
+## Creating a table
+
+Create a file in `src/tables/`:
+
+```typescript
+import { Table, z } from "@botpress/runtime"
+
+export default new Table({
+  name: "OrderTable",
+  columns: {
+    userId: z.string(),
+    items: z.array(z.string()),
+    total: z.number(),
+    status: z.string(),
+    createdAt: z.string().datetime(),
+  },
+})
+```
+
+The dev console under **Tables** is the primary way to manage table data. You can see the sync state between your code and Botpress Cloud, add/update/delete rows, filter and sort, export to CSV, and copy data between dev and prod environments.
+
+<Frame>
+  <img alt="Tables page in dev console" className="block dark:hidden" src="../assets/tables-console.png" />
+  <img alt="Tables page in dev console" className="hidden dark:block" src="../assets/tables-console-dark.png" />
+</Frame>
+
+### Naming rules
+
+- Must start with a letter, underscore, or `$`
+- 35 characters or less
+- Only letters, numbers, and underscores
+- Must end with `Table`
+- Cannot be a UUID
+
+### Searchable columns
+
+Mark columns as searchable to enable semantic search:
+
+```typescript
+export default new Table({
+  name: "TicketTable",
+  columns: {
+    title: { schema: z.string(), searchable: true },
+    description: { schema: z.string(), searchable: true },
+    status: z.string(),
+    priority: z.string(),
+  },
+})
+```
+
+## CRUD operations
+
+Import your table and use the typed instance methods.
+
+### Create rows
+
+```typescript
+import OrderTable from "../tables/order-table"
+
+const { rows } = await OrderTable.createRows({
+  rows: [{ userId: "user123", total: 99.99, status: "pending" }],
+})
+```
+
+### Find rows
+
+```typescript
+const { rows } = await OrderTable.findRows({
+  filter: { status: "pending" },
+  orderBy: "createdAt",
+  orderDirection: "desc",
+  limit: 10,
+})
+```
+
+### Get a single row
+
+```typescript
+const row = await OrderTable.getRow({ id: 42 })
+```
+
+### Update rows
+
+```typescript
+await OrderTable.updateRows({
+  rows: [{ id: orders[0].id, status: "completed" }],
+})
+```
+
+### Upsert rows
+
+Insert or update based on a key column:
+
+```typescript
+const { inserted, updated } = await OrderTable.upsertRows({
+  keyColumn: "userId",
+  rows: [{ userId: "user123", total: 149.99, status: "pending" }],
+})
+```
+
+### Delete rows
+
+```typescript
+await OrderTable.deleteRows({ status: "cancelled" })
+
+await OrderTable.deleteRowIds([1, 2, 3])
+
+await OrderTable.deleteAllRows()
+```
+
+## Filtering
+
+Use operators for advanced queries:
+
+```typescript
+const { rows } = await OrderTable.findRows({
+  filter: {
+    total: { $gt: 100 },
+    status: { $in: ["pending", "processing"] },
+  },
+})
+```
+
+### Operators
+
+| Operator | Description |
+|----------|-------------|
+| `$eq` | Equal to |
+| `$ne` | Not equal to |
+| `$gt` | Greater than |
+| `$gte` | Greater than or equal |
+| `$lt` | Less than |
+| `$lte` | Less than or equal |
+| `$in` | In array |
+| `$nin` | Not in array |
+| `$exists` | Field exists |
+| `$regex` | Regex match |
+
+### Logical operators
+
+Combine filters with `$and`, `$or`, and `$not`:
+
+```typescript
+const { rows } = await OrderTable.findRows({
+  filter: {
+    $or: [
+      { status: "pending" },
+      { total: { $gt: 500 } },
+    ],
+  },
+})
+```
+
+## Semantic search
+
+Search across `searchable` columns using natural language:
+
+```typescript
+const { rows } = await TicketTable.findRows({
+  search: "VPN connection issues",
+  limit: 10,
+})
+```
+
+Combine with filters for hybrid queries:
+
+```typescript
+const { rows } = await TicketTable.findRows({
+  search: "network problems",
+  filter: { status: "open" },
+  limit: 20,
+})
+```
+
+## Aggregation
+
+Group and aggregate data:
+
+```typescript
+const { rows } = await OrderTable.findRows({
+  group: {
+    status: "key",
+    total: ["sum", "avg", "count"],
+  },
+})
+```
+
+| Operation | Applies to | Description |
+|-----------|-----------|-------------|
+| `key` | All types | Group by this value |
+| `count` | All types | Count of rows |
+| `sum` | Numbers | Sum of values |
+| `avg` | Numbers | Average of values |
+| `max` | Numbers, strings, dates | Maximum value |
+| `min` | Numbers, strings, dates | Minimum value |
+| `unique` | All types | Array of unique values |
+
+---
+
+Next, learn how to give your agent access to documents and websites.
+
+<Card title="Knowledge bases" icon="book-open" href="/adk/data/knowledge">
+  RAG-powered document retrieval for your agent.
+</Card>
