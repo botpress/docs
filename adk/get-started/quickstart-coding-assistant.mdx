@@ -1,115 +1,57 @@
 ---
 title: Quickstart with coding assistant
-description: Build an ADK agent alongside Claude Code, Cursor, or Codex.
+description: Let's get the same hello-world agent set up, with Claude Code, Cursor, or Codex doing the work.
 ---
 
-By the end of this quickstart, Claude Code, Cursor, or Codex will be ready to build, debug, and test your ADK agent with you using the right conventions.
-
 <Info>
-  Before you start, follow the [Quickstart](/adk/get-started/quickstart) to install the ADK CLI and create your first project.
+  You'll need [Node.js](https://nodejs.org/) 22.0.0 or higher, a [Botpress account](https://sso.botpress.cloud), and Claude Code, Cursor, or Codex.
 </Info>
 
-## Skills installed
-
-When you run `adk init`, the CLI installs a set of skills into your project. Each skill teaches your assistant how to handle a specific kind of task:
-
-| Skill | Use when |
-|-------|----------|
-| `botpress-adk` | Building features: actions, tools, workflows, conversations, tables, Zai |
-| `botpress-adk-integrations` | Discovering, adding, and configuring integrations |
-| `botpress-adk-evals` | Writing and running evals to test your agent |
-| `botpress-adk-debugger` | Reading traces and logs, diagnosing failures |
-| `botpress-adk-frontend` | Building a frontend app that calls your agent |
-| `botpress-adk-docs` | Writing or updating docs inside your project |
-
-Your assistant loads the right skill automatically when you ask for help with a matching task.
-
 <Steps>
-  <Step title="Start a project">
-    ```bash
-    adk init my-agent
-    cd my-agent
-    ```
-
-    `adk init` installs the ADK skills into your project. Your AI coding assistant picks them up the next time you open the folder.
-  </Step>
-
-  <Step title="Build with your assistant">
-    Start the dev server so your assistant can run and test the agent:
-
-    ```bash
-    adk dev
-    ```
-
-    Then prompt your assistant based on what you're trying to do. The right skill loads automatically.
+  <Step title="Install the ADK CLI">
+    Run the install command for your operating system:
 
     <AccordionGroup>
-      <Accordion title="Add a feature">
-        ```txt
-        Have the agent ask users for their email on first contact, and save each email to a Botpress table.
+      <Accordion title="macOS & Linux">
+        ```bash
+        curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
         ```
-
-        Loads `botpress-adk` to scaffold a new table in `src/tables/` and update the conversation handler to collect and write the email.
       </Accordion>
-
-      <Accordion title="Debug an issue">
-        ```txt
-        My agent replies with "I can't help with that" whenever a user asks about orders. Read the latest traces and figure out what's blocking it.
+      <Accordion title="Windows (PowerShell)">
+        ```powershell
+        powershell -c "irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex"
         ```
-
-        Loads `botpress-adk-debugger`, which runs `adk traces` and `adk logs`, walks the trace tree, classifies the failure, and proposes a fix.
-      </Accordion>
-
-      <Accordion title="Write tests">
-        ```txt
-        Write an eval for the onboarding conversation that checks the agent collects the user's name and email in the first three turns.
-        ```
-
-        Loads `botpress-adk-evals` to draft an eval file with the right turn structure and assertions, then runs it against the dev server so you can see it pass or fail.
       </Accordion>
     </AccordionGroup>
 
-    These are just sample prompts to get you started. You can ask the assistant about any ADK task: new integrations, knowledge bases, workflows, and more.
-  </Step>
-
-  <Step title="Deploy to Botpress Cloud">
-    When the agent is ready, run:
+    Then verify:
 
     ```bash
-    adk deploy
+    adk --version
+    ```
+  </Step>
+
+  <Step title="Log in to Botpress">
+    ```bash
+    adk login
     ```
 
-    This builds a production bundle and uploads it to the workspace you linked during `adk init`. If you skipped the linking step, run `adk login` followed by `adk link` before deploying.
+    Follow the prompts to sign in through your browser.
+  </Step>
+
+  <Step title="Hand it off to your coding assistant">
+    Open Claude Code, Cursor, or Codex in an empty folder and paste this prompt:
+
+    ```txt
+    Let's get set up with a quick hello-world agent built with the ADK. Scaffold the project, start the dev server, and deploy it to Botpress Cloud when it's working.
+    ```
+
+    The assistant runs `adk init`, `adk dev`, and `adk deploy` for you. Review each change it proposes, and you'll have a live agent when it's done.
   </Step>
 </Steps>
 
-## Claude Code slash commands
+## Next steps
 
-Skills and slash commands work together but do different things:
-
-- **Skills** are the knowledge your assistant uses. They load automatically when you describe a matching task, and they work in Claude Code, Cursor, and Codex.
-- **Slash commands** are Claude Code-only shortcuts that jump straight to a skill. Type `/adk-debug` instead of describing "help me debug this agent." They're faster when you know exactly what you want.
-
-Install the Claude Code plugin once to get the slash commands:
-
-```txt
-/plugin marketplace add botpress/skills
-/plugin install adk@botpress-skills
-```
-
-Then use:
-
-| Command | What it does |
-|---------|--------------|
-| `/adk-init` | Scaffold a new ADK project |
-| `/adk-debug` | Debug issues using traces, logs, and the debug loop |
-| `/adk-eval` | Write, run, or debug evals |
-| `/adk-integration` | Discover, add, and configure integrations |
-| `/adk-frontend` | Build a frontend that integrates with your agent |
-| `/adk-doc-create` | Create docs for a feature in your bot |
-| `/adk-doc-review` | Review project docs for accuracy |
-| `/adk-doc-update` | Update project docs after code changes |
-| `/adk-doc-sync` | Check if project docs match your code |
-| `/adk-doc-search` | Search your project docs |
-
-Cursor and Codex use the installed skills automatically. No commands needed.
+<Card title="Manual quickstart" icon="rocket" href="/adk/get-started/quickstart">
+  Run through the flow yourself without a coding assistant.
+</Card>
