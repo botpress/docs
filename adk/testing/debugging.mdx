@@ -1,3 +1,58 @@
 ---
 title: Debug with logs and traces
+description: Inspect traces, spans, and logs to understand what your agent is doing.
 ---
+
+The ADK provides two observability views in the dev console and a CLI command for reading logs.
+
+## Traces
+
+The **Traces** view in the dev console shows a timeline of every span in your agent's execution. Each conversation turn, workflow step, tool call, and LLM request is captured as a span with timing and metadata.
+
+<Frame>
+  <img alt="Traces view in dev console" className="block dark:hidden" src="../assets/traces-view.png" />
+  <img alt="Traces view in dev console" className="hidden dark:block" src="../assets/traces-view-dark.png" />
+</Frame>
+
+### What you can see
+
+- **Handler spans** showing conversation and workflow handler execution
+- **Autonomous execution** spans for each `execute()` call, including iteration count and model used
+- **Tool call spans** with input, output, and duration
+- **LLM call spans** with model, token usage, and latency
+- **Knowledge search spans** with queries and result counts
+- **Error spans** with stack traces
+
+### Filtering
+
+Filter traces by time range, span type, or search for specific content. Click any span to expand its details and see its child spans.
+
+## Logs
+
+The **Logs** view in the dev console shows structured log output from your agent. Any `console.log`, `console.warn`, or `console.error` from your handlers, tools, and actions appears here.
+
+<Frame>
+  <img alt="Logs view in dev console" className="block dark:hidden" src="../assets/logs-view.png" />
+  <img alt="Logs view in dev console" className="hidden dark:block" src="../assets/logs-view-dark.png" />
+</Frame>
+
+### CLI
+
+You can also read logs from the command line:
+
+```bash
+adk logs                         # Show recent logs
+adk logs --follow                # Stream logs in real time
+adk logs error                   # Filter by level
+adk logs "webhook"               # Filter by content
+```
+
+Logs are stored in `.adk/logs/` while the dev server is running.
+
+---
+
+Next, learn how to run scripts with access to your agent's runtime context.
+
+<Card title="Run scripts" icon="terminal" href="/adk/testing/scripts">
+  Execute one-off scripts with full runtime access.
+</Card>
