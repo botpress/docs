@@ -1,3 +1,81 @@
 ---
 title: Integrations
+description: Connect your agent to channels and external services.
 ---
+
+Integrations connect your agent to the outside world. They provide channels (webchat, Slack, WhatsApp) and external services (Gmail, Linear, Stripe).
+
+## Browsing and managing integrations
+
+The dev console has a built-in integration hub under **Integrations**. From here you can browse available integrations, add them to your project, configure settings, and enable or disable them.
+
+<Frame>
+  <img alt="Integrations page in dev console" className="block dark:hidden" src="../assets/integrations-console.png" />
+  <img alt="Integrations page in dev console" className="hidden dark:block" src="../assets/integrations-console-dark.png" />
+</Frame>
+
+## Configuring integrations
+
+Many integrations require configuration (API keys, tokens, webhook URLs). After adding an integration, configure it from the **Integrations** page in the dev console.
+
+<Frame>
+  <img alt="Integration configuration in dev console" className="block dark:hidden" src="../assets/integration-config-console.png" />
+  <img alt="Integration configuration in dev console" className="hidden dark:block" src="../assets/integration-config-console-dark.png" />
+</Frame>
+
+Integration configuration is stored directly on Botpress Cloud, not in your project files. Your dev bot and prod bot each have their own configuration, so you can use different API keys or settings per environment. This is separate from agent secrets, which your code reads directly.
+
+## Enabling and disabling
+
+Integrations can be enabled or disabled from the dev console or in `agent.config.ts`:
+
+```typescript
+dependencies: {
+  integrations: {
+    webchat: {
+      version: "webchat@latest",
+      enabled: true,
+    },
+    slack: {
+      version: "slack@latest",
+      enabled: false,
+    },
+  },
+},
+```
+
+Disabled integrations are still part of your project (types are generated, code can reference them) but they won't be active when your agent runs.
+
+## CLI
+
+You can also manage integrations from the command line:
+
+| Command | What it does |
+|---------|-------------|
+| `adk search <query>` | Search the Botpress Hub for integrations |
+| `adk list --available` | List all available integrations |
+| `adk info <name>` | Show details, actions, events, and channels for an integration |
+| `adk add <name>` | Add an integration to your project |
+| `adk add <name> --alias <alias>` | Add with a custom alias |
+| `adk upgrade <name>` | Update an integration to a newer version |
+| `adk remove <name>` | Remove an integration from your project |
+
+Integrations are added disabled by default. Enable and configure them in the dev console.
+
+## Integration versions
+
+| Format | Example | Behavior |
+|--------|---------|----------|
+| `name@latest` | `webchat@latest` | Resolves to the newest version |
+| `name@version` | `slack@0.5.0` | Pins to a specific version |
+| `workspace/name@version` | `my-workspace/custom@1.0.0` | Uses a workspace-specific integration |
+
+Use `@latest` during development. Pin to specific versions for production deployments.
+
+---
+
+With your agent configured and connected to integrations, you're ready to start building. Next, learn how to handle user messages.
+
+<Card title="Set up conversations" icon="messages" href="/adk/conversations/setup">
+  Handle messages across channels.
+</Card>
