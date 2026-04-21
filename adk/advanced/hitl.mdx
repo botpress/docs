@@ -1,3 +1,153 @@
 ---
 title: Human-in-the-loop
+description: Escalate conversations to live human agents.
 ---
+
+HITL (Human-in-the-Loop) lets your agent hand off a conversation to a live human agent. This is powered by two dependencies working together: the **HITL integration** (provides the transport to a helpdesk or agent platform) and the **HITL plugin** (provides the actions your code calls).
+
+## Setup
+
+Add both the integration and plugin to `agent.config.ts`:
+
+```typescript
+import { defineConfig } from "@botpress/runtime"
+
+export default defineConfig({
+  name: "my-agent",
+
+  defaultModels: {
+    autonomous: "openai:gpt-4.1-mini-2025-04-14",
+    zai: "openai:gpt-4.1-mini-2025-04-14",
+  },
+
+  dependencies: {
+    integrations: {
+      chat: { version: "chat@0.7.3", enabled: true },
+      webchat: { version: "webchat@0.3.0", enabled: true },
+      hitl: { version: "hitl@2.0.2", enabled: true },
+    },
+
+    plugins: {
+      hitl: {
+        version: "hitl@1.3.0",
+        dependencies: {
+          hitl: {
+            integrationAlias: "hitl",
+            integrationInterfaceAlias: "hitl<hitlSession>",
+          },
+        },
+      },
+    },
+  },
+})
+```
+
+### How the plugin wiring works
+
+The `plugins` block connects the plugin to the integration:
+
+```typescript
+plugins: {
+  hitl: {
+    version: "hitl@1.3.0",
+    dependencies: {
+      hitl: {
+        integrationAlias: "hitl",           // Must match a key in dependencies.integrations
+        integrationInterfaceAlias: "hitl<hitlSession>",
+      },
+    },
+  },
+},
+```
+
+`integrationAlias` tells the plugin which installed integration to use. It must match a key in `dependencies.integrations`. The ADK validates this at build time.
+
+### Optional plugin config
+
+```typescript
+plugins: {
+  hitl: {
+    version: "hitl@1.3.0",
+    config: {
+      flowOnHitlStopped: false,
+      useHumanAgentInfo: false,
+    },
+    dependencies: { /* ... */ },
+  },
+},
+```
+
+## Starting a handoff
+
+Import `plugins` from `@botpress/runtime` and call `startHitl`. All inputs are fully typed.
+
+```typescript
+import { Conversation, plugins } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: ["chat.channel", "webchat.channel"],
+  handler: async ({ execute, conversation, message }) => {
+    if (message.payload.text.toLowerCase() === "/starthitl") {
+      await plugins.hitl.actions.startHitl({
+        title: "Support HITL",
+        description: "Escalate to support agent",
+        conversationId: conversation.id,
+        userId: message.userId,
+        configurationOverrides: {
+          onHitlHandoffMessage: "Escalating to support...",
+          userHitlCloseCommand: "/end",
+          agentAssignedTimeoutSeconds: 100,
+        },
+      })
+      return
+    }
+
+    await execute({
+      instructions: "You are a helpful assistant. If the user asks for a human, tell them to type /starthitl.",
+    })
+  },
+})
+```
+
+## Using a different provider
+
+The HITL plugin works with any integration that implements the HITL interface. To use Zendesk instead of the generic HITL integration, swap the integration and update the alias:
+
+```typescript
+dependencies: {
+  integrations: {
+    zendesk: { version: "zendesk@1.0.0", enabled: true },
+  },
+  plugins: {
+    hitl: {
+      version: "hitl@1.3.0",
+      dependencies: {
+        hitl: {
+          integrationAlias: "zendesk",
+          integrationInterfaceAlias: "hitl<hitlTicket>",
+        },
+      },
+    },
+  },
+},
+```
+
+The plugin doesn't care about the specific provider, only that it implements the HITL interface.
+
+## Deploy and test
+
+```bash
+adk deploy
+```
+
+<Warning>
+  HITL does not work in dev mode because conversations don't exist on the dev bot. You must deploy and test on the production bot.
+</Warning>
+
+When you run `adk dev`, the ADK downloads the plugin, installs it into `bp_modules/`, and generates TypeScript types. But testing the actual handoff requires a deployed bot.
+
+---
+
+<Card title="Connect to a frontend" icon="monitor" href="/adk/advanced/frontend">
+  Build a frontend that talks to your agent.
+</Card>
