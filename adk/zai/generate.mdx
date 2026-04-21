@@ -1,3 +1,95 @@
 ---
 title: Generate text and summaries
+description: Generate, rewrite, summarize, and answer questions with citations.
 ---
+
+Zai provides methods for generating and transforming text. Each method handles prompting and output formatting.
+
+## Generate text
+
+`zai.text()` generates content from a prompt:
+
+```typescript
+import { adk } from "@botpress/runtime"
+
+const intro = await adk.zai.text(
+  "Write a brief introduction about AI in customer service",
+  { length: 200 }
+)
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `length` | `number` | Target length in tokens |
+
+## Rewrite text
+
+`zai.rewrite()` transforms text based on instructions:
+
+```typescript
+const formal = await adk.zai.rewrite(
+  "hey, the meeting is tmrw at 3",
+  "Make this professional and formal"
+)
+// "The meeting has been scheduled for tomorrow at 3:00 PM."
+```
+
+## Summarize
+
+`zai.summarize()` condenses long content:
+
+```typescript
+const summary = await adk.zai.summarize(longArticle, {
+  length: 100,
+  prompt: "Focus on key findings and conclusions",
+})
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `length` | `number` | Target summary length in tokens |
+| `prompt` | `string` | Instructions for what to focus on |
+
+## Answer with citations
+
+`zai.answer()` answers questions from a set of documents and provides source citations:
+
+```typescript
+const documents = [
+  "Botpress was founded in 2016.",
+  "The company is based in Quebec, Canada.",
+  "Botpress provides an AI agent platform.",
+]
+
+const result = await adk.zai.answer(documents, "When was Botpress founded?")
+
+if (result.type === "answer") {
+  console.log(result.answer)    // "Botpress was founded in 2016."
+  console.log(result.citations) // Array of citation references
+}
+```
+
+The result `type` is `"answer"` when the question can be answered from the documents, or another value when it cannot.
+
+## Patch files
+
+`zai.patch()` makes surgical edits to code or text files based on natural language instructions. It produces minimal diffs rather than regenerating entire files:
+
+```typescript
+const files = [{
+  path: "src/utils.ts",
+  name: "utils.ts",
+  content: 'export function add(a: number, b: number) {\n  return a + b\n}',
+}]
+
+const patched = await adk.zai.patch(
+  files,
+  "Add JSDoc comments to all exported functions"
+)
+```
+
+---
+
+<Card title="Classify, validate and filter" icon="tags" href="/adk/zai/classify">
+  Check conditions, label content, filter, sort, rate, and group.
+</Card>

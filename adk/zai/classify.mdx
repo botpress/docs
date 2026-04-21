@@ -1,3 +1,104 @@
 ---
 title: Classify, validate and filter
+description: Check conditions, label content, filter, sort, rate, and group items.
 ---
+
+Zai provides methods for classifying, validating, and organizing data using an LLM.
+
+## Check a condition
+
+`zai.check()` verifies a boolean condition against input:
+
+```typescript
+import { adk } from "@botpress/runtime"
+
+const { output } = await adk.zai.check(emailBody, "is spam").result()
+const { value, explanation } = output
+// value: true/false
+// explanation: "The email contains..."
+```
+
+## Label content
+
+`zai.label()` applies multiple boolean labels to content:
+
+```typescript
+const result = await adk.zai.label(emailBody, {
+  spam: "is this email spam?",
+  urgent: "does this require immediate attention?",
+  promotional: "is this promotional content?",
+})
+// { spam: true, urgent: false, promotional: true }
+```
+
+## Filter an array
+
+`zai.filter()` keeps items that match a condition:
+
+```typescript
+const comments = [
+  "Great product, I love it!",
+  "This is terrible spam content",
+  "Very helpful review, thank you",
+]
+
+const clean = await adk.zai.filter(comments, "is not spam or inappropriate")
+// ["Great product, I love it!", "Very helpful review, thank you"]
+```
+
+## Sort items
+
+`zai.sort()` orders items using natural language criteria:
+
+```typescript
+const tasks = [
+  "Update documentation",
+  "Fix critical security bug",
+  "Add new feature",
+  "System is down - all users affected",
+]
+
+const prioritized = await adk.zai.sort(tasks, "by urgency and impact, most urgent first")
+// ["System is down...", "Fix critical security bug", "Add new feature", "Update documentation"]
+```
+
+## Rate items
+
+`zai.rate()` scores items on a 1-5 scale:
+
+```typescript
+const reviews = [
+  "Amazing product! Best purchase ever!",
+  "It's okay, nothing special",
+  "Terrible quality, broke immediately",
+]
+
+const ratings = await adk.zai.rate(reviews, "Rate the sentiment")
+// [5, 3, 1]
+```
+
+## Group items
+
+`zai.group()` categorizes items into groups:
+
+```typescript
+const messages = [
+  "I can't log in to my account",
+  "How do I reset my password?",
+  "When will my order arrive?",
+  "The app keeps crashing",
+]
+
+const groups = await adk.zai.group(messages, {
+  instructions: "Group by type of customer issue",
+})
+// { "Login Issues": [...], "Shipping Questions": [...], "Technical Errors": [...] }
+```
+
+---
+
+Next, explore AI-native development patterns.
+
+<Card title="Skills" icon="puzzle-piece" href="/adk/ai-native/skills">
+  Give AI coding assistants deep ADK knowledge.
+</Card>
