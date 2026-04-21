@@ -1,3 +1,181 @@
 ---
-title: Build Actions
+title: Create actions
+description: Create reusable functions callable from anywhere in your agent or from external systems.
 ---
+
+Actions are reusable functions that can be called from conversations, workflows, tools, triggers, other actions, and external API clients. They encapsulate shared business logic in one place.
+
+The difference between an action and a tool: tools only exist inside `execute()` and are called by the AI model. Actions are called by your code from anywhere, and are also exposed via the Botpress API to external systems. You can convert an action into a tool with `.asTool()` when you want the AI to use it too.
+
+## Creating an action
+
+Create a file in `src/actions/`:
+
+```typescript
+import { Action, z } from "@botpress/runtime"
+
+export default new Action({
+  name: "calculateTotal",
+  description: "Calculate the total price including tax",
+  input: z.object({
+    items: z.array(z.object({
+      price: z.number(),
+      quantity: z.number(),
+    })),
+    taxRate: z.number().default(0.08),
+  }),
+  output: z.object({
+    subtotal: z.number(),
+    tax: z.number(),
+    total: z.number(),
+  }),
+  handler: async ({ input }) => {
+    const subtotal = input.items.reduce(
+      (sum, item) => sum + item.price * item.quantity, 0
+    )
+    const tax = subtotal * input.taxRate
+    return { subtotal, tax, total: subtotal + tax }
+  },
+})
+```
+
+## Calling actions
+
+Import `actions` from `@botpress/runtime` and call any action by name. Input and output are fully typed.
+
+### From a conversation
+
+```typescript
+import { Conversation, actions } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    const result = await actions.calculateTotal({
+      items: [{ price: 10, quantity: 2 }],
+    })
+    console.log(result.total)
+
+    await execute({ instructions: "You are a helpful assistant." })
+  },
+})
+```
+
+### From a workflow
+
+```typescript
+import { Workflow, actions } from "@botpress/runtime"
+
+export default new Workflow({
+  name: "process-order",
+  handler: async ({ input, step }) => {
+    const totals = await step("calculate", async () => {
+      return await actions.calculateTotal({ items: input.items })
+    })
+  },
+})
+```
+
+### From a tool
+
+```typescript
+import { Autonomous, actions, z } from "@botpress/runtime"
+
+export default new Autonomous.Tool({
+  name: "getOrderTotal",
+  description: "Calculate the total for an order",
+  input: z.object({ items: z.array(z.object({ price: z.number(), quantity: z.number() })) }),
+  output: z.object({ total: z.number() }),
+  handler: async ({ items }) => {
+    const result = await actions.calculateTotal({ items })
+    return { total: result.total }
+  },
+})
+```
+
+### From a trigger
+
+```typescript
+import { Trigger, actions } from "@botpress/runtime"
+
+export default new Trigger({
+  name: "onOrderCreated",
+  events: ["orderPlaced"],
+  handler: async ({ event }) => {
+    await actions.calculateTotal({ items: event.payload.items })
+  },
+})
+```
+
+## As a tool
+
+Convert an action into a tool so the AI model can call it during `execute()`:
+
+```typescript
+import { Conversation, actions } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a shopping assistant.",
+      tools: [actions.calculateTotal.asTool()],
+    })
+  },
+})
+```
+
+You can override the description for the tool:
+
+```typescript
+actions.calculateTotal.asTool({ description: "Calculate the total price with tax for the user's cart" })
+```
+
+## Integration actions
+
+When you add an integration, its actions are available under `actions.<integration>`:
+
+```typescript
+import { actions } from "@botpress/runtime"
+
+await actions.webchat.showWebchat({ conversationId })
+await actions.slack.addReaction({ name: "thumbsup", channel, timestamp })
+```
+
+## Calling from external systems
+
+Actions are exposed via the Botpress Runtime API. External services can call your agent's actions over HTTP:
+
+```bash
+curl -X POST https://chat.botpress.cloud/v1/chat/actions \
+  -H "Content-Type: application/json" \
+  -H "x-bot-id: YOUR_BOT_ID" \
+  -d '{
+    "type": "calculateTotal",
+    "input": {
+      "items": [{ "price": 10, "quantity": 2 }],
+      "taxRate": 0.08
+    }
+  }'
+```
+
+This makes actions the bridge between your agent and external systems. A backend service, a webhook handler, or another application can trigger your agent's logic without going through a conversation.
+
+See the [Runtime API reference](/api-reference/runtime-api/openapi/callAction) for full details.
+
+## Dev console
+
+You can browse and test actions in the dev console under **Actions**.
+
+<Frame>
+  <img alt="Actions page in dev console" className="block dark:hidden" src="../assets/actions-console.png" />
+  <img alt="Actions page in dev console" className="hidden dark:block" src="../assets/actions-console-dark.png" />
+</Frame>
+
+---
+
+Next, learn how to react to external events with triggers.
+
+<Card title="Set up triggers" icon="zap" href="/adk/external/triggers">
+  Subscribe to integration and custom events.
+</Card>

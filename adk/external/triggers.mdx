@@ -1,3 +1,133 @@
 ---
 title: Set up triggers
+description: React to events from integrations and custom events.
 ---
+
+Triggers subscribe to events and run a handler when those events fire. Unlike conversations (which respond to user messages), triggers respond to system events, integration events, and custom events you define.
+
+## Creating a trigger
+
+Create a file in `src/triggers/`:
+
+```typescript
+import { Trigger } from "@botpress/runtime"
+
+export default new Trigger({
+  name: "onConversationStarted",
+  events: ["webchat:conversationStarted"],
+  handler: async ({ event }) => {
+    console.log("New conversation started:", event.payload)
+  },
+})
+```
+
+The `events` array lists which events this trigger subscribes to. The handler runs when any of the listed events fire.
+
+Trigger names must be at least 3 characters and contain only alphanumeric characters and underscores.
+
+## Event format
+
+Events use the format `"integration:eventName"` for integration events, or just the event name for custom events defined in `agent.config.ts`.
+
+The handler receives:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `event.type` | `string` | The event type that fired |
+| `event.payload` | `object` | Event-specific data |
+| `client` | `object` | Botpress client for API calls |
+
+## Multiple events
+
+A trigger can subscribe to multiple events and handle each differently:
+
+```typescript
+export default new Trigger({
+  name: "onLinearIssue",
+  description: "Handle Linear issue events",
+  events: [
+    "linear:issueCreated",
+    "linear:issueUpdated",
+    "linear:issueDeleted",
+  ],
+  handler: async ({ event }) => {
+    if (event.type === "linear:issueCreated") {
+      // Handle new issue
+    } else if (event.type === "linear:issueUpdated") {
+      // Handle update
+    } else if (event.type === "linear:issueDeleted") {
+      // Handle deletion
+    }
+  },
+})
+```
+
+## Custom events
+
+Triggers can subscribe to custom events you define in `agent.config.ts`:
+
+```typescript
+// agent.config.ts
+export default defineConfig({
+  events: {
+    orderPlaced: {
+      description: "Fired when an order is placed",
+      schema: z.object({
+        orderId: z.string(),
+        total: z.number(),
+      }),
+    },
+  },
+})
+```
+
+```typescript
+// src/triggers/on-order.ts
+import { Trigger } from "@botpress/runtime"
+
+export default new Trigger({
+  name: "onOrderPlaced",
+  events: ["orderPlaced"],
+  handler: async ({ event }) => {
+    const { orderId, total } = event.payload
+    // Process the order
+  },
+})
+```
+
+## Using actions from triggers
+
+Triggers can call actions for reusable logic:
+
+```typescript
+import { Trigger, actions } from "@botpress/runtime"
+
+export default new Trigger({
+  name: "onConversationStarted",
+  events: ["webchat:conversationStarted"],
+  handler: async ({ event }) => {
+    if (event.payload.conversationId) {
+      await actions.webchat.showWebchat({
+        conversationId: event.payload.conversationId,
+      })
+    }
+  },
+})
+```
+
+## Dev console
+
+You can browse triggers in the dev console under **Triggers**.
+
+<Frame>
+  <img alt="Triggers page in dev console" className="block dark:hidden" src="../assets/triggers-console.png" />
+  <img alt="Triggers page in dev console" className="hidden dark:block" src="../assets/triggers-console-dark.png" />
+</Frame>
+
+---
+
+Next, learn how to store and query structured data.
+
+<Card title="Tables" icon="database" href="/adk/data/tables">
+  Define and query database tables.
+</Card>
