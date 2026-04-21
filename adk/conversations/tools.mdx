@@ -1,3 +1,202 @@
 ---
 title: Define Tools
+description: Give the AI model functions it can call during execution.
 ---
+
+Tools are functions the AI model can call during `execute()`. The model reads the tool's name, description, and input schema to decide when and how to call it. You define the logic; the model decides when to use it.
+
+## Creating a tool
+
+Create a file in `src/tools/`:
+
+```typescript
+import { Autonomous, z } from "@botpress/runtime"
+
+export default new Autonomous.Tool({
+  name: "getWeather",
+  description: "Get the current weather for a city",
+  input: z.object({
+    city: z.string().describe("The city name"),
+    unit: z.enum(["celsius", "fahrenheit"]).optional().describe("Temperature unit"),
+  }),
+  output: z.object({
+    temperature: z.number(),
+    condition: z.string(),
+  }),
+  handler: async ({ city, unit }) => {
+    const weather = await fetchWeatherData(city, unit)
+    return {
+      temperature: weather.temp,
+      condition: weather.condition,
+    }
+  },
+})
+```
+
+The `input` and `output` schemas use Zod. Use `.describe()` on each field so the model knows what to pass. The handler receives validated input and returns typed output.
+
+## Using tools in a conversation
+
+Pass tools to `execute()` via the `tools` array:
+
+```typescript
+import { Conversation } from "@botpress/runtime"
+import getWeather from "../tools/weather"
+import createTicket from "../tools/ticket"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [getWeather, createTicket],
+    })
+  },
+})
+```
+
+The model decides which tools to call based on the conversation. It can call multiple tools across multiple iterations before responding.
+
+## Inline tools
+
+You can define tools directly inside a handler without creating a separate file:
+
+```typescript
+import { Autonomous, z, Conversation } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    const lookupOrder = new Autonomous.Tool({
+      name: "lookupOrder",
+      description: "Look up an order by ID",
+      input: z.object({ orderId: z.string() }),
+      output: z.object({ status: z.string(), total: z.number() }),
+      handler: async ({ orderId }) => {
+        const order = await db.findOrder(orderId)
+        return { status: order.status, total: order.total }
+      },
+    })
+
+    await execute({
+      instructions: "You are an order support agent.",
+      tools: [lookupOrder],
+    })
+  },
+})
+```
+
+This is useful for tools that are only relevant to a single conversation.
+
+## Writing good descriptions
+
+The `description` field is how the model decides when to use your tool. Be specific about what the tool does and when to use it:
+
+```typescript
+// Too vague
+description: "Gets data"
+
+// Clear and specific
+description: "Look up a customer's order by order ID. Use this when the user asks about an order status, shipment tracking, or order details."
+```
+
+Use `.describe()` on input fields for the same reason:
+
+```typescript
+input: z.object({
+  query: z.string().describe("The search query, e.g. 'wireless headphones under $50'"),
+  maxResults: z.number().optional().describe("Maximum results to return, defaults to 10"),
+})
+```
+
+## Signals
+
+Tools can throw signals to influence the AI loop without returning a normal result.
+
+### ThinkSignal
+
+Throws context back into the model's reasoning without producing a tool output. Useful when a tool finds no results and you want the model to try a different approach:
+
+```typescript
+import { Autonomous } from "@botpress/runtime"
+
+handler: async ({ query }) => {
+  const results = await search(query)
+
+  if (results.length === 0) {
+    throw new Autonomous.ThinkSignal(
+      "No results found",
+      "No results matched the query. Try rephrasing or broadening the search."
+    )
+  }
+
+  return results
+}
+```
+
+## Actions as tools
+
+Actions are reusable functions that can be called from anywhere in your agent (conversations, workflows, other actions, or external API clients). Unlike standalone tools, which only exist inside `execute()`, actions are shared primitives. You can convert any action into a tool:
+
+```typescript
+import { Conversation, actions } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful assistant.",
+      tools: [actions.calculateTotal.asTool()],
+    })
+  },
+})
+```
+
+See [Build Actions](/adk/external/actions) for how to define actions.
+
+## Workflows as tools
+
+Workflows are long-running background processes that can span multiple steps and run independently of the conversation. Converting a workflow to a tool lets the model kick one off:
+
+```typescript
+import { Conversation } from "@botpress/runtime"
+import orderWorkflow from "../workflows/order"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are an order management assistant.",
+      tools: [orderWorkflow.asTool()],
+    })
+  },
+})
+```
+
+See [Create workflows](/adk/workflows/create) for how to define workflows.
+
+## Calling actions from tools
+
+Tools can call actions for reusable logic:
+
+```typescript
+import { Autonomous, actions, z } from "@botpress/runtime"
+
+export default new Autonomous.Tool({
+  name: "processRefund",
+  description: "Process a refund for an order",
+  input: z.object({ orderId: z.string() }),
+  handler: async ({ orderId }) => {
+    const result = await actions.processRefund({ orderId })
+    return result
+  },
+})
+```
+
+---
+
+Next, learn how to send messages and content directly from your handler.
+
+<Card title="Send messages and content" icon="message-circle" href="/adk/conversations/messages">
+  Send text, images, carousels, and more.
+</Card>

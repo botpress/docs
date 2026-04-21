@@ -1,3 +1,228 @@
 ---
 title: Run AI agents in a conversation
+description: Use execute() to hand messages to the AI model.
 ---
+
+`execute()` is the primary way your agent responds to users. It starts an AI loop that iterates until the model reaches a conclusion. On each iteration, the model can read the conversation, call tools, and generate code. The loop ends when the model sends a message to the user (and waits for a reply), triggers an exit, or hits the iteration limit (default 10, configurable).
+
+The `await` resolves once the loop finishes. Under the hood, `execute()` is powered by [llmz](https://github.com/botpress/botpress/tree/master/packages/llmz).
+
+## Basic usage
+
+```typescript
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are a helpful customer support agent.",
+    })
+  },
+})
+```
+
+The model reads the full conversation transcript, follows your instructions, and responds. If tools are available, it can call them before responding.
+
+## Instructions
+
+Instructions tell the model how to behave. They can be a static string or a function that returns a string:
+
+```typescript
+await execute({
+  instructions: "You are a helpful assistant that speaks formally.",
+})
+
+await execute({
+  instructions: () => {
+    const hour = new Date().getHours()
+    return hour < 12
+      ? "You are a cheerful morning assistant."
+      : "You are a calm evening assistant."
+  },
+})
+```
+
+Instructions are evaluated fresh on each execution. Use a function when you need dynamic behavior based on state, time, or other context.
+
+## Knowledge
+
+Attach knowledge bases to give the model access to your documents:
+
+```typescript
+import { DocsKB } from "../knowledge/docs"
+import { FAQKB } from "../knowledge/faq"
+
+await execute({
+  instructions: "Answer questions using the documentation.",
+  knowledge: [DocsKB, FAQKB],
+})
+```
+
+The model automatically searches the knowledge bases when it needs information. Results include citations that trace back to the source documents. See [Knowledge bases](/adk/data/knowledge) for how to define them.
+
+## Tools
+
+Give the model functions it can call:
+
+```typescript
+import { getWeather } from "../tools/weather"
+import { createTicket } from "../tools/ticket"
+
+await execute({
+  instructions: "You are a helpful assistant.",
+  tools: [getWeather, createTicket],
+})
+```
+
+The model decides when to call a tool based on the conversation. For a full guide on defining tools, see [Define Tools](/adk/conversations/tools).
+
+## Exits
+
+Exits let the model end execution with a structured result:
+
+```typescript
+import { Autonomous, z } from "@botpress/runtime"
+
+const handoff = new Autonomous.Exit({
+  name: "handoffToHuman",
+  description: "Transfer the conversation to a human agent",
+  schema: z.object({
+    reason: z.string(),
+    priority: z.enum(["low", "medium", "high"]),
+  }),
+})
+
+const result = await execute({
+  instructions: "Help the user. If you can't resolve their issue, hand off to a human.",
+  exits: [handoff],
+})
+
+if (result.exit?.name === "handoffToHuman") {
+  const { reason, priority } = result.exit.value
+  // Route to human agent
+}
+```
+
+## Model override
+
+Override the default model for a specific execution:
+
+```typescript
+await execute({
+  model: "openai:gpt-4.1-2025-04-14",
+  instructions: "You are a helpful assistant.",
+})
+```
+
+You can also pass an array for fallback:
+
+```typescript
+await execute({
+  model: ["cerebras:gpt-oss-120b", "openai:gpt-4.1-2025-04-14"],
+  instructions: "You are a helpful assistant.",
+})
+```
+
+The default model is set in `agent.config.ts` under `defaultModels.autonomous`. You can also browse and change models from the dev console under **Settings > LLM Config**.
+
+## Temperature and reasoning
+
+```typescript
+await execute({
+  instructions: "You are a helpful assistant.",
+  temperature: 0.3,
+  reasoningEffort: "high",
+})
+```
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `temperature` | `0.7` | Controls randomness. Lower is more deterministic. |
+| `reasoningEffort` | none | `"low"`, `"medium"`, `"high"`, `"dynamic"`, or `"none"`. Only for models that support reasoning. |
+
+## Iterations
+
+The model can loop multiple times in a single execution (e.g., call a tool, read the result, call another tool, then respond). The `iterations` prop controls the maximum number of loops:
+
+```typescript
+await execute({
+  instructions: "You are a research assistant.",
+  iterations: 20,
+})
+```
+
+Defaults to 10, clamped between 1 and 100.
+
+## Mode
+
+Execution runs in `chat` mode by default, where the model sends messages to the user. You can switch to `worker` mode for background processing:
+
+```typescript
+await execute({
+  mode: "worker",
+  instructions: "Analyze the data and update the cart object.",
+  objects: [cart],
+})
+```
+
+In worker mode, the model processes without sending messages to the conversation.
+
+## Hooks
+
+Hooks let you observe and intercept execution at key moments:
+
+```typescript
+await execute({
+  instructions: "You are a helpful assistant.",
+  hooks: {
+    onBeforeTool: async ({ tool, input, controller }) => {
+      console.log(`Calling tool: ${tool.name}`, input)
+      // Return { input: modifiedInput } to change the input
+      // Call controller.abort() to cancel the tool call
+    },
+
+    onAfterTool: async ({ tool, input, output }) => {
+      console.log(`Tool ${tool.name} returned:`, output)
+      // Return { output: modifiedOutput } to change the output
+    },
+
+    onTrace: ({ trace, iteration }) => {
+      // Log or monitor execution traces
+    },
+
+    onIterationStart: async (iteration, controller, context) => {
+      // Runs before each iteration
+    },
+
+    onIterationEnd: async (iteration, controller) => {
+      // Runs after each iteration
+      // Use controller to stop execution early
+    },
+
+    onBeforeExecution: async (iteration, controller) => {
+      // Runs before code execution
+      // Return { code: modifiedCode } to change what gets executed
+    },
+
+    onExit: async (result) => {
+      // Runs when the model triggers an exit
+    },
+  },
+})
+```
+
+## Debugging execution
+
+The dev console **Traces** view shows you exactly what happened during execution: which tools were called, what the model generated, how many iterations it took, and any errors.
+
+<Frame>
+  <img alt="Traces view in dev console" className="block dark:hidden" src="../assets/traces-view.png" />
+  <img alt="Traces view in dev console" className="hidden dark:block" src="../assets/traces-view-dark.png" />
+</Frame>
+
+---
+
+Next, learn how to define tools the AI model can call.
+
+<Card title="Define Tools" icon="wrench" href="/adk/conversations/tools">
+  Give the AI functions it can call during execution.
+</Card>

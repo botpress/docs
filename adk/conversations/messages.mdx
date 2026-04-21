@@ -1,3 +1,176 @@
 ---
 title: Send messages and content
+description: Send text, images, cards, carousels, and more from your handler.
 ---
+
+While `execute()` lets the AI model handle messaging automatically, sometimes you need to send messages directly from your handler. The `conversation.send()` method gives you full control over what gets sent.
+
+## Sending a text message
+
+```typescript
+await conversation.send({
+  type: "text",
+  payload: { text: "Hello! How can I help you?" },
+})
+```
+
+## Message types
+
+The available message types depend on the channel. For webchat, the following types are supported:
+
+| Type | Payload | Description |
+|------|---------|-------------|
+| `text` | `{ text, value? }` | Plain text message |
+| `markdown` | `{ markdown }` | Markdown-formatted text |
+| `image` | `{ imageUrl }` | Image from a URL |
+| `audio` | `{ audioUrl }` | Audio file |
+| `video` | `{ videoUrl }` | Video file |
+| `file` | `{ fileUrl, title? }` | Downloadable file |
+| `location` | `{ latitude, longitude, address?, title? }` | Map location |
+| `card` | `{ title, subtitle?, imageUrl?, actions }` | Rich card with action buttons |
+| `carousel` | `{ items }` | Horizontal scrollable list of cards |
+| `choice` | `{ text, options, disableFreeText? }` | Quick reply buttons |
+| `dropdown` | `{ text, options, disableFreeText? }` | Dropdown select menu |
+| `bloc` | `{ items }` | A group of mixed message types sent together |
+| `custom` | `{ url, name, data? }` | Custom rendered component (see [Use custom components](/adk/conversations/custom-components)) |
+
+Other channels (Slack, WhatsApp, Telegram) support different subsets. When you specify a channel on your conversation, TypeScript will only allow the message types that channel supports.
+
+## Examples
+
+### Card with actions
+
+```typescript
+await conversation.send({
+  type: "card",
+  payload: {
+    title: "Order #1234",
+    subtitle: "Shipped - arriving Thursday",
+    imageUrl: "https://example.com/product.jpg",
+    actions: [
+      { action: "url", label: "Track shipment", value: "https://example.com/track/1234" },
+      { action: "postback", label: "Contact support", value: "contact_support" },
+    ],
+  },
+})
+```
+
+### Carousel
+
+```typescript
+await conversation.send({
+  type: "carousel",
+  payload: {
+    items: [
+      {
+        title: "Basic Plan",
+        subtitle: "$9/mo",
+        imageUrl: "https://example.com/basic.png",
+        actions: [{ action: "postback", label: "Select", value: "plan_basic" }],
+      },
+      {
+        title: "Pro Plan",
+        subtitle: "$29/mo",
+        imageUrl: "https://example.com/pro.png",
+        actions: [{ action: "postback", label: "Select", value: "plan_pro" }],
+      },
+    ],
+  },
+})
+```
+
+### Choice buttons
+
+```typescript
+await conversation.send({
+  type: "choice",
+  payload: {
+    text: "How would you like to proceed?",
+    options: [
+      { label: "Check order status", value: "check_order" },
+      { label: "Start a return", value: "start_return" },
+      { label: "Talk to a human", value: "talk_to_human" },
+    ],
+  },
+})
+```
+
+### Markdown
+
+```typescript
+await conversation.send({
+  type: "markdown",
+  payload: {
+    markdown: "Here's a summary:\n\n- **Items**: 3\n- **Total**: $45.99\n- **Status**: Processing",
+  },
+})
+```
+
+## Typing indicators
+
+The framework automatically starts a typing indicator when your handler begins and stops it when the handler finishes. You don't need to manage this yourself.
+
+If you need manual control (e.g., you stopped typing to send a message and want to restart it before a slow operation), you can call the methods directly:
+
+```typescript
+await conversation.startTyping()
+await conversation.stopTyping()
+```
+
+## Conversation tags
+
+Read and write metadata tags on the conversation:
+
+```typescript
+const priority = conversation.tags.priority
+
+conversation.tags.priority = "high"
+conversation.tags.category = "billing"
+```
+
+Tags must be declared in `agent.config.ts` under `conversation.tags`. See [Agent Configuration](/adk/setup/configuration#tags).
+
+## Loading a conversation by ID
+
+You can send messages to any conversation, not just the current one:
+
+```typescript
+import { Conversation } from "@botpress/runtime"
+
+const otherConversation = await Conversation.get("conversation-id")
+await otherConversation.send({
+  type: "text",
+  payload: { text: "Hello from another conversation!" },
+})
+```
+
+This is useful for cross-conversation notifications or broadcasting messages.
+
+## Combining with execute()
+
+A common pattern is to send a direct message before or after handing control to the AI:
+
+```typescript
+handler: async ({ execute, conversation, type }) => {
+  if (type === "message") {
+    await conversation.send({
+      type: "text",
+      payload: { text: "Let me look into that for you." },
+    })
+
+    await execute({
+      instructions: "You are a helpful assistant.",
+    })
+  }
+}
+```
+
+Direct sends and AI-generated messages appear in the same conversation.
+
+---
+
+Next, learn how to render custom React components in webchat.
+
+<Card title="Use custom components" icon="component" href="/adk/conversations/custom-components">
+  Build and render React UI inside webchat.
+</Card>
