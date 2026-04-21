@@ -1,3 +1,180 @@
 ---
 title: Request and notify from workflows
+description: Exchange data between workflows and conversations.
 ---
+
+Workflows run in the background, but sometimes they need input from the user or want to send progress updates to the conversation. Requests and notifications are the bridge between workflows and conversations.
+
+## Requests
+
+A request pauses the workflow and asks the conversation for data. The workflow defines what it needs, the conversation handler collects it from the user and sends it back.
+
+### Define requests in the workflow
+
+Declare the request schemas in the workflow definition:
+
+```typescript
+import { Workflow, z } from "@botpress/runtime"
+
+export default new Workflow({
+  name: "order-workflow",
+  requests: {
+    orderId: z.object({
+      orderId: z.string(),
+    }),
+    shippingAddress: z.object({
+      street: z.string(),
+      city: z.string(),
+      zip: z.string(),
+    }),
+  },
+  handler: async ({ step }) => {
+    const orderData = await step.request("orderId", "Please provide the order ID.")
+
+    const address = await step.request("shippingAddress", "Where should we ship this?")
+
+    await step("process", async () => {
+      await processOrder(orderData.orderId, address)
+    })
+  },
+})
+```
+
+`step.request()` pauses the workflow and sends a `workflow_request` event to the conversation. The second argument is a human-readable message describing what's needed.
+
+### Handle requests in the conversation
+
+When a workflow makes a request, the conversation handler receives it as `type: "workflow_request"`:
+
+```typescript
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async (props) => {
+    if (props.type === "workflow_request") {
+      if (props.request.type === "order-workflow:orderId") {
+        await props.request.workflow.provide("orderId", {
+          orderId: "ORD-12345",
+        })
+      }
+
+      if (props.request.type === "order-workflow:shippingAddress") {
+        await props.request.workflow.provide("shippingAddress", {
+          street: "123 Main St",
+          city: "Springfield",
+          zip: "62701",
+        })
+      }
+      return
+    }
+
+    await props.execute({ instructions: "You are a helpful assistant." })
+  },
+})
+```
+
+The `request.type` is formatted as `"workflowName:requestName"`. Use `request.workflow.provide()` to send the data back. The workflow resumes once the data is provided.
+
+### Let the AI handle requests
+
+You can also let `execute()` handle workflow requests by passing them as context:
+
+```typescript
+if (props.type === "workflow_request") {
+  await props.execute({
+    instructions: `A workflow needs information from the user. Ask them: ${props.request.type}`,
+  })
+  return
+}
+```
+
+## Notifications
+
+A notification sends data from the workflow to the conversation without pausing the workflow. Use it for progress updates, status changes, or any information the user should see while the workflow keeps running.
+
+### Define notifications in the workflow
+
+```typescript
+import { Workflow, z } from "@botpress/runtime"
+
+export default new Workflow({
+  name: "import-workflow",
+  notifications: {
+    progress: z.object({
+      message: z.string(),
+      percentage: z.number(),
+    }),
+  },
+  handler: async ({ step }) => {
+    await step.notify("progress", { message: "Starting import...", percentage: 0 })
+
+    await step("import-data", async () => {
+      await importBatch1()
+    })
+
+    await step.notify("progress", { message: "50% complete", percentage: 50 }, "progress-50")
+
+    await step("import-remaining", async () => {
+      await importBatch2()
+    })
+
+    await step.notify("progress", { message: "Import complete!", percentage: 100 }, "progress-100")
+  },
+})
+```
+
+The third argument to `step.notify()` is an optional step name. Use unique step names when sending the same notification type multiple times from one handler.
+
+### Handle notifications in the conversation
+
+Notifications arrive as `type: "workflow_notify"`:
+
+```typescript
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async (props) => {
+    if (props.type === "workflow_notify") {
+      const { message, percentage } = props.notification.payload
+      await props.conversation.send({
+        type: "text",
+        payload: { text: `${message} (${percentage}%)` },
+      })
+      return
+    }
+
+    await props.execute({ instructions: "You are a helpful assistant." })
+  },
+})
+```
+
+## Workflow callbacks
+
+When a workflow completes (successfully or with failure), the conversation receives a `workflow_callback` event:
+
+```typescript
+if (props.type === "workflow_callback") {
+  const { status, output } = props.completion
+  if (status === "completed") {
+    await props.conversation.send({
+      type: "text",
+      payload: { text: `Workflow finished: ${JSON.stringify(output)}` },
+    })
+  }
+  return
+}
+```
+
+## Summary
+
+| Mechanism | Direction | Pauses workflow? | Handler type |
+|-----------|-----------|-----------------|--------------|
+| `step.request()` | Workflow asks conversation | Yes | `workflow_request` |
+| `step.notify()` | Workflow tells conversation | No | `workflow_notify` |
+| Callback | Workflow completes | N/A | `workflow_callback` |
+
+---
+
+That wraps up workflows. Next, learn how to expose logic to external callers.
+
+<Card title="Build Actions" icon="zap" href="/adk/external/actions">
+  Reusable functions callable from anywhere.
+</Card>

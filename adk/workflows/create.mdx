@@ -1,3 +1,201 @@
 ---
 title: Create workflows
+description: Build long-running background processes that run independently of conversations.
 ---
+
+Workflows handle multi-step operations that run in the background. Unlike conversations, which respond to user messages, workflows run independently and can be scheduled, started programmatically, or triggered by the AI model.
+
+Use workflows for things like data processing pipelines, scheduled tasks, multi-step operations that need retries, or any work that shouldn't block a conversation.
+
+## Creating a workflow
+
+Create a file in `src/workflows/`:
+
+```typescript
+import { Workflow, z } from "@botpress/runtime"
+
+export default new Workflow({
+  name: "process-order",
+  description: "Process a new customer order",
+  input: z.object({
+    orderId: z.string(),
+  }),
+  output: z.object({
+    status: z.string(),
+    total: z.number(),
+  }),
+  handler: async ({ input, step }) => {
+    const order = await step("fetch-order", async () => {
+      return await fetchOrder(input.orderId)
+    })
+
+    await step("charge-payment", async () => {
+      await chargePayment(order)
+    })
+
+    return { status: "completed", total: order.total }
+  },
+})
+```
+
+The `input` and `output` schemas define what the workflow accepts and returns. Both use Zod.
+
+## Starting a workflow
+
+### Programmatically
+
+```typescript
+import ProcessOrderWorkflow from "../workflows/process-order"
+
+const instance = await ProcessOrderWorkflow.start({ orderId: "12345" })
+console.log("Started workflow:", instance.id)
+```
+
+### On a schedule
+
+Use a cron expression to run a workflow on a recurring schedule:
+
+```typescript
+export default new Workflow({
+  name: "daily-report",
+  description: "Generate and send a daily summary",
+  schedule: "0 9 * * *",
+  handler: async ({ step }) => {
+    const data = await step("gather-data", async () => {
+      return await gatherDailyMetrics()
+    })
+
+    await step("send-report", async () => {
+      await sendSlackMessage(formatReport(data))
+    })
+  },
+})
+```
+
+Common cron patterns:
+
+| Expression | Schedule |
+|-----------|----------|
+| `"0 9 * * *"` | Every day at 9:00 AM |
+| `"0 */6 * * *"` | Every 6 hours |
+| `"*/30 * * * *"` | Every 30 minutes |
+| `"0 0 * * 1"` | Every Monday at midnight |
+
+### As a tool
+
+Convert a workflow to a tool so the AI model can start it during `execute()`:
+
+```typescript
+import { Conversation } from "@botpress/runtime"
+import ProcessOrderWorkflow from "../workflows/process-order"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "You are an order management assistant.",
+      tools: [ProcessOrderWorkflow.asTool()],
+    })
+  },
+})
+```
+
+## Deduplication
+
+Use `getOrCreate()` to avoid starting duplicate workflows:
+
+```typescript
+const instance = await ProcessOrderWorkflow.getOrCreate({
+  key: "order-12345",
+  input: { orderId: "12345" },
+  statuses: ["pending", "in_progress"],
+})
+```
+
+If a workflow with the same key and one of the specified statuses already exists, it returns the existing instance instead of creating a new one.
+
+## Loading a workflow by ID
+
+```typescript
+import { Workflow } from "@botpress/runtime"
+
+const instance = await Workflow.get("workflow-id")
+```
+
+## Workflow instance
+
+When you start a workflow, you get an instance with these methods:
+
+### Cancel
+
+```typescript
+await instance.cancel()
+```
+
+### Set timeout
+
+Extend or change the workflow timeout:
+
+```typescript
+await instance.setTimeout({ in: "30m" })
+await instance.setTimeout({ at: "2025-01-15T12:00:00Z" })
+```
+
+### Complete early
+
+End the workflow from inside the handler with a result:
+
+```typescript
+export default new Workflow({
+  name: "my-workflow",
+  output: z.object({ result: z.string() }),
+  handler: async ({ workflow }) => {
+    workflow.complete({ result: "done early" })
+  },
+})
+```
+
+## Timeout
+
+Workflows time out after 5 minutes by default. Use the `timeout` prop to change this:
+
+```typescript
+export default new Workflow({
+  name: "long-process",
+  timeout: "1h",
+  handler: async ({ step }) => {
+    // ...
+  },
+})
+```
+
+For workflows that need to run longer than 5 minutes, use [steps](/adk/workflows/steps). Steps break the work into persisted checkpoints so the workflow can resume from the last completed step.
+
+## Handler parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `input` | `object` | Validated input matching the workflow's input schema |
+| `state` | `object` | Mutable workflow state, persisted across executions |
+| `step` | `function` | Step function for persistence and control flow |
+| `client` | `object` | Botpress client for API calls |
+| `execute` | `function` | Run the AI model (same as in conversations) |
+| `signal` | `AbortSignal` | Indicates when the workflow should stop |
+| `workflow` | `object` | Current workflow instance (id, name, tags, cancel, complete, setTimeout) |
+
+## Dev console
+
+You can view running and completed workflows in the dev console under **Workflows**. The Workflows page shows status, input, output, and run history.
+
+<Frame>
+  <img alt="Workflows page in dev console" className="block dark:hidden" src="../assets/workflows-console.png" />
+  <img alt="Workflows page in dev console" className="hidden dark:block" src="../assets/workflows-console-dark.png" />
+</Frame>
+
+---
+
+Next, learn about step methods for controlling workflow execution.
+
+<Card title="Use workflow steps" icon="list-checks" href="/adk/workflows/steps">
+  Persistence, retries, sleep, parallel processing, and more.
+</Card>

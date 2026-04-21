@@ -1,3 +1,160 @@
 ---
 title: Use workflow steps
+description: Break workflows into persisted, resumable checkpoints.
 ---
+
+By default, workflows time out after 5 minutes. Steps let you break a workflow into a series of checkpoints that are persisted individually. If a workflow is interrupted, it resumes from the last completed step.
+
+## Basic steps
+
+The `step` function takes a unique name and a handler. The return value is persisted and reused if the step has already completed:
+
+```typescript
+export default new Workflow({
+  name: "data-pipeline",
+  handler: async ({ step }) => {
+    const data = await step("fetch-data", async () => {
+      return await fetchDataFromAPI()
+    })
+
+    const processed = await step("process-data", async () => {
+      return processData(data)
+    })
+
+    await step("store-results", async () => {
+      await saveResults(processed)
+    })
+  },
+})
+```
+
+Each step name must be unique within the workflow. If two steps share a name, the second one reuses the first step's cached output instead of running.
+
+Steps can be nested. A parent step completes when all its sub-steps complete.
+
+## Retries
+
+Steps retry automatically on failure. Control the number of attempts with `maxAttempts` (defaults to 5):
+
+```typescript
+const data = await step("fetch-data", async ({ attempt }) => {
+  console.log(`Attempt #${attempt}`)
+  return await fetchDataFromAPI()
+}, { maxAttempts: 10 })
+```
+
+If a step exhausts all retries, it throws. This fails the entire workflow unless you catch it:
+
+```typescript
+try {
+  await step("risky-operation", async () => {
+    return await unstableAPICall()
+  }, { maxAttempts: 3 })
+} catch (err) {
+  console.log("Operation failed after 3 attempts:", err)
+}
+```
+
+## Sleep
+
+Pause the workflow for a duration or until a specific time:
+
+```typescript
+await step.sleep("wait-5-min", 5 * 60 * 1000)
+
+await step.sleepUntil("wait-until-noon", new Date("2025-01-15T12:00:00Z"))
+```
+
+The workflow is suspended during sleep. No compute is used.
+
+## Listen
+
+Pause the workflow and set its status to `"listening"`, waiting to be resumed by an external event:
+
+```typescript
+await step.listen("wait-for-payment")
+```
+
+The workflow suspends at this point and uses no compute until it is resumed.
+
+## Fail and abort
+
+Stop execution explicitly:
+
+```typescript
+// Mark as failed with a message
+await step.fail("User verification required")
+
+// Abort immediately without marking as failed
+step.abort()
+```
+
+## Child workflows
+
+Start another workflow and wait for it to complete:
+
+```typescript
+import ProcessingWorkflow from "../workflows/processing"
+
+const result = await step.executeWorkflow(
+  "process-data",
+  ProcessingWorkflow,
+  { data: inputData }
+)
+```
+
+Or wait for an already-running workflow:
+
+```typescript
+const childWorkflow = await ChildWorkflow.start({})
+const result = await step.waitForWorkflow("wait-for-child", childWorkflow.id)
+```
+
+## Parallel processing
+
+### map
+
+Process an array of items in parallel and collect results:
+
+```typescript
+const results = await step.map(
+  "process-users",
+  users,
+  async (user, { i }) => await processUser(user),
+  { concurrency: 5, maxAttempts: 3 }
+)
+```
+
+### forEach
+
+Process items in parallel without collecting results:
+
+```typescript
+await step.forEach(
+  "notify-users",
+  users,
+  async (user) => await sendNotification(user),
+  { concurrency: 10 }
+)
+```
+
+### batch
+
+Process items in sequential batches:
+
+```typescript
+await step.batch(
+  "bulk-insert",
+  records,
+  async (batch) => await database.bulkInsert(batch),
+  { batchSize: 100 }
+)
+```
+
+---
+
+Next, learn how workflows can exchange data with conversations.
+
+<Card title="Request and notify from workflows" icon="arrow-right-left" href="/adk/workflows/request-notify">
+  Ask conversations for input and send progress updates.
+</Card>
