@@ -4,6 +4,65 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="April 17, 2026">
+  ## Revamped Autonomous Node
+
+  Improved the UX of the Autonomous Node, including a brand new prompt editor which:
+
+  - Provides a macro menu for quickly referencing Knowledge Base, variables and more
+  - Introduces a raw Markdown mode for precise editing
+
+  <Tabs>
+    <Tab title="Autonomous Node">
+      <Frame>
+        <img
+          alt="Autonomous Node"
+          className="block dark:hidden"
+          src="/studio/concepts/nodes/assets/an.png"
+        />
+        <img
+          alt="Autonomous Node"
+          className="hidden dark:block"
+          src="/studio/concepts/nodes/assets/an-dark.png"
+        />
+      </Frame>
+    </Tab>
+    <Tab title="Prompt editor">
+      <Frame>
+        <img
+          alt="Prompt editor"
+          className="block dark:hidden"
+          src="/changelog-assets/2026-04-17/prompt-editor.png"
+        />
+        <img
+          alt="Prompt editor"
+          className="hidden dark:block"
+          src="/changelog-assets/2026-04-17/prompt-editor-dark.png"
+        />
+      </Frame>
+    </Tab>
+  </Tabs>
+
+  ## Improved Studio multiplayer
+
+  Revamped the Studio multiplayer and added multiple features/enhancements, including:
+
+  - Greatly improved performance and latency
+  - Real-time cursor position display for teammates
+  - Ability to "focus" on a specific teammate and follow their cursor
+  - Visual indicators displaying which Node each teammate is focused on
+
+  ## Bug fixes
+
+  - Fixed a race condition which was preventing bots from responding when opening the Webchat preview URL under certain circumstances
+
+  ## Integrations
+
+  - **Telegram**: Fixed an issue where the typing indicator was raising errors when the typing indicator emoji was disabled
+  - **WhatsApp**: Fixed an issue where events sent by WhatsApp were mistakenly raising an error
+
+</Update>
+
 <Update label="April 10, 2026">
 
   ## Redesigned integrations Hub
