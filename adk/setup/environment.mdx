@@ -1,11 +1,15 @@
 ---
-title: Environment Setup
-description: Manage secrets, configuration values, and dev vs prod environments.
+title: Environment setup
+description: Manage secrets, configuration values, and development/production environments.
 ---
 
 The ADK separates development and production into two environments. Secrets and configuration values are stored per environment, so your dev API keys never touch production.
 
-You can switch between environments in the dev console using the environment selector in the top bar. This controls which environment's secrets, configuration, and data you see and edit. You can also toggle it with `Cmd+Shift+E` (Mac) or `Ctrl+Shift+E` (Windows/Linux).
+You can switch between environments in the dev console using the environment toggle in the upper-right corner. This controls which environment's secrets, configuration, and data you view/edit.
+
+<Tip>
+You can also toggle between environments with <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> (Windows/Linux).
+</Tip>
 
 <Frame>
   <img alt="Environment selector in dev console" className="block dark:hidden" src="../assets/environment-selector.png" />
@@ -16,7 +20,7 @@ You can switch between environments in the dev console using the environment sel
 
 Your project has three files that manage environment state:
 
-| File | Contains | Committed to git |
+| File | Contains | Committed to version control |
 |------|----------|-----------------|
 | `agent.json` | Production bot ID, workspace ID, API URL | Yes |
 | `agent.local.json` | Development bot ID | No (gitignored) |
@@ -39,28 +43,26 @@ secrets: {
 },
 ```
 
-Required secrets (the default) are enforced at deploy time. `adk dev` warns if they're unset but doesn't block. Optional secrets never block.
+Required secrets (the default) are enforced at deploy time. `adk dev` warns you if they're unset, but doesn't block the dev server from starting. Optional secrets never block deployment.
 
 ### Setting values
+
+You can set values using `adk secret:set` command:
 
 ```bash
 adk secret:set OPENAI_KEY "sk-..."
 adk secret:set OPENAI_KEY "sk-prod-..." --prod
 ```
 
-Dev and prod values are stored in separate buckets inside `.adk/secrets.json`. Setting a dev value never touches prod, and vice versa.
+Development and production values are stored in separate buckets inside `.adk/secrets.json`. Setting a development value never touches production values, and vice versa.
 
-### CLI reference
-
-| Command | What it does |
-|---------|-------------|
-| `adk secret` | List all declared secrets and their set/unset status |
-| `adk secret:set KEY VALUE` | Set a secret for dev |
-| `adk secret:set KEY VALUE --prod` | Set a secret for prod |
-| `adk secret:delete KEY` | Delete a secret from dev |
-| `adk secret:delete KEY --prod` | Delete a secret from prod |
+<Tip>
+  Check out the [CLI reference](fix-before-merge) for full documentation of the `adk secret` command.
+</Tip>
 
 ### Using secrets at runtime
+
+To use secrets at runtime, just import `secrets` from `@botpress/runtime` and reference them directly:
 
 ```typescript
 import { secrets } from "@botpress/runtime"
@@ -74,11 +76,15 @@ if (secrets.SENTRY_DSN) {
 }
 ```
 
-The `secrets` import is a typed proxy over environment variables. Required secrets are typed as `string`, optional ones as `string | undefined`. It's read-only. Assigning to `secrets.X` throws.
+The `secrets` import is a typed proxy over environment variables. Required secrets are typed as `string`, optional ones as `string | undefined`.
+
+<Note>
+  Secrets are read-only at runtime. Attempting to reassign the value of a secret will throw an error.
+</Note>
 
 ### Managing secrets in the dev console
 
-You can also manage secrets from the dev console under **Settings > Secrets**. The UI lets you add, edit, and delete secrets for both dev and prod environments. Schema changes (adding or removing declarations) write back to `agent.config.ts`.
+You can also manage secrets from the dev console under **Settings > Secrets**. The UI lets you add, edit, and delete secrets for both development and production environments. Schema changes (adding or removing declarations) write back to `agent.config.ts`.
 
 <Frame>
   <img alt="Secrets management in dev console" className="block dark:hidden" src="../assets/secrets-console.png" />
@@ -94,23 +100,15 @@ Secret keys must be `SCREAMING_SNAKE_CASE`:
 - No trailing underscore
 - Cannot start with `SECRET_`, `BP_`, or `BOTPRESS_` (reserved)
 
-| Key | Valid | Why |
-|-----|-------|-----|
-| `MY_API_KEY` | Yes | |
-| `DB_PASSWORD` | Yes | |
-| `A1` | Yes | Minimum 2 chars, starts with letter |
-| `A` | No | Too short |
-| `my_key` | No | Must start with uppercase |
-| `SECRET_FOO` | No | Reserved prefix |
-| `BP_TOKEN` | No | Reserved prefix |
-
 ### How secrets flow to production
 
-Dev secret saves restart the running bot immediately. Prod secret saves only write the local file. Prod values reach Botpress Cloud on the next `adk deploy`.
+**Development secrets**: If you're running your agent with `adk dev` and save changes to your development secrets via the dev console, your agent will immediately restart using the new values.
+
+**Production secrets**: If you save changes to your production secrets via the dev console, the changes will only write to `agent.config.ts`. The new values will take effect on your production agent the next time you run `adk deploy`.
 
 ## Configuration
 
-Configuration defines static, deploy-time settings for your agent. Unlike secrets, configuration values are not sensitive. Unlike state, they are read-only at runtime.
+The `configuration` object in `agent.config.ts` defines static, deploy-time settings for your agent. Unlike secrets, configuration values are not sensitive. Unlike state, they are read-only at runtime.
 
 ### Declaring a schema
 
@@ -144,7 +142,7 @@ const email = configuration.supportEmail
 const retries = configuration.maxRetries
 ```
 
-Configuration is read-only. Attempting to set a value at runtime throws.
+Configuration is read-only. Attempting to set a value at runtime throws an error.
 
 ### Dev console
 
@@ -171,10 +169,10 @@ This checks:
 
 Preflight checks also run automatically during `adk dev` and `adk deploy`.
 
----
+## Next steps
 
 Next, learn how to connect your agent to channels and external services.
 
-<Card title="Integrations" icon="puzzle-piece" href="/adk/setup/integrations">
+<Card title="Integrations" icon="boxes" href="/adk/setup/integrations">
   Find, add, and configure integrations.
 </Card>
