@@ -5,12 +5,12 @@ description: Automated conversation tests for your agent.
 
 Evals are automated tests that simulate conversations with your agent and assert on the results. You write a conversation script with expected behaviors, and the eval runner plays it against your running agent and reports pass/fail.
 
-## Creating an eval
+## Create an eval
 
-Create `.eval.ts` files in `src/evals/`:
+Create `.eval.ts` files in the `evals/` directory at your agent root:
 
 ```typescript
-import { Eval } from "@botpress/runtime"
+import { Eval } from "@botpress/adk"
 
 export default new Eval({
   name: "greeting",
@@ -28,64 +28,83 @@ export default new Eval({
 })
 ```
 
-Each file can export one or more `Eval` instances (default or named exports).
+Each file can export one or more `Eval` instances as the default export or named exports.
 
 ## Conversation turns
 
-An eval defines a sequence of turns. Each turn sends a user message and optionally asserts on the response:
+An eval's `conversation` is a sequence of turns. Each turn can send a user message, fire an event, or assert the agent stays silent, plus optionally assert on what happens.
+
+Send user messages:
 
 ```typescript
 conversation: [
   {
     user: "What's the weather in Paris?",
     assert: {
-      response: [
-        { contains: "Paris" },
-      ],
-      tools: [
-        { called: "getWeather", params: { city: { equals: "Paris" } } },
-      ],
+      response: [{ contains: "Paris" }],
+      tools: [{ called: "getWeather", params: { city: { equals: "Paris" } } }],
     },
   },
   {
     user: "And in London?",
     assert: {
-      response: [
-        { contains: "London" },
-      ],
+      response: [{ contains: "London" }],
     },
   },
 ]
 ```
 
+Fire an event instead of a message:
+
+```typescript
+{
+  event: {
+    type: "order.placed",
+    payload: { orderId: "ord-123", total: 49.99 },
+  },
+  assert: {
+    response: [{ contains: "order" }],
+  },
+}
+```
+
+Assert the agent doesn't respond:
+
+```typescript
+{
+  user: "ok thanks",
+  expectSilence: true,
+}
+```
+
 ## Assertions
 
-### Response assertions
+Each turn's `assert` block can hold any combination of the assertion types below.
 
-Assert on the text content of the agent's response:
+### Response
+
+Assert on the text of the agent's reply:
 
 | Assertion | Description |
 |-----------|-------------|
 | `{ contains: "text" }` | Response includes this string |
 | `{ not_contains: "text" }` | Response does not include this string |
 | `{ matches: "regex" }` | Response matches this regex pattern |
-| `{ llm_judge: "criteria" }` | An LLM evaluates whether the response meets the criteria |
 | `{ similar_to: "text" }` | Response is semantically similar to this text |
+| `{ llm_judge: "criteria" }` | An LLM evaluates whether the response meets the criteria (see [LLM judge](#llm-judge)) |
 
-### Tool assertions
+### Tools
 
-Assert on which tools were called:
+Assert on which tools the agent called:
 
 | Assertion | Description |
 |-----------|-------------|
 | `{ called: "toolName" }` | Tool was called |
-| `{ called: "toolName", params: { key: { equals: "value" } } }` | Tool was called with specific params |
+| `{ called: "toolName", params: { key: { equals: "value" } } }` | Tool was called with matching params |
 | `{ not_called: "toolName" }` | Tool was not called |
 | `{ call_order: ["tool1", "tool2"] }` | Tools were called in this order |
 
-### Param operators
-
-Use these within `params` to match tool call arguments:
+Use these operators inside `params` to match tool arguments:
 
 | Operator | Example |
 |----------|---------|
@@ -98,7 +117,7 @@ Use these within `params` to match tool call arguments:
 | `{ gte: 10 }` | Greater than or equal |
 | `{ lte: 100 }` | Less than or equal |
 
-### State assertions
+### State
 
 Assert on state changes after a turn:
 
@@ -111,7 +130,7 @@ assert: {
 }
 ```
 
-### Table assertions
+### Tables
 
 Assert on table data:
 
@@ -124,7 +143,7 @@ assert: {
 }
 ```
 
-### Workflow assertions
+### Workflows
 
 Assert on workflow state:
 
@@ -137,7 +156,7 @@ assert: {
 }
 ```
 
-### Timing assertions
+### Timing
 
 Assert on response time:
 
@@ -149,9 +168,9 @@ assert: {
 }
 ```
 
-## LLM judge
+### LLM judge
 
-Use an LLM to evaluate responses against natural language criteria:
+Use `llm_judge` when the right answer isn't a fixed string. You describe what a good response looks like in plain English, and an LLM scores the agent's reply against it. It's the right choice for subjective checks like tone, intent, or whether the agent understood the user:
 
 ```typescript
 assert: {
@@ -162,33 +181,18 @@ assert: {
 }
 ```
 
-Configure the judge model and pass threshold in `agent.config.ts`:
+Configure the judge model and pass threshold under [Configure eval behavior](#configure-eval-behavior).
 
-```typescript
-evals: {
-  judgeModel: "openai:gpt-4o",
-  judgePassThreshold: 3,
-},
-```
+## Setup and outcome
 
-Or override per-eval:
+`setup` runs before the first turn. `outcome` runs after the last.
 
-```typescript
-export default new Eval({
-  name: "quality-check",
-  options: {
-    judgePassThreshold: 4,
-  },
-  conversation: [/* ... */],
-})
-```
-
-## Setup
+### Setup
 
 Seed state or trigger a workflow before the conversation starts:
 
 ```typescript
-export default new Eval({
+new Eval({
   name: "returning-user",
   setup: {
     state: {
@@ -207,7 +211,7 @@ export default new Eval({
 })
 ```
 
-Trigger a workflow:
+Trigger a workflow instead of (or in addition to) seeding state:
 
 ```typescript
 setup: {
@@ -218,12 +222,12 @@ setup: {
 },
 ```
 
-## Outcome assertions
+### Outcome
 
-Assert on state after the entire conversation completes:
+Assert on state, tables, or workflows after the entire conversation completes. Outcome assertions use the same shapes as turn assertions:
 
 ```typescript
-export default new Eval({
+new Eval({
   name: "full-flow",
   conversation: [
     { user: "Create a ticket for VPN issues" },
@@ -240,29 +244,82 @@ export default new Eval({
 })
 ```
 
-## Tags and types
+## Configure eval behavior
 
-Organize evals with tags and types:
+Set defaults for all evals in `agent.config.ts`:
 
 ```typescript
-export default new Eval({
-  name: "greeting",
-  tags: ["smoke", "core"],
-  type: "capability",
+evals: {
+  judgeModel: "openai:gpt-4o",
+  judgePassThreshold: 3,
+  idleTimeout: 15000,
+},
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `judgeModel` | `string` | Model for `llm_judge` assertions. Defaults to `"fast"` |
+| `judgePassThreshold` | `number` (1–5) | Minimum score for `llm_judge` to pass. Defaults to `3` |
+| `idleTimeout` | `number` (ms) | How long to wait for the agent to respond. Defaults to `15000` |
+
+Override `judgePassThreshold` or `idleTimeout` on a specific eval:
+
+```typescript
+new Eval({
+  name: "quality-check",
+  options: {
+    judgePassThreshold: 4,
+    idleTimeout: 30000,
+  },
   conversation: [/* ... */],
 })
 ```
 
-Types are `"capability"` (tests a feature) or `"regression"` (prevents a known bug from returning).
+## Organize evals
 
-## Running evals
+Evals have two organizing fields that pair with CLI filters: `tags` and `type`.
+
+**Tags** are free-form labels. Use them to group evals you want to run together (smoke tests, critical paths, slow suites):
+
+```typescript
+new Eval({
+  name: "greeting",
+  tags: ["smoke", "core"],
+  conversation: [/* ... */],
+})
+```
+
+```bash
+adk evals --tag smoke    # Run only evals tagged "smoke"
+```
+
+**Type** marks what the eval is for:
+
+- `capability`: tests that a feature works as designed
+- `regression`: reproduces a past bug so it doesn't come back
+
+```typescript
+new Eval({
+  name: "fix-for-ticket-priority-bug",
+  type: "regression",
+  conversation: [/* ... */],
+})
+```
+
+```bash
+adk evals --type regression    # Run only regression evals
+```
+
+## Run evals
+
+From the CLI:
 
 ```bash
 adk evals                        # Run all evals
 adk evals greeting               # Run a specific eval by name
 adk evals --tag smoke            # Run evals with a specific tag
 adk evals --type regression      # Run only regression evals
-adk evals -v                     # Verbose output (show all details, not just failures)
+adk evals -v                     # Show full details, not just failures
 ```
 
 View past runs:
@@ -279,11 +336,3 @@ You can also run and view evals from the dev console under **Evals**.
   <img alt="Evals page in dev console" className="block dark:hidden" src="../assets/evals-console.png" />
   <img alt="Evals page in dev console" className="hidden dark:block" src="../assets/evals-console-dark.png" />
 </Frame>
-
----
-
-Next, learn how to debug conversations in real time.
-
-<Card title="Agent Steps" icon="list-tree" href="/adk/testing/agent-steps">
-  See what your agent did during each conversation turn.
-</Card>

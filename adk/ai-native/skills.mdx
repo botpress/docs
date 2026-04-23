@@ -3,19 +3,19 @@ title: Skills
 description: Give AI coding assistants deep ADK knowledge with installable skills.
 ---
 
-Skills are packaged instructions and documentation that teach AI coding assistants how to build with the ADK. When installed, your assistant (Claude Code, Cursor, Codex) automatically uses them when you ask it to build features, debug issues, write evals, or connect integrations.
-
-Skills are packaged with every new ADK project. When you run `adk init`, skills are installed automatically alongside your dependencies.
+Skills are packaged instructions and documentation that teach AI coding assistants how to build with the ADK. When installed, assistants like Claude Code, Cursor, and Codex use them automatically when you ask them to build features, debug issues, write evals, or connect integrations. `adk init` installs them for you alongside your dependencies, so most projects get them out of the box.
 
 ## Manual installation
 
-If you need to install skills in an existing project or reinstall them:
+If you need to install skills in an existing project or reinstall them, run the same command `adk init` runs:
 
 ```bash
-npx skills add botpress/skills -s '*' -a claude-code codex -y
+npx skills add botpress/skills -s '*' -a codex claude-code -y
 ```
 
-Install a single skill:
+Use `bunx` instead of `npx` if your project has a `bun.lockb`.
+
+To install a single skill instead of all of them:
 
 ```bash
 npx skills add botpress/skills --skill adk
@@ -58,15 +58,17 @@ Skills come with slash commands for Claude Code. Type the command instead of des
 
 ## MCP server
 
-The ADK also includes an MCP (Model Context Protocol) server that gives assistants live access to your running project. It provides tools for querying traces, searching integrations, sending test messages, and starting workflows.
+Skills are the recommended way to give AI assistants ADK knowledge. The ADK also ships an MCP (Model Context Protocol) server that gives assistants live access to your running project, kept here for reference.
 
-Generate the MCP configuration:
+Generate the MCP configuration files:
 
 ```bash
 adk mcp:init --all
 ```
 
-This creates config files for Claude Code (`.mcp.json`), VS Code (`.vscode/mcp.json`), and Cursor (`.cursor/mcp.json`).
+This writes config for Claude Code (`.mcp.json`), VS Code (`.vscode/mcp.json`), and Cursor (`.cursor/mcp.json`). See [`adk mcp:init`](/adk/cli-reference#adk-mcpinit) for all flags.
+
+The server exposes these tools:
 
 | Tool | What it does |
 |------|-------------|
@@ -79,9 +81,4 @@ This creates config files for Claude Code (`.mcp.json`), VS Code (`.vscode/mcp.j
 | `adk_get_dev_logs` | Get dev server logs and errors |
 | `adk_list_workflows` | List available workflows |
 | `adk_start_workflow` | Start a workflow or get its input schema |
-
----
-
-<Card title="Human-in-the-loop" icon="user" href="/adk/advanced/hitl">
-  Escalate conversations to live human agents.
-</Card>
+| `adk_init_project` | Scaffold a new ADK project (only available outside an ADK project) |

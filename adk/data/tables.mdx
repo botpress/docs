@@ -14,6 +14,8 @@ import { Table, z } from "@botpress/runtime"
 
 export default new Table({
   name: "OrderTable",
+  description: "Customer orders",
+  keyColumn: "userId",
   columns: {
     userId: z.string(),
     items: z.array(z.string()),
@@ -23,6 +25,8 @@ export default new Table({
   },
 })
 ```
+
+`description` is optional but useful when the table gets surfaced to the LLM (via Zai or knowledge). `keyColumn` is optional too; it sets the default key used by `upsertRows` so you don't have to pass it on every call.
 
 The dev console under **Tables** is the primary way to manage table data. You can see the sync state between your code and Botpress Cloud, add/update/delete rows, filter and sort, export to CSV, and copy data between dev and prod environments.
 
@@ -52,6 +56,35 @@ export default new Table({
     status: z.string(),
     priority: z.string(),
   },
+})
+```
+
+### Computed columns
+
+A computed column is derived from other columns. Set `computed: true`, declare the columns it depends on, and return its value from `value`:
+
+```typescript
+export default new Table({
+  name: "OrderTable",
+  columns: {
+    quantity: z.number(),
+    unitPrice: z.number(),
+    total: {
+      computed: true,
+      schema: z.number(),
+      dependencies: ["quantity", "unitPrice"],
+      value: (row) => row.quantity * row.unitPrice,
+    },
+  },
+})
+```
+
+Computed columns recalculate whenever their dependencies change. When you write to the table, pass `waitComputed: true` to block until the recalculation finishes:
+
+```typescript
+await OrderTable.createRows({
+  rows: [{ quantity: 3, unitPrice: 20 }],
+  waitComputed: true,
 })
 ```
 
@@ -96,7 +129,7 @@ await OrderTable.updateRows({
 
 ### Upsert rows
 
-Insert or update based on a key column:
+Insert or update based on a key column. If you set `keyColumn` on the table, you can omit it here:
 
 ```typescript
 const { inserted, updated } = await OrderTable.upsertRows({
@@ -104,6 +137,8 @@ const { inserted, updated } = await OrderTable.upsertRows({
   rows: [{ userId: "user123", total: 149.99, status: "pending" }],
 })
 ```
+
+If `keyColumn` is omitted on both the table and the call, it defaults to `id`.
 
 ### Delete rows
 
@@ -142,6 +177,7 @@ const { rows } = await OrderTable.findRows({
 | `$nin` | Not in array |
 | `$exists` | Field exists |
 | `$regex` | Regex match |
+| `$options` | Regex flags: `"i"` for case-insensitive, `"c"` for case-sensitive |
 
 ### Logical operators
 
@@ -201,11 +237,3 @@ const { rows } = await OrderTable.findRows({
 | `max` | Numbers, strings, dates | Maximum value |
 | `min` | Numbers, strings, dates | Minimum value |
 | `unique` | All types | Array of unique values |
-
----
-
-Next, learn how to give your agent access to documents and websites.
-
-<Card title="Knowledge bases" icon="book-open" href="/adk/data/knowledge">
-  RAG-powered document retrieval for your agent.
-</Card>
