@@ -43,16 +43,16 @@ The runner looks for exports in this order:
 
 ## Arguments
 
-Extra arguments after the script path are passed to your function:
+Extra arguments after the script path are passed to your function. Positional args pass through directly; put flag-like args (anything starting with `-`) after a `--` separator so Commander doesn't try to parse them:
 
 ```bash
-adk run scripts/process.ts order-123 --verbose
+adk run scripts/process.ts order-123
+adk run scripts/process.ts -- --limit 100 --verbose
 ```
 
 ```typescript
-export default async function (orderId: string, flag: string) {
-  console.log(orderId)  // "order-123"
-  console.log(flag)     // "--verbose"
+export default async function (...args: string[]) {
+  console.log(args)  // ["order-123"] or ["--limit", "100", "--verbose"]
 }
 ```
 
@@ -71,11 +71,3 @@ adk run scripts/migrate.ts --prod
 - **Generate reports** by querying tables and knowledge bases
 - **Maintenance tasks** like cleaning up old data or reindexing
 - **Test actions** by calling them directly outside a conversation
-
----
-
-That wraps up testing and debugging. Next, explore the Zai utilities for structured LLM operations.
-
-<Card title="Introduction to Zai" icon="sparkles" href="/adk/zai/overview">
-  Extract data, generate text, classify, and more.
-</Card>

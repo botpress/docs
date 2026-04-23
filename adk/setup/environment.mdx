@@ -133,6 +133,13 @@ adk config:set supportEmail "help@mycompany.com" --prod  # Set a prod value
 adk config:get supportEmail                        # Read a value
 ```
 
+Configuration values can also be managed from the dev console:
+
+<Frame>
+  <img alt="Config variables in dev console" className="block dark:hidden" src="../assets/config-variables-console.png" />
+  <img alt="Config variables in dev console" className="hidden dark:block" src="../assets/config-variables-console-dark.png" />
+</Frame>
+
 ### Using configuration at runtime
 
 ```typescript
@@ -168,11 +175,3 @@ This checks:
 - Generated type assets
 
 Preflight checks also run automatically during `adk dev` and `adk deploy`.
-
----
-
-Next, learn how to connect your agent to channels and external services.
-
-<Card title="Integrations" icon="boxes" href="/adk/setup/integrations">
-  Find, add, and configure integrations.
-</Card>

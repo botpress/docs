@@ -3,9 +3,7 @@ title: Create actions
 description: Create reusable functions callable from anywhere in your agent or from external systems.
 ---
 
-Actions are reusable functions that can be called from conversations, workflows, tools, triggers, other actions, and external API clients. They encapsulate shared business logic in one place.
-
-The difference between an action and a tool: tools only exist inside `execute()` and are called by the AI model. Actions are called by your code from anywhere, and are also exposed via the Botpress API to external systems. You can convert an action into a tool with `.asTool()` when you want the AI to use it too.
+Actions are reusable functions that hold shared business logic. Call them from your own code (conversations, workflows, triggers, other actions) or over HTTP from external systems.
 
 ## Creating an action
 
@@ -38,6 +36,34 @@ export default new Action({
   },
 })
 ```
+
+Action names must be alphanumeric with no underscores, dashes, or spaces (e.g. `calculateTotal`, not `calculate_total`).
+
+Browse and test actions from the dev console:
+
+<Frame>
+  <img alt="Actions page in dev console" className="block dark:hidden" src="../assets/actions-console.png" />
+  <img alt="Actions page in dev console" className="hidden dark:block" src="../assets/actions-console-dark.png" />
+</Frame>
+
+### Caching results
+
+Set `cached: true` to cache an action's output by its input. Subsequent calls with the same input return the cached result instead of re-running the handler:
+
+```typescript
+export default new Action({
+  name: "fetchExchangeRate",
+  cached: true,
+  input: z.object({ from: z.string(), to: z.string() }),
+  output: z.object({ rate: z.number() }),
+  handler: async ({ input }) => {
+    const rate = await fetchRate(input.from, input.to)
+    return { rate }
+  },
+})
+```
+
+Useful for actions that are pure, expensive, and called repeatedly with the same inputs.
 
 ## Calling actions
 
@@ -109,7 +135,7 @@ export default new Trigger({
 
 ## As a tool
 
-Convert an action into a tool so the AI model can call it during `execute()`:
+Tools only exist inside `execute()` and are called by the AI model. If you want the AI to use an action too, convert it with `.asTool()`:
 
 ```typescript
 import { Conversation, actions } from "@botpress/runtime"
@@ -147,8 +173,9 @@ await actions.slack.addReaction({ name: "thumbsup", channel, timestamp })
 Actions are exposed via the Botpress Runtime API. External services can call your agent's actions over HTTP:
 
 ```bash
-curl -X POST https://chat.botpress.cloud/v1/chat/actions \
+curl -X POST https://api.botpress.cloud/v1/chat/actions \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_PAT" \
   -H "x-bot-id: YOUR_BOT_ID" \
   -d '{
     "type": "calculateTotal",
@@ -162,20 +189,3 @@ curl -X POST https://chat.botpress.cloud/v1/chat/actions \
 This makes actions the bridge between your agent and external systems. A backend service, a webhook handler, or another application can trigger your agent's logic without going through a conversation.
 
 See the [Runtime API reference](/api-reference/runtime-api/openapi/callAction) for full details.
-
-## Dev console
-
-You can browse and test actions in the dev console under **Actions**.
-
-<Frame>
-  <img alt="Actions page in dev console" className="block dark:hidden" src="../assets/actions-console.png" />
-  <img alt="Actions page in dev console" className="hidden dark:block" src="../assets/actions-console-dark.png" />
-</Frame>
-
----
-
-Next, learn how to react to external events with triggers.
-
-<Card title="Set up triggers" icon="zap" href="/adk/external/triggers">
-  Subscribe to integration and custom events.
-</Card>

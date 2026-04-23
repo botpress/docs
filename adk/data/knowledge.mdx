@@ -3,9 +3,9 @@ title: Knowledge bases
 description: Give your agent access to documents, websites, and files via RAG.
 ---
 
-Knowledge bases let your agent answer questions based on your documents, websites, and files. When you pass a knowledge base to `execute()`, the AI model automatically searches it for relevant content and includes citations in its responses.
+Knowledge bases give your agent searchable access to documents, websites, and files. Pass one to `execute()` and the model searches it automatically, with citations.
 
-## Creating a knowledge base
+## Create a knowledge base
 
 Create a file in `src/knowledge/`:
 
@@ -21,14 +21,38 @@ export default new Knowledge({
 })
 ```
 
-The dev console under **Knowledge** lets you browse your knowledge bases, see indexing status per source, view individual files, and trigger syncs manually. To test that your knowledge base returns the right results, use the **RAG Search** view in the dev console. It lets you run queries against your knowledge bases and see the matched passages, scores, and source documents.
+When multiple KBs are passed to `execute()`, the LLM reads each one's `description` to pick which to search. Keep descriptions short and specific.
+
+Browse your knowledge bases, inspect indexing status, and view individual files from the dev console:
 
 <Frame>
   <img alt="Knowledge page in dev console" className="block dark:hidden" src="../assets/knowledge-console.png" />
   <img alt="Knowledge page in dev console" className="hidden dark:block" src="../assets/knowledge-console-dark.png" />
 </Frame>
 
+## Use it in a conversation
+
+Pass knowledge bases to `execute()` via the `knowledge` array. The model searches them automatically when it needs information, and includes citations back to the source documents:
+
+```typescript
+import { Conversation } from "@botpress/runtime"
+import ProductDocs from "../knowledge/product-docs"
+import FAQ from "../knowledge/faq"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "Answer questions using the documentation. Cite your sources.",
+      knowledge: [ProductDocs, FAQ],
+    })
+  },
+})
+```
+
 ## Data sources
+
+A knowledge base indexes one or more data sources. The ADK ships two types: websites and local directories.
 
 ### Website from sitemap
 
@@ -84,17 +108,19 @@ const DocsSource = DataSource.Website.fromUrls([
 
 ### Website source options
 
+All four website factories accept the same options:
+
 | Option | Type | Description |
 |--------|------|-------------|
 | `id` | `string` | Optional unique identifier for the source |
 | `filter` | `(ctx) => boolean` | Filter function receiving `{ url, lastmod?, changefreq?, priority? }` |
-| `fetch` | `string \| function` | Fetch strategy: `"node:fetch"` (default), `"integration:browser"`, or custom function |
-| `maxPages` | `number` | Maximum pages to index (1-50000, default: 50000) |
-| `maxDepth` | `number` | Maximum sitemap depth (1-20, default: 20) |
+| `fetch` | `string \| function` | Fetch strategy: `"node:fetch"` (default), `"integration:browser"`, or a custom function |
+| `maxPages` | `number` | Maximum pages to index (1–50000, default: 50000) |
+| `maxDepth` | `number` | Maximum sitemap depth (1–20, default: 20) |
 
 ### Directory
 
-Use a directory as a data source:
+Index files from a local directory:
 
 ```typescript
 const FileSource = DataSource.Directory.fromPath("./src/knowledge/docs", {
@@ -102,31 +128,28 @@ const FileSource = DataSource.Directory.fromPath("./src/knowledge/docs", {
 })
 ```
 
-## Using knowledge in conversations
+| Option | Type | Description |
+|--------|------|-------------|
+| `id` | `string` | Optional unique identifier for the source |
+| `filter` | `(filePath: string) => boolean` | Decide which files to include by path |
 
-Pass knowledge bases to `execute()` via the `knowledge` array:
+## Search a knowledge base directly
+
+To search a KB outside of `execute()`, call `search()` on the instance. Useful for custom retrieval, suggested-articles UIs, or populating context manually:
 
 ```typescript
-import { Conversation } from "@botpress/runtime"
-import ProductDocs from "../knowledge/product-docs"
-import FAQ from "../knowledge/faq"
-
-export default new Conversation({
-  channel: "webchat.channel",
-  handler: async ({ execute }) => {
-    await execute({
-      instructions: "Answer questions using the documentation. Cite your sources.",
-      knowledge: [ProductDocs, FAQ],
-    })
-  },
+const result = await ProductDocs.search("how do I reset my password?", {
+  limit: 5,
 })
+
+for (const passage of result.passages) {
+  console.log(passage.content, passage.metadata)
+}
 ```
 
-The AI model searches the knowledge bases automatically when it needs information. Results include citations that trace back to the source documents.
+## Refresh a knowledge base
 
-## Refreshing knowledge
-
-Knowledge bases are indexed during `adk dev` and `adk deploy`. To re-index on a schedule, use a workflow:
+Knowledge bases index during `adk dev` and `adk deploy`. To re-index on a schedule, use a workflow:
 
 ```typescript
 import { Workflow } from "@botpress/runtime"
@@ -152,11 +175,3 @@ Refresh a single source within a knowledge base:
 ```typescript
 await ProductDocs.refreshSource("my-source-id", { force: true })
 ```
-
----
-
-Next, learn how to test your agent with evals.
-
-<Card title="Write and run evals" icon="flask-conical" href="/adk/testing/evals">
-  Automated conversation tests for your agent.
-</Card>

@@ -25,17 +25,25 @@ The `events` array lists which events this trigger subscribes to. The handler ru
 
 Trigger names must be at least 3 characters and contain only alphanumeric characters and underscores.
 
+Browse your triggers from the dev console:
+
+<Frame>
+  <img alt="Triggers page in dev console" className="block dark:hidden" src="../assets/triggers-console.png" />
+  <img alt="Triggers page in dev console" className="hidden dark:block" src="../assets/triggers-console-dark.png" />
+</Frame>
+
 ## Event format
 
 Events use the format `"integration:eventName"` for integration events, or just the event name for custom events defined in `agent.config.ts`.
 
-The handler receives:
+The handler receives a single `event` parameter:
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `event.type` | `string` | The event type that fired |
 | `event.payload` | `object` | Event-specific data |
-| `client` | `object` | Botpress client for API calls |
+
+To make API calls from a trigger, pull the client from the runtime context: `const client = context.get("client")`.
 
 ## Multiple events
 
@@ -115,19 +123,3 @@ export default new Trigger({
 })
 ```
 
-## Dev console
-
-You can browse triggers in the dev console under **Triggers**.
-
-<Frame>
-  <img alt="Triggers page in dev console" className="block dark:hidden" src="../assets/triggers-console.png" />
-  <img alt="Triggers page in dev console" className="hidden dark:block" src="../assets/triggers-console-dark.png" />
-</Frame>
-
----
-
-Next, learn how to store and query structured data.
-
-<Card title="Tables" icon="database" href="/adk/data/tables">
-  Define and query database tables.
-</Card>

@@ -24,11 +24,11 @@ export default new Conversation({
 
 This is the simplest possible conversation. It matches all channels and hands every message to the AI model with a system instruction.
 
-You can test your conversation using the **Chat** page in the dev console. This requires the webchat integration. If it's not installed, the Chat page will prompt you to add it.
+You can test your conversation using the **Chat** page in the dev console. This requires the webchat integration, so install it first with `adk add webchat`.
 
 <Frame>
-  <img alt="Chat page in dev console" className="block dark:hidden" src="../assets/conversations-chat.png" />
-  <img alt="Chat page in dev console" className="hidden dark:block" src="../assets/conversations-chat-dark.png" />
+  <img alt="Chat page in dev console" className="block dark:hidden" src="../assets/agent-steps.png" />
+  <img alt="Chat page in dev console" className="hidden dark:block" src="../assets/agent-steps-dark.png" />
 </Frame>
 
 ## Channel matching
@@ -214,11 +214,3 @@ Conversation state is automatically persisted between handler calls.
 <Tip>
 For more information about state scopes (conversation vs. bot vs. user), check out our guide on [managing states](/adk/conversations/state).
 </Tip>
-
----
-
-Next, learn how to run the AI model inside a conversation.
-
-<Card title="Run AI agents in a conversation" icon="sparkles" href="/adk/conversations/ai-execution">
-  Use execute() to hand messages to the AI model.
-</Card>
