@@ -3,7 +3,7 @@ title: Integrations
 description: Connect your agent to channels and external services.
 ---
 
-Integrations connect your agent to the outside world. They provide channels (webchat, Slack, WhatsApp) and external services (Gmail, Linear, Stripe).
+Integrations connect your agent to the outside world. They provide channels (Webchat, Slack, WhatsApp) and external services (Gmail, Linear, Stripe).
 
 ## Adding integrations
 
@@ -23,7 +23,9 @@ Most integrations need configuration (API keys, tokens, webhook URLs) before the
   <img alt="Integration configuration in dev console" className="hidden dark:block" src="../assets/integration-config-console-dark.png" />
 </Frame>
 
-Integration configuration is stored on Botpress Cloud, not in your project files. Your dev bot and prod bot each hold their own, so you can point an integration at different API keys per environment. This is separate from agent secrets, which your code reads directly.
+Integration configuration is stored on Botpress Cloud, not in your local project files. This differs from your agent's secrets, which your code reads directly.
+
+Your development bot and production bot each have their own configuration, so you can use different API keys or settings per environment.
 
 ## Enabling and disabling
 
@@ -53,7 +55,7 @@ dependencies: {
 
 Disabled integrations are still part of your project (types are generated, code can reference them) but they won't be active when your agent runs. You can also toggle this from the dev console.
 
-## CLI
+## Managing integrations using the CLI
 
 You can also manage integrations from the command line:
 
@@ -67,9 +69,15 @@ You can also manage integrations from the command line:
 | `adk upgrade <name>` | Update an integration to a newer version |
 | `adk remove <name>` | Remove an integration from your project |
 
-Integrations are added disabled by default. Enable and configure them in the dev console.
+Newly added integrations are disabled by default. You can enable and configure them in the dev console.
+
+<Note>
+  For full documentation on managing integrations via the command line, check out the [CLI reference](/adk/cli-reference).
+</Note>
 
 ## Integration versions
+
+Here's the syntax for referencing integration versions:
 
 | Format | Example | Behavior |
 |--------|---------|----------|
