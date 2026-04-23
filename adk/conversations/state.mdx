@@ -1,5 +1,5 @@
 ---
-title: Manage states
+title: Manage state
 description: Store and reuse data across conversations, users, and the entire bot.
 ---
 
@@ -17,9 +17,9 @@ State lets your agent persist data between handler calls. The ADK provides three
 
 ### Bot and user state
 
-Define these in `agent.config.ts`:
+Define bot and user state in `agent.config.ts`:
 
-```typescript
+```typescript highlight={6-10, 12-18}
 import { z, defineConfig } from "@botpress/runtime"
 
 export default defineConfig({
@@ -45,9 +45,9 @@ Use `.default()` to set initial values and `.describe()` to document what each f
 
 ### Conversation state
 
-Defined on each conversation using the `state` prop:
+Define conversation state on a `Conversation` using the `state` prop:
 
-```typescript
+```typescript highlight={5-8}
 import { Conversation, z } from "@botpress/runtime"
 
 export default new Conversation({
@@ -68,11 +68,11 @@ export default new Conversation({
 
 ## Reading and writing state
 
-State changes are saved automatically. You don't need to call a save method.
+State objects are mutable and can be modified directly. Your changes are saved automatically—you don't need to call a save method.
 
-### Bot state
+## Bot state
 
-Available anywhere in your agent (conversations, actions, tools, workflows):
+You can access bot state anywhere in your agent (conversations, actions, tools, workflows):
 
 ```typescript
 import { bot } from "@botpress/runtime"
@@ -83,7 +83,7 @@ bot.state.ticketCounter = counter + 1
 
 ### User state
 
-Available anywhere the current user context exists:
+You can access user state anywhere the current user context exists:
 
 ```typescript
 import { user } from "@botpress/runtime"
@@ -94,7 +94,7 @@ user.state.visitCount = (user.state.visitCount || 0) + 1
 
 ### Conversation state
 
-Accessed via the `state` parameter in the handler:
+You can access conversation state via the `state` parameter in the conversation handler:
 
 ```typescript
 handler: async ({ state, execute }) => {
@@ -151,7 +151,7 @@ export default new Conversation({
 
 ## Tags
 
-Tags are string key-value pairs you can attach to bots, users, conversations, messages, and workflows. They are useful for categorization, filtering, and querying.
+Tags are string key-value pairs you can attach to bots, users, conversations, messages, and workflows. They're useful for categorization, filtering, and querying.
 
 ### Defining tags
 
@@ -190,7 +190,7 @@ bot.tags.environment = "production"
 user.tags.role = "admin"
 ```
 
-Conversation tags are accessed via the conversation instance:
+You can access conversation tags via the `conversation` instance:
 
 ```typescript
 handler: async ({ conversation }) => {

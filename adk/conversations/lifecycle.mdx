@@ -9,7 +9,7 @@ Lifecycle management adds idle nudges and session expiration to your conversatio
 
 Add a `lifecycle` prop to your conversation:
 
-```typescript
+```typescript highlight={10-13}
 import { Conversation } from "@botpress/runtime"
 import { z } from "@botpress/sdk"
 
@@ -77,7 +77,7 @@ A session is a single period of activity within a conversation. One conversation
 | `lastActivityAt` | `string` | ISO timestamp of the last user message. |
 | `nudgeCount` | `number` | How many nudges have fired in this session. Resets on new activity and on session renewal. |
 
-Access it via `conversation.session`:
+You can access the current session via `conversation.session`:
 
 ```typescript
 const session = props.conversation.session
@@ -87,7 +87,7 @@ if (session) {
 }
 ```
 
-The session object is read-only. It returns `undefined` for conversations without lifecycle configured.
+The `session` object is read-only. It returns `undefined` for conversations without lifecycle configured.
 
 ## What happens when a conversation expires
 
@@ -112,7 +112,7 @@ Lifecycle durations use `ms`-compatible strings:
 | `'24h'` | 24 hours |
 | `'2d'` | 2 days |
 
-Durations are validated at construction time. Invalid or non-positive values throw immediately.
+Durations are validated at construction time. Invalid or non-positive values throw an error immediately.
 
 ## Common patterns
 
