@@ -43,7 +43,7 @@ const data = await step("fetch-data", async ({ attempt }) => {
 }, { maxAttempts: 10 })
 ```
 
-If a step exhausts all retries, it throws. This fails the entire workflow unless you catch it:
+If a step exhausts all retries, it throws an error. This fails the entire workflow unless you catch it:
 
 ```typescript
 try {
@@ -65,11 +65,11 @@ await step.sleep("wait-5-min", 5 * 60 * 1000)
 await step.sleepUntil("wait-until-noon", new Date("2025-01-15T12:00:00Z"))
 ```
 
-The workflow is suspended during sleep. No compute is used.
+The workflow is suspended during sleep, and no further compute is used.
 
 ## Progress
 
-Record a checkpoint without running any work. Useful for observability when you want to mark milestones in a long handler:
+Use `.progress()` to record a checkpoint without running any work. This is useful for observability when you want to mark milestones in a long handler:
 
 ```typescript
 await step.progress("Started import")
@@ -81,17 +81,15 @@ await step.progress("Finished")
 
 ## Listen
 
-Pause the workflow and set its status to `"listening"`, waiting to be resumed by an external event:
+Use `.listen()` to suspend the workflow and set its status to `"listening"`. The workflow then waits to be resumed by an external event. You can specify this event by passing its name in as an argument:
 
 ```typescript
 await step.listen("wait-for-payment")
 ```
 
-The workflow suspends at this point and uses no compute until it is resumed.
-
 ## Fail and abort
 
-Stop execution explicitly:
+Use `.fail()` or `.abort()` to stop execution explicitly:
 
 ```typescript
 // Mark as failed with a message
@@ -103,7 +101,7 @@ step.abort()
 
 ## Child workflows
 
-Start another workflow and wait for it to complete:
+You can start another workflow and wait for it to complete:
 
 ```typescript
 import ProcessingWorkflow from "../workflows/processing"
@@ -124,7 +122,7 @@ const result = await step.waitForWorkflow("wait-for-child", childWorkflow.id)
 
 ## Parallel processing
 
-### map
+### `map`
 
 Process an array of items in parallel and collect results:
 
@@ -137,7 +135,7 @@ const results = await step.map(
 )
 ```
 
-### forEach
+### `forEach`
 
 Process items in parallel without collecting results:
 
@@ -150,7 +148,7 @@ await step.forEach(
 )
 ```
 
-### batch
+### `batch`
 
 Process items in sequential batches:
 
