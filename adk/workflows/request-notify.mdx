@@ -7,13 +7,13 @@ Workflows run in the background, but sometimes they need input from the user or 
 
 ## Requests
 
-A request pauses the workflow and asks the conversation for data. The workflow defines what it needs, the conversation handler collects it from the user and sends it back.
+A request pauses the workflow and asks the conversation for data. The workflow defines what it needs, the conversation handler collects it from the user and sends it back to the workflow.
 
 ### Define requests in the workflow
 
 Declare the request schemas in the workflow definition:
 
-```typescript
+```typescript highlight={5-14}
 import { Workflow, z } from "@botpress/runtime"
 
 export default new Workflow({
@@ -40,7 +40,7 @@ export default new Workflow({
 })
 ```
 
-`step.request()` pauses the workflow and sends a `workflow_request` event to the conversation. The second argument is a human-readable message describing what's needed.
+`step.request()` pauses the workflow and sends a `workflow_request` event to the conversation. The first argument is the name of the data being requested, and the second argument is a natural language prompt for that data.
 
 ### Handle requests in the conversation
 
@@ -164,11 +164,3 @@ if (props.type === "workflow_callback") {
   return
 }
 ```
-
-## Summary
-
-| Mechanism | Direction | Pauses workflow? | Handler type |
-|-----------|-----------|-----------------|--------------|
-| `step.request()` | Workflow asks conversation | Yes | `workflow_request` |
-| `step.notify()` | Workflow tells conversation | No | `workflow_notify` |
-| Callback | Workflow completes | N/A | `workflow_callback` |
