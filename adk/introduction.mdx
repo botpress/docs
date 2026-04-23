@@ -1,15 +1,14 @@
 ---
-title: Botpress ADK
-sidebarTitle: Welcome
-description: The Botpress Agent Development Kit (ADK) is a developer-first TypeScript framework for building AI agents on the Botpress Platform.
+title: Introduction to the ADK
+description: TypeScript framework for building AI agents on Botpress.
 ---
 
-<Frame>
-  <img alt="Botpress ADK" className="block dark:hidden" src="../assets/welcome.png" />
-  <img alt="Botpress ADK" className="hidden dark:block" src="../assets/welcome-dark.png" />
-</Frame>
+The Agent Development Kit (ADK) is a **CLI tool and development framework for building AI agents on Botpress**. Write your agent as TypeScript: conversations, workflows, tools, and actions all live as code, with hot reload and type-safe APIs. Botpress handles hosting, scaling, and channel delivery.
 
-The ADK is a TypeScript framework for building AI agents that run on the Botpress Platform. You write conversations, workflows, tools, and actions as code. The platform handles hosting, scaling, and channel delivery.
+<Frame>
+  <img alt="Botpress ADK" className="block dark:hidden" src="./assets/welcome.png" />
+  <img alt="Botpress ADK" className="hidden dark:block" src="./assets/welcome-dark.png" />
+</Frame>
 
 ## What you can build
 
@@ -39,14 +38,15 @@ Your agent is organized around a few core primitives:
 | **Tables** | Structured data storage |
 | **Knowledge** | RAG-powered document retrieval |
 | **Triggers** | React to external events |
+| **Custom components** | Render custom React UI in webchat |
 | **Evals** | Automated conversation tests |
 
-Each primitive lives in its own file under `src/`. The ADK discovers them automatically, no manual registration.
+Each primitive lives in its own file. The ADK discovers them automatically, no manual registration.
 
 ## Start here
 
 <CardGroup cols={2}>
-  <Card title="Quickstart" icon="rocket" href="/adk/get-started/quickstart">
+  <Card title="Quickstart" icon="rocket" href="/adk/quickstart">
     Install the ADK and deploy your first agent in minutes.
   </Card>
   <Card title="What's new" icon="newspaper" href="/changelog">

@@ -1,15 +1,21 @@
 ---
 title: Run AI agents in a conversation
-description: Use execute() to hand messages to the AI model.
+description: Use `execute()` to hand messages to the AI model.
 ---
 
-`execute()` is the primary way your agent responds to users. It starts an AI loop that iterates until the model reaches a conclusion. On each iteration, the model can read the conversation, call tools, and generate code. The loop ends when the model sends a message to the user (and waits for a reply), triggers an exit, or hits the iteration limit (default 10, configurable).
+The `execute()` function is the primary way your agent responds to users. It starts an AI loop that iterates until the model reaches a conclusion. On each iteration, the model can read the conversation, call tools, and generate code.
 
-The `await` resolves once the loop finishes. Under the hood, `execute()` is powered by [llmz](https://github.com/botpress/botpress/tree/master/packages/llmz).
+The loop ends when the model sends a message to the user (and waits for a reply), triggers an exit, or hits the iteration limit (which defaults to 10 and is configurable).
+
+The `await` resolves once the loop finishes.
+
+<Note>
+Under the hood, `execute()` is powered by [LLMz](https://github.com/botpress/botpress/tree/master/packages/llmz).
+</Note>
 
 ## Basic usage
 
-```typescript
+```typescript highlight={4-6}
 export default new Conversation({
   channel: "webchat.channel",
   handler: async ({ execute }) => {
@@ -24,13 +30,15 @@ The model reads the full conversation transcript, follows your instructions, and
 
 ## Instructions
 
-Instructions tell the model how to behave. They can be a static string or a function that returns a string:
+Pass instructions into the `instructions` field to tell the model how to behave. They can be a static string or a function that returns a string:
 
-```typescript
+```typescript highlight={3, 8-13}
+// String
 await execute({
   instructions: "You are a helpful assistant that speaks formally.",
 })
 
+// Function that returns a string
 await execute({
   instructions: () => {
     const hour = new Date().getHours()
@@ -45,25 +53,29 @@ Instructions are evaluated fresh on each execution. Use a function when you need
 
 ## Knowledge
 
-Attach knowledge bases to give the model access to your documents:
+Pass knowledge bases into the `knowledge` field to give the model access to your documents:
 
-```typescript
+```typescript highlight={6}
 import { DocsKB } from "../knowledge/docs"
-import { FAQKB } from "../knowledge/faq"
+import { FaqKB } from "../knowledge/faq"
 
 await execute({
   instructions: "Answer questions using the documentation.",
-  knowledge: [DocsKB, FAQKB],
+  knowledge: [DocsKB, FaqKB],
 })
 ```
 
-The model automatically searches the knowledge bases when it needs information. Results include citations that trace back to the source documents. See [Knowledge bases](/adk/data/knowledge) for how to define them.
+The model automatically searches the knowledge bases when it needs information. Results include citations that trace back to the source documents.
+
+<Tip>
+  For more information on defining knowledge bases, check out the [Knowledge base documentation](/adk/data/knowledge).
+</Tip>
 
 ## Tools
 
-Give the model functions it can call:
+Give the model functions it can call by passing them into the `tools` field:
 
-```typescript
+```typescript highlight={6}
 import { getWeather } from "../tools/weather"
 import { createTicket } from "../tools/ticket"
 
@@ -77,7 +89,7 @@ The model decides when to call a tool based on the conversation. For a full guid
 
 ## Exits
 
-Exits let the model end execution with a structured result:
+Pass in `exits` to let the model end execution with a structured result:
 
 ```typescript
 import { Autonomous, z } from "@botpress/runtime"
@@ -104,7 +116,7 @@ if (result.exit?.name === "handoffToHuman") {
 
 ## Model override
 
-Override the default model for a specific execution:
+You can override the default model for a specific execution:
 
 ```typescript
 await execute({
@@ -125,6 +137,8 @@ await execute({
 The default model is set in `agent.config.ts` under `defaultModels.autonomous`. You can also browse and change models from the dev console under **Settings > LLM Config**.
 
 ## Temperature and reasoning
+
+To control the model's temperature and reasoning effort, use the `temperature` and `reasoningEffort` props:
 
 ```typescript
 await execute({
@@ -150,7 +164,22 @@ await execute({
 })
 ```
 
-Defaults to 10, clamped between 1 and 100.
+The number of iterations defaults to 10 and is clamped between 1 and 100.
+
+## Cancellation
+
+Pass an `AbortSignal` to cancel execution mid-loop. Useful when the caller needs to bail out (e.g. a timeout or the user navigating away):
+
+```typescript
+const controller = new AbortController()
+
+setTimeout(() => controller.abort(), 30_000)
+
+await execute({
+  instructions: "You are a helpful assistant.",
+  signal: controller.signal,
+})
+```
 
 ## Mode
 
@@ -164,7 +193,7 @@ await execute({
 })
 ```
 
-In worker mode, the model processes without sending messages to the conversation.
+In worker mode, the model executes without sending messages to the conversation.
 
 ## Hooks
 
@@ -212,17 +241,9 @@ await execute({
 
 ## Debugging execution
 
-The dev console **Traces** view shows you exactly what happened during execution: which tools were called, what the model generated, how many iterations it took, and any errors.
+To see exactly what happened during an execution (which tools were called, what the model generated, how many iterations it took, and any errors), see [Debug with logs and traces](/adk/testing/debugging).
 
 <Frame>
   <img alt="Traces view in dev console" className="block dark:hidden" src="../assets/traces-view.png" />
   <img alt="Traces view in dev console" className="hidden dark:block" src="../assets/traces-view-dark.png" />
 </Frame>
-
----
-
-Next, learn how to define tools the AI model can call.
-
-<Card title="Define Tools" icon="wrench" href="/adk/conversations/tools">
-  Give the AI functions it can call during execution.
-</Card>

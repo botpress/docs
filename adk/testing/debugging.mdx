@@ -43,16 +43,11 @@ You can also read logs from the command line:
 ```bash
 adk logs                         # Show recent logs
 adk logs --follow                # Stream logs in real time
-adk logs error                   # Filter by level
-adk logs "webhook"               # Filter by content
+adk logs error                   # Errors only
+adk logs warning since=1h        # Warnings and errors from the last hour
+adk logs limit=100               # Last 100 entries
 ```
 
+The positional filter tokens are `error` / `warning` / `info` (cumulative level), `since=<duration>`, and `limit=<n>`. See the [CLI reference](/adk/cli-reference#adk-logs) for all flags.
+
 Logs are stored in `.adk/logs/` while the dev server is running.
-
----
-
-Next, learn how to run scripts with access to your agent's runtime context.
-
-<Card title="Run scripts" icon="terminal" href="/adk/testing/scripts">
-  Execute one-off scripts with full runtime access.
-</Card>

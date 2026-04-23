@@ -1,11 +1,11 @@
 ---
-title: Agent Configuration
+title: Configuration
 description: Understand your project structure and how to configure your agent.
 ---
 
 ## Project structure
 
-After running `adk init`, your project contains:
+After running `adk init`, these are the core files and folders of an ADK project:
 
 | Path | Purpose |
 |------|---------|
@@ -17,17 +17,17 @@ After running `adk init`, your project contains:
 | `src/tables/` | Database table schemas |
 | `src/knowledge/` | RAG knowledge base sources |
 | `src/triggers/` | Event-based handlers |
-| `src/evals/` | Automated conversation tests |
-| `package.json` | Node.js dependencies |
-| `tsconfig.json` | TypeScript settings |
+| `evals/` | Automated conversation tests |
 
 The ADK scans `src/` and discovers primitives automatically. Each file exports a primitive (a `Conversation`, `Workflow`, `Action`, etc.) and the framework registers it at build time.
 
-## agent.config.ts
+## `agent.config.ts`
 
-Everything about your agent is configured here using `defineConfig`. This is the hello-world template config with all available fields shown:
+Everything about your agent is configured in `agent.config.ts` by calling `defineConfig` and passing in a configuration object.
 
-```typescript
+Here's the `hello-world` template default configuration with all available fields shown:
+
+```typescript expandable
 import { z, defineConfig } from "@botpress/runtime"
 
 export default defineConfig({
@@ -93,7 +93,7 @@ defaultModels: {
 | `autonomous` | `execute()` calls in conversations and workflows |
 | `zai` | Zai operations like `zai.extract()`, `zai.check()`, `zai.text()` |
 
-If you don't set `defaultModels`, the ADK defaults to `openai:gpt-4.1-2025-04-14` for autonomous and `openai:gpt-4.1-mini-2025-04-14` for zai.
+If you don't set `defaultModels`, the ADK defaults to `openai:gpt-4.1-mini-2025-04-14` for autonomous and `openai:gpt-4.1-2025-04-14` for zai.
 
 You can pass an array of models for fallback. If the first model fails, the next one is tried:
 
@@ -116,14 +116,14 @@ await execute({
 
 ### State
 
-State lets your agent persist data. There are two scopes:
+The `state` field lets you define schemas for data that your agent can persist across a certain scope. There are two available scopes:
 
 | Scope | Persists across | Use for |
 |-------|----------------|---------|
 | `bot` | All conversations and users | Global counters, shared config |
 | `user` | All conversations for a given user | Preferences, profile data |
 
-Define schemas with Zod. The ADK generates TypeScript types from them, so state access is fully typed:
+You can define schemas for state using Zod. The ADK generates TypeScript types from them, so state access is fully typed:
 
 ```typescript
 bot: {
@@ -139,11 +139,13 @@ user: {
 },
 ```
 
-For reading and writing state at runtime, see [Manage states](/adk/conversations/state).
+<Tip>
+  For more information about reading and writing state at runtime, check out our guide to [managing states](/adk/conversations/state).
+</Tip>
 
 ### Tags
 
-Tags are metadata you can attach to bots, users, conversations, messages, and workflows:
+The `tags` field lets you define metadata that you can attach to bots, users, conversations, messages, and workflows:
 
 ```typescript
 bot: {
@@ -162,7 +164,7 @@ Tags are useful for filtering and organizing data in the Botpress platform.
 
 ### Secrets
 
-Secrets store sensitive values like API keys. They are declared here, but values are managed separately per environment and never committed to git:
+The `secrets` field lets you store sensitive values, like API keys or tokens. They are declared here, but values are managed separately per environment and never committed to version control:
 
 ```typescript
 secrets: {
@@ -171,11 +173,13 @@ secrets: {
 },
 ```
 
-For the full secrets workflow, see [Environment Setup](/adk/setup/environment).
+<Tip>
+For more information about using secrets, check out our guide on [setting up your environment](/adk/setup/environment#secrets).
+</Tip>
 
 ### Configuration
 
-Configuration defines static, deploy-time settings. Unlike state, these are read-only at runtime:
+The `configuration` field defines static, deploy-time settings. Unlike state, these are read-only at runtime:
 
 ```typescript
 configuration: {
@@ -186,7 +190,9 @@ configuration: {
 },
 ```
 
-For managing configuration values across environments, see [Environment Setup](/adk/setup/environment).
+<Tip>
+  For managing configuration values across environments, check out our guide to [setting up your environment](/adk/setup/environment#configuration).
+</Tip>
 
 ### Dependencies
 
@@ -208,11 +214,13 @@ dependencies: {
 },
 ```
 
-For finding, configuring, and managing integrations, see [Integrations](/adk/setup/integrations).
+<Tip>
+For more information about finding, configuring, and managing integrations, check out our [integrations guide](/adk/setup/integrations).
+</Tip>
 
 ### Custom events
 
-Define events your agent can emit and subscribe to:
+The `events` field lets you define custom events your agent can emit and subscribe to:
 
 ```typescript
 events: {
@@ -226,15 +234,15 @@ events: {
 },
 ```
 
-Triggers and conversations can listen for custom events. See [Set up triggers](/adk/external/triggers).
+You can then listen for these events within triggers and conversations. For more information, check out our guide on [setting up triggers](/adk/external/triggers).
 
 ### Evals
 
-Configure how automated tests run:
+The `evals` field lets you configure how your agent's automated tests run:
 
 ```typescript
 evals: {
-  idleTimeout: 30,
+  idleTimeout: 15000,
   judgePassThreshold: 3,
   judgeModel: "openai:gpt-4o",
 },
@@ -242,16 +250,10 @@ evals: {
 
 | Field | Description |
 |-------|-------------|
-| `idleTimeout` | Seconds to wait for idle eval conversations |
+| `idleTimeout` | Milliseconds to wait for the agent to respond before timing out |
 | `judgePassThreshold` | Pass threshold for LLM judge assertions (1-5) |
 | `judgeModel` | Model used for LLM judge assertions |
 
-For writing and running evals, see [Write and run evals](/adk/testing/evals).
-
----
-
-Next, learn how to manage secrets and configuration values across dev and production environments.
-
-<Card title="Environment Setup" icon="lock" href="/adk/setup/environment">
-  Secrets, configuration values, and dev vs prod environments.
-</Card>
+<Tip>
+  For more information, check out our full guide to [writing and running evals](/adk/testing/evals).
+</Tip>

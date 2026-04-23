@@ -1,5 +1,5 @@
 ---
-title: Define Tools
+title: Define tools
 description: Give the AI model functions it can call during execution.
 ---
 
@@ -39,7 +39,7 @@ The `input` and `output` schemas use Zod. Use `.describe()` on each field so the
 
 Pass tools to `execute()` via the `tools` array:
 
-```typescript
+```typescript highlight={10}
 import { Conversation } from "@botpress/runtime"
 import getWeather from "../tools/weather"
 import createTicket from "../tools/ticket"
@@ -61,7 +61,7 @@ The model decides which tools to call based on the conversation. It can call mul
 
 You can define tools directly inside a handler without creating a separate file:
 
-```typescript
+```typescript highlight={6-15, 19}
 import { Autonomous, z, Conversation } from "@botpress/runtime"
 
 export default new Conversation({
@@ -86,7 +86,7 @@ export default new Conversation({
 })
 ```
 
-This is useful for tools that are only relevant to a single conversation.
+This is useful for tools that are only relevant to a single type of conversation.
 
 ## Writing good descriptions
 
@@ -115,7 +115,7 @@ Tools can throw signals to influence the AI loop without returning a normal resu
 
 ### ThinkSignal
 
-Throws context back into the model's reasoning without producing a tool output. Useful when a tool finds no results and you want the model to try a different approach:
+A `ThinkSignal` throws context back into the model's reasoning without producing a tool output. This is useful when a tool finds no results and you want the model to try a different approach:
 
 ```typescript
 import { Autonomous } from "@botpress/runtime"
@@ -136,9 +136,11 @@ handler: async ({ query }) => {
 
 ## Actions as tools
 
-Actions are reusable functions that can be called from anywhere in your agent (conversations, workflows, other actions, or external API clients). Unlike standalone tools, which only exist inside `execute()`, actions are shared primitives. You can convert any action into a tool:
+Actions are reusable functions that can be called from anywhere in your agent—conversations, workflows, other actions, or external API clients. Tools only work inside `execute()`, where the AI model decides when to call them based on the conversation.
 
-```typescript
+You can convert any action into a tool by calling its `asTool()` method and passing it into `tools`:
+
+```typescript highlight={8}
 import { Conversation, actions } from "@botpress/runtime"
 
 export default new Conversation({
@@ -152,13 +154,15 @@ export default new Conversation({
 })
 ```
 
-See [Build Actions](/adk/external/actions) for how to define actions.
+<Tip>
+  Check out our guide on [building actions](/adk/external/actions) for more information.
+</Tip>
 
 ## Workflows as tools
 
 Workflows are long-running background processes that can span multiple steps and run independently of the conversation. Converting a workflow to a tool lets the model kick one off:
 
-```typescript
+```typescript highlight={9}
 import { Conversation } from "@botpress/runtime"
 import orderWorkflow from "../workflows/order"
 
@@ -173,13 +177,15 @@ export default new Conversation({
 })
 ```
 
-See [Create workflows](/adk/workflows/create) for how to define workflows.
+<Tip>
+  Check out our guide on [creating workflows](/adk/workflows/create) for more information.
+</Tip>
 
 ## Calling actions from tools
 
 Tools can call actions for reusable logic:
 
-```typescript
+```typescript highlight={8}
 import { Autonomous, actions, z } from "@botpress/runtime"
 
 export default new Autonomous.Tool({
@@ -192,11 +198,3 @@ export default new Autonomous.Tool({
   },
 })
 ```
-
----
-
-Next, learn how to send messages and content directly from your handler.
-
-<Card title="Send messages and content" icon="message-circle" href="/adk/conversations/messages">
-  Send text, images, carousels, and more.
-</Card>

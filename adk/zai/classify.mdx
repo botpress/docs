@@ -7,15 +7,22 @@ Zai provides methods for classifying, validating, and organizing data using an L
 
 ## Check a condition
 
-`zai.check()` verifies a boolean condition against input:
+`zai.check()` asks the LLM a yes/no question about some input and returns `true` or `false`:
 
 ```typescript
 import { adk } from "@botpress/runtime"
 
-const { output } = await adk.zai.check(emailBody, "is spam").result()
-const { value, explanation } = output
-// value: true/false
-// explanation: "The email contains..."
+const emailBody = "Click here for a FREE iPhone! Limited time only!!!"
+const isSpam = await adk.zai.check(emailBody, "is this spam?")
+// true
+```
+
+Call `.result()` for the boolean plus the LLM's reasoning:
+
+```typescript
+const { output } = await adk.zai.check(emailBody, "is this spam?").result()
+// output.value       → true
+// output.explanation → "The message uses urgency tactics and promises free rewards..."
 ```
 
 ## Label content
@@ -64,7 +71,7 @@ const prioritized = await adk.zai.sort(tasks, "by urgency and impact, most urgen
 
 ## Rate items
 
-`zai.rate()` scores items on a 1-5 scale:
+`zai.rate()` scores items on a 1-5 scale. Pass a string for a single criterion:
 
 ```typescript
 const reviews = [
@@ -77,9 +84,25 @@ const ratings = await adk.zai.rate(reviews, "Rate the sentiment")
 // [5, 3, 1]
 ```
 
+Pass an object to score each item across multiple criteria. Each result includes a `total`:
+
+```typescript
+const essays = ["... first essay ...", "... second essay ..."]
+
+const ratings = await adk.zai.rate(essays, {
+  grammar: "Rate the grammar and spelling",
+  clarity: "Rate how clear and well-organized the writing is",
+  argumentation: "Rate the strength of arguments and evidence",
+})
+// [
+//   { grammar: 4, clarity: 5, argumentation: 3, total: 12 },
+//   { grammar: 3, clarity: 4, argumentation: 4, total: 11 },
+// ]
+```
+
 ## Group items
 
-`zai.group()` categorizes items into groups:
+`zai.group()` categorizes items into groups. With just `instructions`, it discovers groups on its own:
 
 ```typescript
 const messages = [
@@ -95,10 +118,30 @@ const groups = await adk.zai.group(messages, {
 // { "Login Issues": [...], "Shipping Questions": [...], "Technical Errors": [...] }
 ```
 
----
+To force items into predefined categories, pass `initialGroups`:
 
-Next, explore AI-native development patterns.
+```typescript
+const articles = [
+  "How to build a React app",
+  "Python machine learning tutorial",
+  "Understanding Docker containers",
+]
 
-<Card title="Skills" icon="puzzle-piece" href="/adk/ai-native/skills">
-  Give AI coding assistants deep ADK knowledge.
-</Card>
+const groups = await adk.zai.group(articles, {
+  instructions: "Categorize by technology",
+  initialGroups: [
+    { id: "frontend", label: "Frontend Development" },
+    { id: "backend", label: "Backend Development" },
+    { id: "ml", label: "Machine Learning" },
+  ],
+})
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `instructions` | `string` | How to group the items |
+| `initialGroups` | `Array<{id, label}>` | Predefined categories to use instead of discovering them |
+| `maxGroups` | `number` | Upper limit on groups. Smaller groups merge at the end until within the limit |
+| `minElements` | `number` | Minimum items per group. Groups below the threshold have their elements redistributed |
+| `tokensPerElement` | `number` | Max tokens per item |
+| `chunkLength` | `number` | Max tokens per chunk for large inputs |

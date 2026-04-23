@@ -24,29 +24,56 @@ export default new Conversation({
 
 This is the simplest possible conversation. It matches all channels and hands every message to the AI model with a system instruction.
 
-You can test your conversation using the **Chat** page in the dev console. This requires the webchat integration. If it's not installed, the Chat page will prompt you to add it.
+You can test your conversation using the **Chat** page in the dev console. This requires the webchat integration, so install it first with `adk add webchat`.
 
 <Frame>
-  <img alt="Chat page in dev console" className="block dark:hidden" src="../assets/conversations-chat.png" />
-  <img alt="Chat page in dev console" className="hidden dark:block" src="../assets/conversations-chat-dark.png" />
+  <img alt="Chat page in dev console" className="block dark:hidden" src="../assets/agent-steps.png" />
+  <img alt="Chat page in dev console" className="hidden dark:block" src="../assets/agent-steps-dark.png" />
 </Frame>
 
 ## Channel matching
 
 The `channel` field determines which integration channels this conversation handles:
 
-```typescript
-// Match all channels
-channel: "*"
+<CodeGroup>
+  ```ts All channels highlight={2} theme={"theme":{"light":"light-plus","dark":"dark-plus"}}
+  export default new Conversation({
+    channel: "*",
+    handler: async ({ execute }) => {
+      await execute({
+        instructions: "You are a helpful assistant.",
+      });
+    },
+  });
+  ```
 
-// Match a specific channel
-channel: "webchat.channel"
+  ```ts Specific channel highlight={2} theme={"theme":{"light":"light-plus","dark":"dark-plus"}}
+  export default new Conversation({
+    channel: "webchat.channel",
+    handler: async ({ execute }) => {
+      await execute({
+        instructions: "You are a helpful assistant.",
+      });
+    },
+  });
+  ```
 
-// Match multiple channels
-channel: ["webchat.channel", "chat.channel"]
-```
+  ```ts Array of channels highlight={2-5} theme={"theme":{"light":"light-plus","dark":"dark-plus"}}
+  export default new Conversation({
+    channel: [
+      "chat.channel",
+      "webchat.channel"
+    ],
+    handler: async ({ execute }) => {
+      await execute({
+        instructions: "You are a helpful assistant.",
+      });
+    },
+  });
+  ```
+</CodeGroup>
 
-When you use `"*"`, the handler runs for any channel but `message` and `event` are typed as `unknown`. Specifying a channel gives you strict types on message payloads, event payloads, and the conversation instance:
+When you use `"*"`, the handler runs for any channel, but `message` and `event` are typed as `unknown`. Specifying a channel gives you strict types on message payloads, event payloads, and the conversation instance:
 
 ```typescript
 // channel: "*" — message.payload is unknown
@@ -165,7 +192,7 @@ Events use the format `"integration:eventName"` for integration events, or just 
 
 Each conversation can declare its own state schema, separate from the bot and user state in `agent.config.ts`:
 
-```typescript
+```typescript highlight={3-6}
 export default new Conversation({
   channel: "webchat.channel",
   state: z.object({
@@ -182,12 +209,8 @@ export default new Conversation({
 })
 ```
 
-Conversation state is automatically persisted between handler calls. For more on state scopes (conversation vs bot vs user), see [Manage states](/adk/conversations/state).
+Conversation state is automatically persisted between handler calls.
 
----
-
-Next, learn how to run the AI model inside a conversation.
-
-<Card title="Run AI agents in a conversation" icon="sparkles" href="/adk/conversations/ai-execution">
-  Use execute() to hand messages to the AI model.
-</Card>
+<Tip>
+For more information about state scopes (conversation vs. bot vs. user), check out our guide on [managing states](/adk/conversations/state).
+</Tip>

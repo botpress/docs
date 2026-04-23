@@ -32,7 +32,8 @@ The available message types depend on the channel. For webchat, the following ty
 | `choice` | `{ text, options, disableFreeText? }` | Quick reply buttons |
 | `dropdown` | `{ text, options, disableFreeText? }` | Dropdown select menu |
 | `bloc` | `{ items }` | A group of mixed message types sent together |
-| `custom` | `{ url, name, data? }` | Custom rendered component (see [Use custom components](/adk/conversations/custom-components)) |
+| `custom` | `{ url, name, data? }` | Raw custom message referencing a bundled component by URL |
+| `customComponent` | `{ component, props }` | Send a [custom component](/adk/conversations/custom-components) directly. The runtime rewrites this into a `custom` message under the hood, so you get type-checked props instead of a raw URL |
 
 Other channels (Slack, WhatsApp, Telegram) support different subsets. When you specify a channel on your conversation, TypeScript will only allow the message types that channel supports.
 
@@ -166,11 +167,3 @@ handler: async ({ execute, conversation, type }) => {
 ```
 
 Direct sends and AI-generated messages appear in the same conversation.
-
----
-
-Next, learn how to render custom React components in webchat.
-
-<Card title="Use custom components" icon="component" href="/adk/conversations/custom-components">
-  Build and render React UI inside webchat.
-</Card>

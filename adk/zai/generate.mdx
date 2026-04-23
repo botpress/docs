@@ -34,9 +34,14 @@ const formal = await adk.zai.rewrite(
 // "The meeting has been scheduled for tomorrow at 3:00 PM."
 ```
 
+| Option | Type | Description |
+|--------|------|-------------|
+| `length` | `number` | Max tokens to generate |
+| `examples` | `Array<{input, output, instructions?}>` | Few-shot examples to guide the rewriting |
+
 ## Summarize
 
-`zai.summarize()` condenses long content:
+`zai.summarize()` condenses long content. It handles documents from a few paragraphs up to entire books by chunking and merging automatically:
 
 ```typescript
 const summary = await adk.zai.summarize(longArticle, {
@@ -49,27 +54,39 @@ const summary = await adk.zai.summarize(longArticle, {
 |--------|------|-------------|
 | `length` | `number` | Target summary length in tokens |
 | `prompt` | `string` | Instructions for what to focus on |
+| `format` | `string` | How to format the output (e.g. "bullet points with clear sections") |
+| `intermediateFactor` | `number` | How many times longer intermediate summaries are than the final length (used for very large documents) |
+| `maxIterations` | `number` | Max refinement passes |
+| `sliding` | `{ window, overlap }` | Override the default chunk size and overlap |
 
 ## Answer with citations
 
-`zai.answer()` answers questions from a set of documents and provides source citations:
+`zai.answer()` answers a question from a set of documents and tells you which documents backed the answer. It doesn't always return a direct answer: if the question is ambiguous, off-topic, or the documents don't cover it, the result carries that information instead.
 
 ```typescript
-const documents = [
-  "Botpress was founded in 2016.",
-  "The company is based in Quebec, Canada.",
-  "Botpress provides an AI agent platform.",
+const faq = [
+  "Orders ship within 2 business days. Standard shipping takes 3-5 business days; expedited takes 1-2.",
+  "Returns are accepted within 30 days of delivery. Items must be unused and in original packaging.",
+  "Our warranty covers manufacturing defects for 1 year from purchase. Wear and tear is not covered.",
 ]
 
-const result = await adk.zai.answer(documents, "When was Botpress founded?")
+const result = await adk.zai.answer(faq, "How long do I have to return something?")
 
 if (result.type === "answer") {
-  console.log(result.answer)    // "Botpress was founded in 2016."
-  console.log(result.citations) // Array of citation references
+  console.log(result.answer)     // "Returns are accepted within 30 days of delivery..."
+  console.log(result.citations)  // Points back to the returns policy entry
 }
 ```
 
-The result `type` is `"answer"` when the question can be answered from the documents, or another value when it cannot.
+Branch on `result.type` to handle the other cases (ambiguous questions, off-topic, etc.):
+
+| Type | Fields | When it's returned |
+|------|--------|-------------------|
+| `answer` | `answer`, `citations` | The documents support a clear answer |
+| `ambiguous` | `ambiguity`, `follow_up`, `answers` | The question has multiple valid interpretations |
+| `out_of_topic` | `reason` | The question isn't covered by the documents' topic |
+| `invalid_question` | `reason` | The question is malformed or nonsensical |
+| `missing_knowledge` | `reason` | The topic is relevant but the documents don't cover it |
 
 ## Patch files
 
@@ -87,9 +104,3 @@ const patched = await adk.zai.patch(
   "Add JSDoc comments to all exported functions"
 )
 ```
-
----
-
-<Card title="Classify, validate and filter" icon="tags" href="/adk/zai/classify">
-  Check conditions, label content, filter, sort, rate, and group.
-</Card>
