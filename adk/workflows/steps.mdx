@@ -28,7 +28,7 @@ export default new Workflow({
 })
 ```
 
-Each step name must be unique within the workflow. If two steps share a name, the second one reuses the first step's cached output instead of running.
+Step names should be unique. If the same name runs twice, the second call returns the first one's cached result instead of running.
 
 Steps can be nested. A parent step completes when all its sub-steps complete.
 
@@ -57,7 +57,7 @@ try {
 
 ## Sleep
 
-Pause the workflow for a duration or until a specific time:
+Pause the workflow for a duration (in milliseconds) or until a specific time:
 
 ```typescript
 await step.sleep("wait-5-min", 5 * 60 * 1000)
@@ -66,6 +66,18 @@ await step.sleepUntil("wait-until-noon", new Date("2025-01-15T12:00:00Z"))
 ```
 
 The workflow is suspended during sleep. No compute is used.
+
+## Progress
+
+Record a checkpoint without running any work. Useful for observability when you want to mark milestones in a long handler:
+
+```typescript
+await step.progress("Started import")
+// ...
+await step.progress("Halfway done")
+// ...
+await step.progress("Finished")
+```
 
 ## Listen
 
@@ -150,11 +162,3 @@ await step.batch(
   { batchSize: 100 }
 )
 ```
-
----
-
-Next, learn how workflows can exchange data with conversations.
-
-<Card title="Request and notify from workflows" icon="arrow-right-left" href="/adk/workflows/request-notify">
-  Ask conversations for input and send progress updates.
-</Card>

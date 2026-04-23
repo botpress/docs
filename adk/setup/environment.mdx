@@ -1,5 +1,5 @@
 ---
-title: Environment Setup
+title: Environment setup
 description: Manage secrets, configuration values, and dev vs prod environments.
 ---
 
@@ -50,6 +50,13 @@ adk secret:set OPENAI_KEY "sk-prod-..." --prod
 
 Dev and prod values are stored in separate buckets inside `.adk/secrets.json`. Setting a dev value never touches prod, and vice versa.
 
+You can also add, edit, and delete secrets from the dev console. Schema changes (adding or removing declarations) write back to `agent.config.ts`:
+
+<Frame>
+  <img alt="Secrets management in dev console" className="block dark:hidden" src="../assets/secrets-console.png" />
+  <img alt="Secrets management in dev console" className="hidden dark:block" src="../assets/secrets-console-dark.png" />
+</Frame>
+
 ### CLI reference
 
 | Command | What it does |
@@ -75,15 +82,6 @@ if (secrets.SENTRY_DSN) {
 ```
 
 The `secrets` import is a typed proxy over environment variables. Required secrets are typed as `string`, optional ones as `string | undefined`. It's read-only. Assigning to `secrets.X` throws.
-
-### Managing secrets in the dev console
-
-You can also manage secrets from the dev console under **Settings > Secrets**. The UI lets you add, edit, and delete secrets for both dev and prod environments. Schema changes (adding or removing declarations) write back to `agent.config.ts`.
-
-<Frame>
-  <img alt="Secrets management in dev console" className="block dark:hidden" src="../assets/secrets-console.png" />
-  <img alt="Secrets management in dev console" className="hidden dark:block" src="../assets/secrets-console-dark.png" />
-</Frame>
 
 ### Naming rules
 
@@ -135,6 +133,13 @@ adk config:set supportEmail "help@mycompany.com" --prod  # Set a prod value
 adk config:get supportEmail                        # Read a value
 ```
 
+Configuration values can also be managed from the dev console:
+
+<Frame>
+  <img alt="Config variables in dev console" className="block dark:hidden" src="../assets/config-variables-console.png" />
+  <img alt="Config variables in dev console" className="hidden dark:block" src="../assets/config-variables-console-dark.png" />
+</Frame>
+
 ### Using configuration at runtime
 
 ```typescript
@@ -145,15 +150,6 @@ const retries = configuration.maxRetries
 ```
 
 Configuration is read-only. Attempting to set a value at runtime throws.
-
-### Dev console
-
-Configuration values can also be managed from the dev console under **Settings > Config Variables**.
-
-<Frame>
-  <img alt="Config variables in dev console" className="block dark:hidden" src="../assets/config-variables-console.png" />
-  <img alt="Config variables in dev console" className="hidden dark:block" src="../assets/config-variables-console-dark.png" />
-</Frame>
 
 ## Preflight checks
 
@@ -170,11 +166,3 @@ This checks:
 - Generated type assets
 
 Preflight checks also run automatically during `adk dev` and `adk deploy`.
-
----
-
-Next, learn how to connect your agent to channels and external services.
-
-<Card title="Integrations" icon="puzzle-piece" href="/adk/setup/integrations">
-  Find, add, and configure integrations.
-</Card>

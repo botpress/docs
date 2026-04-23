@@ -40,6 +40,33 @@ export default new Workflow({
 
 The `input` and `output` schemas define what the workflow accepts and returns. Both use Zod.
 
+View running and completed workflows, their status, input, output, and run history from the dev console:
+
+<Frame>
+  <img alt="Workflows page in dev console" className="block dark:hidden" src="../assets/workflows-console.png" />
+  <img alt="Workflows page in dev console" className="hidden dark:block" src="../assets/workflows-console-dark.png" />
+</Frame>
+
+### Persistent state
+
+Add a `state` schema to carry data across the workflow's steps and retries. State is persisted between executions:
+
+```typescript
+export default new Workflow({
+  name: "import-job",
+  state: z.object({
+    processed: z.number().default(0),
+    lastId: z.string().optional(),
+  }),
+  handler: async ({ state, step }) => {
+    await step("process-batch", async () => {
+      state.processed += 100
+      state.lastId = "batch-end"
+    })
+  },
+})
+```
+
 ## Starting a workflow
 
 ### Programmatically
@@ -112,7 +139,7 @@ const instance = await ProcessOrderWorkflow.getOrCreate({
 })
 ```
 
-If a workflow with the same key and one of the specified statuses already exists, it returns the existing instance instead of creating a new one.
+If a workflow with the same key and one of the specified statuses already exists, it returns the existing instance instead of creating a new one. `statuses` defaults to `["pending", "in_progress", "listening", "paused"]` if you don't pass it.
 
 ## Loading a workflow by ID
 
@@ -155,6 +182,32 @@ export default new Workflow({
 })
 ```
 
+### Fail from inside the handler
+
+Mark the workflow as failed with a reason. This throws immediately and interrupts the handler:
+
+```typescript
+handler: async ({ input, workflow }) => {
+  if (!input.orderId) {
+    workflow.fail("Missing order ID")
+  }
+}
+```
+
+### Run autonomous execute
+
+Run the AI model inside the workflow, same as in conversations:
+
+```typescript
+handler: async ({ workflow, step }) => {
+  await step("classify", async () => {
+    return await workflow.execute({
+      instructions: "Classify this ticket as 'bug' or 'feature'.",
+    })
+  })
+}
+```
+
 ## Timeout
 
 Workflows time out after 5 minutes by default. Use the `timeout` prop to change this:
@@ -181,21 +234,4 @@ For workflows that need to run longer than 5 minutes, use [steps](/adk/workflows
 | `client` | `object` | Botpress client for API calls |
 | `execute` | `function` | Run the AI model (same as in conversations) |
 | `signal` | `AbortSignal` | Indicates when the workflow should stop |
-| `workflow` | `object` | Current workflow instance (id, name, tags, cancel, complete, setTimeout) |
-
-## Dev console
-
-You can view running and completed workflows in the dev console under **Workflows**. The Workflows page shows status, input, output, and run history.
-
-<Frame>
-  <img alt="Workflows page in dev console" className="block dark:hidden" src="../assets/workflows-console.png" />
-  <img alt="Workflows page in dev console" className="hidden dark:block" src="../assets/workflows-console-dark.png" />
-</Frame>
-
----
-
-Next, learn about step methods for controlling workflow execution.
-
-<Card title="Use workflow steps" icon="list-checks" href="/adk/workflows/steps">
-  Persistence, retries, sleep, parallel processing, and more.
-</Card>
+| `workflow` | `object` | Current workflow instance (id, name, tags, `cancel`, `complete`, `fail`, `setTimeout`, `execute`) |

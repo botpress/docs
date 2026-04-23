@@ -52,7 +52,7 @@ export default new Conversation({
 
 A nudge is an automated reminder sent when the user has been silent for a configured duration. Nudges are:
 
-- **Configurable** - you set when the first one fires (`after`), how often to repeat (`interval`), and when to stop (`max`)
+- **Configurable** - you set when the first one fires (`after`), how often to repeat (`interval`, defaults to `after` if omitted), and when to stop (`max`, unlimited if omitted)
 - **Auto-resetting** - any user message resets the nudge timer
 - **Handler-controlled** - the framework decides when to nudge, you decide what to say
 - **Workflow-aware** - nudges are automatically suppressed while a workflow is running
@@ -193,11 +193,3 @@ lifecycle: {
 - **Session data survives expiration.** `session.number` persists. Only user state and transcript are cleared.
 - **No behavior change without opt-in.** Conversations without `lifecycle` work exactly as before.
 - **Lifecycle events are invisible to the LLM.** Nudge and expire events are not added to the transcript. Only your handler's `send()` calls appear in the conversation history.
-
----
-
-Next, learn how to persist data across conversations with state.
-
-<Card title="Manage states" icon="database" href="/adk/conversations/state">
-  Conversation, bot, and user state.
-</Card>

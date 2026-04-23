@@ -52,17 +52,19 @@ export default new Conversation({
   handler: async (props) => {
     if (props.type === "workflow_request") {
       if (props.request.type === "order-workflow:orderId") {
-        await props.request.workflow.provide("orderId", {
-          orderId: "ORD-12345",
-        })
+        await props.request.workflow.provide(
+          "orderId",
+          { orderId: "ORD-12345" },
+          props.request.step
+        )
       }
 
       if (props.request.type === "order-workflow:shippingAddress") {
-        await props.request.workflow.provide("shippingAddress", {
-          street: "123 Main St",
-          city: "Springfield",
-          zip: "62701",
-        })
+        await props.request.workflow.provide(
+          "shippingAddress",
+          { street: "123 Main St", city: "Springfield", zip: "62701" },
+          props.request.step
+        )
       }
       return
     }
@@ -72,7 +74,7 @@ export default new Conversation({
 })
 ```
 
-The `request.type` is formatted as `"workflowName:requestName"`. Use `request.workflow.provide()` to send the data back. The workflow resumes once the data is provided.
+The `request.type` is formatted as `"workflowName:requestName"`. Use `request.workflow.provide()` to send the data back, passing `request.step` as the third argument so the workflow knows exactly which pending step to resume. Omitting it works when only one step is pending for that request, but throws an error if multiple are pending. The workflow resumes once the data is provided.
 
 ### Let the AI handle requests
 
@@ -170,11 +172,3 @@ if (props.type === "workflow_callback") {
 | `step.request()` | Workflow asks conversation | Yes | `workflow_request` |
 | `step.notify()` | Workflow tells conversation | No | `workflow_notify` |
 | Callback | Workflow completes | N/A | `workflow_callback` |
-
----
-
-That wraps up workflows. Next, learn how to expose logic to external callers.
-
-<Card title="Create actions" icon="zap" href="/adk/external/actions">
-  Reusable functions callable from anywhere, including external systems.
-</Card>

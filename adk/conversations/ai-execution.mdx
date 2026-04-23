@@ -152,6 +152,21 @@ await execute({
 
 Defaults to 10, clamped between 1 and 100.
 
+## Cancellation
+
+Pass an `AbortSignal` to cancel execution mid-loop. Useful when the caller needs to bail out (e.g. a timeout or the user navigating away):
+
+```typescript
+const controller = new AbortController()
+
+setTimeout(() => controller.abort(), 30_000)
+
+await execute({
+  instructions: "You are a helpful assistant.",
+  signal: controller.signal,
+})
+```
+
 ## Mode
 
 Execution runs in `chat` mode by default, where the model sends messages to the user. You can switch to `worker` mode for background processing:
@@ -212,17 +227,9 @@ await execute({
 
 ## Debugging execution
 
-The dev console **Traces** view shows you exactly what happened during execution: which tools were called, what the model generated, how many iterations it took, and any errors.
+To see exactly what happened during an execution (which tools were called, what the model generated, how many iterations it took, and any errors), see [Debug with logs and traces](/adk/testing/debugging).
 
 <Frame>
   <img alt="Traces view in dev console" className="block dark:hidden" src="../assets/traces-view.png" />
   <img alt="Traces view in dev console" className="hidden dark:block" src="../assets/traces-view-dark.png" />
 </Frame>
-
----
-
-Next, learn how to define tools the AI model can call.
-
-<Card title="Define Tools" icon="wrench" href="/adk/conversations/tools">
-  Give the AI functions it can call during execution.
-</Card>

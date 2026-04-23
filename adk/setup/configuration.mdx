@@ -1,11 +1,11 @@
 ---
-title: Agent Configuration
+title: Agent configuration
 description: Understand your project structure and how to configure your agent.
 ---
 
 ## Project structure
 
-After running `adk init`, your project contains:
+After running `adk init`, these are the core files and folders of an ADK project:
 
 | Path | Purpose |
 |------|---------|
@@ -17,9 +17,7 @@ After running `adk init`, your project contains:
 | `src/tables/` | Database table schemas |
 | `src/knowledge/` | RAG knowledge base sources |
 | `src/triggers/` | Event-based handlers |
-| `src/evals/` | Automated conversation tests |
-| `package.json` | Node.js dependencies |
-| `tsconfig.json` | TypeScript settings |
+| `evals/` | Automated conversation tests |
 
 The ADK scans `src/` and discovers primitives automatically. Each file exports a primitive (a `Conversation`, `Workflow`, `Action`, etc.) and the framework registers it at build time.
 
@@ -93,7 +91,7 @@ defaultModels: {
 | `autonomous` | `execute()` calls in conversations and workflows |
 | `zai` | Zai operations like `zai.extract()`, `zai.check()`, `zai.text()` |
 
-If you don't set `defaultModels`, the ADK defaults to `openai:gpt-4.1-2025-04-14` for autonomous and `openai:gpt-4.1-mini-2025-04-14` for zai.
+If you don't set `defaultModels`, the ADK defaults to `openai:gpt-4.1-mini-2025-04-14` for autonomous and `openai:gpt-4.1-2025-04-14` for zai.
 
 You can pass an array of models for fallback. If the first model fails, the next one is tried:
 
@@ -234,7 +232,7 @@ Configure how automated tests run:
 
 ```typescript
 evals: {
-  idleTimeout: 30,
+  idleTimeout: 15000,
   judgePassThreshold: 3,
   judgeModel: "openai:gpt-4o",
 },
@@ -242,16 +240,8 @@ evals: {
 
 | Field | Description |
 |-------|-------------|
-| `idleTimeout` | Seconds to wait for idle eval conversations |
+| `idleTimeout` | Milliseconds to wait for the agent to respond before timing out |
 | `judgePassThreshold` | Pass threshold for LLM judge assertions (1-5) |
 | `judgeModel` | Model used for LLM judge assertions |
 
 For writing and running evals, see [Write and run evals](/adk/testing/evals).
-
----
-
-Next, learn how to manage secrets and configuration values across dev and production environments.
-
-<Card title="Environment Setup" icon="lock" href="/adk/setup/environment">
-  Secrets, configuration values, and dev vs prod environments.
-</Card>
