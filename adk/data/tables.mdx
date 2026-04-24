@@ -3,7 +3,7 @@ title: Tables
 description: Define and query structured data storage.
 ---
 
-Tables provide typed, structured storage for your agent. You define a schema using `z` from `@botpress/runtime`, and the ADK syncs it with Botpress Cloud on deploy. Tables are accessible from conversations, workflows, actions, tools, and triggers.
+Tables provide typed, structured storage for your agent. You define a schema using `z` from `@botpress/runtime`, and the ADK syncs it with Botpress on deploy. Tables are accessible from conversations, workflows, actions, tools, and triggers.
 
 ## Creating a table
 
@@ -26,9 +26,7 @@ export default new Table({
 })
 ```
 
-`description` is optional but useful when the table gets surfaced to the LLM (via Zai or knowledge). `keyColumn` is optional too; it sets the default key used by `upsertRows` so you don't have to pass it on every call.
-
-The dev console under **Tables** is the primary way to manage table data. You can see the sync state between your code and Botpress Cloud, add/update/delete rows, filter and sort, export to CSV, and copy data between dev and prod environments.
+The `description` field is optional but useful when the table gets surfaced to the LLM (via Zai or knowledge). `keyColumn` is optional too; it sets the default key used when calling [`.upsertRows()`](#upsert-rows) so you don't have to pass it on every call.
 
 <Frame>
   <img alt="Tables page in dev console" className="block dark:hidden" src="../assets/tables-console.png" />
@@ -37,15 +35,17 @@ The dev console under **Tables** is the primary way to manage table data. You ca
 
 ### Naming rules
 
-- Must start with a letter, underscore, or `$`
-- 35 characters or less
-- Only letters, numbers, and underscores
+Table names:
+
+- Must with a letter, underscore, or `$`
+- Must be 35 characters or less
+- Must contain only letters, numbers, and underscores
 - Must end with `Table`
 - Cannot be a UUID
 
 ### Searchable columns
 
-Mark columns as searchable to enable semantic search:
+You can mark columns as searchable to enable semantic search:
 
 ```typescript
 export default new Table({
@@ -61,9 +61,9 @@ export default new Table({
 
 ### Computed columns
 
-A computed column is derived from other columns. Set `computed: true`, declare the columns it depends on, and return its value from `value`:
+A computed column is derived from other columns. Set `computed: true`, pass the columns it depends on into `dependencies`, and return its value from `value`:
 
-```typescript
+```typescript highlight={7,9-10}
 export default new Table({
   name: "OrderTable",
   columns: {
@@ -79,7 +79,7 @@ export default new Table({
 })
 ```
 
-Computed columns recalculate whenever their dependencies change. When you write to the table, pass `waitComputed: true` to block until the recalculation finishes:
+Computed columns recalculate whenever their dependencies change. When you write to the table, you can pass `waitComputed: true` to block any further modifications to the table until the recalculation finishes:
 
 ```typescript
 await OrderTable.createRows({
@@ -88,9 +88,19 @@ await OrderTable.createRows({
 })
 ```
 
+## Managing table data
+
+You can manage your table data in the dev console under **Data > Tables**. Here, you can:
+
+- View the sync state between your code and Botpress' servers
+- Add/update/delete rows
+- Filter and sort
+- Export to CSV
+- Copy data between development and production environments
+
 ## CRUD operations
 
-Import your table and use the typed instance methods.
+To perform operations on your table within your agent's code, import the table and use the typed instance methods.
 
 ### Create rows
 
@@ -129,7 +139,7 @@ await OrderTable.updateRows({
 
 ### Upsert rows
 
-Insert or update based on a key column. If you set `keyColumn` on the table, you can omit it here:
+Insert or update based on a key column:
 
 ```typescript
 const { inserted, updated } = await OrderTable.upsertRows({
@@ -138,21 +148,31 @@ const { inserted, updated } = await OrderTable.upsertRows({
 })
 ```
 
-If `keyColumn` is omitted on both the table and the call, it defaults to `id`.
+If you [set `keyColumn` on the table](#creating-a-table), you can omit it here.
+
+<Note>
+If `keyColumn` is omitted on both the table defintion and the `upsertRows` call, it defaults to `id`.
+</Note>
 
 ### Delete rows
 
-```typescript
+<CodeGroup>
+```typescript Delete rows by name
 await OrderTable.deleteRows({ status: "cancelled" })
+```
 
+```typescript Delete rows by ID
 await OrderTable.deleteRowIds([1, 2, 3])
+```
 
+```typescript Delete all rows
 await OrderTable.deleteAllRows()
 ```
+</CodeGroup>
 
 ## Filtering
 
-Use operators for advanced queries:
+When calling `findRows()`, you can pass in filters for specific rows. These can use [MongoDB-style operators](https://www.mongodb.com/docs/manual/reference/mql/query-predicates/) for advanced queries:
 
 ```typescript
 const { rows } = await OrderTable.findRows({
@@ -181,7 +201,7 @@ const { rows } = await OrderTable.findRows({
 
 ### Logical operators
 
-Combine filters with `$and`, `$or`, and `$not`:
+You can combine filters with `$and`, `$or`, and `$not`:
 
 ```typescript
 const { rows } = await OrderTable.findRows({
@@ -196,7 +216,7 @@ const { rows } = await OrderTable.findRows({
 
 ## Semantic search
 
-Search across `searchable` columns using natural language:
+You can search across [`searchable` columns](#searchable-columns) using natural language:
 
 ```typescript
 const { rows } = await TicketTable.findRows({
@@ -217,23 +237,40 @@ const { rows } = await TicketTable.findRows({
 
 ## Aggregation
 
-Group and aggregate data:
+Aggregation groups rows by one or more columns and computes summary statistics for other columns. This transforms your table data into summary reports.
+
+Pass a `group` object to `findRows()` where each key is a column name and the value is either a single operation or an array of operations:
 
 ```typescript
 const { rows } = await OrderTable.findRows({
   group: {
-    status: "key",
-    total: ["sum", "avg", "count"],
+    status: "key",              // Group by status
+    total: ["sum", "avg"],      // Sum and average the total column
+    id: "count",                // Count rows in each group
   },
 })
 ```
 
-| Operation | Applies to | Description |
-|-----------|-----------|-------------|
-| `key` | All types | Group by this value |
-| `count` | All types | Count of rows |
-| `sum` | Numbers | Sum of values |
-| `avg` | Numbers | Average of values |
-| `max` | Numbers, strings, dates | Maximum value |
-| `min` | Numbers, strings, dates | Minimum value |
-| `unique` | All types | Array of unique values |
+The returned rows have different fields based on your group configuration. The field names combine the column name (in `camelCase`) with the operation:
+
+```typescript
+// For the group config above, each row in the result contains:
+{
+  statusKey: "pending",     // The grouping value
+  totalSum: 1500.00,        // Sum of totals in this group
+  totalAvg: 125.00,         // Average of totals in this group
+  idCount: 12,              // Number of rows in this group
+}
+```
+
+Operations vary by column type:
+
+| Operation | Available for | Returns | Description |
+|-----------|---------------|---------|-------------|
+| `key` | All types | Same as column | Groups rows by this value |
+| `count` | All types | `number` | Number of rows in the group |
+| `sum` | Numbers | `number` | Sum of values |
+| `avg` | Numbers | `number` | Average of values |
+| `max` | Numbers, strings, dates | Same as column | Maximum value |
+| `min` | Numbers, strings, dates | Same as column | Minimum value |
+| `unique` | All types | Array | Array of unique values |
