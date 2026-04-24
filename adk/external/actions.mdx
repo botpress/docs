@@ -3,7 +3,7 @@ title: Create actions
 description: Create reusable functions callable from anywhere in your agent or from external systems.
 ---
 
-Actions are reusable functions that hold shared business logic. Call them from your own code (conversations, workflows, triggers, other actions) or over HTTP from external systems.
+Actions are reusable functions that hold shared business logic. You can call them from your agent's code (via [conversations](#from-a-conversation), [workflows](#from-a-workflow), [triggers](#from-a-trigger), [tools](@from-a-tool), or  other actions). You can also [call them over HTTP](#calling-from-external-systems) from external systems.
 
 ## Creating an action
 
@@ -50,7 +50,7 @@ Browse and test actions from the dev console:
 
 Set `cached: true` to cache an action's output by its input. Subsequent calls with the same input return the cached result instead of re-running the handler:
 
-```typescript
+```typescript highlight={3}
 export default new Action({
   name: "fetchExchangeRate",
   cached: true,
@@ -63,11 +63,11 @@ export default new Action({
 })
 ```
 
-Useful for actions that are pure, expensive, and called repeatedly with the same inputs.
+This is useful for actions that are pure, perform an expensive calculation, and are called repeatedly with the same inputs.
 
 ## Calling actions
 
-Import `actions` from `@botpress/runtime` and call any action by name. Input and output are fully typed.
+Import `actions` from `@botpress/runtime` and call any action by name. The action's input and output are fully typed.
 
 ### From a conversation
 
@@ -135,9 +135,12 @@ export default new Trigger({
 
 ## As a tool
 
-Tools only exist inside `execute()` and are called by the AI model. If you want the AI to use an action too, convert it with `.asTool()`:
+While actions are just functions that can be called from anywhere, [tools](/adk/conversations/tools) only exist inside `execute()` and are called by the LLM. If you want the LLM to have access to a certain action:
 
-```typescript
+1. Convert it to a tool with `.asTool()`
+2. Pass it into the `tools` field:
+
+```typescript highlight={8}
 import { Conversation, actions } from "@botpress/runtime"
 
 export default new Conversation({
@@ -151,7 +154,7 @@ export default new Conversation({
 })
 ```
 
-You can override the description for the tool:
+You should always provide a detailed description that helps the LLM decide when to use a tool. When converting an action to a tool, you can override its description by passing a string into the`description` field:
 
 ```typescript
 actions.calculateTotal.asTool({ description: "Calculate the total price with tax for the user's cart" })
@@ -170,7 +173,7 @@ await actions.slack.addReaction({ name: "thumbsup", channel, timestamp })
 
 ## Calling from external systems
 
-Actions are exposed via the Botpress Runtime API. External services can call your agent's actions over HTTP:
+Actions are exposed via the Botpress [Runtime API](/api-reference/runtime-api/getting-started)'s [`callAction`](/api-reference/runtime-api/openapi/endpoints/post-v1chatactions) endpoint. External services can call your agent's actions over HTTP:
 
 ```bash
 curl -X POST https://api.botpress.cloud/v1/chat/actions \
@@ -187,5 +190,3 @@ curl -X POST https://api.botpress.cloud/v1/chat/actions \
 ```
 
 This makes actions the bridge between your agent and external systems. A backend service, a webhook handler, or another application can trigger your agent's logic without going through a conversation.
-
-See the [Runtime API reference](/api-reference/runtime-api/openapi/callAction) for full details.
