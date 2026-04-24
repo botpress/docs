@@ -23,9 +23,13 @@ export default new Trigger({
 
 The `events` array lists which events this trigger subscribes to. The handler runs when any of the listed events fire.
 
+<Note>
 Trigger names must be at least 3 characters and contain only alphanumeric characters and underscores.
+</Note>
 
-Browse your triggers from the dev console:
+## Viewing triggers in the dev console
+
+You can browse your triggers from the dev console at **Components > Triggers**:
 
 <Frame>
   <img alt="Triggers page in dev console" className="block dark:hidden" src="../assets/triggers-console.png" />
@@ -49,7 +53,7 @@ To make API calls from a trigger, pull the client from the runtime context: `con
 
 A trigger can subscribe to multiple events and handle each differently:
 
-```typescript
+```typescript highlight={4-8}
 export default new Trigger({
   name: "onLinearIssue",
   description: "Handle Linear issue events",
@@ -74,8 +78,7 @@ export default new Trigger({
 
 Triggers can subscribe to custom events you define in `agent.config.ts`:
 
-```typescript
-// agent.config.ts
+```typescript title="agent.config.ts"
 export default defineConfig({
   events: {
     orderPlaced: {
@@ -89,8 +92,7 @@ export default defineConfig({
 })
 ```
 
-```typescript
-// src/triggers/on-order.ts
+```typescript title="src/triggers/on-order.ts"
 import { Trigger } from "@botpress/runtime"
 
 export default new Trigger({
@@ -107,7 +109,7 @@ export default new Trigger({
 
 Triggers can call actions for reusable logic:
 
-```typescript
+```typescript highlight={8-10}
 import { Trigger, actions } from "@botpress/runtime"
 
 export default new Trigger({
