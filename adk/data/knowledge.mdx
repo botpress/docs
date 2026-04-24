@@ -3,7 +3,7 @@ title: Knowledge bases
 description: Give your agent access to documents, websites, and files via RAG.
 ---
 
-Knowledge bases give your agent searchable access to documents, websites, and files. Pass one to `execute()` and the model searches it automatically, with citations.
+Knowledge bases give your agent searchable access to documents, websites, and files. Pass one to `execute()` and the model searches it automatically when prompted, returning any results it finds with citations.
 
 ## Create a knowledge base
 
@@ -34,7 +34,7 @@ Browse your knowledge bases, inspect indexing status, and view individual files 
 
 Pass knowledge bases to `execute()` via the `knowledge` array. The model searches them automatically when it needs information, and includes citations back to the source documents:
 
-```typescript
+```typescript highlight={10}
 import { Conversation } from "@botpress/runtime"
 import ProductDocs from "../knowledge/product-docs"
 import FAQ from "../knowledge/faq"
@@ -135,7 +135,7 @@ const FileSource = DataSource.Directory.fromPath("./src/knowledge/docs", {
 
 ## Search a knowledge base directly
 
-To search a KB outside of `execute()`, call `search()` on the instance. Useful for custom retrieval, suggested-articles user interfaces, or populating context manually:
+To search a KB outside of `execute()`, call `search()` on the instance. This is useful for custom retrieval, suggested-articles user interfaces, or populating context manually:
 
 ```typescript
 const result = await ProductDocs.search("how do I reset my password?", {
@@ -147,9 +147,13 @@ for (const passage of result.passages) {
 }
 ```
 
-## Refresh a knowledge base
+## Re-index a knowledge base
 
-Knowledge bases index during `adk dev` and `adk deploy`. To re-index on a schedule, use a workflow:
+By default, knowledge bases index during `adk dev` and `adk deploy`.
+
+### On a schedule
+
+To re-index on a schedule, use a [workflow](/adk/workflows/create):
 
 ```typescript
 import { Workflow } from "@botpress/runtime"
@@ -164,13 +168,17 @@ export default new Workflow({
 })
 ```
 
-Force re-indexing even if content hasn't changed:
+### Force re-indexing
+
+To force re-indexing even if content hasn't changed pass in `force: true`:
 
 ```typescript
 await ProductDocs.refresh({ force: true })
 ```
 
-Refresh a single source within a knowledge base:
+### Re-index a single source
+
+To re-index a single source within a knowledge base, pass in the source ID:
 
 ```typescript
 await ProductDocs.refreshSource("my-source-id", { force: true })
