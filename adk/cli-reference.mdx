@@ -14,7 +14,7 @@ These flags work with every command:
 | `--help`, `-h` | Show help information |
 | `--version`, `-V` | Show version number |
 | `--no-cache` | Disable caching for integration lookups |
-| `--profile <profile>` | Credentials profile to use (overrides the `ADK_PROFILE` env var and the current profile) |
+| `--profile <profile>` | Credentials profile to use (overrides the `ADK_PROFILE` environment variable and the current profile) |
 
 Most commands also accept `--format json` for machine-readable output. The following commands don't: `dev`, `login`, `profiles list`, `profiles set`, `upgrade`, `remove`, `self-upgrade`, `telemetry`, `theme`, `mcp`, `mcp:init`, `run`, `assets pull`.
 
@@ -32,7 +32,7 @@ These commands manage an agent project from scaffold to deploy:
 | `adk status` | Show project status, integrations, and server state |
 | `adk link` | Link local agent to a workspace and bot |
 
-### adk init
+### `adk init`
 
 Scaffold a new agent project. Pass a name, or omit it to be prompted:
 
@@ -49,7 +49,7 @@ adk init --list-templates
 | `--skip-link` | Skip the linking step |
 | `--list-templates` | List available templates and exit |
 
-### adk dev
+### `adk dev`
 
 Start the dev server with hot reload:
 
@@ -67,7 +67,7 @@ adk dev --port 3000 --port-console 3001
 | `-v, --verbose` | Show additional details | |
 | `--non-interactive` | Emit structured NDJSON events to stdout | |
 
-### adk deploy
+### `adk deploy`
 
 Deploy the built agent to Botpress Cloud:
 
@@ -81,7 +81,7 @@ adk deploy -y
 | `-e, --env <environment>` | Deployment environment | `production` |
 | `-y, --yes` | Auto-approve preflight changes | |
 
-### adk link
+### `adk link`
 
 Link the local agent to a workspace and bot. Writes to `agent.json`, or to `agent.local.json` with `--local`:
 
@@ -112,7 +112,7 @@ These commands add, inspect, and manage the integrations your agent depends on:
 | `adk list` | List installed integrations |
 | `adk info <name>` | Show detailed integration info |
 
-### adk add
+### `adk add`
 
 Add an integration or interface to your agent. Accepts a name, `workspace/name`, or a specific version:
 
@@ -129,7 +129,7 @@ adk add webchat --alias custom-webchat
 |------|-------------|
 | `--alias <alias>` | Custom alias for the resource |
 
-### adk search
+### `adk search`
 
 Search the Botpress Hub for integrations:
 
@@ -142,7 +142,7 @@ adk search slack --limit 5
 |------|-------------|---------|
 | `--limit <number>` | Max results to return | `20` |
 
-### adk list
+### `adk list`
 
 List integrations in your project, or all available ones on the Hub:
 
@@ -156,7 +156,7 @@ adk list --available
 | `--available` | List all available integrations (not just installed) | |
 | `--limit <n>` | Max results | `50` |
 
-### adk info
+### `adk info`
 
 Show details for a specific integration. Filter by a single facet or show the full spec:
 
@@ -199,7 +199,7 @@ These commands let you send messages to your agent and run eval suites:
 | `adk evals [name]` | Run eval suites |
 | `adk evals runs [runId]` | List or show eval run history |
 
-### adk chat
+### `adk chat`
 
 Open an interactive chat, or send a single message with `--single`. Requires `adk dev` to be running:
 
@@ -215,7 +215,7 @@ adk chat --single "Follow up" --conversation-id <id>
 | `--conversation-id <id>` | Continue a conversation | |
 | `--timeout <duration>` | Max wait duration | `60s` |
 
-### adk evals
+### `adk evals`
 
 Run eval suites. With no arguments, runs all evals; pass a name to run just one:
 
@@ -235,7 +235,7 @@ adk evals -v
 | `-v, --verbose` | Show full details for all evals | |
 | `--server <url>` | Dev server URL | `http://localhost:3001` |
 
-### adk evals runs
+### `adk evals runs`
 
 List past eval runs, or show the details of a specific one:
 
@@ -261,7 +261,7 @@ These commands discover and run workflows against the local dev server:
 | `adk workflows inspect <name>` | Inspect a workflow schema and metadata |
 | `adk workflows run <name> [payload]` | Run a workflow |
 
-### adk workflows run
+### `adk workflows run`
 
 Run a workflow with a JSON payload. Add `--wait` to block until it finishes:
 
@@ -285,7 +285,7 @@ These commands help you inspect what your agent is doing:
 | `adk traces [tokens...]` | Query trace data |
 | `adk run <script> [args...]` | Run a TypeScript script with the ADK runtime |
 
-### adk logs
+### `adk logs`
 
 Query logs from `.adk/logs/`. Pass filter tokens as positional arguments, or stream with `--follow`:
 
@@ -310,7 +310,7 @@ adk logs --follow limit=10
 | `-f, --follow` | Stream logs in real time |
 | `--summary` | Emit a single JSON summary (requires `--format json`) |
 
-### adk traces
+### `adk traces`
 
 Query trace data from the local store. Filter tokens narrow by workflow, action, trigger, or drill into a specific trace:
 
@@ -341,7 +341,7 @@ adk traces --follow
 | `-f, --follow` | Stream new traces |
 | `--include-llm` | Include LLM instructions and code in drill-in mode |
 
-### adk run
+### `adk run`
 
 Run a TypeScript script with the full ADK runtime, so you can import actions, Zai, and tables directly:
 
@@ -364,7 +364,7 @@ Sync local knowledge base content with Botpress:
 |---------|-------------|
 | `adk kb sync` | Synchronize knowledge bases with Botpress |
 
-### adk kb sync
+### `adk kb sync`
 
 Push local KB sources to the dev or prod bot. Use `--dry-run` to preview changes first:
 
@@ -394,7 +394,7 @@ Manage static files your agent serves or references:
 | `adk assets status` | Show asset sync status |
 | `adk assets pull` | Download remote assets to local directory |
 
-### adk assets sync
+### `adk assets sync`
 
 Upload local assets to remote storage. Use `--dry-run` to see what would change:
 
@@ -411,7 +411,7 @@ adk assets sync --force -y
 | `--bail-on-failure` | Stop on first error |
 | `--force` | Force re-upload all files |
 
-### adk assets list
+### `adk assets list`
 
 List asset files. By default shows both local and remote; filter with `--local` or `--remote`:
 
@@ -435,7 +435,7 @@ These commands integrate the ADK with AI coding tools:
 | `adk mcp` | Start the MCP server |
 | `adk mcp:init` | Generate MCP configuration files |
 
-### adk mcp
+### `adk mcp`
 
 Start the MCP server so tools like Claude Code, Cursor, or VS Code can talk to your running dev server:
 
@@ -449,7 +449,7 @@ adk mcp --port 3001
 | `--cwd <path>` | Working directory for MCP operations | |
 | `--port <port>` | UI server port to connect to | `3001` |
 
-### adk mcp:init
+### `adk mcp:init`
 
 Generate MCP configuration files for supported AI assistants:
 
@@ -479,7 +479,7 @@ These commands manage your Botpress credentials and the CLI itself:
 | `adk telemetry` | Manage telemetry preferences |
 | `adk theme` | Manage CLI theme (dark/light) |
 
-### adk login
+### `adk login`
 
 Authenticate with your Botpress account. Pass `--token` to skip the browser flow:
 
@@ -495,7 +495,7 @@ adk login --profile staging
 | `--profile <profile>` | Profile name to save credentials under | |
 | `--api-url <url>` | Botpress API URL | `https://api.botpress.cloud` |
 
-### adk self-upgrade
+### `adk self-upgrade`
 
 Upgrade the ADK CLI. Pass a tag (`beta`, `next`) or an explicit version:
 
@@ -505,7 +505,7 @@ adk self-upgrade beta
 adk self-upgrade 1.18.0
 ```
 
-### adk telemetry
+### `adk telemetry`
 
 View or change telemetry preferences. With no flags, prints the current status:
 
@@ -521,7 +521,7 @@ adk telemetry --disable
 | `--enable` | Enable telemetry |
 | `--disable` | Disable telemetry |
 
-### adk theme
+### `adk theme`
 
 Switch the CLI theme between dark and light:
 

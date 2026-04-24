@@ -43,7 +43,7 @@ The runner looks for exports in this order:
 
 ## Arguments
 
-Extra arguments after the script path are passed to your function. Positional args pass through directly; put flag-like args (anything starting with `-`) after a `--` separator so Commander doesn't try to parse them:
+Extra arguments after the script path are passed to your function. Positional arguments pass through directly; put flag-like arguments (anything starting with `-`) after a `--` separator so Commander doesn't try to parse them:
 
 ```bash
 adk run scripts/process.ts order-123
@@ -69,5 +69,5 @@ adk run scripts/migrate.ts --prod
 - **Seed data** into tables for development or testing
 - **Run migrations** to update table schemas or transform data
 - **Generate reports** by querying tables and knowledge bases
-- **Maintenance tasks** like cleaning up old data or reindexing
+- **Maintenance tasks** like cleaning up old data or re-indexing
 - **Test actions** by calling them directly outside a conversation
