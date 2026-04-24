@@ -15,7 +15,7 @@ Create a file in `src/workflows/`:
 import { Workflow, z } from "@botpress/runtime"
 
 export default new Workflow({
-  name: "process-order",
+  name: "processOrder",
   description: "Process a new customer order",
   input: z.object({
     orderId: z.string(),
@@ -53,7 +53,7 @@ Add a `state` schema to carry data across the workflow's steps and retries. Stat
 
 ```typescript
 export default new Workflow({
-  name: "import-job",
+  name: "importJob",
   state: z.object({
     processed: z.number().default(0),
     lastId: z.string().optional(),
@@ -72,7 +72,7 @@ export default new Workflow({
 ### Programmatically
 
 ```typescript
-import ProcessOrderWorkflow from "../workflows/process-order"
+import ProcessOrderWorkflow from "../workflows/processOrder"
 
 const instance = await ProcessOrderWorkflow.start({ orderId: "12345" })
 console.log("Started workflow:", instance.id)
@@ -84,7 +84,7 @@ Use a cron expression to run a workflow on a recurring schedule:
 
 ```typescript
 export default new Workflow({
-  name: "daily-report",
+  name: "dailyReport",
   description: "Generate and send a daily summary",
   schedule: "0 9 * * *",
   handler: async ({ step }) => {
@@ -114,7 +114,7 @@ Convert a workflow to a tool so the AI model can start it during `execute()`:
 
 ```typescript
 import { Conversation } from "@botpress/runtime"
-import ProcessOrderWorkflow from "../workflows/process-order"
+import ProcessOrderWorkflow from "../workflows/processOrder"
 
 export default new Conversation({
   channel: "webchat.channel",
@@ -174,7 +174,7 @@ End the workflow from inside the handler with a result:
 
 ```typescript
 export default new Workflow({
-  name: "my-workflow",
+  name: "myWorkflow",
   output: z.object({ result: z.string() }),
   handler: async ({ workflow }) => {
     workflow.complete({ result: "done early" })
@@ -214,7 +214,7 @@ Workflows time out after 5 minutes by default. Use the `timeout` prop to change 
 
 ```typescript
 export default new Workflow({
-  name: "long-process",
+  name: "longProcess",
   timeout: "1h",
   handler: async ({ step }) => {
     // ...

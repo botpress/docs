@@ -17,7 +17,7 @@ Declare the request schemas in the workflow definition:
 import { Workflow, z } from "@botpress/runtime"
 
 export default new Workflow({
-  name: "order-workflow",
+  name: "orderWorkflow",
   requests: {
     orderId: z.object({
       orderId: z.string(),
@@ -51,7 +51,7 @@ export default new Conversation({
   channel: "webchat.channel",
   handler: async (props) => {
     if (props.type === "workflow_request") {
-      if (props.request.type === "order-workflow:orderId") {
+      if (props.request.type === "orderWorkflow:orderId") {
         await props.request.workflow.provide(
           "orderId",
           { orderId: "ORD-12345" },
@@ -59,7 +59,7 @@ export default new Conversation({
         )
       }
 
-      if (props.request.type === "order-workflow:shippingAddress") {
+      if (props.request.type === "orderWorkflow:shippingAddress") {
         await props.request.workflow.provide(
           "shippingAddress",
           { street: "123 Main St", city: "Springfield", zip: "62701" },
@@ -99,7 +99,7 @@ A notification sends data from the workflow to the conversation without pausing 
 import { Workflow, z } from "@botpress/runtime"
 
 export default new Workflow({
-  name: "import-workflow",
+  name: "importWorkflow",
   notifications: {
     progress: z.object({
       message: z.string(),

@@ -11,7 +11,7 @@ The `step` function takes a unique name and a handler. The return value is persi
 
 ```typescript
 export default new Workflow({
-  name: "data-pipeline",
+  name: "dataPipeline",
   handler: async ({ step }) => {
     const data = await step("fetch-data", async () => {
       return await fetchDataFromAPI()

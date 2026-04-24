@@ -160,7 +160,7 @@ import { Workflow } from "@botpress/runtime"
 import ProductDocs from "../knowledge/product-docs"
 
 export default new Workflow({
-  name: "refresh-knowledge",
+  name: "refreshKnowledge",
   schedule: "0 0 * * *",
   handler: async () => {
     await ProductDocs.refresh()
