@@ -3,7 +3,7 @@ title: Create actions
 description: Create reusable functions that can be called from anywhere in your agent or from external systems.
 ---
 
-Actions are reusable functions that hold shared business logic. You can call them from your agent's code (via [conversations](#from-a-conversation), [workflows](#from-a-workflow), [triggers](#from-a-trigger), [tools](@from-a-tool), or  other actions). You can also [call them over HTTP](#calling-from-external-systems) from external systems.
+Actions are reusable functions that hold shared business logic. You can call them from your agent's code (via [conversations](#from-a-conversation), [workflows](#from-a-workflow), [triggers](#from-a-trigger), [tools](#from-a-tool), or  other actions). You can also [call them over HTTP](#calling-from-external-systems) from external systems.
 
 ## Creating an action
 
@@ -173,7 +173,7 @@ await actions.slack.addReaction({ name: "thumbsup", channel, timestamp })
 
 ## Calling from external systems
 
-Actions are exposed via the Botpress [Runtime API](/api-reference/runtime-api/getting-started)'s [`callAction`](/api-reference/runtime-api/openapi/endpoints/post-v1chatactions) endpoint. External services can call your agent's actions over HTTP:
+Actions are exposed via the Botpress [Runtime API](/api-reference/runtime-api/getting-started)'s [`callAction`](/api-reference/runtime-api/openapi/callAction) endpoint. External services can call your agent's actions over HTTP:
 
 ```bash
 curl -X POST https://api.botpress.cloud/v1/chat/actions \
