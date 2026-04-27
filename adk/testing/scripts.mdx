@@ -1,0 +1,73 @@
+---
+title: Run scripts
+description: Execute TypeScript scripts with full access to your agent's runtime context.
+---
+
+`adk run` executes a TypeScript script with the ADK runtime fully initialized. Your script can use all of your agent's primitives, integrations, and runtime utilities like `client`, `actions`, `bot`, and `user`.
+
+## Basic usage
+
+```bash
+adk run scripts/seed-data.ts
+adk run scripts/migrate.ts --prod
+adk run scripts/report.ts arg1 arg2
+```
+
+## Writing a script
+
+Your script exports a function that the runner calls:
+
+```typescript
+// scripts/seed-data.ts
+import { actions } from "@botpress/runtime"
+import OrderTable from "../src/tables/order-table"
+
+export default async function () {
+  await OrderTable.createRows({
+    rows: [
+      { userId: "user-1", total: 99.99, status: "pending" },
+      { userId: "user-2", total: 149.99, status: "completed" },
+    ],
+  })
+
+  console.log("Seed data created")
+}
+```
+
+The runner looks for exports in this order:
+
+1. `export default function`
+2. `export function run`
+3. `export function main`
+4. Top-level code (runs on import)
+
+## Arguments
+
+Extra arguments after the script path are passed to your function. Positional arguments pass through directly; put flag-like arguments (anything starting with `-`) after a `--` separator so Commander doesn't try to parse them:
+
+```bash
+adk run scripts/process.ts order-123
+adk run scripts/process.ts -- --limit 100 --verbose
+```
+
+```typescript
+export default async function (...args: string[]) {
+  console.log(args)  // ["order-123"] or ["--limit", "100", "--verbose"]
+}
+```
+
+## Production mode
+
+By default, scripts run against your dev bot. Use `--prod` to run against the production bot:
+
+```bash
+adk run scripts/migrate.ts --prod
+```
+
+## Use cases
+
+- **Seed data** into tables for development or testing
+- **Run migrations** to update table schemas or transform data
+- **Generate reports** by querying tables and knowledge bases
+- **Maintenance tasks** like cleaning up old data or re-indexing
+- **Test actions** by calling them directly outside a conversation

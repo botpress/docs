@@ -1,0 +1,140 @@
+---
+title: Human-in-the-loop
+description: Escalate conversations to live human agents.
+---
+
+<Info>
+  This covers the HITL integration and plugin, which connects your agent to external helpdesk platforms (Zendesk, Intercom, etc.). This is separate from integrating your ADK agent with [Botpress Desk](/desk/introduction).
+</Info>
+
+HITL (Human-in-the-Loop) lets your agent hand off a conversation to a live human agent. It's powered by two dependencies working together: the **HITL integration** (the transport to a helpdesk or agent platform) and the **HITL plugin** (the actions your code calls).
+
+## Add HITL to your agent
+
+Add both the integration and the plugin to `agent.config.ts`. The plugin's `dependencies` block points at the integration by alias:
+
+```typescript
+import { defineConfig } from "@botpress/runtime"
+
+export default defineConfig({
+  name: "my-agent",
+
+  defaultModels: {
+    autonomous: "openai:gpt-4.1-mini-2025-04-14",
+    zai: "openai:gpt-4.1-mini-2025-04-14",
+  },
+
+  dependencies: {
+    integrations: {
+      chat: "chat@1.0.0",
+      webchat: "webchat@0.3.0",
+      hitl: "hitl@2.0.2",
+    },
+
+    plugins: {
+      hitl: {
+        version: "hitl@1.3.0",
+        dependencies: {
+          hitl: {
+            integrationAlias: "hitl",
+            integrationInterfaceAlias: "hitl<hitlSession>",
+          },
+        },
+      },
+    },
+  },
+})
+```
+
+`integrationAlias` must match a key in `dependencies.integrations`. The ADK validates this at build time, so a typo here fails fast. `integrationInterfaceAlias` tells the plugin which interface entity the integration implements (`hitlSession` for the generic HITL integration, `hitlTicket` for Zendesk, and so on).
+
+The HITL plugin also accepts a top-level `config` object for plugin-wide behavior. See the HITL plugin's Hub listing for the full set of fields.
+
+## Start a handoff
+
+Import `plugins` from `@botpress/runtime` and call `startHitl` from a conversation handler. All inputs are typed against the plugin:
+
+```typescript
+import { Conversation, plugins } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: ["chat.channel", "webchat.channel"],
+  handler: async ({ execute, conversation, message }) => {
+    if (message.payload.text.toLowerCase() === "/starthitl") {
+      await plugins.hitl.actions.startHitl({
+        title: "Support HITL",
+        description: "Escalate to support agent",
+        conversationId: conversation.id,
+        userId: message.userId,
+        configurationOverrides: {
+          onHitlHandoffMessage: "Escalating to support...",
+          userHitlCloseCommand: "/end",
+          agentAssignedTimeoutSeconds: 100,
+        },
+      })
+      return
+    }
+
+    await execute({
+      instructions: "You are a helpful assistant. If the user asks for a human, tell them to type /starthitl.",
+    })
+  },
+})
+```
+
+The fields passed to `startHitl`:
+
+| Field | Description |
+|-------|-------------|
+| `title` | Short label shown to the human agent when the ticket opens |
+| `description` | Longer context the human agent sees alongside the conversation |
+| `conversationId` | The conversation to hand off (use `conversation.id` from the handler) |
+| `userId` | The user initiating the handoff |
+| `configurationOverrides` | Optional per-handoff overrides of the plugin config |
+
+Common override fields:
+
+| Field | Description |
+|-------|-------------|
+| `onHitlHandoffMessage` | Message sent to the user when the handoff begins |
+| `userHitlCloseCommand` | Message text the user can send to close the session |
+| `agentAssignedTimeoutSeconds` | How long to wait for a human agent to pick up before timing out |
+
+For the full set of override fields, see the HITL plugin's Hub listing.
+
+## Use a different provider
+
+The HITL plugin works with any integration that implements the HITL interface. To swap the generic HITL integration for Zendesk, change the integration and update the alias. `hitlTicket` replaces `hitlSession` because Zendesk implements the interface with tickets instead of sessions:
+
+```typescript
+dependencies: {
+  integrations: {
+    zendesk: "zendesk@1.0.0",
+  },
+  plugins: {
+    hitl: {
+      version: "hitl@1.3.0",
+      dependencies: {
+        hitl: {
+          integrationAlias: "zendesk",
+          integrationInterfaceAlias: "hitl<hitlTicket>",
+        },
+      },
+    },
+  },
+},
+```
+
+Your application code doesn't change. `plugins.hitl.actions.startHitl` works the same regardless of which integration is wired underneath.
+
+## Deploy and test
+
+Run `adk deploy` to push the agent to Botpress Cloud. See the [CLI reference](/adk/cli-reference#adk-deploy) for all deploy flags:
+
+```bash
+adk deploy
+```
+
+<Warning>
+  HITL only works against a deployed bot. `adk dev` downloads the plugin into `bp_modules/` and generates types, but handoffs need the integration's real connection to your helpdesk, which is configured on the production bot.
+</Warning>

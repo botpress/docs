@@ -1,0 +1,106 @@
+---
+title: Generate text and summaries
+description: Generate, rewrite, summarize, and answer questions with citations.
+---
+
+Zai provides methods for generating and transforming text. Each method handles prompting and output formatting.
+
+## Generate text
+
+`zai.text()` generates content from a prompt:
+
+```typescript
+import { adk } from "@botpress/runtime"
+
+const intro = await adk.zai.text(
+  "Write a brief introduction about AI in customer service",
+  { length: 200 }
+)
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `length` | `number` | Target length in tokens |
+
+## Rewrite text
+
+`zai.rewrite()` transforms text based on instructions:
+
+```typescript
+const formal = await adk.zai.rewrite(
+  "hey, the meeting is tmrw at 3",
+  "Make this professional and formal"
+)
+// "The meeting has been scheduled for tomorrow at 3:00 PM."
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `length` | `number` | Max tokens to generate |
+| `examples` | `Array<{input, output, instructions?}>` | Few-shot examples to guide the rewriting |
+
+## Summarize
+
+`zai.summarize()` condenses long content. It handles documents from a few paragraphs up to entire books by chunking and merging automatically:
+
+```typescript
+const summary = await adk.zai.summarize(longArticle, {
+  length: 100,
+  prompt: "Focus on key findings and conclusions",
+})
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `length` | `number` | Target summary length in tokens |
+| `prompt` | `string` | Instructions for what to focus on |
+| `format` | `string` | How to format the output (e.g. "bullet points with clear sections") |
+| `intermediateFactor` | `number` | How many times longer intermediate summaries are than the final length (used for very large documents) |
+| `maxIterations` | `number` | Max refinement passes |
+| `sliding` | `{ window, overlap }` | Override the default chunk size and overlap |
+
+## Answer with citations
+
+`zai.answer()` answers a question from a set of documents and tells you which documents backed the answer. It doesn't always return a direct answer: if the question is ambiguous, off-topic, or the documents don't cover it, the result carries that information instead.
+
+```typescript
+const faq = [
+  "Orders ship within 2 business days. Standard shipping takes 3-5 business days; expedited takes 1-2.",
+  "Returns are accepted within 30 days of delivery. Items must be unused and in original packaging.",
+  "Our warranty covers manufacturing defects for 1 year from purchase. Wear and tear is not covered.",
+]
+
+const result = await adk.zai.answer(faq, "How long do I have to return something?")
+
+if (result.type === "answer") {
+  console.log(result.answer)     // "Returns are accepted within 30 days of delivery..."
+  console.log(result.citations)  // Points back to the returns policy entry
+}
+```
+
+Branch on `result.type` to handle the other cases (ambiguous questions, off-topic, etc.):
+
+| Type | Fields | When it's returned |
+|------|--------|-------------------|
+| `answer` | `answer`, `citations` | The documents support a clear answer |
+| `ambiguous` | `ambiguity`, `follow_up`, `answers` | The question has multiple valid interpretations |
+| `out_of_topic` | `reason` | The question isn't covered by the documents' topic |
+| `invalid_question` | `reason` | The question is malformed or nonsensical |
+| `missing_knowledge` | `reason` | The topic is relevant but the documents don't cover it |
+
+## Patch files
+
+`zai.patch()` makes surgical edits to code or text files based on natural language instructions. It produces minimal diffs rather than regenerating entire files:
+
+```typescript
+const files = [{
+  path: "src/utils.ts",
+  name: "utils.ts",
+  content: 'export function add(a: number, b: number) {\n  return a + b\n}',
+}]
+
+const patched = await adk.zai.patch(
+  files,
+  "Add JSDoc comments to all exported functions"
+)
+```

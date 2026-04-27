@@ -1,0 +1,226 @@
+---
+title: Use custom components
+description: Build and render custom React UI inside Webchat.
+---
+
+Custom components let you render your own React UI inside [Webchat](/webchat/get-started/introduction). Instead of being limited to text, images, and carousels, you can build any visual element and have either your code or the LLM send it to users.
+
+There are two ways to use custom components:
+
+1. **Direct send** - your handler explicitly sends the component
+2. **LLM-driven** - the LLM decides when to render the component during `execute()`
+
+## Creating a component
+
+A custom component has two files: a React component (`.bp.tsx`) and an ADK wrapper (`.ts`).
+
+### Step 1: Write the React component
+
+Create a `.bp.tsx` file in `src/components/`:
+
+```tsx
+// src/components/TicketCard.bp.tsx
+import React from "react"
+
+type Props = {
+  ticketId: string
+  title: string
+  priority: "low" | "medium" | "high" | "urgent"
+  ticketStatus: string
+}
+
+const TicketCard: React.FC<Props> = ({ ticketId, title, priority, ticketStatus }) => {
+  return (
+    <div style={{
+      border: "1px solid #e5e7eb",
+      borderRadius: 10,
+      padding: "14px 16px",
+      background: "#fff",
+      maxWidth: 360,
+    }}>
+      <div style={{ fontWeight: 600, fontSize: 14 }}>{ticketId}</div>
+      <div style={{ fontSize: 14, color: "#111827", marginTop: 4 }}>{title}</div>
+      <div style={{ fontSize: 12, color: "#6b7280", marginTop: 4 }}>
+        {priority} - {ticketStatus}
+      </div>
+    </div>
+  )
+}
+
+export default TicketCard
+```
+
+You can use inline styles or import `.css` files directly. CSS imports are bundled and injected as `<style>` tags at runtime. React 18 is available with hooks like `useState`, `useMemo`, and `useEffect`.
+
+### Step 2: Create the ADK wrapper
+
+Create a `.ts` file next to the `.bp.tsx`:
+
+```typescript
+// src/components/TicketCard.ts
+import { CustomComponent } from "@botpress/runtime"
+import component from "./TicketCard.bp.tsx"
+
+export const TicketCardComponent = new CustomComponent(component)
+```
+
+The component is now discoverable by `adk dev` and `adk deploy`. The component name is derived from the React function name (`TicketCard` in this case).
+
+
+## Sending components manually
+
+Send a custom component like any other message:
+
+```typescript highlight={7-18}
+import { Conversation } from "@botpress/runtime"
+import { TicketCardComponent } from "../components/TicketCard"
+
+export default new Conversation({
+  channel: ["webchat.channel"],
+  handler: async ({ conversation }) => {
+    await conversation.send({
+      type: "customComponent",
+      payload: {
+        component: TicketCardComponent,
+        props: {
+          ticketId: "TKT-001",
+          title: "VPN not connecting",
+          priority: "high",
+          ticketStatus: "open",
+        },
+      },
+    })
+  },
+})
+```
+
+The `props` object is type-checked against the React component's `Props` type.
+
+## LLM-driven components
+
+To let the LLM decide when to render your component, add LLM metadata and list it in the conversation's `components` array.
+
+### Add LLM metadata
+
+The `description` field tells the LLM what the component does:
+
+```typescript title="TicketCard.ts" highlight={5-6}
+import { CustomComponent, z } from "@botpress/runtime"
+import component from "./TicketCard.bp.tsx"
+
+export const TicketCardComponent = new CustomComponent(component, {
+  description:
+    "Display a ticket summary card. Use this after creating or looking up a ticket.",
+  props: z.object({
+    ticketId: z.string().describe("The ticket ID"),
+    title: z.string().describe("Short summary of the issue"),
+    priority: z.enum(["low", "medium", "high", "urgent"]).describe("Priority level"),
+    ticketStatus: z.string().describe("Current ticket status"),
+  }),
+  exampleValues: [
+    { ticketId: "TKT-001", title: "VPN not working", priority: "high", ticketStatus: "open" },
+  ],
+})
+```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `description` | Yes | Tells the LLM when to use this component. Be specific. |
+| `props` | Yes | Zod schema defining the component's props. Use `.describe()` on each field. |
+| `exampleValues` | Yes | Array of example prop objects. Converted to JSX examples in the LLM prompt. |
+
+### Provide the component to the LLM
+
+To provide the component to your agent's LLM, pass it into the `execute()` function's `components` field:
+
+```typescript highlight={6}
+import { Conversation } from "@botpress/runtime"
+import { TicketCardComponent } from "../components/TicketCard"
+
+export default new Conversation({
+  channel: ["webchat.channel"],
+  components: [TicketCardComponent],
+  handler: async ({ execute }) => {
+    await execute({
+      instructions:
+        "You are an IT support assistant. When a user reports an issue, create a ticket and display it using the TicketCard component.",
+    })
+  },
+})
+```
+
+The LLM now knows about `<TicketCard>` and will render it when appropriate during `execute()`.
+
+<Note>
+If you list a component in `components` that was created without LLM metadata, the `Conversation` constructor throws immediately.
+</Note>
+
+## Combining both approaches
+
+You can use direct send and LLM-driven components in the same conversation:
+
+```typescript
+import { Conversation } from "@botpress/runtime"
+import { TicketCardComponent } from "../components/TicketCard"
+import { WelcomeBannerComponent } from "../components/WelcomeBanner"
+
+export default new Conversation({
+  channel: ["webchat.channel"],
+  events: ["webchat:conversationStarted"],
+  components: [TicketCardComponent],
+  handler: async ({ execute, type, event, conversation }) => {
+    if (event?.type === "webchat:conversationStarted") {
+      await conversation.send({
+        type: "customComponent",
+        payload: { component: WelcomeBannerComponent, props: {} },
+      })
+      return
+    }
+
+    await execute({
+      instructions: "You are an IT support assistant...",
+    })
+  },
+})
+```
+
+`WelcomeBannerComponent` doesn't need LLM metadata since it's only sent directly. It's not in the `components` array.
+
+## Build pipeline
+
+During `adk dev` and `adk deploy`, custom components go through the following pipeline:
+
+1. **Discover** - scans `src/` for `.ts` files that export `CustomComponent` instances
+2. **Resolve** - finds the `.bp.tsx` import in each wrapper
+3. **Bundle** - `esbuild` bundles the `.bp.tsx` into standalone ESM (`react` and `react-dom` are externalized)
+4. **Upload** - the bundle is uploaded to Botpress as a public file
+5. **Wire** - the component URL is injected so `conversation.send()` works
+
+During `adk dev`, the file watcher rebuilds only changed components incrementally.
+
+## Tips
+
+- **Keep components focused.** One component, one purpose. A ticket card, a status badge, a product listing.
+- **Use `useMemo`** for expensive computations or random values. React may re-render multiple times.
+- **Name your component function.** The name is derived from the function name. Anonymous exports become `"UnnamedComponent"`.
+- **Write good descriptions.** The LLM reads the `description` field to decide when to use the component.
+- **Provide realistic examples.** Use values that represent real usage, not placeholders like `"string"`.
+- **Avoid reserved prop names.** The webchat renderer reserves `status`. Use more specific names like `ticketStatus`.
+
+## Limitations
+
+- **Webchat only.** Custom components only render in Webchat. Other channels don't support them.
+- **No global stylesheets.** You can import `.css` files in your component, but your project's global styles are not available.
+- **React 18.** React 19 features are not available.
+- **No server-side rendering.** Components are client-rendered in the browser.
+
+## Troubleshooting
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| `Component "X" not deployed. Run "adk deploy".` | Component URL not set | Re-run `adk dev` to build and upload |
+| Component doesn't appear in Webchat | Wrapper doesn't export a `CustomComponent` | Check the `.ts` file imports the `.bp.tsx` and exports `new CustomComponent(...)` |
+| LLM never uses the component | Missing metadata or not in `components` array | Add `{ description, props, exampleValues }` and list in `components` |
+| Styles look wrong | Using CSS classes | Switch to inline styles |
+| A prop is `undefined` | Reserved prop name (e.g., `status`) | Rename to something specific (e.g., `ticketStatus`) |
+| TypeScript errors on `.bp.tsx` | Missing `tsconfig` settings | Add `"jsx": "react"`, `"allowImportingTsExtensions": true`, and `"noEmit": true` |

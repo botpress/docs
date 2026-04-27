@@ -1,0 +1,185 @@
+---
+title: Knowledge bases
+description: Give your agent access to documents, websites, and files.
+---
+
+Knowledge bases give your agent searchable access to documents, websites, and files. Pass one to `execute()` and the model searches it automatically when prompted, returning any results it finds with citations.
+
+## Create a knowledge base
+
+Create a file in `src/knowledge/`:
+
+```typescript
+import { Knowledge, DataSource } from "@botpress/runtime"
+
+export default new Knowledge({
+  name: "product-docs",
+  description: "Product documentation and FAQ",
+  sources: [
+    DataSource.Website.fromSitemap("https://docs.example.com/sitemap.xml"),
+  ],
+})
+```
+
+When multiple KBs are passed to `execute()`, the LLM reads each one's `description` to pick which to search. Keep descriptions short and specific.
+
+Browse your knowledge bases, inspect indexing status, and view individual files from the dev console:
+
+<Frame>
+  <img alt="Knowledge page in dev console" className="block dark:hidden" src="../assets/knowledge-console.png" />
+  <img alt="Knowledge page in dev console" className="hidden dark:block" src="../assets/knowledge-console-dark.png" />
+</Frame>
+
+## Use it in a conversation
+
+Pass knowledge bases to `execute()` via the `knowledge` array. The model searches them automatically when it needs information, and includes citations back to the source documents:
+
+```typescript highlight={10}
+import { Conversation } from "@botpress/runtime"
+import ProductDocs from "../knowledge/product-docs"
+import FAQ from "../knowledge/faq"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  handler: async ({ execute }) => {
+    await execute({
+      instructions: "Answer questions using the documentation. Cite your sources.",
+      knowledge: [ProductDocs, FAQ],
+    })
+  },
+})
+```
+
+## Data sources
+
+A knowledge base indexes one or more data sources. The ADK ships two types: websites and local directories.
+
+### Website from sitemap
+
+Index all pages in a sitemap:
+
+```typescript
+const DocsSource = DataSource.Website.fromSitemap(
+  "https://example.com/sitemap.xml",
+  {
+    filter: ({ url }) => !url.includes("/admin"),
+    maxPages: 1000,
+    maxDepth: 10,
+  }
+)
+```
+
+### Website from base URL
+
+Crawl a website starting from a URL (requires the Browser integration):
+
+```typescript
+const DocsSource = DataSource.Website.fromWebsite(
+  "https://example.com",
+  {
+    filter: ({ url }) => !url.includes("/admin"),
+    maxPages: 500,
+    maxDepth: 5,
+  }
+)
+```
+
+### Website from llms.txt
+
+Index pages referenced in an `llms.txt` file:
+
+```typescript
+const DocsSource = DataSource.Website.fromLlmsTxt(
+  "https://example.com/llms.txt"
+)
+```
+
+### Website from specific URLs
+
+Index a fixed list of pages:
+
+```typescript
+const DocsSource = DataSource.Website.fromUrls([
+  "https://example.com/pricing",
+  "https://example.com/faq",
+  "https://example.com/terms",
+])
+```
+
+### Website source options
+
+All four website factories accept the same options:
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `id` | `string` | Optional unique identifier for the source |
+| `filter` | `(ctx) => boolean` | Filter function receiving `{ url, lastmod?, changefreq?, priority? }` |
+| `fetch` | `string \| function` | Fetch strategy: `"node:fetch"` (default), `"integration:browser"`, or a custom function |
+| `maxPages` | `number` | Maximum pages to index (1–50000, default: 50000) |
+| `maxDepth` | `number` | Maximum sitemap depth (1–20, default: 20) |
+
+### Directory
+
+Index files from a local directory:
+
+```typescript
+const FileSource = DataSource.Directory.fromPath("./src/knowledge/docs", {
+  filter: (filePath) => filePath.endsWith(".md") || filePath.endsWith(".txt"),
+})
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `id` | `string` | Optional unique identifier for the source |
+| `filter` | `(filePath: string) => boolean` | Decide which files to include by path |
+
+## Search a knowledge base directly
+
+To search a KB outside of `execute()`, call `search()` on the instance. This is useful for custom retrieval, suggested-articles user interfaces, or populating context manually:
+
+```typescript
+const result = await ProductDocs.search("how do I reset my password?", {
+  limit: 5,
+})
+
+for (const passage of result.passages) {
+  console.log(passage.content, passage.metadata)
+}
+```
+
+## Re-index a knowledge base
+
+By default, knowledge bases index during `adk dev` and `adk deploy`.
+
+### On a schedule
+
+To re-index on a schedule, use a [workflow](/adk/workflows/create):
+
+```typescript
+import { Workflow } from "@botpress/runtime"
+import ProductDocs from "../knowledge/product-docs"
+
+export default new Workflow({
+  name: "refreshKnowledge",
+  schedule: "0 0 * * *",
+  handler: async () => {
+    await ProductDocs.refresh()
+  },
+})
+```
+
+### Force re-indexing
+
+To force re-indexing even if content hasn't changed pass in `force: true`:
+
+```typescript
+await ProductDocs.refresh({ force: true })
+```
+
+### Re-index a single source
+
+To re-index a single source within a knowledge base, pass in the source ID:
+
+```typescript
+await ProductDocs.refreshSource("my-source-id", { force: true })
+```
