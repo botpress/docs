@@ -1,0 +1,292 @@
+---
+title: Configuration
+description: Understand your project structure and how to configure your agent.
+---
+
+## Project structure
+
+Here's a breakdown of the key files in your project after running `adk init`:
+
+<Tree>
+  <Tree.Folder name="src" defaultOpen>
+    <Tree.Folder name="actions">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="conversations">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="knowledge">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="tables">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="triggers">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="workflows">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+  </Tree.Folder>
+
+  <Tree.Folder name="evals">
+    <Tree.File name="index.ts" />
+  </Tree.Folder>
+
+  <Tree.File name=".mcp.json" />
+
+  <Tree.File name="agent.config.ts" />
+
+  <Tree.File name="agent.json" />
+
+  <Tree.File name="agent.local.json" />
+
+  <Tree.File name="AGENTS.md" />
+
+  <Tree.File name="CLAUDE.md" />
+
+</Tree>
+
+The ADK scans `src/` and discovers primitives automatically. Each file exports a primitive (a `Conversation`, `Workflow`, `Action`, etc.) and the framework registers it at build time.
+
+## `agent.config.ts`
+
+Everything about your agent is configured in `agent.config.ts` by calling `defineConfig` and passing in a configuration object.
+
+Here's the `hello-world` template default configuration with all available fields shown:
+
+```typescript expandable
+import { z, defineConfig } from "@botpress/runtime"
+
+export default defineConfig({
+  // Identity
+  name: "my-agent",
+  description: "An AI agent built with Botpress ADK",
+
+  // LLM models
+  defaultModels: {
+    autonomous: "cerebras:gpt-oss-120b",
+    zai: "cerebras:gpt-oss-120b",
+  },
+
+  // Persistent state
+  bot: {
+    state: z.object({}),
+    tags: {},
+  },
+  user: {
+    state: z.object({}),
+    tags: {},
+  },
+
+  // Metadata tags
+  conversation: { tags: {} },
+  message: { tags: {} },
+  workflow: { tags: {} },
+
+  // Sensitive values (API keys, tokens)
+  secrets: {},
+
+  // Deploy-time settings
+  configuration: {
+    schema: z.object({}),
+  },
+
+  // Integrations
+  dependencies: {
+    integrations: {},
+  },
+
+  // Custom events
+  events: {},
+
+  // Test settings
+  evals: {},
+})
+```
+
+### Models
+
+The `defaultModels` field controls which LLM your agent uses:
+
+```typescript
+defaultModels: {
+  autonomous: "cerebras:gpt-oss-120b",
+  zai: "cerebras:gpt-oss-120b",
+},
+```
+
+| Model | Used by |
+|-------|---------|
+| `autonomous` | `execute()` calls in conversations and workflows |
+| `zai` | Zai operations like `zai.extract()`, `zai.check()`, `zai.text()` |
+
+If you don't set `defaultModels`, the ADK defaults to `openai:gpt-4.1-mini-2025-04-14` for autonomous and `openai:gpt-4.1-2025-04-14` for zai.
+
+You can pass an array of models for fallback. If the first model fails, the next one is tried:
+
+```typescript
+defaultModels: {
+  autonomous: ["cerebras:gpt-oss-120b", "openai:gpt-4.1-2025-04-14"],
+},
+```
+
+You can also browse and set models from the dev console under **Settings > LLM Config**.
+
+To override the model on a specific `execute()` call:
+
+```typescript
+await execute({
+  model: "openai:gpt-4.1-2025-04-14",
+  instructions: "You are a helpful assistant.",
+})
+```
+
+### State
+
+The `state` field lets you define schemas for data that your agent can persist across a certain scope. There are two available scopes:
+
+| Scope | Persists across | Use for |
+|-------|----------------|---------|
+| `bot` | All conversations and users | Global counters, shared config |
+| `user` | All conversations for a given user | Preferences, profile data |
+
+You can define schemas for state using Zod. The ADK generates TypeScript types from them, so state access is fully typed:
+
+```typescript
+bot: {
+  state: z.object({
+    totalConversations: z.number().default(0),
+  }),
+},
+user: {
+  state: z.object({
+    name: z.string().optional(),
+    preferredLanguage: z.string().default("en"),
+  }),
+},
+```
+
+<Tip>
+  For more information about reading and writing state at runtime, check out our guide to [managing states](/adk/conversations/state).
+</Tip>
+
+### Tags
+
+The `tags` field lets you define metadata that you can attach to bots, users, conversations, messages, and workflows:
+
+```typescript
+bot: {
+  tags: {
+    environment: { title: "Environment", description: "dev or prod" },
+  },
+},
+conversation: {
+  tags: {
+    priority: { title: "Priority" },
+  },
+},
+```
+
+Tags are useful for filtering and organizing data in the Botpress platform.
+
+### Secrets
+
+The `secrets` field lets you store sensitive values, like API keys or tokens. They are declared here, but values are managed separately per environment and never committed to version control:
+
+```typescript
+secrets: {
+  OPENAI_KEY: { description: "OpenAI API key" },
+  SENTRY_DSN: { optional: true, description: "Error tracking DSN" },
+},
+```
+
+<Tip>
+For more information about using secrets, check out our guide on [setting up your environment](/adk/setup/environment#secrets).
+</Tip>
+
+### Configuration
+
+The `configuration` field defines static, deploy-time settings. Unlike state, these are read-only at runtime:
+
+```typescript
+configuration: {
+  schema: z.object({
+    apiEndpoint: z.string().default("https://api.example.com"),
+    enableBeta: z.boolean().default(false),
+  }),
+},
+```
+
+<Tip>
+  For managing configuration values across environments, check out our guide to [setting up your environment](/adk/setup/environment#configuration).
+</Tip>
+
+### Dependencies
+
+Dependencies declare which integrations your agent uses. Add them with the CLI:
+
+```bash
+adk add webchat
+adk add slack@latest
+```
+
+The CLI resolves the version and updates `agent.config.ts`:
+
+```typescript
+dependencies: {
+  integrations: {
+    webchat: "webchat@0.3.0",
+    slack: "slack@1.0.0",
+  },
+},
+```
+
+<Tip>
+For more information about finding, configuring, and managing integrations, check out our [integrations guide](/adk/setup/integrations).
+</Tip>
+
+### Custom events
+
+The `events` field lets you define custom events your agent can emit and subscribe to:
+
+```typescript
+events: {
+  orderPlaced: {
+    description: "Fired when an order is placed",
+    schema: z.object({
+      orderId: z.string(),
+      total: z.number(),
+    }),
+  },
+},
+```
+
+You can then listen for these events within triggers and conversations. For more information, check out our guide on [setting up triggers](/adk/external/triggers).
+
+### Evals
+
+The `evals` field lets you configure how your agent's automated tests run:
+
+```typescript
+evals: {
+  idleTimeout: 15000,
+  judgePassThreshold: 3,
+  judgeModel: "openai:gpt-4o",
+},
+```
+
+| Field | Description |
+|-------|-------------|
+| `idleTimeout` | Milliseconds to wait for the agent to respond before timing out |
+| `judgePassThreshold` | Pass threshold for LLM judge assertions (1-5) |
+| `judgeModel` | Model used for LLM judge assertions |
+
+<Tip>
+  For more information, check out our full guide to [writing and running evals](/adk/testing/evals).
+</Tip>

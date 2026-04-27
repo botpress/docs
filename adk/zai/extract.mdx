@@ -1,0 +1,80 @@
+---
+title: Extract structured data
+description: Pull typed data from unstructured text using an LLM.
+---
+
+`zai.extract()` takes unstructured text and a schema, and returns typed structured data. The LLM reads the text and fills in the schema fields.
+
+## Basic usage
+
+```typescript
+import { adk, z } from "@botpress/runtime"
+
+const product = await adk.zai.extract(
+  "Blueberries are $3.99 and are in stock.",
+  z.object({
+    name: z.string(),
+    price: z.number(),
+    inStock: z.boolean(),
+  })
+)
+// { name: "blueberries", price: 3.99, inStock: true }
+```
+
+## Complex schemas
+
+Extract nested objects and arrays:
+
+```typescript
+const order = await adk.zai.extract(
+  `Order #1234 from John Smith (john@example.com):
+   - 2x Widget ($10 each)
+   - 1x Gadget ($25)
+   Shipping to 123 Main St, Springfield, IL 62701`,
+  z.object({
+    orderId: z.string(),
+    customer: z.object({
+      name: z.string(),
+      email: z.string(),
+    }),
+    items: z.array(z.object({
+      name: z.string(),
+      quantity: z.number(),
+      unitPrice: z.number(),
+    })),
+    shippingAddress: z.object({
+      street: z.string(),
+      city: z.string(),
+      state: z.string(),
+      zip: z.string(),
+    }),
+  })
+)
+```
+
+## Example: classifying emails
+
+`extract()` works anywhere in your agent. Here it's used inside a workflow step to parse and classify incoming emails:
+
+```typescript
+import { Workflow, adk, z } from "@botpress/runtime"
+
+export default new Workflow({
+  name: "processEmails",
+  handler: async ({ step }) => {
+    const emails = await step("fetch-emails", async () => {
+      return await fetchUnreadEmails()
+    })
+
+    const parsed = await step("parse-emails", async () => {
+      return Promise.all(emails.map(email =>
+        adk.zai.extract(email.body, z.object({
+          intent: z.enum(["support", "sales", "billing", "other"]),
+          urgency: z.enum(["low", "medium", "high"]),
+          summary: z.string(),
+        }))
+      ))
+    })
+  },
+})
+```

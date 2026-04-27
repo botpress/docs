@@ -1,0 +1,217 @@
+---
+title: Manage state
+description: Store and reuse data across conversations, users, and the entire bot.
+---
+
+State lets your agent persist data between handler calls. The ADK provides three scopes depending on how long you need the data and who should have access to it.
+
+## State scopes
+
+| Scope | Persists across | Defined in | Accessed via |
+|-------|----------------|------------|-------------|
+| **Bot** | All users and conversations | `agent.config.ts` | `import { bot } from "@botpress/runtime"` |
+| **User** | All conversations for a given user | `agent.config.ts` | `import { user } from "@botpress/runtime"` |
+| **Conversation** | A single conversation | Conversation `state` prop | Handler's `state` parameter |
+
+## Defining state schemas
+
+### Bot and user state
+
+Define bot and user state in `agent.config.ts`:
+
+```typescript highlight={6-10, 12-18}
+import { z, defineConfig } from "@botpress/runtime"
+
+export default defineConfig({
+  name: "my-agent",
+
+  bot: {
+    state: z.object({
+      ticketCounter: z.number().default(0),
+    }),
+  },
+
+  user: {
+    state: z.object({
+      name: z.string().optional(),
+      department: z.string().optional(),
+      visitCount: z.number().default(0),
+    }),
+  },
+})
+```
+
+Use `.default()` to set initial values and `.describe()` to document what each field is for.
+
+### Conversation state
+
+Define conversation state on a `Conversation` using the `state` prop:
+
+```typescript highlight={5-8}
+import { Conversation, z } from "@botpress/runtime"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  state: z.object({
+    topic: z.string().optional(),
+    messageCount: z.number().default(0),
+  }),
+  handler: async ({ state, execute }) => {
+    state.messageCount += 1
+
+    await execute({
+      instructions: `You are a helpful assistant. Messages so far: ${state.messageCount}`,
+    })
+  },
+})
+```
+
+## Reading and writing state
+
+State objects are mutable and can be modified directly. Your changes are saved automatically—you don't need to call a save method.
+
+## Bot state
+
+You can access bot state anywhere in your agent (conversations, actions, tools, workflows):
+
+```typescript
+import { bot } from "@botpress/runtime"
+
+const counter = bot.state.ticketCounter
+bot.state.ticketCounter = counter + 1
+```
+
+### User state
+
+You can access user state anywhere the current user context exists:
+
+```typescript
+import { user } from "@botpress/runtime"
+
+const name = user.state.name
+user.state.visitCount = (user.state.visitCount || 0) + 1
+```
+
+### Conversation state
+
+You can access conversation state via the `state` parameter in the conversation handler:
+
+```typescript
+handler: async ({ state, execute }) => {
+  if (state.phase === "greeting") {
+    state.phase = "main"
+  }
+
+  await execute({
+    instructions: `Current phase: ${state.phase}`,
+  })
+}
+```
+
+## Loading by ID
+
+You can load any user or conversation by ID to read and write their state and tags from anywhere in your agent:
+
+```typescript
+import { User, Conversation } from "@botpress/runtime"
+
+const otherUser = await User.get("user-id")
+console.log(otherUser.state.name)
+otherUser.tags.role = "admin"
+
+const otherConversation = await Conversation.get("conversation-id")
+await otherConversation.send({
+  type: "text",
+  payload: { text: "Hello from another context!" },
+})
+```
+
+Changes to loaded instances are auto-saved, just like the current user and conversation.
+
+## State references
+
+You can store workflow instances in state. They are saved automatically and loaded back as full instances when read:
+
+```typescript
+import { Conversation, Reference, z } from "@botpress/runtime"
+import OnboardingWorkflow from "../workflows/onboarding"
+
+export default new Conversation({
+  channel: "webchat.channel",
+  state: z.object({
+    activeWorkflow: Reference.Workflow("onboarding").optional(),
+  }),
+  handler: async ({ state }) => {
+    if (!state.activeWorkflow) {
+      state.activeWorkflow = await OnboardingWorkflow.start({})
+    }
+  },
+})
+```
+
+## Tags
+
+Tags are string key-value pairs you can attach to bots, users, conversations, messages, and workflows. They're useful for categorization, filtering, and querying.
+
+### Defining tags
+
+Declare tags in `agent.config.ts`:
+
+```typescript
+export default defineConfig({
+  name: "my-agent",
+
+  bot: {
+    tags: {
+      environment: { title: "Environment" },
+    },
+  },
+
+  user: {
+    tags: {
+      role: { title: "Role" },
+    },
+  },
+
+  conversation: {
+    tags: {
+      priority: { title: "Priority" },
+    },
+  },
+})
+```
+
+### Reading and writing tags
+
+```typescript
+import { bot, user } from "@botpress/runtime"
+
+bot.tags.environment = "production"
+user.tags.role = "admin"
+```
+
+You can access conversation tags via the `conversation` instance:
+
+```typescript
+handler: async ({ conversation }) => {
+  conversation.tags.priority = "high"
+  const priority = conversation.tags.priority
+}
+```
+
+System tags set by integrations (keys containing `:`) are read-only:
+
+```typescript
+const owner = conversation.tags["webchat:owner"]
+```
+
+## Bot and user identity
+
+The `bot` and `user` objects also expose an `id` property:
+
+```typescript
+import { bot, user } from "@botpress/runtime"
+
+const botId = bot.id
+const userId = user.id
+```

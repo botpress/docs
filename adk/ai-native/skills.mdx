@@ -1,0 +1,84 @@
+---
+title: Skills
+description: Give AI coding assistants deep ADK knowledge with installable skills.
+---
+
+Skills are packaged instructions and documentation that teach AI coding assistants how to build with the ADK. When installed, assistants like Claude Code, Cursor, and Codex use them automatically when you ask them to build features, debug issues, write evals, or connect integrations. `adk init` installs them for you alongside your dependencies, so most projects get them out of the box.
+
+## Manual installation
+
+If you need to install skills in an existing project or reinstall them, run the same command `adk init` runs:
+
+```bash
+npx skills add botpress/skills -s '*' -a codex claude-code -y
+```
+
+Use `bunx` instead of `npx` if your project has a `bun.lockb`.
+
+To install a single skill instead of all of them:
+
+```bash
+npx skills add botpress/skills --skill adk
+```
+
+Or install as a Claude Code plugin:
+
+```
+/plugin marketplace add botpress/skills
+/plugin install adk@botpress-skills
+```
+
+## Available skills
+
+| Skill | What it teaches | Use when |
+|-------|----------------|----------|
+| **`adk`** | Core ADK framework: actions, tools, workflows, conversations, tables, knowledge, triggers, Zai, configuration | Building any feature with the ADK |
+| **`adk-debugger`** | Trace reading, log analysis, common failure diagnosis, the debug loop | Bot isn't responding, tools failing, workflows stuck, LLM issues |
+| **`adk-evals`** | Eval file format, all assertion types, CLI usage, per-primitive testing patterns | Writing and running automated tests |
+| **`adk-frontend`** | Authentication, type generation, client setup, calling bot actions from React/Next.js | Building a frontend that connects to your bot |
+| **`adk-integrations`** | Discovery, adding, configuring, and using integrations end-to-end | Connecting Slack, WhatsApp, Linear, or any integration |
+| **`adk-docs`** | Documentation standards, creation, review, and maintenance | Writing or updating docs for your bot |
+
+## Slash commands
+
+Skills come with slash commands for Claude Code. Type the command instead of describing what you need:
+
+| Command | What it does |
+|---------|-------------|
+| `/adk-init` | Scaffold a new ADK project |
+| `/adk-debug` | Debug bot issues using traces, logs, and the debug loop |
+| `/adk-eval` | Write, run, or debug evals |
+| `/adk-frontend` | Build frontend apps that integrate with ADK bots |
+| `/adk-integration` | Discover, add, and configure integrations |
+| `/adk-doc-create` | Create documentation for a feature |
+| `/adk-doc-review` | Review project docs for accuracy |
+| `/adk-doc-update` | Update docs after code changes |
+| `/adk-doc-sync` | Check if docs are in sync with code |
+| `/adk-doc-search` | Search project documentation |
+
+## MCP server
+
+Skills are the recommended way to give AI assistants ADK knowledge. The ADK also ships an MCP (Model Context Protocol) server that gives assistants live access to your running project, kept here for reference.
+
+Generate the MCP configuration files:
+
+```bash
+adk mcp:init --all
+```
+
+This writes config for Claude Code (`.mcp.json`), VS Code (`.vscode/mcp.json`), and Cursor (`.cursor/mcp.json`). See [`adk mcp:init`](/adk/cli-reference#adk-mcpinit) for all flags.
+
+The server exposes these tools:
+
+| Tool | What it does |
+|------|-------------|
+| `adk_get_agent_info` | Get project structure and primitives |
+| `adk_search_integrations` | Search the Botpress Hub |
+| `adk_get_integration` | Get detailed integration info |
+| `adk_add_integration` | Add an integration to the project |
+| `adk_send_message` | Send a test message to the running bot |
+| `adk_query_traces` | Query trace spans for debugging |
+| `adk_get_dev_logs` | Get dev server logs and errors |
+| `adk_list_workflows` | List available workflows |
+| `adk_start_workflow` | Start a workflow or get its input schema |
+| `adk_init_project` | Scaffold a new ADK project (only available outside an ADK project) |

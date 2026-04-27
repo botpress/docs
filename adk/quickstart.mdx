@@ -1,15 +1,16 @@
 ---
 title: Quickstart
+description: Install the ADK and create your first agent project.
 ---
 
-This guide walks you through installing the ADK and creating your first agent project.
+By the end of this guide, you'll have a working AI agent that responds to messages on Webchat. It takes about 5 minutes.
 
 <Info>
   You will need:
 
-  - A [Botpress account](https://sso.botpress.cloud)
-  - [Node.js](https://nodejs.org/en) (v22.0.0 or higher)
-  - A supported package manager — [bun](https://bun.sh), [pnpm](https://pnpm.io), [yarn](https://yarnpkg.com) or [npm](https://www.npmjs.com)
+  * A [Botpress account](https://sso.botpress.cloud)
+  * [Node.js](https://nodejs.org/en) (v22.0.0 or higher)
+  * A supported package manager — [bun](https://bun.sh), [pnpm](https://pnpm.io), [yarn](https://yarnpkg.com) or [npm](https://www.npmjs.com)
 </Info>
 
 <Tip>
@@ -23,24 +24,30 @@ Check out our [ADK Setup Guide with Claude Code and Cursor](https://youtu.be/Zsp
 Install the ADK CLI globally:
 
 <CodeGroup>
+  ```bash macOS & Linux theme={"theme":{"light":"light-plus","dark":"dark-plus"}}
+  curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
+  ```
 
-```bash macOS & Linux
-curl -fsSL https://github.com/botpress/adk/releases/latest/download/install.sh | bash
-```
-
-```powershell Windows (PowerShell)
-powershell -c "irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex"
-```
-
+  ```powershell Windows (PowerShell) theme={"theme":{"light":"light-plus","dark":"dark-plus"}}
+  powershell -c "irm https://github.com/botpress/adk/releases/latest/download/install.ps1 | iex"
+  ```
 </CodeGroup>
 
-Verify the installation:
+Then, verify the installation:
 
-```bash
+```bash theme={"theme":{"light":"light-plus","dark":"dark-plus"}}
 adk --version
 ```
 
-## Create your first agent
+Log in to your Botpress account:
+
+```bash
+adk login
+```
+
+This will open a browser window for authentication. Once complete, the CLI stores your credentials locally.
+
+## Create your agent
 
 Initialize a new agent project:
 
@@ -48,46 +55,13 @@ Initialize a new agent project:
 adk init my-agent
 ```
 
-```txt
- ▄▀█ █▀▄ █▄▀  Botpress ADK
- █▀█ █▄▀ █░█  Initialize New Agent
+The wizard walks you through three steps:
 
- Step 1 of 2
+1. **Select a template**: Pick `hello-world`. This creates a simple agent that responds to webchat messages using an AI model.
+2. **Select a package manager**: We recommend [bun](https://bun.sh) for the fastest experience. npm, pnpm, and yarn also work. If you only have one installed, this step is skipped.
+3. **Link to Botpress**: Select the workspace you want to deploy to. The CLI creates a bot in that workspace and connects your project to it.
 
-
-Select a template:
-
-› blank
-    Empty project with just the folder structure
-
-  hello-world
-    A working chatbot with chat and webchat integrations
-```
-
-Select the `hello-world` template. Next, choose your preferred package manager:
-
-```txt
- ▄▀█ █▀▄ █▄▀  Botpress ADK
- █▀█ █▄▀ █░█  Initialize New Agent
-
- Step 2 of 2
-
-
-Select a package manager:
-
-● Bun
-    Install with bun
-○ pnpm
-    Install with pnpm
-○ Yarn
-    Install with yarn
-○ npm
-    Install with npm
-```
-
-If you are logged in, the CLI will also prompt you to select a workspace to link your agent to.
-
-The CLI automatically installs dependencies and creates a `my-agent` directory. See [Project Structure](/adk/project-structure) for a full breakdown of the generated files.
+The CLI then automatically installs dependencies and sets up your project in the `my-agent` directory.
 
 Navigate into your project:
 
@@ -97,7 +71,7 @@ cd my-agent
 
 ## Test your agent
 
-Now, you're ready to test your agent.
+Now, you’re ready to test your agent.
 
 ### Start the development server
 
@@ -107,23 +81,27 @@ Start the development server with hot reloading:
 adk dev
 ```
 
-This command:
+This builds your agent, deploys it to a development bot on Botpress, and starts the dev console at [`http://localhost:3001/`](http://localhost:3001/). Press <kbd>space</kbd> in the terminal to open it in your browser.
 
-1. Generates TypeScript types for your integrations
-2. Builds your agent
-3. Starts a local development server
-4. Watches for file changes and automatically rebuilds
+### View in the dev console
 
-### View the Control Panel
+The dev console is your local control panel for building and debugging. Within the dev console, you can:
 
-While `adk dev` is running, visit [`http://localhost:3001/`](http://localhost:3001/) to access the Control Panel. This gives you a visual overview of your agent project where you can browse conversations, actions, workflows, tables, triggers, knowledge bases, and [configure integration settings](/adk/managing-integrations#integration-configuration).
+- Chat with your agent
+- Browse its components (actions, workflows, triggers)
+- Manage data (tables, knowledge bases, files)
+- Run evals
+- Inspect traces and logs
+- Configure integrations
 
-You can also test your agent directly from the built-in Chat view:
+Go to the **Chat** page and send a message to test your agent:
 
 <Frame>
-  <img alt="Control Panel" className="block dark:hidden" src="./assets/control-panel-quickstart.png" />
-  <img alt="Control Panel" className="hidden dark:block" src="./assets/control-panel-quickstart-dark.png" />
+  <img alt="ADK dev console" className="block dark:hidden" src="./assets/quickstart.png" />
+  <img alt="ADK dev console" className="hidden dark:block" src="./assets/quickstart-dark.png" />
 </Frame>
+
+The dev server watches your files and rebuilds on every change.
 
 ### Chat in the terminal
 
@@ -141,41 +119,26 @@ Type "exit" or press ESC key to quit
 >>
 ```
 
-## Build your agent
-
-Compile your agent for production:
-
-```bash
-adk build
-```
-
-This creates an optimized build in the `.adk/bot/.botpress/dist` directory.
-
 ## Deploy your agent
 
-When you're ready, you can deploy your agent to Botpress Cloud:
+When you're ready to go live:
 
 ```bash
 adk deploy
 ```
 
-This uploads your agent to your Botpress workspace and makes it available for use.
+This builds your agent for production, runs preflight checks (integration changes, config diffs), syncs your knowledge bases and tables, and uploads everything to Botpress. The CLI walks you through any changes that need approval before deploying.
 
-<Note>
-  If you skipped workspace selection during `adk init`, run `adk login` then `adk link` to connect your agent before deploying.
-</Note>
+Once deployed, your agent is live in the workspace you linked during `adk init`.
 
 <Check>
   You deployed your first agent using the ADK!
 </Check>
 
-## Next steps
+---
 
-<CardGroup Cols={2}>
-  <Card title="Project Structure" horizontal icon="folder" href="/adk/project-structure">
-    Learn about ADK project organization
-  </Card>
-  <Card title="Conversations" horizontal icon="message-square" href="/adk/concepts/conversations">
-    Create your first conversation handler
-  </Card>
-</CardGroup>
+Next, learn what's in the project you just created and how to configure it:
+
+<Card title="Agent configuration" icon="settings" href="/adk/setup/configuration">
+  Project structure, models, state, and dependencies.
+</Card>

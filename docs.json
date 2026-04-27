@@ -89,30 +89,86 @@
             "group": "ADK",
             "tag": "Beta",
             "pages": [
-              "/adk/introduction",
-              "/adk/quickstart",
-              "/adk/project-structure",
+                "/adk/introduction",
+                "/adk/quickstart",
               {
-                "group": "Concepts",
+                "group": "Setting up your agent",
                 "pages": [
-                  "/adk/concepts/conversations",
-                  "/adk/concepts/workflows",
-                  "/adk/concepts/actions",
-                  "/adk/concepts/tables",
-                  "/adk/concepts/triggers",
-                  "/adk/concepts/knowledge",
-                  "/adk/concepts/tools",
-                  "/adk/concepts/state",
-                  "/adk/concepts/configuration"
+                  "/adk/setup/configuration",
+                  "/adk/setup/environment",
+                  "/adk/setup/integrations"
                 ]
               },
-              "/adk/managing-integrations",
-              "/adk/runtime",
               {
-                "group": "Zai",
-                "pages": ["/adk/zai/overview", "/adk/zai/reference"]
+                "group": "Handling conversations",
+                "pages": [
+                  "/adk/conversations/setup",
+                  "/adk/conversations/ai-execution",
+                  "/adk/conversations/tools",
+                  "/adk/conversations/messages",
+                  "/adk/conversations/custom-components",
+                  "/adk/conversations/lifecycle",
+                  "/adk/conversations/state"
+                ]
               },
-              "/adk/cli-reference"
+              {
+                "group": "Handling longform logic",
+                "pages": [
+                  "/adk/workflows/create",
+                  "/adk/workflows/steps",
+                  "/adk/workflows/request-notify"
+                ]
+              },
+              {
+                "group": "Actions and triggers",
+                "pages": [
+                  "/adk/external/actions",
+                  "/adk/external/triggers"
+                ]
+              },
+              {
+                "group": "Working with data",
+                "pages": [
+                  "/adk/data/tables",
+                  "/adk/data/knowledge"
+                ]
+              },
+              {
+                "group": "Testing and debugging",
+                "pages": [
+                  "/adk/testing/evals",
+                  "/adk/testing/agent-steps",
+                  "/adk/testing/debugging",
+                  "/adk/testing/scripts"
+                ]
+              },
+              {
+                "group": "LLM Utilities",
+                "pages": [
+                  "/adk/zai/overview",
+                  "/adk/zai/extract",
+                  "/adk/zai/generate",
+                  "/adk/zai/classify"
+                ]
+              },
+              {
+                "group": "AI-native development",
+                "pages": [
+                  "/adk/ai-native/skills"
+                ]
+              },
+              {
+                "group": "Advanced",
+                "pages": [
+                  "/adk/advanced/hitl"
+                ]
+              },
+              {
+                "group": "CLI",
+                "pages": [
+                  "/adk/cli-reference"
+                ]
+              }
             ]
           },
           {
@@ -669,6 +725,58 @@
     {
       "source": "/webchat/interact/dropdown-menus",
       "destination": "/studio/guides/how-to/dropdown-menus"
+    },
+    {
+      "source": "/adk/concepts/actions",
+      "destination": "/adk/external/actions"
+    },
+    {
+      "source": "/adk/concepts/triggers",
+      "destination": "/adk/external/triggers"
+    },
+    {
+      "source": "/adk/concepts/conversations",
+      "destination": "/adk/conversations/setup"
+    },
+    {
+      "source": "/adk/concepts/knowledge",
+      "destination": "/adk/data/knowledge"
+    },
+    {
+      "source": "/adk/concepts/tables",
+      "destination": "/adk/data/tables"
+    },
+    {
+      "source": "/adk/concepts/state",
+      "destination": "/adk/conversations/state"
+    },
+    {
+      "source": "/adk/concepts/tools",
+      "destination": "/adk/conversations/tools"
+    },
+    {
+      "source": "/adk/concepts/workflows",
+      "destination": "/adk/workflows/create"
+    },
+    {
+      "source": "/adk/concepts/configuration",
+      "destination": "/adk/setup/configuration"
+    },
+    {
+      "source": "/adk/managing-integrations",
+      "destination": "/adk/setup/integrations"
+    },
+    {
+      "source": "/adk/project-structure",
+      "destination": "/adk/setup/configuration"
+    },
+    {
+      "source": "/adk/runtime",
+      "destination": "/adk/setup/configuration"
+    },
+    {
+      "source": "/adk/zai/reference",
+      "destination": "/adk/zai/overview"
     }
   ],
   "integrations": {

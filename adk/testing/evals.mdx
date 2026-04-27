@@ -1,0 +1,338 @@
+---
+title: Write and run evals
+description: Automated conversation tests for your agent.
+---
+
+Evals are automated tests that simulate conversations with your agent and assert on the results. You write a conversation script with expected behaviors, and the eval runner plays it against your running agent and reports pass/fail.
+
+## Create an eval
+
+Create `.eval.ts` files in the `evals/` directory at your agent root:
+
+```typescript
+import { Eval } from "@botpress/runtime"
+
+export default new Eval({
+  name: "greeting",
+  description: "Agent should greet the user",
+  conversation: [
+    {
+      user: "Hello",
+      assert: {
+        response: [
+          { llm_judge: "The response is a friendly greeting" },
+        ],
+      },
+    },
+  ],
+})
+```
+
+Each file can export one or more `Eval` instances as the default export or named exports.
+
+## Conversation turns
+
+An eval's `conversation` is a sequence of turns. Each turn can send a user message, fire an event, or assert the agent stays silent, plus optionally assert on what happens.
+
+Send user messages:
+
+```typescript
+conversation: [
+  {
+    user: "What's the weather in Paris?",
+    assert: {
+      response: [{ contains: "Paris" }],
+      tools: [{ called: "getWeather", params: { city: { equals: "Paris" } } }],
+    },
+  },
+  {
+    user: "And in London?",
+    assert: {
+      response: [{ contains: "London" }],
+    },
+  },
+]
+```
+
+Fire an event instead of a message:
+
+```typescript
+{
+  event: {
+    type: "order.placed",
+    payload: { orderId: "ord-123", total: 49.99 },
+  },
+  assert: {
+    response: [{ contains: "order" }],
+  },
+}
+```
+
+Assert the agent doesn't respond:
+
+```typescript
+{
+  user: "ok thanks",
+  expectSilence: true,
+}
+```
+
+## Assertions
+
+Each turn's `assert` block can hold any combination of the assertion types below.
+
+### Response
+
+Assert on the text of the agent's reply:
+
+| Assertion | Description |
+|-----------|-------------|
+| `{ contains: "text" }` | Response includes this string |
+| `{ not_contains: "text" }` | Response does not include this string |
+| `{ matches: "regex" }` | Response matches this regex pattern |
+| `{ similar_to: "text" }` | Response is semantically similar to this text |
+| `{ llm_judge: "criteria" }` | An LLM evaluates whether the response meets the criteria (see [LLM judge](#llm-judge)) |
+
+### Tools
+
+Assert on which tools the agent called:
+
+| Assertion | Description |
+|-----------|-------------|
+| `{ called: "toolName" }` | Tool was called |
+| `{ called: "toolName", params: { key: { equals: "value" } } }` | Tool was called with matching parameters |
+| `{ not_called: "toolName" }` | Tool was not called |
+| `{ call_order: ["tool1", "tool2"] }` | Tools were called in this order |
+
+Use these operators inside `params` to match tool arguments:
+
+| Operator | Example |
+|----------|---------|
+| `{ equals: value }` | Exact match |
+| `{ contains: "text" }` | String contains |
+| `{ not_contains: "text" }` | String does not contain |
+| `{ matches: "regex" }` | Regex match |
+| `{ in: [1, 2, 3] }` | Value is in array |
+| `{ exists: true }` | Field exists |
+| `{ gte: 10 }` | Greater than or equal |
+| `{ lte: 100 }` | Less than or equal |
+
+### State
+
+Assert on state changes after a turn:
+
+```typescript
+assert: {
+  state: [
+    { path: "messageCount", changed: true },
+    { path: "topic", equals: "weather" },
+  ],
+}
+```
+
+### Tables
+
+Assert on table data:
+
+```typescript
+assert: {
+  tables: [
+    { table: "OrderTable", row_exists: { userId: { equals: "user123" } } },
+    { table: "OrderTable", row_count: { gte: 1 }, where: { status: { equals: "pending" } } },
+  ],
+}
+```
+
+### Workflows
+
+Assert on workflow state:
+
+```typescript
+assert: {
+  workflow: [
+    { name: "processOrder", entered: true },
+    { name: "processOrder", completed: true },
+  ],
+}
+```
+
+### Timing
+
+Assert on response time:
+
+```typescript
+assert: {
+  timing: [
+    { response_time: { lte: 5000 } },
+  ],
+}
+```
+
+### LLM judge
+
+Use `llm_judge` when the right answer isn't a fixed string. You describe what a good response looks like in plain English, and an LLM scores the agent's reply against it. It's the right choice for subjective checks like tone, intent, or whether the agent understood the user:
+
+```typescript
+assert: {
+  response: [
+    { llm_judge: "The response is polite and professional" },
+    { llm_judge: "The response correctly identifies the user's issue" },
+  ],
+}
+```
+
+Configure the judge model and pass threshold under [Configure eval behavior](#configure-eval-behavior).
+
+## Setup and outcome
+
+`setup` runs before the first turn. `outcome` runs after the last.
+
+### Setup
+
+Seed state or trigger a workflow before the conversation starts:
+
+```typescript
+new Eval({
+  name: "returning-user",
+  setup: {
+    state: {
+      user: { name: "Alice", visitCount: 5 },
+      conversation: { topic: "billing" },
+    },
+  },
+  conversation: [
+    {
+      user: "Hi",
+      assert: {
+        response: [{ contains: "Alice" }],
+      },
+    },
+  ],
+})
+```
+
+Trigger a workflow instead of (or in addition to) seeding state:
+
+```typescript
+setup: {
+  workflow: {
+    trigger: "onboarding",
+    input: { userId: "user123" },
+  },
+},
+```
+
+### Outcome
+
+Assert on state, tables, or workflows after the entire conversation completes. Outcome assertions use the same shapes as turn assertions:
+
+```typescript
+new Eval({
+  name: "full-flow",
+  conversation: [
+    { user: "Create a ticket for VPN issues" },
+    { user: "Set priority to high" },
+  ],
+  outcome: {
+    tables: [
+      { table: "TicketTable", row_exists: { priority: { equals: "high" } } },
+    ],
+    workflow: [
+      { name: "createTicket", completed: true },
+    ],
+  },
+})
+```
+
+## Configure eval behavior
+
+Set defaults for all evals in `agent.config.ts`:
+
+```typescript
+evals: {
+  judgeModel: "openai:gpt-4o",
+  judgePassThreshold: 3,
+  idleTimeout: 15000,
+},
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `judgeModel` | `string` | Model for `llm_judge` assertions. Defaults to `"fast"` |
+| `judgePassThreshold` | `number` (1–5) | Minimum score for `llm_judge` to pass. Defaults to `3` |
+| `idleTimeout` | `number` (ms) | How long to wait for the agent to respond. Defaults to `15000` |
+
+Override `judgePassThreshold` or `idleTimeout` on a specific eval:
+
+```typescript
+new Eval({
+  name: "quality-check",
+  options: {
+    judgePassThreshold: 4,
+    idleTimeout: 30000,
+  },
+  conversation: [/* ... */],
+})
+```
+
+## Organize evals
+
+Evals have two organizing fields that pair with CLI filters: `tags` and `type`.
+
+**Tags** are free-form labels. Use them to group evals you want to run together (smoke tests, critical paths, slow suites):
+
+```typescript
+new Eval({
+  name: "greeting",
+  tags: ["smoke", "core"],
+  conversation: [/* ... */],
+})
+```
+
+```bash
+adk evals --tag smoke    # Run only evals tagged "smoke"
+```
+
+**Type** marks what the eval is for:
+
+- `capability`: tests that a feature works as designed
+- `regression`: reproduces a past bug so it doesn't come back
+
+```typescript
+new Eval({
+  name: "fix-for-ticket-priority-bug",
+  type: "regression",
+  conversation: [/* ... */],
+})
+```
+
+```bash
+adk evals --type regression    # Run only regression evals
+```
+
+## Run evals
+
+From the CLI:
+
+```bash
+adk evals                        # Run all evals
+adk evals greeting               # Run a specific eval by name
+adk evals --tag smoke            # Run evals with a specific tag
+adk evals --type regression      # Run only regression evals
+adk evals -v                     # Show full details, not just failures
+```
+
+View past runs:
+
+```bash
+adk evals runs                   # List recent runs
+adk evals runs --latest          # Show the latest run
+adk evals runs <run-id>          # Show a specific run
+```
+
+You can also run and view evals from the dev console under **Evals**.
+
+<Frame>
+  <img alt="Evals page in dev console" className="block dark:hidden" src="../assets/evals-console.png" />
+  <img alt="Evals page in dev console" className="hidden dark:block" src="../assets/evals-console-dark.png" />
+</Frame>

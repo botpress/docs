@@ -1,0 +1,147 @@
+---
+title: Classify, validate and filter
+description: Check conditions, label content, filter, sort, rate, and group items.
+---
+
+Zai provides methods for classifying, validating, and organizing data using an LLM.
+
+## Check a condition
+
+`zai.check()` asks the LLM a yes/no question about some input and returns `true` or `false`:
+
+```typescript
+import { adk } from "@botpress/runtime"
+
+const emailBody = "Click here for a FREE iPhone! Limited time only!!!"
+const isSpam = await adk.zai.check(emailBody, "is this spam?")
+// true
+```
+
+Call `.result()` for the Boolean plus the LLM's reasoning:
+
+```typescript
+const { output } = await adk.zai.check(emailBody, "is this spam?").result()
+// output.value       → true
+// output.explanation → "The message uses urgency tactics and promises free rewards..."
+```
+
+## Label content
+
+`zai.label()` applies multiple Boolean labels to content:
+
+```typescript
+const result = await adk.zai.label(emailBody, {
+  spam: "is this email spam?",
+  urgent: "does this require immediate attention?",
+  promotional: "is this promotional content?",
+})
+// { spam: true, urgent: false, promotional: true }
+```
+
+## Filter an array
+
+`zai.filter()` keeps items that match a condition:
+
+```typescript
+const comments = [
+  "Great product, I love it!",
+  "This is terrible spam content",
+  "Very helpful review, thank you",
+]
+
+const clean = await adk.zai.filter(comments, "is not spam or inappropriate")
+// ["Great product, I love it!", "Very helpful review, thank you"]
+```
+
+## Sort items
+
+`zai.sort()` orders items using natural language criteria:
+
+```typescript
+const tasks = [
+  "Update documentation",
+  "Fix critical security bug",
+  "Add new feature",
+  "System is down - all users affected",
+]
+
+const prioritized = await adk.zai.sort(tasks, "by urgency and impact, most urgent first")
+// ["System is down...", "Fix critical security bug", "Add new feature", "Update documentation"]
+```
+
+## Rate items
+
+`zai.rate()` scores items on a 1-5 scale. Pass a string for a single criterion:
+
+```typescript
+const reviews = [
+  "Amazing product! Best purchase ever!",
+  "It's okay, nothing special",
+  "Terrible quality, broke immediately",
+]
+
+const ratings = await adk.zai.rate(reviews, "Rate the sentiment")
+// [5, 3, 1]
+```
+
+Pass an object to score each item across multiple criteria. Each result includes a `total`:
+
+```typescript
+const essays = ["... first essay ...", "... second essay ..."]
+
+const ratings = await adk.zai.rate(essays, {
+  grammar: "Rate the grammar and spelling",
+  clarity: "Rate how clear and well-organized the writing is",
+  argumentation: "Rate the strength of arguments and evidence",
+})
+// [
+//   { grammar: 4, clarity: 5, argumentation: 3, total: 12 },
+//   { grammar: 3, clarity: 4, argumentation: 4, total: 11 },
+// ]
+```
+
+## Group items
+
+`zai.group()` categorizes items into groups. With just `instructions`, it discovers groups on its own:
+
+```typescript
+const messages = [
+  "I can't log in to my account",
+  "How do I reset my password?",
+  "When will my order arrive?",
+  "The app keeps crashing",
+]
+
+const groups = await adk.zai.group(messages, {
+  instructions: "Group by type of customer issue",
+})
+// { "Login Issues": [...], "Shipping Questions": [...], "Technical Errors": [...] }
+```
+
+To force items into predefined categories, pass `initialGroups`:
+
+```typescript
+const articles = [
+  "How to build a React app",
+  "Python machine learning tutorial",
+  "Understanding Docker containers",
+]
+
+const groups = await adk.zai.group(articles, {
+  instructions: "Categorize by technology",
+  initialGroups: [
+    { id: "frontend", label: "Frontend Development" },
+    { id: "backend", label: "Backend Development" },
+    { id: "ml", label: "Machine Learning" },
+  ],
+})
+```
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `instructions` | `string` | How to group the items |
+| `initialGroups` | `Array<{id, label}>` | Predefined categories to use instead of discovering them |
+| `maxGroups` | `number` | Upper limit on groups. Smaller groups merge at the end until within the limit |
+| `minElements` | `number` | Minimum items per group. Groups below the threshold have their elements redistributed |
+| `tokensPerElement` | `number` | Max tokens per item |
+| `chunkLength` | `number` | Max tokens per chunk for large inputs |
