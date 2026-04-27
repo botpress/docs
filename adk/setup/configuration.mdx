@@ -5,19 +5,52 @@ description: Understand your project structure and how to configure your agent.
 
 ## Project structure
 
-After running `adk init`, these are the core files and folders of an ADK project:
+Here's a breakdown of the key files in your project after running `adk init`:
 
-| Path | Purpose |
-|------|---------|
-| `agent.config.ts` | Agent configuration: models, state, dependencies, secrets |
-| `src/conversations/` | Message handlers for user interactions |
-| `src/workflows/` | Long-running background processes |
-| `src/actions/` | Reusable logic callable from anywhere |
-| `src/tools/` | Functions the AI model can call |
-| `src/tables/` | Database table schemas |
-| `src/knowledge/` | RAG knowledge base sources |
-| `src/triggers/` | Event-based handlers |
-| `evals/` | Automated conversation tests |
+<Tree>
+  <Tree.Folder name="src" defaultOpen>
+    <Tree.Folder name="actions">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="conversations">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="knowledge">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="tables">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="triggers">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+
+    <Tree.Folder name="workflows">
+      <Tree.File name="index.ts" />
+    </Tree.Folder>
+  </Tree.Folder>
+
+  <Tree.Folder name="evals">
+    <Tree.File name="index.ts" />
+  </Tree.Folder>
+
+  <Tree.File name=".mcp.json" />
+
+  <Tree.File name="agent.config.ts" />
+
+  <Tree.File name="agent.json" />
+
+  <Tree.File name="agent.local.json" />
+
+  <Tree.File name="AGENTS.md" />
+
+  <Tree.File name="CLAUDE.md" />
+
+</Tree>
 
 The ADK scans `src/` and discovers primitives automatically. Each file exports a primitive (a `Conversation`, `Workflow`, `Action`, etc.) and the framework registers it at build time.
 

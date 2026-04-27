@@ -10,7 +10,7 @@ Evals are automated tests that simulate conversations with your agent and assert
 Create `.eval.ts` files in the `evals/` directory at your agent root:
 
 ```typescript
-import { Eval } from "@botpress/adk"
+import { Eval } from "@botpress/runtime"
 
 export default new Eval({
   name: "greeting",
@@ -100,7 +100,7 @@ Assert on which tools the agent called:
 | Assertion | Description |
 |-----------|-------------|
 | `{ called: "toolName" }` | Tool was called |
-| `{ called: "toolName", params: { key: { equals: "value" } } }` | Tool was called with matching params |
+| `{ called: "toolName", params: { key: { equals: "value" } } }` | Tool was called with matching parameters |
 | `{ not_called: "toolName" }` | Tool was not called |
 | `{ call_order: ["tool1", "tool2"] }` | Tools were called in this order |
 
@@ -150,8 +150,8 @@ Assert on workflow state:
 ```typescript
 assert: {
   workflow: [
-    { name: "process-order", entered: true },
-    { name: "process-order", completed: true },
+    { name: "processOrder", entered: true },
+    { name: "processOrder", completed: true },
   ],
 }
 ```
@@ -238,7 +238,7 @@ new Eval({
       { table: "TicketTable", row_exists: { priority: { equals: "high" } } },
     ],
     workflow: [
-      { name: "create-ticket", completed: true },
+      { name: "createTicket", completed: true },
     ],
   },
 })

@@ -17,7 +17,7 @@ const isSpam = await adk.zai.check(emailBody, "is this spam?")
 // true
 ```
 
-Call `.result()` for the boolean plus the LLM's reasoning:
+Call `.result()` for the Boolean plus the LLM's reasoning:
 
 ```typescript
 const { output } = await adk.zai.check(emailBody, "is this spam?").result()
@@ -27,7 +27,7 @@ const { output } = await adk.zai.check(emailBody, "is this spam?").result()
 
 ## Label content
 
-`zai.label()` applies multiple boolean labels to content:
+`zai.label()` applies multiple Boolean labels to content:
 
 ```typescript
 const result = await adk.zai.label(emailBody, {

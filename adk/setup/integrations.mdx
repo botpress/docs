@@ -23,28 +23,30 @@ Most integrations need configuration (API keys, tokens, webhook URLs) before the
   <img alt="Integration configuration in dev console" className="hidden dark:block" src="../assets/integration-config-console-dark.png" />
 </Frame>
 
-Integration configuration is stored on Botpress Cloud, not in your local project files. This differs from your agent's secrets, which your code reads directly.
+Integration configuration is stored directly on Botpress' servers, not in your local project files. This differs from your agent's secrets, which your code reads directly.
 
-Your development bot and production bot each have their own configuration, so you can use different API keys or settings per environment.
+Your development bot and production bot each have their own configuration, so you can use different API keys or settings per environment. 
 
 ## Enabling and disabling
 
-Integrations are active by default when you use the string shorthand form:
+Newly added integrations are disabled by default. You can enable them from the dev console, or switch to the object form in `agent.config.ts` and set `enabled: true`:
 
 ```typescript
 dependencies: {
   integrations: {
-    webchat: "webchat@latest",
+    webchat: {
+      version: "webchat@latest",
+      enabled: true,
+    },
   },
 },
 ```
 
-To disable one without removing it, switch that integration to the object form and set `enabled: false`:
+To disable an enabled integration without removing it, set `enabled: false`:
 
 ```typescript
 dependencies: {
   integrations: {
-    webchat: "webchat@latest",
     slack: {
       version: "slack@latest",
       enabled: false,

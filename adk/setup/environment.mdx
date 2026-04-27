@@ -56,15 +56,8 @@ adk secret:set OPENAI_KEY "sk-prod-..." --prod
 
 Development and production values are stored in separate buckets inside `.adk/secrets.json`. Setting a development value never touches production values, and vice versa.
 
-You can also add, edit, and delete secrets from the dev console. Schema changes (adding or removing declarations) write back to `agent.config.ts`:
-
-<Frame>
-  <img alt="Secrets management in dev console" className="block dark:hidden" src="../assets/secrets-console.png" />
-  <img alt="Secrets management in dev console" className="hidden dark:block" src="../assets/secrets-console-dark.png" />
-</Frame>
-
 <Tip>
-  For the full `adk secret` command set, see the [CLI reference](/adk/cli-reference#adk-secret).
+  Check out the [CLI reference](/adk/cli-reference#configuration-and-secrets) for full documentation of the `adk secret` command.
 </Tip>
 
 ### Using secrets at runtime
@@ -88,6 +81,15 @@ The `secrets` import is a typed proxy over environment variables. Required secre
 <Note>
   Secrets are read-only at runtime. Attempting to reassign the value of a secret will throw an error.
 </Note>
+
+### Managing secrets in the dev console
+
+You can also manage secrets from the dev console under **Settings > Secrets**. The UI lets you add, edit, and delete secrets for both development and production environments. Schema changes (adding or removing declarations) write back to `agent.config.ts`.
+
+<Frame>
+  <img alt="Secrets management in dev console" className="block dark:hidden" src="../assets/secrets-console.png" />
+  <img alt="Secrets management in dev console" className="hidden dark:block" src="../assets/secrets-console-dark.png" />
+</Frame>
 
 ### Naming rules
 

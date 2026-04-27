@@ -60,7 +60,7 @@ const order = await adk.zai.extract(
 import { Workflow, adk, z } from "@botpress/runtime"
 
 export default new Workflow({
-  name: "process-emails",
+  name: "processEmails",
   handler: async ({ step }) => {
     const emails = await step("fetch-emails", async () => {
       return await fetchUnreadEmails()

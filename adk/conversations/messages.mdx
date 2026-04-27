@@ -16,7 +16,7 @@ await conversation.send({
 
 ## Message types
 
-The available message types depend on the channel. For webchat, the following types are supported:
+The available message types depend on which channel your agent is deployed on. For [Webchat](/webchat/get-started/introduction), the following types are supported:
 
 | Type | Payload | Description |
 |------|---------|-------------|
@@ -35,7 +35,7 @@ The available message types depend on the channel. For webchat, the following ty
 | `custom` | `{ url, name, data? }` | Raw custom message referencing a bundled component by URL |
 | `customComponent` | `{ component, props }` | Send a [custom component](/adk/conversations/custom-components) directly. The runtime rewrites this into a `custom` message under the hood, so you get type-checked props instead of a raw URL |
 
-Other channels (Slack, WhatsApp, Telegram) support different subsets. When you specify a channel on your conversation, TypeScript will only allow the message types that channel supports.
+Other channels (Slack, WhatsApp, Telegram) may support different message types. When you specify a channel on your conversation, TypeScript will only allow the message types that channel supports.
 
 ## Examples
 
@@ -129,7 +129,9 @@ conversation.tags.priority = "high"
 conversation.tags.category = "billing"
 ```
 
-Tags must be declared in `agent.config.ts` under `conversation.tags`. See [Agent Configuration](/adk/setup/configuration#tags).
+<Note>
+Tags must be declared in `agent.config.ts` under `conversation.tags`. Check out our guide to [configuration your agent](/adk/setup/configuration#tags) for more information.
+</Note>
 
 ## Loading a conversation by ID
 
