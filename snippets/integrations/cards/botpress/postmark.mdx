@@ -1,0 +1,238 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Get or Create Reply Thread Conversation
+
+<span>{"Get or create a conversation for a reply thread"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="conversationInformation"
+    type="object"
+    required
+  >
+    <span>{"Information about the conversation thread, used to group emails into threads"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="rootEmailId"
+    type="string"
+  >
+    <span>{"The ID of the root email in the thread"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastEmailId"
+    type="string"
+  >
+    <span>{"The ID of the last email in the thread"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the created conversation"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get or Create User
+
+<span>{"Get or create a user in the Postmark channel"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"The name of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="pictureUrl"
+    type="string"
+  >
+    <span>{"The URL of the user profile picture"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email of the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="user"
+    type="object"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the created user"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Send Email
+
+<span>{"Send an email through Postmark"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <span>{"The conversation object fields"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="conversationInformation"
+    type="object"
+  >
+    <span>{"Information about the conversation thread, used to group emails into threads"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="rootEmailId"
+    type="string"
+  >
+    <span>{"The ID of the root email in the thread"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastEmailId"
+    type="string"
+  >
+    <span>{"The ID of the last email in the thread"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="userEmailAddress"
+    type="string"
+    required
+  >
+    <span>{"The recipient email address"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userName"
+    type="string"
+  >
+    <span>{"The recipient name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cc"
+    type="array"
+  >
+    <span>{"The CC recipients of the initial email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="bcc"
+    type="array"
+  >
+    <span>{"The BCC recipients of the initial email"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="email"
+    type="string (email)"
+    required
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+  >
+    <span>{"The subject of the initial email"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"The body of the initial email that opens the thread"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the conversation associated with the email"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

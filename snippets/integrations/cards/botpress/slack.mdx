@@ -127,6 +127,12 @@ Available options: `dm`, `channel`
     <span>{"Whether to include private channels in the results"}</span>
   </ResponseField>
   <ResponseField
+    name="includeDm"
+    type="boolean"
+  >
+    <span>{"Whether to include direct messages in the results"}</span>
+  </ResponseField>
+  <ResponseField
     name="cursor"
     type="string"
   >
@@ -198,6 +204,20 @@ Available options: `dm`, `channel`
     <span>{"Whether the channel is archived"}</span>
   </ResponseField>
   <ResponseField
+    name="isDm"
+    type="boolean"
+    required
+  >
+    <span>{"Whether this is a direct message conversation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The Slack user ID of the other participant (for 1:1 DMs)"}</span>
+  </ResponseField>
+  <ResponseField
     name="creator"
     type="string"
     required
@@ -219,6 +239,49 @@ Available options: `dm`, `channel`
     required
   >
     <span>{"Cursor for the next page. Empty string if no more pages."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get or Create a Conversation
+
+<span>{"Proactively create a conversation from a bot"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversation"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+  >
+    <span>{"The Slack channel ID. If provided, the channel name lookup is skipped. (for channel type)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The Botpress ID of the created conversation"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -332,86 +395,6 @@ Available options: `dm`, `channel`
     required
   >
     <span>{"The text of the message"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Start Channel Conversation
-
-<span>{"Initiate a conversation in a channel"}</span>
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="channelName"
-    type="string"
-  >
-    <span>{"[DEPRECATED] The name of the channel you want the conversation to be created at"}</span>
-  </ResponseField>
-  <ResponseField
-    name="channelId"
-    type="string"
-  >
-    <span>{"The ID of the channel you want the conversation to be created at"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="conversationId"
-    type="string"
-    required
-  >
-    <span>{"The ID of the new conversation"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-### Start DM Conversation
-
-<span>{"Initiate a conversation with a user in a DM"}</span>
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="slackUserId"
-    type="string"
-    required
-  >
-    <span>{"The ID of the user to initiate the conversation with"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="userId"
-    type="string"
-    required
-  >
-    <span>{"The ID of the user"}</span>
-  </ResponseField>
-  <ResponseField
-    name="conversationId"
-    type="string"
-    required
-  >
-    <span>{"The ID of the new conversation"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
