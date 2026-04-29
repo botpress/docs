@@ -88,86 +88,7 @@
           {
             "group": "ADK",
             "pages": [
-                "/adk/introduction",
-                "/adk/quickstart",
-              {
-                "group": "Setting up your agent",
-                "pages": [
-                  "/adk/setup/configuration",
-                  "/adk/setup/environment",
-                  "/adk/setup/integrations"
-                ]
-              },
-              {
-                "group": "Handling conversations",
-                "pages": [
-                  "/adk/conversations/setup",
-                  "/adk/conversations/ai-execution",
-                  "/adk/conversations/tools",
-                  "/adk/conversations/messages",
-                  "/adk/conversations/custom-components",
-                  "/adk/conversations/lifecycle",
-                  "/adk/conversations/state"
-                ]
-              },
-              {
-                "group": "Handling longform logic",
-                "pages": [
-                  "/adk/workflows/create",
-                  "/adk/workflows/steps",
-                  "/adk/workflows/request-notify"
-                ]
-              },
-              {
-                "group": "Actions and triggers",
-                "pages": [
-                  "/adk/external/actions",
-                  "/adk/external/triggers"
-                ]
-              },
-              {
-                "group": "Working with data",
-                "pages": [
-                  "/adk/data/tables",
-                  "/adk/data/knowledge"
-                ]
-              },
-              {
-                "group": "Testing and debugging",
-                "pages": [
-                  "/adk/testing/evals",
-                  "/adk/testing/agent-steps",
-                  "/adk/testing/debugging",
-                  "/adk/testing/scripts"
-                ]
-              },
-              {
-                "group": "LLM Utilities",
-                "pages": [
-                  "/adk/zai/overview",
-                  "/adk/zai/extract",
-                  "/adk/zai/generate",
-                  "/adk/zai/classify"
-                ]
-              },
-              {
-                "group": "AI-native development",
-                "pages": [
-                  "/adk/ai-native/skills"
-                ]
-              },
-              {
-                "group": "Advanced",
-                "pages": [
-                  "/adk/advanced/hitl"
-                ]
-              },
-              {
-                "group": "CLI",
-                "pages": [
-                  "/adk/cli-reference"
-                ]
-              }
+              "/adk"
             ]
           },
           {
@@ -182,7 +103,10 @@
                   {
                     "group": "Nodes",
                     "icon": "square-mouse-pointer",
-                    "pages": ["/studio/concepts/nodes/introduction", "/studio/concepts/nodes/autonomous-node"]
+                    "pages": [
+                      "/studio/concepts/nodes/introduction",
+                      "/studio/concepts/nodes/autonomous-node"
+                    ]
                   },
                   {
                     "group": "Cards",
@@ -504,7 +428,9 @@
                   },
                   {
                     "group": "Hooks",
-                    "pages": ["/webchat/react-library/hooks/use-webchat-client"]
+                    "pages": [
+                      "/webchat/react-library/hooks/use-webchat-client"
+                    ]
                   }
                 ]
               }
@@ -512,7 +438,99 @@
           },
           {
             "group": "Desk",
-            "pages": ["desk/introduction"]
+            "pages": [
+              "desk/introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "ADK",
+        "pages": [
+          {
+            "group": "Get started",
+            "pages": [
+              "/adk/introduction",
+              "/adk/quickstart"
+            ]
+          },
+          {
+            "group": "Setting up your agent",
+            "pages": [
+              "/adk/setup/configuration",
+              "/adk/setup/environment",
+              "/adk/setup/integrations"
+            ]
+          },
+          {
+            "group": "Handling conversations",
+            "pages": [
+              "/adk/conversations/setup",
+              "/adk/conversations/ai-execution",
+              "/adk/conversations/tools",
+              "/adk/conversations/messages",
+              "/adk/conversations/custom-components",
+              "/adk/conversations/lifecycle",
+              "/adk/conversations/state"
+            ]
+          },
+          {
+            "group": "Handling longform logic",
+            "pages": [
+              "/adk/workflows/create",
+              "/adk/workflows/steps",
+              "/adk/workflows/request-notify"
+            ]
+          },
+          {
+            "group": "Actions and triggers",
+            "pages": [
+              "/adk/external/actions",
+              "/adk/external/triggers"
+            ]
+          },
+          {
+            "group": "Working with data",
+            "pages": [
+              "/adk/data/tables",
+              "/adk/data/knowledge"
+            ]
+          },
+          {
+            "group": "Testing and debugging",
+            "pages": [
+              "/adk/testing/evals",
+              "/adk/testing/agent-steps",
+              "/adk/testing/debugging",
+              "/adk/testing/scripts"
+            ]
+          },
+          {
+            "group": "LLM Utilities",
+            "pages": [
+              "/adk/zai/overview",
+              "/adk/zai/extract",
+              "/adk/zai/generate",
+              "/adk/zai/classify"
+            ]
+          },
+          {
+            "group": "AI-native development",
+            "pages": [
+              "/adk/ai-native/skills"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "/adk/advanced/hitl"
+            ]
+          },
+          {
+            "group": "CLI",
+            "pages": [
+              "/adk/cli-reference"
+            ]
           }
         ]
       },
@@ -527,7 +545,10 @@
               {
                 "group": "First steps",
                 "expanded": true,
-                "pages": ["tutorial/basics/first-steps/prompting", "tutorial/basics/first-steps/adding-knowledge"]
+                "pages": [
+                  "tutorial/basics/first-steps/prompting",
+                  "tutorial/basics/first-steps/adding-knowledge"
+                ]
               },
               {
                 "group": "Custom logic",
@@ -603,7 +624,10 @@
               "source": "./admin-openapi.json",
               "directory": "api-reference/admin-api/openapi"
             },
-            "pages": ["api-reference/admin-api/getting-started", "api-reference/admin-api/concepts"]
+            "pages": [
+              "api-reference/admin-api/getting-started",
+              "api-reference/admin-api/concepts"
+            ]
           },
           {
             "group": "Files API",
@@ -624,7 +648,9 @@
               "source": "./tables-openapi.json",
               "directory": "api-reference/tables-api/openapi"
             },
-            "pages": ["api-reference/tables-api/getting-started"]
+            "pages": [
+              "api-reference/tables-api/getting-started"
+            ]
           },
           {
             "group": "Runtime API",
@@ -632,13 +658,18 @@
               "source": "./runtime-openapi.json",
               "directory": "api-reference/runtime-api/openapi"
             },
-            "pages": ["api-reference/runtime-api/getting-started", "api-reference/runtime-api/concepts"]
+            "pages": [
+              "api-reference/runtime-api/getting-started",
+              "api-reference/runtime-api/concepts"
+            ]
           }
         ]
       },
       {
         "tab": "Changelog",
-        "pages": ["changelog"]
+        "pages": [
+          "changelog"
+        ]
       }
     ],
     "global": {
