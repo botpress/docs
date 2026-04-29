@@ -4,6 +4,31 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="April 24, 2026">
+
+  ## Features & enhancements
+
+  - Added auto-translation for Webchat UI components based on browser locale
+
+  ## Bug fixes
+
+  - Fixed an issue where the initial bot setup would get stuck on a loading screen without completing or timing out
+  - Fixed a visual issue in the pricing plan selection dialog
+  - Fixed various issues with the integration hub
+  - Fixed an issue where Webchat conversation history would persist indefinitely even when configured to clear data when the browser tab closes
+  - Fixed an issue where the Human-in-the-Loop dashboard was reloading the entire conversation list every few seconds, causing unnecessary slowdowns
+
+  ## Integrations
+
+  - **Postmark**: Added Postmark integration
+  - **Messenger and Facebook**: Fixed an error during OAuth setup where fetching Facebook Pages could fail due to incorrect API response parsing
+  - **Slack**: Improved manual configuration process using OAuth
+  - **Zendesk Messaging HITL**: Added support for linking sessions to existing Zendesk Support users by passing a user's `externalId` into the Email field
+  on the Start HITL card.
+  - **HubSpot**: Added support for Human-in-the-Loop (HITL)
+
+</Update>
+
 <Update label="April 17, 2026">
   ## Revamped Autonomous Node
 
