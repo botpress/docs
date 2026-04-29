@@ -4,6 +4,46 @@
   display: flex !important;
 }
 
+/*
+ * Hide selected products from the navbar product-switcher dropdown.
+ * Webchat, Integrations, Tutorial, and API Reference remain registered as
+ * Mintlify products (so their sidebars work when navigated to via direct URL
+ * or navbar.links), they're just not surfaced in the switcher. Targets the
+ * wrapping <a href="…"> so it survives reordering of products in docs.json;
+ * breaks if the first page of any of these products is renamed.
+ */
+[data-component-part='products-selector-content'] a[href='/webchat/get-started/introduction'],
+[data-component-part='products-selector-content'] a[href='/integrations/get-started/introduction'],
+[data-component-part='products-selector-content'] a[href='/tutorial/introduction'],
+[data-component-part='products-selector-content'] a[href='/api-reference/introduction'] {
+  display: none !important;
+}
+
+/* Widen the gap between navbar links (Tutorial / API Reference / Changelog / Dashboard) — Mintlify ships gap-x-2 (8px) which feels cramped */
+nav.text-sm > ul.flex {
+  column-gap: 1.25rem !important;
+}
+
+/* Tighten the product-switcher dropdown */
+[data-component-part='products-selector-content'] {
+  min-width: 240px !important;
+  max-width: 280px !important;
+}
+[data-component-part='products-selector-item'] {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+}
+
+/*
+ * Theme-adapt custom product icons. Mintlify renders custom SVG paths as
+ * <img src="...">, which doesn't pass through the theme color (unlike lucide
+ * icons which use mask-image). Our SVGs use fill="currentColor" → renders
+ * black by default → visible on light bg. In dark mode we invert.
+ */
+html.dark img[src^='/homepage-assets/icons/'] {
+  filter: invert(1);
+}
+
 .transparent-accordion .bg-background-light {
   background-color: transparent !important;
 }
