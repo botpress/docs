@@ -11,7 +11,15 @@
   function initBotPanel() {
     const panel = document.createElement('div')
     panel.id = 'bot-panel'
-    panel.classList.add('bot-panel', 'bot-panel-collapsed')
+    // Restore the panel's open state across same-tab navigations triggered
+    // by link clicks inside the bot iframe. If the previous page set the
+    // flag before unloading, start expanded; otherwise default to collapsed.
+    let restoredOpen = false
+    try {
+      restoredOpen = sessionStorage.getItem('bot-panel-open') === '1'
+      if (restoredOpen) sessionStorage.removeItem('bot-panel-open')
+    } catch (e) {}
+    panel.classList.add('bot-panel', restoredOpen ? 'bot-panel-expanded' : 'bot-panel-collapsed')
 
     const toggleButton = document.createElement('button')
     toggleButton.id = 'bot-toggle'
@@ -55,18 +63,16 @@
     // ADK pages + the ADK skill references. The iframe URL is swapped on
     // route changes — see checkPathChange below.
     const DEFAULT_BOT_URL = 'https://botpress.github.io/docs-bot/'
-    // DEV: prototyping multiple agent-0 frontend designs in parallel. Each
-    // runs on its own port so we can compare side-by-side.
-    //   Design 1 (copilot — current):  http://localhost:5173/docs-bot/agent-0-copilot/
-    //   Design 2 (TBD):                http://localhost:5174/docs-bot/agent-0-design-2/
-    //   Design 3 (TBD):                http://localhost:5175/docs-bot/agent-0-design-3/
-    // Swap ADK_BOT_URL to flip which design loads in the iframe. Revert to
-    // the production URL or the gh-pages deploy URL before pushing.
-    const ADK_BOT_URL = 'http://localhost:5173/docs-bot/agent-0-copilot/'
+    // Local dev: adk-bot-frontend on Vite at port 5175.
+    // Before merging to docs `main`, switch this to the gh-pages URL:
+    //   https://botpress.github.io/docs-bot/adk-bot-frontend/
+    const ADK_BOT_URL = 'http://localhost:5175/docs-bot/adk-bot-frontend/'
 
     function isAdkRoute() {
-      const path = window.location.pathname
-      return path === '/adk' || path.startsWith('/adk/')
+      // Only swap to the ADK assistant on actual reference pages
+      // (/adk/<subpage>). The bare /adk and /adk/ are teaser routes inside
+      // the Docs tab, so they should keep using the default docs bot.
+      return /^\/adk\/.+/.test(window.location.pathname)
     }
 
     function botUrlForCurrentRoute() {
@@ -90,6 +96,10 @@
     document.body.appendChild(overlay)
     document.body.appendChild(panel)
     document.body.appendChild(toggleButton)
+
+    if (restoredOpen) {
+      toggleButton.classList.add('bot-toggle-expanded')
+    }
 
     function isMobile() {
       return window.innerWidth <= 1024
@@ -343,6 +353,34 @@
 
       if (event.data.type === 'requestCurrentPage') {
         sendPanelOpenedMessage()
+      }
+
+      // Bot links route through the parent so in-docs URLs navigate same-tab
+      // (keeping the panel open via sessionStorage) and external URLs open
+      // in a new tab. URLs are normalized against the current origin.
+      if (event.data.type === 'navigate' && typeof event.data.url === 'string') {
+        try {
+          const target = new URL(event.data.url, window.location.href)
+          // Treat any link that points at the docs (this site or
+          // botpress.com/docs) as in-docs navigation so the panel can be
+          // restored on the next page. Everything else opens externally.
+          const isSameOrigin = target.origin === window.location.origin
+          const isBotpressDocs =
+            /(^|\.)botpress\.com$/.test(target.hostname) && target.pathname.startsWith('/docs')
+          if (isSameOrigin || isBotpressDocs) {
+            try {
+              sessionStorage.setItem('bot-panel-open', '1')
+            } catch (e) {}
+            // When we're on a different host (e.g., localhost during dev
+            // and the link points at production), navigate to the absolute
+            // URL — the panel state lives in sessionStorage of *that* host.
+            window.location.href = target.href
+          } else {
+            window.open(target.href, '_blank', 'noopener,noreferrer')
+          }
+        } catch (e) {
+          window.open(event.data.url, '_blank', 'noopener,noreferrer')
+        }
       }
 
       // The agent-0 frontend asks for the current docs theme on mount, then

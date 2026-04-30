@@ -70,10 +70,6 @@
   position: relative;
 }
 
-.home-columns {
-  /* margin-bottom: 0.66em; */
-}
-
 #test {
   margin: 0;
 }
@@ -138,8 +134,9 @@ img {
   position: fixed;
   top: 3.55rem;
   right: -16px;
+  bottom: 0;
   width: 32px;
-  height: calc(100vh - 4.64rem);
+  height: auto;
   background-color: transparent;
   z-index: 30;
   pointer-events: auto;
@@ -157,8 +154,9 @@ img {
   position: fixed;
   top: 3.55rem;
   right: 0;
+  bottom: 0;
   width: 40px;
-  height: calc(100vh - 4.64rem);
+  height: auto;
   background-color: light-dark(#f7f7f8, #09090b);
   border-left: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
   border-right: none;
@@ -234,8 +232,9 @@ img {
   position: fixed;
   top: 3.55rem;
   right: 0;
+  bottom: 0;
   width: 400px;
-  height: calc(100vh - 4.64rem);
+  height: auto;
   background-color: light-dark(#f7f7f8, #09090b);
   z-index: 29;
   display: flex;
