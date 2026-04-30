@@ -50,11 +50,34 @@
     botContainer.id = 'docs-bot'
     botContainer.classList.add('bot-iframe-container')
 
+    // The default docs bot covers everything under botpress.com/docs.
+    // The ADK section gets its own bot (agent-0) with knowledge scoped to
+    // ADK pages + the ADK skill references. The iframe URL is swapped on
+    // route changes — see checkPathChange below.
+    const DEFAULT_BOT_URL = 'https://botpress.github.io/docs-bot/'
+    // DEV: prototyping multiple agent-0 frontend designs in parallel. Each
+    // runs on its own port so we can compare side-by-side.
+    //   Design 1 (copilot — current):  http://localhost:5173/docs-bot/agent-0-copilot/
+    //   Design 2 (TBD):                http://localhost:5174/docs-bot/agent-0-design-2/
+    //   Design 3 (TBD):                http://localhost:5175/docs-bot/agent-0-design-3/
+    // Swap ADK_BOT_URL to flip which design loads in the iframe. Revert to
+    // the production URL or the gh-pages deploy URL before pushing.
+    const ADK_BOT_URL = 'http://localhost:5173/docs-bot/agent-0-copilot/'
+
+    function isAdkRoute() {
+      const path = window.location.pathname
+      return path === '/adk' || path.startsWith('/adk/')
+    }
+
+    function botUrlForCurrentRoute() {
+      return isAdkRoute() ? ADK_BOT_URL : DEFAULT_BOT_URL
+    }
+
     const iframe = document.createElement('iframe')
     iframe.title = 'Botpress'
     iframe.style.width = '100%'
     iframe.style.height = '100%'
-    iframe.src = 'https://botpress.github.io/docs-bot/'
+    iframe.src = botUrlForCurrentRoute()
     iframe.allow = 'clipboard-write'
 
     botContainer.appendChild(iframe)
@@ -321,6 +344,30 @@
       if (event.data.type === 'requestCurrentPage') {
         sendPanelOpenedMessage()
       }
+
+      // The agent-0 frontend asks for the current docs theme on mount, then
+      // listens for `themeChanged` messages we send when the user toggles
+      // light/dark. Mintlify sets `class="dark"` on <html> in dark mode.
+      if (event.data.type === 'requestTheme') {
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const iframe = document.querySelector('iframe[title="Botpress"]')
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
+        }
+      }
+    })
+
+    // Watch for docs theme toggles and forward to the iframe.
+    const themeObserver = new MutationObserver(() => {
+      const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+      const iframe = document.querySelector('iframe[title="Botpress"]')
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
+      }
+    })
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
     })
 
     function handleHashChange() {
@@ -366,6 +413,15 @@
     const checkPathChange = () => {
       if (window.location.pathname !== lastPath) {
         lastPath = window.location.pathname
+
+        // Swap the bot iframe when we cross the ADK boundary. Stripping the
+        // src triggers a full reload, so the agent's conversation resets —
+        // intentional, since we're switching to a different agent entirely.
+        const targetBotUrl = botUrlForCurrentRoute()
+        const iframeEl = document.querySelector('iframe[title="Botpress"]')
+        if (iframeEl && iframeEl.src !== targetBotUrl) {
+          iframeEl.src = targetBotUrl
+        }
 
         const isExpanded = panel.classList.contains('bot-panel-expanded')
         if (isExpanded) {
