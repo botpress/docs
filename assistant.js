@@ -11,7 +11,15 @@
   function initBotPanel() {
     const panel = document.createElement('div')
     panel.id = 'bot-panel'
-    panel.classList.add('bot-panel', 'bot-panel-collapsed')
+    // Restore the panel's open state across same-tab navigations triggered
+    // by link clicks inside the bot iframe. If the previous page set the
+    // flag before unloading, start expanded; otherwise default to collapsed.
+    let restoredOpen = false
+    try {
+      restoredOpen = sessionStorage.getItem('bot-panel-open') === '1'
+      if (restoredOpen) sessionStorage.removeItem('bot-panel-open')
+    } catch (e) {}
+    panel.classList.add('bot-panel', restoredOpen ? 'bot-panel-expanded' : 'bot-panel-collapsed')
 
     const toggleButton = document.createElement('button')
     toggleButton.id = 'bot-toggle'
@@ -50,11 +58,29 @@
     botContainer.id = 'docs-bot'
     botContainer.classList.add('bot-iframe-container')
 
+    // The default docs bot covers everything under botpress.com/docs.
+    // The ADK section gets its own bot (agent-0) with knowledge scoped to
+    // ADK pages + the ADK skill references. The iframe URL is swapped on
+    // route changes — see checkPathChange below.
+    const DEFAULT_BOT_URL = 'https://botpress.github.io/docs-bot/'
+    const ADK_BOT_URL = 'https://botpress.github.io/docs-bot/adk-bot-frontend/'
+
+    function isAdkRoute() {
+      // Only swap to the ADK assistant on actual reference pages
+      // (/adk/<subpage>). The bare /adk and /adk/ are teaser routes inside
+      // the Docs tab, so they should keep using the default docs bot.
+      return /^\/adk\/.+/.test(window.location.pathname)
+    }
+
+    function botUrlForCurrentRoute() {
+      return isAdkRoute() ? ADK_BOT_URL : DEFAULT_BOT_URL
+    }
+
     const iframe = document.createElement('iframe')
     iframe.title = 'Botpress'
     iframe.style.width = '100%'
     iframe.style.height = '100%'
-    iframe.src = 'https://botpress.github.io/docs-bot/'
+    iframe.src = botUrlForCurrentRoute()
     iframe.allow = 'clipboard-write'
 
     botContainer.appendChild(iframe)
@@ -67,6 +93,10 @@
     document.body.appendChild(overlay)
     document.body.appendChild(panel)
     document.body.appendChild(toggleButton)
+
+    if (restoredOpen) {
+      toggleButton.classList.add('bot-toggle-expanded')
+    }
 
     function isMobile() {
       return window.innerWidth <= 1024
@@ -321,6 +351,58 @@
       if (event.data.type === 'requestCurrentPage') {
         sendPanelOpenedMessage()
       }
+
+      // Bot links route through the parent so in-docs URLs navigate same-tab
+      // (keeping the panel open via sessionStorage) and external URLs open
+      // in a new tab. URLs are normalized against the current origin.
+      if (event.data.type === 'navigate' && typeof event.data.url === 'string') {
+        try {
+          const target = new URL(event.data.url, window.location.href)
+          // Treat any link that points at the docs (this site or
+          // botpress.com/docs) as in-docs navigation so the panel can be
+          // restored on the next page. Everything else opens externally.
+          const isSameOrigin = target.origin === window.location.origin
+          const isBotpressDocs =
+            /(^|\.)botpress\.com$/.test(target.hostname) && target.pathname.startsWith('/docs')
+          if (isSameOrigin || isBotpressDocs) {
+            try {
+              sessionStorage.setItem('bot-panel-open', '1')
+            } catch (e) {}
+            // When we're on a different host (e.g., localhost during dev
+            // and the link points at production), navigate to the absolute
+            // URL — the panel state lives in sessionStorage of *that* host.
+            window.location.href = target.href
+          } else {
+            window.open(target.href, '_blank', 'noopener,noreferrer')
+          }
+        } catch (e) {
+          window.open(event.data.url, '_blank', 'noopener,noreferrer')
+        }
+      }
+
+      // The agent-0 frontend asks for the current docs theme on mount, then
+      // listens for `themeChanged` messages we send when the user toggles
+      // light/dark. Mintlify sets `class="dark"` on <html> in dark mode.
+      if (event.data.type === 'requestTheme') {
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const iframe = document.querySelector('iframe[title="Botpress"]')
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
+        }
+      }
+    })
+
+    // Watch for docs theme toggles and forward to the iframe.
+    const themeObserver = new MutationObserver(() => {
+      const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+      const iframe = document.querySelector('iframe[title="Botpress"]')
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
+      }
+    })
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
     })
 
     function handleHashChange() {
@@ -366,6 +448,15 @@
     const checkPathChange = () => {
       if (window.location.pathname !== lastPath) {
         lastPath = window.location.pathname
+
+        // Swap the bot iframe when we cross the ADK boundary. Stripping the
+        // src triggers a full reload, so the agent's conversation resets —
+        // intentional, since we're switching to a different agent entirely.
+        const targetBotUrl = botUrlForCurrentRoute()
+        const iframeEl = document.querySelector('iframe[title="Botpress"]')
+        if (iframeEl && iframeEl.src !== targetBotUrl) {
+          iframeEl.src = targetBotUrl
+        }
 
         const isExpanded = panel.classList.contains('bot-panel-expanded')
         if (isExpanded) {
