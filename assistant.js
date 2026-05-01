@@ -63,10 +63,7 @@
     // ADK pages + the ADK skill references. The iframe URL is swapped on
     // route changes — see checkPathChange below.
     const DEFAULT_BOT_URL = 'https://botpress.github.io/docs-bot/'
-    // Local dev: adk-bot-frontend on Vite at port 5175.
-    // Before merging to docs `main`, switch this to the gh-pages URL:
-    //   https://botpress.github.io/docs-bot/adk-bot-frontend/
-    const ADK_BOT_URL = 'http://localhost:5175/docs-bot/adk-bot-frontend/'
+    const ADK_BOT_URL = 'https://botpress.github.io/docs-bot/adk-bot-frontend/'
 
     function isAdkRoute() {
       // Only swap to the ADK assistant on actual reference pages
