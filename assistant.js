@@ -71,18 +71,84 @@
       return /\/adk\/.+/.test(window.location.pathname)
     }
 
-    function botUrlForCurrentRoute() {
-      return isAdkRoute() ? ADK_BOT_URL : DEFAULT_BOT_URL
-    }
 
     const iframe = document.createElement('iframe')
     iframe.title = 'Botpress'
     iframe.style.width = '100%'
     iframe.style.height = '100%'
-    iframe.src = botUrlForCurrentRoute()
+    iframe.style.position = 'absolute'
+    iframe.style.top = '0'
+    iframe.style.left = '0'
     iframe.allow = 'clipboard-write'
+    iframe.src = DEFAULT_BOT_URL
 
+    const adkIframe = document.createElement('iframe')
+    adkIframe.title = 'Botpress ADK'
+    adkIframe.style.width = '100%'
+    adkIframe.style.height = '100%'
+    adkIframe.style.position = 'absolute'
+    adkIframe.style.top = '0'
+    adkIframe.style.left = '0'
+    adkIframe.allow = 'clipboard-write'
+    adkIframe.src = ADK_BOT_URL
+
+    // "ready" means the React app inside the iframe has mounted and rendered its
+    // first frame. We detect this via the `requestTheme` postMessage the frontend
+    // sends from a useEffect on mount — that fires after the first paint, not just
+    // after the HTML document loads. The `load` event fires too early (HTML loaded
+    // but React not yet mounted), so using it directly causes a blank-white flash.
+    let defaultReady = false
+    let adkReady = false
+
+    function markReady(isAdk) {
+      if (isAdk) adkReady = true
+      else defaultReady = true
+      showActiveIframe()
+    }
+
+    // Fallback: if the iframe never sends requestTheme (e.g. default docs bot
+    // doesn't have the hook), mark ready 600ms after the HTML load event so the
+    // panel isn't stuck hidden forever.
+    iframe.addEventListener('load', () => {
+      setTimeout(() => { if (!defaultReady) markReady(false) }, 600)
+    })
+    adkIframe.addEventListener('load', () => {
+      setTimeout(() => { if (!adkReady) markReady(true) }, 600)
+    })
+
+    function showActiveIframe() {
+      const adk = isAdkRoute()
+      const target = adk ? adkIframe : iframe
+      const other = adk ? iframe : adkIframe
+      const ready = adk ? adkReady : defaultReady
+
+      if (ready) {
+        // Bring the active bot to the front (z-index swap, no repaint = no flash).
+        target.style.zIndex = '2'
+        target.style.pointerEvents = 'auto'
+        other.style.zIndex = '0'
+        other.style.pointerEvents = 'none'
+      }
+      // If target isn't ready yet, leave both layers as-is — 'other' keeps its
+      // current z-index so the panel stays populated. markReady() fires again
+      // once the target's React app has mounted.
+    }
+
+    function getActiveIframe() {
+      return isAdkRoute() ? adkIframe : iframe
+    }
+
+    // Default starts above ADK so non-ADK pages show the correct bot before
+    // either React app sends its first readiness signal (requestTheme).
+    iframe.style.zIndex = '1'
+    iframe.style.pointerEvents = 'none'
+    adkIframe.style.zIndex = '0'
+    adkIframe.style.pointerEvents = 'none'
+
+    botContainer.style.position = 'relative'
     botContainer.appendChild(iframe)
+    botContainer.appendChild(adkIframe)
+    showActiveIframe()
 
     panel.appendChild(mobileDismiss)
     resizeHandle.appendChild(toggleCloseButton)
@@ -116,7 +182,7 @@
     }
 
     function focusComposerInput() {
-      const iframe = document.querySelector('iframe[title="Botpress"]')
+      const iframe = getActiveIframe()
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage(
           {
@@ -128,7 +194,7 @@
     }
 
     function sendPanelOpenedMessage() {
-      const iframe = document.querySelector('iframe[title="Botpress"]')
+      const iframe = getActiveIframe()
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage(
           {
@@ -384,20 +450,27 @@
       // light/dark. Mintlify sets `class="dark"` on <html> in dark mode.
       if (event.data.type === 'requestTheme') {
         const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-        const iframe = document.querySelector('iframe[title="Botpress"]')
-        if (iframe && iframe.contentWindow) {
-          iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
+        // The iframe's React app just mounted — mark it as visually ready so we
+        // can show it without a blank-white flash.
+        if (event.source === adkIframe.contentWindow) {
+          if (!adkReady) markReady(true)
+        } else if (event.source === iframe.contentWindow) {
+          if (!defaultReady) markReady(false)
+        }
+        // Respond with the current theme to whichever iframe asked.
+        if (event.source && typeof event.source.postMessage === 'function') {
+          try { event.source.postMessage({ type: 'themeChanged', theme }, '*') } catch (_e) {}
         }
       }
     })
 
-    // Watch for docs theme toggles and forward to the iframe.
+    // Watch for docs theme toggles and forward to both iframes so they stay in
+    // sync regardless of which one is currently visible.
     const themeObserver = new MutationObserver(() => {
       const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-      const iframe = document.querySelector('iframe[title="Botpress"]')
-      if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
-      }
+      ;[iframe, adkIframe].forEach(f => {
+        if (f && f.contentWindow) f.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
+      })
     })
     themeObserver.observe(document.documentElement, {
       attributes: true,
@@ -420,6 +493,26 @@
     handleHashChange()
     window.addEventListener('hashchange', handleHashChange)
     updateOverlay()
+
+    // Card/button link clicks trigger Mintlify's page transition animation which
+    // causes the iframe to flash. Sidebar links don't trigger this. Hide the
+    // panel for the duration of the transition to prevent the flash.
+    let hideTimer = null
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a')
+      if (!link) return
+      const href = link.getAttribute('href')
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return
+      if (panel.classList.contains('bot-panel-expanded')) return
+      if (hideTimer) clearTimeout(hideTimer)
+      panel.style.visibility = 'hidden'
+      toggleButton.style.visibility = 'hidden'
+      hideTimer = setTimeout(() => {
+        panel.style.visibility = ''
+        toggleButton.style.visibility = ''
+        hideTimer = null
+      }, 400)
+    }, true)
 
     let resizeTimeout
     window.addEventListener('resize', () => {
@@ -448,20 +541,13 @@
       if (window.location.pathname !== lastPath) {
         lastPath = window.location.pathname
 
-        // Swap the bot iframe when we cross the ADK boundary. Stripping the
-        // src triggers a full reload, so the agent's conversation resets —
-        // intentional, since we're switching to a different agent entirely.
-        const targetBotUrl = botUrlForCurrentRoute()
-        const iframeEl = document.querySelector('iframe[title="Botpress"]')
-        if (iframeEl && iframeEl.src !== targetBotUrl) {
-          iframeEl.src = targetBotUrl
-        }
+        showActiveIframe()
 
         const isExpanded = panel.classList.contains('bot-panel-expanded')
         if (isExpanded) {
-          const iframe = document.querySelector('iframe[title="Botpress"]')
-          if (iframe && iframe.contentWindow) {
-            iframe.contentWindow.postMessage(
+          const activeIframe = isAdkRoute() ? adkIframe : iframe
+          if (activeIframe && activeIframe.contentWindow) {
+            activeIframe.contentWindow.postMessage(
               {
                 type: 'pageChanged',
                 data: {
@@ -561,7 +647,7 @@
           if (toggleButton) {
             toggleButton.classList.add('bot-toggle-expanded')
           }
-          const iframe = document.querySelector('iframe[title="Botpress"]')
+          const iframe = getActiveIframe()
           if (iframe && iframe.contentWindow) {
             iframe.contentWindow.postMessage(
               {
@@ -699,7 +785,7 @@
         }
       }
 
-      const iframe = document.querySelector('iframe[title="Botpress"]')
+      const iframe = getActiveIframe()
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage(
           {
@@ -769,7 +855,7 @@
               }
             }
 
-            const iframe = document.querySelector('iframe[title="Botpress"]')
+            const iframe = getActiveIframe()
             if (iframe && iframe.contentWindow) {
               iframe.contentWindow.postMessage(
                 {
