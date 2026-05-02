@@ -66,10 +66,9 @@
     const ADK_BOT_URL = 'https://botpress.github.io/docs-bot/adk-bot-frontend/'
 
     function isAdkRoute() {
-      // Only swap to the ADK assistant on actual reference pages
-      // (/adk/<subpage>). The bare /adk and /adk/ are teaser routes inside
-      // the Docs tab, so they should keep using the default docs bot.
-      return /^\/adk\/.+/.test(window.location.pathname)
+      // Match /docs/adk/<subpage> on the live site (pathname includes /docs/ prefix).
+      // The bare /adk and /adk/ teaser routes keep using the default docs bot.
+      return /\/adk\/.+/.test(window.location.pathname)
     }
 
 
