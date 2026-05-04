@@ -4,6 +4,58 @@ description: 'The latest updates and improvements to Botpress.'
 icon: newspaper
 ---
 
+<Update label="May 1, 2026">
+
+  ## Features & enhancements
+
+  - Added support for [Claude Opus 4.7](https://www.anthropic.com/news/claude-opus-4-7)
+  - Added an integration hub to the dashboard:
+
+  <Frame>
+    <img
+      alt="Integrations hub on the dashboard"
+      className="block dark:hidden"
+      src="/changelog-assets/2026-05-01/integrations-hub-dashboard.png"
+    />
+    <img
+      alt="Integrations hub on the dashboard"
+      className="hidden dark:block"
+      src="/changelog-assets/2026-05-01/integrations-hub-dashboard-dark.png"
+    />
+  </Frame>
+
+  - Added a range slider for filtering conversations by number of messages in the [conversations menu](/get-started/manage-your-agent/monitor#conversations):
+
+  <Frame>
+    <img
+      alt="Conversation range slider"
+      className="block dark:hidden"
+      src="/changelog-assets/2026-05-01/range-slider.png"
+    />
+    <img
+      alt="Conversation range slider"
+      className="hidden dark:block"
+      src="/changelog-assets/2026-05-01/range-slider-dark.png"
+    />
+  </Frame>
+
+  ## Bug fixes
+
+  - Fixed an issue where Nodes could become corrupted or inconsistent when using multiplayer in Studio
+  - Fixed an issue where multiplayer was causing some users to get stuck on the “Loading bot” screen or would receive a “Failed to load bot” error
+  - Fixed an issue where formatting problems were adding unnecessary latency to the Translator Agent’s JSON response
+  - Fixed an issue where the AI Generate Text Card was displaying an incorrect token limit under the **Prompt** field for certain models
+  - Fixed an issue where refreshing the page after saving the Human-in-the-Loop (HITL) integration’s configuration would erase the values of the configuration fields
+  - Fixed an issue where the Webchat delivery status indicator wasn’t translated to languages other than English
+
+  ## Integrations
+
+  - **Slack**: Video and audio messages now appear as native media in Slack instead of plain text links
+  - **Linear**: Webhooks for issues and comments now register automatically when you connect your account
+  - **Airtable**: Added option to connect via OAuth
+
+</Update>
+
 <Update label="April 24, 2026">
 
   ## Features & enhancements
