@@ -1988,7 +1988,7 @@ Available options: `asc`, `desc`
     type="enum<string>"
     required
   >
-    Available options: `is`, `is_not`
+    Available options: `is`, `is_not`, `has_all`
   </ResponseField>
   <ResponseField
     name="values"
@@ -2078,7 +2078,7 @@ Available options: `asc`, `desc`
     type="enum<string>"
     required
   >
-    Available options: `hours`, `days`, `weeks`, `months`
+    Available options: `minutes`, `hours`, `days`, `weeks`, `months`
   </ResponseField>
       </Expandable>
     </Tab>
@@ -2114,44 +2114,6 @@ Available options: `asc`, `desc`
   <ResponseField
     name="value"
     type="number"
-    required
-  >
-    
-  </ResponseField>
-      </Expandable>
-    </Tab>
-    <Tab title="deadline_tags">
-      <Expandable>
-  <ResponseField
-    name="id"
-    type="number"
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="field"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="type"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="operator"
-    type="string"
-    required
-  >
-    
-  </ResponseField>
-  <ResponseField
-    name="values"
-    type="array"
     required
   >
     
