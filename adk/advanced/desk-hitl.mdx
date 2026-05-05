@@ -126,7 +126,7 @@ export default new Conversation({
   handler: async ({ execute }) => {
     await execute({
       instructions: `You are a helpful support assistant.
-If the user needs help beyond your capabilities or explicitly asks for a support agent, use the escalateToHuman tool.`,
+If the user needs help beyond your capabilities or explicitly asks for a support agent, use the escalateToHuman tool. After calling it, do not send any message.`,
       tools: [escalateToHuman],
     })
   },
