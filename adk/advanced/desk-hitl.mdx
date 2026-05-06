@@ -6,10 +6,11 @@ description: Escalate conversations to support agents in Botpress Desk.
 The `desk-hitl` plugin connects your agent to Botpress Desk for human handoff. When escalated, your agent calls `startHitl` to create a Desk ticket and a support agent takes over from there.
 
 <Frame>
-  <img alt="Botpress Desk main inbox view" src="./assets/desk-main.png" />
+  <img alt="Botpress Desk main inbox view" className="block dark:hidden" src="./assets/desk-ui.png" />
+  <img alt="Botpress Desk main inbox view" className="hidden dark:block" src="./assets/desk-ui-dark.png" />
 </Frame>
 
-## Add desk-hitl to your agent
+## Add `desk-hitl` to your agent
 
 Add the plugin to `agent.config.ts`:
 
@@ -68,7 +69,8 @@ To enable escalations, link your bot to Botpress Desk from the Desk UI. This is 
 </Steps>
 
 <Frame>
-  <img alt="Deflecting Bots page in Botpress Desk settings" src="./assets/deflecting-bot.png" />
+  <img alt="Deflecting Bots page in Botpress Desk settings" className="block dark:hidden" src="./assets/deflecting.png" />
+  <img alt="Deflecting Bots page in Botpress Desk settings" className="hidden dark:block" src="./assets/deflecting-dark.png" />
 </Frame>
 
 <Warning>
