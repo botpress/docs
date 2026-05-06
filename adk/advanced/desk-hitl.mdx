@@ -60,7 +60,7 @@ To enable escalations, link your bot to Botpress Desk from the Desk UI. This is 
     Open [**Botpress Desk**](/desk/introduction).
   </Step>
   <Step>
-    Go to **Settings → Deflecting Bots**.
+    Go to **AI Agents → Deflecting Bots**.
   </Step>
   <Step>
     Add your bot.
@@ -78,13 +78,13 @@ To enable escalations, link your bot to Botpress Desk from the Desk UI. This is 
 
 ## Create an escalation tool
 
-Wrap `startHitl` in an `Autonomous.Tool` so the model can decide when to escalate. Create a file under `src/tools/`:
+Wrap `startHitl` in an `Autonomous.Tool` so the model can decide when to escalate. Create a file called `handToSupport.ts` under `src/tools/`:
 
 ```typescript
 import { Autonomous, context, plugins, z } from "@botpress/runtime"
 
 export default new Autonomous.Tool({
-  name: "escalateToHuman",
+  name: "handToSupport",
   description:
     "Transfer the conversation to a support agent. Use when the user explicitly asks for a support agent, or when their issue is beyond the bot's capabilities.",
   input: z.object({
@@ -115,19 +115,19 @@ Fields passed to `startHitl`:
 
 ## Use the tool in a conversation handler
 
-Pass the tool to `execute()` and instruct the model when to use it:
+Add the tool to `conversations/index.ts` and instruct the model when to use it:
 
 ```typescript
 import { Conversation } from "@botpress/runtime"
-import escalateToHuman from "../tools/escalate-to-human"
+import handToSupport from "../tools/handToSupport"
 
 export default new Conversation({
   channel: "*",
   handler: async ({ execute }) => {
     await execute({
       instructions: `You are a helpful support assistant.
-If the user needs help beyond your capabilities or explicitly asks for a support agent, use the escalateToHuman tool. After calling it, do not send any message.`,
-      tools: [escalateToHuman],
+If the user needs help beyond your capabilities or explicitly asks for a support agent, use the handToSupport tool. After calling it, do not send any message.`,
+      tools: [handToSupport],
     })
   },
 })
