@@ -577,6 +577,20 @@ You can access data returned from any of these Triggers by reading `event.payloa
     <span>{"The ISO date the issue was last updated"}</span>
   </ResponseField>
   <ResponseField
+    name="identifier"
+    type="string"
+    required
+  >
+    <span>{"Issue's human readable identifier (e.g. XXX-123)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The URL of the issue on Linear"}</span>
+  </ResponseField>
+  <ResponseField
     name="priority"
     type="number"
     required
@@ -609,6 +623,20 @@ You can access data returned from any of these Triggers by reading `event.payloa
     <span>{"The issue State name (such as \"In Progress\""}</span>
   </ResponseField>
   <ResponseField
+    name="statusColor"
+    type="string"
+    required
+  >
+    <span>{"The issue State color (#000000 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusType"
+    type="string"
+    required
+  >
+    <span>{"The issue State type"}</span>
+  </ResponseField>
+  <ResponseField
     name="labels"
     type="array"
   >
@@ -617,6 +645,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
   <ResponseField
     name="linearIds"
     type="object"
+    required
   >
     <span>{"The Linear IDs of the referenced entities"}</span>
 
@@ -700,6 +729,8 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
 ### Issue Deleted
 
+<span>{"Triggered when an issue is deleted"}</span>
+
   <ResponseField
     name="payload"
     type="object"
@@ -707,6 +738,153 @@ You can access data returned from any of these Triggers by reading `event.payloa
     
 
     <Expandable>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The issue title on Linear, such as \"Fix the bug"}</span>
+  </ResponseField>
+  <ResponseField
+    name="number"
+    type="number"
+    required
+  >
+    <span>{"The issue number on Linear, such as \"123\" in XXX-123"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The ISO date the issue was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string (date-time)"
+    required
+  >
+    <span>{"The ISO date the issue was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="identifier"
+    type="string"
+    required
+  >
+    <span>{"Issue's human readable identifier (e.g. XXX-123)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The URL of the issue on Linear"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="number"
+    required
+  >
+    <span>{"Priority of the issue, such as \"1\" for \"Urgent\", 0 for \"No Priority\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"A markdown description of the issue. Images and videos are inlined using markdown links."}</span>
+  </ResponseField>
+  <ResponseField
+    name="teamName"
+    type="string"
+  >
+    <span>{"The name of the Linear team the issue currently belongs to, such as \"Customer Support\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="teamKey"
+    type="string"
+  >
+    <span>{"The key of the Linear team the issue currently belongs to, such as \"XXX\" in XXX-123"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"The issue State name (such as \"In Progress\""}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusColor"
+    type="string"
+    required
+  >
+    <span>{"The issue State color (#000000 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusType"
+    type="string"
+    required
+  >
+    <span>{"The issue State type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labels"
+    type="array"
+  >
+    <span>{"Label names"}</span>
+  </ResponseField>
+  <ResponseField
+    name="linearIds"
+    type="object"
+    required
+  >
+    <span>{"The Linear IDs of the referenced entities"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="creatorId"
+    type="string"
+  >
+    <span>{"The internal Linear User ID of the user who created the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="labelIds"
+    type="array"
+  >
+    <span>{"The internal Linear Label IDs associated with the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueId"
+    type="string"
+    required
+  >
+    <span>{"The internal Linear Issue ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="teamId"
+    type="string"
+  >
+    <span>{"The internal Linear Team ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectId"
+    type="string"
+  >
+    <span>{"The internal Linear Project ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"The internal Linear Assignee ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subscriberIds"
+    type="array"
+  >
+    <span>{"The internal Linear Subscriber User IDs"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
   <ResponseField
     name="id"
     type="string"
@@ -757,6 +935,20 @@ You can access data returned from any of these Triggers by reading `event.payloa
     <span>{"The ISO date the issue was last updated"}</span>
   </ResponseField>
   <ResponseField
+    name="identifier"
+    type="string"
+    required
+  >
+    <span>{"Issue's human readable identifier (e.g. XXX-123)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"The URL of the issue on Linear"}</span>
+  </ResponseField>
+  <ResponseField
     name="priority"
     type="number"
     required
@@ -789,6 +981,20 @@ You can access data returned from any of these Triggers by reading `event.payloa
     <span>{"The issue State name (such as \"In Progress\""}</span>
   </ResponseField>
   <ResponseField
+    name="statusColor"
+    type="string"
+    required
+  >
+    <span>{"The issue State color (#000000 format)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusType"
+    type="string"
+    required
+  >
+    <span>{"The issue State type"}</span>
+  </ResponseField>
+  <ResponseField
     name="labels"
     type="array"
   >
@@ -797,6 +1003,7 @@ You can access data returned from any of these Triggers by reading `event.payloa
   <ResponseField
     name="linearIds"
     type="object"
+    required
   >
     <span>{"The Linear IDs of the referenced entities"}</span>
 
