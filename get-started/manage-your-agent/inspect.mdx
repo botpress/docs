@@ -37,7 +37,7 @@ Once you’ve published your changes, your bot will print that statement to its 
 
 ## Events
 
-Events represent anything that happens within the bot, such as messages from users, bot replies, and system-level occurrences. You can view all incoming events processed by your agent in the **Events** section:
+Events represent what happens within your bot, such as messages from users and system-level occurrences. You can view all incoming events processed by your agent in the **Events** section:
 
 <Frame>
   <img
@@ -51,6 +51,27 @@ Events represent anything that happens within the bot, such as messages from use
     src="./assets/events-dark.png"
   />
 </Frame>
+
+<Accordion
+  title="What counts as an event?"
+>
+An event is any action that triggers bot activation. Only incoming messages & events that a bot listens to count towards your event quota.
+
+The following actions count as an incoming message & event:
+
+- A user saying "Hello" to a bot
+- A reaction being added to a message
+- A [Trigger](/studio/concepts/triggers) that opens the bot
+- A session timeout event
+- Opening the bot's shareable URL
+- Publishing your bot (counts as 3 events)
+
+The following actions don't count as an incoming message & event:
+‍
+- A message sent by the bot in response to a user message
+- An execute code card
+- [Workflow](/studio/concepts/workflows) transitions
+</Accordion>
 
 ### Event data
 
