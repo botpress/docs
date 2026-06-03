@@ -206,8 +206,8 @@ img {
 }
 
 .bot-resize-handle:hover {
-  cursor: col-resize;
-  pointer-events: auto;
+  cursor: default;
+  pointer-events: none;
 }
 
 .bot-panel-collapsed #bot-toggle-close {
@@ -240,7 +240,7 @@ img {
   display: flex;
   flex-direction: row;
   transform: translateX(100%);
-  resize: horizontal;
+  resize: none;
   overflow: visible;
   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -260,10 +260,10 @@ img {
   bottom: 0;
   width: 40px;
   height: 100%;
-  cursor: col-resize;
+  cursor: default;
   background-color: transparent;
   z-index: 30;
-  pointer-events: auto;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;

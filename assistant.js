@@ -58,19 +58,8 @@
     botContainer.id = 'docs-bot'
     botContainer.classList.add('bot-iframe-container')
 
-    // The default docs bot covers everything under botpress.com/docs.
-    // The ADK section gets its own bot (agent-0) with knowledge scoped to
-    // ADK pages + the ADK skill references. The iframe URL is swapped on
-    // route changes — see checkPathChange below.
-    const DEFAULT_BOT_URL = 'https://botpress.github.io/docs-bot/'
-    const ADK_BOT_URL = 'https://botpress.github.io/docs-bot/adk-bot-frontend/'
-
-    function isAdkRoute() {
-      // Match /docs/adk/<subpage> on the live site (pathname includes /docs/ prefix).
-      // The bare /adk and /adk/ teaser routes keep using the default docs bot.
-      return /\/adk\/.+/.test(window.location.pathname)
-    }
-
+    // A single docs assistant (marg) covers everything under botpress.com/docs.
+    const MARG_BOT_URL = 'https://botpress.github.io/docs-bot/marg-frontend/'
 
     const iframe = document.createElement('iframe')
     iframe.title = 'Botpress'
@@ -80,78 +69,49 @@
     iframe.style.top = '0'
     iframe.style.left = '0'
     iframe.allow = 'clipboard-write'
-    iframe.src = DEFAULT_BOT_URL
-
-    const adkIframe = document.createElement('iframe')
-    adkIframe.title = 'Botpress ADK'
-    adkIframe.style.width = '100%'
-    adkIframe.style.height = '100%'
-    adkIframe.style.position = 'absolute'
-    adkIframe.style.top = '0'
-    adkIframe.style.left = '0'
-    adkIframe.allow = 'clipboard-write'
-    adkIframe.src = ADK_BOT_URL
+    iframe.src = MARG_BOT_URL
 
     // "ready" means the React app inside the iframe has mounted and rendered its
     // first frame. We detect this via the `requestTheme` postMessage the frontend
-    // sends from a useEffect on mount — that fires after the first paint, not just
-    // after the HTML document loads. The `load` event fires too early (HTML loaded
-    // but React not yet mounted), so using it directly causes a blank-white flash.
-    let defaultReady = false
-    let adkReady = false
+    // sends from a useEffect on mount — the `load` event fires too early (HTML
+    // loaded but React not yet mounted), so using it directly causes a flash.
+    let ready = false
 
-    function markReady(isAdk) {
-      if (isAdk) adkReady = true
-      else defaultReady = true
+    function markReady() {
+      ready = true
       showActiveIframe()
     }
 
-    // Fallback: if the iframe never sends requestTheme (e.g. default docs bot
-    // doesn't have the hook), mark ready 600ms after the HTML load event so the
-    // panel isn't stuck hidden forever.
+    // Fallback: if the iframe never sends requestTheme, mark ready 600ms after
+    // the HTML load event so the panel isn't stuck hidden forever.
     iframe.addEventListener('load', () => {
-      setTimeout(() => { if (!defaultReady) markReady(false) }, 600)
-    })
-    adkIframe.addEventListener('load', () => {
-      setTimeout(() => { if (!adkReady) markReady(true) }, 600)
+      setTimeout(() => { if (!ready) markReady() }, 600)
     })
 
     function showActiveIframe() {
-      const adk = isAdkRoute()
-      const target = adk ? adkIframe : iframe
-      const other = adk ? iframe : adkIframe
-      const ready = adk ? adkReady : defaultReady
-
       if (ready) {
-        // Bring the active bot to the front (z-index swap, no repaint = no flash).
-        target.style.zIndex = '2'
-        target.style.pointerEvents = 'auto'
-        other.style.zIndex = '0'
-        other.style.pointerEvents = 'none'
+        iframe.style.zIndex = '2'
+        iframe.style.pointerEvents = 'auto'
       }
-      // If target isn't ready yet, leave both layers as-is — 'other' keeps its
-      // current z-index so the panel stays populated. markReady() fires again
-      // once the target's React app has mounted.
     }
 
+    // Kept as a function so downstream message senders need no changes.
     function getActiveIframe() {
-      return isAdkRoute() ? adkIframe : iframe
+      return iframe
     }
 
-    // Default starts above ADK so non-ADK pages show the correct bot before
-    // either React app sends its first readiness signal (requestTheme).
     iframe.style.zIndex = '1'
     iframe.style.pointerEvents = 'none'
-    adkIframe.style.zIndex = '0'
-    adkIframe.style.pointerEvents = 'none'
 
     botContainer.style.position = 'relative'
     botContainer.appendChild(iframe)
-    botContainer.appendChild(adkIframe)
     showActiveIframe()
 
     panel.appendChild(mobileDismiss)
     resizeHandle.appendChild(toggleCloseButton)
+    // The iframe header now provides the collapse control, so hide this edge
+    // toggle to avoid two "hide" buttons. The drag-to-resize handle remains.
+    toggleCloseButton.style.display = 'none'
     panel.appendChild(botContainer)
     panel.appendChild(resizeHandle)
 
@@ -248,6 +208,27 @@
       updateOverlay()
     }
 
+    // Maximize/restore the panel width (driven by the iframe's expand button).
+    // Remembers the prior inline width so "restore" returns to the CSS default
+    // or a drag-resized width. Persisted so it survives in-docs navigation.
+    let widePrevWidth = ''
+    let isWide = false
+    function setWide(wide) {
+      if (wide === isWide) return
+      if (wide) {
+        widePrevWidth = panel.style.width
+        const target = Math.round(Math.min(window.innerWidth * 0.6, 820))
+        panel.style.width = target + 'px'
+      } else {
+        panel.style.width = widePrevWidth
+      }
+      isWide = wide
+      try { sessionStorage.setItem('bot-panel-wide', wide ? '1' : '0') } catch (e) {}
+    }
+    function toggleWidth() {
+      setWide(!isWide)
+    }
+
     let isResizing = false
     let startX = 0
     let startWidth = 0
@@ -258,13 +239,12 @@
       if (e.target.closest('#bot-toggle-close')) {
         return
       }
+      // Drag-to-resize is intentionally disabled: the panel uses fixed widths
+      // (default + the expand button). We still track press/move here only so a
+      // plain click on the edge can toggle the panel, while a drag is ignored.
       isResizing = true
       hasMoved = false
       startX = e.clientX
-      startWidth = parseInt(window.getComputedStyle(panel).width, 10)
-      panel.classList.add('resizing')
-      document.body.style.cursor = 'col-resize'
-      document.body.style.userSelect = 'none'
       e.preventDefault()
       e.stopPropagation()
     })
@@ -276,13 +256,7 @@
       if (moveDistance > clickThreshold) {
         hasMoved = true
       }
-
-      if (hasMoved) {
-        const diff = startX - e.clientX
-        const maxWidth = window.innerWidth * 1
-        const newWidth = Math.max(368, Math.min(maxWidth, startWidth + diff))
-        panel.style.width = newWidth + 'px'
-      }
+      // No width mutation — resizing the panel by dragging is disabled.
 
       e.preventDefault()
       e.stopPropagation()
@@ -291,14 +265,6 @@
     document.addEventListener('mouseup', (e) => {
       if (isResizing) {
         isResizing = false
-        panel.classList.remove('resizing')
-        document.body.style.cursor = ''
-        document.body.style.userSelect = ''
-
-        if (!hasMoved) {
-          togglePanel()
-        }
-
         hasMoved = false
         e.preventDefault()
         e.stopPropagation()
@@ -413,6 +379,10 @@
         closePanel()
       }
 
+      if (event.data.type === 'toggleWidth') {
+        toggleWidth()
+      }
+
       if (event.data.type === 'requestCurrentPage') {
         sendPanelOpenedMessage()
       }
@@ -452,11 +422,7 @@
         const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
         // The iframe's React app just mounted — mark it as visually ready so we
         // can show it without a blank-white flash.
-        if (event.source === adkIframe.contentWindow) {
-          if (!adkReady) markReady(true)
-        } else if (event.source === iframe.contentWindow) {
-          if (!defaultReady) markReady(false)
-        }
+        if (event.source === iframe.contentWindow && !ready) markReady()
         // Respond with the current theme to whichever iframe asked.
         if (event.source && typeof event.source.postMessage === 'function') {
           try { event.source.postMessage({ type: 'themeChanged', theme }, '*') } catch (_e) {}
@@ -464,13 +430,10 @@
       }
     })
 
-    // Watch for docs theme toggles and forward to both iframes so they stay in
-    // sync regardless of which one is currently visible.
+    // Watch for docs theme toggles and forward to the iframe so it stays in sync.
     const themeObserver = new MutationObserver(() => {
       const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-      ;[iframe, adkIframe].forEach(f => {
-        if (f && f.contentWindow) f.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
-      })
+      if (iframe.contentWindow) iframe.contentWindow.postMessage({ type: 'themeChanged', theme }, '*')
     })
     themeObserver.observe(document.documentElement, {
       attributes: true,
@@ -541,23 +504,19 @@
       if (window.location.pathname !== lastPath) {
         lastPath = window.location.pathname
 
-        showActiveIframe()
-
-        const isExpanded = panel.classList.contains('bot-panel-expanded')
-        if (isExpanded) {
-          const activeIframe = isAdkRoute() ? adkIframe : iframe
-          if (activeIframe && activeIframe.contentWindow) {
-            activeIframe.contentWindow.postMessage(
-              {
-                type: 'pageChanged',
-                data: {
-                  path: window.location.pathname,
-                  title: document.title.replace(' - Botpress', ''),
-                },
+        // Always tell the bot the page changed so it can refresh its page
+        // context, even when the panel is collapsed (it routes on the page URL).
+        if (iframe.contentWindow) {
+          iframe.contentWindow.postMessage(
+            {
+              type: 'pageChanged',
+              data: {
+                path: window.location.pathname,
+                title: document.title.replace(' - Botpress', ''),
               },
-              '*'
-            )
-          }
+            },
+            '*'
+          )
         }
       }
     }
