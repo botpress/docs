@@ -539,6 +539,14 @@
   }
 
   function initInputBubble() {
+    // The iframe is created in a separate IIFE, so resolve it from the DOM here
+    // (this closure can't see initBotPanel's getActiveIframe). Without this the
+    // bottom "Ask a question" bar threw a ReferenceError and silently did nothing.
+    function getActiveIframe() {
+      const container = document.getElementById('docs-bot')
+      return container ? container.querySelector('iframe') : null
+    }
+
     const inputBubble = document.createElement('div')
     inputBubble.id = 'ask-ai-input-bubble'
     inputBubble.classList.add('ask-ai-input-bubble')
@@ -792,6 +800,13 @@
 
   function initAskAIOverride() {
     const overriddenButtons = new WeakSet()
+
+    // Resolve the iframe from the DOM (defined in a separate IIFE) so this
+    // closure can message it.
+    function getActiveIframe() {
+      const container = document.getElementById('docs-bot')
+      return container ? container.querySelector('iframe') : null
+    }
 
     function findAndOverrideButton() {
       const button = document.getElementById('page-context-menu-button')
