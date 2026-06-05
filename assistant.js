@@ -29,18 +29,6 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-open-icon lucide-panel-right-open"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m10 15-3-3 3-3"/></svg>
     `
 
-    const toggleCloseButton = document.createElement('button')
-    toggleCloseButton.id = 'bot-toggle-close'
-    toggleCloseButton.classList.add('bot-toggle-close')
-    toggleCloseButton.setAttribute('aria-label', 'Close bot')
-    toggleCloseButton.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close-icon lucide-panel-right-close"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m8 9 3 3-3 3"/></svg>
-    `
-
-    const resizeHandle = document.createElement('div')
-    resizeHandle.classList.add('bot-resize-handle')
-    resizeHandle.setAttribute('aria-label', 'Resize panel')
-
     const mobileDismiss = document.createElement('div')
     mobileDismiss.classList.add('bot-mobile-dismiss')
     mobileDismiss.setAttribute('aria-label', 'Swipe down to close')
@@ -108,12 +96,7 @@
     showActiveIframe()
 
     panel.appendChild(mobileDismiss)
-    resizeHandle.appendChild(toggleCloseButton)
-    // The iframe header now provides the collapse control, so hide this edge
-    // toggle to avoid two "hide" buttons. The drag-to-resize handle remains.
-    toggleCloseButton.style.display = 'none'
     panel.appendChild(botContainer)
-    panel.appendChild(resizeHandle)
 
     document.body.appendChild(overlay)
     document.body.appendChild(panel)
@@ -229,48 +212,6 @@
       setWide(!isWide)
     }
 
-    let isResizing = false
-    let startX = 0
-    let startWidth = 0
-    let hasMoved = false
-    const clickThreshold = 5
-
-    resizeHandle.addEventListener('mousedown', (e) => {
-      if (e.target.closest('#bot-toggle-close')) {
-        return
-      }
-      // Drag-to-resize is intentionally disabled: the panel uses fixed widths
-      // (default + the expand button). We still track press/move here only so a
-      // plain click on the edge can toggle the panel, while a drag is ignored.
-      isResizing = true
-      hasMoved = false
-      startX = e.clientX
-      e.preventDefault()
-      e.stopPropagation()
-    })
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isResizing) return
-
-      const moveDistance = Math.abs(e.clientX - startX)
-      if (moveDistance > clickThreshold) {
-        hasMoved = true
-      }
-      // No width mutation — resizing the panel by dragging is disabled.
-
-      e.preventDefault()
-      e.stopPropagation()
-    })
-
-    document.addEventListener('mouseup', (e) => {
-      if (isResizing) {
-        isResizing = false
-        hasMoved = false
-        e.preventDefault()
-        e.stopPropagation()
-      }
-    })
-
     let touchStartY = 0
     let touchCurrentY = 0
     let touchStartTime = 0
@@ -329,10 +270,6 @@
     panel.addEventListener('touchcancel', handleTouchEnd, { passive: false })
 
     toggleButton.addEventListener('click', togglePanel)
-    toggleCloseButton.addEventListener('click', (e) => {
-      e.stopPropagation()
-      closePanel()
-    })
     mobileDismiss.addEventListener('click', closePanel)
     overlay.addEventListener('click', (e) => {
       if (isMobile() && panel.classList.contains('bot-panel-expanded')) {
