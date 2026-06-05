@@ -182,52 +182,6 @@ img {
   height: 16px;
 }
 
-#bot-toggle-close {
-  width: 35px;
-  height: 35px;
-  flex-shrink: 0;
-  color: light-dark(#1a1a1a, #fcfcfc);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 32;
-  pointer-events: none;
-  background-color: light-dark(#fcfcfc, #1a1a1a);
-  border: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
-  border-radius: 0.75em;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  opacity: 1;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.bot-resize-handle:hover {
-  cursor: col-resize;
-  pointer-events: auto;
-}
-
-.bot-panel-collapsed #bot-toggle-close {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.bot-panel-expanded .bot-resize-handle:hover #bot-toggle-close {
-  pointer-events: auto;
-}
-
-#bot-toggle-close:hover {
-  background-color: light-dark(#f0f0f0, #2a2a2a);
-}
-
-#bot-toggle-close svg {
-  width: 16px;
-  height: 16px;
-}
-
 .bot-panel {
   position: fixed;
   top: 3.55rem;
@@ -240,7 +194,7 @@ img {
   display: flex;
   flex-direction: row;
   transform: translateX(100%);
-  resize: horizontal;
+  resize: none;
   overflow: visible;
   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -253,22 +207,6 @@ img {
   transform: translateX(100%);
 }
 
-.bot-resize-handle {
-  position: absolute;
-  left: -20px;
-  top: 0;
-  bottom: 0;
-  width: 40px;
-  height: 100%;
-  cursor: col-resize;
-  background-color: transparent;
-  z-index: 30;
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .bot-iframe-container {
   flex: 1;
   height: 100%;
@@ -277,14 +215,6 @@ img {
   pointer-events: auto;
   min-width: 0;
   border-left: 1px solid light-dark(rgb(226, 222, 230), rgb(255 255 255/0.07));
-}
-
-.bot-panel.resizing {
-  transition: none;
-}
-
-.bot-panel.resizing .bot-iframe-container {
-  pointer-events: none;
 }
 
 .bot-iframe {
@@ -325,15 +255,6 @@ img {
 @media (max-width: 1024px) {
   /* Hide desktop elements on mobile */
   #bot-toggle {
-    display: none !important;
-  }
-
-  .bot-resize-handle {
-    display: none !important;
-    pointer-events: none !important;
-  }
-
-  #bot-toggle-close {
     display: none !important;
   }
 
