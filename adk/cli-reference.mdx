@@ -1,3 +1,4 @@
+
 ---
 title: CLI reference
 description: All commands and flags available with the ADK CLI.
@@ -464,72 +465,4 @@ adk mcp:init --tool vscode cursor
 | `--tool <tool...>` | Specific tool(s): `claude-code`, `vscode`, `cursor` |
 | `--all` | Generate for all supported tools |
 | `--force` | Overwrite existing config |
-| `--project-dir <path>` | ADK project subdirectory (for monorepos) |
-
-## Account
-
-These commands manage your Botpress credentials and the CLI itself:
-
-| Command | Description |
-|---------|-------------|
-| `adk login` | Authenticate with Botpress |
-| `adk profiles list` | List authentication profiles |
-| `adk profiles set [profile]` | Switch to a different profile |
-| `adk self-upgrade [tag]` | Upgrade ADK CLI to latest (or specific) version (alias: `self-update`) |
-| `adk telemetry` | Manage telemetry preferences |
-| `adk theme` | Manage CLI theme (dark/light) |
-
-### `adk login`
-
-Authenticate with your Botpress account. Pass `--token` to skip the browser flow:
-
-```bash
-adk login
-adk login --token <token>
-adk login --profile staging
-```
-
-| Flag | Description | Default |
-|------|-------------|---------|
-| `--token <token>` | Botpress API token | |
-| `--profile <profile>` | Profile name to save credentials under | |
-| `--api-url <url>` | Botpress API URL | `https://api.botpress.cloud` |
-
-### `adk self-upgrade`
-
-Upgrade the ADK CLI. Pass a tag (`beta`, `next`) or an explicit version:
-
-```bash
-adk self-upgrade
-adk self-upgrade beta
-adk self-upgrade 1.18.0
-```
-
-### `adk telemetry`
-
-View or change telemetry preferences. With no flags, prints the current status:
-
-```bash
-adk telemetry
-adk telemetry --enable
-adk telemetry --disable
-```
-
-| Flag | Description |
-|------|-------------|
-| `--status` | Show telemetry status |
-| `--enable` | Enable telemetry |
-| `--disable` | Disable telemetry |
-
-### `adk theme`
-
-Switch the CLI theme between dark and light:
-
-```bash
-adk theme --set dark
-adk theme --set light
-```
-
-| Flag | Description |
-|------|-------------|
-| `--set <theme>` | Set theme (`dark` or `light`) |
+| `--project-
