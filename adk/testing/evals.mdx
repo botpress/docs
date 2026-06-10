@@ -59,6 +59,13 @@ Fire an event instead of a message:
 ```typescript
 {
   event: {
+    payload: { type: "order.placed", orderId: "ord-123", total: 49.99 },
+  },
+  assert: {
+    response: [{ contains: "order" }],
+  },
+}
+  event: {
     type: "order.placed",
     payload: { orderId: "ord-123", total: 49.99 },
   },
@@ -321,6 +328,7 @@ adk evals --tag smoke            # Run evals with a specific tag
 adk evals --type regression      # Run only regression evals
 adk evals -v                     # Show full details, not just failures
 ```
+adk evals --prod                 # Run evals against the deployed production agent
 
 View past runs:
 
