@@ -16,7 +16,7 @@ These flags work with every command:
 | `--no-cache` | Disable caching for integration lookups |
 | `--profile <profile>` | Credentials profile to use (overrides the `ADK_PROFILE` environment variable and the current profile) |
 
-Most commands also accept `--format json` for machine-readable output. The following commands don't: `dev`, `login`, `profiles list`, `profiles set`, `upgrade`, `remove`, `self-upgrade`, `telemetry`, `theme`, `mcp`, `mcp:init`, `run`, `assets pull`.
+Most commands also accept `--format json` for machine-readable output. The following commands don't: `dev`, `login`, `profiles list`, `profiles set`, `upgrade`, `remove`, `self-upgrade`, `telemetry`, `theme`, `mcp`, `mcp:init`, `run`, `assets pull`. `adk ps` supports `--format json` for single-shot output only; it can't be combined with `--watch`.
 
 ## Project
 
@@ -426,46 +426,7 @@ adk assets list --remote
 | `--local` | Show only local assets |
 | `--remote` | Show only remote assets |
 
-## AI assistants
-
-These commands integrate the ADK with AI coding tools:
-
-| Command | Description |
-|---------|-------------|
-| `adk mcp` | Start the MCP server |
-| `adk mcp:init` | Generate MCP configuration files |
-
-### `adk mcp`
-
-Start the MCP server so tools like Claude Code, Cursor, or VS Code can talk to your running dev server:
-
-```bash
-adk mcp
-adk mcp --port 3001
-```
-
-| Flag | Description | Default |
-|------|-------------|---------|
-| `--cwd <path>` | Working directory for MCP operations | |
-| `--port <port>` | UI server port to connect to | `3001` |
-
-### `adk mcp:init`
-
-Generate MCP configuration files for supported AI assistants:
-
-```bash
-adk mcp:init --all
-adk mcp:init --tool claude-code
-adk mcp:init --tool vscode cursor
-```
-
-| Flag | Description |
-|------|-------------|
-| `--tool <tool...>` | Specific tool(s): `claude-code`, `vscode`, `cursor` |
-| `--all` | Generate for all supported tools |
-| `--force` | Overwrite existing config |
-| `--project-dir <path>` | ADK project subdirectory (for monorepos) |
-
+## Utilities
 ## Account
 
 These commands manage your Botpress credentials and the CLI itself:
