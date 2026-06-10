@@ -30,6 +30,7 @@ These commands manage an agent project from scaffold to deploy:
 | `adk deploy` | Deploy the agent to Botpress Cloud |
 | `adk check` | Validate project structure and config (no login required) |
 | `adk status` | Show project status, integrations, and server state |
+| `adk ps` | List running ADK dev processes (DevConsole + connected agents) |
 | `adk link` | Link local agent to a workspace and bot |
 
 ### `adk init`
@@ -58,14 +59,35 @@ adk dev
 adk dev --port 3000 --port-console 3001
 ```
 
+| Flag | Description |
+|------|-------------|
+| `-p, --port <port>` | Bot server port (default: `3000`) |
+| `--port-console <port>` | Dev console port (default: `3001`) |
+| `--otlp` | Enable OTLP export to external collector (port `4318`) |
+| `--port-otlp <port>` | Override the OTLP collector endpoint port |
+| `-v, --verbose` | Show additional details |
+| `--non-interactive` | Emit structured NDJSON events to stdout |
+
+### `adk ps`
+
+List running ADK dev processes — the shared DevConsole and each connected `adk dev` session. Requires a DevConsole to be running (started by `adk dev` or `adk dashboard`):
+
+```bash
+adk ps
+adk ps --wide
+adk ps --watch
+adk ps --watch 5
+adk ps --format json
+```
+
 | Flag | Description | Default |
 |------|-------------|---------|
-| `-p, --port <port>` | Bot server port | `3000` |
-| `--port-console <port>` | Dev console port | `3001` |
-| `--otlp` | Enable OTLP export to external collector (port `4318`) | |
-| `--port-otlp <port>` | Override the OTLP collector endpoint port | |
-| `-v, --verbose` | Show additional details | |
-| `--non-interactive` | Emit structured NDJSON events to stdout | |
+| `--wide` | Show full paths, bot PIDs, and uptime | |
+| `--watch [seconds]` | Refresh the display every N seconds | `2` |
+| `--no-header` | Omit the column header row | |
+
+`--watch` cannot be combined with `--format json`.
+
 
 ### `adk deploy`
 
