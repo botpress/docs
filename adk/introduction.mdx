@@ -55,3 +55,13 @@ Each primitive lives in its own file. The ADK discovers them automatically, no m
     Latest features, improvements, and breaking changes.
   </Card>
 </CardGroup>
+from openai import OpenAI
+
+client = OpenAI(api_key="YOUR_API_KEY")
+
+response = client.responses.create(
+    model="gpt-5",
+    input="مرحبا"
+)
+
+print(response.output_text)
