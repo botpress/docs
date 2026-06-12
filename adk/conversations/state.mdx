@@ -214,4 +214,25 @@ import { bot, user } from "@botpress/runtime"
 
 const botId = bot.id
 const userId = user.id
+const userId = user.id
+```
+
+## User profile
+
+In addition to state and tags, the `user` object exposes writable profile fields: `name`, `pictureUrl`, `properties`, and `attributes`. Changes are saved automatically at the end of the request.
+
+```typescript
+import { user } from "@botpress/runtime"
+
+user.name = "Alice"
+user.pictureUrl = "https://example.com/avatar.png"
+user.properties.tier = "pro"
+user.attributes.source = "webchat"
+```
+
+The `createdAt` and `updatedAt` timestamps are read-only:
+
+```typescript
+const created = user.createdAt
+const updated = user.updatedAt
 ```
