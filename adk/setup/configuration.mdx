@@ -52,6 +52,8 @@ Here's a breakdown of the key files in your project after running `adk init`:
 
 </Tree>
 
+The `agent.json` file stores the shared production link (`workspaceId`, `botId`, and `apiUrl`) and is safe to commit. The `agent.local.json` file is gitignored and holds per-developer overrides, including the development bot ID (`devId`).
+
 The ADK scans `src/` and discovers primitives automatically. Each file exports a primitive (a `Conversation`, `Workflow`, `Action`, etc.) and the framework registers it at build time.
 
 ## `agent.config.ts`
