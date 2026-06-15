@@ -105,64 +105,61 @@ These commands add, inspect, and manage the integrations your agent depends on:
 
 | Command | Description |
 |---------|-------------|
-| `adk add <resource>` | Add an integration or interface (aliases: `i`, `install`) |
+| `adk integrations add <resource>` | Add an integration or interface (aliases: `i`, `install`) |
 | `adk remove [resource]` | Remove an integration, interface, or plugin (alias: `rm`) |
 | `adk upgrade [integration]` | Upgrade integration(s) to latest version (alias: `up`) |
-| `adk search <query>` | Search the Botpress Hub |
-| `adk list` | List installed integrations |
-| `adk info <name>` | Show detailed integration info |
+| `adk integrations search <query>` | Search the Botpress Hub |
+| `adk integrations list` | List installed integrations |
+| `adk integrations info <name>` | Show detailed integration info |
 
-### `adk add`
+### `adk integrations add`
 
 Add an integration or interface to your agent. Accepts a name, `workspace/name`, or a specific version:
 
 ```bash
-adk add webchat
-adk add slack@latest
-adk add slack@0.5.0
-adk add my-workspace/custom@1.0.0
-adk add interface:translator@1.0.0
-adk add webchat --alias custom-webchat
+adk integrations add webchat
+adk integrations add slack@latest
+adk integrations add slack@0.5.0
+adk integrations add my-workspace/custom@1.0.0
+adk integrations add interface:translator@1.0.0
+adk integrations add webchat --alias custom-webchat
 ```
 
 | Flag | Description |
 |------|-------------|
 | `--alias <alias>` | Custom alias for the resource |
 
-### `adk search`
+### `adk integrations search`
 
 Search the Botpress Hub for integrations:
 
 ```bash
-adk search crm
-adk search slack --limit 5
+adk integrations search crm
+adk integrations search slack --limit 5
 ```
 
 | Flag | Description | Default |
 |------|-------------|---------|
 | `--limit <number>` | Max results to return | `20` |
 
-### `adk list`
+### `adk integrations list`
 
-List integrations in your project, or all available ones on the Hub:
+List installed integrations in your project:
 
-```bash
-adk list
-adk list --available
-```
+adk integrations list
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `--available` | List all available integrations (not just installed) | |
+| `--limit <n>` | Max results | `50` |
 | `--limit <n>` | Max results | `50` |
 
-### `adk info`
+### `adk integrations info`
 
 Show details for a specific integration. Filter by a single facet or show the full spec:
 
-```bash
-adk info slack
-adk info slack --actions
+adk integrations info slack
+adk integrations info slack --actions
+adk integrations info slack --full
 adk info slack --full
 ```
 
