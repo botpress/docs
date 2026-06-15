@@ -81,6 +81,8 @@ adk deploy -y
 | `-e, --env <environment>` | Deployment environment | `production` |
 | `-y, --yes` | Auto-approve preflight changes | |
 
+When deploying, `adk deploy` warns if an integration is on a different version in dev than in prod. The warning shows the version difference per integration and suggests running `adk integrations copy --from dev --to prod --dry-run` to preview, then `adk integrations copy --from dev --to prod --yes` to promote. It does not block the deploy.
+
 ### `adk link`
 
 Link the local agent to a workspace and bot. Writes to `agent.json`, or to `agent.local.json` with `--local`:
