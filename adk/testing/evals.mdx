@@ -75,6 +75,19 @@ Assert the agent doesn't respond:
   user: "ok thanks",
   expectSilence: true,
 }
+}
+```
+
+Start a turn in a new conversation under the same user with `newConversation: true`. The prior transcript is gone, so the agent can only answer from user-scoped memory — useful for testing what your agent persists across conversations. It's ignored on the first turn.
+
+```typescript
+{
+  newConversation: true,
+  user: "What's my name?",
+  assert: {
+    response: [{ contains: "Priya" }],
+  },
+}
 ```
 
 ## Assertions
