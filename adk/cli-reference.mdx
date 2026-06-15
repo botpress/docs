@@ -173,6 +173,48 @@ adk info slack --full
 | `--events` | Show only events |
 | `--full` | Show all details |
 
+## Dependencies
+
+These commands save and restore your agent's integration and plugin state for one environment as a portable JSON snapshot:
+
+| Command | Description |
+|---------|-------------|
+| `adk dependencies export [output]` | Save integration and plugin state to a JSON snapshot |
+| `adk dependencies import <file>` | Restore dependency state from a JSON snapshot |
+
+The exported file is a restore artifact you can share or version. Configuration values (which may include secrets) are included by default; use `--no-config` to produce a redacted snapshot.
+
+### `adk dependencies export`
+
+Save the current dependency state for one environment. Defaults to `dev` and to `<project-name>.dependencies.<target>.json` if no output path is given:
+
+```bash
+adk dependencies export
+adk dependencies export deps.json --target prod
+adk dependencies export deps.json --no-config
+```
+
+| Flag | Description | Default |
+|------|-------------|---------|
+| `--target <env>` | Environment to export (`dev` or `prod`) | `dev` |
+| `--no-config` | Omit integration and plugin configuration | |
+
+### `adk dependencies import`
+
+Restore dependency state from a snapshot into an environment. Defaults to the environment stored in the snapshot; use `--dry-run` to preview changes first:
+
+```bash
+adk dependencies import deps.json
+adk dependencies import deps.json --target dev
+adk dependencies import deps.json --dry-run
+```
+
+| Flag | Description |
+|------|-------------|
+| `--target <env>` | Environment to import into (`dev` or `prod`); defaults to the snapshot env |
+| `--dry-run` | Show what would change without writing |
+| `--yes` | Allow prod or destructive changes without confirmation |
+
 ## Configuration and secrets
 
 These commands manage config values and secrets:
