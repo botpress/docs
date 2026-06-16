@@ -31,6 +31,7 @@ These commands manage an agent project from scaffold to deploy:
 | `adk check` | Validate project structure and config (no login required) |
 | `adk status` | Show project status, integrations, and server state |
 | `adk link` | Link local agent to a workspace and bot |
+| `adk project upgrade` | Upgrade the project to the latest ADK runtime and project shape |
 
 ### `adk init`
 
@@ -98,6 +99,19 @@ adk link --workspace wkspace_123 --bot bot_456
 | `--api-url <url>` | Botpress API URL |
 | `-f, --force` | Overwrite existing `agent.json` |
 | `--local` | Write to gitignored `agent.local.json` (for multi-dev workflows) |
+
+### `adk project upgrade`
+
+Upgrade your project to the latest ADK runtime line and project shape. Use `--dry-run` to preview the changes before applying them:
+
+```bash
+adk project upgrade
+adk project upgrade --dry-run
+```
+
+| Flag | Description |
+|------|-------------|
+| `--dry-run` | Preview changes without applying |
 
 ## Integrations
 
