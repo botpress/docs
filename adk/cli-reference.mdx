@@ -394,6 +394,52 @@ Manage static files your agent serves or references:
 | `adk assets status` | Show asset sync status |
 | `adk assets pull` | Download remote assets to local directory |
 
+## Portability
+
+These commands move a project between workspaces or users as a self-contained archive:
+
+| Command | Description |
+|---------|-------------|
+| `adk export [output]` | Export the current project as a portable `.adk` archive |
+| `adk import <archive> [directory]` | Import a `.adk` archive and link it to new bots |
+
+### `adk export`
+
+Export the current project, including its dependency snapshots, as a portable archive. Source bot, workspace, and account IDs are excluded. By default the output is named after the project:
+
+```bash
+adk export
+adk export my-agent.adk
+adk export --no-config
+```
+
+| Flag | Description |
+|------|-------------|
+| `--no-config` | Omit integration and plugin configuration from dependency snapshots |
+| `--format <format>` | Output format (`json`) |
+
+Exported snapshots include all integration and plugin configuration, which may contain secrets. Only share the `.adk` archive with trusted recipients, or use `--no-config` to exclude configuration.
+
+### `adk import`
+
+Import a `.adk` archive into a new directory, restore its dependencies, and link it to bots in the destination workspace. Existing bots can be reused, or new ones are created automatically:
+
+```bash
+adk import my-agent.adk
+adk import my-agent.adk ./my-agent
+adk import my-agent.adk --workspace wkspace_123 --force
+```
+
+| Flag | Description |
+|------|-------------|
+| `--workspace <workspaceId>` | Destination workspace ID |
+| `--bot <botId>` | Destination production bot ID |
+| `--dev <devBotId>` | Destination dev bot ID |
+| `--api-url <apiUrl>` | Botpress API URL |
+| `-f, --force` | Skip confirmation prompts |
+| `--package-manager <packageManager>` | Package manager to install dependencies (`bun`, `pnpm`, `yarn`, `npm`) |
+| `--format <format>` | Output format (`json`) |
+
 ### `adk assets sync`
 
 Upload local assets to remote storage. Use `--dry-run` to see what would change:
