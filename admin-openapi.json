@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Admin API",
     "description": "API for Botpress Cloud Manager",
-    "version": "1.82.0"
+    "version": "1.112.0"
   },
   "paths": {
     "/v1/admin/helper/vrl": {
@@ -372,6 +372,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "Maximum number of results to return per page",
@@ -602,6 +610,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -871,6 +887,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "name",
             "in": "query",
             "description": "Filter all versions of an interface by name",
@@ -1079,11 +1103,41 @@
             }
           },
           {
+            "name": "integrationNames",
+            "in": "query",
+            "description": "Filter bots that have ALL of these integrations installed (by definition name)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pluginNames",
+            "in": "query",
+            "description": "Filter bots that have ALL of these plugins installed (by definition name)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
             "name": "nextToken",
             "in": "query",
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -1211,15 +1265,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "shouldMergePlugins",
-            "in": "query",
-            "description": "UNUSED. Please ignore this field. It will be removed in the near future.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
             }
           },
           {
@@ -1726,6 +1771,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "x-workspace-id",
             "in": "header",
             "description": "Workspace ID",
@@ -1901,6 +1954,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -3086,6 +3147,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "handle",
             "in": "query",
             "description": "Workspace handle",
@@ -3660,6 +3729,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "workspaceIds",
             "in": "query",
             "description": "Ids of the workspaces to list",
@@ -3719,6 +3796,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -3856,6 +3941,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -4285,6 +4378,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -5029,6 +5130,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "name",
             "in": "query",
             "description": "Filter all versions of an interface by name",
@@ -5353,6 +5462,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -6053,6 +6170,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "x-workspace-id",
             "in": "header",
             "description": "Workspace ID",
@@ -6155,6 +6280,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "x-workspace-id",
             "in": "header",
             "description": "Workspace ID",
@@ -6249,6 +6382,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -6624,10 +6765,6 @@
                   "type": "string",
                   "description": "URL of the icon of the plugin. This is the icon that will be displayed in the UI"
                 },
-                "readmeUrl": {
-                  "type": "string",
-                  "description": "URL of the readme of the plugin. This is the readme that will be displayed in the UI"
-                },
                 "public": {
                   "type": "boolean",
                   "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
@@ -6662,7 +6799,6 @@
                 "title",
                 "description",
                 "iconUrl",
-                "readmeUrl",
                 "public",
                 "visibility",
                 "lifecycleStatus"
@@ -6913,7 +7049,103 @@
                   "additionalProperties": false
                 },
                 "nullable": true,
-                "description": "Events that the bot is currently subscribed on (ex: \"slack:reactionAdded\"). If null, the bot is subscribed to all events."
+                "deprecated": true,
+                "description": "[DEPRECATED] Use `integrations`, `plugins`, and `bot` instead. Mapped onto the new per-source fields incrementally (each entry adds or removes its own event type). Cannot be combined with the new fields in the same request. If null, the bot is subscribed to all events."
+              },
+              "integrations": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "object",
+                      "properties": {
+                        "include": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "exclude": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                      "nullable": true,
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "events"
+                  ],
+                  "additionalProperties": false
+                },
+                "description": "Subscriptions for events coming from specific integrations. Keyed by integration alias."
+              },
+              "plugins": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "object",
+                      "properties": {
+                        "include": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "exclude": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                      "nullable": true,
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "events"
+                  ],
+                  "additionalProperties": false
+                },
+                "description": "Subscriptions for events coming from specific plugins. Keyed by plugin alias."
+              },
+              "bot": {
+                "type": "object",
+                "properties": {
+                  "events": {
+                    "type": "object",
+                    "properties": {
+                      "include": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "exclude": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                    "nullable": true,
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "events"
+                ],
+                "additionalProperties": false
               }
             },
             "required": [
@@ -7055,6 +7287,15 @@
               ]
             },
             "description": "Media files associated with the [Bot](#schema_bot)"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "studio",
+              "adk",
+              "desk"
+            ],
+            "description": "Type of the [Bot](#schema_bot)"
           }
         },
         "required": [
@@ -7079,7 +7320,8 @@
           "secrets",
           "alwaysAlive",
           "status",
-          "medias"
+          "medias",
+          "type"
         ],
         "additionalProperties": false
       },
@@ -7678,14 +7920,6 @@
               "additionalProperties": false
             }
           },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "maxLength": 200
-            },
-            "description": "Optional attributes"
-          },
           "dev": {
             "type": "boolean",
             "description": "Indicates if the integration is a development integration; Dev integrations run locally"
@@ -7747,6 +7981,14 @@
               "type": "string"
             },
             "description": "Secrets are integration-wide values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Optional key-value attributes from the integration definition"
           }
         },
         "required": [
@@ -7993,14 +8235,6 @@
             "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
             "additionalProperties": false
           },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "maxLength": 200
-            },
-            "description": "Optional attributes"
-          },
           "title": {
             "type": "string",
             "minLength": 1,
@@ -8023,6 +8257,14 @@
           "public": {
             "type": "boolean",
             "description": "Indicates if the interface is public. Public interfaces are available to all and cannot be updated without creating a new version."
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Optional key-value attributes from the interface definition"
           }
         },
         "required": [
@@ -8382,14 +8624,6 @@
             "description": "Message object configuration",
             "additionalProperties": false
           },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "maxLength": 200
-            },
-            "description": "Optional attributes"
-          },
           "title": {
             "type": "string",
             "minLength": 1,
@@ -8430,6 +8664,14 @@
               "deprecated"
             ],
             "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Optional key-value attributes from the plugin definition"
           }
         },
         "required": [
@@ -8492,7 +8734,8 @@
               "community",
               "team",
               "enterprise",
-              "plus"
+              "plus",
+              "managed"
             ]
           },
           "blocked": {
@@ -9267,7 +9510,8 @@
                       "attributes": {
                         "type": "object",
                         "additionalProperties": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 200
                         },
                         "description": "Optional key-value attributes from the integration definition"
                       }
@@ -9913,14 +10157,6 @@
                         "additionalProperties": false
                       }
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "dev": {
                       "type": "boolean",
                       "description": "Indicates if the integration is a development integration; Dev integrations run locally"
@@ -9982,6 +10218,14 @@
                         "type": "string"
                       },
                       "description": "Secrets are integration-wide values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the integration definition"
                     },
                     "ownerWorkspace": {
                       "type": "object",
@@ -10666,14 +10910,6 @@
                         "additionalProperties": false
                       }
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "dev": {
                       "type": "boolean",
                       "description": "Indicates if the integration is a development integration; Dev integrations run locally"
@@ -10735,6 +10971,14 @@
                         "type": "string"
                       },
                       "description": "Secrets are integration-wide values available in the code via environment variables formatted with a SECRET_ prefix followed by your secret name. A secret name must respect SCREAMING_SNAKE casing."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the integration definition"
                     },
                     "ownerWorkspace": {
                       "type": "object",
@@ -10870,10 +11114,6 @@
                         "type": "string",
                         "description": "URL of the icon of the plugin. This is the icon that will be displayed in the UI"
                       },
-                      "readmeUrl": {
-                        "type": "string",
-                        "description": "URL of the readme of the plugin. This is the readme that will be displayed in the UI"
-                      },
                       "public": {
                         "type": "boolean",
                         "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
@@ -10906,7 +11146,6 @@
                       "title",
                       "description",
                       "iconUrl",
-                      "readmeUrl",
                       "public",
                       "visibility",
                       "lifecycleStatus"
@@ -11280,14 +11519,6 @@
                       "description": "Message object configuration",
                       "additionalProperties": false
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "title": {
                       "type": "string",
                       "minLength": 1,
@@ -11328,6 +11559,14 @@
                         "deprecated"
                       ],
                       "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the plugin definition"
                     }
                   },
                   "required": [
@@ -11710,14 +11949,6 @@
                       "description": "Message object configuration",
                       "additionalProperties": false
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "title": {
                       "type": "string",
                       "minLength": 1,
@@ -11758,6 +11989,14 @@
                         "deprecated"
                       ],
                       "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the plugin definition"
                     }
                   },
                   "required": [
@@ -12140,14 +12379,6 @@
                       "description": "Message object configuration",
                       "additionalProperties": false
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "title": {
                       "type": "string",
                       "minLength": 1,
@@ -12188,6 +12419,14 @@
                         "deprecated"
                       ],
                       "description": "The lifecycle status of the plugin. When a plugin is deprecated, it can no longer be installed."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the plugin definition"
                     }
                   },
                   "required": [
@@ -12561,14 +12800,6 @@
                       "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
                       "additionalProperties": false
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "title": {
                       "type": "string",
                       "minLength": 1,
@@ -12591,6 +12822,14 @@
                     "public": {
                       "type": "boolean",
                       "description": "Indicates if the interface is public. Public interfaces are available to all and cannot be updated without creating a new version."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the interface definition"
                     }
                   },
                   "required": [
@@ -12841,14 +13080,6 @@
                       "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
                       "additionalProperties": false
                     },
-                    "attributes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string",
-                        "maxLength": 200
-                      },
-                      "description": "Optional attributes"
-                    },
                     "title": {
                       "type": "string",
                       "minLength": 1,
@@ -12871,6 +13102,14 @@
                     "public": {
                       "type": "boolean",
                       "description": "Indicates if the interface is public. Public interfaces are available to all and cannot be updated without creating a new version."
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "Optional key-value attributes from the interface definition"
                     }
                   },
                   "required": [
@@ -13015,6 +13254,15 @@
                           "type": "string"
                         },
                         "description": "Tags of [Bot](#schema_bot)"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "studio",
+                          "adk",
+                          "desk"
+                        ],
+                        "description": "Type of the [Bot](#schema_bot)"
                       }
                     },
                     "required": [
@@ -13022,7 +13270,8 @@
                       "createdAt",
                       "updatedAt",
                       "name",
-                      "tags"
+                      "tags",
+                      "type"
                     ]
                   }
                 },
@@ -13168,7 +13417,7 @@
                       },
                       "endDateTimeUtc": {
                         "type": "string",
-                        "description": "ISO 8601 date string of the end (inclusive) of the period"
+                        "description": "ISO 8601 date string of the end (exclusive) of the period"
                       },
                       "returningUsers": {
                         "type": "integer"
@@ -13192,6 +13441,10 @@
                       "events": {
                         "type": "integer"
                       },
+                      "conversationsCreated": {
+                        "type": "integer",
+                        "description": "Number of conversations created during the period"
+                      },
                       "eventTypes": {
                         "type": "object",
                         "additionalProperties": {
@@ -13203,6 +13456,120 @@
                         "additionalProperties": {
                           "type": "number"
                         }
+                      },
+                      "workflows": {
+                        "type": "object",
+                        "properties": {
+                          "created": {
+                            "type": "integer"
+                          },
+                          "completed": {
+                            "type": "integer"
+                          },
+                          "failed": {
+                            "type": "integer"
+                          },
+                          "timedout": {
+                            "type": "integer"
+                          },
+                          "cancelled": {
+                            "type": "integer"
+                          },
+                          "duration": {
+                            "type": "object",
+                            "properties": {
+                              "count": {
+                                "type": "integer"
+                              },
+                              "sum": {
+                                "type": "number"
+                              },
+                              "mean": {
+                                "type": "number"
+                              },
+                              "min": {
+                                "type": "number"
+                              },
+                              "max": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "count",
+                              "sum",
+                              "mean",
+                              "min",
+                              "max"
+                            ]
+                          },
+                          "byName": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "object",
+                              "properties": {
+                                "created": {
+                                  "type": "integer"
+                                },
+                                "completed": {
+                                  "type": "integer"
+                                },
+                                "failed": {
+                                  "type": "integer"
+                                },
+                                "timedout": {
+                                  "type": "integer"
+                                },
+                                "cancelled": {
+                                  "type": "integer"
+                                },
+                                "duration": {
+                                  "type": "object",
+                                  "properties": {
+                                    "count": {
+                                      "type": "integer"
+                                    },
+                                    "sum": {
+                                      "type": "number"
+                                    },
+                                    "mean": {
+                                      "type": "number"
+                                    },
+                                    "min": {
+                                      "type": "number"
+                                    },
+                                    "max": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "required": [
+                                    "count",
+                                    "sum",
+                                    "mean",
+                                    "min",
+                                    "max"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "created",
+                                "completed",
+                                "failed",
+                                "timedout",
+                                "cancelled",
+                                "duration"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "created",
+                          "completed",
+                          "failed",
+                          "timedout",
+                          "cancelled",
+                          "duration",
+                          "byName"
+                        ]
                       },
                       "llm": {
                         "type": "object",
@@ -13317,8 +13684,10 @@
                       "userMessages",
                       "botMessages",
                       "events",
+                      "conversationsCreated",
                       "eventTypes",
                       "customEvents",
+                      "workflows",
                       "llm"
                     ]
                   }
@@ -14319,7 +14688,8 @@
                     "community",
                     "team",
                     "enterprise",
-                    "plus"
+                    "plus",
+                    "managed"
                   ]
                 },
                 "blocked": {
@@ -14480,7 +14850,8 @@
                     "community",
                     "team",
                     "enterprise",
-                    "plus"
+                    "plus",
+                    "managed"
                   ]
                 },
                 "blocked": {
@@ -14800,7 +15171,8 @@
                     "community",
                     "team",
                     "enterprise",
-                    "plus"
+                    "plus",
+                    "managed"
                   ]
                 },
                 "blocked": {
@@ -14937,7 +15309,8 @@
                           "community",
                           "team",
                           "enterprise",
-                          "plus"
+                          "plus",
+                          "managed"
                         ]
                       },
                       "blocked": {
@@ -15788,7 +16161,8 @@
                       "attributes": {
                         "type": "object",
                         "additionalProperties": {
-                          "type": "string"
+                          "type": "string",
+                          "maxLength": 200
                         },
                         "description": "Optional key-value attributes from the integration definition"
                       }
@@ -16299,10 +16673,6 @@
                         "type": "string",
                         "description": "URL of the icon of the plugin. This is the icon that will be displayed in the UI"
                       },
-                      "readmeUrl": {
-                        "type": "string",
-                        "description": "URL of the readme of the plugin. This is the readme that will be displayed in the UI"
-                      },
                       "public": {
                         "type": "boolean",
                         "description": "[DEPRECATED] Indicates if the plugin is public. Please use the \"visibility\" parameter instead.",
@@ -16335,7 +16705,6 @@
                       "title",
                       "description",
                       "iconUrl",
-                      "readmeUrl",
                       "public",
                       "visibility",
                       "lifecycleStatus"
@@ -16865,25 +17234,6 @@
                     "additionalProperties": false
                   }
                 },
-                "subscriptions": {
-                  "type": "object",
-                  "properties": {
-                    "events": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "object",
-                        "additionalProperties": false
-                      },
-                      "nullable": true,
-                      "description": "Events that the bot is currently subscribed on (ex: \"slack:reactionAdded\"). If null, the bot is subscribed to all events."
-                    }
-                  },
-                  "required": [
-                    "events"
-                  ],
-                  "description": "Subscriptions of the bot",
-                  "additionalProperties": false
-                },
                 "actions": {
                   "type": "object",
                   "additionalProperties": {
@@ -17051,6 +17401,123 @@
                   },
                   "description": "Optional attributes of the [Bot](#schema_bot)"
                 },
+                "maxExecutionTime": {
+                  "type": "integer",
+                  "description": "Maximum execution time (in seconds)."
+                },
+                "subscriptions": {
+                  "type": "object",
+                  "properties": {
+                    "integrations": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "events": {
+                            "type": "object",
+                            "properties": {
+                              "include": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "exclude": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                            "nullable": true,
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "events"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Subscriptions for events coming from specific integrations. Keyed by integration alias."
+                    },
+                    "plugins": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "events": {
+                            "type": "object",
+                            "properties": {
+                              "include": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "exclude": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                            "nullable": true,
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "events"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Subscriptions for events coming from specific plugins. Keyed by plugin alias."
+                    },
+                    "bot": {
+                      "type": "object",
+                      "properties": {
+                        "events": {
+                          "type": "object",
+                          "properties": {
+                            "include": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "exclude": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                          "nullable": true,
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "events"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "events": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "nullable": true,
+                        "additionalProperties": false
+                      },
+                      "nullable": true,
+                      "deprecated": true,
+                      "description": "[DEPRECATED] Use `integrations`, `plugins`, and `bot` instead. Mapped onto the new per-source fields incrementally (each entry adds or removes its own event type). Cannot be combined with the new fields in the same request. If null, the bot is subscribed to all events."
+                    }
+                  },
+                  "description": "Subscriptions of the bot",
+                  "additionalProperties": false
+                },
                 "code": {
                   "type": "string",
                   "description": "JavaScript code of the bot"
@@ -17099,6 +17566,13 @@
                 "dev": {
                   "type": "boolean",
                   "description": "Indicates if the [Bot](#schema_bot) is a development bot; Development bots run locally and can install dev integrations"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "studio",
+                    "adk"
+                  ]
                 }
               },
               "title": "createBotBody",
@@ -17143,24 +17617,25 @@
                   },
                   "additionalProperties": false
                 },
-                "tags": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 500
-                  },
-                  "description": "Optional attributes of the [Bot](#schema_bot)"
-                },
-                "blocked": {
-                  "type": "boolean"
-                },
                 "maxExecutionTime": {
                   "type": "integer",
                   "description": "Maximum execution time (in seconds)."
                 },
+                "blocked": {
+                  "type": "boolean"
+                },
                 "alwaysAlive": {
                   "type": "boolean",
                   "description": "Indicates if the [Bot](#schema_bot) should be in always alive mode"
+                },
+                "tags": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "nullable": true
+                  },
+                  "description": "Optional attributes of the [Bot](#schema_bot). Set to null or empty string to remove."
                 },
                 "user": {
                   "type": "object",
@@ -17518,6 +17993,101 @@
                 "subscriptions": {
                   "type": "object",
                   "properties": {
+                    "integrations": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "events": {
+                            "type": "object",
+                            "properties": {
+                              "include": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "exclude": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                            "nullable": true,
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "events"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Subscriptions for events coming from specific integrations. Keyed by integration alias."
+                    },
+                    "plugins": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "events": {
+                            "type": "object",
+                            "properties": {
+                              "include": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "exclude": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                            "nullable": true,
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "events"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Subscriptions for events coming from specific plugins. Keyed by plugin alias."
+                    },
+                    "bot": {
+                      "type": "object",
+                      "properties": {
+                        "events": {
+                          "type": "object",
+                          "properties": {
+                            "include": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "exclude": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "description": "Event filter for a source. Provide exactly one of `include` (deliver only the listed event types) or `exclude` (deliver all but the listed types); they are mutually exclusive, and providing both or neither is rejected. Set the entire `events` record to `null` to remove all filters for this source.",
+                          "nullable": true,
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "events"
+                      ],
+                      "additionalProperties": false
+                    },
                     "events": {
                       "type": "object",
                       "additionalProperties": {
@@ -17525,12 +18095,12 @@
                         "nullable": true,
                         "additionalProperties": false
                       },
-                      "nullable": true
+                      "nullable": true,
+                      "deprecated": true,
+                      "description": "[DEPRECATED] Use `integrations`, `plugins`, and `bot` instead. Mapped onto the new per-source fields incrementally (each entry adds or removes its own event type). Cannot be combined with the new fields in the same request. If null, the bot is subscribed to all events."
                     }
                   },
-                  "required": [
-                    "events"
-                  ],
+                  "description": "Subscriptions of the bot",
                   "additionalProperties": false
                 },
                 "code": {
@@ -17581,9 +18151,12 @@
                     "type": "string"
                   }
                 },
-                "shouldMergePlugins": {
-                  "type": "boolean",
-                  "description": "UNUSED. Please ignore this field. It will be removed in the near future."
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "studio",
+                    "adk"
+                  ]
                 }
               },
               "title": "updateBotBody",
@@ -17796,6 +18369,12 @@
               "properties": {
                 "name": {
                   "type": "string"
+                },
+                "billingVersion": {
+                  "type": "string",
+                  "enum": [
+                    "v4"
+                  ]
                 }
               },
               "required": [
@@ -17918,6 +18497,9 @@
                     "administrator",
                     "owner"
                   ]
+                },
+                "sendEmail": {
+                  "type": "boolean"
                 }
               },
               "required": [
@@ -18222,14 +18804,6 @@
                     "additionalProperties": false
                   }
                 },
-                "attributes": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 200
-                  },
-                  "description": "Optional attributes"
-                },
                 "identifier": {
                   "type": "object",
                   "properties": {
@@ -18566,6 +19140,14 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "Optional key-value attributes from the integration definition"
                 }
               },
               "required": [
@@ -18822,14 +19404,6 @@
                     "additionalProperties": false
                   }
                 },
-                "attributes": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 200
-                  },
-                  "description": "Optional attributes"
-                },
                 "identifier": {
                   "type": "object",
                   "properties": {
@@ -19166,6 +19740,14 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "Optional key-value attributes from the integration definition"
                 }
               },
               "required": [
@@ -19273,9 +19855,10 @@
                     "required": [
                       "enabled"
                     ],
+                    "nullable": true,
                     "additionalProperties": false
                   },
-                  "description": "**EXPERIMENTAL** Extra integration operations that should be sent or not to the integration instances. The key is the operation name."
+                  "description": "**EXPERIMENTAL** extra integration operations enabled for this integration. Keys map to operation names. A value of `null` or `{ enabled: false }` removes the operation; `{ enabled: true }` enables it. Operations that are not provided are left unchanged."
                 },
                 "sdkVersion": {
                   "type": "string",
@@ -19712,7 +20295,7 @@
                     "maxLength": 200,
                     "nullable": true
                   },
-                  "description": "Optional attributes. Set attributes to null to remove them"
+                  "description": "Optional key-value attributes. Set attributes to null to remove them"
                 },
                 "secrets": {
                   "type": "object",
@@ -19885,9 +20468,10 @@
                     "required": [
                       "enabled"
                     ],
+                    "nullable": true,
                     "additionalProperties": false
                   },
-                  "description": "**EXPERIMENTAL** Extra integration operations that should be sent or not to the integration instances. The key is the operation name."
+                  "description": "**EXPERIMENTAL** extra integration operations enabled for this integration. Keys map to operation names. A value of `null` or `{ enabled: false }` removes the operation; `{ enabled: true }` enables it. Operations that are not provided are left unchanged."
                 },
                 "sdkVersion": {
                   "type": "string",
@@ -20324,7 +20908,7 @@
                     "maxLength": 200,
                     "nullable": true
                   },
-                  "description": "Optional attributes. Set attributes to null to remove them"
+                  "description": "Optional key-value attributes. Set attributes to null to remove them"
                 },
                 "secrets": {
                   "type": "object",
@@ -20611,14 +21195,6 @@
                   "description": "Template string optionaly used at build time by integrations implementing this interface to pick a name for actions and events.",
                   "additionalProperties": false
                 },
-                "attributes": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 200
-                  },
-                  "description": "Optional attributes"
-                },
                 "sdkVersion": {
                   "type": "string",
                   "maxLength": 200
@@ -20645,6 +21221,14 @@
                 "public": {
                   "type": "boolean",
                   "description": "Indicates if the interface is public. Public interfaces are available to all and cannot be updated without creating a new version."
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "Optional key-value attributes from the interface definition"
                 }
               },
               "required": [
@@ -20851,15 +21435,6 @@
                   "nullable": true,
                   "additionalProperties": false
                 },
-                "attributes": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 200,
-                    "nullable": true
-                  },
-                  "description": "Optional attributes. Set attributes to null to remove them"
-                },
                 "sdkVersion": {
                   "type": "string",
                   "maxLength": 200
@@ -20886,6 +21461,15 @@
                 "public": {
                   "type": "boolean",
                   "description": "Indicates if the interface is public. Public interfaces are available to all and cannot be updated without creating a new version."
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "description": "Optional key-value attributes. Set attributes to null to remove them"
                 }
               },
               "title": "updateInterfaceBody",
@@ -21157,14 +21741,6 @@
                   "description": "Message object configuration",
                   "additionalProperties": false
                 },
-                "attributes": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 200
-                  },
-                  "description": "Optional attributes"
-                },
                 "sdkVersion": {
                   "type": "string",
                   "maxLength": 200
@@ -21269,6 +21845,14 @@
                     }
                   },
                   "additionalProperties": false
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "Optional key-value attributes from the plugin definition"
                 }
               },
               "required": [
@@ -21539,15 +22123,6 @@
                   ],
                   "additionalProperties": false
                 },
-                "attributes": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "maxLength": 200,
-                    "nullable": true
-                  },
-                  "description": "Optional attributes. Set attributes to null to remove them"
-                },
                 "sdkVersion": {
                   "type": "string",
                   "maxLength": 200
@@ -21650,6 +22225,15 @@
                     }
                   },
                   "additionalProperties": false
+                },
+                "attributes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "description": "Optional key-value attributes. Set attributes to null to remove them"
                 }
               },
               "title": "updatePluginBody",
