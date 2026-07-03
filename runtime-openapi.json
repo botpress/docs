@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Runtime API",
     "description": "API for Botpress Runtime",
-    "version": "1.82.0"
+    "version": "1.112.0"
   },
   "paths": {
     "/v1/chat/conversations": {
@@ -16,6 +16,15 @@
         "operationId": "createConversation",
         "description": "Creates a new [Conversation](#schema_conversation). When creating a new [Conversation](#schema_conversation), the required tags must be provided. See the specific integration for more details.",
         "parameters": [
+          {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "x-bot-id",
             "in": "header",
@@ -38,6 +47,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -74,6 +92,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -155,6 +181,31 @@
             }
           },
           {
+            "name": "minMessageCount",
+            "in": "query",
+            "description": "Filter conversations with a message count greater than or equal to this value (inclusive)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxMessageCount",
+            "in": "query",
+            "description": "Filter conversations with a message count less than or equal to this value (inclusive)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -176,6 +227,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -215,6 +275,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -236,6 +305,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -273,6 +351,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -294,6 +381,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -334,6 +430,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -355,6 +460,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -385,6 +499,15 @@
         "description": "Retrieves the [Conversation](#schema_conversation) object containing given tags. If the conversation does not exist, it will be created. Tags will be updated if they are set in the request body.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -406,6 +529,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -447,9 +579,26 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "id",
             "in": "path",
             "description": "Conversation id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
             "required": true,
             "schema": {
               "type": "string"
@@ -477,6 +626,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -514,6 +672,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -535,6 +702,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -586,6 +762,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -607,6 +792,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -653,6 +847,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -674,6 +877,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -704,6 +916,15 @@
         "description": "Creates a new [Event](#schema_event). When creating a new [Event](#schema_event), the required tags must be provided. See the specific integration for more details.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -725,6 +946,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -761,6 +991,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -819,6 +1057,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -840,6 +1087,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -879,6 +1135,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -900,6 +1165,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -939,6 +1213,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -960,6 +1243,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -990,6 +1282,15 @@
         "description": "Creates a new [Message](#schema_message). When creating a new [Message](#schema_message), the required tags must be provided. See the specific integration for more details.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1011,6 +1312,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1050,6 +1360,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "conversationId",
             "in": "query",
             "description": "Conversation id",
@@ -1085,6 +1403,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1106,6 +1433,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1136,6 +1472,15 @@
         "description": "Retrieves the [Message](#schema_message) object for given discriminating tags. If the message does not exist, it will be created. If the message already exists, its tags and payload will be updated with the provided values if they are defined.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1157,6 +1502,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1199,6 +1553,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1220,6 +1583,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1257,6 +1629,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1278,6 +1659,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1318,6 +1708,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1339,6 +1738,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1369,6 +1777,15 @@
         "description": "Initializes a user, conversation and sends a message to the conversation.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1390,6 +1807,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1425,6 +1851,15 @@
         "description": "Imports messages if no matching messages already exist. On partial failure, returns an [Error](#errors) with both `resolvedMessages` and `failedMessages` arrays.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1446,6 +1881,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1481,6 +1925,15 @@
         "description": "Creates a new [User](#schema_user). When creating a new [User](#schema_user), the required tags must be provided. See the specific integration for more details.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1502,6 +1955,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1538,6 +2000,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -1612,6 +2082,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1633,6 +2112,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1672,6 +2160,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1693,6 +2190,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1730,6 +2236,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1751,6 +2266,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1791,6 +2315,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1812,6 +2345,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1842,6 +2384,15 @@
         "description": "Retrieves the [User](#schema_user) object for given discriminating tags. If the user does not exist, it will be created. If the user already exists, its name, pictureUrl, attributes, and tags will be updated with the provided values.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1863,6 +2414,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1930,6 +2490,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1951,6 +2520,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -1981,7 +2559,7 @@
     "/v1/chat/states/{type}/{id}/{name}": {
       "get": {
         "operationId": "getState",
-        "description": "Retrieves the [State](#schema_state) object for a valid identifiers.",
+        "description": "Retrieves the [State](#schema_state) object for a valid identifier.",
         "parameters": [
           {
             "name": "type",
@@ -2018,6 +2596,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2039,6 +2626,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2101,6 +2697,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2122,6 +2727,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2187,6 +2801,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2208,6 +2831,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2275,6 +2907,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2296,6 +2937,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2329,6 +2979,15 @@
         "description": "Call an action",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2350,6 +3009,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2383,6 +3051,15 @@
         "description": "An integration can call this endpoint to configure itself",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2404,6 +3081,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2437,6 +3123,15 @@
         "description": "Creates a new [Workflow](#schema_workflow).",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2458,6 +3153,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2495,6 +3199,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -2562,6 +3274,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2583,6 +3304,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2623,6 +3353,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2644,6 +3383,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2682,6 +3430,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2703,6 +3460,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2744,6 +3510,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2765,6 +3540,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2793,8 +3577,17 @@
     "/v1/chat/workflows/get-or-create": {
       "post": {
         "operationId": "getOrCreateWorkflow",
-        "description": "Get a workflow by tags or creates a new [Workflow](#schema_workflow) if it doesn't exists.",
+        "description": "Get a workflow by tags, or creates a new [Workflow](#schema_workflow) if it doesn't exist. If the workflow already exists, its tags, timeoutAt, and userId will be updated with the provided values, unless the workflow is in a finished state.",
         "parameters": [
+          {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "x-bot-id",
             "in": "header",
@@ -2817,6 +3610,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2848,7 +3650,7 @@
     "/v1/chat/tags/{key}/values": {
       "get": {
         "operationId": "listTagValues",
-        "description": "Get a bot tag values",
+        "description": "[REMOVED] This endpoint is no longer functional and will return HTTP 410 Gone. Do not use.",
         "parameters": [
           {
             "name": "nextToken",
@@ -2856,6 +3658,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -2882,6 +3692,15 @@
             }
           },
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -2903,6 +3722,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2920,11 +3748,13 @@
         "tags": [
           "Endpoints"
         ],
+        "deprecated": true,
         "x-mint": {
           "metadata": {
             "title": "listTagValues"
           }
-        }
+        },
+        "x-hidden": true
       }
     },
     "/v1/chat/analytics": {
@@ -2932,6 +3762,15 @@
         "operationId": "trackAnalytics",
         "description": "Add an event to the analytics",
         "parameters": [
+          {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "x-bot-id",
             "in": "header",
@@ -2954,6 +3793,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -2988,6 +3836,15 @@
         "description": "Capture a bot runtime observation. Does not support integration observations yet.",
         "parameters": [
           {
+            "name": "x-bp-authenticated-principal",
+            "in": "header",
+            "description": "Authenticated principal. Injected by the authentication middleware.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -3009,6 +3866,15 @@
             "name": "x-integration-alias",
             "in": "header",
             "description": "Integration alias",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-real-ip",
+            "in": "header",
+            "description": "Caller's IP address. Injected by the edge proxy.",
             "required": false,
             "schema": {
               "type": "string"
@@ -3118,12 +3984,6 @@
             "deprecated": true,
             "description": "Unused. This field will be removed in the future."
           },
-          "currentWorkflowId": {
-            "type": "string",
-            "minLength": 28,
-            "maxLength": 36,
-            "description": "Id of the current [Workflow](#schema_workflow)"
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -3152,6 +4012,14 @@
           "messageCount": {
             "type": "number",
             "description": "Number of messages in the conversation"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
           }
         },
         "required": [
@@ -3372,6 +4240,16 @@
             "type": "object",
             "additionalProperties": true,
             "description": "Payload is the content of the state defined by your bot."
+          },
+          "expiry": {
+            "type": "number",
+            "minimum": 1,
+            "description": "Expiry of the state in milliseconds. The state will expire if it is idle for the configured value. Absent if no expiry is set."
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Expiration date of the ${ref.state} in ISO 8601 format. Absent if no expiry is set."
           }
         },
         "required": [
@@ -4151,7 +5029,7 @@
         }
       },
       "getStateResponse": {
-        "description": "Returns the [State](#schema_state) object if a valid identifiers were provided. Returns [an error](#errors) otherwise",
+        "description": "Returns the [State](#schema_state) object if a valid identifier was provided. Returns [an error](#errors) otherwise",
         "content": {
           "application/json": {
             "schema": {
@@ -4410,7 +5288,7 @@
         }
       },
       "getOrCreateWorkflowResponse": {
-        "description": "Returns a [Workflow](#schema_workflow) object if creation succeeds. Returns an [Error](#errors) otherwise",
+        "description": "Returns a new or updated [Workflow](#schema_workflow) object if the operation succeeds. Returns an [Error](#errors) otherwise",
         "content": {
           "application/json": {
             "schema": {
@@ -4418,10 +5296,23 @@
               "properties": {
                 "workflow": {
                   "$ref": "#/components/schemas/Workflow"
+                },
+                "meta": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "created"
+                  ],
+                  "additionalProperties": false
                 }
               },
               "required": [
-                "workflow"
+                "workflow",
+                "meta"
               ],
               "title": "getOrCreateWorkflowResponse",
               "additionalProperties": false
@@ -4430,7 +5321,7 @@
         }
       },
       "listTagValuesResponse": {
-        "description": "Empty response",
+        "description": "This endpoint always returns HTTP 410 Gone.",
         "content": {
           "application/json": {
             "schema": {
@@ -4522,6 +5413,14 @@
                   "maxLength": 200,
                   "description": "[DEPRECATED] To create a conversation from within a bot, call an action of the integration instead.",
                   "deprecated": true
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
                 }
               },
               "required": [
@@ -4550,15 +5449,25 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 500
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Tags for the [Conversation](#schema_conversation)"
+                  "description": "Tags for the [Conversation](#schema_conversation). Set to null or empty string to remove."
                 },
                 "integrationName": {
                   "type": "string",
                   "maxLength": 200,
                   "description": "[DEPRECATED] To create a conversation from within a bot, call an action of the integration instead.",
                   "deprecated": true
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "description": "**EXPERIMENTAL** - Optional shared properties. Set individual properties to null or empty string to remove them."
                 },
                 "discriminateByTags": {
                   "type": "array",
@@ -4594,9 +5503,20 @@
                 "tags": {
                   "type": "object",
                   "additionalProperties": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Tags for the [Conversation](#schema_conversation)"
+                  "description": "Tags for the [Conversation](#schema_conversation). Set to null or empty string to remove."
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations. Set individual properties to null to remove them."
                 }
               },
               "title": "updateConversationBody",
@@ -4804,9 +5724,10 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 500
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Message](#schema_message). The set of [Tags](/docs/developers/concepts/tags) available on a [Message](#schema_message) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
+                  "description": "Tags for the message. Set to null or empty string to remove."
                 },
                 "schedule": {
                   "type": "object",
@@ -4862,9 +5783,11 @@
                 "tags": {
                   "type": "object",
                   "additionalProperties": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Conversation](#schema_conversation). The set of [Tags](/docs/developers/concepts/tags) available on a [Conversation](#schema_conversation) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Individual keys can be unset by posting an empty value to them."
+                  "description": "Set of [Tags](/docs/developers/concepts/tags) that you can attach to a [Message](#schema_message). The set of [Tags](/docs/developers/concepts/tags) available on a [Message](#schema_message) is restricted by the list of [Tags](/docs/developers/concepts/tags) defined previously by the [Bot](#schema_bot). Set to null or empty string to remove."
                 },
                 "payload": {
                   "type": "object",
@@ -4872,9 +5795,6 @@
                   "description": "Payload is the content type of the message. Accepted payload options: Text, Image, Choice, Dropdown, Card, Carousel, File, Audio, Video, Location"
                 }
               },
-              "required": [
-                "tags"
-              ],
               "title": "updateMessageBody",
               "additionalProperties": false
             }
@@ -4924,7 +5844,7 @@
                         "type": "string",
                         "maxLength": 200
                       },
-                      "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
+                      "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
                     },
                     "attributes": {
                       "type": "object",
@@ -4974,6 +5894,14 @@
                       "maxLength": 200,
                       "description": "[DEPRECATED] To create a conversation from within a bot, call an action of the integration instead.",
                       "deprecated": true
+                    },
+                    "properties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
                     },
                     "discriminateByTags": {
                       "type": "array",
@@ -5159,7 +6087,7 @@
                     "type": "string",
                     "maxLength": 200
                   },
-                  "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
+                  "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
                 },
                 "attributes": {
                   "type": "object",
@@ -5191,9 +6119,10 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 500
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Tags for the [User](#schema_user)"
+                  "description": "Tags for the user. Set to null or empty string to remove."
                 },
                 "integrationName": {
                   "type": "string",
@@ -5215,18 +6144,20 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 200
+                    "maxLength": 200,
+                    "nullable": true
                   },
-                  "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations."
+                  "description": "**EXPERIMENTAL** - Optional shared properties. Set individual properties to null or empty string to remove them."
                 },
                 "attributes": {
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 200
+                    "maxLength": 200,
+                    "nullable": true
                   },
-                  "description": "DEPRECATED - Use properties instead.",
-                  "deprecated": true
+                  "deprecated": true,
+                  "description": "DEPRECATED - Use properties instead."
                 },
                 "discriminateByTags": {
                   "type": "array",
@@ -5257,9 +6188,10 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 500
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Tags for the [User](#schema_user)"
+                  "description": "Tags for the [User](#schema_user). Set to null or empty string to remove."
                 },
                 "name": {
                   "type": "string",
@@ -5290,7 +6222,7 @@
                     "maxLength": 200,
                     "nullable": true
                   },
-                  "description": "EXPERIMENTAL - Optional shared properties that can be accessed and modified by both the bot and any of its integrations. Set individual properties to null to remove them."
+                  "description": "**EXPERIMENTAL** - Optional shared properties that can be accessed and modified by both the bot and any of its integrations. Set individual properties to null to remove them."
                 }
               },
               "title": "updateUserBody",
@@ -5393,6 +6325,13 @@
                   "type": "object",
                   "additionalProperties": true,
                   "description": "Payload is the content of the state defined by your bot."
+                },
+                "expiry": {
+                  "type": "number",
+                  "minimum": 1,
+                  "maximum": 2592000000,
+                  "nullable": true,
+                  "description": "Expiry of the [State](#schema_state) in milliseconds. The state will expire if it is idle for the configured value. By default, a state doesn't expire."
                 }
               },
               "required": [
@@ -5573,9 +6512,10 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "string",
-                    "maxLength": 500
+                    "maxLength": 500,
+                    "nullable": true
                   },
-                  "description": "Tags for the [Workflow](#schema_workflow)"
+                  "description": "Tags for the [Workflow](#schema_workflow). Set to null or empty string to remove."
                 },
                 "userId": {
                   "type": "string",

@@ -8,7 +8,7 @@
   "info": {
     "title": "Botpress Files API",
     "description": "API for Botpress Files",
-    "version": "1.82.0"
+    "version": "1.112.0"
   },
   "paths": {
     "/v1/files": {
@@ -101,6 +101,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -743,6 +751,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "id",
             "in": "path",
             "description": "File ID or Key",
@@ -935,6 +951,14 @@
             }
           },
           {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
             "name": "x-bot-id",
             "in": "header",
             "description": "Bot id",
@@ -1018,6 +1042,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -1193,6 +1225,14 @@
             "description": "Provide the `meta.nextToken` value provided in the last API response to retrieve the next page of results",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items to return per page (default 20, max 100)",
+            "schema": {
+              "type": "integer"
             }
           },
           {
@@ -2781,6 +2821,11 @@
                       "type": "string",
                       "description": "Name of the knowledge base."
                     },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 1000,
+                      "description": "Description of the knowledge base."
+                    },
                     "tags": {
                       "type": "object",
                       "additionalProperties": {
@@ -2835,6 +2880,11 @@
                       "type": "string",
                       "description": "Name of the knowledge base."
                     },
+                    "description": {
+                      "type": "string",
+                      "maxLength": 1000,
+                      "description": "Description of the knowledge base."
+                    },
                     "tags": {
                       "type": "object",
                       "additionalProperties": {
@@ -2878,6 +2928,11 @@
                       "name": {
                         "type": "string",
                         "description": "Name of the knowledge base."
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 1000,
+                        "description": "Description of the knowledge base."
                       },
                       "createdAt": {
                         "type": "string",
@@ -3229,6 +3284,11 @@
                   "type": "string",
                   "description": "Name of the knowledge base."
                 },
+                "description": {
+                  "type": "string",
+                  "maxLength": 1000,
+                  "description": "Description of the knowledge base."
+                },
                 "tags": {
                   "type": "object",
                   "additionalProperties": {
@@ -3255,6 +3315,12 @@
                 "name": {
                   "type": "string",
                   "description": "New name of the knowledge base."
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 1000,
+                  "description": "Description of the knowledge base. Omit to keep the existing description; set to `null` to clear it.",
+                  "nullable": true
                 },
                 "tags": {
                   "type": "object",
