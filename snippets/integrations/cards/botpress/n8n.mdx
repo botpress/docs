@@ -1,0 +1,182 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Get Workflow
+
+<span>{"Retrieves a single workflow from n8n by ID."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="workflowId"
+    type="string"
+    required
+  >
+    <span>{"The workflow ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="excludePinnedData"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Exclude pinned data from the response"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="workflow"
+    type="string"
+  >
+    <span>{"The full workflow object returned by n8n"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Workflows
+
+<span>{"Retrieves workflows from n8n."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="active"
+    type="boolean"
+  >
+    <span>{"Filter by workflow active state"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Filter by workflow name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="string"
+  >
+    <span>{"Comma-separated tag filter"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectId"
+    type="string"
+  >
+    <span>{"Filter by project ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="excludePinnedData"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Exclude pinned data from the response"}</span>
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="integer"
+  >
+    <span>{"Maximum number of workflows to return (1-250)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cursor"
+    type="string"
+  >
+    <span>{"Pagination cursor from a previous request"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="data"
+    type="array"
+    required
+  >
+    <span>{"List of workflows returned by n8n"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextCursor"
+    type="string"
+  >
+    <span>{"Cursor for fetching the next page of results"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Trigger Workflow
+
+<span>{"Resolves an n8n workflow webhook and posts data to it."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="workflowIdOrName"
+    type="string"
+    required
+  >
+    <span>{"The workflow ID or name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The current Botpress conversation ID — use {{event.conversationId}}"}</span>
+  </ResponseField>
+  <ResponseField
+    name="payload"
+    type="object"
+    default={{}}
+  >
+    <span>{"The JSON payload to send to the workflow"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="workflowId"
+    type="string"
+  >
+    <span>{"The ID of the triggered workflow"}</span>
+  </ResponseField>
+  <ResponseField
+    name="workflowName"
+    type="string"
+  >
+    <span>{"The name of the triggered workflow"}</span>
+  </ResponseField>
+  <ResponseField
+    name="response"
+    type="string"
+  >
+    <span>{"The response body returned by the n8n webhook"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
