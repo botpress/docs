@@ -5,7 +5,7 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
 
 ### Find Target
 
-<span>{"Find a target in a repository"}</span>
+<span>{"List open pull requests or issues in a repository (optionally filtered by a title search)."}</span>
 
   <ResponseField
     name="input"
@@ -15,9 +15,8 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
   <ResponseField
     name="query"
     type="string"
-    required
   >
-    <span>{"The query used to find the target"}</span>
+    <span>{"Optional fuzzy filter applied to the \"<number> - <title>\" of each open PR/issue. Leave empty to return all open items. This is NOT GitHub search syntax — qualifiers like \"is:open\", \"author:x\", or \"state:open\" will match nothing."}</span>
   </ResponseField>
   <ResponseField
     name="channel"
@@ -33,7 +32,7 @@ Available options: `pullRequest`, `issue`
     type="string"
     required
   >
-    <span>{"The repository name"}</span>
+    <span>{"The repository name, optionally including the owner as \"owner/repo\" (e.g. \"botpress/botpress\"). If the owner is omitted, the owner of the connected installation is used. The repository must belong to the account the GitHub App is installed on."}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
