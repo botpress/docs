@@ -1,0 +1,92 @@
+---
+title: Call a pay-per-call (x402) API
+description: Handle HTTP 402 Payment Required in a workflow to call pay-per-call APIs.
+---
+
+Some APIs sell access **per call** instead of (or alongside) a subscription or API key. The caller has no account on the seller's platform; the endpoint answers an unpaid call with HTTP `402 Payment Required` and a small JSON body that states what the call costs and where to pay. The caller reads the price, sends the payment, and retries the original request. No signup, no API key rotation, no billing account.
+
+This pattern is `x402` (the working group's name for it), and it is documented by sellers and wallets, for example [OpenSea's x402 guide](https://docs.opensea.io/docs/x402) and [MetaMask's fallback explainer](https://www.metamask.io/news/what-is-x402).
+
+## A minimal pay-per-call workflow
+
+Use a [workflow](/adk/workflows/create) with [steps](/adk/workflows/steps) so the purchase is persisted and retried. The handler below calls an endpoint once to learn the price, completes the payment outside the provider, then calls again with a proof of payment.
+
+```typescript
+import { Workflow, z } from "@botpress/runtime"
+
+export default new Workflow({
+  name: "paidLookup",
+  description: "Call a pay-per-call API that answers HTTP 402 without payment",
+  input: z.object({
+    docId: z.string(),
+  }),
+  output: z.object({ content: z.string() }),
+  handler: async ({ input, step }) => {
+    const url = `https://provider.example.com/docs/${input.docId}`
+
+    const first = await step("call-unpaid", async () => {
+      const res = await fetch(url)
+      if (res.status === 402) {
+        const body = await res.json()
+        // body.accepts[] lists what the seller accepts: scheme, network, target, amount
+        return { status: 402, charge: body.accepts[0] }
+      }
+      return { status: res.status, content: await res.text() }
+    })
+
+    if (first.status === 402) {
+      const charge = first.charge!
+
+      // Send 'charge' (network, target, amount) with your own wallet and get
+      // back a proof the seller accepts on the retry. This step is external
+      // to Botpress — swap in your own payment module.
+      const proof = await step("pay", async () => {
+        return await sendPayment(charge)
+      })
+
+      const paid = await step("call-paid", async () => {
+        const res = await fetch(url, {
+          headers: { Authorization: `Bearer ${proof}` },
+        })
+        return { status: res.status, content: await res.text() }
+      })
+
+      if (paid.status !== 200) {
+        throw new Error(`Paid request failed with status ${paid.status}`)
+      }
+      return { content: paid.content }
+    }
+
+    return { content: first.content! }
+  },
+})
+```
+
+Steps persist their result between retries, so a payment is never sent twice for the same `docId`: if the workflow is interrupted after `pay`, resuming reuses the completed `pay` step instead of paying again.
+
+## What the payment body contains
+
+A `402` response from a pay-per-call endpoint looks like this:
+
+```json
+{
+  "reason": "Payment required",
+  "accepts": [
+    {
+      "scheme": "https",
+      "network": "optimism",
+      "asset": "0x...",
+      "amount": "1",
+      "decimals": 6,
+      "target": "0x...",
+      "callback": "https://provider.example.com/callback/1"
+    }
+  ]
+}
+```
+
+The `accepts` array lists the payment methods the seller accepts. Pick one, pay the listed `target` for `amount`, then retry the request. The `callback` field lets the seller verify the payment server-to-server rather than trusting the caller.
+
+<Tip>
+  Workflows that purchase access are a good fit for [deduplication](/adk/workflows/create#deduplication): `getOrCreate()` with a key derived from the request keeps repeated triggers from paying for the same call twice.
+</Tip>
