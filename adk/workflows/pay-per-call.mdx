@@ -22,7 +22,7 @@ export default new Workflow({
   }),
   output: z.object({ content: z.string() }),
   handler: async ({ input, step }) => {
-    const url = `https://provider.example.com/docs/${input.docId}`
+    const url = `https://provider.example.com/docs/${encodeURIComponent(input.docId)}`
 
     const first = await step("call-unpaid", async () => {
       const res = await fetch(url)
@@ -30,6 +30,9 @@ export default new Workflow({
         const body = await res.json()
         // body.accepts[] lists what the seller accepts: scheme, network, target, amount
         return { status: 402, charge: body.accepts[0] }
+      }
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`)
       }
       return { status: res.status, content: await res.text() }
     })
@@ -48,12 +51,12 @@ export default new Workflow({
         const res = await fetch(url, {
           headers: { Authorization: `Bearer ${proof}` },
         })
+        if (!res.ok) {
+          throw new Error(`Paid request failed with status ${res.status}`)
+        }
         return { status: res.status, content: await res.text() }
       })
 
-      if (paid.status !== 200) {
-        throw new Error(`Paid request failed with status ${paid.status}`)
-      }
       return { content: paid.content }
     }
 
@@ -62,7 +65,7 @@ export default new Workflow({
 })
 ```
 
-Steps persist their result between retries, so a payment is never sent twice for the same `docId`: if the workflow is interrupted after `pay`, resuming reuses the completed `pay` step instead of paying again.
+Steps persist their result between retries, so within one workflow instance a payment is never sent twice for the same `docId`: if the workflow is interrupted after `pay`, resuming reuses the completed `pay` step instead of paying again. A separate trigger creates a fresh instance and runs `sendPayment` again, so cross-trigger deduplication is explicit — see the tip below.
 
 ## What the payment body contains
 
