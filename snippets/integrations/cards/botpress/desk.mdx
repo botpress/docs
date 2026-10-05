@@ -3564,60 +3564,6 @@ Available options: `triage`, `open`, `waiting`, `closed`
     </Expandable>
   </ResponseField>
 
-### Request Approval
-
-<span>{"Submit a tool action for agent review and approval before execution"}</span>
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="ticketId"
-    type="string"
-    required
-  >
-    <span>{"The ID of the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="toolName"
-    type="string"
-    required
-  >
-    <span>{"The name of the tool being requested for approval"}</span>
-  </ResponseField>
-  <ResponseField
-    name="toolInput"
-    type="object"
-    required
-  >
-    <span>{"The input parameters for the tool"}</span>
-  </ResponseField>
-  <ResponseField
-    name="reasoning"
-    type="string"
-  >
-    <span>{"Optional explanation of why this action is being requested"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="approvalId"
-    type="string"
-    required
-  >
-    <span>{"The unique ID of the approval request"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
 ### Set Customer Attributes
 
 <span>{"Set custom attributes on a customer"}</span>

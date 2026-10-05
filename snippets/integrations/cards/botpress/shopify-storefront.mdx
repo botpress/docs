@@ -1,0 +1,1976 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Add Cart Lines
+
+<span>{"Add line items to an existing cart via the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lines"
+    type="array"
+    required
+  >
+    <span>{"Line items to add to the cart"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="merchandiseId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity to add"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cart"
+    type="object"
+    required
+  >
+    <span>{"The updated cart"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="checkoutUrl"
+    type="string"
+    required
+  >
+    <span>{"Final checkout URL returned by Shopify, in the form\n      \"https://{shop}.myshopify.com/checkouts/cn/{token}\". Use this value\n      verbatim when linking the buyer to checkout - do not modify it, shorten\n      it, replace it, or construct your own URL from the shop domain. When\n      rendering an affordance, it must be a link (not a button) targeting\n      exactly this string."}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalQuantity"
+    type="number"
+    required
+  >
+    <span>{"Total number of items in the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated total cost"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="subtotalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated subtotal before taxes and shipping"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lines"
+    type="array"
+    required
+  >
+    <span>{"The cart line items"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="lineId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the cart line"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity of this line item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="merchandiseId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The product title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variantTitle"
+    type="string"
+  >
+    <span>{"The variant title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The unit price of the line item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="discountCodes"
+    type="array"
+  >
+    <span>{"Applied discount codes"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    <span>{"The discount code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="applicable"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the discount code is currently applicable"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Apply Cart Discount
+
+<span>{"Apply or update discount codes on a cart via the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="discountCodes"
+    type="array"
+    required
+  >
+    <span>{"Discount codes to apply to the cart"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cart"
+    type="object"
+    required
+  >
+    <span>{"The updated cart"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="checkoutUrl"
+    type="string"
+    required
+  >
+    <span>{"Final checkout URL returned by Shopify, in the form\n      \"https://{shop}.myshopify.com/checkouts/cn/{token}\". Use this value\n      verbatim when linking the buyer to checkout - do not modify it, shorten\n      it, replace it, or construct your own URL from the shop domain. When\n      rendering an affordance, it must be a link (not a button) targeting\n      exactly this string."}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalQuantity"
+    type="number"
+    required
+  >
+    <span>{"Total number of items in the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated total cost"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="subtotalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated subtotal before taxes and shipping"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lines"
+    type="array"
+    required
+  >
+    <span>{"The cart line items"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="lineId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the cart line"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity of this line item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="merchandiseId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The product title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variantTitle"
+    type="string"
+  >
+    <span>{"The variant title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The unit price of the line item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="discountCodes"
+    type="array"
+  >
+    <span>{"Applied discount codes"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    <span>{"The discount code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="applicable"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the discount code is currently applicable"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Cart
+
+<span>{"Create a new cart via the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="lines"
+    type="array"
+    required
+  >
+    <span>{"Cart line items to add"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="merchandiseId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity to add"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="buyerEmail"
+    type="string"
+  >
+    <span>{"Email of the buyer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="countryCode"
+    type="string"
+  >
+    <span>{"ISO 3166-1 alpha-2 country code for the buyer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="discountCodes"
+    type="array"
+  >
+    <span>{"Discount codes to apply"}</span>
+  </ResponseField>
+  <ResponseField
+    name="note"
+    type="string"
+  >
+    <span>{"A note for the cart"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cart"
+    type="object"
+    required
+  >
+    <span>{"The created cart"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="checkoutUrl"
+    type="string"
+    required
+  >
+    <span>{"Final checkout URL returned by Shopify, in the form\n      \"https://{shop}.myshopify.com/checkouts/cn/{token}\". Use this value\n      verbatim when linking the buyer to checkout - do not modify it, shorten\n      it, replace it, or construct your own URL from the shop domain. When\n      rendering an affordance, it must be a link (not a button) targeting\n      exactly this string."}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalQuantity"
+    type="number"
+    required
+  >
+    <span>{"Total number of items in the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated total cost"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="subtotalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated subtotal before taxes and shipping"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lines"
+    type="array"
+    required
+  >
+    <span>{"The cart line items"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="lineId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the cart line"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity of this line item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="merchandiseId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The product title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variantTitle"
+    type="string"
+  >
+    <span>{"The variant title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The unit price of the line item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="discountCodes"
+    type="array"
+  >
+    <span>{"Applied discount codes"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    <span>{"The discount code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="applicable"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the discount code is currently applicable"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Cart
+
+<span>{"Retrieve a cart by ID from the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="cart"
+    type="object"
+    required
+  >
+    <span>{"The cart details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="cartId"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="checkoutUrl"
+    type="string"
+    required
+  >
+    <span>{"Final checkout URL returned by Shopify, in the form\n      \"https://{shop}.myshopify.com/checkouts/cn/{token}\". Use this value\n      verbatim when linking the buyer to checkout - do not modify it, shorten\n      it, replace it, or construct your own URL from the shop domain. When\n      rendering an affordance, it must be a link (not a button) targeting\n      exactly this string."}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalQuantity"
+    type="number"
+    required
+  >
+    <span>{"Total number of items in the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated total cost"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="subtotalAmount"
+    type="object"
+    required
+  >
+    <span>{"The estimated subtotal before taxes and shipping"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="lines"
+    type="array"
+    required
+  >
+    <span>{"The cart line items"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="lineId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the cart line"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity of this line item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="merchandiseId"
+    type="string"
+    required
+  >
+    <span>{"The GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The product title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variantTitle"
+    type="string"
+  >
+    <span>{"The variant title"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The unit price of the line item"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="discountCodes"
+    type="array"
+  >
+    <span>{"Applied discount codes"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="code"
+    type="string"
+    required
+  >
+    <span>{"The discount code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="applicable"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the discount code is currently applicable"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Collection
+
+<span>{"Get a single collection with its products from the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="handle"
+    type="string"
+  >
+    <span>{"The URL-friendly handle of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="collectionId"
+    type="string"
+  >
+    <span>{"The Storefront GID of the collection (e.g. gid://shopify/Collection/12345)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productsFirst"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of products to include"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="collection"
+    type="object"
+    required
+  >
+    <span>{"The collection details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the\n  collection. Do not offer to add a collection to the cart. Collections are\n  groups of products. Ask the user if they want to see the procuts belonging to\n  a collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Plain-text description of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"URL of the collection image"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="products"
+    type="array"
+    required
+  >
+    <span>{"Products in the collection"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the\n  product. Don't offer the user to add products to the chart. Only offer the\n  user to add specific variants to the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Plain-text description of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productType"
+    type="string"
+  >
+    <span>{"The product type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+  >
+    <span>{"The vendor of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the product is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priceRange"
+    type="object"
+  >
+    <span>{"The price range across all variants"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="minVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="maxVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    <span>{"The product variants"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the product\n  variant. This is the unique identifier for a variant within a product. This\n  id, in the format \"gid://shopify/ProductVariant/{number}\", can be used for\n  adding a product to a cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the variant is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"URL of the primary product image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="storefrontUrl"
+    type="string"
+    required
+  >
+    <span>{"Canonical storefront URL on the shop's myshopify.com domain — always populated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStoreUrl"
+    type="string"
+  >
+    <span>{"Published Online Store URL (may use a custom domain). Undefined if the product is not published to the Online Store sales channel"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pageInfo"
+    type="object"
+    required
+  >
+    <span>{"Pagination info for products"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="hasNextPage"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Product
+
+<span>{"Get a single product from the Shopify Storefront API by handle or ID"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="handle"
+    type="string"
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productId"
+    type="string"
+  >
+    <span>{"The Storefront GID of the product (e.g. gid://shopify/Product/12345)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="product"
+    type="object"
+    required
+  >
+    <span>{"The product details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the\n  product. Don't offer the user to add products to the chart. Only offer the\n  user to add specific variants to the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Plain-text description of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productType"
+    type="string"
+  >
+    <span>{"The product type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+  >
+    <span>{"The vendor of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the product is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priceRange"
+    type="object"
+  >
+    <span>{"The price range across all variants"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="minVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="maxVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    <span>{"The product variants"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the product\n  variant. This is the unique identifier for a variant within a product. This\n  id, in the format \"gid://shopify/ProductVariant/{number}\", can be used for\n  adding a product to a cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the variant is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"URL of the primary product image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="storefrontUrl"
+    type="string"
+    required
+  >
+    <span>{"Canonical storefront URL on the shop's myshopify.com domain — always populated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStoreUrl"
+    type="string"
+  >
+    <span>{"Published Online Store URL (may use a custom domain). Undefined if the product is not published to the Online Store sales channel"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Collections
+
+<span>{"List collections from the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="first"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of collections to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="after"
+    type="string"
+  >
+    <span>{"Cursor for pagination"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="collections"
+    type="array"
+    required
+  >
+    <span>{"List of collections"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the\n  collection. Do not offer to add a collection to the cart. Collections are\n  groups of products. Ask the user if they want to see the procuts belonging to\n  a collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Plain-text description of the collection"}</span>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"URL of the collection image"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pageInfo"
+    type="object"
+    required
+  >
+    <span>{"Pagination info"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="hasNextPage"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Products
+
+<span>{"List public-facing products via the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+  >
+    <span>{"Search query to filter products"}</span>
+  </ResponseField>
+  <ResponseField
+    name="first"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of products to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="after"
+    type="string"
+  >
+    <span>{"Cursor for pagination"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="products"
+    type="array"
+    required
+  >
+    <span>{"List of products"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the\n  product. Don't offer the user to add products to the chart. Only offer the\n  user to add specific variants to the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Plain-text description of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productType"
+    type="string"
+  >
+    <span>{"The product type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+  >
+    <span>{"The vendor of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the product is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priceRange"
+    type="object"
+  >
+    <span>{"The price range across all variants"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="minVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="maxVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    <span>{"The product variants"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the product\n  variant. This is the unique identifier for a variant within a product. This\n  id, in the format \"gid://shopify/ProductVariant/{number}\", can be used for\n  adding a product to a cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the variant is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"URL of the primary product image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="storefrontUrl"
+    type="string"
+    required
+  >
+    <span>{"Canonical storefront URL on the shop's myshopify.com domain — always populated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStoreUrl"
+    type="string"
+  >
+    <span>{"Published Online Store URL (may use a custom domain). Undefined if the product is not published to the Online Store sales channel"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pageInfo"
+    type="object"
+    required
+  >
+    <span>{"Pagination info"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="hasNextPage"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Products
+
+<span>{"Search public-facing products via the Shopify Storefront API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"Search term to find products"}</span>
+  </ResponseField>
+  <ResponseField
+    name="first"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of products to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="after"
+    type="string"
+  >
+    <span>{"Cursor for pagination"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="products"
+    type="array"
+    required
+  >
+    <span>{"List of matching products"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the\n  product. Don't offer the user to add products to the chart. Only offer the\n  user to add specific variants to the cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Plain-text description of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productType"
+    type="string"
+  >
+    <span>{"The product type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+  >
+    <span>{"The vendor of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the product is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priceRange"
+    type="object"
+  >
+    <span>{"The price range across all variants"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="minVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="maxVariantPrice"
+    type="object"
+    required
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    <span>{"The product variants"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Storefront GID of the product\n  variant. This is the unique identifier for a variant within a product. This\n  id, in the format \"gid://shopify/ProductVariant/{number}\", can be used for\n  adding a product to a cart"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="availableForSale"
+    type="boolean"
+    required
+  >
+    <span>{"Whether the variant is available for purchase"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="object"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="amount"
+    type="string"
+    required
+  >
+    <span>{"Decimal money amount"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"ISO 4217 currency code"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="imageUrl"
+    type="string"
+  >
+    <span>{"URL of the primary product image"}</span>
+  </ResponseField>
+  <ResponseField
+    name="storefrontUrl"
+    type="string"
+    required
+  >
+    <span>{"Canonical storefront URL on the shop's myshopify.com domain — always populated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStoreUrl"
+    type="string"
+  >
+    <span>{"Published Online Store URL (may use a custom domain). Undefined if the product is not published to the Online Store sales channel"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pageInfo"
+    type="object"
+    required
+  >
+    <span>{"Pagination info"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="hasNextPage"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

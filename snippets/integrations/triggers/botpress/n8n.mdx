@@ -9,9 +9,9 @@ You can access data returned from any of these Triggers by reading `event.payloa
 </Tip>
 
 
-### Ticket Activity
+### n8n event
 
-<span>{"Emitted when new activities (comments, notes, or system activities) are added to a ticket that the bot is assigned to. Does not include activities created by the bot itself to prevent infinite loops."}</span>
+<span>{"Triggered when n8n posts data back to Botpress."}</span>
 
   <ResponseField
     name="payload"
@@ -21,18 +21,23 @@ You can access data returned from any of these Triggers by reading `event.payloa
 
     <Expandable>
   <ResponseField
-    name="ticketId"
+    name="workflowId"
     type="string"
-    required
   >
-    <span>{"The unique identifier for the ticket"}</span>
+    <span>{"The ID of the workflow that posted this event"}</span>
   </ResponseField>
   <ResponseField
-    name="activityCount"
-    type="number"
+    name="workflowName"
+    type="string"
+  >
+    <span>{"The name of the workflow that posted this event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
     required
   >
-    <span>{"The number of new activities that were synced"}</span>
+    <span>{"Arbitrary data payload sent by the n8n workflow"}</span>
   </ResponseField>
     </Expandable>
   </ResponseField>
