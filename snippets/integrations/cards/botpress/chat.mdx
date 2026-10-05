@@ -3,6 +3,39 @@
 
 Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
 
+### Publish Message Stream
+
+<span>{"Publish a transient message stream delta or abort signal"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"Botpress conversation ID for the message stream"}</span>
+  </ResponseField>
+  <ResponseField
+    name="signal"
+    type="object | object"
+    required
+  >
+    <span>{"Transient message stream delta or abort signal"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
 ### Send Custom Event
 
 <span>{"Send a custom event from the bot to the chat client"}</span>

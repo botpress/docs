@@ -79,5 +79,33 @@ You can access data returned from any of these Triggers by reading `event.payloa
     </Expandable>
   </ResponseField>
 
+### User Updated
+
+<span>{"This event occurs when a user's properties change."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The id of the user whose properties changed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="properties"
+    type="object"
+    required
+  >
+    <span>{"All of the user properties after the update"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
 
 {/* vale on */}
