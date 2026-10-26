@@ -89,6 +89,39 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     This Card has no output.
   </ResponseField>
 
+### Add Thread Member
+
+<span>{"Adds a member to a thread. The thread must not be archived."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="threadId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the thread (the `id` returned by Create Thread)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="userId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the user to add to the thread"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
 ### Ban User
 
 <span>{"Ban a user from a guild"}</span>
@@ -251,7 +284,7 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     name="type"
     type="number"
   >
-    <span>{"Channel type. Defaults to Guild Text (0)."}</span>
+    <span>{"Channel type. Defaults to Guild Text (0). Thread types (10, 11, 12) are not supported here; use the Create Thread action instead."}</span>
   </ResponseField>
   <ResponseField
     name="topic"
@@ -534,6 +567,95 @@ Available options: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`
     required
   >
     <span>{"Whether the role can be mentioned"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Thread
+
+<span>{"Creates a thread in a text channel (not forum or announcement channels). Requires the Create Public Threads or Create Private Threads permission, matching the visibility."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the parent text channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The name of the thread (1-100 characters)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="visibility"
+    type="enum<string>"
+    required
+  >
+    <span>{"Whether the thread is public or private"}</span>
+
+Available options: `public`, `private`
+  </ResponseField>
+  <ResponseField
+    name="invitable"
+    type="boolean"
+  >
+    <span>{"Private threads only. If false, only the thread creator and moderators can add members."}</span>
+  </ResponseField>
+  <ResponseField
+    name="autoArchiveDuration"
+    type="enum<string>"
+  >
+    <span>{"Minutes of inactivity after which the thread is automatically archived"}</span>
+
+Available options: `60`, `1440`, `4320`, `10080`
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Thread ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="number"
+    required
+  >
+    <span>{"Channel type (11 for public thread, 12 for private thread)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Thread name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="guildId"
+    type="string"
+  >
+    <span>{"ID of the guild"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentId"
+    type="string | null"
+  >
+    
   </ResponseField>
     </Expandable>
   </ResponseField>
@@ -1659,6 +1781,47 @@ Available options: `dm`, `guildText`, `guildAnnouncement`, `announcementThread`,
     type="object"
   >
     This Card has no output.
+  </ResponseField>
+
+### Send Channel Message
+
+<span>{"Sends a text message to any Discord channel or thread by ID, outside the current conversation. Use it to post into a thread created with Create Thread."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="channelId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the channel or thread to send to (for a thread, the `id` returned by Create Thread)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="text"
+    type="string"
+    required
+  >
+    <span>{"The message text (Discord markdown is supported)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="messageId"
+    type="string"
+    required
+  >
+    <span>{"The ID of the sent message"}</span>
+  </ResponseField>
+    </Expandable>
   </ResponseField>
 
 ### Unban User

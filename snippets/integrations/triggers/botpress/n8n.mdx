@@ -1,0 +1,46 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### n8n event
+
+<span>{"Triggered when n8n posts data back to Botpress."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="workflowId"
+    type="string"
+  >
+    <span>{"The ID of the workflow that posted this event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="workflowName"
+    type="string"
+  >
+    <span>{"The name of the workflow that posted this event"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="object"
+    required
+  >
+    <span>{"Arbitrary data payload sent by the n8n workflow"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
