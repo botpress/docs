@@ -1,0 +1,279 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Ticket Created
+
+<span>{"Triggered when a new ticket is created in Freshdesk."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The newly created ticket."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="requesterId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="responderId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Ticket Replied
+
+<span>{"Triggered when a customer adds a reply to a ticket."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The ticket that received the reply."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="requesterId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="responderId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="reply"
+    type="object"
+    required
+  >
+    <span>{"The reply that was added."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"HTML content of the reply."}</span>
+  </ResponseField>
+  <ResponseField
+    name="bodyText"
+    type="string"
+  >
+    <span>{"Plain-text content of the reply."}</span>
+  </ResponseField>
+  <ResponseField
+    name="customerEmail"
+    type="string"
+  >
+    <span>{"Email of the customer who replied."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Ticket Updated
+
+<span>{"Triggered when a ticket is updated (status, priority, or assignment change)."}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="ticket"
+    type="object"
+    required
+  >
+    <span>{"The updated ticket."}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="requesterId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="responderId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
