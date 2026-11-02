@@ -197,6 +197,39 @@ Here's a reference for all [Cards](/studio/concepts/cards/introduction) availabl
     This Card has no output.
   </ResponseField>
 
+### Publish Message Stream
+
+<span>{"Publish a transient message stream delta or abort signal to a Webchat conversation"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="conversationId"
+    type="string"
+    required
+  >
+    <span>{"The conversation id of the webchat instance. Usually {{event.conversationId}}"}</span>
+  </ResponseField>
+  <ResponseField
+    name="signal"
+    type="object | object"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
 ### Show Webchat
 
 <span>{"Show the webchat widget"}</span>
