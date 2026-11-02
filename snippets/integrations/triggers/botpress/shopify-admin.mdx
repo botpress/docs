@@ -1,0 +1,388 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Triggers](/studio/concepts/triggers/) available with the integration:
+
+
+<Tip>
+You can access data returned from any of these Triggers by reading `event.payload` after the Trigger fires.
+</Tip>
+
+
+### Order Cancelled
+
+<span>{"Triggered when an order is cancelled"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify order ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Order Created
+
+<span>{"Triggered when a new order is placed"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify order ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Order Fulfilled
+
+<span>{"Triggered when all items in an order are fulfilled"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify order ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Order Paid
+
+<span>{"Triggered when payment for an order is confirmed"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify order ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Order Updated
+
+<span>{"Triggered when an order is modified"}</span>
+
+  <ResponseField
+    name="payload"
+    type="object"
+  >
+    
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify order ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

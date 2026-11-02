@@ -3564,60 +3564,6 @@ Available options: `triage`, `open`, `waiting`, `closed`
     </Expandable>
   </ResponseField>
 
-### Request Approval
-
-<span>{"Submit a tool action for agent review and approval before execution"}</span>
-
-  <ResponseField
-    name="input"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="ticketId"
-    type="string"
-    required
-  >
-    <span>{"The ID of the ticket"}</span>
-  </ResponseField>
-  <ResponseField
-    name="toolName"
-    type="string"
-    required
-  >
-    <span>{"The name of the tool being requested for approval"}</span>
-  </ResponseField>
-  <ResponseField
-    name="toolInput"
-    type="object"
-    required
-  >
-    <span>{"The input parameters for the tool"}</span>
-  </ResponseField>
-  <ResponseField
-    name="reasoning"
-    type="string"
-  >
-    <span>{"Optional explanation of why this action is being requested"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
-  <ResponseField
-    name="output"
-    type="object"
-  >
-    <Expandable>
-  <ResponseField
-    name="approvalId"
-    type="string"
-    required
-  >
-    <span>{"The unique ID of the approval request"}</span>
-  </ResponseField>
-    </Expandable>
-  </ResponseField>
-
 ### Set Customer Attributes
 
 <span>{"Set custom attributes on a customer"}</span>
@@ -4333,7 +4279,7 @@ Available options: `triage`, `open`, `waiting`, `closed`
 
 ### Start Customer Typing Indicator
 
-<span>{"Show a typing indicator to the customer in webchat. Only works for native (webchat) tickets. The indicator auto-expires after the timeout."}</span>
+<span>{"Show a typing indicator to the customer on the ticket's frontline channel. No-op when the ticket has no active agent session or the channel does not support typing. The indicator auto-expires after the timeout."}</span>
 
   <ResponseField
     name="input"
@@ -4359,7 +4305,7 @@ Available options: `triage`, `open`, `waiting`, `closed`
 
 ### Stop Customer Typing Indicator
 
-<span>{"Stop the typing indicator shown to the customer in webchat."}</span>
+<span>{"Stop the typing indicator shown to the customer on the ticket's frontline channel."}</span>
 
   <ResponseField
     name="input"
