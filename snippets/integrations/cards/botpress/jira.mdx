@@ -1,0 +1,1384 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Add Attachment
+
+<span>{"Upload a file or image as an attachment on a Jira issue."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the Jira issue to attach the file to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filename"
+    type="string"
+    required
+  >
+    <span>{"Name Jira should use for the uploaded attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="contentType"
+    type="string"
+  >
+    <span>{"MIME content type of the file, such as image/png or application/pdf"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fileUrl"
+    type="string (uri)"
+  >
+    <span>{"URL to download the file from before uploading to Jira"}</span>
+  </ResponseField>
+  <ResponseField
+    name="data"
+    type="string"
+  >
+    <span>{"Base64-encoded file content to upload to Jira"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the Jira issue that received the attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="attachments"
+    type="array"
+    required
+  >
+    <span>{"Attachments returned by Jira"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Jira identifier of the uploaded attachment"}</span>
+  </ResponseField>
+  <ResponseField
+    name="filename"
+    type="string"
+  >
+    <span>{"Attachment filename"}</span>
+  </ResponseField>
+  <ResponseField
+    name="mimeType"
+    type="string"
+  >
+    <span>{"Attachment MIME type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="size"
+    type="number"
+  >
+    <span>{"Attachment size in bytes"}</span>
+  </ResponseField>
+  <ResponseField
+    name="self"
+    type="string"
+  >
+    <span>{"Jira API URL for the attachment metadata"}</span>
+  </ResponseField>
+  <ResponseField
+    name="content"
+    type="string"
+  >
+    <span>{"Jira API URL for downloading the attachment content"}</span>
+  </ResponseField>
+  <ResponseField
+    name="thumbnail"
+    type="string"
+  >
+    <span>{"Jira API URL for the attachment thumbnail, when available"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Assign Issue
+
+<span>{"Assign or unassign a Jira issue. Pass an account ID (find one via findUser) to assign, or null to unassign."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the issue to assign (e.g. SCRUM-17)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the issue that was assigned"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="string | null"
+    required
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Count Issues
+
+<span>{"Return the approximate number of issues matching a JQL query. Cheaper than paginating searchIssues when you only need a count."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="jql"
+    type="string"
+    required
+  >
+    <span>{"JQL query whose matching issues should be counted"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="count"
+    type="number"
+    required
+  >
+    <span>{"Approximate number of issues matching the JQL. Atlassian returns an estimate optimized for performance, not an exact count."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Delete Issue
+
+<span>{"Permanently delete a Jira issue. Set deleteSubtasks=true to recursively delete its subtasks; otherwise the call fails if the issue has children."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the issue to delete"}</span>
+  </ResponseField>
+  <ResponseField
+    name="deleteSubtasks"
+    type="boolean"
+  >
+    <span>{"Whether to also delete subtasks of this issue (default false). If false and the issue has subtasks, the API will reject the delete."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the issue that was deleted"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Find All Users
+
+<span>{"List Jira users with optional pagination"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="startAt"
+    type="integer"
+  >
+    <span>{"Index of the first Jira user to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxResults"
+    type="integer"
+  >
+    <span>{"Maximum number of Jira users to return (1-100)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="users"
+    type="array"
+    required
+  >
+    <span>{"Jira users returned by the lookup"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="self"
+    type="string"
+  >
+    <span>{"Jira API URL for the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="key"
+    type="string"
+  >
+    <span>{"Legacy Jira user key, when available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="string"
+  >
+    <span>{"Jira account ID for the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountType"
+    type="string"
+  >
+    <span>{"Jira account type for the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Legacy Jira username, when available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailAddress"
+    type="string"
+  >
+    <span>{"Email address for the Jira user, when visible"}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"Display name for the Jira user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="active"
+    type="boolean"
+  >
+    <span>{"Whether the Jira user account is active"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timeZone"
+    type="string"
+  >
+    <span>{"User time zone configured in Jira"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"User locale configured in Jira"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Find User
+
+<span>{"Find the first Jira user matching a search query"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"Search query for a Jira user, such as a name, email, or account identifier"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="self"
+    type="string"
+  >
+    <span>{"Jira API URL for the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="key"
+    type="string"
+  >
+    <span>{"Legacy Jira user key, when available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountId"
+    type="string"
+  >
+    <span>{"Jira account ID for the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="accountType"
+    type="string"
+  >
+    <span>{"Jira account type for the user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Legacy Jira username, when available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="emailAddress"
+    type="string"
+  >
+    <span>{"Email address for the Jira user, when visible"}</span>
+  </ResponseField>
+  <ResponseField
+    name="displayName"
+    type="string"
+  >
+    <span>{"Display name for the Jira user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="active"
+    type="boolean"
+  >
+    <span>{"Whether the Jira user account is active"}</span>
+  </ResponseField>
+  <ResponseField
+    name="timeZone"
+    type="string"
+  >
+    <span>{"User time zone configured in Jira"}</span>
+  </ResponseField>
+  <ResponseField
+    name="locale"
+    type="string"
+  >
+    <span>{"User locale configured in Jira"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Issue
+
+<span>{"Fetch a single Jira issue by key or ID, including its current status, assignee, and type."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the Jira issue to fetch"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Jira issue key (e.g. SCRUM-17)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"Internal Jira issue ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="browseUrl"
+    type="string"
+  >
+    <span>{"User-facing Jira URL for the issue (https://<host>/browse/<KEY>)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"Issue summary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Issue description as plain text, when available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+  >
+    <span>{"Current workflow status name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusCategory"
+    type="string"
+  >
+    <span>{"Status category (To Do, In Progress, Done)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+  >
+    <span>{"Name of the issue type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string"
+  >
+    <span>{"Priority name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+  >
+    <span>{"Key of the project the issue belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"Account ID of the assigned user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeName"
+    type="string"
+  >
+    <span>{"Display name of the assigned user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reporterId"
+    type="string"
+  >
+    <span>{"Account ID of the reporting user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reporterName"
+    type="string"
+  >
+    <span>{"Display name of the reporting user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"Issue key of the parent issue, when applicable"}</span>
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+  >
+    <span>{"ISO timestamp of issue creation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updated"
+    type="string"
+  >
+    <span>{"ISO timestamp of last update"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Issue Transitions
+
+<span>{"List the workflow transitions currently available for a Jira issue. Use the returned transition ID with transitionIssue."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the issue whose transitions to list"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="transitions"
+    type="array"
+    required
+  >
+    <span>{"Transitions available for the issue"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"ID of the transition (pass to transitionIssue)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Display name of the transition"}</span>
+  </ResponseField>
+  <ResponseField
+    name="toStatus"
+    type="string"
+  >
+    <span>{"Status the issue moves to when the transition is applied"}</span>
+  </ResponseField>
+  <ResponseField
+    name="toStatusCategory"
+    type="string"
+  >
+    <span>{"Status category of the target status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="isAvailable"
+    type="boolean"
+  >
+    <span>{"Whether the transition is currently available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hasScreen"
+    type="boolean"
+  >
+    <span>{"Whether the transition shows a screen for additional fields"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Issue Types
+
+<span>{"List all Jira issue types visible to the configured user."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="projectKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the project to list issue types for (e.g. SCRUM). Issue types vary per project."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"Available issue types"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"Internal Jira issue type ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Issue type name (e.g. Task, Bug, Story)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Issue type description"}</span>
+  </ResponseField>
+  <ResponseField
+    name="subtask"
+    type="boolean"
+  >
+    <span>{"Whether the issue type represents a subtask"}</span>
+  </ResponseField>
+  <ResponseField
+    name="hierarchyLevel"
+    type="number"
+  >
+    <span>{"Hierarchy level of the issue type"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Projects
+
+<span>{"List Jira projects visible to the configured user. Supports pagination and an optional name/key query filter."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+  >
+    <span>{"Optional case-insensitive substring match against project key or name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Pagination cursor returned from a previous call"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxResults"
+    type="integer"
+  >
+    <span>{"Maximum number of projects per page (1-100, default 50)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"Projects visible to the configured user"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"Internal Jira project ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="key"
+    type="string"
+    required
+  >
+    <span>{"Project key (e.g. SCRUM)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Display name of the project"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectTypeKey"
+    type="string"
+  >
+    <span>{"Project type (software, service_desk, business)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Project description"}</span>
+  </ResponseField>
+  <ResponseField
+    name="leadAccountId"
+    type="string"
+  >
+    <span>{"Account ID of the project lead"}</span>
+  </ResponseField>
+  <ResponseField
+    name="leadName"
+    type="string"
+  >
+    <span>{"Display name of the project lead"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Cursor for the next page; omitted when no more pages"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Project Statuses
+
+<span>{"List the workflow statuses available in a Jira project, grouped per issue type."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="projectKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the project"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"Statuses grouped per issue type for the project"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"Internal Jira status ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Status name (e.g. To Do, In Progress, Done)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Status description"}</span>
+  </ResponseField>
+  <ResponseField
+    name="category"
+    type="string"
+  >
+    <span>{"Status category (To Do, In Progress, Done)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+  >
+    <span>{"Issue type the status belongs to"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### New Issue
+
+<span>{"Create a new issue in Jira"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="summary"
+    type="string"
+    required
+  >
+    <span>{"Summary of the Jira issue to create"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Detailed description of the Jira issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+    required
+  >
+    <span>{"Name of the Jira issue type, such as Task, Story, Bug, or Epic"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the Jira project where the issue is created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"Parent issue key when creating a sub-task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"Jira account ID of the user assigned to the issue"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the Jira issue that was created"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### New Issues (Batch)
+
+<span>{"Create up to 50 Jira issues in a single request. Returns both successes and errors."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issues"
+    type="array"
+    required
+  >
+    <span>{"Issues to create in a single request (1-50). Jira enforces a hard limit of 50."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="summary"
+    type="string"
+    required
+  >
+    <span>{"Summary of the Jira issue to create"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Detailed description of the Jira issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+    required
+  >
+    <span>{"Name of the Jira issue type, such as Task, Story, Bug, or Epic"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the Jira project where the issue is created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"Parent issue key when creating a sub-task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"Jira account ID of the user assigned to the issue"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="created"
+    type="array"
+    required
+  >
+    <span>{"Issues that were successfully created"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of an issue that was created"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="errors"
+    type="array"
+    required
+  >
+    <span>{"Errors for issues that failed to create. Empty when all issues succeeded."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="index"
+    type="number"
+  >
+    <span>{"Index in the input array that failed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="message"
+    type="string"
+    required
+  >
+    <span>{"Error message describing why the create failed"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Pick Issue
+
+<span>{"Find Jira issues by free-text query (matches keys and summaries, ranked by relevance). Use this when the user references an issue by description rather than key."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"Free-text query Jira matches against issue keys and summaries (e.g. \"login bug\")"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currentJql"
+    type="string"
+  >
+    <span>{"Optional JQL to restrict the search scope (e.g. \"project = SCRUM\")"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="matches"
+    type="array"
+    required
+  >
+    <span>{"Issues matching the query, ranked by relevance and flattened across picker sections"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the matching issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"Issue summary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="section"
+    type="string"
+  >
+    <span>{"Picker section this match came from (e.g. \"History Search\", \"Current Search\")"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Issues
+
+<span>{"Search for Jira issues using JQL. When no JQL is provided, returns issues ordered by most recently created. Supports pagination via nextToken."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="jql"
+    type="string"
+  >
+    <span>{"JQL query for issue search. Defaults to \"order by created DESC\" when omitted."}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Pagination cursor returned from a previous searchIssues call"}</span>
+  </ResponseField>
+  <ResponseField
+    name="maxResults"
+    type="integer"
+  >
+    <span>{"Maximum number of issues to return per page (1-100, default 50)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="items"
+    type="array"
+    required
+  >
+    <span>{"Issues matching the JQL query"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Jira issue key (e.g. SCRUM-17)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="id"
+    type="string"
+  >
+    <span>{"Internal Jira issue ID"}</span>
+  </ResponseField>
+  <ResponseField
+    name="browseUrl"
+    type="string"
+  >
+    <span>{"User-facing Jira URL for the issue (https://<host>/browse/<KEY>)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"Issue summary"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Issue description as plain text, when available"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+  >
+    <span>{"Current workflow status name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="statusCategory"
+    type="string"
+  >
+    <span>{"Status category (To Do, In Progress, Done)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+  >
+    <span>{"Name of the issue type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="string"
+  >
+    <span>{"Priority name"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+  >
+    <span>{"Key of the project the issue belongs to"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"Account ID of the assigned user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeName"
+    type="string"
+  >
+    <span>{"Display name of the assigned user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reporterId"
+    type="string"
+  >
+    <span>{"Account ID of the reporting user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="reporterName"
+    type="string"
+  >
+    <span>{"Display name of the reporting user"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"Issue key of the parent issue, when applicable"}</span>
+  </ResponseField>
+  <ResponseField
+    name="created"
+    type="string"
+  >
+    <span>{"ISO timestamp of issue creation"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updated"
+    type="string"
+  >
+    <span>{"ISO timestamp of last update"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Cursor to pass as nextToken to fetch the next page; omitted when there are no more results"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Transition Issue
+
+<span>{"Apply a workflow transition to a Jira issue (for example, move it to In Progress or Done). Use getIssueTransitions to find a valid transitionId."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key or ID of the issue to transition"}</span>
+  </ResponseField>
+  <ResponseField
+    name="transitionId"
+    type="string"
+    required
+  >
+    <span>{"ID of the transition to apply. Use getIssueTransitions to list valid IDs."}</span>
+  </ResponseField>
+  <ResponseField
+    name="comment"
+    type="string"
+  >
+    <span>{"Optional comment to add to the issue as part of the transition"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the issue that was transitioned"}</span>
+  </ResponseField>
+  <ResponseField
+    name="transitionId"
+    type="string"
+    required
+  >
+    <span>{"ID of the transition that was applied"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Update Issue
+
+<span>{"Update an existing Jira issue"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="summary"
+    type="string"
+  >
+    <span>{"Summary of the Jira issue to create"}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+  >
+    <span>{"Detailed description of the Jira issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueType"
+    type="string"
+  >
+    <span>{"Name of the Jira issue type, such as Task, Story, Bug, or Epic"}</span>
+  </ResponseField>
+  <ResponseField
+    name="projectKey"
+    type="string"
+  >
+    <span>{"Key of the Jira project where the issue is created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="parentKey"
+    type="string"
+  >
+    <span>{"Parent issue key when creating a sub-task"}</span>
+  </ResponseField>
+  <ResponseField
+    name="assigneeId"
+    type="string"
+  >
+    <span>{"Jira account ID of the user assigned to the issue"}</span>
+  </ResponseField>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the Jira issue to update"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="issueKey"
+    type="string"
+    required
+  >
+    <span>{"Key of the Jira issue that was updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}

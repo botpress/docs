@@ -1,0 +1,966 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Get Order
+
+<span>{"Get full order details by ID from the Shopify Admin API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="orderId"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the order (e.g. gid://shopify/Order/12345)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="order"
+    type="object"
+    required
+  >
+    <span>{"The order details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cancelledAt"
+    type="string"
+  >
+    <span>{"When the order was cancelled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"When the order was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code (e.g. USD)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lineItems"
+    type="array"
+    required
+  >
+    <span>{"The order line items"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the line item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity ordered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variant"
+    type="object"
+  >
+    <span>{"The associated product variant"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="string"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sku"
+    type="string"
+  >
+    <span>{"The SKU of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inventoryQuantity"
+    type="number"
+  >
+    <span>{"The available inventory"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+  >
+    <span>{"The customer who placed the order"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="numberOfOrders"
+    type="number"
+  >
+    <span>{"Total number of orders"}</span>
+  </ResponseField>
+  <ResponseField
+    name="amountSpent"
+    type="string"
+  >
+    <span>{"Total amount spent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the customer was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the customer was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Product
+
+<span>{"Get a single product with its variants from the Shopify Admin API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="productId"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product (e.g. gid://shopify/Product/12345)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="product"
+    type="object"
+    required
+  >
+    <span>{"The product details"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"The status of the product (ACTIVE, ARCHIVED, DRAFT)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+  >
+    <span>{"The vendor of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productType"
+    type="string"
+  >
+    <span>{"The product type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="descriptionHtml"
+    type="string"
+  >
+    <span>{"The HTML description"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the product was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the product was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="storefrontUrl"
+    type="string"
+    required
+  >
+    <span>{"Canonical storefront URL on the shop's myshopify.com domain — always populated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStoreUrl"
+    type="string"
+  >
+    <span>{"Published Online Store URL (may use a custom domain). Undefined if the product is not published to the Online Store sales channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStorePreviewUrl"
+    type="string"
+  >
+    <span>{"Preview URL that works even when the product is not published"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    <span>{"The product variants"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="string"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sku"
+    type="string"
+  >
+    <span>{"The SKU of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inventoryQuantity"
+    type="number"
+  >
+    <span>{"The available inventory"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Customer Orders
+
+<span>{"List orders for a specific customer, optionally filtered by status"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="customerId"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the customer (e.g. gid://shopify/Customer/12345)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    default="any"
+  >
+    <span>{"Filter orders by status"}</span>
+
+Available options: `open`, `closed`, `cancelled`, `any`
+  </ResponseField>
+  <ResponseField
+    name="first"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of orders to return"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="orders"
+    type="array"
+    required
+  >
+    <span>{"List of customer orders"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"The order number (e.g. #1001)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number associated with the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the order was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="cancelledAt"
+    type="string"
+  >
+    <span>{"When the order was cancelled"}</span>
+  </ResponseField>
+  <ResponseField
+    name="closedAt"
+    type="string"
+  >
+    <span>{"When the order was closed"}</span>
+  </ResponseField>
+  <ResponseField
+    name="financialStatus"
+    type="string"
+    required
+  >
+    <span>{"The financial status of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="fulfillmentStatus"
+    type="string"
+  >
+    <span>{"The fulfillment status"}</span>
+  </ResponseField>
+  <ResponseField
+    name="totalPrice"
+    type="string"
+    required
+  >
+    <span>{"The total price of the order"}</span>
+  </ResponseField>
+  <ResponseField
+    name="currencyCode"
+    type="string"
+    required
+  >
+    <span>{"The currency code (e.g. USD)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lineItems"
+    type="array"
+    required
+  >
+    <span>{"The order line items"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the line item"}</span>
+  </ResponseField>
+  <ResponseField
+    name="quantity"
+    type="number"
+    required
+  >
+    <span>{"The quantity ordered"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variant"
+    type="object"
+  >
+    <span>{"The associated product variant"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="string"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sku"
+    type="string"
+  >
+    <span>{"The SKU of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inventoryQuantity"
+    type="number"
+  >
+    <span>{"The available inventory"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="customer"
+    type="object"
+  >
+    <span>{"The customer who placed the order"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="numberOfOrders"
+    type="number"
+  >
+    <span>{"Total number of orders"}</span>
+  </ResponseField>
+  <ResponseField
+    name="amountSpent"
+    type="string"
+  >
+    <span>{"Total amount spent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the customer was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the customer was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Products
+
+<span>{"Search and list products from the Shopify Admin API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+  >
+    <span>{"Search query to filter products"}</span>
+  </ResponseField>
+  <ResponseField
+    name="first"
+    type="number"
+    default={50}
+  >
+    <span>{"Number of products to return"}</span>
+  </ResponseField>
+  <ResponseField
+    name="after"
+    type="string"
+  >
+    <span>{"Cursor for pagination"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="products"
+    type="array"
+    required
+  >
+    <span>{"List of products"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="handle"
+    type="string"
+    required
+  >
+    <span>{"The URL-friendly handle of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="string"
+    required
+  >
+    <span>{"The status of the product (ACTIVE, ARCHIVED, DRAFT)"}</span>
+  </ResponseField>
+  <ResponseField
+    name="vendor"
+    type="string"
+  >
+    <span>{"The vendor of the product"}</span>
+  </ResponseField>
+  <ResponseField
+    name="productType"
+    type="string"
+  >
+    <span>{"The product type"}</span>
+  </ResponseField>
+  <ResponseField
+    name="descriptionHtml"
+    type="string"
+  >
+    <span>{"The HTML description"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the product was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the product was last updated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="storefrontUrl"
+    type="string"
+    required
+  >
+    <span>{"Canonical storefront URL on the shop's myshopify.com domain — always populated"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStoreUrl"
+    type="string"
+  >
+    <span>{"Published Online Store URL (may use a custom domain). Undefined if the product is not published to the Online Store sales channel"}</span>
+  </ResponseField>
+  <ResponseField
+    name="onlineStorePreviewUrl"
+    type="string"
+  >
+    <span>{"Preview URL that works even when the product is not published"}</span>
+  </ResponseField>
+  <ResponseField
+    name="variants"
+    type="array"
+    required
+  >
+    <span>{"The product variants"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the product variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="title"
+    type="string"
+    required
+  >
+    <span>{"The title of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="price"
+    type="string"
+    required
+  >
+    <span>{"The price of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="sku"
+    type="string"
+  >
+    <span>{"The SKU of the variant"}</span>
+  </ResponseField>
+  <ResponseField
+    name="inventoryQuantity"
+    type="number"
+  >
+    <span>{"The available inventory"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="pageInfo"
+    type="object"
+    required
+  >
+    <span>{"Pagination info"}</span>
+
+    <Expandable>
+  <ResponseField
+    name="hasNextPage"
+    type="boolean"
+    required
+  >
+    <span>{"Whether there are more results"}</span>
+  </ResponseField>
+  <ResponseField
+    name="endCursor"
+    type="string"
+  >
+    <span>{"Cursor for the next page"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Customers
+
+<span>{"Search for customers by email, name, or phone in the Shopify Admin API"}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="query"
+    type="string"
+    required
+  >
+    <span>{"Search query (email, name, or phone)"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="customers"
+    type="array"
+    required
+  >
+    <span>{"List of matching customers"}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="string"
+    required
+  >
+    <span>{"The Shopify GID of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="firstName"
+    type="string"
+  >
+    <span>{"The first name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="lastName"
+    type="string"
+  >
+    <span>{"The last name of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"The email address of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string"
+  >
+    <span>{"The phone number of the customer"}</span>
+  </ResponseField>
+  <ResponseField
+    name="numberOfOrders"
+    type="number"
+  >
+    <span>{"Total number of orders"}</span>
+  </ResponseField>
+  <ResponseField
+    name="amountSpent"
+    type="string"
+  >
+    <span>{"Total amount spent"}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"When the customer was created"}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"When the customer was last updated"}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
