@@ -1,0 +1,892 @@
+{/* This file is auto-generated. Do not edit directly. */}
+{/* vale off */}
+
+Here's a reference for all [Cards](/studio/concepts/cards/introduction) available with the integration:
+
+### Add Note
+
+<span>{"Adds an internal note to a Freshdesk ticket (not visible to the requester by default)."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="integer"
+    required
+  >
+    <span>{"The Freshdesk ticket ID to add a note to."}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"HTML content of the note."}</span>
+  </ResponseField>
+  <ResponseField
+    name="private"
+    type="boolean"
+    default={true}
+  >
+    <span>{"Set to false to make the note public. Defaults to true."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique ID of the note."}</span>
+  </ResponseField>
+  <ResponseField
+    name="body"
+    type="string"
+    required
+  >
+    <span>{"HTML content of the note."}</span>
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of note creation."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Create Ticket
+
+<span>{"Creates a new ticket in Freshdesk."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Subject of the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string"
+    required
+  >
+    <span>{"HTML content of the ticket description."}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string"
+    required
+  >
+    <span>{"Requester email address."}</span>
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    default="medium"
+  >
+    <span>{"Ticket priority: \"low\", \"medium\", \"high\", or \"urgent\"."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    default="open"
+  >
+    <span>{"Ticket status: \"open\", \"pending\", \"resolved\", or \"closed\"."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array"
+  >
+    <span>{"Tags to associate with the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="object"
+  >
+    <span>{"Custom field key-value pairs."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Subject of the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket status."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket priority."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of ticket creation."}</span>
+  </ResponseField>
+  <ResponseField
+    name="url"
+    type="string"
+    required
+  >
+    <span>{"URL to view the ticket in Freshdesk."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Delete Ticket
+
+<span>{"Deletes a Freshdesk ticket. Deleted tickets can be restored from the Freshdesk UI."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="integer"
+    required
+  >
+    <span>{"The Freshdesk ticket ID to delete."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    This Card has no output.
+  </ResponseField>
+
+### Get Contact
+
+<span>{"Retrieves a Freshdesk contact by ID."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="contactId"
+    type="integer"
+    required
+  >
+    <span>{"The Freshdesk contact ID."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk contact ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Full name of the contact."}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="mobile"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="companyId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of contact creation."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Get Ticket
+
+<span>{"Retrieves a single Freshdesk ticket by ID."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="integer"
+    required
+  >
+    <span>{"The Freshdesk ticket ID."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Subject of the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket status."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket priority."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="requesterId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="responderId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of ticket creation."}</span>
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of last update."}</span>
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="customFields"
+    type="object | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### List Tickets
+
+<span>{"Lists Freshdesk tickets with optional filters and pagination."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="filter"
+    type="string"
+  >
+    <span>{"Predefined filter name: new_and_my_open, watching, spam, deleted."}</span>
+  </ResponseField>
+  <ResponseField
+    name="order_by"
+    type="string"
+  >
+    <span>{"Field to sort by: created_at, due_by, updated_at, status."}</span>
+  </ResponseField>
+  <ResponseField
+    name="order_type"
+    type="enum<string>"
+  >
+    <span>{"Sort direction. Defaults to desc."}</span>
+
+Available options: `asc`, `desc`
+  </ResponseField>
+  <ResponseField
+    name="per_page"
+    type="number"
+  >
+    <span>{"Tickets per page (max 100, default 30)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Token to continue from the previous page of results."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="tickets"
+    type="array"
+    required
+  >
+    <span>{"List of matching tickets."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Subject of the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="description"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="description_text"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket status."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket priority."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="source"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="requester_id"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="responder_id"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="group_id"
+    type="number | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="type"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="tags"
+    type="array | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="cc_emails"
+    type="array | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="due_by"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="created_at"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of ticket creation."}</span>
+  </ResponseField>
+  <ResponseField
+    name="updated_at"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of last update."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="object | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Token to fetch the next page. Absent when there are no more results."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Contacts
+
+<span>{"Finds Freshdesk contacts by email or name."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="email"
+    type="string"
+  >
+    <span>{"Filter contacts by exact email address."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+  >
+    <span>{"Search contacts by name prefix (case-insensitive)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Token to continue from the previous page of results."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="contacts"
+    type="array"
+    required
+  >
+    <span>{"Matching contacts."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk contact ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="name"
+    type="string"
+    required
+  >
+    <span>{"Full name of the contact."}</span>
+  </ResponseField>
+  <ResponseField
+    name="email"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="phone"
+    type="string | null"
+  >
+    
+  </ResponseField>
+  <ResponseField
+    name="companyId"
+    type="number | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Token to fetch the next page. Absent when there are no more results."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Search Tickets
+
+<span>{"Searches Freshdesk tickets by agent, tag, status, or priority."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="agent_id"
+    type="number"
+  >
+    <span>{"Filter by the ID of the agent the ticket is assigned to."}</span>
+  </ResponseField>
+  <ResponseField
+    name="tag"
+    type="string"
+  >
+    <span>{"Filter by a tag associated with the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+  >
+    <span>{"Filter by ticket status: \"open\", \"pending\", \"resolved\", or \"closed\"."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+  >
+    <span>{"Filter by ticket priority: \"low\", \"medium\", \"high\", or \"urgent\"."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="limit"
+    type="number"
+    default={20}
+  >
+    <span>{"Maximum number of tickets to return (default 20, max 100)."}</span>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Token to continue from the previous page of results."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="tickets"
+    type="array"
+    required
+  >
+    <span>{"Matching tickets."}</span>
+
+    <Expandable title="array item properties">
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="subject"
+    type="string"
+    required
+  >
+    <span>{"Subject of the ticket."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket status."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"Ticket priority."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="createdAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of ticket creation."}</span>
+  </ResponseField>
+  <ResponseField
+    name="requesterEmail"
+    type="string | null"
+  >
+    
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+  <ResponseField
+    name="nextToken"
+    type="string"
+  >
+    <span>{"Token to fetch the next page. Absent when there are no more results."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+### Update Ticket
+
+<span>{"Updates an existing Freshdesk ticket."}</span>
+
+  <ResponseField
+    name="input"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="ticketId"
+    type="integer"
+    required
+  >
+    <span>{"The Freshdesk ticket ID to update."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+  >
+    <span>{"Updated ticket status: \"open\", \"pending\", \"resolved\", or \"closed\"."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+  >
+    <span>{"Updated ticket priority: \"low\", \"medium\", \"high\", or \"urgent\"."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="responderId"
+    type="number"
+  >
+    <span>{"ID of the agent to assign the ticket to."}</span>
+  </ResponseField>
+  <ResponseField
+    name="groupId"
+    type="number"
+  >
+    <span>{"ID of the group to assign the ticket to."}</span>
+  </ResponseField>
+  <ResponseField
+    name="custom_fields"
+    type="object"
+  >
+    <span>{"Custom field key-value pairs."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+  <ResponseField
+    name="output"
+    type="object"
+  >
+    <Expandable>
+  <ResponseField
+    name="id"
+    type="number"
+    required
+  >
+    <span>{"Unique Freshdesk ticket ID."}</span>
+  </ResponseField>
+  <ResponseField
+    name="status"
+    type="enum<string>"
+    required
+  >
+    <span>{"Updated ticket status."}</span>
+
+Available options: `open`, `pending`, `resolved`, `closed`
+  </ResponseField>
+  <ResponseField
+    name="priority"
+    type="enum<string>"
+    required
+  >
+    <span>{"Updated ticket priority."}</span>
+
+Available options: `low`, `medium`, `high`, `urgent`
+  </ResponseField>
+  <ResponseField
+    name="updatedAt"
+    type="string"
+    required
+  >
+    <span>{"ISO 8601 timestamp of last update."}</span>
+  </ResponseField>
+    </Expandable>
+  </ResponseField>
+
+
+{/* vale on */}
